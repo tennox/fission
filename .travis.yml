@@ -12,16 +12,12 @@ cache:
   - "$TRAVIS_BUILD_DIR/.stack-work"
 
 matrix:
-  Include:
-  - name: Linux
-    ghc: 8.6.3
+  include:
+  - ghc: 8.6.3
     env: STACK_YAML="$TRAVIS_BUILD_DIR/stack.yaml"
-    os: linux
 
-  - name: MacOS
-    env: STACK_YAML="$TRAVIS_BUILD_DIR/stack.yaml" BUILD=stack ARGS=""
-    ghc: 8.6.3
-    compiler: ": #stack default osx"
+  - env: BUILD=stack ARGS="--resolver lts-2"
+    compiler: ": #stack 7.8.4 osx"
     os: osx
 
 install:
@@ -37,6 +33,9 @@ script:
 
 notifications:
   email: false
+
+os:
+  - osx
 
 before_deploy:
   - mv $HOME/fission-cli "$HOME/fission-cli-$TRAVIS_TAG-$TRAVIS_OS_NAME"
