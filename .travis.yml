@@ -28,8 +28,8 @@ matrix:
 install:
  - unset CC
  - export PATH=$HOME/.local/bin:/opt/ghc/$GHCVER/bin:$PATH
- - stack build --test --bench --no-run-tests --no-run-benchmarks --ghc-options="$GHC_OPTIONS" --copy-bins --local-bin-path $HOME
  - ./.travis/install-stack.sh
+ - stack build --test --bench --no-run-tests --no-run-benchmarks --ghc-options="$GHC_OPTIONS" --copy-bins --local-bin-path $HOME
 
 script:
  - echo "$(ghc --version) [$(ghc --print-project-git-commit-id 2> /dev/null || echo '?')]"
