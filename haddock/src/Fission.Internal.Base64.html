@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Base64</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Internal.Base64.html#toB64ByteString"><span class="hs-identifier">toB64ByteString</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Base64.html#toByteString"><span class="hs-identifier">toByteString</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Data.ByteString.Base64</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">BS64</span></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Data.ByteArray</span></span><span>         </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">BA</span></span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.ByteString</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">BS</span></span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span id="local-6989586621680184355"><span class="annot"><a href="Fission.Internal.Base64.html#toB64ByteString"><span class="hs-identifier hs-type">toB64ByteString</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BA.ByteArrayAccess</span></span><span> </span><span class="annot"><a href="#local-6989586621680184355"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184355"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span>
+</span><span id="line-14"></span><span id="toB64ByteString"><span class="annot"><span class="annottext">toB64ByteString :: a -&gt; ByteString
+</span><a href="Fission.Internal.Base64.html#toB64ByteString"><span class="hs-identifier hs-var hs-var">toB64ByteString</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
+</span><span class="hs-identifier hs-var">BS64.encode</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; ByteString) -&gt; (a -&gt; ByteString) -&gt; a -&gt; ByteString
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">a -&gt; ByteString
+forall a. ByteArrayAccess a =&gt; a -&gt; ByteString
+</span><a href="Fission.Internal.Base64.html#toByteString"><span class="hs-identifier hs-var">toByteString</span></a></span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span id="local-6989586621680184361"><span class="annot"><a href="Fission.Internal.Base64.html#toByteString"><span class="hs-identifier hs-type">toByteString</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BA.ByteArrayAccess</span></span><span> </span><span class="annot"><a href="#local-6989586621680184361"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184361"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span>
+</span><span id="line-17"></span><span id="toByteString"><span class="annot"><span class="annottext">toByteString :: a -&gt; ByteString
+</span><a href="Fission.Internal.Base64.html#toByteString"><span class="hs-identifier hs-var hs-var">toByteString</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Word8] -&gt; ByteString
+</span><span class="hs-identifier hs-var">BS.pack</span></span><span> </span><span class="annot"><span class="annottext">([Word8] -&gt; ByteString) -&gt; (a -&gt; [Word8]) -&gt; a -&gt; ByteString
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">a -&gt; [Word8]
+forall a. ByteArrayAccess a =&gt; a -&gt; [Word8]
+</span><span class="hs-identifier hs-var">BA.unpack</span></span><span>
+</span><span id="line-18"></span></pre></body></html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Web.IPFS.Pin</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#API"><span class="hs-identifier">API</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#PinAPI"><span class="hs-identifier">PinAPI</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#UnpinAPI"><span class="hs-identifier">UnpinAPI</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#server"><span class="hs-identifier">server</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#pin"><span class="hs-identifier">pin</span></a></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#unpin"><span class="hs-identifier">unpin</span></a></span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Esqueleto</span></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS</span></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Pin</span></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS.Pin</span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.CID.Types</span></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Authorization.Types.html"><span class="hs-identifier">Fission.Authorization.Types</span></a></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
+</span><span id="line-21"></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Error.html"><span class="hs-identifier">Fission.Web.Error</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Web.Err</span></span><span>
+</span><span id="line-23"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.LoosePin.html"><span class="hs-identifier">Fission.LoosePin</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">LoosePin</span></span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">type</span><span> </span><span id="API"><span class="annot"><a href="Fission.Web.IPFS.Pin.html#API"><span class="hs-identifier hs-var">API</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#PinAPI"><span class="hs-identifier hs-type">PinAPI</span></a></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#UnpinAPI"><span class="hs-identifier hs-type">UnpinAPI</span></a></span><span>
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span class="hs-keyword">type</span><span> </span><span id="PinAPI"><span class="annot"><a href="Fission.Web.IPFS.Pin.html#PinAPI"><span class="hs-identifier hs-var">PinAPI</span></a></span></span><span>
+</span><span id="line-28"></span><span>  </span><span class="hs-glyph">=</span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Summary</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Pin CID&quot;</span></span><span>
+</span><span id="line-29"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Description</span></span><span> </span><span class="annot"><span class="hs-string">&quot;DEPRECATED &#9940; Pin an otherwise unassociated CID&quot;</span></span><span>
+</span><span id="line-30"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Capture</span></span><span> </span><span class="annot"><span class="hs-string">&quot;cid&quot;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
+</span><span id="line-31"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Put</span></span><span> </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">OctetStream</span></span><span class="hs-special">]</span><span> </span><span class="annot"><span class="hs-identifier hs-type">NoContent</span></span><span>
+</span><span id="line-32"></span><span>
+</span><span id="line-33"></span><span class="hs-keyword">type</span><span> </span><span id="UnpinAPI"><span class="annot"><a href="Fission.Web.IPFS.Pin.html#UnpinAPI"><span class="hs-identifier hs-var">UnpinAPI</span></a></span></span><span>
+</span><span id="line-34"></span><span>  </span><span class="hs-glyph">=</span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Summary</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Unpin CID&quot;</span></span><span>
+</span><span id="line-35"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Description</span></span><span> </span><span class="annot"><span class="hs-string">&quot;DEPRECATED &#9940; Unpin an otherwise unassociated CID&quot;</span></span><span>
+</span><span id="line-36"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Capture</span></span><span> </span><span class="annot"><span class="hs-string">&quot;cid&quot;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
+</span><span id="line-37"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">DeleteAccepted</span></span><span> </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">OctetStream</span></span><span class="hs-special">]</span><span> </span><span class="annot"><span class="hs-identifier hs-type">NoContent</span></span><span>
+</span><span id="line-38"></span><span>
+</span><span id="line-39"></span><span id="local-6989586621680198198"><span id="local-6989586621680198199"><span class="annot"><a href="Fission.Web.IPFS.Pin.html#server"><span class="hs-identifier hs-type">server</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>      </span><span class="annot"><a href="#local-6989586621680198199"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>          </span><span class="annot"><a href="#local-6989586621680198199"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>           </span><span class="annot"><a href="#local-6989586621680198199"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>            </span><span class="annot"><a href="#local-6989586621680198199"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-44"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>            </span><span class="annot"><a href="#local-6989586621680198198"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198199"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-45"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#Creator"><span class="hs-identifier hs-type">LoosePin.Creator</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680198198"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-46"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">LoosePin.Retriever</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198198"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-47"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">LoosePin.Destroyer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198198"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-48"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-49"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span><span>
+</span><span id="line-50"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198199"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
+</span><span id="line-51"></span><span id="server"><span class="annot"><span class="annottext">server :: Authorization -&gt; ServerT API m
+</span><a href="Fission.Web.IPFS.Pin.html#server"><span class="hs-identifier hs-var hs-var">server</span></a></span></span><span> </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:about:Authorization :: Authorization -&gt; Entity User
+</span><a href="Fission.Authorization.Types.html#%24sel%3Aabout%3AAuthorization"><span class="hs-identifier hs-var">about</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span id="local-6989586621680198194"><span class="annot"><span class="annottext">userId :: Key User
+</span><a href="#local-6989586621680198194"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Key User -&gt; ServerT PinAPI m
+forall (m :: * -&gt; *) (t :: * -&gt; *).
+(MonadRemoteIPFS m, MonadLogger m, MonadThrow m, MonadTime m,
+ MonadDB t m, Creator t) =&gt;
+Key User -&gt; ServerT PinAPI m
+</span><a href="Fission.Web.IPFS.Pin.html#pin"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">Key User
+</span><a href="#local-6989586621680198194"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">(CID -&gt; m NoContent)
+-&gt; (CID -&gt; m NoContent)
+-&gt; (CID -&gt; m NoContent) :&lt;|&gt; (CID -&gt; m NoContent)
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Key User -&gt; ServerT UnpinAPI m
+forall (m :: * -&gt; *) (t :: * -&gt; *).
+(MonadRemoteIPFS m, MonadLogger m, MonadThrow m, MonadDB t m,
+ Retriever t, Destroyer t) =&gt;
+Key User -&gt; ServerT UnpinAPI m
+</span><a href="Fission.Web.IPFS.Pin.html#unpin"><span class="hs-identifier hs-var">unpin</span></a></span><span> </span><span class="annot"><span class="annottext">Key User
+</span><a href="#local-6989586621680198194"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><span id="line-52"></span><span>
+</span><span id="line-53"></span><span id="local-6989586621680198262"><span id="local-6989586621680198267"><span class="annot"><a href="Fission.Web.IPFS.Pin.html#pin"><span class="hs-identifier hs-type">pin</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>    </span><span class="annot"><a href="#local-6989586621680198267"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-55"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>        </span><span class="annot"><a href="#local-6989586621680198267"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>         </span><span class="annot"><a href="#local-6989586621680198267"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>          </span><span class="annot"><a href="#local-6989586621680198267"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>          </span><span class="annot"><a href="#local-6989586621680198262"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198267"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#Creator"><span class="hs-identifier hs-type">LoosePin.Creator</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198262"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-62"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#PinAPI"><span class="hs-identifier hs-type">PinAPI</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198267"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
+</span><span id="line-63"></span><span id="pin"><span class="annot"><span class="annottext">pin :: Key User -&gt; ServerT PinAPI m
+</span><a href="Fission.Web.IPFS.Pin.html#pin"><span class="hs-identifier hs-var hs-var">pin</span></a></span></span><span> </span><span id="local-6989586621680198191"><span class="annot"><span class="annottext">userId :: Key User
+</span><a href="#local-6989586621680198191"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680198190"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680198190"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID -&gt; m (Either Error CID)
+forall (m :: * -&gt; *).
+(MonadRemoteIPFS m, MonadLogger m) =&gt;
+CID -&gt; m (Either Error CID)
+</span><span class="hs-identifier hs-var">IPFS.Pin.add</span></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680198190"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error CID)
+-&gt; (Either Error CID -&gt; m NoContent) -&gt; m NoContent
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-64"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680198188"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680198188"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; m NoContent
+forall (m :: * -&gt; *) err a.
+(MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
+err -&gt; m a
+</span><a href="Fission.Web.Error.html#throw"><span class="hs-identifier hs-var">Web.Err.throw</span></a></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680198188"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-65"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-66"></span><span>    </span><span class="annot"><span class="annottext">(UTCTime -&gt; t (Maybe LoosePinId)) -&gt; m (Maybe LoosePinId)
+forall (m :: * -&gt; *) (trans :: * -&gt; *) a.
+(MonadTime m, MonadDB trans m) =&gt;
+(UTCTime -&gt; trans a) -&gt; m a
+</span><a href="Fission.Internal.MonadDB.html#runDBNow"><span class="hs-identifier hs-var">runDBNow</span></a></span><span> </span><span class="annot"><span class="annottext">((UTCTime -&gt; t (Maybe LoosePinId)) -&gt; m (Maybe LoosePinId))
+-&gt; (UTCTime -&gt; t (Maybe LoosePinId)) -&gt; m (Maybe LoosePinId)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Key User -&gt; CID -&gt; UTCTime -&gt; t (Maybe LoosePinId)
+forall (m :: * -&gt; *).
+Creator m =&gt;
+Key User -&gt; CID -&gt; UTCTime -&gt; m (Maybe LoosePinId)
+</span><a href="Fission.LoosePin.Creator.Class.html#create"><span class="hs-identifier hs-var">LoosePin.create</span></a></span><span> </span><span class="annot"><span class="annottext">Key User
+</span><a href="#local-6989586621680198191"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680198190"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><span id="line-67"></span><span>    </span><span class="hs-identifier">pure</span><span> </span><span class="annot"><span class="annottext">NoContent
+</span><span class="hs-identifier hs-var">NoContent</span></span><span>
+</span><span id="line-68"></span><span>
+</span><span id="line-69"></span><span id="local-6989586621680198254"><span id="local-6989586621680198255"><span class="annot"><a href="Fission.Web.IPFS.Pin.html#unpin"><span class="hs-identifier hs-type">unpin</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-70"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>      </span><span class="annot"><a href="#local-6989586621680198255"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-71"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>          </span><span class="annot"><a href="#local-6989586621680198255"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-72"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>           </span><span class="annot"><a href="#local-6989586621680198255"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-73"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>            </span><span class="annot"><a href="#local-6989586621680198254"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198255"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-74"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">LoosePin.Retriever</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198254"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-75"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">LoosePin.Destroyer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198254"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-76"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-77"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-78"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Pin.html#UnpinAPI"><span class="hs-identifier hs-type">UnpinAPI</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680198255"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
+</span><span id="line-79"></span><span id="unpin"><span class="annot"><span class="annottext">unpin :: Key User -&gt; ServerT UnpinAPI m
+</span><a href="Fission.Web.IPFS.Pin.html#unpin"><span class="hs-identifier hs-var hs-var">unpin</span></a></span></span><span> </span><span id="local-6989586621680198183"><span class="annot"><span class="annottext">userId :: Key User
+</span><a href="#local-6989586621680198183"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680198182"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680198182"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-80"></span><span>  </span><span id="local-6989586621680198181"><span class="annot"><span class="annottext">[Entity LoosePin]
+</span><a href="#local-6989586621680198181"><span class="hs-identifier hs-var">remaining</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">t [Entity LoosePin] -&gt; m [Entity LoosePin]
+forall (transaction :: * -&gt; *) (m :: * -&gt; *) a.
+MonadDB transaction m =&gt;
+transaction a -&gt; m a
+</span><a href="Fission.Internal.MonadDB.Class.html#runDB"><span class="hs-identifier hs-var">runDB</span></a></span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-81"></span><span>    </span><span class="annot"><span class="annottext">Key User -&gt; CID -&gt; t ()
+forall (m :: * -&gt; *). Destroyer m =&gt; Key User -&gt; CID -&gt; m ()
+</span><a href="Fission.LoosePin.Destroyer.Class.html#destroy"><span class="hs-identifier hs-var">LoosePin.destroy</span></a></span><span> </span><span class="annot"><span class="annottext">Key User
+</span><a href="#local-6989586621680198183"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680198182"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><span id="line-82"></span><span>    </span><span class="annot"><span class="annottext">[CID] -&gt; t [Entity LoosePin]
+forall (m :: * -&gt; *). Retriever m =&gt; [CID] -&gt; m [Entity LoosePin]
+</span><a href="Fission.LoosePin.Retriever.Class.html#getByCids"><span class="hs-identifier hs-var">LoosePin.getByCids</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Item [CID]
+CID
+</span><a href="#local-6989586621680198182"><span class="hs-identifier hs-var">cid</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-83"></span><span>
+</span><span id="line-84"></span><span>  </span><span class="annot"><span class="annottext">Bool -&gt; m () -&gt; m ()
+forall (f :: * -&gt; *). Applicative f =&gt; Bool -&gt; f () -&gt; f ()
+</span><span class="hs-identifier hs-var">when</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[Entity LoosePin] -&gt; Bool
+forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Bool
+</span><span class="hs-identifier hs-var">null</span></span><span> </span><span class="annot"><span class="annottext">[Entity LoosePin]
+</span><a href="#local-6989586621680198181"><span class="hs-identifier hs-var">remaining</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-85"></span><span>    </span><span class="annot"><span class="annottext">m CID -&gt; m ()
+forall (f :: * -&gt; *) a. Functor f =&gt; f a -&gt; f ()
+</span><span class="hs-identifier hs-var">void</span></span><span> </span><span class="annot"><span class="annottext">(m CID -&gt; m ()) -&gt; m CID -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Either Error CID -&gt; m CID
+forall (m :: * -&gt; *) err a.
+(MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
+Either err a -&gt; m a
+</span><a href="Fission.Web.Error.html#ensure"><span class="hs-identifier hs-var">Web.Err.ensure</span></a></span><span> </span><span class="annot"><span class="annottext">(Either Error CID -&gt; m CID) -&gt; m (Either Error CID) -&gt; m CID
+forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
+</span><span class="hs-operator hs-var">=&lt;&lt;</span></span><span> </span><span class="annot"><span class="annottext">CID -&gt; m (Either Error CID)
+forall (m :: * -&gt; *).
+(MonadRemoteIPFS m, MonadLogger m) =&gt;
+CID -&gt; m (Either Error CID)
+</span><span class="hs-identifier hs-var">IPFS.Pin.rm</span></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680198182"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><span id="line-86"></span><span>
+</span><span id="line-87"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">NoContent
+</span><span class="hs-identifier hs-var">NoContent</span></span><span>
+</span><span id="line-88"></span></pre></body></html>

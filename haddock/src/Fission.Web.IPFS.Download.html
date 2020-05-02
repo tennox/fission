@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Web.IPFS.Download</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Download.html#API"><span class="hs-identifier">API</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Download.html#get"><span class="hs-identifier">get</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Error.html"><span class="hs-identifier">Fission.Web.Error</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Web.Err</span></span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS</span></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Types</span></span><span>      </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS</span></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Get</span></span><span>        </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS</span></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.File.Types</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">File</span></span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">type</span><span> </span><span id="API"><span class="annot"><a href="Fission.Web.IPFS.Download.html#API"><span class="hs-identifier hs-var">API</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>  </span><span class="annot"><a href="Fission.Web.IPFS.Download.html#PathAPI"><span class="hs-identifier hs-type">PathAPI</span></a></span><span>
+</span><span id="line-17"></span><span>       </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Download.html#QueryAPI"><span class="hs-identifier hs-type">QueryAPI</span></a></span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">type</span><span> </span><span id="PathAPI"><span class="annot"><a href="Fission.Web.IPFS.Download.html#PathAPI"><span class="hs-identifier hs-var">PathAPI</span></a></span></span><span>
+</span><span id="line-20"></span><span>  </span><span class="hs-glyph">=</span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Summary</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Get a file (path)&quot;</span></span><span>
+</span><span id="line-21"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Description</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Download a file by its CID&quot;</span></span><span>
+</span><span id="line-22"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Capture</span></span><span> </span><span class="annot"><span class="hs-string">&quot;cid&quot;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-23"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Get</span></span><span> </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">OctetStream</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span class="hs-special">]</span><span> </span><span class="annot"><span class="hs-identifier hs-type">File.Serialized</span></span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">type</span><span> </span><span id="QueryAPI"><span class="annot"><a href="Fission.Web.IPFS.Download.html#QueryAPI"><span class="hs-identifier hs-var">QueryAPI</span></a></span></span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-glyph">=</span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Summary</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Get a file (query param)&quot;</span></span><span>
+</span><span id="line-27"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Description</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Download a file by its CID&quot;</span></span><span>
+</span><span id="line-28"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">QueryParam</span></span><span> </span><span class="annot"><span class="hs-string">&quot;cid&quot;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-29"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Get</span></span><span> </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">OctetStream</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span class="hs-special">]</span><span> </span><span class="annot"><span class="hs-identifier hs-type">File.Serialized</span></span><span>
+</span><span id="line-30"></span><span>
+</span><span id="line-31"></span><span id="local-6989586621680197823"><span class="annot"><a href="Fission.Web.IPFS.Download.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-32"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680197823"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-33"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680197823"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-34"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>     </span><span class="annot"><a href="#local-6989586621680197823"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-35"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-36"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Download.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680197823"><span class="hs-identifier hs-type">m</span></a></span></span><span>
+</span><span id="line-37"></span><span id="get"><span class="annot"><span class="annottext">get :: ServerT API m
+</span><a href="Fission.Web.IPFS.Download.html#get"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID -&gt; m Serialized
+forall (m :: * -&gt; *).
+(MonadLocalIPFS m, MonadLogger m, MonadThrow m) =&gt;
+ServerT PathAPI m
+</span><a href="Fission.Web.IPFS.Download.html#pathGet"><span class="hs-identifier hs-var">pathGet</span></a></span><span> </span><span class="annot"><span class="annottext">(CID -&gt; m Serialized)
+-&gt; (Maybe CID -&gt; m Serialized)
+-&gt; (CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized)
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe CID -&gt; m Serialized
+forall (m :: * -&gt; *).
+(MonadLocalIPFS m, MonadLogger m, MonadThrow m) =&gt;
+ServerT QueryAPI m
+</span><a href="Fission.Web.IPFS.Download.html#queryGet"><span class="hs-identifier hs-var">queryGet</span></a></span><span>
+</span><span id="line-38"></span><span>
+</span><span id="line-39"></span><span id="local-6989586621680197851"><span class="annot"><a href="Fission.Web.IPFS.Download.html#queryGet"><span class="hs-identifier hs-type">queryGet</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680197851"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680197851"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>     </span><span class="annot"><a href="#local-6989586621680197851"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-43"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-44"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Download.html#QueryAPI"><span class="hs-identifier hs-type">QueryAPI</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680197851"><span class="hs-identifier hs-type">m</span></a></span></span><span>
+</span><span id="line-45"></span><span id="queryGet"><span class="annot"><span class="annottext">queryGet :: ServerT QueryAPI m
+</span><a href="Fission.Web.IPFS.Download.html#queryGet"><span class="hs-identifier hs-var hs-var">queryGet</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-46"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680197819"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680197819"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">CID -&gt; m (Either Error Serialized)
+forall (m :: * -&gt; *).
+MonadLocalIPFS m =&gt;
+CID -&gt; m (Either Error Serialized)
+</span><span class="hs-identifier hs-var">IPFS.getFile</span></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680197819"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error Serialized)
+-&gt; (Either Error Serialized -&gt; m Serialized) -&gt; m Serialized
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="annot"><span class="annottext">Either Error Serialized -&gt; m Serialized
+forall (m :: * -&gt; *) err a.
+(MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
+Either err a -&gt; m a
+</span><a href="Fission.Web.Error.html#ensure"><span class="hs-identifier hs-var">Web.Err.ensure</span></a></span><span>
+</span><span id="line-47"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError -&gt; m Serialized
+forall (m :: * -&gt; *) e a. (MonadThrow m, Exception e) =&gt; e -&gt; m a
+</span><span class="hs-identifier hs-var">throwM</span></span><span> </span><span class="annot"><span class="annottext">ServerError
+</span><span class="hs-identifier hs-var">err404</span></span><span>
+</span><span id="line-48"></span><span>
+</span><span id="line-49"></span><span id="local-6989586621680197859"><span class="annot"><a href="Fission.Web.IPFS.Download.html#pathGet"><span class="hs-identifier hs-type">pathGet</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-50"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680197859"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-51"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680197859"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-52"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>     </span><span class="annot"><a href="#local-6989586621680197859"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-53"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.IPFS.Download.html#PathAPI"><span class="hs-identifier hs-type">PathAPI</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680197859"><span class="hs-identifier hs-type">m</span></a></span></span><span>
+</span><span id="line-55"></span><span id="pathGet"><span class="annot"><span class="annottext">pathGet :: ServerT PathAPI m
+</span><a href="Fission.Web.IPFS.Download.html#pathGet"><span class="hs-identifier hs-var hs-var">pathGet</span></a></span></span><span> </span><span id="local-6989586621680197814"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680197814"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID -&gt; m (Either Error Serialized)
+forall (m :: * -&gt; *).
+MonadLocalIPFS m =&gt;
+CID -&gt; m (Either Error Serialized)
+</span><span class="hs-identifier hs-var">IPFS.getFile</span></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680197814"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error Serialized)
+-&gt; (Either Error Serialized -&gt; m Serialized) -&gt; m Serialized
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="annot"><span class="annottext">Either Error Serialized -&gt; m Serialized
+forall (m :: * -&gt; *) err a.
+(MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
+Either err a -&gt; m a
+</span><a href="Fission.Web.Error.html#ensure"><span class="hs-identifier hs-var">Web.Err.ensure</span></a></span><span>
+</span><span id="line-56"></span></pre></body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.IPFS.DNSLink.Class</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier">MonadDNSLink</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.CID.Types</span></span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.AWS.Route53.Class.html"><span class="hs-identifier">Fission.AWS.Route53.Class</span></a></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.URL.Types.html"><span class="hs-identifier">Fission.URL.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">URL</span></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">set</span></span><span class="hs-special">)</span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><a href="Fission.AWS.Route53.Class.html#MonadRoute53"><span class="hs-identifier hs-type">MonadRoute53</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680187481"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="MonadDNSLink"><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-var">MonadDNSLink</span></a></span></span><span> </span><span id="local-6989586621680187481"><span class="annot"><a href="#local-6989586621680187481"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span>  </span><span id="set"><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#set"><span class="hs-identifier hs-type">set</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">URL.Subdomain</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680187481"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerError</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">URL.DomainName</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-12"></span><span>  </span><span id="setBase"><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#setBase"><span class="hs-identifier hs-type">setBase</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">URL.Subdomain</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680187481"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerError</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">URL.DomainName</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span id="local-6989586621680187470"><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680187470"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680187470"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680187465"><span class="annot"><span class="annottext">set :: DomainName
+-&gt; Maybe Subdomain
+-&gt; CID
+-&gt; Transaction m (Either ServerError DomainName)
+</span><a href="#local-6989586621680187465"><span class="hs-identifier hs-var hs-var hs-var hs-var">set</span></a></span></span><span> </span><span id="local-6989586621680187464"><span class="annot"><span class="annottext">domainName :: DomainName
+</span><a href="#local-6989586621680187464"><span class="hs-identifier hs-var">domainName</span></a></span></span><span> </span><span id="local-6989586621680187463"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
+</span><a href="#local-6989586621680187463"><span class="hs-identifier hs-var">maySubdomain</span></a></span></span><span> </span><span id="local-6989586621680187462"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680187462"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">m (Either ServerError DomainName)
+-&gt; Transaction m (Either ServerError DomainName)
+forall (t :: (* -&gt; *) -&gt; * -&gt; *) (m :: * -&gt; *) a.
+(MonadTrans t, Monad m) =&gt;
+m a -&gt; t m a
+</span><span class="hs-identifier hs-var">lift</span></span><span> </span><span class="annot"><span class="annottext">(m (Either ServerError DomainName)
+ -&gt; Transaction m (Either ServerError DomainName))
+-&gt; m (Either ServerError DomainName)
+-&gt; Transaction m (Either ServerError DomainName)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">DomainName
+-&gt; Maybe Subdomain -&gt; CID -&gt; m (Either ServerError DomainName)
+forall (m :: * -&gt; *).
+MonadDNSLink m =&gt;
+DomainName
+-&gt; Maybe Subdomain -&gt; CID -&gt; m (Either ServerError DomainName)
+</span><a href="Fission.IPFS.DNSLink.Class.html#set"><span class="hs-identifier hs-var">set</span></a></span><span> </span><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680187464"><span class="hs-identifier hs-var">domainName</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
+</span><a href="#local-6989586621680187463"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680187462"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><span id="line-16"></span><span>  </span><span id="local-6989586621680187460"><span class="annot"><span class="annottext">setBase :: Subdomain -&gt; CID -&gt; Transaction m (Either ServerError DomainName)
+</span><a href="#local-6989586621680187460"><span class="hs-identifier hs-var hs-var hs-var hs-var">setBase</span></a></span></span><span> </span><span id="local-6989586621680187459"><span class="annot"><span class="annottext">subdomain :: Subdomain
+</span><a href="#local-6989586621680187459"><span class="hs-identifier hs-var">subdomain</span></a></span></span><span> </span><span id="local-6989586621680187458"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680187458"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">m (Either ServerError DomainName)
+-&gt; Transaction m (Either ServerError DomainName)
+forall (t :: (* -&gt; *) -&gt; * -&gt; *) (m :: * -&gt; *) a.
+(MonadTrans t, Monad m) =&gt;
+m a -&gt; t m a
+</span><span class="hs-identifier hs-var">lift</span></span><span> </span><span class="annot"><span class="annottext">(m (Either ServerError DomainName)
+ -&gt; Transaction m (Either ServerError DomainName))
+-&gt; m (Either ServerError DomainName)
+-&gt; Transaction m (Either ServerError DomainName)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Subdomain -&gt; CID -&gt; m (Either ServerError DomainName)
+forall (m :: * -&gt; *).
+MonadDNSLink m =&gt;
+Subdomain -&gt; CID -&gt; m (Either ServerError DomainName)
+</span><a href="Fission.IPFS.DNSLink.Class.html#setBase"><span class="hs-identifier hs-var">setBase</span></a></span><span> </span><span class="annot"><span class="annottext">Subdomain
+</span><a href="#local-6989586621680187459"><span class="hs-identifier hs-var">subdomain</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680187458"><span class="hs-identifier hs-var">cid</span></a></span></span><span>
+</span><span id="line-17"></span></pre></body></html>

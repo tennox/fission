@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.User.DID.Method.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.DID.Method.Types.html#Method"><span class="hs-identifier">Method</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">data</span><span> </span><span id="Method"><span class="annot"><a href="Fission.User.DID.Method.Types.html#Method"><span class="hs-identifier hs-var">Method</span></a></span></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="Key"><span class="annot"><a href="Fission.User.DID.Method.Types.html#Key"><span class="hs-identifier hs-var">Key</span></a></span></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680187528"><span id="local-6989586621680187530"><span id="local-6989586621680187532"><span class="annot"><span class="annottext">Int -&gt; Method -&gt; ShowS
+[Method] -&gt; ShowS
+Method -&gt; String
+(Int -&gt; Method -&gt; ShowS)
+-&gt; (Method -&gt; String) -&gt; ([Method] -&gt; ShowS) -&gt; Show Method
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Method] -&gt; ShowS
+$cshowList :: [Method] -&gt; ShowS
+show :: Method -&gt; String
+$cshow :: Method -&gt; String
+showsPrec :: Int -&gt; Method -&gt; ShowS
+$cshowsPrec :: Int -&gt; Method -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680187523"><span id="local-6989586621680187525"><span class="annot"><span class="annottext">Method -&gt; Method -&gt; Bool
+(Method -&gt; Method -&gt; Bool)
+-&gt; (Method -&gt; Method -&gt; Bool) -&gt; Eq Method
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Method -&gt; Method -&gt; Bool
+$c/= :: Method -&gt; Method -&gt; Bool
+== :: Method -&gt; Method -&gt; Bool
+$c== :: Method -&gt; Method -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680187519"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.User.DID.Method.Types.html#Method"><span class="hs-identifier hs-type">Method</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-10"></span><span>  </span><span id="local-6989586621680187517"><span class="annot"><span class="annottext">display :: Method -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="annot"><a href="Fission.User.DID.Method.Types.html#Key"><span class="hs-identifier hs-type">Key</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;key&quot;</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680187513"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.User.DID.Method.Types.html#Method"><span class="hs-identifier hs-type">Method</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680187511"><span class="annot"><span class="annottext">arbitrary :: Gen Method
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Method] -&gt; Gen Method
+forall a. [a] -&gt; Gen a
+</span><span class="hs-identifier hs-var">elements</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><a href="Fission.User.DID.Method.Types.html#Key"><span class="hs-identifier hs-var">Key</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680187502"><span id="local-6989586621680187504"><span id="local-6989586621680187506"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.User.DID.Method.Types.html#Method"><span class="hs-identifier hs-type">Method</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-16"></span><span>  </span><span id="local-6989586621680187500"><span class="annot"><span class="annottext">toJSON :: Method -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="annot"><a href="Fission.User.DID.Method.Types.html#Key"><span class="hs-identifier hs-type">Key</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;key&quot;</span></span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680187496"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.User.DID.Method.Types.html#Method"><span class="hs-identifier hs-type">Method</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-19"></span><span>  </span><span id="local-6989586621680187494"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Method
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Method) -&gt; Value -&gt; Parser Method
+forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;DID.Method&quot;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-20"></span><span>    </span><span class="hs-string">&quot;key&quot;</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Method -&gt; Parser Method
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Method
+</span><a href="Fission.User.DID.Method.Types.html#Key"><span class="hs-identifier hs-var">Key</span></a></span><span>
+</span><span id="line-21"></span><span>    </span><span id="local-6989586621680187491"><span class="annot"><span class="annottext">other :: Text
+</span><a href="#local-6989586621680187491"><span class="hs-identifier hs-var">other</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Method
+forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
+</span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Parser Method) -&gt; String -&gt; Parser Method
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680187491"><span class="hs-identifier hs-var">other</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; is not an acceptable DID method&quot;</span></span><span>
+</span><span id="line-22"></span></pre></body></html>

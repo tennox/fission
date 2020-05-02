@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Platform.Heroku.Auth.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Platform.Heroku.Auth.Types.html#Auth"><span class="hs-identifier">Auth</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-comment">-- | An authorized Heroku Platform service</span><span>
+</span><span id="line-6"></span><span class="hs-keyword">newtype</span><span> </span><span id="Auth"><span class="annot"><a href="Fission.Platform.Heroku.Auth.Types.html#Auth"><span class="hs-identifier hs-var">Auth</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Auth"><span class="annot"><a href="Fission.Platform.Heroku.Auth.Types.html#Auth"><span class="hs-identifier hs-var">Auth</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunAuth%3AAuth"><span class="annot"><span class="annottext">Auth -&gt; ByteString
+</span><a href="Fission.Platform.Heroku.Auth.Types.html#%24sel%3AunAuth%3AAuth"><span class="hs-identifier hs-var hs-var">unAuth</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680182898"><span id="local-6989586621680182900"><span class="annot"><span class="annottext">Auth -&gt; Auth -&gt; Bool
+(Auth -&gt; Auth -&gt; Bool) -&gt; (Auth -&gt; Auth -&gt; Bool) -&gt; Eq Auth
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Auth -&gt; Auth -&gt; Bool
+$c/= :: Auth -&gt; Auth -&gt; Bool
+== :: Auth -&gt; Auth -&gt; Bool
+$c== :: Auth -&gt; Auth -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680182891"><span id="local-6989586621680182893"><span id="local-6989586621680182895"><span class="annot"><span class="annottext">Int -&gt; Auth -&gt; ShowS
+[Auth] -&gt; ShowS
+Auth -&gt; String
+(Int -&gt; Auth -&gt; ShowS)
+-&gt; (Auth -&gt; String) -&gt; ([Auth] -&gt; ShowS) -&gt; Show Auth
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Auth] -&gt; ShowS
+$cshowList :: [Auth] -&gt; ShowS
+show :: Auth -&gt; String
+$cshow :: Auth -&gt; String
+showsPrec :: Int -&gt; Auth -&gt; ShowS
+$cshowsPrec :: Int -&gt; Auth -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-8"></span></pre></body></html>

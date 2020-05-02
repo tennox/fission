@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Mock</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="hs-keyword">module</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Types.html"><span class="hs-identifier">Fission.Internal.Mock.Types</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="hs-keyword">module</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.html"><span class="hs-identifier">Fission.Internal.Mock.Effect</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="hs-keyword">module</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Config.html"><span class="hs-identifier">Fission.Internal.Mock.Config</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.html#runMock"><span class="hs-identifier">runMock</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.html#runMockIO%27"><span class="hs-identifier">runMockIO'</span></a></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.html#runMockIO"><span class="hs-identifier">runMockIO</span></a></span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Control.Monad.Writer</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">runWriterT</span></span><span class="hs-special">)</span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Internal.Mock.Types.html"><span class="hs-identifier">Fission.Internal.Mock.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Mock</span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Internal.Mock.Types.html"><span class="hs-identifier">Fission.Internal.Mock.Types</span></a></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Internal.Mock.Config.html"><span class="hs-identifier">Fission.Internal.Mock.Config</span></a></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Internal.Mock.Effect.html"><span class="hs-identifier">Fission.Internal.Mock.Effect</span></a></span><span>
+</span><span id="line-19"></span><span>
+</span><span id="line-20"></span><span class="hs-comment">-- | Run the action described by a @Mock@</span><span>
+</span><span id="line-21"></span><span id="local-6989586621680199780"><span id="local-6989586621680199781"><span id="local-6989586621680199782"><span class="annot"><a href="Fission.Internal.Mock.html#runMock"><span class="hs-identifier hs-type">runMock</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680199782"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Config.Types.html#Config"><span class="hs-identifier hs-type">Mock.Config</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Types.html#Mock"><span class="hs-identifier hs-type">Mock</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199781"><span class="hs-identifier hs-type">effs</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199780"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680199782"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.Mock.Session.Types.html#Session"><span class="hs-identifier hs-type">Mock.Session</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199781"><span class="hs-identifier hs-type">effs</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199780"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span></span></span></span><span>
+</span><span id="line-22"></span><span id="runMock"><span class="annot"><span class="annottext">runMock :: Config -&gt; Mock effs a -&gt; m (Session effs a)
+</span><a href="Fission.Internal.Mock.html#runMock"><span class="hs-identifier hs-var hs-var">runMock</span></a></span></span><span> </span><span id="local-6989586621680199779"><span class="annot"><span class="annottext">cfg :: Config
+</span><a href="#local-6989586621680199779"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span id="local-6989586621680199778"><span class="annot"><span class="annottext">action :: Mock effs a
+</span><a href="#local-6989586621680199778"><span class="hs-identifier hs-var">action</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-23"></span><span>  </span><span class="annot"><span class="annottext">Mock effs a
+</span><a href="#local-6989586621680199778"><span class="hs-identifier hs-var">action</span></a></span><span>
+</span><span id="line-24"></span><span>    </span><span class="annot"><span class="annottext">Mock effs a
+-&gt; (Mock effs a -&gt; WriterT [OpenUnion effs] (RIO Config) a)
+-&gt; WriterT [OpenUnion effs] (RIO Config) a
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Mock effs a -&gt; WriterT [OpenUnion effs] (RIO Config) a
+forall (effs :: [*]) a.
+Mock effs a -&gt; WriterT [OpenUnion effs] (RIO Config) a
+</span><a href="Fission.Internal.Mock.Types.html#%24sel%3AunMock%3AMock"><span class="hs-identifier hs-var hs-var">unMock</span></a></span><span>
+</span><span id="line-25"></span><span>    </span><span class="annot"><span class="annottext">WriterT [OpenUnion effs] (RIO Config) a
+-&gt; (WriterT [OpenUnion effs] (RIO Config) a
+    -&gt; RIO Config (a, [OpenUnion effs]))
+-&gt; RIO Config (a, [OpenUnion effs])
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">WriterT [OpenUnion effs] (RIO Config) a
+-&gt; RIO Config (a, [OpenUnion effs])
+forall w (m :: * -&gt; *) a. WriterT w m a -&gt; m (a, w)
+</span><span class="hs-identifier hs-var hs-var">runWriterT</span></span><span>
+</span><span id="line-26"></span><span>    </span><span class="annot"><span class="annottext">RIO Config (a, [OpenUnion effs])
+-&gt; (RIO Config (a, [OpenUnion effs]) -&gt; m (a, [OpenUnion effs]))
+-&gt; m (a, [OpenUnion effs])
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Config
+-&gt; RIO Config (a, [OpenUnion effs]) -&gt; m (a, [OpenUnion effs])
+forall (m :: * -&gt; *) env a. MonadIO m =&gt; env -&gt; RIO env a -&gt; m a
+</span><span class="hs-identifier hs-var">runRIO</span></span><span> </span><span class="annot"><span class="annottext">Config
+</span><a href="#local-6989586621680199779"><span class="hs-identifier hs-var">cfg</span></a></span><span>
+</span><span id="line-27"></span><span>    </span><span class="annot"><span class="annottext">m (a, [OpenUnion effs])
+-&gt; (m (a, [OpenUnion effs]) -&gt; m (Session effs a))
+-&gt; m (Session effs a)
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">((a, [OpenUnion effs]) -&gt; Session effs a)
+-&gt; m (a, [OpenUnion effs]) -&gt; m (Session effs a)
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680199774"><span class="annot"><span class="annottext">result :: a
+</span><a href="#local-6989586621680199774"><span class="hs-identifier hs-var">result</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680199773"><span class="annot"><span class="annottext">effectLog :: [OpenUnion effs]
+</span><a href="#local-6989586621680199773"><span class="hs-identifier hs-var">effectLog</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Session :: forall (effs :: [*]) a. [OpenUnion effs] -&gt; a -&gt; Session effs a
+</span><a href="Fission.Internal.Mock.Session.Types.html#Session"><span class="hs-identifier hs-type hs-type">Mock.Session</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
+</span><span id="line-28"></span><span>
+</span><span id="line-29"></span><span id="local-6989586621680199767"><span id="local-6989586621680199768"><span class="annot"><a href="Fission.Internal.Mock.html#runMockIO%27"><span class="hs-identifier hs-type">runMockIO'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Types.html#Mock"><span class="hs-identifier hs-type">Mock</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199768"><span class="hs-identifier hs-type">effs</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199767"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680199767"><span class="hs-identifier hs-type">a</span></a></span></span></span><span>
+</span><span id="line-30"></span><span id="runMockIO%27"><span class="annot"><span class="annottext">runMockIO' :: Mock effs a -&gt; IO a
+</span><a href="Fission.Internal.Mock.html#runMockIO%27"><span class="hs-identifier hs-var hs-var">runMockIO'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Config -&gt; Mock effs a -&gt; IO a
+forall (m :: * -&gt; *) (effs :: [*]) a.
+MonadIO m =&gt;
+Config -&gt; Mock effs a -&gt; m a
+</span><a href="Fission.Internal.Mock.html#runMockIO"><span class="hs-identifier hs-var">runMockIO</span></a></span><span> </span><span class="annot"><span class="annottext">Config
+</span><a href="Fission.Internal.Mock.Config.html#defaultConfig"><span class="hs-identifier hs-var">defaultConfig</span></a></span><span>
+</span><span id="line-31"></span><span>
+</span><span id="line-32"></span><span id="local-6989586621680199792"><span id="local-6989586621680199793"><span id="local-6989586621680199794"><span class="annot"><a href="Fission.Internal.Mock.html#runMockIO"><span class="hs-identifier hs-type">runMockIO</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680199794"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Config.Types.html#Config"><span class="hs-identifier hs-type">Mock.Config</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Types.html#Mock"><span class="hs-identifier hs-type">Mock</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199793"><span class="hs-identifier hs-type">effs</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199792"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680199794"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199792"><span class="hs-identifier hs-type">a</span></a></span></span></span></span><span>
+</span><span id="line-33"></span><span id="runMockIO"><span class="annot"><span class="annottext">runMockIO :: Config -&gt; Mock effs a -&gt; m a
+</span><a href="Fission.Internal.Mock.html#runMockIO"><span class="hs-identifier hs-var hs-var">runMockIO</span></a></span></span><span> </span><span id="local-6989586621680199765"><span class="annot"><span class="annottext">cfg :: Config
+</span><a href="#local-6989586621680199765"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span id="local-6989586621680199764"><span class="annot"><span class="annottext">action :: Mock effs a
+</span><a href="#local-6989586621680199764"><span class="hs-identifier hs-var">action</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-34"></span><span>  </span><span class="annot"><span class="annottext">Mock effs a
+</span><a href="#local-6989586621680199764"><span class="hs-identifier hs-var">action</span></a></span><span>
+</span><span id="line-35"></span><span>    </span><span class="annot"><span class="annottext">Mock effs a
+-&gt; (Mock effs a -&gt; WriterT [OpenUnion effs] (RIO Config) a)
+-&gt; WriterT [OpenUnion effs] (RIO Config) a
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Mock effs a -&gt; WriterT [OpenUnion effs] (RIO Config) a
+forall (effs :: [*]) a.
+Mock effs a -&gt; WriterT [OpenUnion effs] (RIO Config) a
+</span><a href="Fission.Internal.Mock.Types.html#%24sel%3AunMock%3AMock"><span class="hs-identifier hs-var hs-var">unMock</span></a></span><span>
+</span><span id="line-36"></span><span>    </span><span class="annot"><span class="annottext">WriterT [OpenUnion effs] (RIO Config) a
+-&gt; (WriterT [OpenUnion effs] (RIO Config) a
+    -&gt; RIO Config (a, [OpenUnion effs]))
+-&gt; RIO Config (a, [OpenUnion effs])
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">WriterT [OpenUnion effs] (RIO Config) a
+-&gt; RIO Config (a, [OpenUnion effs])
+forall w (m :: * -&gt; *) a. WriterT w m a -&gt; m (a, w)
+</span><span class="hs-identifier hs-var hs-var">runWriterT</span></span><span>
+</span><span id="line-37"></span><span>    </span><span class="annot"><span class="annottext">RIO Config (a, [OpenUnion effs])
+-&gt; (RIO Config (a, [OpenUnion effs]) -&gt; m (a, [OpenUnion effs]))
+-&gt; m (a, [OpenUnion effs])
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Config
+-&gt; RIO Config (a, [OpenUnion effs]) -&gt; m (a, [OpenUnion effs])
+forall (m :: * -&gt; *) env a. MonadIO m =&gt; env -&gt; RIO env a -&gt; m a
+</span><span class="hs-identifier hs-var">runRIO</span></span><span> </span><span class="annot"><span class="annottext">Config
+</span><a href="#local-6989586621680199765"><span class="hs-identifier hs-var">cfg</span></a></span><span>
+</span><span id="line-38"></span><span>    </span><span class="annot"><span class="annottext">m (a, [OpenUnion effs]) -&gt; (m (a, [OpenUnion effs]) -&gt; m a) -&gt; m a
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">((a, [OpenUnion effs]) -&gt; a) -&gt; m (a, [OpenUnion effs]) -&gt; m a
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="annot"><span class="annottext">(a, [OpenUnion effs]) -&gt; a
+forall a b. (a, b) -&gt; a
+</span><span class="hs-identifier hs-var">fst</span></span><span>
+</span><span id="line-39"></span></pre></body></html>

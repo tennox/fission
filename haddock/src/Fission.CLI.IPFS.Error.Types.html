@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI.IPFS.Error.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.IPFS.Error.Types.html#Err"><span class="hs-identifier">Err</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">data</span><span> </span><span id="Err"><span class="annot"><a href="Fission.CLI.IPFS.Error.Types.html#Err"><span class="hs-identifier hs-var">Err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="UnableToConnect"><span class="annot"><a href="Fission.CLI.IPFS.Error.Types.html#UnableToConnect"><span class="hs-identifier hs-var">UnableToConnect</span></a></span></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680185126"><span id="local-6989586621680185128"><span id="local-6989586621680185130"><span class="annot"><span class="annottext">Int -&gt; Err -&gt; ShowS
+[Err] -&gt; ShowS
+Err -&gt; String
+(Int -&gt; Err -&gt; ShowS)
+-&gt; (Err -&gt; String) -&gt; ([Err] -&gt; ShowS) -&gt; Show Err
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Err] -&gt; ShowS
+$cshowList :: [Err] -&gt; ShowS
+show :: Err -&gt; String
+$cshow :: Err -&gt; String
+showsPrec :: Int -&gt; Err -&gt; ShowS
+$cshowsPrec :: Int -&gt; Err -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185117"><span id="local-6989586621680185119"><span id="local-6989586621680185121"><span class="annot"><span class="annottext">Show Err
+Typeable Err
+(Typeable Err, Show Err) =&gt;
+(Err -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe Err) -&gt; (Err -&gt; String) -&gt; Exception Err
+SomeException -&gt; Maybe Err
+Err -&gt; String
+Err -&gt; SomeException
+forall e.
+(Typeable e, Show e) =&gt;
+(e -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe e) -&gt; (e -&gt; String) -&gt; Exception e
+displayException :: Err -&gt; String
+$cdisplayException :: Err -&gt; String
+fromException :: SomeException -&gt; Maybe Err
+$cfromException :: SomeException -&gt; Maybe Err
+toException :: Err -&gt; SomeException
+$ctoException :: Err -&gt; SomeException
+$cp2Exception :: Show Err
+$cp1Exception :: Typeable Err
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-7"></span></pre></body></html>

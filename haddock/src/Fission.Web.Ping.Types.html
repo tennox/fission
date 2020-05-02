@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Web.Ping.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier">Pong</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Swagger</span></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">name</span></span><span class="hs-special">)</span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-comment">-- | A dead-simple text wrapper.</span><span>
+</span><span id="line-9"></span><span class="hs-comment">--   Primarily exists for customized instances.</span><span>
+</span><span id="line-10"></span><span class="hs-keyword">newtype</span><span> </span><span id="Pong"><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-var">Pong</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Pong"><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-var">Pong</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunPong%3APong"><span class="annot"><span class="annottext">Pong -&gt; Text
+</span><a href="Fission.Web.Ping.Types.html#%24sel%3AunPong%3APong"><span class="hs-identifier hs-var hs-var">unPong</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span>         </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680198566"><span id="local-6989586621680198568"><span class="annot"><span class="annottext">Pong -&gt; Pong -&gt; Bool
+(Pong -&gt; Pong -&gt; Bool) -&gt; (Pong -&gt; Pong -&gt; Bool) -&gt; Eq Pong
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Pong -&gt; Pong -&gt; Bool
+$c/= :: Pong -&gt; Pong -&gt; Bool
+== :: Pong -&gt; Pong -&gt; Bool
+$c== :: Pong -&gt; Pong -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-12"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680198559"><span id="local-6989586621680198561"><span id="local-6989586621680198563"><span class="annot"><span class="annottext">Int -&gt; Pong -&gt; ShowS
+[Pong] -&gt; ShowS
+Pong -&gt; String
+(Int -&gt; Pong -&gt; ShowS)
+-&gt; (Pong -&gt; String) -&gt; ([Pong] -&gt; ShowS) -&gt; Show Pong
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Pong] -&gt; ShowS
+$cshowList :: [Pong] -&gt; ShowS
+show :: Pong -&gt; String
+$cshow :: Pong -&gt; String
+showsPrec :: Int -&gt; Pong -&gt; ShowS
+$cshowsPrec :: Int -&gt; Pong -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-13"></span><span>                   </span><span class="hs-special">)</span><span>
+</span><span id="line-14"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680198556"><span class="annot"><span class="annottext">String -&gt; Pong
+(String -&gt; Pong) -&gt; IsString Pong
+forall a. (String -&gt; a) -&gt; IsString a
+fromString :: String -&gt; Pong
+$cfromString :: String -&gt; Pong
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
+</span><span id="line-15"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680198551"><span id="local-6989586621680198553"><span class="annot"><span class="annottext">Value -&gt; Parser [Pong]
+Value -&gt; Parser Pong
+(Value -&gt; Parser Pong) -&gt; (Value -&gt; Parser [Pong]) -&gt; FromJSON Pong
+forall a.
+(Value -&gt; Parser a) -&gt; (Value -&gt; Parser [a]) -&gt; FromJSON a
+parseJSONList :: Value -&gt; Parser [Pong]
+$cparseJSONList :: Value -&gt; Parser [Pong]
+parseJSON :: Value -&gt; Parser Pong
+$cparseJSON :: Value -&gt; Parser Pong
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">FromJSON</span></span></span></span><span>
+</span><span id="line-16"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680198542"><span id="local-6989586621680198544"><span id="local-6989586621680198546"><span id="local-6989586621680198548"><span class="annot"><span class="annottext">[Pong] -&gt; Value
+[Pong] -&gt; Encoding
+Pong -&gt; Value
+Pong -&gt; Encoding
+(Pong -&gt; Value)
+-&gt; (Pong -&gt; Encoding)
+-&gt; ([Pong] -&gt; Value)
+-&gt; ([Pong] -&gt; Encoding)
+-&gt; ToJSON Pong
+forall a.
+(a -&gt; Value)
+-&gt; (a -&gt; Encoding)
+-&gt; ([a] -&gt; Value)
+-&gt; ([a] -&gt; Encoding)
+-&gt; ToJSON a
+toEncodingList :: [Pong] -&gt; Encoding
+$ctoEncodingList :: [Pong] -&gt; Encoding
+toJSONList :: [Pong] -&gt; Value
+$ctoJSONList :: [Pong] -&gt; Value
+toEncoding :: Pong -&gt; Encoding
+$ctoEncoding :: Pong -&gt; Encoding
+toJSON :: Pong -&gt; Value
+$ctoJSON :: Pong -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">ToJSON</span></span></span></span></span></span><span>
+</span><span id="line-17"></span><span>                   </span><span class="hs-special">)</span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-type">Pong</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680198538"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Pong -&gt; Declare (Definitions Schema) NamedSchema
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-21"></span><span>    </span><span class="annot"><span class="annottext">Schema
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span>
+</span><span id="line-22"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (SwaggerType 'SwaggerKindSchema)
+ -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasType s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">type_</span></span><span>       </span><span class="annot"><span class="annottext">((Maybe (SwaggerType 'SwaggerKindSchema)
+  -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; SwaggerType 'SwaggerKindSchema -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">SwaggerType 'SwaggerKindSchema
+forall (t :: SwaggerKind *). SwaggerType t
+</span><span class="hs-identifier hs-var">SwaggerString</span></span><span>
+</span><span id="line-23"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe Text -&gt; Identity (Maybe Text)) -&gt; Schema -&gt; Identity Schema
+forall s a. HasDescription s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">description</span></span><span> </span><span class="annot"><span class="annottext">((Maybe Text -&gt; Identity (Maybe Text))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; Text -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="hs-string">&quot;A simple response&quot;</span></span><span>
+</span><span id="line-24"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe Value -&gt; Identity (Maybe Value))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasExample s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">example</span></span><span>     </span><span class="annot"><span class="annottext">((Maybe Value -&gt; Identity (Maybe Value))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; Value -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">Pong -&gt; Value
+forall a. ToJSON a =&gt; a -&gt; Value
+</span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Pong
+</span><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-var">Pong</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;pong&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-25"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; NamedSchema) -&gt; NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Schema -&gt; NamedSchema
+</span><span class="hs-identifier hs-var">NamedSchema</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Pong&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-26"></span><span>      </span><span class="annot"><span class="annottext">NamedSchema
+-&gt; (NamedSchema -&gt; Declare (Definitions Schema) NamedSchema)
+-&gt; Declare (Definitions Schema) NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">NamedSchema -&gt; Declare (Definitions Schema) NamedSchema
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span>
+</span><span id="line-27"></span><span>
+</span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-type">Pong</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-29"></span><span>  </span><span id="local-6989586621680198525"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; Pong -&gt; ByteString
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680198523"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
+</span><a href="#local-6989586621680198523"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
+forall a. Display a =&gt; a -&gt; ByteString
+</span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ByteString) -&gt; (Pong -&gt; Text) -&gt; Pong -&gt; ByteString
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Pong -&gt; Text
+</span><a href="Fission.Web.Ping.Types.html#%24sel%3AunPong%3APong"><span class="hs-identifier hs-var hs-var">unPong</span></a></span><span>
+</span><span id="line-30"></span></pre></body></html>

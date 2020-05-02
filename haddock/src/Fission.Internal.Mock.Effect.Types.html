@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Mock.Effect.Types</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunDB"><span class="hs-identifier">RunDB</span></a></span><span>              </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CheckTime"><span class="hs-identifier">CheckTime</span></a></span><span>          </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunAWS"><span class="hs-identifier">RunAWS</span></a></span><span>             </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#UpdateRoute53"><span class="hs-identifier">UpdateRoute53</span></a></span><span>      </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#SetDNSLink"><span class="hs-identifier">SetDNSLink</span></a></span><span>         </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunLocalIPFS"><span class="hs-identifier">RunLocalIPFS</span></a></span><span>       </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunRemoteIPFS"><span class="hs-identifier">RunRemoteIPFS</span></a></span><span>      </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#LogMsg"><span class="hs-identifier">LogMsg</span></a></span><span>             </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-10"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateHerokuAddOn"><span class="hs-identifier">CreateHerokuAddOn</span></a></span><span>  </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyHerokuAddOn"><span class="hs-identifier">DestroyHerokuAddOn</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-12"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RetrieveUser"><span class="hs-identifier">RetrieveUser</span></a></span><span>       </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-13"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateUser"><span class="hs-identifier">CreateUser</span></a></span><span>         </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-14"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#ModifyUser"><span class="hs-identifier">ModifyUser</span></a></span><span>         </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-15"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyUser"><span class="hs-identifier">DestroyUser</span></a></span><span>        </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-16"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RetrieveLoosePin"><span class="hs-identifier">RetrieveLoosePin</span></a></span><span>   </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-17"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateLoosePin"><span class="hs-identifier">CreateLoosePin</span></a></span><span>     </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-18"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyLoosePin"><span class="hs-identifier">DestroyLoosePin</span></a></span><span>    </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-19"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#FissionEffs"><span class="hs-identifier">FissionEffs</span></a></span><span>
+</span><span id="line-20"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-21"></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Types</span></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS</span></span><span>
+</span><span id="line-23"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.ByteString.Lazy</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Lazy</span></span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Control.Monad.Logger</span></span><span>
+</span><span id="line-26"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.UUID</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UUID</span></span><span>
+</span><span id="line-27"></span><span>
+</span><span id="line-28"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-29"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
+</span><span id="line-30"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
+</span><span id="line-31"></span><span>
+</span><span id="line-32"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Email.Types.html"><span class="hs-identifier">Fission.User.Email.Types</span></a></span><span>
+</span><span id="line-33"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Username.Types.html"><span class="hs-identifier">Fission.User.Username.Types</span></a></span><span>
+</span><span id="line-34"></span><span>
+</span><span id="line-35"></span><span class="hs-keyword">type</span><span> </span><span id="FissionEffs"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#FissionEffs"><span class="hs-identifier hs-var">FissionEffs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-36"></span><span>  </span><span class="hs-special">'</span><span class="hs-special">[</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CheckTime"><span class="hs-identifier hs-type">CheckTime</span></a></span><span>
+</span><span id="line-37"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunAWS"><span class="hs-identifier hs-type">RunAWS</span></a></span><span>
+</span><span id="line-38"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunDB"><span class="hs-identifier hs-type">RunDB</span></a></span><span>
+</span><span id="line-39"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#SetDNSLink"><span class="hs-identifier hs-type">SetDNSLink</span></a></span><span>
+</span><span id="line-40"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#UpdateRoute53"><span class="hs-identifier hs-type">UpdateRoute53</span></a></span><span>
+</span><span id="line-41"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunLocalIPFS"><span class="hs-identifier hs-type">RunLocalIPFS</span></a></span><span>
+</span><span id="line-42"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunRemoteIPFS"><span class="hs-identifier hs-type">RunRemoteIPFS</span></a></span><span>
+</span><span id="line-43"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#LogMsg"><span class="hs-identifier hs-type">LogMsg</span></a></span><span>
+</span><span id="line-44"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyHerokuAddOn"><span class="hs-identifier hs-type">DestroyHerokuAddOn</span></a></span><span>
+</span><span id="line-45"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyUser"><span class="hs-identifier hs-type">DestroyUser</span></a></span><span>
+</span><span id="line-46"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyLoosePin"><span class="hs-identifier hs-type">DestroyLoosePin</span></a></span><span>
+</span><span id="line-47"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RetrieveUser"><span class="hs-identifier hs-type">RetrieveUser</span></a></span><span>
+</span><span id="line-48"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RetrieveLoosePin"><span class="hs-identifier hs-type">RetrieveLoosePin</span></a></span><span>
+</span><span id="line-49"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#ModifyUser"><span class="hs-identifier hs-type">ModifyUser</span></a></span><span>
+</span><span id="line-50"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateUser"><span class="hs-identifier hs-type">CreateUser</span></a></span><span>
+</span><span id="line-51"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateLoosePin"><span class="hs-identifier hs-type">CreateLoosePin</span></a></span><span>
+</span><span id="line-52"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateHerokuAddOn"><span class="hs-identifier hs-type">CreateHerokuAddOn</span></a></span><span>
+</span><span id="line-53"></span><span>   </span><span class="hs-special">]</span><span>
+</span><span id="line-54"></span><span>
+</span><span id="line-55"></span><span class="hs-keyword">data</span><span> </span><span id="RunDB"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunDB"><span class="hs-identifier hs-var">RunDB</span></a></span></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="RunDB"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunDB"><span class="hs-identifier hs-var">RunDB</span></a></span></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191715"><span id="local-6989586621680191717"><span class="annot"><span class="annottext">RunDB -&gt; RunDB -&gt; Bool
+(RunDB -&gt; RunDB -&gt; Bool) -&gt; (RunDB -&gt; RunDB -&gt; Bool) -&gt; Eq RunDB
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: RunDB -&gt; RunDB -&gt; Bool
+$c/= :: RunDB -&gt; RunDB -&gt; Bool
+== :: RunDB -&gt; RunDB -&gt; Bool
+$c== :: RunDB -&gt; RunDB -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191708"><span id="local-6989586621680191710"><span id="local-6989586621680191712"><span class="annot"><span class="annottext">Int -&gt; RunDB -&gt; ShowS
+[RunDB] -&gt; ShowS
+RunDB -&gt; String
+(Int -&gt; RunDB -&gt; ShowS)
+-&gt; (RunDB -&gt; String) -&gt; ([RunDB] -&gt; ShowS) -&gt; Show RunDB
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [RunDB] -&gt; ShowS
+$cshowList :: [RunDB] -&gt; ShowS
+show :: RunDB -&gt; String
+$cshow :: RunDB -&gt; String
+showsPrec :: Int -&gt; RunDB -&gt; ShowS
+$cshowsPrec :: Int -&gt; RunDB -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-58"></span><span>
+</span><span id="line-59"></span><span class="hs-keyword">data</span><span> </span><span id="CheckTime"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CheckTime"><span class="hs-identifier hs-var">CheckTime</span></a></span></span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="CheckTime"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CheckTime"><span class="hs-identifier hs-var">CheckTime</span></a></span></span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191702"><span id="local-6989586621680191704"><span class="annot"><span class="annottext">CheckTime -&gt; CheckTime -&gt; Bool
+(CheckTime -&gt; CheckTime -&gt; Bool)
+-&gt; (CheckTime -&gt; CheckTime -&gt; Bool) -&gt; Eq CheckTime
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: CheckTime -&gt; CheckTime -&gt; Bool
+$c/= :: CheckTime -&gt; CheckTime -&gt; Bool
+== :: CheckTime -&gt; CheckTime -&gt; Bool
+$c== :: CheckTime -&gt; CheckTime -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191696"><span id="local-6989586621680191698"><span id="local-6989586621680191700"><span class="annot"><span class="annottext">Int -&gt; CheckTime -&gt; ShowS
+[CheckTime] -&gt; ShowS
+CheckTime -&gt; String
+(Int -&gt; CheckTime -&gt; ShowS)
+-&gt; (CheckTime -&gt; String)
+-&gt; ([CheckTime] -&gt; ShowS)
+-&gt; Show CheckTime
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [CheckTime] -&gt; ShowS
+$cshowList :: [CheckTime] -&gt; ShowS
+show :: CheckTime -&gt; String
+$cshow :: CheckTime -&gt; String
+showsPrec :: Int -&gt; CheckTime -&gt; ShowS
+$cshowsPrec :: Int -&gt; CheckTime -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-62"></span><span>
+</span><span id="line-63"></span><span class="hs-keyword">data</span><span> </span><span id="RunAWS"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunAWS"><span class="hs-identifier hs-var">RunAWS</span></a></span></span><span>
+</span><span id="line-64"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="RunAWS"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunAWS"><span class="hs-identifier hs-var">RunAWS</span></a></span></span><span>
+</span><span id="line-65"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191691"><span id="local-6989586621680191693"><span class="annot"><span class="annottext">RunAWS -&gt; RunAWS -&gt; Bool
+(RunAWS -&gt; RunAWS -&gt; Bool)
+-&gt; (RunAWS -&gt; RunAWS -&gt; Bool) -&gt; Eq RunAWS
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: RunAWS -&gt; RunAWS -&gt; Bool
+$c/= :: RunAWS -&gt; RunAWS -&gt; Bool
+== :: RunAWS -&gt; RunAWS -&gt; Bool
+$c== :: RunAWS -&gt; RunAWS -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191685"><span id="local-6989586621680191687"><span id="local-6989586621680191689"><span class="annot"><span class="annottext">Int -&gt; RunAWS -&gt; ShowS
+[RunAWS] -&gt; ShowS
+RunAWS -&gt; String
+(Int -&gt; RunAWS -&gt; ShowS)
+-&gt; (RunAWS -&gt; String) -&gt; ([RunAWS] -&gt; ShowS) -&gt; Show RunAWS
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [RunAWS] -&gt; ShowS
+$cshowList :: [RunAWS] -&gt; ShowS
+show :: RunAWS -&gt; String
+$cshow :: RunAWS -&gt; String
+showsPrec :: Int -&gt; RunAWS -&gt; ShowS
+$cshowsPrec :: Int -&gt; RunAWS -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-66"></span><span>
+</span><span id="line-67"></span><span class="hs-keyword">data</span><span> </span><span id="UpdateRoute53"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#UpdateRoute53"><span class="hs-identifier hs-var">UpdateRoute53</span></a></span></span><span>
+</span><span id="line-68"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="UpdateRoute53"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#UpdateRoute53"><span class="hs-identifier hs-var">UpdateRoute53</span></a></span></span><span>
+</span><span id="line-69"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191680"><span id="local-6989586621680191682"><span class="annot"><span class="annottext">UpdateRoute53 -&gt; UpdateRoute53 -&gt; Bool
+(UpdateRoute53 -&gt; UpdateRoute53 -&gt; Bool)
+-&gt; (UpdateRoute53 -&gt; UpdateRoute53 -&gt; Bool) -&gt; Eq UpdateRoute53
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: UpdateRoute53 -&gt; UpdateRoute53 -&gt; Bool
+$c/= :: UpdateRoute53 -&gt; UpdateRoute53 -&gt; Bool
+== :: UpdateRoute53 -&gt; UpdateRoute53 -&gt; Bool
+$c== :: UpdateRoute53 -&gt; UpdateRoute53 -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191674"><span id="local-6989586621680191676"><span id="local-6989586621680191678"><span class="annot"><span class="annottext">Int -&gt; UpdateRoute53 -&gt; ShowS
+[UpdateRoute53] -&gt; ShowS
+UpdateRoute53 -&gt; String
+(Int -&gt; UpdateRoute53 -&gt; ShowS)
+-&gt; (UpdateRoute53 -&gt; String)
+-&gt; ([UpdateRoute53] -&gt; ShowS)
+-&gt; Show UpdateRoute53
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [UpdateRoute53] -&gt; ShowS
+$cshowList :: [UpdateRoute53] -&gt; ShowS
+show :: UpdateRoute53 -&gt; String
+$cshow :: UpdateRoute53 -&gt; String
+showsPrec :: Int -&gt; UpdateRoute53 -&gt; ShowS
+$cshowsPrec :: Int -&gt; UpdateRoute53 -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-70"></span><span>
+</span><span id="line-71"></span><span class="hs-keyword">data</span><span> </span><span id="SetDNSLink"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#SetDNSLink"><span class="hs-identifier hs-var">SetDNSLink</span></a></span></span><span>
+</span><span id="line-72"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="SetDNSLink"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#SetDNSLink"><span class="hs-identifier hs-var">SetDNSLink</span></a></span></span><span>
+</span><span id="line-73"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191669"><span id="local-6989586621680191671"><span class="annot"><span class="annottext">SetDNSLink -&gt; SetDNSLink -&gt; Bool
+(SetDNSLink -&gt; SetDNSLink -&gt; Bool)
+-&gt; (SetDNSLink -&gt; SetDNSLink -&gt; Bool) -&gt; Eq SetDNSLink
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: SetDNSLink -&gt; SetDNSLink -&gt; Bool
+$c/= :: SetDNSLink -&gt; SetDNSLink -&gt; Bool
+== :: SetDNSLink -&gt; SetDNSLink -&gt; Bool
+$c== :: SetDNSLink -&gt; SetDNSLink -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191663"><span id="local-6989586621680191665"><span id="local-6989586621680191667"><span class="annot"><span class="annottext">Int -&gt; SetDNSLink -&gt; ShowS
+[SetDNSLink] -&gt; ShowS
+SetDNSLink -&gt; String
+(Int -&gt; SetDNSLink -&gt; ShowS)
+-&gt; (SetDNSLink -&gt; String)
+-&gt; ([SetDNSLink] -&gt; ShowS)
+-&gt; Show SetDNSLink
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [SetDNSLink] -&gt; ShowS
+$cshowList :: [SetDNSLink] -&gt; ShowS
+show :: SetDNSLink -&gt; String
+$cshow :: SetDNSLink -&gt; String
+showsPrec :: Int -&gt; SetDNSLink -&gt; ShowS
+$cshowsPrec :: Int -&gt; SetDNSLink -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-74"></span><span>
+</span><span id="line-75"></span><span class="hs-keyword">data</span><span> </span><span id="RunLocalIPFS"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunLocalIPFS"><span class="hs-identifier hs-var">RunLocalIPFS</span></a></span></span><span>
+</span><span id="line-76"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="RunLocalIPFS"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunLocalIPFS"><span class="hs-identifier hs-var">RunLocalIPFS</span></a></span></span><span>
+</span><span id="line-77"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191658"><span id="local-6989586621680191660"><span class="annot"><span class="annottext">RunLocalIPFS -&gt; RunLocalIPFS -&gt; Bool
+(RunLocalIPFS -&gt; RunLocalIPFS -&gt; Bool)
+-&gt; (RunLocalIPFS -&gt; RunLocalIPFS -&gt; Bool) -&gt; Eq RunLocalIPFS
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: RunLocalIPFS -&gt; RunLocalIPFS -&gt; Bool
+$c/= :: RunLocalIPFS -&gt; RunLocalIPFS -&gt; Bool
+== :: RunLocalIPFS -&gt; RunLocalIPFS -&gt; Bool
+$c== :: RunLocalIPFS -&gt; RunLocalIPFS -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191652"><span id="local-6989586621680191654"><span id="local-6989586621680191656"><span class="annot"><span class="annottext">Int -&gt; RunLocalIPFS -&gt; ShowS
+[RunLocalIPFS] -&gt; ShowS
+RunLocalIPFS -&gt; String
+(Int -&gt; RunLocalIPFS -&gt; ShowS)
+-&gt; (RunLocalIPFS -&gt; String)
+-&gt; ([RunLocalIPFS] -&gt; ShowS)
+-&gt; Show RunLocalIPFS
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [RunLocalIPFS] -&gt; ShowS
+$cshowList :: [RunLocalIPFS] -&gt; ShowS
+show :: RunLocalIPFS -&gt; String
+$cshow :: RunLocalIPFS -&gt; String
+showsPrec :: Int -&gt; RunLocalIPFS -&gt; ShowS
+$cshowsPrec :: Int -&gt; RunLocalIPFS -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-78"></span><span>
+</span><span id="line-79"></span><span class="hs-keyword">data</span><span> </span><span id="RunRemoteIPFS"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RunRemoteIPFS"><span class="hs-identifier hs-var">RunRemoteIPFS</span></a></span></span><span>
+</span><span id="line-80"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="RemoteIPFSGeneric"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RemoteIPFSGeneric"><span class="hs-identifier hs-var">RemoteIPFSGeneric</span></a></span></span><span>
+</span><span id="line-81"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="RemoteIPFSAdd"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RemoteIPFSAdd"><span class="hs-identifier hs-var">RemoteIPFSAdd</span></a></span></span><span>   </span><span class="annot"><span class="hs-identifier hs-type">Lazy.ByteString</span></span><span>
+</span><span id="line-82"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="RemoteIPFSCat"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RemoteIPFSCat"><span class="hs-identifier hs-var">RemoteIPFSCat</span></a></span></span><span>   </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-83"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="RemoteIPFSPin"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RemoteIPFSPin"><span class="hs-identifier hs-var">RemoteIPFSPin</span></a></span></span><span>   </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-84"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="RemoteIPFSUnpin"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RemoteIPFSUnpin"><span class="hs-identifier hs-var">RemoteIPFSUnpin</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
+</span><span id="line-85"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191641"><span id="local-6989586621680191643"><span class="annot"><span class="annottext">RunRemoteIPFS -&gt; RunRemoteIPFS -&gt; Bool
+(RunRemoteIPFS -&gt; RunRemoteIPFS -&gt; Bool)
+-&gt; (RunRemoteIPFS -&gt; RunRemoteIPFS -&gt; Bool) -&gt; Eq RunRemoteIPFS
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: RunRemoteIPFS -&gt; RunRemoteIPFS -&gt; Bool
+$c/= :: RunRemoteIPFS -&gt; RunRemoteIPFS -&gt; Bool
+== :: RunRemoteIPFS -&gt; RunRemoteIPFS -&gt; Bool
+$c== :: RunRemoteIPFS -&gt; RunRemoteIPFS -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191635"><span id="local-6989586621680191637"><span id="local-6989586621680191639"><span class="annot"><span class="annottext">Int -&gt; RunRemoteIPFS -&gt; ShowS
+[RunRemoteIPFS] -&gt; ShowS
+RunRemoteIPFS -&gt; String
+(Int -&gt; RunRemoteIPFS -&gt; ShowS)
+-&gt; (RunRemoteIPFS -&gt; String)
+-&gt; ([RunRemoteIPFS] -&gt; ShowS)
+-&gt; Show RunRemoteIPFS
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [RunRemoteIPFS] -&gt; ShowS
+$cshowList :: [RunRemoteIPFS] -&gt; ShowS
+show :: RunRemoteIPFS -&gt; String
+$cshow :: RunRemoteIPFS -&gt; String
+showsPrec :: Int -&gt; RunRemoteIPFS -&gt; ShowS
+$cshowsPrec :: Int -&gt; RunRemoteIPFS -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-86"></span><span>
+</span><span id="line-87"></span><span class="hs-keyword">data</span><span> </span><span id="LogMsg"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#LogMsg"><span class="hs-identifier hs-var">LogMsg</span></a></span></span><span>
+</span><span id="line-88"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="LogMsg"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#LogMsg"><span class="hs-identifier hs-var">LogMsg</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">LogLevel</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">LogStr</span></span><span>
+</span><span id="line-89"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191628"><span id="local-6989586621680191630"><span class="annot"><span class="annottext">LogMsg -&gt; LogMsg -&gt; Bool
+(LogMsg -&gt; LogMsg -&gt; Bool)
+-&gt; (LogMsg -&gt; LogMsg -&gt; Bool) -&gt; Eq LogMsg
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: LogMsg -&gt; LogMsg -&gt; Bool
+$c/= :: LogMsg -&gt; LogMsg -&gt; Bool
+== :: LogMsg -&gt; LogMsg -&gt; Bool
+$c== :: LogMsg -&gt; LogMsg -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191622"><span id="local-6989586621680191624"><span id="local-6989586621680191626"><span class="annot"><span class="annottext">Int -&gt; LogMsg -&gt; ShowS
+[LogMsg] -&gt; ShowS
+LogMsg -&gt; String
+(Int -&gt; LogMsg -&gt; ShowS)
+-&gt; (LogMsg -&gt; String) -&gt; ([LogMsg] -&gt; ShowS) -&gt; Show LogMsg
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [LogMsg] -&gt; ShowS
+$cshowList :: [LogMsg] -&gt; ShowS
+show :: LogMsg -&gt; String
+$cshow :: LogMsg -&gt; String
+showsPrec :: Int -&gt; LogMsg -&gt; ShowS
+$cshowsPrec :: Int -&gt; LogMsg -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-90"></span><span>
+</span><span id="line-91"></span><span class="hs-keyword">data</span><span> </span><span id="DestroyHerokuAddOn"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyHerokuAddOn"><span class="hs-identifier hs-var">DestroyHerokuAddOn</span></a></span></span><span>
+</span><span id="line-92"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="DestroyHerokuAddOn"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyHerokuAddOn"><span class="hs-identifier hs-var">DestroyHerokuAddOn</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span>
+</span><span id="line-93"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191616"><span id="local-6989586621680191618"><span class="annot"><span class="annottext">DestroyHerokuAddOn -&gt; DestroyHerokuAddOn -&gt; Bool
+(DestroyHerokuAddOn -&gt; DestroyHerokuAddOn -&gt; Bool)
+-&gt; (DestroyHerokuAddOn -&gt; DestroyHerokuAddOn -&gt; Bool)
+-&gt; Eq DestroyHerokuAddOn
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: DestroyHerokuAddOn -&gt; DestroyHerokuAddOn -&gt; Bool
+$c/= :: DestroyHerokuAddOn -&gt; DestroyHerokuAddOn -&gt; Bool
+== :: DestroyHerokuAddOn -&gt; DestroyHerokuAddOn -&gt; Bool
+$c== :: DestroyHerokuAddOn -&gt; DestroyHerokuAddOn -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191610"><span id="local-6989586621680191612"><span id="local-6989586621680191614"><span class="annot"><span class="annottext">Int -&gt; DestroyHerokuAddOn -&gt; ShowS
+[DestroyHerokuAddOn] -&gt; ShowS
+DestroyHerokuAddOn -&gt; String
+(Int -&gt; DestroyHerokuAddOn -&gt; ShowS)
+-&gt; (DestroyHerokuAddOn -&gt; String)
+-&gt; ([DestroyHerokuAddOn] -&gt; ShowS)
+-&gt; Show DestroyHerokuAddOn
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [DestroyHerokuAddOn] -&gt; ShowS
+$cshowList :: [DestroyHerokuAddOn] -&gt; ShowS
+show :: DestroyHerokuAddOn -&gt; String
+$cshow :: DestroyHerokuAddOn -&gt; String
+showsPrec :: Int -&gt; DestroyHerokuAddOn -&gt; ShowS
+$cshowsPrec :: Int -&gt; DestroyHerokuAddOn -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-94"></span><span>
+</span><span id="line-95"></span><span class="hs-keyword">data</span><span> </span><span id="CreateHerokuAddOn"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateHerokuAddOn"><span class="hs-identifier hs-var">CreateHerokuAddOn</span></a></span></span><span>
+</span><span id="line-96"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="CreateHerokuAddOn"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateHerokuAddOn"><span class="hs-identifier hs-var">CreateHerokuAddOn</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span>
+</span><span id="line-97"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191605"><span id="local-6989586621680191607"><span class="annot"><span class="annottext">CreateHerokuAddOn -&gt; CreateHerokuAddOn -&gt; Bool
+(CreateHerokuAddOn -&gt; CreateHerokuAddOn -&gt; Bool)
+-&gt; (CreateHerokuAddOn -&gt; CreateHerokuAddOn -&gt; Bool)
+-&gt; Eq CreateHerokuAddOn
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: CreateHerokuAddOn -&gt; CreateHerokuAddOn -&gt; Bool
+$c/= :: CreateHerokuAddOn -&gt; CreateHerokuAddOn -&gt; Bool
+== :: CreateHerokuAddOn -&gt; CreateHerokuAddOn -&gt; Bool
+$c== :: CreateHerokuAddOn -&gt; CreateHerokuAddOn -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191599"><span id="local-6989586621680191601"><span id="local-6989586621680191603"><span class="annot"><span class="annottext">Int -&gt; CreateHerokuAddOn -&gt; ShowS
+[CreateHerokuAddOn] -&gt; ShowS
+CreateHerokuAddOn -&gt; String
+(Int -&gt; CreateHerokuAddOn -&gt; ShowS)
+-&gt; (CreateHerokuAddOn -&gt; String)
+-&gt; ([CreateHerokuAddOn] -&gt; ShowS)
+-&gt; Show CreateHerokuAddOn
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [CreateHerokuAddOn] -&gt; ShowS
+$cshowList :: [CreateHerokuAddOn] -&gt; ShowS
+show :: CreateHerokuAddOn -&gt; String
+$cshow :: CreateHerokuAddOn -&gt; String
+showsPrec :: Int -&gt; CreateHerokuAddOn -&gt; ShowS
+$cshowsPrec :: Int -&gt; CreateHerokuAddOn -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-98"></span><span>
+</span><span id="line-99"></span><span class="hs-keyword">data</span><span> </span><span id="RetrieveUser"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RetrieveUser"><span class="hs-identifier hs-var">RetrieveUser</span></a></span></span><span>
+</span><span id="line-100"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="GetUserByUsername"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#GetUserByUsername"><span class="hs-identifier hs-var">GetUserByUsername</span></a></span></span><span>      </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
+</span><span id="line-101"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="GetUserByPublicKey"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#GetUserByPublicKey"><span class="hs-identifier hs-var">GetUserByPublicKey</span></a></span></span><span>     </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
+</span><span id="line-102"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="GetUserByHerokuAddOnId"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#GetUserByHerokuAddOnId"><span class="hs-identifier hs-var">GetUserByHerokuAddOnId</span></a></span></span><span> </span><span class="annot"><a href="Fission.Models.html#HerokuAddOnId"><span class="hs-identifier hs-type">HerokuAddOnId</span></a></span><span>
+</span><span id="line-103"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="GetUserByEmail"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#GetUserByEmail"><span class="hs-identifier hs-var">GetUserByEmail</span></a></span></span><span>         </span><span class="annot"><a href="Fission.User.Email.Types.html#Email"><span class="hs-identifier hs-type">Email</span></a></span><span>
+</span><span id="line-104"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191587"><span id="local-6989586621680191589"><span class="annot"><span class="annottext">RetrieveUser -&gt; RetrieveUser -&gt; Bool
+(RetrieveUser -&gt; RetrieveUser -&gt; Bool)
+-&gt; (RetrieveUser -&gt; RetrieveUser -&gt; Bool) -&gt; Eq RetrieveUser
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: RetrieveUser -&gt; RetrieveUser -&gt; Bool
+$c/= :: RetrieveUser -&gt; RetrieveUser -&gt; Bool
+== :: RetrieveUser -&gt; RetrieveUser -&gt; Bool
+$c== :: RetrieveUser -&gt; RetrieveUser -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191581"><span id="local-6989586621680191583"><span id="local-6989586621680191585"><span class="annot"><span class="annottext">Int -&gt; RetrieveUser -&gt; ShowS
+[RetrieveUser] -&gt; ShowS
+RetrieveUser -&gt; String
+(Int -&gt; RetrieveUser -&gt; ShowS)
+-&gt; (RetrieveUser -&gt; String)
+-&gt; ([RetrieveUser] -&gt; ShowS)
+-&gt; Show RetrieveUser
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [RetrieveUser] -&gt; ShowS
+$cshowList :: [RetrieveUser] -&gt; ShowS
+show :: RetrieveUser -&gt; String
+$cshow :: RetrieveUser -&gt; String
+showsPrec :: Int -&gt; RetrieveUser -&gt; ShowS
+$cshowsPrec :: Int -&gt; RetrieveUser -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-105"></span><span>
+</span><span id="line-106"></span><span class="hs-keyword">data</span><span> </span><span id="CreateUser"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateUser"><span class="hs-identifier hs-var">CreateUser</span></a></span></span><span>
+</span><span id="line-107"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="CreateUser"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateUser"><span class="hs-identifier hs-var">CreateUser</span></a></span></span><span>
+</span><span id="line-108"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191576"><span id="local-6989586621680191578"><span class="annot"><span class="annottext">CreateUser -&gt; CreateUser -&gt; Bool
+(CreateUser -&gt; CreateUser -&gt; Bool)
+-&gt; (CreateUser -&gt; CreateUser -&gt; Bool) -&gt; Eq CreateUser
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: CreateUser -&gt; CreateUser -&gt; Bool
+$c/= :: CreateUser -&gt; CreateUser -&gt; Bool
+== :: CreateUser -&gt; CreateUser -&gt; Bool
+$c== :: CreateUser -&gt; CreateUser -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191570"><span id="local-6989586621680191572"><span id="local-6989586621680191574"><span class="annot"><span class="annottext">Int -&gt; CreateUser -&gt; ShowS
+[CreateUser] -&gt; ShowS
+CreateUser -&gt; String
+(Int -&gt; CreateUser -&gt; ShowS)
+-&gt; (CreateUser -&gt; String)
+-&gt; ([CreateUser] -&gt; ShowS)
+-&gt; Show CreateUser
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [CreateUser] -&gt; ShowS
+$cshowList :: [CreateUser] -&gt; ShowS
+show :: CreateUser -&gt; String
+$cshow :: CreateUser -&gt; String
+showsPrec :: Int -&gt; CreateUser -&gt; ShowS
+$cshowsPrec :: Int -&gt; CreateUser -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-109"></span><span>
+</span><span id="line-110"></span><span class="hs-keyword">data</span><span> </span><span id="ModifyUser"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#ModifyUser"><span class="hs-identifier hs-var">ModifyUser</span></a></span></span><span>
+</span><span id="line-111"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="ModifyUser"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#ModifyUser"><span class="hs-identifier hs-var">ModifyUser</span></a></span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-112"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191564"><span id="local-6989586621680191566"><span class="annot"><span class="annottext">ModifyUser -&gt; ModifyUser -&gt; Bool
+(ModifyUser -&gt; ModifyUser -&gt; Bool)
+-&gt; (ModifyUser -&gt; ModifyUser -&gt; Bool) -&gt; Eq ModifyUser
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: ModifyUser -&gt; ModifyUser -&gt; Bool
+$c/= :: ModifyUser -&gt; ModifyUser -&gt; Bool
+== :: ModifyUser -&gt; ModifyUser -&gt; Bool
+$c== :: ModifyUser -&gt; ModifyUser -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191558"><span id="local-6989586621680191560"><span id="local-6989586621680191562"><span class="annot"><span class="annottext">Int -&gt; ModifyUser -&gt; ShowS
+[ModifyUser] -&gt; ShowS
+ModifyUser -&gt; String
+(Int -&gt; ModifyUser -&gt; ShowS)
+-&gt; (ModifyUser -&gt; String)
+-&gt; ([ModifyUser] -&gt; ShowS)
+-&gt; Show ModifyUser
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [ModifyUser] -&gt; ShowS
+$cshowList :: [ModifyUser] -&gt; ShowS
+show :: ModifyUser -&gt; String
+$cshow :: ModifyUser -&gt; String
+showsPrec :: Int -&gt; ModifyUser -&gt; ShowS
+$cshowsPrec :: Int -&gt; ModifyUser -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-113"></span><span>
+</span><span id="line-114"></span><span class="hs-keyword">data</span><span> </span><span id="DestroyUser"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyUser"><span class="hs-identifier hs-var">DestroyUser</span></a></span></span><span>
+</span><span id="line-115"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="DestroyUser"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyUser"><span class="hs-identifier hs-var">DestroyUser</span></a></span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-116"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191553"><span id="local-6989586621680191555"><span class="annot"><span class="annottext">DestroyUser -&gt; DestroyUser -&gt; Bool
+(DestroyUser -&gt; DestroyUser -&gt; Bool)
+-&gt; (DestroyUser -&gt; DestroyUser -&gt; Bool) -&gt; Eq DestroyUser
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: DestroyUser -&gt; DestroyUser -&gt; Bool
+$c/= :: DestroyUser -&gt; DestroyUser -&gt; Bool
+== :: DestroyUser -&gt; DestroyUser -&gt; Bool
+$c== :: DestroyUser -&gt; DestroyUser -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191547"><span id="local-6989586621680191549"><span id="local-6989586621680191551"><span class="annot"><span class="annottext">Int -&gt; DestroyUser -&gt; ShowS
+[DestroyUser] -&gt; ShowS
+DestroyUser -&gt; String
+(Int -&gt; DestroyUser -&gt; ShowS)
+-&gt; (DestroyUser -&gt; String)
+-&gt; ([DestroyUser] -&gt; ShowS)
+-&gt; Show DestroyUser
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [DestroyUser] -&gt; ShowS
+$cshowList :: [DestroyUser] -&gt; ShowS
+show :: DestroyUser -&gt; String
+$cshow :: DestroyUser -&gt; String
+showsPrec :: Int -&gt; DestroyUser -&gt; ShowS
+$cshowsPrec :: Int -&gt; DestroyUser -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-117"></span><span>
+</span><span id="line-118"></span><span class="hs-keyword">data</span><span> </span><span id="RetrieveLoosePin"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#RetrieveLoosePin"><span class="hs-identifier hs-var">RetrieveLoosePin</span></a></span></span><span>
+</span><span id="line-119"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="GetLoosePinByUserId"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#GetLoosePinByUserId"><span class="hs-identifier hs-var">GetLoosePinByUserId</span></a></span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-120"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="GetLoosePinByCID"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#GetLoosePinByCID"><span class="hs-identifier hs-var">GetLoosePinByCID</span></a></span></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-121"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191541"><span id="local-6989586621680191543"><span class="annot"><span class="annottext">RetrieveLoosePin -&gt; RetrieveLoosePin -&gt; Bool
+(RetrieveLoosePin -&gt; RetrieveLoosePin -&gt; Bool)
+-&gt; (RetrieveLoosePin -&gt; RetrieveLoosePin -&gt; Bool)
+-&gt; Eq RetrieveLoosePin
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: RetrieveLoosePin -&gt; RetrieveLoosePin -&gt; Bool
+$c/= :: RetrieveLoosePin -&gt; RetrieveLoosePin -&gt; Bool
+== :: RetrieveLoosePin -&gt; RetrieveLoosePin -&gt; Bool
+$c== :: RetrieveLoosePin -&gt; RetrieveLoosePin -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191535"><span id="local-6989586621680191537"><span id="local-6989586621680191539"><span class="annot"><span class="annottext">Int -&gt; RetrieveLoosePin -&gt; ShowS
+[RetrieveLoosePin] -&gt; ShowS
+RetrieveLoosePin -&gt; String
+(Int -&gt; RetrieveLoosePin -&gt; ShowS)
+-&gt; (RetrieveLoosePin -&gt; String)
+-&gt; ([RetrieveLoosePin] -&gt; ShowS)
+-&gt; Show RetrieveLoosePin
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [RetrieveLoosePin] -&gt; ShowS
+$cshowList :: [RetrieveLoosePin] -&gt; ShowS
+show :: RetrieveLoosePin -&gt; String
+$cshow :: RetrieveLoosePin -&gt; String
+showsPrec :: Int -&gt; RetrieveLoosePin -&gt; ShowS
+$cshowsPrec :: Int -&gt; RetrieveLoosePin -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-122"></span><span>
+</span><span id="line-123"></span><span class="hs-keyword">data</span><span> </span><span id="CreateLoosePin"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateLoosePin"><span class="hs-identifier hs-var">CreateLoosePin</span></a></span></span><span>
+</span><span id="line-124"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="CreateLoosePin"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#CreateLoosePin"><span class="hs-identifier hs-var">CreateLoosePin</span></a></span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-125"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191530"><span id="local-6989586621680191532"><span class="annot"><span class="annottext">CreateLoosePin -&gt; CreateLoosePin -&gt; Bool
+(CreateLoosePin -&gt; CreateLoosePin -&gt; Bool)
+-&gt; (CreateLoosePin -&gt; CreateLoosePin -&gt; Bool) -&gt; Eq CreateLoosePin
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: CreateLoosePin -&gt; CreateLoosePin -&gt; Bool
+$c/= :: CreateLoosePin -&gt; CreateLoosePin -&gt; Bool
+== :: CreateLoosePin -&gt; CreateLoosePin -&gt; Bool
+$c== :: CreateLoosePin -&gt; CreateLoosePin -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191524"><span id="local-6989586621680191526"><span id="local-6989586621680191528"><span class="annot"><span class="annottext">Int -&gt; CreateLoosePin -&gt; ShowS
+[CreateLoosePin] -&gt; ShowS
+CreateLoosePin -&gt; String
+(Int -&gt; CreateLoosePin -&gt; ShowS)
+-&gt; (CreateLoosePin -&gt; String)
+-&gt; ([CreateLoosePin] -&gt; ShowS)
+-&gt; Show CreateLoosePin
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [CreateLoosePin] -&gt; ShowS
+$cshowList :: [CreateLoosePin] -&gt; ShowS
+show :: CreateLoosePin -&gt; String
+$cshow :: CreateLoosePin -&gt; String
+showsPrec :: Int -&gt; CreateLoosePin -&gt; ShowS
+$cshowsPrec :: Int -&gt; CreateLoosePin -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-126"></span><span>
+</span><span id="line-127"></span><span class="hs-keyword">data</span><span> </span><span id="DestroyLoosePin"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyLoosePin"><span class="hs-identifier hs-var">DestroyLoosePin</span></a></span></span><span>
+</span><span id="line-128"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="DestroyLoosePin"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyLoosePin"><span class="hs-identifier hs-var">DestroyLoosePin</span></a></span></span><span>     </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-129"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="DestroyLoosePinById"><span class="annot"><a href="Fission.Internal.Mock.Effect.Types.html#DestroyLoosePinById"><span class="hs-identifier hs-var">DestroyLoosePinById</span></a></span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#LoosePinId"><span class="hs-identifier hs-type">LoosePinId</span></a></span><span>
+</span><span id="line-130"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191517"><span id="local-6989586621680191519"><span class="annot"><span class="annottext">DestroyLoosePin -&gt; DestroyLoosePin -&gt; Bool
+(DestroyLoosePin -&gt; DestroyLoosePin -&gt; Bool)
+-&gt; (DestroyLoosePin -&gt; DestroyLoosePin -&gt; Bool)
+-&gt; Eq DestroyLoosePin
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: DestroyLoosePin -&gt; DestroyLoosePin -&gt; Bool
+$c/= :: DestroyLoosePin -&gt; DestroyLoosePin -&gt; Bool
+== :: DestroyLoosePin -&gt; DestroyLoosePin -&gt; Bool
+$c== :: DestroyLoosePin -&gt; DestroyLoosePin -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191511"><span id="local-6989586621680191513"><span id="local-6989586621680191515"><span class="annot"><span class="annottext">Int -&gt; DestroyLoosePin -&gt; ShowS
+[DestroyLoosePin] -&gt; ShowS
+DestroyLoosePin -&gt; String
+(Int -&gt; DestroyLoosePin -&gt; ShowS)
+-&gt; (DestroyLoosePin -&gt; String)
+-&gt; ([DestroyLoosePin] -&gt; ShowS)
+-&gt; Show DestroyLoosePin
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [DestroyLoosePin] -&gt; ShowS
+$cshowList :: [DestroyLoosePin] -&gt; ShowS
+show :: DestroyLoosePin -&gt; String
+$cshow :: DestroyLoosePin -&gt; String
+showsPrec :: Int -&gt; DestroyLoosePin -&gt; ShowS
+$cshowsPrec :: Int -&gt; DestroyLoosePin -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-131"></span></pre></body></html>

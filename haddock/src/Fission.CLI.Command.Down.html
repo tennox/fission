@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- | Grab files directly from IPFS</span><span>
+</span><span id="line-2"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI.Command.Down</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Command.Down.html#cmd"><span class="hs-identifier">cmd</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#%24sel%3Ahandler%3ACommand"><span class="hs-identifier">handler</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-3"></span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Data.Text</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Text</span></span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.URI</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">URI</span></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Options.Applicative</span></span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS</span></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Get</span></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS</span></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Types</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS</span></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.CID.Types</span></span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Command.Types.html"><span class="hs-identifier">Fission.CLI.Command.Types</span></a></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Display.Success.html"><span class="hs-identifier">Fission.CLI.Display.Success</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">CLI.Success</span></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Display.Error.html"><span class="hs-identifier">Fission.CLI.Display.Error</span></a></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">CLI.Error</span></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Display.Wait.html"><span class="hs-identifier">Fission.CLI.Display.Wait</span></a></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">CLI.Wait</span></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span class="hs-comment">-- | The command to attach to the CLI tree</span><span>
+</span><span id="line-22"></span><span id="local-6989586621680185986"><span class="annot"><a href="Fission.CLI.Command.Down.html#cmd"><span class="hs-identifier hs-type">cmd</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185986"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680185986"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680185986"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Command"><span class="hs-identifier hs-type">Command</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680185986"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-23"></span><span id="cmd"><span class="annot"><span class="annottext">cmd :: Command m CID ()
+</span><a href="Fission.CLI.Command.Down.html#cmd"><span class="hs-identifier hs-var hs-var">cmd</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WCommand :: forall (m :: * -&gt; *) input output.
+Text
+-&gt; Text
+-&gt; Parser input
+-&gt; (input -&gt; m output)
+-&gt; Command m input output
+</span><a href="Fission.CLI.Command.Types.html#%24WCommand"><span class="hs-identifier hs-type hs-type">Command</span></a></span><span>
+</span><span id="line-24"></span><span>  </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:command:Command :: Text
+</span><a href="Fission.CLI.Command.Types.html#%24sel%3Acommand%3ACommand"><span class="hs-identifier hs-var">command</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;down&quot;</span></span><span>
+</span><span id="line-25"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:description:Command :: Text
+</span><a href="Fission.CLI.Command.Types.html#%24sel%3Adescription%3ACommand"><span class="hs-identifier hs-var">description</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Pull data down to your system&quot;</span></span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:argParser:Command :: Parser CID
+</span><a href="Fission.CLI.Command.Types.html#%24sel%3AargParser%3ACommand"><span class="hs-identifier hs-var">argParser</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Parser CID
+</span><a href="Fission.CLI.Command.Down.html#arg"><span class="hs-identifier hs-var">arg</span></a></span><span>
+</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:handler:Command :: CID -&gt; m ()
+</span><a href="Fission.CLI.Command.Types.html#%24sel%3Ahandler%3ACommand"><span class="hs-identifier hs-var">handler</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID -&gt; m ()
+forall (m :: * -&gt; *).
+(MonadUnliftIO m, MonadLocalIPFS m, MonadLogger m) =&gt;
+CID -&gt; m ()
+</span><a href="Fission.CLI.Command.Down.html#down"><span class="hs-identifier hs-var">down</span></a></span><span>
+</span><span id="line-28"></span><span>  </span><span class="hs-special">}</span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span class="annot"><a href="Fission.CLI.Command.Down.html#arg"><span class="hs-identifier hs-type">arg</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span>
+</span><span id="line-31"></span><span id="arg"><span class="annot"><span class="annottext">arg :: Parser CID
+</span><a href="Fission.CLI.Command.Down.html#arg"><span class="hs-identifier hs-var hs-var">arg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Mod ArgumentFields CID -&gt; Parser CID
+forall s. IsString s =&gt; Mod ArgumentFields s -&gt; Parser s
+</span><span class="hs-identifier hs-var">strArgument</span></span><span> </span><span class="annot"><span class="annottext">(Mod ArgumentFields CID -&gt; Parser CID)
+-&gt; Mod ArgumentFields CID -&gt; Parser CID
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[Mod ArgumentFields CID] -&gt; Mod ArgumentFields CID
+forall a. Monoid a =&gt; [a] -&gt; a
+</span><span class="hs-identifier hs-var">mconcat</span></span><span>
+</span><span id="line-32"></span><span>  </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">String -&gt; Mod ArgumentFields CID
+forall (f :: * -&gt; *) a. HasMetavar f =&gt; String -&gt; Mod f a
+</span><span class="hs-identifier hs-var">metavar</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ContentID&quot;</span></span><span>
+</span><span id="line-33"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String -&gt; Mod ArgumentFields CID
+forall (f :: * -&gt; *) a. String -&gt; Mod f a
+</span><span class="hs-identifier hs-var">help</span></span><span>    </span><span class="annot"><span class="hs-string">&quot;The CID of the file or data you want to download&quot;</span></span><span>
+</span><span id="line-34"></span><span>  </span><span class="hs-special">]</span><span>
+</span><span id="line-35"></span><span>
+</span><span id="line-36"></span><span class="hs-comment">-- | Sync the current working directory to the server over IPFS</span><span>
+</span><span id="line-37"></span><span id="local-6989586621680186020"><span class="annot"><a href="Fission.CLI.Command.Down.html#down"><span class="hs-identifier hs-type">down</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680186020"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680186020"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680186020"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680186020"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-38"></span><span id="down"><span class="annot"><span class="annottext">down :: CID -&gt; m ()
+</span><a href="Fission.CLI.Command.Down.html#down"><span class="hs-identifier hs-var hs-var">down</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680185974"><span class="annot"><span class="annottext">identifier :: Text
+</span><a href="#local-6989586621680185974"><span class="hs-identifier hs-var">identifier</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-39"></span><span>  </span><span id="local-6989586621680185973"><span class="annot"><span class="annottext">Either Error ByteString
+</span><a href="#local-6989586621680185973"><span class="hs-identifier hs-var">getResult</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ByteString
+-&gt; m (Either Error ByteString) -&gt; m (Either Error ByteString)
+forall (m :: * -&gt; *) a. MonadUnliftIO m =&gt; ByteString -&gt; m a -&gt; m a
+</span><a href="Fission.CLI.Display.Wait.html#waitFor"><span class="hs-identifier hs-var">CLI.Wait.waitFor</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Retrieving Object...&quot;</span></span><span> </span><span class="annot"><span class="annottext">(m (Either Error ByteString) -&gt; m (Either Error ByteString))
+-&gt; m (Either Error ByteString) -&gt; m (Either Error ByteString)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span>
+</span><span id="line-40"></span><span>    </span><span class="annot"><span class="annottext">CID -&gt; m (Either Error ByteString)
+forall (m :: * -&gt; *).
+MonadLocalIPFS m =&gt;
+CID -&gt; m (Either Error ByteString)
+</span><span class="hs-identifier hs-var">IPFS.getFileOrDirectory</span></span><span> </span><span class="annot"><span class="annottext">(CID -&gt; m (Either Error ByteString))
+-&gt; CID -&gt; m (Either Error ByteString)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; CID
+</span><a href="Fission.CLI.Command.Down.html#handleIPNS"><span class="hs-identifier hs-var">handleIPNS</span></a></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680185974"><span class="hs-identifier hs-var">identifier</span></a></span><span>
+</span><span id="line-41"></span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Either Error ByteString
+</span><a href="#local-6989586621680185973"><span class="hs-identifier hs-var">getResult</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-43"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680185969"><span class="annot"><span class="annottext">_ok :: ByteString
+</span><a href="#local-6989586621680185969"><span class="hs-identifier hs-var">_ok</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; m ()
+forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
+</span><a href="Fission.CLI.Display.Success.html#putOk"><span class="hs-identifier hs-var">CLI.Success.putOk</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; m ()) -&gt; Text -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680185974"><span class="hs-identifier hs-var">identifier</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; Successfully downloaded!&quot;</span></span><span>
+</span><span id="line-44"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680185967"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680185967"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Text -&gt; m ()
+forall (m :: * -&gt; *) err.
+(MonadIO m, MonadLogger m, Show err) =&gt;
+err -&gt; Text -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-var">CLI.Error.put</span></a></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680185967"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Oh no! The download failed unexpectedly&quot;</span></span><span>
+</span><span id="line-45"></span><span>
+</span><span id="line-46"></span><span class="hs-comment">-- | Return an IPNS address if the identifier is a URI</span><span>
+</span><span id="line-47"></span><span class="annot"><a href="Fission.CLI.Command.Down.html#handleIPNS"><span class="hs-identifier hs-type">handleIPNS</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
+</span><span id="line-48"></span><span id="handleIPNS"><span class="annot"><span class="annottext">handleIPNS :: Text -&gt; CID
+</span><a href="Fission.CLI.Command.Down.html#handleIPNS"><span class="hs-identifier hs-var hs-var">handleIPNS</span></a></span></span><span> </span><span id="local-6989586621680185965"><span class="annot"><span class="annottext">identifier :: Text
+</span><a href="#local-6989586621680185965"><span class="hs-identifier hs-var">identifier</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-49"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">String -&gt; Maybe URI
+</span><span class="hs-identifier hs-var">URI.parseURI</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; String
+</span><span class="hs-identifier hs-var">Text.unpack</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680185965"><span class="hs-identifier hs-var">identifier</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-50"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-51"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; CID
+</span><span class="hs-identifier hs-var">CID</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680185965"><span class="hs-identifier hs-var">identifier</span></a></span><span>
+</span><span id="line-52"></span><span>
+</span><span id="line-53"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680185962"><span class="annot"><span class="annottext">uri :: URI
+</span><a href="#local-6989586621680185962"><span class="hs-identifier hs-var">uri</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-54"></span><span>      </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">URI -&gt; Maybe URIAuth
+</span><span class="hs-identifier hs-var hs-var">uriAuthority</span></span><span> </span><span class="annot"><span class="annottext">URI
+</span><a href="#local-6989586621680185962"><span class="hs-identifier hs-var">uri</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-55"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680185960"><span class="annot"><span class="annottext">auth :: URIAuth
+</span><a href="#local-6989586621680185960"><span class="hs-identifier hs-var">auth</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; CID
+</span><span class="hs-identifier hs-var">CID</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; CID) -&gt; Text -&gt; CID
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="hs-string">&quot;/ipns/&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Text
+</span><span class="hs-identifier hs-var">Text.pack</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">URIAuth -&gt; String
+</span><span class="hs-identifier hs-var hs-var">uriRegName</span></span><span> </span><span class="annot"><span class="annottext">URIAuth
+</span><a href="#local-6989586621680185960"><span class="hs-identifier hs-var">auth</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-56"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; CID
+</span><span class="hs-identifier hs-var">CID</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680185965"><span class="hs-identifier hs-var">identifier</span></a></span><span>
+</span><span id="line-57"></span></pre></body></html>

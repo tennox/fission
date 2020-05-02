@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Error.ActionNotAuthorized.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier">ActionNotAuthorized</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Error.Class.html"><span class="hs-identifier">Fission.Web.Error.Class</span></a></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">data</span><span> </span><span id="ActionNotAuthorized"><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-var">ActionNotAuthorized</span></a></span></span><span> </span><span id="local-6989586621680194537"><span class="annot"><a href="#local-6989586621680194537"><span class="hs-identifier hs-type">entity</span></a></span></span><span>
+</span><span id="line-10"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="ActionNotAuthorized"><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-var">ActionNotAuthorized</span></a></span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680194530"><span id="local-6989586621680194532"><span id="local-6989586621680194534"><span class="annot"><span class="annottext">Int -&gt; ActionNotAuthorized entity -&gt; ShowS
+[ActionNotAuthorized entity] -&gt; ShowS
+ActionNotAuthorized entity -&gt; String
+(Int -&gt; ActionNotAuthorized entity -&gt; ShowS)
+-&gt; (ActionNotAuthorized entity -&gt; String)
+-&gt; ([ActionNotAuthorized entity] -&gt; ShowS)
+-&gt; Show (ActionNotAuthorized entity)
+forall entity. Int -&gt; ActionNotAuthorized entity -&gt; ShowS
+forall entity. [ActionNotAuthorized entity] -&gt; ShowS
+forall entity. ActionNotAuthorized entity -&gt; String
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [ActionNotAuthorized entity] -&gt; ShowS
+$cshowList :: forall entity. [ActionNotAuthorized entity] -&gt; ShowS
+show :: ActionNotAuthorized entity -&gt; String
+$cshow :: forall entity. ActionNotAuthorized entity -&gt; String
+showsPrec :: Int -&gt; ActionNotAuthorized entity -&gt; ShowS
+$cshowsPrec :: forall entity. Int -&gt; ActionNotAuthorized entity -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-12"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680194525"><span id="local-6989586621680194527"><span class="annot"><span class="annottext">ActionNotAuthorized entity -&gt; ActionNotAuthorized entity -&gt; Bool
+(ActionNotAuthorized entity -&gt; ActionNotAuthorized entity -&gt; Bool)
+-&gt; (ActionNotAuthorized entity
+    -&gt; ActionNotAuthorized entity -&gt; Bool)
+-&gt; Eq (ActionNotAuthorized entity)
+forall entity.
+ActionNotAuthorized entity -&gt; ActionNotAuthorized entity -&gt; Bool
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: ActionNotAuthorized entity -&gt; ActionNotAuthorized entity -&gt; Bool
+$c/= :: forall entity.
+ActionNotAuthorized entity -&gt; ActionNotAuthorized entity -&gt; Bool
+== :: ActionNotAuthorized entity -&gt; ActionNotAuthorized entity -&gt; Bool
+$c== :: forall entity.
+ActionNotAuthorized entity -&gt; ActionNotAuthorized entity -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-13"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680194516"><span id="local-6989586621680194518"><span id="local-6989586621680194520"><span class="annot"><span class="annottext">Show (ActionNotAuthorized entity)
+Typeable (ActionNotAuthorized entity)
+(Typeable (ActionNotAuthorized entity),
+ Show (ActionNotAuthorized entity)) =&gt;
+(ActionNotAuthorized entity -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe (ActionNotAuthorized entity))
+-&gt; (ActionNotAuthorized entity -&gt; String)
+-&gt; Exception (ActionNotAuthorized entity)
+SomeException -&gt; Maybe (ActionNotAuthorized entity)
+ActionNotAuthorized entity -&gt; String
+ActionNotAuthorized entity -&gt; SomeException
+forall entity. Typeable entity =&gt; Show (ActionNotAuthorized entity)
+forall entity.
+Typeable entity =&gt;
+Typeable (ActionNotAuthorized entity)
+forall e.
+(Typeable e, Show e) =&gt;
+(e -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe e) -&gt; (e -&gt; String) -&gt; Exception e
+forall entity.
+Typeable entity =&gt;
+SomeException -&gt; Maybe (ActionNotAuthorized entity)
+forall entity.
+Typeable entity =&gt;
+ActionNotAuthorized entity -&gt; String
+forall entity.
+Typeable entity =&gt;
+ActionNotAuthorized entity -&gt; SomeException
+displayException :: ActionNotAuthorized entity -&gt; String
+$cdisplayException :: forall entity.
+Typeable entity =&gt;
+ActionNotAuthorized entity -&gt; String
+fromException :: SomeException -&gt; Maybe (ActionNotAuthorized entity)
+$cfromException :: forall entity.
+Typeable entity =&gt;
+SomeException -&gt; Maybe (ActionNotAuthorized entity)
+toException :: ActionNotAuthorized entity -&gt; SomeException
+$ctoException :: forall entity.
+Typeable entity =&gt;
+ActionNotAuthorized entity -&gt; SomeException
+$cp2Exception :: forall entity. Typeable entity =&gt; Show (ActionNotAuthorized entity)
+$cp1Exception :: forall entity.
+Typeable entity =&gt;
+Typeable (ActionNotAuthorized entity)
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span>
+</span><span id="line-14"></span><span>           </span><span class="hs-special">)</span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span id="local-6989586621680194514"><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680194511"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680194514"><span class="hs-identifier hs-type">entity</span></a></span><span class="hs-special">)</span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-17"></span><span>  </span><span id="local-6989586621680194509"><span class="annot"><span class="annottext">display :: ActionNotAuthorized entity -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span id="local-6989586621680194507"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680194507"><span class="hs-identifier hs-var">userId</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Action not authorized for user &quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; Utf8Builder
+forall a. Display a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680194507"><span class="hs-identifier hs-var">userId</span></a></span></span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span id="local-6989586621680194506"><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Error.Class.html#ToServerError"><span class="hs-identifier hs-type">ToServerError</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680194506"><span class="hs-identifier hs-type">entity</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680194503"><span class="annot"><span class="annottext">toServerError :: ActionNotAuthorized entity -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ServerError
+</span><span class="hs-identifier hs-var">err401</span></span></span><span>
+</span><span id="line-21"></span></pre></body></html>

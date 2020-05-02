@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# OPTIONS_GHC -fno-warn-orphans         #-}</span><span>
+</span><span id="line-2"></span><span class="hs-pragma">{-# OPTIONS_GHC -fno-warn-missing-methods #-}</span><span>
+</span><span id="line-3"></span><span>
+</span><span id="line-4"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Orphanage.UUID</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.UUID</span></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UUID</span></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Data.ByteString.Char8</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">BS8</span></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist.Sql</span></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680183501"><span class="annot"><span class="annottext">toPersistValue :: UUID -&gt; PersistValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span id="local-6989586621680183499"><span class="annot"><span class="annottext">uuid :: UUID
+</span><a href="#local-6989586621680183499"><span class="hs-identifier hs-var">uuid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-14"></span><span>    </span><span class="annot"><span class="annottext">UUID
+</span><a href="#local-6989586621680183499"><span class="hs-identifier hs-var">uuid</span></a></span><span>
+</span><span id="line-15"></span><span>      </span><span class="annot"><span class="annottext">UUID -&gt; (UUID -&gt; String) -&gt; String
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">UUID -&gt; String
+</span><span class="hs-identifier hs-var">UUID.toString</span></span><span>
+</span><span id="line-16"></span><span>      </span><span class="annot"><span class="annottext">String -&gt; (String -&gt; ByteString) -&gt; ByteString
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ByteString
+</span><span class="hs-identifier hs-var">BS8.pack</span></span><span>
+</span><span id="line-17"></span><span>      </span><span class="annot"><span class="annottext">ByteString -&gt; (ByteString -&gt; PersistValue) -&gt; PersistValue
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; PersistValue
+</span><span class="hs-identifier hs-var">PersistDbSpecific</span></span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span>  </span><span id="local-6989586621680183494"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text UUID
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">PersistDbSpecific</span></span><span> </span><span id="local-6989586621680183492"><span class="annot"><span class="annottext">txt :: ByteString
+</span><a href="#local-6989586621680183492"><span class="hs-identifier hs-var">txt</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-20"></span><span>    </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680183492"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><span id="line-21"></span><span>      </span><span class="annot"><span class="annottext">ByteString -&gt; (ByteString -&gt; String) -&gt; String
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; String
+</span><span class="hs-identifier hs-var">BS8.unpack</span></span><span>
+</span><span id="line-22"></span><span>      </span><span class="annot"><span class="annottext">String -&gt; (String -&gt; Maybe UUID) -&gt; Maybe UUID
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Maybe UUID
+</span><span class="hs-identifier hs-var">UUID.fromString</span></span><span>
+</span><span id="line-23"></span><span>      </span><span class="annot"><span class="annottext">Maybe UUID -&gt; (Maybe UUID -&gt; Either Text UUID) -&gt; Either Text UUID
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-24"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680183489"><span class="annot"><span class="annottext">x :: UUID
+</span><a href="#local-6989586621680183489"><span class="hs-identifier hs-var">x</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">UUID -&gt; Either Text UUID
+forall a b. b -&gt; Either a b
+</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">UUID
+</span><a href="#local-6989586621680183489"><span class="hs-identifier hs-var">x</span></a></span><span>
+</span><span id="line-25"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text UUID
+forall a b. a -&gt; Either a b
+</span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Invalid UUID&quot;</span></span><span>
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">fromPersistValue</span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-28"></span><span>    </span><span class="annot"><span class="annottext">Text -&gt; Either Text UUID
+forall a b. a -&gt; Either a b
+</span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Not PersistDBSpecific&quot;</span></span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-31"></span><span>  </span><span id="local-6989586621680183485"><span class="annot"><span class="annottext">sqlType :: Proxy UUID -&gt; SqlType
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; SqlType
+</span><span class="hs-identifier hs-var">SqlOther</span></span><span> </span><span class="annot"><span class="hs-string">&quot;uuid&quot;</span></span><span>
+</span><span id="line-32"></span></pre></body></html>

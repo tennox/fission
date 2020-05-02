@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.User.Registration.Types</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier">Registration</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span> </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Swagger</span></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">email</span></span><span class="hs-special">)</span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.User.Email.Types.html"><span class="hs-identifier">Fission.User.Email.Types</span></a></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html"><span class="hs-identifier">Fission.User.Username.Types</span></a></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html"><span class="hs-identifier">Fission.User.Password.Types</span></a></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">data</span><span> </span><span id="Registration"><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier hs-var">Registration</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Registration"><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier hs-var">Registration</span></a></span></span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Ausername%3ARegistration"><span class="annot"><span class="annottext">Registration -&gt; Username
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Ausername%3ARegistration"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
+</span><span id="line-12"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Aemail%3ARegistration"><span class="annot"><span class="annottext">Registration -&gt; Email
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Aemail%3ARegistration"><span class="hs-identifier hs-var hs-var">email</span></a></span></span><span>    </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.User.Email.Types.html#Email"><span class="hs-identifier hs-type">Email</span></a></span><span>
+</span><span id="line-13"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Apassword%3ARegistration"><span class="annot"><span class="annottext">Registration -&gt; Maybe Password
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Apassword%3ARegistration"><span class="hs-identifier hs-var hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-14"></span><span>  </span><span class="hs-special">}</span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188314"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier hs-type">Registration</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-17"></span><span>  </span><span id="local-6989586621680188312"><span class="annot"><span class="annottext">arbitrary :: Gen Registration
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-18"></span><span>    </span><span id="local-6989586621680188310"><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680188310"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Username
+forall a. Arbitrary a =&gt; Gen a
+</span><span class="hs-identifier hs-var">arbitrary</span></span><span>
+</span><span id="line-19"></span><span>    </span><span id="local-6989586621680188309"><span class="annot"><span class="annottext">Maybe Password
+</span><a href="#local-6989586621680188309"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen (Maybe Password)
+forall a. Arbitrary a =&gt; Gen a
+</span><span class="hs-identifier hs-var">arbitrary</span></span><span>
+</span><span id="line-20"></span><span>    </span><span id="local-6989586621680188308"><span class="annot"><span class="annottext">Email
+</span><a href="#local-6989586621680188308"><span class="hs-identifier hs-var">email</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Email
+forall a. Arbitrary a =&gt; Gen a
+</span><span class="hs-identifier hs-var">arbitrary</span></span><span>
+</span><span id="line-21"></span><span>
+</span><span id="line-22"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">$WRegistration :: Username -&gt; Email -&gt; Maybe Password -&gt; Registration
+</span><a href="Fission.User.Registration.Types.html#%24WRegistration"><span class="hs-identifier hs-type hs-type">Registration</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188300"><span id="local-6989586621680188302"><span id="local-6989586621680188304"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier hs-type">Registration</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-25"></span><span>  </span><span id="local-6989586621680188298"><span class="annot"><span class="annottext">toJSON :: Registration -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier hs-type">Registration</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:username:Registration :: Registration -&gt; Username
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Ausername%3ARegistration"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span id="local-6989586621680188295"><span class="annot"><span class="annottext">username' :: Text
+</span><a href="#local-6989586621680188295"><span class="hs-identifier hs-var">username'</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:email:Registration :: Registration -&gt; Email
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Aemail%3ARegistration"><span class="hs-identifier hs-var">email</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.User.Email.Types.html#Email"><span class="hs-identifier hs-type">Email</span></a></span><span> </span><span id="local-6989586621680188293"><span class="annot"><span class="annottext">email' :: Text
+</span><a href="#local-6989586621680188293"><span class="hs-identifier hs-var">email'</span></a></span></span><span> </span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-26"></span><span>    </span><span class="annot"><span class="annottext">Object -&gt; Value
+</span><span class="hs-identifier hs-var">Object</span></span><span> </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680188295"><span class="hs-identifier hs-var">username'</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-27"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;email&quot;</span></span><span class="hs-special">,</span><span>    </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680188293"><span class="hs-identifier hs-var">email'</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-28"></span><span>           </span><span class="hs-special">]</span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188288"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier hs-type">Registration</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-31"></span><span>  </span><span id="local-6989586621680188286"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Registration
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+-&gt; (Object -&gt; Parser Registration) -&gt; Value -&gt; Parser Registration
+forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Registration&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680188283"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680188283"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-32"></span><span>    </span><span id="local-6989586621680188282"><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680188282"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680188283"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Username
+forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
+</span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span>
+</span><span id="line-33"></span><span>    </span><span id="local-6989586621680188280"><span class="annot"><span class="annottext">Maybe Password
+</span><a href="#local-6989586621680188280"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680188283"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Password)
+forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
+</span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;password&quot;</span></span><span>
+</span><span id="line-34"></span><span>    </span><span id="local-6989586621680188278"><span class="annot"><span class="annottext">Email
+</span><a href="#local-6989586621680188278"><span class="hs-identifier hs-var">email</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680188283"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Email
+forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
+</span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;email&quot;</span></span><span>
+</span><span id="line-35"></span><span>
+</span><span id="line-36"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">$WRegistration :: Username -&gt; Email -&gt; Maybe Password -&gt; Registration
+</span><a href="Fission.User.Registration.Types.html#%24WRegistration"><span class="hs-identifier hs-type hs-type">Registration</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
+</span><span id="line-37"></span><span>
+</span><span id="line-38"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.User.Registration.Types.html#Registration"><span class="hs-identifier hs-type">Registration</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-39"></span><span>  </span><span id="local-6989586621680188275"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Registration -&gt; Declare (Definitions Schema) NamedSchema
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-40"></span><span>    </span><span id="local-6989586621680188273"><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680188273"><span class="hs-identifier hs-var">username'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
+forall a.
+ToSchema a =&gt;
+Proxy a -&gt; Declare (Definitions Schema) (Referenced Schema)
+</span><span class="hs-identifier hs-var">declareSchemaRef</span></span><span> </span><span class="annot"><span class="annottext">(Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema))
+-&gt; Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Proxy Text
+forall k (t :: k). Proxy t
+</span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
+</span><span id="line-41"></span><span>    </span><span id="local-6989586621680188270"><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680188270"><span class="hs-identifier hs-var">email'</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
+forall a.
+ToSchema a =&gt;
+Proxy a -&gt; Declare (Definitions Schema) (Referenced Schema)
+</span><span class="hs-identifier hs-var">declareSchemaRef</span></span><span> </span><span class="annot"><span class="annottext">(Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema))
+-&gt; Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Proxy Text
+forall k (t :: k). Proxy t
+</span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
+</span><span id="line-42"></span><span>
+</span><span id="line-43"></span><span>    </span><span class="annot"><span class="annottext">Schema
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span>
+</span><span id="line-44"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (SwaggerType 'SwaggerKindSchema)
+ -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasType s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">type_</span></span><span>      </span><span class="annot"><span class="annottext">((Maybe (SwaggerType 'SwaggerKindSchema)
+  -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; SwaggerType 'SwaggerKindSchema -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">SwaggerType 'SwaggerKindSchema
+</span><span class="hs-identifier hs-var">SwaggerObject</span></span><span>
+</span><span id="line-45"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(InsOrdHashMap Text (Referenced Schema)
+ -&gt; Identity (InsOrdHashMap Text (Referenced Schema)))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasProperties s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">properties</span></span><span> </span><span class="annot"><span class="annottext">((InsOrdHashMap Text (Referenced Schema)
+  -&gt; Identity (InsOrdHashMap Text (Referenced Schema)))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; InsOrdHashMap Text (Referenced Schema) -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a b -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">.~</span></span><span>
+</span><span id="line-46"></span><span>           </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680188273"><span class="hs-identifier hs-var">username'</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-47"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;email&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680188270"><span class="hs-identifier hs-var">email'</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-48"></span><span>           </span><span class="hs-special">]</span><span>
+</span><span id="line-49"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">([Text] -&gt; Identity [Text]) -&gt; Schema -&gt; Identity Schema
+forall s a. HasRequired s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">required</span></span><span> </span><span class="annot"><span class="annottext">(([Text] -&gt; Identity [Text]) -&gt; Schema -&gt; Identity Schema)
+-&gt; [Text] -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a b -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">.~</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;email&quot;</span></span><span class="hs-special">]</span><span>
+</span><span id="line-50"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe Text -&gt; Identity (Maybe Text)) -&gt; Schema -&gt; Identity Schema
+forall s a. HasDescription s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">description</span></span><span> </span><span class="annot"><span class="annottext">((Maybe Text -&gt; Identity (Maybe Text))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; Text -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span>
+</span><span id="line-51"></span><span>           </span><span class="annot"><span class="hs-string">&quot;The information that a user needs to provide to login/register.&quot;</span></span><span>
+</span><span id="line-52"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe Value -&gt; Identity (Maybe Value))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasExample s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">example</span></span><span> </span><span class="annot"><span class="annottext">((Maybe Value -&gt; Identity (Maybe Value))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; Value -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">Registration -&gt; Value
+forall a. ToJSON a =&gt; a -&gt; Value
+</span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">$WRegistration :: Username -&gt; Email -&gt; Maybe Password -&gt; Registration
+</span><a href="Fission.User.Registration.Types.html#%24WRegistration"><span class="hs-identifier hs-type hs-type">Registration</span></a></span><span>
+</span><span id="line-53"></span><span>           </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:username:Registration :: Username
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Ausername%3ARegistration"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span>
+</span><span id="line-54"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:email:Registration :: Email
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Aemail%3ARegistration"><span class="hs-identifier hs-var">email</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;alice@example.com&quot;</span></span><span>
+</span><span id="line-55"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:password:Registration :: Maybe Password
+</span><a href="Fission.User.Registration.Types.html#%24sel%3Apassword%3ARegistration"><span class="hs-identifier hs-var">password</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Password
+forall a. Maybe a
+</span><span class="hs-identifier hs-var">Nothing</span></span><span>
+</span><span id="line-56"></span><span>           </span><span class="hs-special">}</span><span>
+</span><span id="line-57"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; NamedSchema) -&gt; NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Schema -&gt; NamedSchema
+</span><span class="hs-identifier hs-var">NamedSchema</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Registration&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-58"></span><span>      </span><span class="annot"><span class="annottext">NamedSchema
+-&gt; (NamedSchema -&gt; Declare (Definitions Schema) NamedSchema)
+-&gt; Declare (Definitions Schema) NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">NamedSchema -&gt; Declare (Definitions Schema) NamedSchema
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span>
+</span><span id="line-59"></span></pre></body></html>

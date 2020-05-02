@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Web.Middleware.CORS</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#allowedMethods"><span class="hs-identifier">allowedMethods</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#allowedRequestHeaders"><span class="hs-identifier">allowedRequestHeaders</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#middleware"><span class="hs-identifier">middleware</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#policy"><span class="hs-identifier">policy</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.HTTP.Types</span></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.Wai</span></span><span>                 </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">WAI</span></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.Wai.Middleware.Cors</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#middleware"><span class="hs-identifier hs-type">middleware</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">WAI.Middleware</span></span><span>
+</span><span id="line-15"></span><span id="middleware"><span class="annot"><span class="annottext">middleware :: Middleware
+</span><a href="Fission.Web.Middleware.CORS.html#middleware"><span class="hs-identifier hs-var hs-var">middleware</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Request -&gt; Maybe CorsResourcePolicy) -&gt; Middleware
+</span><span class="hs-identifier hs-var">cors</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">CorsResourcePolicy -&gt; Maybe CorsResourcePolicy
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">CorsResourcePolicy
+</span><a href="Fission.Web.Middleware.CORS.html#policy"><span class="hs-identifier hs-var">policy</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#policy"><span class="hs-identifier hs-type">policy</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CorsResourcePolicy</span></span><span>
+</span><span id="line-18"></span><span id="policy"><span class="annot"><span class="annottext">policy :: CorsResourcePolicy
+</span><a href="Fission.Web.Middleware.CORS.html#policy"><span class="hs-identifier hs-var hs-var">policy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CorsResourcePolicy
+</span><span class="hs-identifier hs-var">simpleCorsResourcePolicy</span></span><span>
+</span><span id="line-19"></span><span>  </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">corsMethods :: [Method]
+</span><span class="hs-identifier hs-var">corsMethods</span></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Method]
+</span><a href="Fission.Web.Middleware.CORS.html#allowedMethods"><span class="hs-identifier hs-var">allowedMethods</span></a></span><span>
+</span><span id="line-20"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">corsRequestHeaders :: [HeaderName]
+</span><span class="hs-identifier hs-var">corsRequestHeaders</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[HeaderName]
+</span><a href="Fission.Web.Middleware.CORS.html#allowedRequestHeaders"><span class="hs-identifier hs-var">allowedRequestHeaders</span></a></span><span>
+</span><span id="line-21"></span><span>  </span><span class="hs-special">}</span><span>
+</span><span id="line-22"></span><span>
+</span><span id="line-23"></span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#allowedMethods"><span class="hs-identifier hs-type">allowedMethods</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Method</span></span><span class="hs-special">]</span><span>
+</span><span id="line-24"></span><span id="allowedMethods"><span class="annot"><span class="annottext">allowedMethods :: [Method]
+</span><a href="Fission.Web.Middleware.CORS.html#allowedMethods"><span class="hs-identifier hs-var hs-var">allowedMethods</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><span class="hs-identifier hs-var">methodGet</span></span><span>
+</span><span id="line-25"></span><span>                 </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><span class="hs-identifier hs-var">methodDelete</span></span><span>
+</span><span id="line-26"></span><span>                 </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><span class="hs-identifier hs-var">methodHead</span></span><span>
+</span><span id="line-27"></span><span>                 </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><span class="hs-identifier hs-var">methodOptions</span></span><span>
+</span><span id="line-28"></span><span>                 </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><span class="hs-identifier hs-var">methodPatch</span></span><span>
+</span><span id="line-29"></span><span>                 </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><span class="hs-identifier hs-var">methodPost</span></span><span>
+</span><span id="line-30"></span><span>                 </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [Method]
+Method
+</span><span class="hs-identifier hs-var">methodPut</span></span><span>
+</span><span id="line-31"></span><span>                 </span><span class="hs-special">]</span><span>
+</span><span id="line-32"></span><span>
+</span><span id="line-33"></span><span class="annot"><a href="Fission.Web.Middleware.CORS.html#allowedRequestHeaders"><span class="hs-identifier hs-type">allowedRequestHeaders</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">HeaderName</span></span><span class="hs-special">]</span><span>
+</span><span id="line-34"></span><span id="allowedRequestHeaders"><span class="annot"><span class="annottext">allowedRequestHeaders :: [HeaderName]
+</span><a href="Fission.Web.Middleware.CORS.html#allowedRequestHeaders"><span class="hs-identifier hs-var hs-var">allowedRequestHeaders</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">Item [HeaderName]
+HeaderName
+</span><span class="hs-identifier hs-var">hAuthorization</span></span><span>
+</span><span id="line-35"></span><span>                        </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [HeaderName]
+HeaderName
+</span><span class="hs-identifier hs-var">hContentEncoding</span></span><span>
+</span><span id="line-36"></span><span>                        </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [HeaderName]
+HeaderName
+</span><span class="hs-identifier hs-var">hContentType</span></span><span>
+</span><span id="line-37"></span><span>                        </span><span class="hs-special">]</span><span>
+</span><span id="line-38"></span></pre></body></html>

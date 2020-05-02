@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- | Fission-specific AWS types</span><span>
+</span><span id="line-2"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.AWS.Types</span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier">ZoneID</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier">Route53MockEnabled</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html"><span class="hs-identifier">Fission.AWS.Zone.Types</span></a></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">newtype</span><span> </span><span id="Route53MockEnabled"><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-var">Route53MockEnabled</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Route53MockEnabled"><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-var">Route53MockEnabled</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680186318"><span id="local-6989586621680186320"><span id="local-6989586621680186322"><span class="annot"><span class="annottext">Int -&gt; Route53MockEnabled -&gt; ShowS
+[Route53MockEnabled] -&gt; ShowS
+Route53MockEnabled -&gt; String
+(Int -&gt; Route53MockEnabled -&gt; ShowS)
+-&gt; (Route53MockEnabled -&gt; String)
+-&gt; ([Route53MockEnabled] -&gt; ShowS)
+-&gt; Show Route53MockEnabled
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Route53MockEnabled] -&gt; ShowS
+$cshowList :: [Route53MockEnabled] -&gt; ShowS
+show :: Route53MockEnabled -&gt; String
+$cshow :: Route53MockEnabled -&gt; String
+showsPrec :: Int -&gt; Route53MockEnabled -&gt; ShowS
+$cshowsPrec :: Int -&gt; Route53MockEnabled -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186313"><span id="local-6989586621680186315"><span class="annot"><span class="annottext">Route53MockEnabled -&gt; Route53MockEnabled -&gt; Bool
+(Route53MockEnabled -&gt; Route53MockEnabled -&gt; Bool)
+-&gt; (Route53MockEnabled -&gt; Route53MockEnabled -&gt; Bool)
+-&gt; Eq Route53MockEnabled
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Route53MockEnabled -&gt; Route53MockEnabled -&gt; Bool
+$c/= :: Route53MockEnabled -&gt; Route53MockEnabled -&gt; Bool
+== :: Route53MockEnabled -&gt; Route53MockEnabled -&gt; Bool
+$c== :: Route53MockEnabled -&gt; Route53MockEnabled -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186309"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-type">Route53MockEnabled</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680186307"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Route53MockEnabled
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+-&gt; (Bool -&gt; Parser Route53MockEnabled)
+-&gt; Value
+-&gt; Parser Route53MockEnabled
+forall a. String -&gt; (Bool -&gt; Parser a) -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">withBool</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AWS.Route53MockEnabled&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680186304"><span class="annot"><span class="annottext">val :: Bool
+</span><a href="#local-6989586621680186304"><span class="hs-identifier hs-var">val</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-15"></span><span>    </span><span class="annot"><span class="annottext">Bool -&gt; Route53MockEnabled
+</span><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-var">Route53MockEnabled</span></a></span><span> </span><span class="annot"><span class="annottext">(Bool -&gt; Route53MockEnabled)
+-&gt; Parser Bool -&gt; Parser Route53MockEnabled
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Value -&gt; Parser Bool
+forall a. FromJSON a =&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">parseJSON</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Bool -&gt; Value
+</span><span class="hs-identifier hs-var">Bool</span></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680186304"><span class="hs-identifier hs-var">val</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-16"></span></pre></body></html>

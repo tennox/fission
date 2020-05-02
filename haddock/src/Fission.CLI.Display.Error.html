@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- | File sync, IPFS-style</span><span>
+</span><span id="line-2"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI.Display.Error</span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier">put</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Display.Error.html#put%27"><span class="hs-identifier">put'</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Display.Error.html#putErrOr"><span class="hs-identifier">putErrOr</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Display.Error.html#notConnected"><span class="hs-identifier">notConnected</span></a></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">System.Console.ANSI</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">ANSI</span></span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Internal.UTF8.html"><span class="hs-identifier">Fission.Internal.UTF8</span></a></span><span>           </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UTF8</span></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.html"><span class="hs-identifier">Fission.CLI.Environment.Partial</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Env.Partial</span></span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-comment">-- | Display a given error to the user and log an error to the debug log.</span><span>
+</span><span id="line-16"></span><span id="local-6989586621680185766"><span id="local-6989586621680185767"><span class="annot"><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-type">put</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185767"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680185767"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="#local-6989586621680185766"><span class="hs-identifier hs-type">err</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185766"><span class="hs-identifier hs-type">err</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185767"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span></span><span>
+</span><span id="line-17"></span><span id="put"><span class="annot"><span class="annottext">put :: err -&gt; Text -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-var hs-var">put</span></a></span></span><span> </span><span id="local-6989586621680185748"><span class="annot"><span class="annottext">err :: err
+</span><a href="#local-6989586621680185748"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span id="local-6989586621680185747"><span class="annot"><span class="annottext">msg :: Text
+</span><a href="#local-6989586621680185747"><span class="hs-identifier hs-var">msg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-18"></span><span>  </span><span class="annot"><span class="annottext">Utf8Builder -&gt; m ()
+forall msg (m :: * -&gt; *).
+(ToLogStr msg, MonadLogger m) =&gt;
+msg -&gt; m ()
+</span><a href="Fission.Internal.Log.html#logDebug"><span class="hs-identifier hs-var">logDebug</span></a></span><span> </span><span class="annot"><span class="annottext">(Utf8Builder -&gt; m ()) -&gt; Utf8Builder -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">err -&gt; Utf8Builder
+forall a. Show a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">displayShow</span></span><span> </span><span class="annot"><span class="annottext">err
+</span><a href="#local-6989586621680185748"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-19"></span><span>  </span><span class="annot"><span class="annottext">IO () -&gt; m ()
+forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
+</span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; m ()) -&gt; IO () -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[SGR] -&gt; IO ()
+</span><span class="hs-identifier hs-var">ANSI.setSGR</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">ConsoleLayer -&gt; ColorIntensity -&gt; Color -&gt; SGR
+</span><span class="hs-identifier hs-var">ANSI.SetColor</span></span><span> </span><span class="annot"><span class="annottext">ConsoleLayer
+</span><span class="hs-identifier hs-var">ANSI.Foreground</span></span><span> </span><span class="annot"><span class="annottext">ColorIntensity
+</span><span class="hs-identifier hs-var">ANSI.Vivid</span></span><span> </span><span class="annot"><span class="annottext">Color
+</span><span class="hs-identifier hs-var">ANSI.Red</span></span><span class="hs-special">]</span><span>
+</span><span id="line-20"></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; m ()
+forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
+</span><a href="Fission.Internal.UTF8.html#putText"><span class="hs-identifier hs-var">UTF8.putText</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; m ()) -&gt; Text -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="hs-string">&quot;&#128683; &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680185747"><span class="hs-identifier hs-var">msg</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;\n&quot;</span></span><span>
+</span><span id="line-21"></span><span>  </span><span class="annot"><span class="annottext">IO () -&gt; m ()
+forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
+</span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; m ()) -&gt; IO () -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[SGR] -&gt; IO ()
+</span><span class="hs-identifier hs-var">ANSI.setSGR</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Item [SGR]
+SGR
+</span><span class="hs-identifier hs-var">ANSI.Reset</span></span><span class="hs-special">]</span><span>
+</span><span id="line-22"></span><span>
+</span><span id="line-23"></span><span class="hs-comment">-- | Display a generic error message to the user and log an error to the debug log.</span><span>
+</span><span id="line-24"></span><span id="local-6989586621680185760"><span id="local-6989586621680185761"><span class="annot"><a href="Fission.CLI.Display.Error.html#put%27"><span class="hs-identifier hs-type">put'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185761"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680185761"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="#local-6989586621680185760"><span class="hs-identifier hs-type">err</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185760"><span class="hs-identifier hs-type">err</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185761"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span></span><span>
+</span><span id="line-25"></span><span id="put%27"><span class="annot"><span class="annottext">put' :: err -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#put%27"><span class="hs-identifier hs-var hs-var">put'</span></a></span></span><span> </span><span id="local-6989586621680185736"><span class="annot"><span class="annottext">err :: err
+</span><a href="#local-6989586621680185736"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">err -&gt; Text -&gt; m ()
+forall (m :: * -&gt; *) err.
+(MonadIO m, MonadLogger m, Show err) =&gt;
+err -&gt; Text -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-var">put</span></a></span><span> </span><span class="annot"><span class="annottext">err
+</span><a href="#local-6989586621680185736"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; m ()) -&gt; Text -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[Text] -&gt; Text
+forall a. Monoid a =&gt; [a] -&gt; a
+</span><span class="hs-identifier hs-var">mconcat</span></span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;Something went wrong. Please try again or file a bug report with &quot;</span></span><span>
+</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;Fission support at https://github.com/fission-suite/fission/issues/new&quot;</span></span><span>
+</span><span id="line-28"></span><span>  </span><span class="hs-special">]</span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span id="local-6989586621680185733"><span id="local-6989586621680185734"><span id="local-6989586621680185735"><span class="annot"><a href="Fission.CLI.Display.Error.html#putErrOr"><span class="hs-identifier hs-type">putErrOr</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185735"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680185735"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="#local-6989586621680185734"><span class="hs-identifier hs-type">err</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680185733"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185735"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="#local-6989586621680185734"><span class="hs-identifier hs-type">err</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680185733"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185735"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span></span></span><span>
+</span><span id="line-31"></span><span id="putErrOr"><span class="annot"><span class="annottext">putErrOr :: (t -&gt; m ()) -&gt; Either err t -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#putErrOr"><span class="hs-identifier hs-var hs-var">putErrOr</span></a></span></span><span> </span><span id="local-6989586621680185732"><span class="annot"><span class="annottext">cont :: t -&gt; m ()
+</span><a href="#local-6989586621680185732"><span class="hs-identifier hs-var">cont</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-32"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680185731"><span class="annot"><span class="annottext">err :: err
+</span><a href="#local-6989586621680185731"><span class="hs-identifier hs-var">err</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">err -&gt; m ()
+forall (m :: * -&gt; *) err.
+(MonadIO m, MonadLogger m, Show err) =&gt;
+err -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#put%27"><span class="hs-identifier hs-var">put'</span></a></span><span> </span><span class="annot"><span class="annottext">err
+</span><a href="#local-6989586621680185731"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-33"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680185730"><span class="annot"><span class="annottext">val :: t
+</span><a href="#local-6989586621680185730"><span class="hs-identifier hs-var">val</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">t -&gt; m ()
+</span><a href="#local-6989586621680185732"><span class="hs-identifier hs-var">cont</span></a></span><span> </span><span class="annot"><span class="annottext">t
+</span><a href="#local-6989586621680185730"><span class="hs-identifier hs-var">val</span></a></span><span>
+</span><span id="line-34"></span><span>
+</span><span id="line-35"></span><span class="hs-comment">-- | Display an error message to a user encouraging them to run `fission setup`</span><span>
+</span><span id="line-36"></span><span class="hs-comment">--   Error depends on if they have basic auth saved somewhere (ie if they are an existing user)</span><span>
+</span><span id="line-37"></span><span id="local-6989586621680185728"><span id="local-6989586621680185729"><span class="annot"><a href="Fission.CLI.Display.Error.html#notConnected"><span class="hs-identifier hs-type">notConnected</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185729"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680185729"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="annot"><a href="#local-6989586621680185728"><span class="hs-identifier hs-type">err</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185728"><span class="hs-identifier hs-type">err</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span>  </span><span class="annot"><a href="#local-6989586621680185729"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span></span><span>
+</span><span id="line-38"></span><span id="notConnected"><span class="annot"><span class="annottext">notConnected :: err -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#notConnected"><span class="hs-identifier hs-var hs-var">notConnected</span></a></span></span><span> </span><span id="local-6989586621680185726"><span class="annot"><span class="annottext">err :: err
+</span><a href="#local-6989586621680185726"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-39"></span><span>  </span><span class="annot"><span class="annottext">m (Maybe BasicAuthData)
+forall (m :: * -&gt; *). MonadIO m =&gt; m (Maybe BasicAuthData)
+</span><a href="Fission.CLI.Environment.Partial.html#findBasicAuth"><span class="hs-identifier hs-var">Env.Partial.findBasicAuth</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe BasicAuthData) -&gt; (Maybe BasicAuthData -&gt; m ()) -&gt; m ()
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-40"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-41"></span><span>      </span><span class="annot"><span class="annottext">err -&gt; Text -&gt; m ()
+forall (m :: * -&gt; *) err.
+(MonadIO m, MonadLogger m, Show err) =&gt;
+err -&gt; Text -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-var">put</span></a></span><span> </span><span class="annot"><span class="annottext">err
+</span><a href="#local-6989586621680185726"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Not logged in yet! Try running `fission setup`&quot;</span></span><span>
+</span><span id="line-42"></span><span>     </span><span>
+</span><span id="line-43"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680185724"><span class="annot"><span class="annottext">_auth :: BasicAuthData
+</span><a href="#local-6989586621680185724"><span class="hs-identifier hs-var">_auth</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-44"></span><span>      </span><span class="annot"><span class="annottext">err -&gt; Text -&gt; m ()
+forall (m :: * -&gt; *) err.
+(MonadIO m, MonadLogger m, Show err) =&gt;
+err -&gt; Text -&gt; m ()
+</span><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-var">put</span></a></span><span> </span><span class="annot"><span class="annottext">err
+</span><a href="#local-6989586621680185726"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; m ()) -&gt; Text -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[Text] -&gt; Text
+forall a. Monoid a =&gt; [a] -&gt; a
+</span><span class="hs-identifier hs-var">mconcat</span></span><span>
+</span><span id="line-45"></span><span>        </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;Thanks for updating fission! The CLI now uses private key authentication.\n&quot;</span></span><span>
+</span><span id="line-46"></span><span>        </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;Upgrade by running `fission setup`&quot;</span></span><span>
+</span><span id="line-47"></span><span>        </span><span class="hs-special">]</span><span>
+</span><span id="line-48"></span></pre></body></html>

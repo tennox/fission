@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- | Username errors</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.User.Username.Error</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier">Invalid</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.Server</span></span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Error.html"><span class="hs-identifier">Fission.Web.Error</span></a></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">data</span><span> </span><span id="Invalid"><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-var">Invalid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Invalid"><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-var">Invalid</span></a></span></span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680193579"><span id="local-6989586621680193581"><span id="local-6989586621680193583"><span class="annot"><span class="annottext">Int -&gt; Invalid -&gt; ShowS
+[Invalid] -&gt; ShowS
+Invalid -&gt; String
+(Int -&gt; Invalid -&gt; ShowS)
+-&gt; (Invalid -&gt; String) -&gt; ([Invalid] -&gt; ShowS) -&gt; Show Invalid
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Invalid] -&gt; ShowS
+$cshowList :: [Invalid] -&gt; ShowS
+show :: Invalid -&gt; String
+$cshow :: Invalid -&gt; String
+showsPrec :: Int -&gt; Invalid -&gt; ShowS
+$cshowsPrec :: Int -&gt; Invalid -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-12"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680193574"><span id="local-6989586621680193576"><span class="annot"><span class="annottext">Invalid -&gt; Invalid -&gt; Bool
+(Invalid -&gt; Invalid -&gt; Bool)
+-&gt; (Invalid -&gt; Invalid -&gt; Bool) -&gt; Eq Invalid
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Invalid -&gt; Invalid -&gt; Bool
+$c/= :: Invalid -&gt; Invalid -&gt; Bool
+== :: Invalid -&gt; Invalid -&gt; Bool
+$c== :: Invalid -&gt; Invalid -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-13"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680193565"><span id="local-6989586621680193567"><span id="local-6989586621680193569"><span class="annot"><span class="annottext">Show Invalid
+Typeable Invalid
+(Typeable Invalid, Show Invalid) =&gt;
+(Invalid -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe Invalid)
+-&gt; (Invalid -&gt; String)
+-&gt; Exception Invalid
+SomeException -&gt; Maybe Invalid
+Invalid -&gt; String
+Invalid -&gt; SomeException
+forall e.
+(Typeable e, Show e) =&gt;
+(e -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe e) -&gt; (e -&gt; String) -&gt; Exception e
+displayException :: Invalid -&gt; String
+$cdisplayException :: Invalid -&gt; String
+fromException :: SomeException -&gt; Maybe Invalid
+$cfromException :: SomeException -&gt; Maybe Invalid
+toException :: Invalid -&gt; SomeException
+$ctoException :: Invalid -&gt; SomeException
+$cp2Exception :: Show Invalid
+$cp1Exception :: Typeable Invalid
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span>
+</span><span id="line-14"></span><span>           </span><span class="hs-special">)</span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680193561"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-type">Invalid</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-17"></span><span>  </span><span id="local-6989586621680193559"><span class="annot"><span class="annottext">display :: Invalid -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-type">Invalid</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Invalid username (must be alphanumeric separated with hyphens)&quot;</span></span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Error.Class.html#ToServerError"><span class="hs-identifier hs-type">ToServerError</span></a></span><span> </span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-type">Invalid</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680193555"><span class="annot"><span class="annottext">toServerError :: Invalid -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-type">Invalid</span></a></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-21"></span><span>    </span><span class="annot"><span class="annottext">ServerError
+</span><span class="hs-identifier hs-var">err422</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
+</span><a href="#local-6989586621680193552"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Invalid -&gt; ByteString
+forall a. Display a =&gt; a -&gt; ByteString
+</span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">Invalid
+</span><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-var">Invalid</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-22"></span></pre></body></html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# OPTIONS_GHC -fno-warn-orphans #-}</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Orphanage.ByteString.Lazy</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.ByteString.Lazy</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Lazy</span></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Lazy.ByteString</span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span>  </span><span id="local-6989586621680183899"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; ByteString -&gt; ByteString
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680183897"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
+</span><a href="#local-6989586621680183897"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
+forall a. a -&gt; a
+</span><a href="Fission.Prelude.html#identity"><span class="hs-identifier hs-var">identity</span></a></span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680183893"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680183891"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ByteString
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser ByteString) -&gt; Value -&gt; Parser ByteString
+forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ByteString&quot;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString -&gt; Parser ByteString
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Parser ByteString)
+-&gt; (Text -&gt; ByteString) -&gt; Text -&gt; Parser ByteString
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
+</span><span class="hs-identifier hs-var">encodeUtf8</span></span><span class="hs-special">)</span><span>
+</span><span id="line-15"></span></pre></body></html>

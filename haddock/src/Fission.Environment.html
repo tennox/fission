@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- | Environment variables</span><span>
+</span><span id="line-2"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Environment</span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Environment.html#withFlag"><span class="hs-identifier">withFlag</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Environment.html#withEnv"><span class="hs-identifier">withEnv</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Environment.html#getFlag"><span class="hs-identifier">getFlag</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Environment.html#getEnv"><span class="hs-identifier">getEnv</span></a></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Environment.html#getFlagWithDefault"><span class="hs-identifier">getFlagWithDefault</span></a></span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Environment.html#.%21~"><span class="hs-operator">(.!~)</span></a></span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">RIO.Char</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">toLower</span></span><span class="hs-special">)</span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.Environment</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">lookupEnv</span></span><span class="hs-special">)</span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.Envy</span></span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Internal.Bool.html"><span class="hs-identifier">Fission.Internal.Bool</span></a></span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span class="hs-comment">-- | Get an environment variable. 'error's if not found.</span><span>
+</span><span id="line-19"></span><span id="local-6989586621680184970"><span class="annot"><a href="Fission.Environment.html#getEnv"><span class="hs-identifier hs-type">getEnv</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FromEnv</span></span><span> </span><span class="annot"><a href="#local-6989586621680184970"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680184970"><span class="hs-identifier hs-type">a</span></a></span></span><span>
+</span><span id="line-20"></span><span id="getEnv"><span class="annot"><span class="annottext">getEnv :: IO a
+</span><a href="Fission.Environment.html#getEnv"><span class="hs-identifier hs-var hs-var">getEnv</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO (Either String a)
+forall a. FromEnv a =&gt; IO (Either String a)
+</span><span class="hs-identifier hs-var">decodeEnv</span></span><span> </span><span class="annot"><span class="annottext">IO (Either String a) -&gt; (Either String a -&gt; IO a) -&gt; IO a
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-21"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680184968"><span class="annot"><span class="annottext">msg :: String
+</span><a href="#local-6989586621680184968"><span class="hs-identifier hs-var">msg</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; IO a
+forall a. HasCallStack =&gt; String -&gt; a
+</span><span class="hs-identifier hs-var">error</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680184968"><span class="hs-identifier hs-var">msg</span></a></span><span>
+</span><span id="line-22"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680184966"><span class="annot"><span class="annottext">val :: a
+</span><a href="#local-6989586621680184966"><span class="hs-identifier hs-var">val</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">a -&gt; IO a
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">a
+</span><a href="#local-6989586621680184966"><span class="hs-identifier hs-var">val</span></a></span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-comment">-- | Fallback value for a monadic lookup</span><span>
+</span><span id="line-25"></span><span class="hs-comment">--</span><span>
+</span><span id="line-26"></span><span class="hs-comment">-- &gt;&gt;&gt; Right (Just 9) .!~ 42</span><span>
+</span><span id="line-27"></span><span class="hs-comment">-- Right 9</span><span>
+</span><span id="line-28"></span><span class="hs-comment">--</span><span>
+</span><span id="line-29"></span><span class="hs-comment">-- &gt;&gt;&gt; Right Nothing .!~ 42</span><span>
+</span><span id="line-30"></span><span class="hs-comment">-- Right 42</span><span>
+</span><span id="line-31"></span><span class="hs-comment">--</span><span>
+</span><span id="line-32"></span><span class="hs-comment">-- &gt;&gt;&gt; Left (Just 9) .!~ 42</span><span>
+</span><span id="line-33"></span><span class="hs-comment">-- Left (Just 9)</span><span>
+</span><span id="line-34"></span><span class="hs-comment">--</span><span>
+</span><span id="line-35"></span><span class="hs-comment">-- &gt;&gt;&gt; Left Nothing .!~ 42</span><span>
+</span><span id="line-36"></span><span class="hs-comment">-- Left Nothing</span><span>
+</span><span id="line-37"></span><span id="local-6989586621680184979"><span id="local-6989586621680184980"><span class="annot"><a href="Fission.Environment.html#.%21~"><span class="hs-operator hs-type">(.!~)</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680184980"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184980"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="#local-6989586621680184979"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184979"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184980"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680184979"><span class="hs-identifier hs-type">a</span></a></span></span></span><span>
+</span><span id="line-38"></span><span id="local-6989586621680184965"><span class="annot"><span class="annottext">mVal :: m (Maybe a)
+</span><a href="#local-6989586621680184965"><span class="hs-identifier hs-var">mVal</span></a></span></span><span> </span><span id=".%21~"><span class="annot"><span class="annottext">.!~ :: m (Maybe a) -&gt; a -&gt; m a
+</span><a href="Fission.Environment.html#.%21~"><span class="hs-operator hs-var hs-var">.!~</span></a></span></span><span> </span><span id="local-6989586621680184964"><span class="annot"><span class="annottext">fallback :: a
+</span><a href="#local-6989586621680184964"><span class="hs-identifier hs-var">fallback</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Maybe a -&gt; a) -&gt; m (Maybe a -&gt; a)
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">a -&gt; Maybe a -&gt; a
+forall a. a -&gt; Maybe a -&gt; a
+</span><span class="hs-identifier hs-var">fromMaybe</span></span><span> </span><span class="annot"><span class="annottext">a
+</span><a href="#local-6989586621680184964"><span class="hs-identifier hs-var">fallback</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">m (Maybe a -&gt; a) -&gt; m (Maybe a) -&gt; m a
+forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">m (Maybe a)
+</span><a href="#local-6989586621680184965"><span class="hs-identifier hs-var">mVal</span></a></span><span>
+</span><span id="line-39"></span><span>
+</span><span id="line-40"></span><span class="hs-comment">-- | Switch on an environment flag</span><span>
+</span><span id="line-41"></span><span class="hs-comment">--</span><span>
+</span><span id="line-42"></span><span class="hs-comment">-- &gt;&gt;&gt; withFlag &quot;DEBUG&quot; &quot;nope&quot; &quot;yep&quot;</span><span>
+</span><span id="line-43"></span><span class="hs-comment">-- &quot;nope&quot;</span><span>
+</span><span id="line-44"></span><span id="local-6989586621680184962"><span class="annot"><a href="Fission.Environment.html#withFlag"><span class="hs-identifier hs-type">withFlag</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184962"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184962"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680184962"><span class="hs-identifier hs-type">a</span></a></span></span><span>
+</span><span id="line-45"></span><span id="withFlag"><span class="annot"><span class="annottext">withFlag :: String -&gt; a -&gt; a -&gt; IO a
+</span><a href="Fission.Environment.html#withFlag"><span class="hs-identifier hs-var hs-var">withFlag</span></a></span></span><span> </span><span id="local-6989586621680184961"><span class="annot"><span class="annottext">key :: String
+</span><a href="#local-6989586621680184961"><span class="hs-identifier hs-var">key</span></a></span></span><span> </span><span id="local-6989586621680184960"><span class="annot"><span class="annottext">whenFalse :: a
+</span><a href="#local-6989586621680184960"><span class="hs-identifier hs-var">whenFalse</span></a></span></span><span> </span><span id="local-6989586621680184959"><span class="annot"><span class="annottext">whenTrue :: a
+</span><a href="#local-6989586621680184959"><span class="hs-identifier hs-var">whenTrue</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; a -&gt; (String -&gt; a) -&gt; IO a
+forall a. String -&gt; a -&gt; (String -&gt; a) -&gt; IO a
+</span><a href="Fission.Environment.html#withEnv"><span class="hs-identifier hs-var">withEnv</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680184961"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">a
+</span><a href="#local-6989586621680184960"><span class="hs-identifier hs-var">whenFalse</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">a
+</span><a href="#local-6989586621680184959"><span class="hs-identifier hs-var">whenTrue</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-46"></span><span>
+</span><span id="line-47"></span><span class="hs-comment">-- | Perform actions on an environment variable, with fallback if not available</span><span>
+</span><span id="line-48"></span><span class="hs-comment">--</span><span>
+</span><span id="line-49"></span><span class="hs-comment">-- &gt;&gt;&gt; withEnv &quot;HOST&quot; &quot;my.host&quot; (drop 1)</span><span>
+</span><span id="line-50"></span><span class="hs-comment">-- &quot;my.host&quot;</span><span>
+</span><span id="line-51"></span><span id="local-6989586621680184995"><span class="annot"><a href="Fission.Environment.html#withEnv"><span class="hs-identifier hs-type">withEnv</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184995"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184995"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680184995"><span class="hs-identifier hs-type">a</span></a></span></span><span>
+</span><span id="line-52"></span><span id="withEnv"><span class="annot"><span class="annottext">withEnv :: String -&gt; a -&gt; (String -&gt; a) -&gt; IO a
+</span><a href="Fission.Environment.html#withEnv"><span class="hs-identifier hs-var hs-var">withEnv</span></a></span></span><span> </span><span id="local-6989586621680184958"><span class="annot"><span class="annottext">key :: String
+</span><a href="#local-6989586621680184958"><span class="hs-identifier hs-var">key</span></a></span></span><span> </span><span id="local-6989586621680184957"><span class="annot"><span class="annottext">fallback :: a
+</span><a href="#local-6989586621680184957"><span class="hs-identifier hs-var">fallback</span></a></span></span><span> </span><span id="local-6989586621680184956"><span class="annot"><span class="annottext">transform :: String -&gt; a
+</span><a href="#local-6989586621680184956"><span class="hs-identifier hs-var">transform</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Maybe String -&gt; a) -&gt; IO (Maybe String -&gt; a)
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">a -&gt; (String -&gt; a) -&gt; Maybe String -&gt; a
+forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
+</span><span class="hs-identifier hs-var">maybe</span></span><span> </span><span class="annot"><span class="annottext">a
+</span><a href="#local-6989586621680184957"><span class="hs-identifier hs-var">fallback</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; a
+</span><a href="#local-6989586621680184956"><span class="hs-identifier hs-var">transform</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">IO (Maybe String -&gt; a) -&gt; IO (Maybe String) -&gt; IO a
+forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; IO (Maybe String)
+</span><span class="hs-identifier hs-var">lookupEnv</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680184958"><span class="hs-identifier hs-var">key</span></a></span><span>
+</span><span id="line-53"></span><span>
+</span><span id="line-54"></span><span class="hs-comment">-- | Check if an environment flag is set to 'True' (case-insensitive)</span><span>
+</span><span id="line-55"></span><span class="hs-comment">--</span><span>
+</span><span id="line-56"></span><span class="hs-comment">-- &gt;&gt;&gt; getFlag &quot;THIS_KEY_IS_UNSET&quot;</span><span>
+</span><span id="line-57"></span><span class="hs-comment">-- Nothing</span><span>
+</span><span id="line-58"></span><span class="annot"><a href="Fission.Environment.html#getFlag"><span class="hs-identifier hs-type">getFlag</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">)</span><span>
+</span><span id="line-59"></span><span id="getFlag"><span class="annot"><span class="annottext">getFlag :: String -&gt; IO (Maybe Bool)
+</span><a href="Fission.Environment.html#getFlag"><span class="hs-identifier hs-var hs-var">getFlag</span></a></span></span><span> </span><span id="local-6989586621680184954"><span class="annot"><span class="annottext">key :: String
+</span><a href="#local-6989586621680184954"><span class="hs-identifier hs-var">key</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-60"></span><span>  </span><span id="local-6989586621680184953"><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621680184953"><span class="hs-identifier hs-var">mayStr</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">String -&gt; IO (Maybe String)
+</span><span class="hs-identifier hs-var">lookupEnv</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680184954"><span class="hs-identifier hs-var">key</span></a></span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680184952"><span class="annot"><span class="annottext">mayVal :: Maybe Bool
+</span><a href="#local-6989586621680184952"><span class="hs-identifier hs-var hs-var">mayVal</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Bool
+forall a. (Eq a, IsString a) =&gt; a -&gt; Bool
+</span><a href="Fission.Internal.Bool.html#truthy"><span class="hs-identifier hs-var">truthy</span></a></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Bool) -&gt; (String -&gt; String) -&gt; String -&gt; Bool
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">(Char -&gt; Char) -&gt; String -&gt; String
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="annot"><span class="annottext">Char -&gt; Char
+</span><span class="hs-identifier hs-var">toLower</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Bool) -&gt; Maybe String -&gt; Maybe Bool
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621680184953"><span class="hs-identifier hs-var">mayStr</span></a></span><span>
+</span><span id="line-62"></span><span>  </span><span class="annot"><span class="annottext">Maybe Bool -&gt; IO (Maybe Bool)
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Maybe Bool
+</span><a href="#local-6989586621680184952"><span class="hs-identifier hs-var">mayVal</span></a></span><span>
+</span><span id="line-63"></span><span>
+</span><span id="line-64"></span><span class="hs-comment">-- | Get a given flag, default to the given value if not found</span><span>
+</span><span id="line-65"></span><span class="annot"><a href="Fission.Environment.html#getFlagWithDefault"><span class="hs-identifier hs-type">getFlagWithDefault</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
+</span><span id="line-66"></span><span id="getFlagWithDefault"><span class="annot"><span class="annottext">getFlagWithDefault :: String -&gt; Bool -&gt; IO Bool
+</span><a href="Fission.Environment.html#getFlagWithDefault"><span class="hs-identifier hs-var hs-var">getFlagWithDefault</span></a></span></span><span> </span><span id="local-6989586621680184948"><span class="annot"><span class="annottext">flag :: String
+</span><a href="#local-6989586621680184948"><span class="hs-identifier hs-var">flag</span></a></span></span><span> </span><span id="local-6989586621680184947"><span class="annot"><span class="annottext">defaultValue :: Bool
+</span><a href="#local-6989586621680184947"><span class="hs-identifier hs-var">defaultValue</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; IO (Maybe Bool)
+</span><a href="Fission.Environment.html#getFlag"><span class="hs-identifier hs-var">getFlag</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680184948"><span class="hs-identifier hs-var">flag</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Maybe Bool) -&gt; Bool -&gt; IO Bool
+forall (m :: * -&gt; *) a. Monad m =&gt; m (Maybe a) -&gt; a -&gt; m a
+</span><a href="Fission.Environment.html#.%21~"><span class="hs-operator hs-var">.!~</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680184947"><span class="hs-identifier hs-var">defaultValue</span></a></span><span>
+</span><span id="line-67"></span></pre></body></html>

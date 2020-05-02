@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI.Prompt.BuildDir</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Prompt.BuildDir.html#checkBuildDir"><span class="hs-identifier">checkBuildDir</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">RIO.Directory</span></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">RIO.FilePath</span></span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Text</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">T</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">pack</span></span><span class="hs-special">)</span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">System.Console.ANSI</span></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">ANSI</span></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Internal.UTF8.html"><span class="hs-identifier">Fission.Internal.UTF8</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UTF8</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Prompt.html"><span class="hs-identifier">Fission.CLI.Prompt</span></a></span><span>      </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Prompt</span></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.html"><span class="hs-identifier">Fission.CLI.Environment.Partial</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Env.Partial</span></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html"><span class="hs-identifier">Fission.CLI.Environment.Partial.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Env</span></span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-comment">-- | Checks user's current build dir by:</span><span>
+</span><span id="line-17"></span><span class="hs-comment">--   * recursively checking .fission.yaml</span><span>
+</span><span id="line-18"></span><span class="hs-comment">--   * guessing a build dir from common static site generators</span><span>
+</span><span id="line-19"></span><span class="hs-comment">--   * prompting the user with that build dir</span><span>
+</span><span id="line-20"></span><span id="local-6989586621680185461"><span class="annot"><a href="Fission.CLI.Prompt.BuildDir.html#checkBuildDir"><span class="hs-identifier hs-type">checkBuildDir</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-21"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185461"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680185461"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">)</span><span>
+</span><span id="line-22"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span>
+</span><span id="line-23"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185461"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span></span><span>
+</span><span id="line-24"></span><span id="checkBuildDir"><span class="annot"><span class="annottext">checkBuildDir :: FilePath -&gt; m FilePath
+</span><a href="Fission.CLI.Prompt.BuildDir.html#checkBuildDir"><span class="hs-identifier hs-var hs-var">checkBuildDir</span></a></span></span><span> </span><span id="local-6989586621680185460"><span class="annot"><span class="annottext">relPath :: FilePath
+</span><a href="#local-6989586621680185460"><span class="hs-identifier hs-var">relPath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-25"></span><span>  </span><span id="local-6989586621680185459"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185459"><span class="hs-identifier hs-var">absPath</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
+forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m FilePath
+</span><span class="hs-identifier hs-var">makeAbsolute</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185460"><span class="hs-identifier hs-var">relPath</span></a></span><span>
+</span><span id="line-26"></span><span>  </span><span class="annot"><span class="annottext">FilePath -&gt; m (Maybe (FilePath, FilePath))
+forall (m :: * -&gt; *).
+MonadIO m =&gt;
+FilePath -&gt; m (Maybe (FilePath, FilePath))
+</span><a href="Fission.CLI.Prompt.BuildDir.html#findEnv"><span class="hs-identifier hs-var">findEnv</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185459"><span class="hs-identifier hs-var">absPath</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe (FilePath, FilePath))
+-&gt; (Maybe (FilePath, FilePath) -&gt; m FilePath) -&gt; m FilePath
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-27"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680185456"><span class="annot"><span class="annottext">envPath :: FilePath
+</span><a href="#local-6989586621680185456"><span class="hs-identifier hs-var">envPath</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185455"><span class="annot"><span class="annottext">buildDir :: FilePath
+</span><a href="#local-6989586621680185455"><span class="hs-identifier hs-var">buildDir</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-28"></span><span>      </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m FilePath) -&gt; FilePath -&gt; m FilePath
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath -&gt; FilePath
+</span><span class="hs-identifier hs-var">takeDirectory</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185456"><span class="hs-identifier hs-var">envPath</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185455"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
+</span><span id="line-29"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m (Maybe FilePath)
+forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m (Maybe FilePath)
+</span><a href="Fission.CLI.Prompt.BuildDir.html#guessBuildDir"><span class="hs-identifier hs-var">guessBuildDir</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185460"><span class="hs-identifier hs-var">relPath</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe FilePath) -&gt; (Maybe FilePath -&gt; m FilePath) -&gt; m FilePath
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-30"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185460"><span class="hs-identifier hs-var">relPath</span></a></span><span>
+</span><span id="line-31"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680185450"><span class="annot"><span class="annottext">guess :: FilePath
+</span><a href="#local-6989586621680185450"><span class="hs-identifier hs-var">guess</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-32"></span><span>        </span><span id="local-6989586621680185449"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185449"><span class="hs-identifier hs-var">buildDir</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Bool
+forall (m :: * -&gt; *).
+(MonadIO m, MonadLogger m) =&gt;
+FilePath -&gt; m Bool
+</span><a href="Fission.CLI.Prompt.BuildDir.html#promptBuildDir"><span class="hs-identifier hs-var">promptBuildDir</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185450"><span class="hs-identifier hs-var">guess</span></a></span><span> </span><span class="annot"><span class="annottext">m Bool -&gt; (Bool -&gt; m FilePath) -&gt; m FilePath
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-33"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">True</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185450"><span class="hs-identifier hs-var">guess</span></a></span><span>
+</span><span id="line-34"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">False</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185460"><span class="hs-identifier hs-var">relPath</span></a></span><span>
+</span><span id="line-35"></span><span>        </span><span class="hs-keyword">let</span><span>
+</span><span id="line-36"></span><span>          </span><span id="local-6989586621680185447"><span class="annot"><span class="annottext">updated :: Partial
+</span><a href="#local-6989586621680185447"><span class="hs-identifier hs-var hs-var">updated</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">(Maybe BasicAuthData
+ -&gt; Maybe (NonEmpty Peer)
+ -&gt; Maybe Ignored
+ -&gt; Maybe FilePath
+ -&gt; Partial)
+-&gt; Partial
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData
+-&gt; Maybe (NonEmpty Peer)
+-&gt; Maybe Ignored
+-&gt; Maybe FilePath
+-&gt; Partial
+</span><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-var">Env.Partial</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:maybeBuildDir:Partial :: Maybe FilePath
+</span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Maybe FilePath
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185449"><span class="hs-identifier hs-var">buildDir</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-37"></span><span>        </span><span class="annot"><span class="annottext">FilePath -&gt; Partial -&gt; m ()
+forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; Partial -&gt; m ()
+</span><a href="Fission.CLI.Environment.Partial.html#writeMerge"><span class="hs-identifier hs-var">Env.Partial.writeMerge</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185459"><span class="hs-identifier hs-var">absPath</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185447"><span class="hs-identifier hs-var">updated</span></a></span><span>
+</span><span id="line-38"></span><span>        </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185449"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
+</span><span id="line-39"></span><span>
+</span><span id="line-40"></span><span class="hs-comment">-- | Find the closests .fission.yaml that contains a build_dir in it, and return the location of the env &amp; build_dir</span><span>
+</span><span id="line-41"></span><span id="local-6989586621680185509"><span class="annot"><a href="Fission.CLI.Prompt.BuildDir.html#findEnv"><span class="hs-identifier hs-type">findEnv</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185509"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185509"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-42"></span><span id="findEnv"><span class="annot"><span class="annottext">findEnv :: FilePath -&gt; m (Maybe (FilePath, FilePath))
+</span><a href="Fission.CLI.Prompt.BuildDir.html#findEnv"><span class="hs-identifier hs-var hs-var">findEnv</span></a></span></span><span> </span><span id="local-6989586621680185443"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185443"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Partial))
+forall (m :: * -&gt; *).
+MonadIO m =&gt;
+(Partial -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Partial))
+</span><a href="Fission.CLI.Environment.Partial.html#findRecurse"><span class="hs-identifier hs-var">Env.Partial.findRecurse</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe FilePath -&gt; Bool
+forall a. Maybe a -&gt; Bool
+</span><span class="hs-identifier hs-var">isJust</span></span><span> </span><span class="annot"><span class="annottext">(Maybe FilePath -&gt; Bool)
+-&gt; (Partial -&gt; Maybe FilePath) -&gt; Partial -&gt; Bool
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe FilePath
+</span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var hs-var">maybeBuildDir</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185443"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe (FilePath, Partial))
+-&gt; (Maybe (FilePath, Partial) -&gt; m (Maybe (FilePath, FilePath)))
+-&gt; m (Maybe (FilePath, FilePath))
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-43"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, FilePath) -&gt; m (Maybe (FilePath, FilePath))
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, FilePath)
+forall a. Maybe a
+</span><span class="hs-identifier hs-var">Nothing</span></span><span>
+</span><span id="line-44"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680185439"><span class="annot"><span class="annottext">envPath :: FilePath
+</span><a href="#local-6989586621680185439"><span class="hs-identifier hs-var">envPath</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185438"><span class="annot"><span class="annottext">env :: Partial
+</span><a href="#local-6989586621680185438"><span class="hs-identifier hs-var">env</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-45"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe FilePath
+</span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var hs-var">maybeBuildDir</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185438"><span class="hs-identifier hs-var">env</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-46"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, FilePath) -&gt; m (Maybe (FilePath, FilePath))
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, FilePath)
+forall a. Maybe a
+</span><span class="hs-identifier hs-var">Nothing</span></span><span>
+</span><span id="line-47"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680185437"><span class="annot"><span class="annottext">buildDir :: FilePath
+</span><a href="#local-6989586621680185437"><span class="hs-identifier hs-var">buildDir</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, FilePath) -&gt; m (Maybe (FilePath, FilePath))
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (FilePath, FilePath) -&gt; m (Maybe (FilePath, FilePath)))
+-&gt; Maybe (FilePath, FilePath) -&gt; m (Maybe (FilePath, FilePath))
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(FilePath, FilePath) -&gt; Maybe (FilePath, FilePath)
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185439"><span class="hs-identifier hs-var">envPath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185437"><span class="hs-identifier hs-var">buildDir</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-48"></span><span>
+</span><span id="line-49"></span><span class="hs-comment">-- | Prompt the user to see if they'd like to use a build folder instead of the root</span><span>
+</span><span id="line-50"></span><span id="local-6989586621680185501"><span class="annot"><a href="Fission.CLI.Prompt.BuildDir.html#promptBuildDir"><span class="hs-identifier hs-type">promptBuildDir</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185501"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680185501"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185501"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span></span><span>
+</span><span id="line-51"></span><span id="promptBuildDir"><span class="annot"><span class="annottext">promptBuildDir :: FilePath -&gt; m Bool
+</span><a href="Fission.CLI.Prompt.BuildDir.html#promptBuildDir"><span class="hs-identifier hs-var hs-var">promptBuildDir</span></a></span></span><span> </span><span id="local-6989586621680185436"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185436"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-52"></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; m ()
+forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
+</span><a href="Fission.Internal.UTF8.html#putText"><span class="hs-identifier hs-var">UTF8.putText</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; m ()) -&gt; Text -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="hs-string">&quot;&#128119; We found a possible build dir: &quot;</span></span><span>
+</span><span id="line-53"></span><span>  </span><span class="annot"><span class="annottext">IO () -&gt; m ()
+forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
+</span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; m ()) -&gt; IO () -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">[SGR] -&gt; IO ()
+</span><span class="hs-identifier hs-var">ANSI.setSGR</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">ConsoleLayer -&gt; ColorIntensity -&gt; Color -&gt; SGR
+</span><span class="hs-identifier hs-var">ANSI.SetColor</span></span><span> </span><span class="annot"><span class="annottext">ConsoleLayer
+</span><span class="hs-identifier hs-var">ANSI.Foreground</span></span><span> </span><span class="annot"><span class="annottext">ColorIntensity
+</span><span class="hs-identifier hs-var">ANSI.Vivid</span></span><span> </span><span class="annot"><span class="annottext">Color
+</span><span class="hs-identifier hs-var">ANSI.Blue</span></span><span class="hs-special">]</span><span>
+</span><span id="line-54"></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; m ()
+forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
+</span><a href="Fission.Internal.UTF8.html#putTextLn"><span class="hs-identifier hs-var">UTF8.putTextLn</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; m ()) -&gt; Text -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Text
+</span><span class="hs-identifier hs-var">T.pack</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185436"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><span id="line-55"></span><span>  </span><span class="annot"><span class="annottext">IO () -&gt; m ()
+forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
+</span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; m ()) -&gt; IO () -&gt; m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">[SGR] -&gt; IO ()
+</span><span class="hs-identifier hs-var">ANSI.setSGR</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Item [SGR]
+SGR
+</span><span class="hs-identifier hs-var">ANSI.Reset</span></span><span class="hs-special">]</span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-comment">-- \xD83E\xDD14 == &#129300; (will be available in the next version of the parser)</span><span>
+</span><span id="line-57"></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; m Bool
+forall (m :: * -&gt; *). (MonadIO m, MonadLogger m) =&gt; Text -&gt; m Bool
+</span><a href="Fission.CLI.Prompt.html#reaskYN"><span class="hs-identifier hs-var">Prompt.reaskYN</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;\xD83E\xDD14 Would you like to upload that instead of the project root? (y/n): &quot;</span></span><span>
+</span><span id="line-58"></span><span>
+</span><span id="line-59"></span><span class="hs-comment">-- | Check path to see if a possible build folder exists there</span><span>
+</span><span id="line-60"></span><span id="local-6989586621680185502"><span class="annot"><a href="Fission.CLI.Prompt.BuildDir.html#guessBuildDir"><span class="hs-identifier hs-type">guessBuildDir</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185502"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185502"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">)</span></span><span>
+</span><span id="line-61"></span><span id="guessBuildDir"><span class="annot"><span class="annottext">guessBuildDir :: FilePath -&gt; m (Maybe FilePath)
+</span><a href="Fission.CLI.Prompt.BuildDir.html#guessBuildDir"><span class="hs-identifier hs-var hs-var">guessBuildDir</span></a></span></span><span> </span><span id="local-6989586621680185425"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185425"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Maybe FilePath -&gt; FilePath -&gt; m (Maybe FilePath))
+-&gt; Maybe FilePath -&gt; [FilePath] -&gt; m (Maybe FilePath)
+forall (t :: * -&gt; *) (m :: * -&gt; *) b a.
+(Foldable t, Monad m) =&gt;
+(b -&gt; a -&gt; m b) -&gt; b -&gt; t a -&gt; m b
+</span><span class="hs-identifier hs-var">foldM</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath -&gt; Maybe FilePath -&gt; FilePath -&gt; m (Maybe FilePath)
+forall (m :: * -&gt; *).
+MonadIO m =&gt;
+FilePath -&gt; Maybe FilePath -&gt; FilePath -&gt; m (Maybe FilePath)
+</span><a href="Fission.CLI.Prompt.BuildDir.html#foldGuess"><span class="hs-identifier hs-var">foldGuess</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185425"><span class="hs-identifier hs-var">path</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
+forall a. Maybe a
+</span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath -&gt; [FilePath]
+</span><a href="Fission.CLI.Prompt.BuildDir.html#buildGuesses"><span class="hs-identifier hs-var">buildGuesses</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185425"><span class="hs-identifier hs-var">path</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-62"></span><span>
+</span><span id="line-63"></span><span class="hs-comment">-- | Fold function for checking build folder guesses</span><span>
+</span><span id="line-64"></span><span id="local-6989586621680185469"><span class="annot"><a href="Fission.CLI.Prompt.BuildDir.html#foldGuess"><span class="hs-identifier hs-type">foldGuess</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185469"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185469"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">)</span></span><span>
+</span><span id="line-65"></span><span id="foldGuess"><span class="annot"><span class="annottext">foldGuess :: FilePath -&gt; Maybe FilePath -&gt; FilePath -&gt; m (Maybe FilePath)
+</span><a href="Fission.CLI.Prompt.BuildDir.html#foldGuess"><span class="hs-identifier hs-var hs-var">foldGuess</span></a></span></span><span> </span><span id="local-6989586621680185421"><span class="annot"><span class="annottext">base :: FilePath
+</span><a href="#local-6989586621680185421"><span class="hs-identifier hs-var">base</span></a></span></span><span> </span><span id="local-6989586621680185420"><span class="annot"><span class="annottext">acc :: Maybe FilePath
+</span><a href="#local-6989586621680185420"><span class="hs-identifier hs-var">acc</span></a></span></span><span> </span><span id="local-6989586621680185419"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185419"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath -&gt; m Bool
+forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Bool
+</span><span class="hs-identifier hs-var">doesDirectoryExist</span></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m Bool) -&gt; FilePath -&gt; m Bool
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><span class="hs-identifier hs-var">combine</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185421"><span class="hs-identifier hs-var">base</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185419"><span class="hs-identifier hs-var">path</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">m Bool -&gt; (Bool -&gt; m (Maybe FilePath)) -&gt; m (Maybe FilePath)
+forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-66"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">True</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe FilePath -&gt; m (Maybe FilePath)
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Maybe FilePath -&gt; m (Maybe FilePath))
+-&gt; Maybe FilePath -&gt; m (Maybe FilePath)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Maybe FilePath
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185419"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><span id="line-67"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">False</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe FilePath -&gt; m (Maybe FilePath)
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
+</span><a href="#local-6989586621680185420"><span class="hs-identifier hs-var">acc</span></a></span><span>
+</span><span id="line-68"></span><span>
+</span><span id="line-69"></span><span class="hs-comment">-- | Common build folders for static site generators</span><span>
+</span><span id="line-70"></span><span class="hs-comment">--   Highest -&gt; Lowest priority (reversed because foldM folds from the left)</span><span>
+</span><span id="line-71"></span><span class="annot"><a href="Fission.CLI.Prompt.BuildDir.html#buildGuesses"><span class="hs-identifier hs-type">buildGuesses</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">]</span><span>
+</span><span id="line-72"></span><span id="buildGuesses"><span class="annot"><span class="annottext">buildGuesses :: FilePath -&gt; [FilePath]
+</span><a href="Fission.CLI.Prompt.BuildDir.html#buildGuesses"><span class="hs-identifier hs-var hs-var">buildGuesses</span></a></span></span><span> </span><span id="local-6989586621680185416"><span class="annot"><span class="annottext">base :: FilePath
+</span><a href="#local-6989586621680185416"><span class="hs-identifier hs-var">base</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[FilePath] -&gt; [FilePath]
+forall a. [a] -&gt; [a]
+</span><span class="hs-identifier hs-var">reverse</span></span><span> </span><span class="annot"><span class="annottext">([FilePath] -&gt; [FilePath]) -&gt; [FilePath] -&gt; [FilePath]
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; FilePath) -&gt; [FilePath] -&gt; [FilePath]
+forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><span class="hs-identifier hs-var">combine</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185416"><span class="hs-identifier hs-var">base</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-73"></span><span>  </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;_site&quot;</span></span><span> </span><span class="hs-comment">-- jekyll, hakyll, eleventy</span><span>
+</span><span id="line-74"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;site&quot;</span></span><span> </span><span class="hs-comment">-- forgot which</span><span>
+</span><span id="line-75"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;build&quot;</span></span><span> </span><span class="hs-comment">-- create-react-app, metalsmith, middleman</span><span>
+</span><span id="line-76"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;dist&quot;</span></span><span> </span><span class="hs-comment">-- nuxt</span><span>
+</span><span id="line-77"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;public&quot;</span></span><span> </span><span class="hs-comment">-- gatsby, hugo</span><span>
+</span><span id="line-78"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;output&quot;</span></span><span> </span><span class="hs-comment">-- pelican</span><span>
+</span><span id="line-79"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;out&quot;</span></span><span> </span><span class="hs-comment">-- hexo</span><span>
+</span><span id="line-80"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;website/build&quot;</span></span><span> </span><span class="hs-comment">-- docusaurus</span><span>
+</span><span id="line-81"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;docs&quot;</span></span><span> </span><span class="hs-comment">-- many others</span><span>
+</span><span id="line-82"></span><span>  </span><span class="hs-special">]</span><span>
+</span><span id="line-83"></span></pre></body></html>

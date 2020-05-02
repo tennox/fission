@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Bool</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Internal.Bool.html#anyX"><span class="hs-identifier">anyX</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Bool.html#truthy"><span class="hs-identifier">truthy</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span id="local-6989586621680184287"><span class="annot"><a href="Fission.Internal.Bool.html#anyX"><span class="hs-identifier hs-type">anyX</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="#local-6989586621680184287"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184287"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span></span><span>
+</span><span id="line-9"></span><span id="anyX"><span class="annot"><span class="annottext">anyX :: [a -&gt; Bool] -&gt; a -&gt; Bool
+</span><a href="Fission.Internal.Bool.html#anyX"><span class="hs-identifier hs-var hs-var">anyX</span></a></span></span><span> </span><span id="local-6989586621680184278"><span class="annot"><span class="annottext">preds :: [a -&gt; Bool]
+</span><a href="#local-6989586621680184278"><span class="hs-identifier hs-var">preds</span></a></span></span><span> </span><span id="local-6989586621680184277"><span class="annot"><span class="annottext">value :: a
+</span><a href="#local-6989586621680184277"><span class="hs-identifier hs-var">value</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">True</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; [Bool] -&gt; Bool
+forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
+</span><span class="hs-operator hs-var">`elem`</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[a -&gt; Bool]
+</span><a href="#local-6989586621680184278"><span class="hs-identifier hs-var">preds</span></a></span><span> </span><span class="annot"><span class="annottext">[a -&gt; Bool] -&gt; [a] -&gt; [Bool]
+forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">a
+Item [a]
+</span><a href="#local-6989586621680184277"><span class="hs-identifier hs-var">value</span></a></span><span class="hs-special">]</span><span class="hs-special">)</span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-comment">{-| Test if any string-like item is truthy.
+
+    &gt;&gt;&gt; truthy &quot;t&quot;
+    True
+
+    &gt;&gt;&gt; truthy &quot;f&quot;
+    False
+
+    &gt;&gt;&gt; truthy &quot;on&quot;
+    True
+
+    &gt;&gt;&gt; truthy &quot;no&quot;
+    False
+
+-}</span><span>
+</span><span id="line-26"></span><span id="local-6989586621680184275"><span class="annot"><a href="Fission.Internal.Bool.html#truthy"><span class="hs-identifier hs-type">truthy</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Eq</span></span><span> </span><span class="annot"><a href="#local-6989586621680184275"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IsString</span></span><span> </span><span class="annot"><a href="#local-6989586621680184275"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680184275"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span></span><span>
+</span><span id="line-27"></span><span id="truthy"><span class="annot"><span class="annottext">truthy :: a -&gt; Bool
+</span><a href="Fission.Internal.Bool.html#truthy"><span class="hs-identifier hs-var hs-var">truthy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[a -&gt; Bool] -&gt; a -&gt; Bool
+forall a. [a -&gt; Bool] -&gt; a -&gt; Bool
+</span><a href="Fission.Internal.Bool.html#anyX"><span class="hs-identifier hs-var">anyX</span></a></span><span> </span><span class="annot"><span class="annottext">([a -&gt; Bool] -&gt; a -&gt; Bool) -&gt; [a -&gt; Bool] -&gt; a -&gt; Bool
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">a -&gt; a -&gt; Bool
+forall a. Eq a =&gt; a -&gt; a -&gt; Bool
+</span><span class="hs-operator hs-var">(==)</span></span><span> </span><span class="annot"><span class="annottext">(a -&gt; a -&gt; Bool) -&gt; [a] -&gt; [a -&gt; Bool]
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-string">&quot;true&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;yes&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;1&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;t&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;on&quot;</span></span><span class="hs-special">]</span><span>
+</span><span id="line-28"></span></pre></body></html>

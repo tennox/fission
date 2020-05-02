@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.User.Destroyer.Class</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier">Destroyer</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Esqueleto</span></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-comment">-- | Destroy @User@s</span><span>
+</span><span id="line-9"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680190747"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Destroyer"><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-var">Destroyer</span></a></span></span><span> </span><span id="local-6989586621680190747"><span class="annot"><a href="#local-6989586621680190747"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-10"></span><span>  </span><span id="destroy"><span class="annot"><a href="Fission.User.Destroyer.Class.html#destroy"><span class="hs-identifier hs-type">destroy</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680190747"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span id="local-6989586621680190724"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680190724"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">Destroyer</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680190724"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680190720"><span class="annot"><span class="annottext">destroy :: UserId -&gt; Transaction m ()
+</span><a href="#local-6989586621680190720"><span class="hs-identifier hs-var hs-var hs-var hs-var">destroy</span></a></span></span><span> </span><span id="local-6989586621680190719"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680190719"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-14"></span><span>    </span><span class="annot"><span class="annottext">SqlQuery () -&gt; Transaction m ()
+forall (m :: * -&gt; *). MonadIO m =&gt; SqlQuery () -&gt; SqlWriteT m ()
+</span><span class="hs-identifier hs-var">delete</span></span><span> </span><span class="annot"><span class="annottext">(SqlQuery () -&gt; Transaction m ())
+-&gt; SqlQuery () -&gt; Transaction m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Entity User) -&gt; SqlQuery ()) -&gt; SqlQuery ()
+forall a b. From a =&gt; (a -&gt; SqlQuery b) -&gt; SqlQuery b
+</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680190715"><span class="annot"><span class="annottext">user :: SqlExpr (Entity User)
+</span><a href="#local-6989586621680190715"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-15"></span><span>      </span><span class="annot"><span class="annottext">SqlExpr (Value Bool) -&gt; SqlQuery ()
+</span><span class="hs-identifier hs-var">where_</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SqlExpr (Entity User)
+</span><a href="#local-6989586621680190715"><span class="hs-identifier hs-var">user</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity User)
+-&gt; EntityField User UserId -&gt; SqlExpr (Value UserId)
+forall typ val.
+(PersistEntity val, PersistField typ) =&gt;
+SqlExpr (Entity val) -&gt; EntityField val typ -&gt; SqlExpr (Value typ)
+</span><span class="hs-operator hs-var">^.</span></span><span> </span><span class="annot"><span class="annottext">EntityField User UserId
+forall typ. (typ ~ UserId) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-var">UserId</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Value UserId)
+-&gt; SqlExpr (Value UserId) -&gt; SqlExpr (Value Bool)
+forall typ.
+PersistField typ =&gt;
+SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
+</span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; SqlExpr (Value UserId)
+forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
+</span><span class="hs-identifier hs-var">val</span></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680190719"><span class="hs-identifier hs-var">userId</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-16"></span></pre></body></html>

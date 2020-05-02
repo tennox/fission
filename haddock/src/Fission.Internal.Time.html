@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Time</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Internal.Time.html#roundUTC"><span class="hs-identifier">roundUTC</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Time.html#toSeconds"><span class="hs-identifier">toSeconds</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Time.html#fromSeconds"><span class="hs-identifier">fromSeconds</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Time.Clock.POSIX</span></span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">RIO</span></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">RIO.Time</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="annot"><a href="Fission.Internal.Time.html#roundUTC"><span class="hs-identifier hs-type">roundUTC</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-13"></span><span id="roundUTC"><span class="annot"><span class="annottext">roundUTC :: UTCTime -&gt; UTCTime
+</span><a href="Fission.Internal.Time.html#roundUTC"><span class="hs-identifier hs-var hs-var">roundUTC</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; UTCTime
+</span><a href="Fission.Internal.Time.html#fromSeconds"><span class="hs-identifier hs-var">fromSeconds</span></a></span><span> </span><span class="annot"><span class="annottext">(Int -&gt; UTCTime) -&gt; (UTCTime -&gt; Int) -&gt; UTCTime -&gt; UTCTime
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; Int
+</span><a href="Fission.Internal.Time.html#toSeconds"><span class="hs-identifier hs-var">toSeconds</span></a></span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="annot"><a href="Fission.Internal.Time.html#toSeconds"><span class="hs-identifier hs-type">toSeconds</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
+</span><span id="line-16"></span><span id="toSeconds"><span class="annot"><span class="annottext">toSeconds :: UTCTime -&gt; Int
+</span><a href="Fission.Internal.Time.html#toSeconds"><span class="hs-identifier hs-var hs-var">toSeconds</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">POSIXTime -&gt; Int
+forall a b. (RealFrac a, Integral b) =&gt; a -&gt; b
+</span><span class="hs-identifier hs-var">round</span></span><span> </span><span class="annot"><span class="annottext">(POSIXTime -&gt; Int) -&gt; (UTCTime -&gt; POSIXTime) -&gt; UTCTime -&gt; Int
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; POSIXTime
+</span><span class="hs-identifier hs-var">utcTimeToPOSIXSeconds</span></span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span class="annot"><a href="Fission.Internal.Time.html#fromSeconds"><span class="hs-identifier hs-type">fromSeconds</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-19"></span><span id="fromSeconds"><span class="annot"><span class="annottext">fromSeconds :: Int -&gt; UTCTime
+</span><a href="Fission.Internal.Time.html#fromSeconds"><span class="hs-identifier hs-var hs-var">fromSeconds</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">POSIXTime -&gt; UTCTime
+</span><span class="hs-identifier hs-var">posixSecondsToUTCTime</span></span><span> </span><span class="annot"><span class="annottext">(POSIXTime -&gt; UTCTime) -&gt; (Int -&gt; POSIXTime) -&gt; Int -&gt; UTCTime
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Pico -&gt; POSIXTime
+</span><span class="hs-identifier hs-var">secondsToNominalDiffTime</span></span><span> </span><span class="annot"><span class="annottext">(Pico -&gt; POSIXTime) -&gt; (Int -&gt; Pico) -&gt; Int -&gt; POSIXTime
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Pico
+forall a b. (Integral a, Num b) =&gt; a -&gt; b
+</span><span class="hs-identifier hs-var">fromIntegral</span></span><span>
+</span><span id="line-20"></span></pre></body></html>

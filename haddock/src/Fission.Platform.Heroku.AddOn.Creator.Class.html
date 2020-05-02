@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Platform.Heroku.AddOn.Creator.Class</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.Class.html#Creator"><span class="hs-identifier">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.UUID</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">UUID</span></span><span class="hs-special">)</span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Esqueleto</span></span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Error.Types.html"><span class="hs-identifier">Fission.Error.Types</span></a></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html"><span class="hs-identifier">Fission.Platform.Heroku.Region.Types</span></a></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680194600"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Creator"><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.Class.html#Creator"><span class="hs-identifier hs-var">Creator</span></a></span></span><span> </span><span id="local-6989586621680194600"><span class="annot"><a href="#local-6989586621680194600"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="create"><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.Class.html#create"><span class="hs-identifier hs-type">create</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680194600"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.AlreadyExists.Types.html#AlreadyExists"><span class="hs-identifier hs-type">AlreadyExists</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#HerokuAddOn"><span class="hs-identifier hs-type">HerokuAddOn</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><a href="Fission.Models.html#HerokuAddOnId"><span class="hs-identifier hs-type">HerokuAddOnId</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span id="local-6989586621680194578"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680194578"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680194578"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-16"></span><span>  </span><span id="local-6989586621680194574"><span class="annot"><span class="annottext">create :: UUID
+-&gt; Region
+-&gt; UTCTime
+-&gt; Transaction m (Either (AlreadyExists HerokuAddOn) HerokuAddOnId)
+</span><a href="#local-6989586621680194574"><span class="hs-identifier hs-var hs-var hs-var hs-var">create</span></a></span></span><span> </span><span id="local-6989586621680194573"><span class="annot"><span class="annottext">uuid :: UUID
+</span><a href="#local-6989586621680194573"><span class="hs-identifier hs-var">uuid</span></a></span></span><span> </span><span id="local-6989586621680194572"><span class="annot"><span class="annottext">region :: Region
+</span><a href="#local-6989586621680194572"><span class="hs-identifier hs-var">region</span></a></span></span><span> </span><span id="local-6989586621680194571"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680194571"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-17"></span><span>    </span><span class="annot"><span class="annottext">$WHerokuAddOn :: UUID -&gt; Maybe Region -&gt; UTCTime -&gt; UTCTime -&gt; HerokuAddOn
+</span><a href="Fission.Models.html#%24WHerokuAddOn"><span class="hs-identifier hs-type hs-type">HerokuAddOn</span></a></span><span>
+</span><span id="line-18"></span><span>      </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:herokuAddOnUuid:HerokuAddOn :: UUID
+</span><a href="#local-6989586621680194568"><span class="hs-identifier hs-var">herokuAddOnUuid</span></a></span><span>       </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UUID
+</span><a href="#local-6989586621680194573"><span class="hs-identifier hs-var">uuid</span></a></span><span>
+</span><span id="line-19"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:herokuAddOnRegion:HerokuAddOn :: Maybe Region
+</span><a href="#local-6989586621680194567"><span class="hs-identifier hs-var">herokuAddOnRegion</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Region -&gt; Maybe Region
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Region
+</span><a href="#local-6989586621680194572"><span class="hs-identifier hs-var">region</span></a></span><span>
+</span><span id="line-20"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:herokuAddOnInsertedAt:HerokuAddOn :: UTCTime
+</span><a href="#local-6989586621680194566"><span class="hs-identifier hs-var">herokuAddOnInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680194571"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-21"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:herokuAddOnModifiedAt:HerokuAddOn :: UTCTime
+</span><a href="#local-6989586621680194565"><span class="hs-identifier hs-var">herokuAddOnModifiedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680194571"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-22"></span><span>      </span><span class="hs-special">}</span><span>
+</span><span id="line-23"></span><span>      </span><span class="annot"><span class="annottext">HerokuAddOn
+-&gt; (HerokuAddOn -&gt; ReaderT SqlBackend m (Maybe HerokuAddOnId))
+-&gt; ReaderT SqlBackend m (Maybe HerokuAddOnId)
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">HerokuAddOn -&gt; ReaderT SqlBackend m (Maybe HerokuAddOnId)
+forall backend (m :: * -&gt; *) record.
+(PersistUniqueWrite backend, MonadIO m,
+ PersistRecordBackend record backend) =&gt;
+record -&gt; ReaderT backend m (Maybe (Key record))
+</span><span class="hs-identifier hs-var">insertUnique</span></span><span>
+</span><span id="line-24"></span><span>      </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe HerokuAddOnId)
+-&gt; (ReaderT SqlBackend m (Maybe HerokuAddOnId)
+    -&gt; Transaction
+         m (Either (AlreadyExists HerokuAddOn) HerokuAddOnId))
+-&gt; Transaction m (Either (AlreadyExists HerokuAddOn) HerokuAddOnId)
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe HerokuAddOnId
+ -&gt; Transaction
+      m (Either (AlreadyExists HerokuAddOn) HerokuAddOnId))
+-&gt; ReaderT SqlBackend m (Maybe HerokuAddOnId)
+-&gt; Transaction m (Either (AlreadyExists HerokuAddOn) HerokuAddOnId)
+forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
+</span><a href="Fission.Prelude.html#bind"><span class="hs-identifier hs-var">bind</span></a></span><span>  </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-25"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either (AlreadyExists HerokuAddOn) HerokuAddOnId
+-&gt; Transaction m (Either (AlreadyExists HerokuAddOn) HerokuAddOnId)
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">AlreadyExists HerokuAddOn
+-&gt; Either (AlreadyExists HerokuAddOn) HerokuAddOnId
+forall a b. a -&gt; Either a b
+</span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">AlreadyExists HerokuAddOn
+forall entity. AlreadyExists entity
+</span><a href="Fission.Error.AlreadyExists.Types.html#AlreadyExists"><span class="hs-identifier hs-var">AlreadyExists</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-26"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680194560"><span class="annot"><span class="annottext">x :: HerokuAddOnId
+</span><a href="#local-6989586621680194560"><span class="hs-identifier hs-var">x</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either (AlreadyExists HerokuAddOn) HerokuAddOnId
+-&gt; Transaction m (Either (AlreadyExists HerokuAddOn) HerokuAddOnId)
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HerokuAddOnId -&gt; Either (AlreadyExists HerokuAddOn) HerokuAddOnId
+forall a b. b -&gt; Either a b
+</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">HerokuAddOnId
+</span><a href="#local-6989586621680194560"><span class="hs-identifier hs-var">x</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-27"></span></pre></body></html>

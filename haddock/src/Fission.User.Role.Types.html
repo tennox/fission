@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.User.Role.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Role.Types.html#Role"><span class="hs-identifier">Role</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Database.Persist.TH</span></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">data</span><span> </span><span id="Role"><span class="annot"><a href="Fission.User.Role.Types.html#Role"><span class="hs-identifier hs-var">Role</span></a></span></span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="Regular"><span class="annot"><a href="Fission.User.Role.Types.html#Regular"><span class="hs-identifier hs-var">Regular</span></a></span></span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Admin"><span class="annot"><a href="Fission.User.Role.Types.html#Admin"><span class="hs-identifier hs-var">Admin</span></a></span></span><span>
+</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680187994"><span id="local-6989586621680187996"><span id="local-6989586621680187998"><span class="annot"><span class="annottext">Int -&gt; Role -&gt; ShowS
+[Role] -&gt; ShowS
+Role -&gt; String
+(Int -&gt; Role -&gt; ShowS)
+-&gt; (Role -&gt; String) -&gt; ([Role] -&gt; ShowS) -&gt; Show Role
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Role] -&gt; ShowS
+$cshowList :: [Role] -&gt; ShowS
+show :: Role -&gt; String
+$cshow :: Role -&gt; String
+showsPrec :: Int -&gt; Role -&gt; ShowS
+$cshowsPrec :: Int -&gt; Role -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-11"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680187985"><span id="local-6989586621680187987"><span id="local-6989586621680187989"><span id="local-6989586621680187991"><span class="annot"><span class="annottext">ReadPrec [Role]
+ReadPrec Role
+Int -&gt; ReadS Role
+ReadS [Role]
+(Int -&gt; ReadS Role)
+-&gt; ReadS [Role] -&gt; ReadPrec Role -&gt; ReadPrec [Role] -&gt; Read Role
+forall a.
+(Int -&gt; ReadS a)
+-&gt; ReadS [a] -&gt; ReadPrec a -&gt; ReadPrec [a] -&gt; Read a
+readListPrec :: ReadPrec [Role]
+$creadListPrec :: ReadPrec [Role]
+readPrec :: ReadPrec Role
+$creadPrec :: ReadPrec Role
+readList :: ReadS [Role]
+$creadList :: ReadS [Role]
+readsPrec :: Int -&gt; ReadS Role
+$creadsPrec :: Int -&gt; ReadS Role
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Read</span></span></span></span></span></span><span>
+</span><span id="line-12"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680187980"><span id="local-6989586621680187982"><span class="annot"><span class="annottext">Role -&gt; Role -&gt; Bool
+(Role -&gt; Role -&gt; Bool) -&gt; (Role -&gt; Role -&gt; Bool) -&gt; Eq Role
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Role -&gt; Role -&gt; Bool
+$c/= :: Role -&gt; Role -&gt; Bool
+== :: Role -&gt; Role -&gt; Bool
+$c== :: Role -&gt; Role -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-13"></span><span>           </span><span class="hs-special">)</span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span id="local-6989586621680187972"><span id="local-6989586621680187974"><span id="local-6989586621680187976"><span class="hs-identifier">derivePersistField</span><span> </span><span class="hs-string">&quot;Role&quot;</span></span></span></span><span>
+</span><span id="line-16"></span></pre></body></html>

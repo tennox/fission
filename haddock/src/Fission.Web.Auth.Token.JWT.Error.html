@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Error</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier">Error</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.Server</span></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Error.Class.html"><span class="hs-identifier">Fission.Web.Error.Class</span></a></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Header.Error</span></a></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Header</span></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Claims.Error</span></a></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Claims</span></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Signature.Error</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Signature</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">data</span><span> </span><span id="Error"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-var">Error</span></a></span></span><span>
+</span><span id="line-13"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="ParseError"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#ParseError"><span class="hs-identifier hs-var">ParseError</span></a></span></span><span>
+</span><span id="line-14"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HeaderError"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#HeaderError"><span class="hs-identifier hs-var">HeaderError</span></a></span></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Error.html#Error"><span class="hs-identifier hs-type">Header.Error</span></a></span><span>
+</span><span id="line-15"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="ClaimsError"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#ClaimsError"><span class="hs-identifier hs-var">ClaimsError</span></a></span></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html#Error"><span class="hs-identifier hs-type">Claims.Error</span></a></span><span>
+</span><span id="line-16"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="SignatureError"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-var">SignatureError</span></a></span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html#Error"><span class="hs-identifier hs-type">Signature.Error</span></a></span><span>
+</span><span id="line-17"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680194386"><span id="local-6989586621680194388"><span id="local-6989586621680194390"><span class="annot"><span class="annottext">Show Error
+Typeable Error
+(Typeable Error, Show Error) =&gt;
+(Error -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe Error)
+-&gt; (Error -&gt; String)
+-&gt; Exception Error
+SomeException -&gt; Maybe Error
+Error -&gt; String
+Error -&gt; SomeException
+forall e.
+(Typeable e, Show e) =&gt;
+(e -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe e) -&gt; (e -&gt; String) -&gt; Exception e
+displayException :: Error -&gt; String
+$cdisplayException :: Error -&gt; String
+fromException :: SomeException -&gt; Maybe Error
+$cfromException :: SomeException -&gt; Maybe Error
+toException :: Error -&gt; SomeException
+$ctoException :: Error -&gt; SomeException
+$cp2Exception :: Show Error
+$cp1Exception :: Typeable Error
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span>
+</span><span id="line-18"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680194381"><span id="local-6989586621680194383"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
+(Error -&gt; Error -&gt; Bool) -&gt; (Error -&gt; Error -&gt; Bool) -&gt; Eq Error
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Error -&gt; Error -&gt; Bool
+$c/= :: Error -&gt; Error -&gt; Bool
+== :: Error -&gt; Error -&gt; Bool
+$c== :: Error -&gt; Error -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-19"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680194374"><span id="local-6989586621680194376"><span id="local-6989586621680194378"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
+[Error] -&gt; ShowS
+Error -&gt; String
+(Int -&gt; Error -&gt; ShowS)
+-&gt; (Error -&gt; String) -&gt; ([Error] -&gt; ShowS) -&gt; Show Error
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Error] -&gt; ShowS
+$cshowList :: [Error] -&gt; ShowS
+show :: Error -&gt; String
+$cshow :: Error -&gt; String
+showsPrec :: Int -&gt; Error -&gt; ShowS
+$cshowsPrec :: Int -&gt; Error -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-20"></span><span>           </span><span class="hs-special">)</span><span>
+</span><span id="line-21"></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680194366"><span id="local-6989586621680194368"><span id="local-6989586621680194370"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">Error</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-23"></span><span>  </span><span id="local-6989586621680194364"><span class="annot"><span class="annottext">toJSON :: Error -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; (Error -&gt; Text) -&gt; Error -&gt; Value
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Text
+forall a. Display a =&gt; a -&gt; Text
+</span><span class="hs-identifier hs-var">textDisplay</span></span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680194357"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">Error</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-26"></span><span>  </span><span id="local-6989586621680194355"><span class="annot"><span class="annottext">display :: Error -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-27"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#ParseError"><span class="hs-identifier hs-type">ParseError</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;Could not parse JWT&quot;</span></span><span>
+</span><span id="line-28"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#HeaderError"><span class="hs-identifier hs-type">HeaderError</span></a></span><span>    </span><span id="local-6989586621680194353"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680194353"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;JWT header error: &quot;</span></span><span>    </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Utf8Builder
+forall a. Display a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680194353"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-29"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-type">SignatureError</span></a></span><span> </span><span id="local-6989586621680194352"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680194352"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;JWT signature error: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Utf8Builder
+forall a. Display a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680194352"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-30"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#ClaimsError"><span class="hs-identifier hs-type">ClaimsError</span></a></span><span>    </span><span id="local-6989586621680194351"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680194351"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;JWT claims error: &quot;</span></span><span>    </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Utf8Builder
+forall a. Display a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680194351"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-31"></span><span>
+</span><span id="line-32"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Error.Class.html#ToServerError"><span class="hs-identifier hs-type">ToServerError</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">Error</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-33"></span><span>  </span><span id="local-6989586621680194348"><span class="annot"><span class="annottext">toServerError :: Error -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-34"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#ParseError"><span class="hs-identifier hs-type">ParseError</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError
+</span><span class="hs-identifier hs-var">err400</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
+</span><a href="#local-6989586621680194345"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
+forall a. Display a =&gt; a -&gt; ByteString
+</span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="Fission.Web.Auth.Token.JWT.Error.html#ParseError"><span class="hs-identifier hs-var">ParseError</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-35"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#HeaderError"><span class="hs-identifier hs-type">HeaderError</span></a></span><span>    </span><span id="local-6989586621680194343"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680194343"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ServerError
+forall err. ToServerError err =&gt; err -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var">toServerError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680194343"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-36"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#ClaimsError"><span class="hs-identifier hs-type">ClaimsError</span></a></span><span>    </span><span id="local-6989586621680194342"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680194342"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ServerError
+forall err. ToServerError err =&gt; err -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var">toServerError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680194342"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-37"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-type">SignatureError</span></a></span><span> </span><span id="local-6989586621680194341"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680194341"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ServerError
+forall err. ToServerError err =&gt; err -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var">toServerError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680194341"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-38"></span></pre></body></html>

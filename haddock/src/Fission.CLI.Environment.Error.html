@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI.Environment.Error</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Environment.Error.html#Env"><span class="hs-identifier">Env</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span id="local-6989586621680185541"><span id="local-6989586621680185542"></span></span><span class="hs-keyword">data</span><span> </span><span id="Env"><span class="annot"><a href="Fission.CLI.Environment.Error.html#Env"><span class="hs-identifier hs-var">Env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="EnvNotFound"><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvNotFound"><span class="hs-identifier hs-var">EnvNotFound</span></a></span></span><span> </span><span class="hs-glyph">|</span><span> </span><span id="EnvIncomplete"><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvIncomplete"><span class="hs-identifier hs-var">EnvIncomplete</span></a></span></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680185531"><span id="local-6989586621680185533"><span id="local-6989586621680185535"><span class="annot"><span class="annottext">Show Env
+Typeable Env
+(Typeable Env, Show Env) =&gt;
+(Env -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe Env) -&gt; (Env -&gt; String) -&gt; Exception Env
+SomeException -&gt; Maybe Env
+Env -&gt; String
+Env -&gt; SomeException
+forall e.
+(Typeable e, Show e) =&gt;
+(e -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe e) -&gt; (e -&gt; String) -&gt; Exception e
+displayException :: Env -&gt; String
+$cdisplayException :: Env -&gt; String
+fromException :: SomeException -&gt; Maybe Env
+$cfromException :: SomeException -&gt; Maybe Env
+toException :: Env -&gt; SomeException
+$ctoException :: Env -&gt; SomeException
+$cp2Exception :: Show Env
+$cp1Exception :: Typeable Env
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span>
+</span><span id="line-7"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185526"><span id="local-6989586621680185528"><span class="annot"><span class="annottext">Env -&gt; Env -&gt; Bool
+(Env -&gt; Env -&gt; Bool) -&gt; (Env -&gt; Env -&gt; Bool) -&gt; Eq Env
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Env -&gt; Env -&gt; Bool
+$c/= :: Env -&gt; Env -&gt; Bool
+== :: Env -&gt; Env -&gt; Bool
+$c== :: Env -&gt; Env -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-8"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">(forall x. Env -&gt; Rep Env x)
+-&gt; (forall x. Rep Env x -&gt; Env) -&gt; Generic Env
+forall x. Rep Env x -&gt; Env
+forall x. Env -&gt; Rep Env x
+forall a.
+(forall x. a -&gt; Rep a x) -&gt; (forall x. Rep a x -&gt; a) -&gt; Generic a
+$cto :: forall x. Rep Env x -&gt; Env
+$cfrom :: forall x. Env -&gt; Rep Env x
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span>
+</span><span id="line-9"></span><span>           </span><span class="hs-special">)</span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185517"><span id="local-6989586621680185520"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Error.html#Env"><span class="hs-identifier hs-type">Env</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680185515"><span class="annot"><span class="annottext">show :: Env -&gt; String
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">show</span></span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvNotFound"><span class="hs-identifier hs-type">EnvNotFound</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Could not find .fission.yaml&quot;</span></span><span>
+</span><span id="line-13"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvIncomplete"><span class="hs-identifier hs-type">EnvIncomplete</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Could not construct a full .fission.yaml&quot;</span></span><span>
+</span><span id="line-14"></span></pre></body></html>

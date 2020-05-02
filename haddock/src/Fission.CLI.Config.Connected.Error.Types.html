@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI.Config.Connected.Error.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#Error"><span class="hs-identifier">Error</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">data</span><span> </span><span id="Error"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#Error"><span class="hs-identifier hs-var">Error</span></a></span></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="NoKeyFile"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#NoKeyFile"><span class="hs-identifier hs-var">NoKeyFile</span></a></span></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="NotRegistered"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#NotRegistered"><span class="hs-identifier hs-var">NotRegistered</span></a></span></span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="CannotConnect"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#CannotConnect"><span class="hs-identifier hs-var">CannotConnect</span></a></span></span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="PeersNotFound"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#PeersNotFound"><span class="hs-identifier hs-var">PeersNotFound</span></a></span></span><span>
+</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680185901"><span id="local-6989586621680185903"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
+(Error -&gt; Error -&gt; Bool) -&gt; (Error -&gt; Error -&gt; Bool) -&gt; Eq Error
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Error -&gt; Error -&gt; Bool
+$c/= :: Error -&gt; Error -&gt; Bool
+== :: Error -&gt; Error -&gt; Bool
+$c== :: Error -&gt; Error -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185894"><span id="local-6989586621680185896"><span id="local-6989586621680185898"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
+[Error] -&gt; ShowS
+Error -&gt; String
+(Int -&gt; Error -&gt; ShowS)
+-&gt; (Error -&gt; String) -&gt; ([Error] -&gt; ShowS) -&gt; Show Error
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Error] -&gt; ShowS
+$cshowList :: [Error] -&gt; ShowS
+show :: Error -&gt; String
+$cshow :: Error -&gt; String
+showsPrec :: Int -&gt; Error -&gt; ShowS
+$cshowsPrec :: Int -&gt; Error -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185885"><span id="local-6989586621680185887"><span id="local-6989586621680185889"><span class="annot"><span class="annottext">Show Error
+Typeable Error
+(Typeable Error, Show Error) =&gt;
+(Error -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe Error)
+-&gt; (Error -&gt; String)
+-&gt; Exception Error
+SomeException -&gt; Maybe Error
+Error -&gt; String
+Error -&gt; SomeException
+forall e.
+(Typeable e, Show e) =&gt;
+(e -&gt; SomeException)
+-&gt; (SomeException -&gt; Maybe e) -&gt; (e -&gt; String) -&gt; Exception e
+displayException :: Error -&gt; String
+$cdisplayException :: Error -&gt; String
+fromException :: SomeException -&gt; Maybe Error
+$cfromException :: SomeException -&gt; Maybe Error
+toException :: Error -&gt; SomeException
+$ctoException :: Error -&gt; SomeException
+$cp2Exception :: Show Error
+$cp1Exception :: Typeable Error
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-11"></span></pre></body></html>

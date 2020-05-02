@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Web.User</span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.User.html#API"><span class="hs-identifier">API</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.User.html#Auth"><span class="hs-identifier">Auth</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.User.html#RegisterRoute"><span class="hs-identifier">RegisterRoute</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.User.html#VerifyRoute"><span class="hs-identifier">VerifyRoute</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.User.html#UpdatePublicKeyRoute"><span class="hs-identifier">UpdatePublicKeyRoute</span></a></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.User.html#ResetRoute"><span class="hs-identifier">ResetRoute</span></a></span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.User.html#WhoAmIRoute"><span class="hs-identifier">WhoAmIRoute</span></a></span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.User.html#server"><span class="hs-identifier">server</span></a></span><span>
+</span><span id="line-10"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html"><span class="hs-identifier">Fission.IPFS.DNSLink.Class</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">DNSLink</span></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.html"><span class="hs-identifier">Fission.User</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.User.Create.html"><span class="hs-identifier">Fission.Web.User.Create</span></a></span><span>          </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Create</span></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.User.Verify.html"><span class="hs-identifier">Fission.Web.User.Verify</span></a></span><span>          </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Verify</span></span><span>
+</span><span id="line-21"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.User.Password.Reset.html"><span class="hs-identifier">Fission.Web.User.Password.Reset</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Reset</span></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.User.UpdatePublicKey.html"><span class="hs-identifier">Fission.Web.User.UpdatePublicKey</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UpdatePublicKey</span></span><span>
+</span><span id="line-23"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.User.UpdateData.html"><span class="hs-identifier">Fission.Web.User.UpdateData</span></a></span><span>      </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UpdateData</span></span><span>
+</span><span id="line-24"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.User.WhoAmI.html"><span class="hs-identifier">Fission.Web.User.WhoAmI</span></a></span><span>          </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">WhoAmI</span></span><span>
+</span><span id="line-25"></span><span>
+</span><span id="line-26"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Types.html"><span class="hs-identifier">Fission.Web.Auth.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Auth</span></span><span>
+</span><span id="line-27"></span><span>
+</span><span id="line-28"></span><span class="hs-keyword">type</span><span> </span><span id="API"><span class="annot"><a href="Fission.Web.User.html#API"><span class="hs-identifier hs-var">API</span></a></span></span><span>
+</span><span id="line-29"></span><span>  </span><span class="hs-glyph">=</span><span>   </span><span class="annot"><a href="Fission.Web.User.html#RegisterRoute"><span class="hs-identifier hs-type">RegisterRoute</span></a></span><span>
+</span><span id="line-30"></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.Create.html#PasswordAPI"><span class="hs-identifier hs-type">Create.PasswordAPI</span></a></span><span>
+</span><span id="line-31"></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#WhoAmIRoute"><span class="hs-identifier hs-type">WhoAmIRoute</span></a></span><span>
+</span><span id="line-32"></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#VerifyRoute"><span class="hs-identifier hs-type">VerifyRoute</span></a></span><span>
+</span><span id="line-33"></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#UpdatePublicKeyRoute"><span class="hs-identifier hs-type">UpdatePublicKeyRoute</span></a></span><span>
+</span><span id="line-34"></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#UpdateDataRoute"><span class="hs-identifier hs-type">UpdateDataRoute</span></a></span><span>
+</span><span id="line-35"></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#ResetRoute"><span class="hs-identifier hs-type">ResetRoute</span></a></span><span>
+</span><span id="line-36"></span><span>
+</span><span id="line-37"></span><span class="hs-keyword">type</span><span> </span><span id="Auth"><span class="annot"><a href="Fission.Web.User.html#Auth"><span class="hs-identifier hs-var">Auth</span></a></span></span><span>
+</span><span id="line-38"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Types.html#HigherOrder"><span class="hs-identifier hs-type">Auth.HigherOrder</span></a></span><span>
+</span><span id="line-39"></span><span>
+</span><span id="line-40"></span><span class="hs-keyword">type</span><span> </span><span id="RegisterRoute"><span class="annot"><a href="Fission.Web.User.html#RegisterRoute"><span class="hs-identifier hs-var">RegisterRoute</span></a></span></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Types.html#RegisterDID"><span class="hs-identifier hs-type">Auth.RegisterDID</span></a></span><span>
+</span><span id="line-42"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.Create.html#API"><span class="hs-identifier hs-type">Create.API</span></a></span><span>
+</span><span id="line-43"></span><span>
+</span><span id="line-44"></span><span class="hs-keyword">type</span><span> </span><span id="WhoAmIRoute"><span class="annot"><a href="Fission.Web.User.html#WhoAmIRoute"><span class="hs-identifier hs-var">WhoAmIRoute</span></a></span></span><span>
+</span><span id="line-45"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;whoami&quot;</span></span><span>
+</span><span id="line-46"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#Auth"><span class="hs-identifier hs-type">Auth</span></a></span><span>
+</span><span id="line-47"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.WhoAmI.html#API"><span class="hs-identifier hs-type">WhoAmI.API</span></a></span><span>
+</span><span id="line-48"></span><span>
+</span><span id="line-49"></span><span class="hs-keyword">type</span><span> </span><span id="VerifyRoute"><span class="annot"><a href="Fission.Web.User.html#VerifyRoute"><span class="hs-identifier hs-var">VerifyRoute</span></a></span></span><span>
+</span><span id="line-50"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;verify&quot;</span></span><span>
+</span><span id="line-51"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#Auth"><span class="hs-identifier hs-type">Auth</span></a></span><span>
+</span><span id="line-52"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.Verify.html#API"><span class="hs-identifier hs-type">Verify.API</span></a></span><span>
+</span><span id="line-53"></span><span>
+</span><span id="line-54"></span><span class="hs-keyword">type</span><span> </span><span id="UpdatePublicKeyRoute"><span class="annot"><a href="Fission.Web.User.html#UpdatePublicKeyRoute"><span class="hs-identifier hs-var">UpdatePublicKeyRoute</span></a></span></span><span>
+</span><span id="line-55"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;did&quot;</span></span><span>
+</span><span id="line-56"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#Auth"><span class="hs-identifier hs-type">Auth</span></a></span><span>
+</span><span id="line-57"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.UpdatePublicKey.html#API"><span class="hs-identifier hs-type">UpdatePublicKey.API</span></a></span><span>
+</span><span id="line-58"></span><span>
+</span><span id="line-59"></span><span class="hs-keyword">type</span><span> </span><span id="UpdateDataRoute"><span class="annot"><a href="Fission.Web.User.html#UpdateDataRoute"><span class="hs-identifier hs-var">UpdateDataRoute</span></a></span></span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;data&quot;</span></span><span>
+</span><span id="line-61"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#Auth"><span class="hs-identifier hs-type">Auth</span></a></span><span>
+</span><span id="line-62"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.UpdateData.html#API"><span class="hs-identifier hs-type">UpdateData.API</span></a></span><span>
+</span><span id="line-63"></span><span>
+</span><span id="line-64"></span><span class="hs-keyword">type</span><span> </span><span id="ResetRoute"><span class="annot"><a href="Fission.Web.User.html#ResetRoute"><span class="hs-identifier hs-var">ResetRoute</span></a></span></span><span>
+</span><span id="line-65"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;reset_password&quot;</span></span><span>
+</span><span id="line-66"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#Auth"><span class="hs-identifier hs-type">Auth</span></a></span><span>
+</span><span id="line-67"></span><span>    </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.User.Password.Reset.html#API"><span class="hs-identifier hs-type">Reset.API</span></a></span><span>
+</span><span id="line-68"></span><span>
+</span><span id="line-69"></span><span id="local-6989586621680201012"><span id="local-6989586621680201013"><span class="annot"><a href="Fission.Web.User.html#server"><span class="hs-identifier hs-type">server</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-70"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680201013"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-71"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>      </span><span class="annot"><a href="#local-6989586621680201013"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-72"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>        </span><span class="annot"><a href="#local-6989586621680201013"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-73"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680201012"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201013"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-74"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Creator"><span class="hs-identifier hs-type">User.Creator</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680201012"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-75"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Modifier"><span class="hs-identifier hs-type">User.Modifier</span></a></span><span>  </span><span class="annot"><a href="#local-6989586621680201012"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-76"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-77"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.User.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201013"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
+</span><span id="line-78"></span><span id="server"><span class="annot"><span class="annottext">server :: ServerT API m
+</span><a href="Fission.Web.User.html#server"><span class="hs-identifier hs-var hs-var">server</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DID -&gt; Registration -&gt; m NoContent
+forall (m :: * -&gt; *) (t :: * -&gt; *).
+(MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m,
+ Creator t) =&gt;
+DID -&gt; ServerT API m
+</span><a href="Fission.Web.User.Create.html#withDID"><span class="hs-identifier hs-var">Create.withDID</span></a></span><span>
+</span><span id="line-79"></span><span>    </span><span class="annot"><span class="annottext">(DID -&gt; Registration -&gt; m NoContent)
+-&gt; ((Registration -&gt; m ())
+    :&lt;|&gt; ((Authorization -&gt; m Username)
+          :&lt;|&gt; ((Authorization -&gt; m Bool)
+                :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+                      :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+                            :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password))))))
+-&gt; (DID -&gt; Registration -&gt; m NoContent)
+   :&lt;|&gt; ((Registration -&gt; m ())
+         :&lt;|&gt; ((Authorization -&gt; m Username)
+               :&lt;|&gt; ((Authorization -&gt; m Bool)
+                     :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+                           :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+                                 :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password))))))
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Registration -&gt; m ()
+forall (m :: * -&gt; *) (t :: * -&gt; *).
+(MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m,
+ Creator t) =&gt;
+ServerT PasswordAPI m
+</span><a href="Fission.Web.User.Create.html#withPassword"><span class="hs-identifier hs-var">Create.withPassword</span></a></span><span>
+</span><span id="line-80"></span><span>    </span><span class="annot"><span class="annottext">(Registration -&gt; m ())
+-&gt; ((Authorization -&gt; m Username)
+    :&lt;|&gt; ((Authorization -&gt; m Bool)
+          :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+                :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+                      :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password)))))
+-&gt; (Registration -&gt; m ())
+   :&lt;|&gt; ((Authorization -&gt; m Username)
+         :&lt;|&gt; ((Authorization -&gt; m Bool)
+               :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+                     :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+                           :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password)))))
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Authorization -&gt; m Username
+forall (m :: * -&gt; *). Monad m =&gt; Authorization -&gt; ServerT API m
+</span><a href="Fission.Web.User.WhoAmI.html#server"><span class="hs-identifier hs-var">WhoAmI.server</span></a></span><span>
+</span><span id="line-81"></span><span>    </span><span class="annot"><span class="annottext">(Authorization -&gt; m Username)
+-&gt; ((Authorization -&gt; m Bool)
+    :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+          :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+                :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password))))
+-&gt; (Authorization -&gt; m Username)
+   :&lt;|&gt; ((Authorization -&gt; m Bool)
+         :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+               :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+                     :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password))))
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerT API m
+forall (m :: * -&gt; *). Monad m =&gt; ServerT API m
+</span><a href="Fission.Web.User.Verify.html#server"><span class="hs-identifier hs-var">Verify.server</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-82"></span><span>    </span><span class="annot"><span class="annottext">(Authorization -&gt; m Bool)
+-&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+    :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+          :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password)))
+-&gt; (Authorization -&gt; m Bool)
+   :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
+         :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+               :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password)))
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Authorization -&gt; Public -&gt; m NoContent
+forall (m :: * -&gt; *) (t :: * -&gt; *).
+(MonadTime m, MonadDB t m, Modifier t) =&gt;
+Authorization -&gt; ServerT API m
+</span><a href="Fission.Web.User.UpdatePublicKey.html#server"><span class="hs-identifier hs-var">UpdatePublicKey.server</span></a></span><span>
+</span><span id="line-83"></span><span>    </span><span class="annot"><span class="annottext">(Authorization -&gt; Public -&gt; m NoContent)
+-&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+    :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password))
+-&gt; (Authorization -&gt; Public -&gt; m NoContent)
+   :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
+         :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password))
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Authorization -&gt; CID -&gt; m NoContent
+forall (m :: * -&gt; *) (t :: * -&gt; *).
+(MonadLogger m, MonadThrow m, MonadTime m, MonadDB t m,
+ Modifier t) =&gt;
+Authorization -&gt; ServerT API m
+</span><a href="Fission.Web.User.UpdateData.html#server"><span class="hs-identifier hs-var">UpdateData.server</span></a></span><span>
+</span><span id="line-84"></span><span>    </span><span class="annot"><span class="annottext">(Authorization -&gt; CID -&gt; m NoContent)
+-&gt; (Authorization -&gt; Reset -&gt; m Password)
+-&gt; (Authorization -&gt; CID -&gt; m NoContent)
+   :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password)
+forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
+</span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Authorization -&gt; Reset -&gt; m Password
+forall (m :: * -&gt; *) (t :: * -&gt; *).
+(MonadThrow m, MonadLogger m, MonadTime m, MonadDB t m,
+ Modifier t) =&gt;
+Authorization -&gt; ServerT API m
+</span><a href="Fission.Web.User.Password.Reset.html#server"><span class="hs-identifier hs-var">Reset.server</span></a></span><span>
+</span><span id="line-85"></span></pre></body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# OPTIONS_GHC -fno-warn-orphans #-}</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Orphanage.HigherOrder</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Servant.Swagger</span></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Swagger</span></span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Types.html"><span class="hs-identifier">Fission.Web.Auth.Types</span></a></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Web.Swagger.Auth.html"><span class="hs-identifier">Fission.Web.Swagger.Auth</span></a></span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span id="local-6989586621680198701"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="annot"><a href="#local-6989586621680198701"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Types.html#HigherOrder"><span class="hs-identifier hs-type">HigherOrder</span></a></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><a href="#local-6989586621680198701"><span class="hs-identifier hs-type">api</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680198698"><span class="annot"><span class="annottext">toSwagger :: Proxy (HigherOrder :&gt; api) -&gt; Swagger
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toSwagger</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Proxy api
+forall k (t :: k). Proxy t
+</span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="#local-6989586621680198701"><span class="hs-identifier hs-type">api</span></a></span><span>
+</span><span id="line-16"></span><span>             </span><span class="annot"><span class="annottext">Proxy api -&gt; (Proxy api -&gt; Swagger) -&gt; Swagger
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Proxy api -&gt; Swagger
+forall k (api :: k). HasSwagger api =&gt; Proxy api -&gt; Swagger
+</span><span class="hs-identifier hs-var">toSwagger</span></span><span>
+</span><span id="line-17"></span><span>             </span><span class="annot"><span class="annottext">Swagger -&gt; (Swagger -&gt; Swagger) -&gt; Swagger
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Definitions SecurityScheme
+ -&gt; Identity (Definitions SecurityScheme))
+-&gt; Swagger -&gt; Identity Swagger
+forall s a. HasSecurityDefinitions s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">securityDefinitions</span></span><span> </span><span class="annot"><span class="annottext">((Definitions SecurityScheme
+  -&gt; Identity (Definitions SecurityScheme))
+ -&gt; Swagger -&gt; Identity Swagger)
+-&gt; Definitions SecurityScheme -&gt; Swagger -&gt; Swagger
+forall s t a b. ASetter s t a b -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">.~</span></span><span> </span><span class="hs-special">[</span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;Fission Auth&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">SecurityScheme
+</span><a href="Fission.Web.Swagger.Auth.html#fissionSecurity"><span class="hs-identifier hs-var">fissionSecurity</span></a></span><span class="hs-special">)</span><span class="hs-special">]</span></span><span>
+</span><span id="line-18"></span></pre></body></html>

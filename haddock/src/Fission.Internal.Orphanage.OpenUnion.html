@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# OPTIONS_GHC -fno-warn-orphans #-}</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Orphanage.OpenUnion</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">RIO</span></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.WorldPeace</span></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680181015"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span> </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="hs-special">]</span><span class="hs-special">)</span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-comment">-- As a base case for the type-level recursion only. Essentially @Void@.</span><span>
+</span><span id="line-10"></span><span>  </span><span id="local-6989586621680181013"><span class="annot"><span class="annottext">display :: OpenUnion '[] -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OpenUnion '[] -&gt; Utf8Builder
+forall u (f :: u -&gt; *) a. Union f '[] -&gt; a
+</span><span class="hs-identifier hs-var">absurdUnion</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span id="local-6989586621680181009"><span id="local-6989586621680181010"><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680181006"><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="#local-6989586621680181010"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span> </span><span class="annot"><a href="#local-6989586621680181009"><span class="hs-keyword hs-type">as</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680181010"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">'</span><span class="hs-glyph">:</span><span> </span><span class="annot"><a href="#local-6989586621680181009"><span class="hs-keyword hs-type">as</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680181005"><span class="annot"><span class="annottext">display :: OpenUnion (a : as) -&gt; Utf8Builder
+</span><a href="#local-6989586621680181005"><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></a></span></span><span> </span><span id="local-6989586621680181004"><span class="annot"><span class="annottext">err :: OpenUnion (a : as)
+</span><a href="#local-6989586621680181004"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(OpenUnion as -&gt; Utf8Builder)
+-&gt; (a -&gt; Utf8Builder) -&gt; OpenUnion (a : as) -&gt; Utf8Builder
+forall (as :: [*]) c a.
+(OpenUnion as -&gt; c) -&gt; (a -&gt; c) -&gt; OpenUnion (a : as) -&gt; c
+</span><span class="hs-identifier hs-var">openUnion</span></span><span> </span><span class="annot"><span class="annottext">OpenUnion as -&gt; Utf8Builder
+forall a. Display a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">a -&gt; Utf8Builder
+forall a. Display a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">OpenUnion (a : as)
+</span><a href="#local-6989586621680181004"><span class="hs-identifier hs-var">err</span></a></span></span></span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680180996"><span id="local-6989586621680180998"><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span> </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="hs-special">]</span><span class="hs-special">)</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-16"></span><span>  </span><span id="local-6989586621680180994"><span class="annot"><span class="annottext">toException :: OpenUnion '[] -&gt; SomeException
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toException</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OpenUnion '[] -&gt; SomeException
+forall u (f :: u -&gt; *) a. Union f '[] -&gt; a
+</span><span class="hs-identifier hs-var">absurdUnion</span></span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span id="local-6989586621680180991"><span id="local-6989586621680180992"><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680180984"><span id="local-6989586621680180986"><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Typeable</span></span><span> </span><span class="annot"><a href="#local-6989586621680180992"><span class="hs-identifier hs-type">errs</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="annot"><a href="#local-6989586621680180991"><span class="hs-identifier hs-type">err</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span> </span><span class="annot"><a href="#local-6989586621680180992"><span class="hs-identifier hs-type">errs</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-19"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680180991"><span class="hs-identifier hs-type">err</span></a></span><span> </span><span class="hs-special">'</span><span class="hs-glyph">:</span><span> </span><span class="annot"><a href="#local-6989586621680180992"><span class="hs-identifier hs-type">errs</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-20"></span><span>    </span><span id="local-6989586621680180983"><span class="annot"><span class="annottext">toException :: OpenUnion (err : errs) -&gt; SomeException
+</span><a href="#local-6989586621680180983"><span class="hs-identifier hs-var hs-var hs-var hs-var">toException</span></a></span></span><span> </span><span id="local-6989586621680180982"><span class="annot"><span class="annottext">err :: OpenUnion (err : errs)
+</span><a href="#local-6989586621680180982"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(OpenUnion errs -&gt; SomeException)
+-&gt; (err -&gt; SomeException)
+-&gt; OpenUnion (err : errs)
+-&gt; SomeException
+forall (as :: [*]) c a.
+(OpenUnion as -&gt; c) -&gt; (a -&gt; c) -&gt; OpenUnion (a : as) -&gt; c
+</span><span class="hs-identifier hs-var">openUnion</span></span><span> </span><span class="annot"><span class="annottext">OpenUnion errs -&gt; SomeException
+forall e. Exception e =&gt; e -&gt; SomeException
+</span><span class="hs-identifier hs-var">toException</span></span><span> </span><span class="annot"><span class="annottext">err -&gt; SomeException
+forall e. Exception e =&gt; e -&gt; SomeException
+</span><span class="hs-identifier hs-var">toException</span></span><span> </span><span class="annot"><span class="annottext">OpenUnion (err : errs)
+</span><a href="#local-6989586621680180982"><span class="hs-identifier hs-var">err</span></a></span></span></span><span>
+</span><span id="line-21"></span></pre></body></html>

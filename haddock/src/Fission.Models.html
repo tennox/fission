@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# OPTIONS_GHC -fno-warn-missing-export-lists #-}</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-pragma">{-# LANGUAGE NoDeriveAnyClass     #-}</span><span>
+</span><span id="line-4"></span><span class="hs-pragma">{-# LANGUAGE QuasiQuotes          #-}</span><span>
+</span><span id="line-5"></span><span class="hs-pragma">{-# LANGUAGE TemplateHaskell      #-}</span><span>
+</span><span id="line-6"></span><span class="hs-pragma">{-# LANGUAGE UndecidableInstances #-}</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Models</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist.Postgresql</span></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist.TH</span></span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Aeson.Types</span></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.UUID</span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Swagger</span></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.CID.Types</span></span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html"><span class="hs-identifier">Fission.Platform.Heroku.Region.Types</span></a></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Security.html"><span class="hs-identifier">Fission.Security</span></a></span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.URL.html"><span class="hs-identifier">Fission.URL</span></a></span><span>
+</span><span id="line-25"></span><span>
+</span><span id="line-26"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
+</span><span id="line-27"></span><span>
+</span><span id="line-28"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Role.Types.html"><span class="hs-identifier">Fission.User.Role.Types</span></a></span><span>
+</span><span id="line-29"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Email.Types.html"><span class="hs-identifier">Fission.User.Email.Types</span></a></span><span>
+</span><span id="line-30"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Username.Types.html"><span class="hs-identifier">Fission.User.Username.Types</span></a></span><span>
+</span><span id="line-31"></span><span>
+</span><span id="line-32"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Domain.Types.html"><span class="hs-identifier">Fission.App.Domain.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App.Domain</span></span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Internal.Orphanage.CID.html"><span class="hs-identifier">Fission.Internal.Orphanage.CID</span></a></span><span>  </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
+</span><span id="line-35"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Internal.Orphanage.UUID.html"><span class="hs-identifier">Fission.Internal.Orphanage.UUID</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
+</span><span id="line-36"></span><span>
+</span><span id="line-37"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Internal.UTF8.html"><span class="hs-identifier">Fission.Internal.UTF8</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UTF8</span></span><span>
+</span><span id="line-38"></span><span>
+</span><span id="line-39"></span><span id="migrateAll"><span id="HerokuAddOnModifiedAt"><span id="HerokuAddOnInsertedAt"><span id="HerokuAddOnRegion"><span id="HerokuAddOnUuid"><span id="HerokuAddOnId"><span id="%24sel%3AunHerokuAddOnKey%3AHerokuAddOnKey"><span id="HerokuAddOnKey"><span id="UniqueUUID"><span id="UserModifiedAt"><span id="UserInsertedAt"><span id="UserSecretDigest"><span id="UserHerokuAddOnId"><span id="UserDataRoot"><span id="UserActive"><span id="UserRole"><span id="UserUsername"><span id="UserEmail"><span id="UserPublicKey"><span id="UserId"><span id="%24sel%3AunUserKey%3AUserKey"><span id="UserKey"><span id="UniquePublicKey"><span id="UniqueUsername"><span id="UpdateUserDataRootEventInsertedAt"><span id="UpdateUserDataRootEventNewDataRoot"><span id="UpdateUserDataRootEventUserId"><span id="UpdateUserDataRootEventId"><span id="%24sel%3AunUpdateUserDataRootEventKey%3AUpdateUserDataRootEventKey"><span id="UpdateUserDataRootEventKey"><span id="LoosePinInsertedAt"><span id="LoosePinCid"><span id="LoosePinOwnerId"><span id="LoosePinId"><span id="%24sel%3AunLoosePinKey%3ALoosePinKey"><span id="LoosePinKey"><span id="UniqueCidPerUser"><span id="DomainModifiedAt"><span id="DomainInsertedAt"><span id="DomainDomainName"><span id="DomainOwnerId"><span id="DomainId"><span id="%24sel%3AunDomainKey%3ADomainKey"><span id="DomainKey"><span id="AppModifiedAt"><span id="AppInsertedAt"><span id="AppCid"><span id="AppOwnerId"><span id="AppId"><span id="%24sel%3AunAppKey%3AAppKey"><span id="AppKey"><span id="CreateAppEventInsertedAt"><span id="CreateAppEventCid"><span id="CreateAppEventOwnerId"><span id="CreateAppEventId"><span id="%24sel%3AunCreateAppEventKey%3ACreateAppEventKey"><span id="CreateAppEventKey"><span id="DestroyAppEventInsertedAt"><span id="DestroyAppEventAppId"><span id="DestroyAppEventId"><span id="%24sel%3AunDestroyAppEventKey%3ADestroyAppEventKey"><span id="DestroyAppEventKey"><span id="SetAppCIDEventInsertedAt"><span id="SetAppCIDEventNewCID"><span id="SetAppCIDEventAppId"><span id="SetAppCIDEventId"><span id="%24sel%3AunSetAppCIDEventKey%3ASetAppCIDEventKey"><span id="SetAppCIDEventKey"><span id="AppDomainInsertedAt"><span id="AppDomainIsBareDomain"><span id="AppDomainSubdomain"><span id="AppDomainDomainName"><span id="AppDomainAppId"><span id="AppDomainId"><span id="%24sel%3AunAppDomainKey%3AAppDomainKey"><span id="AppDomainKey"><span id="UniqueBareDomain"><span id="UniqueSubdomainPerDomain"><span id="AssociateAppDomainEventInsertedAt"><span id="AssociateAppDomainEventSubdomain"><span id="AssociateAppDomainEventDomainName"><span id="AssociateAppDomainEventAppId"><span id="AssociateAppDomainEventId"><span id="%24sel%3AunAssociateAppDomainEventKey%3AAssociateAppDomainEventKey"><span id="AssociateAppDomainEventKey"><span id="DissociateAppDomainEventInsertedAt"><span id="DissociateAppDomainEventSubdomain"><span id="DissociateAppDomainEventDomainName"><span id="DissociateAppDomainEventAppId"><span id="DissociateAppDomainEventId"><span id="%24sel%3AunDissociateAppDomainEventKey%3ADissociateAppDomainEventKey"><span id="DissociateAppDomainEventKey"><span id="%24sel%3AherokuAddOnModifiedAt%3AHerokuAddOn"><span id="%24sel%3AherokuAddOnInsertedAt%3AHerokuAddOn"><span id="%24sel%3AherokuAddOnRegion%3AHerokuAddOn"><span id="%24sel%3AherokuAddOnUuid%3AHerokuAddOn"><span id="HerokuAddOn"><span id="HerokuAddOnId"><span id="%24sel%3AuserModifiedAt%3AUser"><span id="%24sel%3AuserInsertedAt%3AUser"><span id="%24sel%3AuserSecretDigest%3AUser"><span id="%24sel%3AuserHerokuAddOnId%3AUser"><span id="%24sel%3AuserDataRoot%3AUser"><span id="%24sel%3AuserActive%3AUser"><span id="%24sel%3AuserRole%3AUser"><span id="%24sel%3AuserUsername%3AUser"><span id="%24sel%3AuserEmail%3AUser"><span id="%24sel%3AuserPublicKey%3AUser"><span id="User"><span id="UserId"><span id="%24sel%3AupdateUserDataRootEventInsertedAt%3AUpdateUserDataRootEvent"><span id="%24sel%3AupdateUserDataRootEventNewDataRoot%3AUpdateUserDataRootEvent"><span id="%24sel%3AupdateUserDataRootEventUserId%3AUpdateUserDataRootEvent"><span id="UpdateUserDataRootEvent"><span id="UpdateUserDataRootEventId"><span id="%24sel%3AloosePinInsertedAt%3ALoosePin"><span id="%24sel%3AloosePinCid%3ALoosePin"><span id="%24sel%3AloosePinOwnerId%3ALoosePin"><span id="LoosePin"><span id="LoosePinId"><span id="%24sel%3AdomainModifiedAt%3ADomain"><span id="%24sel%3AdomainInsertedAt%3ADomain"><span id="%24sel%3AdomainDomainName%3ADomain"><span id="%24sel%3AdomainOwnerId%3ADomain"><span id="Domain"><span id="DomainId"><span id="%24sel%3AappModifiedAt%3AApp"><span id="%24sel%3AappInsertedAt%3AApp"><span id="%24sel%3AappCid%3AApp"><span id="%24sel%3AappOwnerId%3AApp"><span id="App"><span id="AppId"><span id="%24sel%3AcreateAppEventInsertedAt%3ACreateAppEvent"><span id="%24sel%3AcreateAppEventCid%3ACreateAppEvent"><span id="%24sel%3AcreateAppEventOwnerId%3ACreateAppEvent"><span id="CreateAppEvent"><span id="CreateAppEventId"><span id="%24sel%3AdestroyAppEventInsertedAt%3ADestroyAppEvent"><span id="%24sel%3AdestroyAppEventAppId%3ADestroyAppEvent"><span id="DestroyAppEvent"><span id="DestroyAppEventId"><span id="%24sel%3AsetAppCIDEventInsertedAt%3ASetAppCIDEvent"><span id="%24sel%3AsetAppCIDEventNewCID%3ASetAppCIDEvent"><span id="%24sel%3AsetAppCIDEventAppId%3ASetAppCIDEvent"><span id="SetAppCIDEvent"><span id="SetAppCIDEventId"><span id="%24sel%3AappDomainInsertedAt%3AAppDomain"><span id="%24sel%3AappDomainIsBareDomain%3AAppDomain"><span id="%24sel%3AappDomainSubdomain%3AAppDomain"><span id="%24sel%3AappDomainDomainName%3AAppDomain"><span id="%24sel%3AappDomainAppId%3AAppDomain"><span id="AppDomain"><span id="AppDomainId"><span id="%24sel%3AassociateAppDomainEventInsertedAt%3AAssociateAppDomainEvent"><span id="%24sel%3AassociateAppDomainEventSubdomain%3AAssociateAppDomainEvent"><span id="%24sel%3AassociateAppDomainEventDomainName%3AAssociateAppDomainEvent"><span id="%24sel%3AassociateAppDomainEventAppId%3AAssociateAppDomainEvent"><span id="AssociateAppDomainEvent"><span id="AssociateAppDomainEventId"><span id="%24sel%3AdissociateAppDomainEventInsertedAt%3ADissociateAppDomainEvent"><span id="%24sel%3AdissociateAppDomainEventSubdomain%3ADissociateAppDomainEvent"><span id="%24sel%3AdissociateAppDomainEventDomainName%3ADissociateAppDomainEvent"><span id="%24sel%3AdissociateAppDomainEventAppId%3ADissociateAppDomainEvent"><span id="DissociateAppDomainEvent"><span id="DissociateAppDomainEventId"><span id="local-6989586621680188804"><span id="local-6989586621680188806"><span id="local-6989586621680188808"><span id="local-6989586621680188811"><span id="local-6989586621680188813"><span id="local-6989586621680188815"><span id="local-6989586621680188817"><span id="local-6989586621680188819"><span id="local-6989586621680188821"><span id="local-6989586621680188823"><span id="local-6989586621680188825"><span id="local-6989586621680188827"><span id="local-6989586621680188829"><span id="local-6989586621680188831"><span id="local-6989586621680188840"><span id="local-6989586621680188842"><span id="local-6989586621680188847"><span id="local-6989586621680188850"><span id="local-6989586621680188853"><span id="local-6989586621680188858"><span id="local-6989586621680188860"><span id="local-6989586621680188862"><span id="local-6989586621680188865"><span id="local-6989586621680188867"><span id="local-6989586621680188869"><span id="local-6989586621680188871"><span id="local-6989586621680188873"><span id="local-6989586621680188875"><span id="local-6989586621680188877"><span id="local-6989586621680188879"><span id="local-6989586621680188881"><span id="local-6989586621680188883"><span id="local-6989586621680188885"><span id="local-6989586621680188894"><span id="local-6989586621680188896"><span id="local-6989586621680188901"><span id="local-6989586621680188904"><span id="local-6989586621680188907"><span id="local-6989586621680188912"><span id="local-6989586621680188914"><span id="local-6989586621680188916"><span id="local-6989586621680188919"><span id="local-6989586621680188921"><span id="local-6989586621680188923"><span id="local-6989586621680188925"><span id="local-6989586621680188927"><span id="local-6989586621680188929"><span id="local-6989586621680188931"><span id="local-6989586621680188933"><span id="local-6989586621680188935"><span id="local-6989586621680188937"><span id="local-6989586621680188939"><span id="local-6989586621680188948"><span id="local-6989586621680188950"><span id="local-6989586621680188955"><span id="local-6989586621680188958"><span id="local-6989586621680188961"><span id="local-6989586621680188966"><span id="local-6989586621680188968"><span id="local-6989586621680188970"><span id="local-6989586621680188973"><span id="local-6989586621680188975"><span id="local-6989586621680188977"><span id="local-6989586621680188979"><span id="local-6989586621680188981"><span id="local-6989586621680188983"><span id="local-6989586621680188985"><span id="local-6989586621680188987"><span id="local-6989586621680188989"><span id="local-6989586621680188991"><span id="local-6989586621680188993"><span id="local-6989586621680189002"><span id="local-6989586621680189004"><span id="local-6989586621680189009"><span id="local-6989586621680189012"><span id="local-6989586621680189015"><span id="local-6989586621680189020"><span id="local-6989586621680189022"><span id="local-6989586621680189024"><span id="local-6989586621680189027"><span id="local-6989586621680189030"><span id="local-6989586621680189033"><span id="local-6989586621680189038"><span id="local-6989586621680189040"><span id="local-6989586621680189042"><span id="local-6989586621680189044"><span id="local-6989586621680189046"><span id="local-6989586621680189048"><span id="local-6989586621680189050"><span id="local-6989586621680189052"><span id="local-6989586621680189054"><span id="local-6989586621680189056"><span id="local-6989586621680189058"><span id="local-6989586621680189067"><span id="local-6989586621680189069"><span id="local-6989586621680189071"><span id="local-6989586621680189074"><span id="local-6989586621680189076"><span id="local-6989586621680189078"><span id="local-6989586621680189080"><span id="local-6989586621680189082"><span id="local-6989586621680189084"><span id="local-6989586621680189086"><span id="local-6989586621680189088"><span id="local-6989586621680189090"><span id="local-6989586621680189092"><span id="local-6989586621680189094"><span id="local-6989586621680189103"><span id="local-6989586621680189105"><span id="local-6989586621680189110"><span id="local-6989586621680189113"><span id="local-6989586621680189116"><span id="local-6989586621680189121"><span id="local-6989586621680189123"><span id="local-6989586621680189125"><span id="local-6989586621680189128"><span id="local-6989586621680189130"><span id="local-6989586621680189132"><span id="local-6989586621680189134"><span id="local-6989586621680189136"><span id="local-6989586621680189138"><span id="local-6989586621680189140"><span id="local-6989586621680189142"><span id="local-6989586621680189144"><span id="local-6989586621680189146"><span id="local-6989586621680189148"><span id="local-6989586621680189157"><span id="local-6989586621680189159"><span id="local-6989586621680189164"><span id="local-6989586621680189167"><span id="local-6989586621680189170"><span id="local-6989586621680189175"><span id="local-6989586621680189177"><span id="local-6989586621680189179"><span id="local-6989586621680189182"><span id="local-6989586621680189184"><span id="local-6989586621680189186"><span id="local-6989586621680189188"><span id="local-6989586621680189190"><span id="local-6989586621680189192"><span id="local-6989586621680189194"><span id="local-6989586621680189196"><span id="local-6989586621680189198"><span id="local-6989586621680189200"><span id="local-6989586621680189202"><span id="local-6989586621680189211"><span id="local-6989586621680189213"><span id="local-6989586621680189218"><span id="local-6989586621680189221"><span id="local-6989586621680189224"><span id="local-6989586621680189229"><span id="local-6989586621680189231"><span id="local-6989586621680189233"><span id="local-6989586621680189236"><span id="local-6989586621680189238"><span id="local-6989586621680189240"><span id="local-6989586621680189242"><span id="local-6989586621680189244"><span id="local-6989586621680189246"><span id="local-6989586621680189248"><span id="local-6989586621680189250"><span id="local-6989586621680189252"><span id="local-6989586621680189254"><span id="local-6989586621680189256"><span id="local-6989586621680189265"><span id="local-6989586621680189267"><span id="local-6989586621680189272"><span id="local-6989586621680189275"><span id="local-6989586621680189278"><span id="local-6989586621680189283"><span id="local-6989586621680189285"><span id="local-6989586621680189287"><span id="local-6989586621680189290"><span id="local-6989586621680189292"><span id="local-6989586621680189294"><span id="local-6989586621680189296"><span id="local-6989586621680189298"><span id="local-6989586621680189300"><span id="local-6989586621680189302"><span id="local-6989586621680189304"><span id="local-6989586621680189306"><span id="local-6989586621680189308"><span id="local-6989586621680189310"><span id="local-6989586621680189319"><span id="local-6989586621680189321"><span id="local-6989586621680189326"><span id="local-6989586621680189329"><span id="local-6989586621680189332"><span id="local-6989586621680189337"><span id="local-6989586621680189339"><span id="local-6989586621680189341"><span id="local-6989586621680189344"><span id="local-6989586621680189346"><span id="local-6989586621680189348"><span id="local-6989586621680189350"><span id="local-6989586621680189352"><span id="local-6989586621680189354"><span id="local-6989586621680189356"><span id="local-6989586621680189358"><span id="local-6989586621680189360"><span id="local-6989586621680189362"><span id="local-6989586621680189364"><span id="local-6989586621680189373"><span id="local-6989586621680189375"><span id="local-6989586621680189380"><span id="local-6989586621680189383"><span id="local-6989586621680189386"><span id="local-6989586621680189391"><span id="local-6989586621680189393"><span id="local-6989586621680189395"><span id="local-6989586621680189398"><span id="local-6989586621680189400"><span id="local-6989586621680189402"><span id="local-6989586621680189404"><span id="local-6989586621680189406"><span id="local-6989586621680189408"><span id="local-6989586621680189410"><span id="local-6989586621680189412"><span id="local-6989586621680189414"><span id="local-6989586621680189416"><span id="local-6989586621680189418"><span id="local-6989586621680189427"><span id="local-6989586621680189429"><span id="local-6989586621680189434"><span id="local-6989586621680189437"><span id="local-6989586621680189440"><span id="local-6989586621680189445"><span id="local-6989586621680189447"><span id="local-6989586621680189449"><span id="local-6989586621680189451"><span id="local-6989586621680189453"><span id="local-6989586621680189455"><span id="local-6989586621680189457"><span id="local-6989586621680189459"><span id="local-6989586621680189461"><span id="local-6989586621680189463"><span id="local-6989586621680189465"><span id="local-6989586621680189467"><span id="local-6989586621680189469"><span id="local-6989586621680189471"><span id="local-6989586621680189473"><span id="local-6989586621680189475"><span id="local-6989586621680189477"><span id="local-6989586621680189479"><span id="local-6989586621680189481"><span id="local-6989586621680189483"><span id="local-6989586621680189485"><span id="local-6989586621680189487"><span id="local-6989586621680189489"><span id="local-6989586621680189491"><span id="local-6989586621680189493"><span id="local-6989586621680189495"><span id="local-6989586621680189497"><span id="local-6989586621680189499"><span id="local-6989586621680189501"><span id="local-6989586621680189503"><span id="local-6989586621680189505"><span id="local-6989586621680189507"><span id="local-6989586621680189509"><span id="local-6989586621680189511"><span id="local-6989586621680189513"><span id="local-6989586621680189515"><span id="local-6989586621680189517"><span id="local-6989586621680189519"><span id="local-6989586621680189521"><span id="local-6989586621680189523"><span id="local-6989586621680189525"><span id="local-6989586621680189527"><span id="local-6989586621680189529"><span id="local-6989586621680189531"><span id="local-6989586621680189533"><span id="local-6989586621680189535"><span id="local-6989586621680189537"><span id="local-6989586621680189539"><span id="local-6989586621680189541"><span id="local-6989586621680189543"><span id="local-6989586621680189545"><span id="local-6989586621680189547"><span id="local-6989586621680189549"><span id="local-6989586621680189551"><span id="local-6989586621680189553"><span id="local-6989586621680189555"><span id="local-6989586621680189557"><span id="local-6989586621680189559"><span id="local-6989586621680189561"><span id="local-6989586621680189563"><span id="local-6989586621680189565"><span id="local-6989586621680189567"><span id="local-6989586621680189569"><span id="local-6989586621680189571"><span id="local-6989586621680189573"><span id="local-6989586621680189575"><span id="local-6989586621680189577"><span id="local-6989586621680189580"><span id="local-6989586621680189582"><span id="local-6989586621680189584"><span id="local-6989586621680189586"><span id="local-6989586621680189588"><span id="local-6989586621680189590"><span id="local-6989586621680189592"><span id="local-6989586621680189594"><span id="local-6989586621680189596"><span id="local-6989586621680189598"><span id="local-6989586621680189600"><span id="local-6989586621680189602"><span id="local-6989586621680189604"><span id="local-6989586621680189606"><span id="local-6989586621680189608"><span id="local-6989586621680189610"><span id="local-6989586621680189612"><span id="local-6989586621680189614"><span id="local-6989586621680189617"><span id="local-6989586621680189619"><span id="local-6989586621680189621"><span id="local-6989586621680189623"><span id="local-6989586621680189625"><span id="local-6989586621680189627"><span id="local-6989586621680189629"><span id="local-6989586621680189631"><span id="local-6989586621680189633"><span id="local-6989586621680189635"><span id="local-6989586621680189637"><span id="local-6989586621680189639"><span id="local-6989586621680189641"><span id="local-6989586621680189643"><span id="local-6989586621680189645"><span id="local-6989586621680189647"><span id="local-6989586621680189649"><span id="local-6989586621680189651"><span id="local-6989586621680189653"><span id="local-6989586621680189656"><span id="local-6989586621680189658"><span id="local-6989586621680189660"><span id="local-6989586621680189662"><span id="local-6989586621680189664"><span id="local-6989586621680189666"><span id="local-6989586621680189668"><span id="local-6989586621680189670"><span id="local-6989586621680189672"><span id="local-6989586621680189674"><span id="local-6989586621680189676"><span id="local-6989586621680189678"><span id="local-6989586621680189680"><span id="local-6989586621680189682"><span id="local-6989586621680189684"><span id="local-6989586621680189686"><span id="local-6989586621680189688"><span id="local-6989586621680189690"><span id="local-6989586621680189693"><span id="local-6989586621680189695"><span id="local-6989586621680189697"><span id="local-6989586621680189699"><span id="local-6989586621680189701"><span id="local-6989586621680189703"><span id="local-6989586621680189705"><span id="local-6989586621680189707"><span id="local-6989586621680189709"><span id="local-6989586621680189711"><span id="local-6989586621680189713"><span id="local-6989586621680189715"><span id="local-6989586621680189717"><span id="local-6989586621680189719"><span id="local-6989586621680189721"><span id="local-6989586621680189723"><span id="local-6989586621680189725"><span id="local-6989586621680189727"><span id="local-6989586621680189729"><span id="local-6989586621680189732"><span id="local-6989586621680189734"><span id="local-6989586621680189736"><span id="local-6989586621680189738"><span id="local-6989586621680189740"><span id="local-6989586621680189742"><span id="local-6989586621680189744"><span id="local-6989586621680189746"><span id="local-6989586621680189748"><span id="local-6989586621680189750"><span id="local-6989586621680189752"><span id="local-6989586621680189754"><span id="local-6989586621680189756"><span id="local-6989586621680189758"><span id="local-6989586621680189760"><span id="local-6989586621680189762"><span id="local-6989586621680189764"><span id="local-6989586621680189766"><span id="local-6989586621680189769"><span id="local-6989586621680189771"><span id="local-6989586621680189773"><span id="local-6989586621680189775"><span id="local-6989586621680189777"><span id="local-6989586621680189779"><span id="local-6989586621680189781"><span id="local-6989586621680189783"><span id="local-6989586621680189785"><span id="local-6989586621680189787"><span id="local-6989586621680189789"><span id="local-6989586621680189791"><span id="local-6989586621680189793"><span id="local-6989586621680189795"><span id="local-6989586621680189797"><span id="local-6989586621680189799"><span id="local-6989586621680189802"><span id="local-6989586621680189804"><span id="local-6989586621680189806"><span id="local-6989586621680189808"><span id="local-6989586621680189810"><span id="local-6989586621680189812"><span id="local-6989586621680189814"><span id="local-6989586621680189816"><span id="local-6989586621680189818"><span id="local-6989586621680189820"><span id="local-6989586621680189822"><span id="local-6989586621680189824"><span id="local-6989586621680189826"><span id="local-6989586621680189828"><span id="local-6989586621680189830"><span id="local-6989586621680189832"><span id="local-6989586621680189834"><span id="local-6989586621680189836"><span id="local-6989586621680189839"><span id="local-6989586621680189841"><span id="local-6989586621680189843"><span id="local-6989586621680189845"><span id="local-6989586621680189847"><span id="local-6989586621680189849"><span id="local-6989586621680189851"><span id="local-6989586621680189853"><span id="local-6989586621680189855"><span id="local-6989586621680189857"><span id="local-6989586621680189859"><span id="local-6989586621680189861"><span id="local-6989586621680189863"><span id="local-6989586621680189865"><span id="local-6989586621680189867"><span id="local-6989586621680189869"><span id="local-6989586621680189871"><span id="local-6989586621680189873"><span id="local-6989586621680189875"><span id="local-6989586621680189878"><span id="local-6989586621680189880"><span id="local-6989586621680189882"><span id="local-6989586621680189884"><span id="local-6989586621680189886"><span id="local-6989586621680189888"><span id="local-6989586621680189890"><span id="local-6989586621680189892"><span id="local-6989586621680189894"><span id="local-6989586621680189896"><span id="local-6989586621680189898"><span id="local-6989586621680189900"><span id="local-6989586621680189902"><span id="local-6989586621680189904"><span id="local-6989586621680189906"><span id="local-6989586621680189908"><span id="local-6989586621680189910"><span id="local-6989586621680189912"><span id="local-6989586621680189915"><span id="local-6989586621680189917"><span id="local-6989586621680189919"><span id="local-6989586621680189921"><span id="local-6989586621680189923"><span id="local-6989586621680189925"><span id="local-6989586621680189927"><span id="local-6989586621680189929"><span id="local-6989586621680189931"><span id="local-6989586621680189933"><span id="local-6989586621680189935"><span id="local-6989586621680189937"><span id="local-6989586621680189939"><span id="local-6989586621680189941"><span id="local-6989586621680189943"><span id="local-6989586621680189945"><span id="local-6989586621680189948"><span id="local-6989586621680189950"><span id="local-6989586621680189952"><span id="local-6989586621680189954"><span id="local-6989586621680189956"><span id="local-6989586621680189958"><span id="local-6989586621680189960"><span id="local-6989586621680189962"><span id="local-6989586621680189964"><span id="local-6989586621680189966"><span id="local-6989586621680189968"><span id="local-6989586621680189970"><span id="local-6989586621680189972"><span id="local-6989586621680189974"><span id="local-6989586621680189976"><span id="local-6989586621680189978"><span id="local-6989586621680189980"><span id="local-6989586621680189982"><span id="local-6989586621680189985"><span id="local-6989586621680189987"><span id="local-6989586621680189989"><span id="local-6989586621680189991"><span id="local-6989586621680189993"><span id="local-6989586621680189995"><span id="local-6989586621680189997"><span id="local-6989586621680189999"><span id="local-6989586621680190001"><span id="local-6989586621680190003"><span id="local-6989586621680190005"><span id="local-6989586621680190007"><span id="local-6989586621680190009"><span id="local-6989586621680190011"><span id="local-6989586621680190013"><span id="local-6989586621680190015"><span id="local-6989586621680190018"><span id="local-6989586621680190020"><span id="local-6989586621680190022"><span id="local-6989586621680190024"><span id="local-6989586621680190026"><span id="local-6989586621680190028"><span id="local-6989586621680190030"><span id="local-6989586621680190032"><span id="local-6989586621680190034"><span id="local-6989586621680190036"><span id="local-6989586621680190038"><span id="local-6989586621680190040"><span id="local-6989586621680190042"><span id="local-6989586621680190044"><span id="local-6989586621680190046"><span id="local-6989586621680190048"><span id="local-6989586621680190050"><span id="local-6989586621680190052"><span id="local-6989586621680190055"><span id="local-6989586621680190057"><span id="local-6989586621680190059"><span id="local-6989586621680190061"><span id="local-6989586621680190063"><span id="local-6989586621680190065"><span id="local-6989586621680190067"><span id="local-6989586621680190069"><span id="local-6989586621680190071"><span id="local-6989586621680190073"><span id="local-6989586621680190075"><span id="local-6989586621680190077"><span id="local-6989586621680190079"><span id="local-6989586621680190081"><span id="local-6989586621680190083"><span id="local-6989586621680190085"><span id="local-6989586621680190088"><span id="local-6989586621680190090"><span id="local-6989586621680190092"><span id="local-6989586621680190094"><span id="local-6989586621680190096"><span id="local-6989586621680190098"><span id="local-6989586621680190100"><span id="local-6989586621680190102"><span id="local-6989586621680190104"><span id="local-6989586621680190106"><span id="local-6989586621680190108"><span id="local-6989586621680190110"><span id="local-6989586621680190112"><span id="local-6989586621680190114"><span id="local-6989586621680190116"><span id="local-6989586621680190118"><span id="local-6989586621680190120"><span id="local-6989586621680190122"><span id="local-6989586621680190125"><span id="local-6989586621680190127"><span id="local-6989586621680190129"><span id="local-6989586621680190131"><span id="local-6989586621680190133"><span id="local-6989586621680190135"><span id="local-6989586621680190137"><span id="local-6989586621680190139"><span id="local-6989586621680190141"><span id="local-6989586621680190143"><span id="local-6989586621680190145"><span id="local-6989586621680190147"><span id="local-6989586621680190149"><span id="local-6989586621680190151"><span id="local-6989586621680190153"><span id="local-6989586621680190155"><span id="local-6989586621680190158"><span id="local-6989586621680190160"><span id="local-6989586621680190162"><span id="local-6989586621680190164"><span id="local-6989586621680190166"><span id="local-6989586621680190168"><span id="local-6989586621680190170"><span id="local-6989586621680190172"><span id="local-6989586621680190174"><span id="local-6989586621680190176"><span id="local-6989586621680190178"><span id="local-6989586621680190180"><span id="local-6989586621680190182"><span id="local-6989586621680190184"><span id="local-6989586621680190186"><span id="local-6989586621680190188"><span id="local-6989586621680190190"><span id="local-6989586621680190192"><span id="local-6989586621680190195"><span id="local-6989586621680190197"><span id="local-6989586621680190199"><span id="local-6989586621680190201"><span id="local-6989586621680190203"><span id="local-6989586621680190205"><span id="local-6989586621680190207"><span id="local-6989586621680190209"><span id="local-6989586621680190211"><span id="local-6989586621680190213"><span id="local-6989586621680190215"><span id="local-6989586621680190217"><span id="local-6989586621680190219"><span id="local-6989586621680190221"><span id="local-6989586621680190223"><span id="local-6989586621680190225"><span id="local-6989586621680190228"><span id="local-6989586621680190230"><span id="local-6989586621680190232"><span id="local-6989586621680190234"><span id="local-6989586621680190236"><span id="local-6989586621680190238"><span id="local-6989586621680190240"><span id="local-6989586621680190242"><span id="local-6989586621680190244"><span id="local-6989586621680190246"><span id="local-6989586621680190248"><span id="local-6989586621680190250"><span id="local-6989586621680190252"><span id="local-6989586621680190254"><span id="local-6989586621680190256"><span id="local-6989586621680190258"><span id="local-6989586621680190260"><span id="local-6989586621680190262"><span id="local-6989586621680190265"><span id="local-6989586621680190267"><span id="local-6989586621680190269"><span id="local-6989586621680190271"><span id="local-6989586621680190273"><span id="local-6989586621680190275"><span id="local-6989586621680190277"><span id="local-6989586621680190279"><span id="local-6989586621680190281"><span id="local-6989586621680190283"><span id="local-6989586621680190285"><span id="local-6989586621680190287"><span id="local-6989586621680190289"><span id="local-6989586621680190291"><span id="local-6989586621680190293"><span id="local-6989586621680190295"><span id="local-6989586621680190297"><span id="local-6989586621680190299"><span id="local-6989586621680190301"><span id="local-6989586621680190304"><span id="local-6989586621680190306"><span id="local-6989586621680190308"><span id="local-6989586621680190310"><span id="local-6989586621680190312"><span id="local-6989586621680190314"><span id="local-6989586621680190316"><span id="local-6989586621680190318"><span id="local-6989586621680190320"><span id="local-6989586621680190322"><span id="local-6989586621680190324"><span id="local-6989586621680190326"><span id="local-6989586621680190328"><span id="local-6989586621680190330"><span id="local-6989586621680190332"><span id="local-6989586621680190334"><span id="local-6989586621680190336"><span id="local-6989586621680190338"><span id="local-6989586621680190341"><span id="local-6989586621680190343"><span id="local-6989586621680190345"><span id="local-6989586621680190347"><span id="local-6989586621680190349"><span id="local-6989586621680190351"><span id="local-6989586621680190353"><span id="local-6989586621680190355"><span id="local-6989586621680190357"><span id="local-6989586621680190359"><span id="local-6989586621680190361"><span id="local-6989586621680190363"><span id="local-6989586621680190365"><span id="local-6989586621680190367"><span id="local-6989586621680190369"><span id="local-6989586621680190371"><span id="local-6989586621680190374"><span id="local-6989586621680190376"><span id="local-6989586621680190378"><span id="local-6989586621680190380"><span id="local-6989586621680190382"><span id="local-6989586621680190384"><span id="local-6989586621680190386"><span id="local-6989586621680190388"><span id="local-6989586621680190390"><span id="local-6989586621680190392"><span id="local-6989586621680190394"><span id="local-6989586621680190396"><span id="local-6989586621680190398"><span id="local-6989586621680190400"><span id="local-6989586621680190402"><span id="local-6989586621680190404"><span id="local-6989586621680190406"><span id="local-6989586621680190408"><span id="local-6989586621680190411"><span id="local-6989586621680190413"><span id="local-6989586621680190415"><span id="local-6989586621680190417"><span id="local-6989586621680190419"><span id="local-6989586621680190421"><span id="local-6989586621680190423"><span id="local-6989586621680190425"><span id="local-6989586621680190427"><span id="local-6989586621680190429"><span id="local-6989586621680190430"><span id="local-6989586621680190431"><span id="local-6989586621680190432"><span id="local-6989586621680190433"><span id="local-6989586621680190434"><span id="local-6989586621680190435"><span id="local-6989586621680190436"><span id="local-6989586621680190437"><span id="local-6989586621680190438"><span id="local-6989586621680190439"><span id="local-6989586621680190440"><span id="local-6989586621680190441"><span id="local-6989586621680190442"><span id="local-6989586621680190443"><span id="local-6989586621680190444"><span id="local-6989586621680190445"><span id="local-6989586621680190446"><span id="local-6989586621680190447"><span id="local-6989586621680190448"><span id="local-6989586621680190449"><span id="local-6989586621680190450"><span id="local-6989586621680190451"><span id="local-6989586621680190452"><span id="Unique"><span id="EntityField"><span id="PersistEntityBackend"><span id="HerokuAddOn"><span id="User"><span id="UpdateUserDataRootEvent"><span id="LoosePin"><span id="Domain"><span id="App"><span id="CreateAppEvent"><span id="DestroyAppEvent"><span id="SetAppCIDEvent"><span id="AppDomain"><span id="AssociateAppDomainEvent"><span id="Key"><span id="DissociateAppDomainEvent"><span class="hs-identifier">share</span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">[</span><span> </span><span class="hs-identifier">mkPersist</span><span>       </span><span class="hs-identifier">sqlSettings</span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="hs-identifier">mkDeleteCascade</span><span> </span><span class="hs-identifier">sqlSettings</span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="hs-identifier">mkMigrate</span><span>       </span><span class="hs-string">&quot;migrateAll&quot;</span><span>
+</span><span id="line-43"></span><span>  </span><span class="hs-special">]</span><span> </span><span class="">[persistLowerCase|
+HerokuAddOn
+  uuid       UUID         sqltype=uuid
+  region     Region Maybe
+
+  insertedAt UTCTime
+  modifiedAt UTCTime
+
+  UniqueUUID uuid
+
+  deriving Show Eq
+
+--------------------------------------------------------------------------------
+
+User
+  publicKey     Key.Public    Maybe
+
+  email         Email         Maybe
+  username      Username
+
+  role          Role
+  active        Bool
+
+  dataRoot      CID
+
+  herokuAddOnId HerokuAddOnId Maybe
+  secretDigest  SecretDigest  Maybe
+
+  insertedAt    UTCTime
+  modifiedAt    UTCTime
+
+  UniqueUsername  username
+  UniquePublicKey publicKey !force
+  -- UniqueEmail     email     !force
+
+  deriving Show Eq
+
+------------
+-- Events --
+------------
+
+UpdateUserDataRootEvent
+  userId      UserId
+  newDataRoot CID
+
+  insertedAt  UTCTime
+
+  deriving Show Eq
+
+--------------------------------------------------------------------------------
+
+LoosePin
+  ownerId    UserId
+  cid        CID
+
+  insertedAt UTCTime
+
+  UniqueCidPerUser ownerId cid
+
+  deriving Show Eq
+
+--------------------------------------------------------------------------------
+
+Domain
+  ownerId    UserId
+  domainName DomainName
+
+  insertedAt UTCTime
+  modifiedAt UTCTime
+
+  Primary domainName
+
+  deriving Show Eq
+
+--------------------------------------------------------------------------------
+
+App
+  ownerId     UserId
+  cid         CID
+
+  insertedAt  UTCTime
+  modifiedAt  UTCTime
+
+  deriving Show Eq
+
+------------
+-- Events --
+------------
+
+CreateAppEvent
+  ownerId     UserId
+  cid         CID
+
+  insertedAt  UTCTime
+
+  deriving Show Eq
+
+DestroyAppEvent
+  appId      AppId
+  insertedAt UTCTime
+
+  deriving Show Eq
+
+SetAppCIDEvent
+  appId  AppId
+  newCID CID
+
+  insertedAt UTCTime
+
+  deriving Show Eq
+
+--------------------------------------------------------------------------------
+
+AppDomain
+  appId         AppId
+
+  domainName    DomainName
+
+  subdomain     Subdomain Maybe
+  isBareDomain  App.Domain.IsBare Maybe -- Hack around nullable constraint
+
+  insertedAt    UTCTime
+
+  UniqueSubdomainPerDomain domainName subdomain    !force
+  UniqueBareDomain         domainName isBareDomain !force -- Hack around nullable constraint
+
+  deriving Show Eq
+
+------------
+-- Events --
+------------
+
+AssociateAppDomainEvent
+  appId      AppId
+
+  domainName DomainName
+  subdomain  Subdomain Maybe
+
+  insertedAt UTCTime
+
+  deriving Show Eq
+
+DissociateAppDomainEvent
+  appId      AppId
+
+  domainName DomainName
+  subdomain  Subdomain Maybe
+
+  insertedAt UTCTime
+
+  deriving Show Eq
+|]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span>
+</span><span id="line-195"></span><span>
+</span><span id="line-196"></span><span class="hs-comment">------------</span><span>
+</span><span id="line-197"></span><span class="hs-comment">-- UserId --</span><span>
+</span><span id="line-198"></span><span class="hs-comment">------------</span><span>
+</span><span id="line-199"></span><span>
+</span><span id="line-200"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188601"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-201"></span><span>  </span><span id="local-6989586621680188599"><span class="annot"><span class="annottext">arbitrary :: Gen (Key User)
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; Key User
+forall record.
+ToBackendKey SqlBackend record =&gt;
+Int64 -&gt; Key record
+</span><span class="hs-identifier hs-var">toSqlKey</span></span><span> </span><span class="annot"><span class="annottext">(Int64 -&gt; Key User) -&gt; Gen Int64 -&gt; Gen (Key User)
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Gen Int64
+forall a. Arbitrary a =&gt; Gen a
+</span><span class="hs-identifier hs-var">arbitrary</span></span><span>
+</span><span id="line-202"></span><span>
+</span><span id="line-203"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188593"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-204"></span><span>  </span><span id="local-6989586621680188591"><span class="annot"><span class="annottext">display :: Key User -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Key User -&gt; Utf8Builder
+forall a. Show a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">displayShow</span></span><span>
+</span><span id="line-205"></span><span>
+</span><span id="line-206"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Security.html#Digestable"><span class="hs-identifier hs-type">Digestable</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-207"></span><span>  </span><span id="local-6989586621680188586"><span class="annot"><span class="annottext">digest :: Key User -&gt; Text
+</span><a href="Fission.Security.html#digest"><span class="hs-identifier hs-var hs-var hs-var hs-var">digest</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text
+forall a. Digestable a =&gt; a -&gt; Text
+</span><a href="Fission.Security.html#digest"><span class="hs-identifier hs-var">digest</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Text) -&gt; (Key User -&gt; Text) -&gt; Key User -&gt; Text
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Key User -&gt; Text
+forall a. Show a =&gt; a -&gt; Text
+</span><a href="Fission.Internal.UTF8.html#textShow"><span class="hs-identifier hs-var">UTF8.textShow</span></a></span><span>
+</span><span id="line-208"></span><span>
+</span><span id="line-209"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-210"></span><span>  </span><span id="local-6989586621680188580"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy (Key User) -&gt; Declare (Definitions Schema) NamedSchema
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-211"></span><span>    </span><span class="annot"><span class="annottext">Schema
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span>
+</span><span id="line-212"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (SwaggerType 'SwaggerKindSchema)
+ -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasType s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">type_</span></span><span> </span><span class="annot"><span class="annottext">((Maybe (SwaggerType 'SwaggerKindSchema)
+  -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; SwaggerType 'SwaggerKindSchema -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">SwaggerType 'SwaggerKindSchema
+forall (t :: SwaggerKind *). SwaggerType t
+</span><span class="hs-identifier hs-var">SwaggerInteger</span></span><span>
+</span><span id="line-213"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; NamedSchema) -&gt; NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Schema -&gt; NamedSchema
+</span><span class="hs-identifier hs-var">NamedSchema</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="hs-string">&quot;UserId&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-214"></span><span>      </span><span class="annot"><span class="annottext">NamedSchema
+-&gt; (NamedSchema -&gt; Declare (Definitions Schema) NamedSchema)
+-&gt; Declare (Definitions Schema) NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">NamedSchema -&gt; Declare (Definitions Schema) NamedSchema
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span>
+</span><span id="line-215"></span><span>
+</span><span id="line-216"></span><span class="hs-comment">-----------</span><span>
+</span><span id="line-217"></span><span class="hs-comment">-- AppId --</span><span>
+</span><span id="line-218"></span><span class="hs-comment">-----------</span><span>
+</span><span id="line-219"></span><span>
+</span><span id="line-220"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188571"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-221"></span><span>  </span><span id="local-6989586621680188570"><span class="annot"><span class="annottext">arbitrary :: Gen (Key App)
+</span><a href="#local-6989586621680188570"><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; Key App
+forall record.
+ToBackendKey SqlBackend record =&gt;
+Int64 -&gt; Key record
+</span><span class="hs-identifier hs-var">toSqlKey</span></span><span> </span><span class="annot"><span class="annottext">(Int64 -&gt; Key App) -&gt; Gen Int64 -&gt; Gen (Key App)
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Gen Int64
+forall a. Arbitrary a =&gt; Gen a
+</span><span class="hs-identifier hs-var">arbitrary</span></span><span>
+</span><span id="line-222"></span><span>
+</span><span id="line-223"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-224"></span><span>  </span><span id="local-6989586621680188568"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy (Key App) -&gt; Declare (Definitions Schema) NamedSchema
+</span><a href="#local-6989586621680188568"><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></a></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-225"></span><span>    </span><span class="annot"><span class="annottext">Schema
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span>
+</span><span id="line-226"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (SwaggerType 'SwaggerKindSchema)
+ -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasType s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">type_</span></span><span> </span><span class="annot"><span class="annottext">((Maybe (SwaggerType 'SwaggerKindSchema)
+  -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; SwaggerType 'SwaggerKindSchema -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">SwaggerType 'SwaggerKindSchema
+forall (t :: SwaggerKind *). SwaggerType t
+</span><span class="hs-identifier hs-var">SwaggerInteger</span></span><span>
+</span><span id="line-227"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; NamedSchema) -&gt; NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Schema -&gt; NamedSchema
+</span><span class="hs-identifier hs-var">NamedSchema</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AppId&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-228"></span><span>      </span><span class="annot"><span class="annottext">NamedSchema
+-&gt; (NamedSchema -&gt; Declare (Definitions Schema) NamedSchema)
+-&gt; Declare (Definitions Schema) NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">NamedSchema -&gt; Declare (Definitions Schema) NamedSchema
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span>
+</span><span id="line-229"></span><span>
+</span><span id="line-230"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToParamSchema</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-231"></span><span>  </span><span id="local-6989586621680188565"><span class="annot"><span class="annottext">toParamSchema :: Proxy (Key App) -&gt; ParamSchema t
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toParamSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ParamSchema t
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span> </span><span class="annot"><span class="annottext">ParamSchema t -&gt; (ParamSchema t -&gt; ParamSchema t) -&gt; ParamSchema t
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (SwaggerType t) -&gt; Identity (Maybe (SwaggerType t)))
+-&gt; ParamSchema t -&gt; Identity (ParamSchema t)
+forall s a. HasType s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">type_</span></span><span> </span><span class="annot"><span class="annottext">((Maybe (SwaggerType t) -&gt; Identity (Maybe (SwaggerType t)))
+ -&gt; ParamSchema t -&gt; Identity (ParamSchema t))
+-&gt; SwaggerType t -&gt; ParamSchema t -&gt; ParamSchema t
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">SwaggerType t
+forall (t :: SwaggerKind *). SwaggerType t
+</span><span class="hs-identifier hs-var">SwaggerString</span></span><span>
+</span><span id="line-232"></span><span>
+</span><span id="line-233"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188560"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-234"></span><span>  </span><span id="local-6989586621680188559"><span class="annot"><span class="annottext">display :: Key App -&gt; Utf8Builder
+</span><a href="#local-6989586621680188559"><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Key App -&gt; Utf8Builder
+forall a. Show a =&gt; a -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var">displayShow</span></span><span>
+</span><span id="line-235"></span><span>
+</span><span id="line-236"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188556"><span class="annot"><span class="hs-identifier hs-type">ToJSONKey</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-237"></span><span>  </span><span id="local-6989586621680188554"><span class="annot"><span class="annottext">toJSONKey :: ToJSONKeyFunction (Key App)
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSONKey</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Key App -&gt; Text) -&gt; ToJSONKeyFunction (Key App)
+forall a. (a -&gt; Text) -&gt; ToJSONKeyFunction a
+</span><span class="hs-identifier hs-var">toJSONKeyText</span></span><span> </span><span class="annot"><span class="annottext">Key App -&gt; Text
+forall a. Display a =&gt; a -&gt; Text
+</span><span class="hs-identifier hs-var">textDisplay</span></span><span>
+</span><span id="line-238"></span></pre></body></html>
