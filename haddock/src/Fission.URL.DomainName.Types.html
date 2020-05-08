@@ -11,9 +11,9 @@
 </span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-12"></span><span>
 </span><span id="line-13"></span><span class="hs-comment">-- | Type safety wrapper for domain names</span><span>
-</span><span id="line-14"></span><span id="local-6989586621680186840"><span id="local-6989586621680186841"></span></span><span class="hs-keyword">newtype</span><span> </span><span id="DomainName"><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="DomainName"><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Aget%3ADomainName"><span class="annot"><span class="annottext">DomainName -&gt; Text
+</span><span id="line-14"></span><span id="local-6989586621680186876"><span id="local-6989586621680186877"></span></span><span class="hs-keyword">newtype</span><span> </span><span id="DomainName"><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="DomainName"><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Aget%3ADomainName"><span class="annot"><span class="annottext">DomainName -&gt; Text
 </span><a href="Fission.URL.DomainName.Types.html#%24sel%3Aget%3ADomainName"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span>          </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680186834"><span id="local-6989586621680186836"><span class="annot"><span class="annottext">DomainName -&gt; DomainName -&gt; Bool
+</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span>          </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680186870"><span id="local-6989586621680186872"><span class="annot"><span class="annottext">DomainName -&gt; DomainName -&gt; Bool
 (DomainName -&gt; DomainName -&gt; Bool)
 -&gt; (DomainName -&gt; DomainName -&gt; Bool) -&gt; Eq DomainName
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -31,7 +31,7 @@ forall a.
 $cto :: forall x. Rep DomainName x -&gt; DomainName
 $cfrom :: forall x. DomainName -&gt; Rep DomainName x
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span>
-</span><span id="line-17"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186824"><span id="local-6989586621680186826"><span id="local-6989586621680186828"><span class="annot"><span class="annottext">Int -&gt; DomainName -&gt; ShowS
+</span><span id="line-17"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186860"><span id="local-6989586621680186862"><span id="local-6989586621680186864"><span class="annot"><span class="annottext">Int -&gt; DomainName -&gt; ShowS
 [DomainName] -&gt; ShowS
 DomainName -&gt; String
 (Int -&gt; DomainName -&gt; ShowS)
@@ -47,7 +47,7 @@ $cshow :: DomainName -&gt; String
 showsPrec :: Int -&gt; DomainName -&gt; ShowS
 $cshowsPrec :: Int -&gt; DomainName -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-18"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186815"><span id="local-6989586621680186817"><span id="local-6989586621680186819"><span id="local-6989586621680186821"><span class="annot"><span class="annottext">ReadPrec [DomainName]
+</span><span id="line-18"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186851"><span id="local-6989586621680186853"><span id="local-6989586621680186855"><span id="local-6989586621680186857"><span class="annot"><span class="annottext">ReadPrec [DomainName]
 ReadPrec DomainName
 Int -&gt; ReadS DomainName
 ReadS [DomainName]
@@ -68,7 +68,7 @@ $creadList :: ReadS [DomainName]
 readsPrec :: Int -&gt; ReadS DomainName
 $creadsPrec :: Int -&gt; ReadS DomainName
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Read</span></span></span></span></span></span><span>
-</span><span id="line-19"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186799"><span id="local-6989586621680186801"><span id="local-6989586621680186803"><span id="local-6989586621680186805"><span id="local-6989586621680186807"><span id="local-6989586621680186809"><span id="local-6989586621680186811"><span class="annot"><span class="annottext">Eq DomainName
+</span><span id="line-19"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186835"><span id="local-6989586621680186837"><span id="local-6989586621680186839"><span id="local-6989586621680186841"><span id="local-6989586621680186843"><span id="local-6989586621680186845"><span id="local-6989586621680186847"><span class="annot"><span class="annottext">Eq DomainName
 Eq DomainName =&gt;
 (DomainName -&gt; DomainName -&gt; Ordering)
 -&gt; (DomainName -&gt; DomainName -&gt; Bool)
@@ -108,13 +108,13 @@ $ccompare :: DomainName -&gt; DomainName -&gt; Ordering
 $cp1Ord :: Eq DomainName
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Ord</span></span></span></span></span></span></span></span></span><span>
 </span><span id="line-20"></span><span>                    </span><span class="hs-special">)</span><span>
-</span><span id="line-21"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>  </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680186796"><span class="annot"><span class="annottext">String -&gt; DomainName
+</span><span id="line-21"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>  </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680186832"><span class="annot"><span class="annottext">String -&gt; DomainName
 (String -&gt; DomainName) -&gt; IsString DomainName
 forall a. (String -&gt; a) -&gt; IsString a
 fromString :: String -&gt; DomainName
 $cfromString :: String -&gt; DomainName
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
-</span><span id="line-22"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186791"><span id="local-6989586621680186793"><span class="annot"><span class="annottext">Text -&gt; Maybe DomainName
+</span><span id="line-22"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186827"><span id="local-6989586621680186829"><span class="annot"><span class="annottext">Text -&gt; Maybe DomainName
 DomainName -&gt; Text
 (Text -&gt; Maybe DomainName)
 -&gt; (DomainName -&gt; Text) -&gt; PathPiece DomainName
@@ -124,7 +124,7 @@ $ctoPathPiece :: DomainName -&gt; Text
 fromPathPiece :: Text -&gt; Maybe DomainName
 $cfromPathPiece :: Text -&gt; Maybe DomainName
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">PathPiece</span></span></span></span><span>
-</span><span id="line-23"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186786"><span id="local-6989586621680186788"><span class="annot"><span class="annottext">DomainName -&gt; Text
+</span><span id="line-23"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186822"><span id="local-6989586621680186824"><span class="annot"><span class="annottext">DomainName -&gt; Text
 DomainName -&gt; Utf8Builder
 (DomainName -&gt; Utf8Builder)
 -&gt; (DomainName -&gt; Text) -&gt; Display DomainName
@@ -137,21 +137,21 @@ $cdisplay :: DomainName -&gt; Utf8Builder
 </span><span id="line-24"></span><span>                    </span><span class="hs-special">)</span><span>
 </span><span id="line-25"></span><span>
 </span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680186781"><span class="annot"><span class="annottext">toPersistValue :: DomainName -&gt; PersistValue
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680186779"><span class="annot"><span class="annottext">name' :: Text
-</span><a href="#local-6989586621680186779"><span class="hs-identifier hs-var">name'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680186817"><span class="annot"><span class="annottext">toPersistValue :: DomainName -&gt; PersistValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680186815"><span class="annot"><span class="annottext">name' :: Text
+</span><a href="#local-6989586621680186815"><span class="hs-identifier hs-var">name'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
 </span><span class="hs-identifier hs-var">PersistText</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680186779"><span class="hs-identifier hs-var">name'</span></a></span><span>
-</span><span id="line-28"></span><span>  </span><span id="local-6989586621680186777"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text DomainName
+</span><a href="#local-6989586621680186815"><span class="hs-identifier hs-var">name'</span></a></span><span>
+</span><span id="line-28"></span><span>  </span><span id="local-6989586621680186813"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text DomainName
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-29"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680186775"><span class="annot"><span class="annottext">name' :: Text
-</span><a href="#local-6989586621680186775"><span class="hs-identifier hs-var">name'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Either Text DomainName
+</span><span id="line-29"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680186811"><span class="annot"><span class="annottext">name' :: Text
+</span><a href="#local-6989586621680186811"><span class="hs-identifier hs-var">name'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Either Text DomainName
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; DomainName
 </span><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680186775"><span class="hs-identifier hs-var">name'</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-30"></span><span>    </span><span id="local-6989586621680186774"><span class="annot"><span class="annottext">other :: PersistValue
-</span><a href="#local-6989586621680186774"><span class="hs-identifier hs-var">other</span></a></span></span><span>             </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text DomainName
+</span><a href="#local-6989586621680186811"><span class="hs-identifier hs-var">name'</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-30"></span><span>    </span><span id="local-6989586621680186810"><span class="annot"><span class="annottext">other :: PersistValue
+</span><a href="#local-6989586621680186810"><span class="hs-identifier hs-var">other</span></a></span></span><span>             </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text DomainName
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;Invalid Persistent Domain Name: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
@@ -159,16 +159,16 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-identifier hs-var">Text.pack</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">PersistValue -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">PersistValue
-</span><a href="#local-6989586621680186774"><span class="hs-identifier hs-var">other</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680186810"><span class="hs-identifier hs-var">other</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-31"></span><span>
 </span><span id="line-32"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-33"></span><span>  </span><span id="local-6989586621680186768"><span class="annot"><span class="annottext">sqlType :: Proxy DomainName -&gt; SqlType
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span id="local-6989586621680186766"><span class="annot"><span class="annottext">_pxy :: Proxy DomainName
-</span><a href="#local-6989586621680186766"><span class="hs-identifier hs-var">_pxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
+</span><span id="line-33"></span><span>  </span><span id="local-6989586621680186804"><span class="annot"><span class="annottext">sqlType :: Proxy DomainName -&gt; SqlType
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span id="local-6989586621680186802"><span class="annot"><span class="annottext">_pxy :: Proxy DomainName
+</span><a href="#local-6989586621680186802"><span class="hs-identifier hs-var">_pxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
 </span><span class="hs-identifier hs-var">SqlString</span></span><span>
 </span><span id="line-34"></span><span>
 </span><span id="line-35"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-36"></span><span>  </span><span id="local-6989586621680186762"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy DomainName -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-36"></span><span>  </span><span id="local-6989586621680186798"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy DomainName -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-37"></span><span>    </span><span class="annot"><span class="annottext">Schema
 forall a. Monoid a =&gt; a
@@ -221,7 +221,7 @@ forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span>
 </span><span id="line-43"></span><span>
 </span><span id="line-44"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToParamSchema</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-45"></span><span>  </span><span id="local-6989586621680186751"><span class="annot"><span class="annottext">toParamSchema :: Proxy DomainName -&gt; ParamSchema t
+</span><span id="line-45"></span><span>  </span><span id="local-6989586621680186787"><span class="annot"><span class="annottext">toParamSchema :: Proxy DomainName -&gt; ParamSchema t
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toParamSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ParamSchema t
 forall a. Monoid a =&gt; a
 </span><span class="hs-identifier hs-var">mempty</span></span><span> </span><span class="annot"><span class="annottext">ParamSchema t -&gt; (ParamSchema t -&gt; ParamSchema t) -&gt; ParamSchema t
@@ -237,14 +237,14 @@ forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 forall (t :: SwaggerKind *). SwaggerType t
 </span><span class="hs-identifier hs-var">SwaggerString</span></span><span>
 </span><span id="line-46"></span><span>
-</span><span id="line-47"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186743"><span id="local-6989586621680186745"><span id="local-6989586621680186747"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-48"></span><span>  </span><span id="local-6989586621680186741"><span class="annot"><span class="annottext">toUrlPiece :: DomainName -&gt; Text
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toUrlPiece</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680186739"><span class="annot"><span class="annottext">domainName :: Text
-</span><a href="#local-6989586621680186739"><span class="hs-identifier hs-var">domainName</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680186739"><span class="hs-identifier hs-var">domainName</span></a></span><span>
+</span><span id="line-47"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186779"><span id="local-6989586621680186781"><span id="local-6989586621680186783"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-48"></span><span>  </span><span id="local-6989586621680186777"><span class="annot"><span class="annottext">toUrlPiece :: DomainName -&gt; Text
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toUrlPiece</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680186775"><span class="annot"><span class="annottext">domainName :: Text
+</span><a href="#local-6989586621680186775"><span class="hs-identifier hs-var">domainName</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680186775"><span class="hs-identifier hs-var">domainName</span></a></span><span>
 </span><span id="line-49"></span><span>
-</span><span id="line-50"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186734"><span id="local-6989586621680186736"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-51"></span><span>  </span><span id="local-6989586621680186732"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text DomainName
+</span><span id="line-50"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186770"><span id="local-6989586621680186772"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-51"></span><span>  </span><span id="local-6989586621680186768"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text DomainName
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseUrlPiece</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Either Text DomainName
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(DomainName -&gt; Either Text DomainName)
@@ -253,19 +253,19 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; DomainName
 </span><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span><span>
 </span><span id="line-52"></span><span>
-</span><span id="line-53"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186723"><span id="local-6989586621680186725"><span id="local-6989586621680186727"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-54"></span><span>  </span><span id="local-6989586621680186721"><span class="annot"><span class="annottext">toJSON :: DomainName -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680186719"><span class="annot"><span class="annottext">domainName :: Text
-</span><a href="#local-6989586621680186719"><span class="hs-identifier hs-var">domainName</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span id="line-53"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186759"><span id="local-6989586621680186761"><span id="local-6989586621680186763"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-54"></span><span>  </span><span id="local-6989586621680186757"><span class="annot"><span class="annottext">toJSON :: DomainName -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680186755"><span class="annot"><span class="annottext">domainName :: Text
+</span><a href="#local-6989586621680186755"><span class="hs-identifier hs-var">domainName</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680186719"><span class="hs-identifier hs-var">domainName</span></a></span><span>
+</span><a href="#local-6989586621680186755"><span class="hs-identifier hs-var">domainName</span></a></span><span>
 </span><span id="line-55"></span><span>
-</span><span id="line-56"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186715"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-57"></span><span>  </span><span id="local-6989586621680186713"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser DomainName
+</span><span id="line-56"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186751"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-57"></span><span>  </span><span id="local-6989586621680186749"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser DomainName
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser DomainName) -&gt; Value -&gt; Parser DomainName
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AWS.DomainName&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680186710"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680186710"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AWS.DomainName&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680186746"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680186746"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-58"></span><span>    </span><span class="annot"><span class="annottext">Text -&gt; DomainName
 </span><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; DomainName) -&gt; Parser Text -&gt; Parser DomainName
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
@@ -273,10 +273,10 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 forall a. FromJSON a =&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">parseJSON</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680186710"><span class="hs-identifier hs-var">txt</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680186746"><span class="hs-identifier hs-var">txt</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-59"></span><span>
 </span><span id="line-60"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-61"></span><span>  </span><span id="local-6989586621680186705"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; DomainName -&gt; ByteString
+</span><span id="line-61"></span><span>  </span><span id="local-6989586621680186741"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; DomainName -&gt; ByteString
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ByteString)
@@ -286,8 +286,8 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><a href="Fission.URL.DomainName.Types.html#%24sel%3Aget%3ADomainName"><span class="hs-identifier hs-var hs-var">get</span></a></span><span>
 </span><span id="line-62"></span><span>
 </span><span id="line-63"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">OctetStream</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-64"></span><span>  </span><span id="local-6989586621680186700"><span class="annot"><span class="annottext">mimeRender :: Proxy OctetStream -&gt; DomainName -&gt; ByteString
-</span><a href="#local-6989586621680186700"><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></a></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
+</span><span id="line-64"></span><span>  </span><span id="local-6989586621680186736"><span class="annot"><span class="annottext">mimeRender :: Proxy OctetStream -&gt; DomainName -&gt; ByteString
+</span><a href="#local-6989586621680186736"><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></a></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ByteString)
 -&gt; (DomainName -&gt; Text) -&gt; DomainName -&gt; ByteString
@@ -295,13 +295,13 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Text
 </span><a href="Fission.URL.DomainName.Types.html#%24sel%3Aget%3ADomainName"><span class="hs-identifier hs-var hs-var">get</span></a></span><span>
 </span><span id="line-65"></span><span>
-</span><span id="line-66"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186696"><span class="annot"><span class="hs-identifier hs-type">MimeUnrender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-67"></span><span>  </span><span id="local-6989586621680186694"><span class="annot"><span class="annottext">mimeUnrender :: Proxy PlainText -&gt; ByteString -&gt; Either String DomainName
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeUnrender</span></span></span><span> </span><span id="local-6989586621680186692"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
-</span><a href="#local-6989586621680186692"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span id="local-6989586621680186691"><span class="annot"><span class="annottext">bs :: ByteString
-</span><a href="#local-6989586621680186691"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-66"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186732"><span class="annot"><span class="hs-identifier hs-type">MimeUnrender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-67"></span><span>  </span><span id="local-6989586621680186730"><span class="annot"><span class="annottext">mimeUnrender :: Proxy PlainText -&gt; ByteString -&gt; Either String DomainName
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeUnrender</span></span></span><span> </span><span id="local-6989586621680186728"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
+</span><a href="#local-6989586621680186728"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span id="local-6989586621680186727"><span class="annot"><span class="annottext">bs :: ByteString
+</span><a href="#local-6989586621680186727"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-68"></span><span>    </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680186691"><span class="hs-identifier hs-var">bs</span></a></span><span>
+</span><a href="#local-6989586621680186727"><span class="hs-identifier hs-var">bs</span></a></span><span>
 </span><span id="line-69"></span><span>      </span><span class="annot"><span class="annottext">ByteString -&gt; (ByteString -&gt; ByteString) -&gt; ByteString
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString

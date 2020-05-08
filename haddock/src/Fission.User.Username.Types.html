@@ -16,7 +16,7 @@
 </span><span id="line-16"></span><span>
 </span><span id="line-17"></span><span class="hs-keyword">newtype</span><span> </span><span id="Username"><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-var">Username</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Username"><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-var">Username</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Ausername%3AUsername"><span class="annot"><span class="annottext">Username -&gt; Text
 </span><a href="Fission.User.Username.Types.html#%24sel%3Ausername%3AUsername"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-18"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680188154"><span id="local-6989586621680188156"><span id="local-6989586621680188158"><span class="annot"><span class="annottext">Int -&gt; Username -&gt; ShowS
+</span><span id="line-18"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680188190"><span id="local-6989586621680188192"><span id="local-6989586621680188194"><span class="annot"><span class="annottext">Int -&gt; Username -&gt; ShowS
 [Username] -&gt; ShowS
 Username -&gt; String
 (Int -&gt; Username -&gt; ShowS)
@@ -30,7 +30,7 @@ $cshow :: Username -&gt; String
 showsPrec :: Int -&gt; Username -&gt; ShowS
 $cshowsPrec :: Int -&gt; Username -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-19"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188149"><span id="local-6989586621680188151"><span class="annot"><span class="annottext">Username -&gt; Username -&gt; Bool
+</span><span id="line-19"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188185"><span id="local-6989586621680188187"><span class="annot"><span class="annottext">Username -&gt; Username -&gt; Bool
 (Username -&gt; Username -&gt; Bool)
 -&gt; (Username -&gt; Username -&gt; Bool) -&gt; Eq Username
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -39,7 +39,7 @@ $c/= :: Username -&gt; Username -&gt; Bool
 == :: Username -&gt; Username -&gt; Bool
 $c== :: Username -&gt; Username -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
-</span><span id="line-20"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188144"><span id="local-6989586621680188146"><span class="annot"><span class="annottext">Username -&gt; Text
+</span><span id="line-20"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188180"><span id="local-6989586621680188182"><span class="annot"><span class="annottext">Username -&gt; Text
 Username -&gt; Utf8Builder
 (Username -&gt; Utf8Builder) -&gt; (Username -&gt; Text) -&gt; Display Username
 forall a. (a -&gt; Utf8Builder) -&gt; (a -&gt; Text) -&gt; Display a
@@ -48,7 +48,7 @@ $ctextDisplay :: Username -&gt; Text
 display :: Username -&gt; Utf8Builder
 $cdisplay :: Username -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Display</span></span></span></span><span>
-</span><span id="line-21"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188141"><span class="annot"><span class="annottext">String -&gt; Username
+</span><span id="line-21"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188177"><span class="annot"><span class="annottext">String -&gt; Username
 (String -&gt; Username) -&gt; IsString Username
 forall a. (String -&gt; a) -&gt; IsString a
 fromString :: String -&gt; Username
@@ -56,8 +56,8 @@ $cfromString :: String -&gt; Username
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
 </span><span id="line-22"></span><span>                   </span><span class="hs-special">)</span><span>
 </span><span id="line-23"></span><span>
-</span><span id="line-24"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188137"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-25"></span><span>  </span><span id="local-6989586621680188135"><span class="annot"><span class="annottext">arbitrary :: Gen Username
+</span><span id="line-24"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188173"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-25"></span><span>  </span><span id="local-6989586621680188171"><span class="annot"><span class="annottext">arbitrary :: Gen Username
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Username
 </span><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-var">Username</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Username) -&gt; Gen Text -&gt; Gen Username
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
@@ -66,7 +66,7 @@ forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-26"></span><span>
 </span><span id="line-27"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToParamSchema</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-28"></span><span>  </span><span id="local-6989586621680188130"><span class="annot"><span class="annottext">toParamSchema :: Proxy Username -&gt; ParamSchema t
+</span><span id="line-28"></span><span>  </span><span id="local-6989586621680188166"><span class="annot"><span class="annottext">toParamSchema :: Proxy Username -&gt; ParamSchema t
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toParamSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ParamSchema t
 forall a. Monoid a =&gt; a
 </span><span class="hs-identifier hs-var">mempty</span></span><span> </span><span class="annot"><span class="annottext">ParamSchema t -&gt; (ParamSchema t -&gt; ParamSchema t) -&gt; ParamSchema t
@@ -82,28 +82,28 @@ forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 forall (t :: SwaggerKind *). SwaggerType t
 </span><span class="hs-identifier hs-var">SwaggerString</span></span><span>
 </span><span id="line-29"></span><span>
-</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188118"><span id="local-6989586621680188120"><span id="local-6989586621680188122"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-31"></span><span>  </span><span id="local-6989586621680188116"><span class="annot"><span class="annottext">toUrlPiece :: Username -&gt; Text
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toUrlPiece</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span id="local-6989586621680188114"><span class="annot"><span class="annottext">raw :: Text
-</span><a href="#local-6989586621680188114"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680188114"><span class="hs-identifier hs-var">raw</span></a></span><span>
+</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188154"><span id="local-6989586621680188156"><span id="local-6989586621680188158"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-31"></span><span>  </span><span id="local-6989586621680188152"><span class="annot"><span class="annottext">toUrlPiece :: Username -&gt; Text
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toUrlPiece</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span id="local-6989586621680188150"><span class="annot"><span class="annottext">raw :: Text
+</span><a href="#local-6989586621680188150"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680188150"><span class="hs-identifier hs-var">raw</span></a></span><span>
 </span><span id="line-32"></span><span>
 </span><span id="line-33"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-34"></span><span>  </span><span id="local-6989586621680188110"><span class="annot"><span class="annottext">toPersistValue :: Username -&gt; PersistValue
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span id="local-6989586621680188108"><span class="annot"><span class="annottext">un :: Text
-</span><a href="#local-6989586621680188108"><span class="hs-identifier hs-var">un</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
+</span><span id="line-34"></span><span>  </span><span id="local-6989586621680188146"><span class="annot"><span class="annottext">toPersistValue :: Username -&gt; PersistValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span id="local-6989586621680188144"><span class="annot"><span class="annottext">un :: Text
+</span><a href="#local-6989586621680188144"><span class="hs-identifier hs-var">un</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
 </span><span class="hs-identifier hs-var">PersistText</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680188108"><span class="hs-identifier hs-var">un</span></a></span><span>
-</span><span id="line-35"></span><span>  </span><span id="local-6989586621680188106"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text Username
+</span><a href="#local-6989586621680188144"><span class="hs-identifier hs-var">un</span></a></span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680188142"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text Username
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-36"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680188104"><span class="annot"><span class="annottext">un :: Text
-</span><a href="#local-6989586621680188104"><span class="hs-identifier hs-var">un</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Either Text Username
+</span><span id="line-36"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680188140"><span class="annot"><span class="annottext">un :: Text
+</span><a href="#local-6989586621680188140"><span class="hs-identifier hs-var">un</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Either Text Username
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Username
 </span><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-var">Username</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680188104"><span class="hs-identifier hs-var">un</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-37"></span><span>    </span><span id="local-6989586621680188103"><span class="annot"><span class="annottext">other :: PersistValue
-</span><a href="#local-6989586621680188103"><span class="hs-identifier hs-var">other</span></a></span></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text Username
+</span><a href="#local-6989586621680188140"><span class="hs-identifier hs-var">un</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-37"></span><span>    </span><span id="local-6989586621680188139"><span class="annot"><span class="annottext">other :: PersistValue
+</span><a href="#local-6989586621680188139"><span class="hs-identifier hs-var">other</span></a></span></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text Username
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;Invalid Persistent Username: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
@@ -111,34 +111,34 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-identifier hs-var">Text.pack</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">PersistValue -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">PersistValue
-</span><a href="#local-6989586621680188103"><span class="hs-identifier hs-var">other</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680188139"><span class="hs-identifier hs-var">other</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-38"></span><span>
 </span><span id="line-39"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-40"></span><span>  </span><span id="local-6989586621680188097"><span class="annot"><span class="annottext">sqlType :: Proxy Username -&gt; SqlType
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span id="local-6989586621680188095"><span class="annot"><span class="annottext">_pxy :: Proxy Username
-</span><a href="#local-6989586621680188095"><span class="hs-identifier hs-var">_pxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
+</span><span id="line-40"></span><span>  </span><span id="local-6989586621680188133"><span class="annot"><span class="annottext">sqlType :: Proxy Username -&gt; SqlType
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span id="local-6989586621680188131"><span class="annot"><span class="annottext">_pxy :: Proxy Username
+</span><a href="#local-6989586621680188131"><span class="hs-identifier hs-var">_pxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
 </span><span class="hs-identifier hs-var">SqlString</span></span><span>
 </span><span id="line-41"></span><span>
-</span><span id="line-42"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188087"><span id="local-6989586621680188089"><span id="local-6989586621680188091"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-43"></span><span>  </span><span id="local-6989586621680188085"><span class="annot"><span class="annottext">toJSON :: Username -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span id="local-6989586621680188083"><span class="annot"><span class="annottext">username :: Text
-</span><a href="#local-6989586621680188083"><span class="hs-identifier hs-var">username</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span id="line-42"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188123"><span id="local-6989586621680188125"><span id="local-6989586621680188127"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-43"></span><span>  </span><span id="local-6989586621680188121"><span class="annot"><span class="annottext">toJSON :: Username -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span id="local-6989586621680188119"><span class="annot"><span class="annottext">username :: Text
+</span><a href="#local-6989586621680188119"><span class="hs-identifier hs-var">username</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680188083"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><a href="#local-6989586621680188119"><span class="hs-identifier hs-var">username</span></a></span><span>
 </span><span id="line-44"></span><span>
-</span><span id="line-45"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188079"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-46"></span><span>  </span><span id="local-6989586621680188077"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Username
+</span><span id="line-45"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188115"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-46"></span><span>  </span><span id="local-6989586621680188113"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Username
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Username) -&gt; Value -&gt; Parser Username
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Username&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680188074"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680188074"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Parser Username
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Username&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680188110"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680188110"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Parser Username
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Username
 </span><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-var">Username</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680188074"><span class="hs-identifier hs-var">txt</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680188110"><span class="hs-identifier hs-var">txt</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-47"></span><span>
-</span><span id="line-48"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188069"><span id="local-6989586621680188071"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-49"></span><span>  </span><span id="local-6989586621680188067"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text Username
+</span><span id="line-48"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188105"><span id="local-6989586621680188107"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-49"></span><span>  </span><span id="local-6989586621680188103"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text Username
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseUrlPiece</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Either Text Username
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(Username -&gt; Either Text Username)
@@ -148,7 +148,7 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-var">Username</span></a></span><span>
 </span><span id="line-50"></span><span>
 </span><span id="line-51"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-52"></span><span>  </span><span id="local-6989586621680188062"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Username -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-52"></span><span>  </span><span id="local-6989586621680188098"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Username -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-53"></span><span>    </span><span class="annot"><span class="annottext">Schema
 forall a. Monoid a =&gt; a
@@ -192,7 +192,7 @@ forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span>
 </span><span id="line-58"></span><span>
 </span><span id="line-59"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-60"></span><span>  </span><span id="local-6989586621680188055"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; Username -&gt; ByteString
+</span><span id="line-60"></span><span>  </span><span id="local-6989586621680188091"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; Username -&gt; ByteString
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
 </span><span class="hs-identifier hs-var">UTF8.textToLazyBS</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ByteString)
 -&gt; (Username -&gt; Text) -&gt; Username -&gt; ByteString
@@ -200,13 +200,13 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Username -&gt; Text
 </span><a href="Fission.User.Username.Types.html#%24sel%3Ausername%3AUsername"><span class="hs-identifier hs-var hs-var">username</span></a></span><span>
 </span><span id="line-61"></span><span>
-</span><span id="line-62"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188049"><span class="annot"><span class="hs-identifier hs-type">MimeUnrender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-63"></span><span>  </span><span id="local-6989586621680188047"><span class="annot"><span class="annottext">mimeUnrender :: Proxy PlainText -&gt; ByteString -&gt; Either String Username
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeUnrender</span></span></span><span> </span><span id="local-6989586621680188045"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
-</span><a href="#local-6989586621680188045"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span id="local-6989586621680188044"><span class="annot"><span class="annottext">bs :: ByteString
-</span><a href="#local-6989586621680188044"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-62"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680188085"><span class="annot"><span class="hs-identifier hs-type">MimeUnrender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-63"></span><span>  </span><span id="local-6989586621680188083"><span class="annot"><span class="annottext">mimeUnrender :: Proxy PlainText -&gt; ByteString -&gt; Either String Username
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeUnrender</span></span></span><span> </span><span id="local-6989586621680188081"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
+</span><a href="#local-6989586621680188081"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span id="local-6989586621680188080"><span class="annot"><span class="annottext">bs :: ByteString
+</span><a href="#local-6989586621680188080"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-64"></span><span>    </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680188044"><span class="hs-identifier hs-var">bs</span></a></span><span>
+</span><a href="#local-6989586621680188080"><span class="hs-identifier hs-var">bs</span></a></span><span>
 </span><span id="line-65"></span><span>      </span><span class="annot"><span class="annottext">ByteString -&gt; (ByteString -&gt; ByteString) -&gt; ByteString
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString

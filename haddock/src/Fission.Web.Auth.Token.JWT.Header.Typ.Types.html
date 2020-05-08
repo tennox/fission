@@ -7,14 +7,14 @@
 </span><span id="line-7"></span><span>
 </span><span id="line-8"></span><span class="hs-keyword">data</span><span> </span><span id="Typ"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#Typ"><span class="hs-identifier hs-var">Typ</span></a></span></span><span>
 </span><span id="line-9"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="JWT"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#JWT"><span class="hs-identifier hs-var">JWT</span></a></span></span><span>
-</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680192063"><span id="local-6989586621680192065"><span class="annot"><span class="annottext">Typ -&gt; Typ -&gt; Bool
+</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680192099"><span id="local-6989586621680192101"><span class="annot"><span class="annottext">Typ -&gt; Typ -&gt; Bool
 (Typ -&gt; Typ -&gt; Bool) -&gt; (Typ -&gt; Typ -&gt; Bool) -&gt; Eq Typ
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Typ -&gt; Typ -&gt; Bool
 $c/= :: Typ -&gt; Typ -&gt; Bool
 == :: Typ -&gt; Typ -&gt; Bool
 $c== :: Typ -&gt; Typ -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680192056"><span id="local-6989586621680192058"><span id="local-6989586621680192060"><span class="annot"><span class="annottext">Int -&gt; Typ -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680192092"><span id="local-6989586621680192094"><span id="local-6989586621680192096"><span class="annot"><span class="annottext">Int -&gt; Typ -&gt; ShowS
 [Typ] -&gt; ShowS
 Typ -&gt; String
 (Int -&gt; Typ -&gt; ShowS)
@@ -27,7 +27,7 @@ show :: Typ -&gt; String
 $cshow :: Typ -&gt; String
 showsPrec :: Int -&gt; Typ -&gt; ShowS
 $cshowsPrec :: Int -&gt; Typ -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680192047"><span id="local-6989586621680192049"><span id="local-6989586621680192051"><span id="local-6989586621680192053"><span class="annot"><span class="annottext">ReadPrec [Typ]
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680192083"><span id="local-6989586621680192085"><span id="local-6989586621680192087"><span id="local-6989586621680192089"><span class="annot"><span class="annottext">ReadPrec [Typ]
 ReadPrec Typ
 Int -&gt; ReadS Typ
 ReadS [Typ]
@@ -46,15 +46,15 @@ readsPrec :: Int -&gt; ReadS Typ
 $creadsPrec :: Int -&gt; ReadS Typ
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Read</span></span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-11"></span><span>
-</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680192043"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#Typ"><span class="hs-identifier hs-type">Typ</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-13"></span><span>  </span><span id="local-6989586621680192041"><span class="annot"><span class="annottext">arbitrary :: Gen Typ
+</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680192079"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#Typ"><span class="hs-identifier hs-type">Typ</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680192077"><span class="annot"><span class="annottext">arbitrary :: Gen Typ
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Typ -&gt; Gen Typ
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Typ
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#JWT"><span class="hs-identifier hs-var">JWT</span></a></span><span>
 </span><span id="line-14"></span><span>
-</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680192037"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#Typ"><span class="hs-identifier hs-type">Typ</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-16"></span><span>  </span><span id="local-6989586621680192035"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Typ
+</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680192073"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#Typ"><span class="hs-identifier hs-type">Typ</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-16"></span><span>  </span><span id="local-6989586621680192071"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Typ
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Typ) -&gt; Value -&gt; Parser Typ
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;JWT.Typ&quot;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
@@ -62,17 +62,17 @@ forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Typ
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#JWT"><span class="hs-identifier hs-var">JWT</span></a></span><span>
-</span><span id="line-18"></span><span>    </span><span id="local-6989586621680192032"><span class="annot"><span class="annottext">other :: Text
-</span><a href="#local-6989586621680192032"><span class="hs-identifier hs-var">other</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Typ
+</span><span id="line-18"></span><span>    </span><span id="local-6989586621680192068"><span class="annot"><span class="annottext">other :: Text
+</span><a href="#local-6989586621680192068"><span class="hs-identifier hs-var">other</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Typ
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; String
 </span><span class="hs-identifier hs-var">Text.unpack</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680192032"><span class="hs-identifier hs-var">other</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680192068"><span class="hs-identifier hs-var">other</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; is not an acceptable JWT typ&quot;</span></span><span class="hs-special">)</span><span>
 </span><span id="line-19"></span><span>
-</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680192024"><span id="local-6989586621680192026"><span id="local-6989586621680192028"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#Typ"><span class="hs-identifier hs-type">Typ</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-21"></span><span>  </span><span id="local-6989586621680192022"><span class="annot"><span class="annottext">toJSON :: Typ -&gt; Value
+</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680192060"><span id="local-6989586621680192062"><span id="local-6989586621680192064"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#Typ"><span class="hs-identifier hs-type">Typ</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-21"></span><span>  </span><span id="local-6989586621680192058"><span class="annot"><span class="annottext">toJSON :: Typ -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Typ.Types.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="hs-string">&quot;JWT&quot;</span></span><span>
 </span><span id="line-22"></span></pre></body></html>

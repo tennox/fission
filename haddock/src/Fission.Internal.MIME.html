@@ -11,14 +11,14 @@
 </span><span id="line-11"></span><span>
 </span><span id="line-12"></span><span class="annot"><a href="Fission.Internal.MIME.html#lookupExt"><span class="hs-identifier hs-type">lookupExt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeType</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Extension</span></span><span>
 </span><span id="line-13"></span><span id="lookupExt"><span class="annot"><span class="annottext">lookupExt :: MimeType -&gt; Extension
-</span><a href="Fission.Internal.MIME.html#lookupExt"><span class="hs-identifier hs-var hs-var">lookupExt</span></a></span></span><span> </span><span id="local-6989586621680184239"><span class="annot"><span class="annottext">mime :: MimeType
-</span><a href="#local-6989586621680184239"><span class="hs-identifier hs-var">mime</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Extension -&gt; Maybe Extension -&gt; Extension
+</span><a href="Fission.Internal.MIME.html#lookupExt"><span class="hs-identifier hs-var hs-var">lookupExt</span></a></span></span><span> </span><span id="local-6989586621680184275"><span class="annot"><span class="annottext">mime :: MimeType
+</span><a href="#local-6989586621680184275"><span class="hs-identifier hs-var">mime</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Extension -&gt; Maybe Extension -&gt; Extension
 forall a. a -&gt; Maybe a -&gt; a
 </span><span class="hs-identifier hs-var">fromMaybe</span></span><span> </span><span class="annot"><span class="hs-string">&quot;blob&quot;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Map MimeType Extension
 </span><a href="Fission.Internal.MIME.html#mimeExt"><span class="hs-identifier hs-var">mimeExt</span></a></span><span> </span><span class="annot"><span class="annottext">Map MimeType Extension -&gt; MimeType -&gt; Maybe Extension
 forall k a. Ord k =&gt; Map k a -&gt; k -&gt; Maybe a
 </span><span class="hs-operator hs-var">!?</span></span><span> </span><span class="annot"><span class="annottext">MimeType
-</span><a href="#local-6989586621680184239"><span class="hs-identifier hs-var">mime</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680184275"><span class="hs-identifier hs-var">mime</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-14"></span><span>
 </span><span id="line-15"></span><span class="hs-comment">-- NOTE not a one-to-one mapping, so we may get some funky results.</span><span>
 </span><span id="line-16"></span><span class="hs-comment">-- Have hand-tested many common types, and am getting the expected extensions.</span><span>
@@ -32,7 +32,7 @@ forall k a. Ord k =&gt; [(k, a)] -&gt; Map k a
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(Extension, MimeType) -&gt; (MimeType, Extension)
 forall a b. (a, b) -&gt; (b, a)
-</span><a href="#local-6989586621680184234"><span class="hs-identifier hs-var">swap</span></a></span><span> </span><span class="annot"><span class="annottext">((Extension, MimeType) -&gt; (MimeType, Extension))
+</span><a href="#local-6989586621680184270"><span class="hs-identifier hs-var">swap</span></a></span><span> </span><span class="annot"><span class="annottext">((Extension, MimeType) -&gt; (MimeType, Extension))
 -&gt; [(Extension, MimeType)] -&gt; [(MimeType, Extension)]
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Map Extension MimeType -&gt; [(Extension, MimeType)]
@@ -40,11 +40,11 @@ forall k a. Map k a -&gt; [(k, a)]
 </span><span class="hs-identifier hs-var">Map.assocs</span></span><span> </span><span class="annot"><span class="annottext">Map Extension MimeType
 </span><span class="hs-identifier hs-var">defaultMimeMap</span></span><span>
 </span><span id="line-20"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-21"></span><span>    </span><span id="local-6989586621680184250"><span id="local-6989586621680184251"><span class="annot"><a href="#local-6989586621680184234"><span class="hs-identifier hs-type">swap</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680184251"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="#local-6989586621680184250"><span class="hs-identifier hs-type">b</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680184250"><span class="hs-identifier hs-type">b</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="#local-6989586621680184251"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span></span></span><span>
-</span><span id="line-22"></span><span>    </span><span id="local-6989586621680184234"><span class="annot"><span class="annottext">swap :: (a, b) -&gt; (b, a)
-</span><a href="#local-6989586621680184234"><span class="hs-identifier hs-var hs-var">swap</span></a></span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680184230"><span class="annot"><span class="annottext">a :: a
-</span><a href="#local-6989586621680184230"><span class="hs-identifier hs-var">a</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680184229"><span class="annot"><span class="annottext">b :: b
-</span><a href="#local-6989586621680184229"><span class="hs-identifier hs-var">b</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">b
-</span><a href="#local-6989586621680184229"><span class="hs-identifier hs-var">b</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">a
-</span><a href="#local-6989586621680184230"><span class="hs-identifier hs-var">a</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-21"></span><span>    </span><span id="local-6989586621680184286"><span id="local-6989586621680184287"><span class="annot"><a href="#local-6989586621680184270"><span class="hs-identifier hs-type">swap</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680184287"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="#local-6989586621680184286"><span class="hs-identifier hs-type">b</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680184286"><span class="hs-identifier hs-type">b</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="#local-6989586621680184287"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span></span></span><span>
+</span><span id="line-22"></span><span>    </span><span id="local-6989586621680184270"><span class="annot"><span class="annottext">swap :: (a, b) -&gt; (b, a)
+</span><a href="#local-6989586621680184270"><span class="hs-identifier hs-var hs-var">swap</span></a></span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680184266"><span class="annot"><span class="annottext">a :: a
+</span><a href="#local-6989586621680184266"><span class="hs-identifier hs-var">a</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680184265"><span class="annot"><span class="annottext">b :: b
+</span><a href="#local-6989586621680184265"><span class="hs-identifier hs-var">b</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">b
+</span><a href="#local-6989586621680184265"><span class="hs-identifier hs-var">b</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">a
+</span><a href="#local-6989586621680184266"><span class="hs-identifier hs-var">a</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-23"></span></pre></body></html>

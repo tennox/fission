@@ -29,7 +29,7 @@
 </span><span id="line-29"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Types</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS</span></span><span>
 </span><span id="line-30"></span><span>
 </span><span id="line-31"></span><span class="hs-comment">-- | Gets hierarchical environment by recursed through file system</span><span>
-</span><span id="line-32"></span><span id="local-6989586621680185353"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185353"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185353"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span></span><span>
+</span><span id="line-32"></span><span id="local-6989586621680185389"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185389"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185389"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span></span><span>
 </span><span id="line-33"></span><span id="get"><span class="annot"><span class="annottext">get :: m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#get"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
@@ -39,17 +39,17 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><span class="hs-identifier hs-var">getCurrentDirectory</span></span><span>
 </span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span id="local-6989586621680185411"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#getRecurse"><span class="hs-identifier hs-type">getRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185411"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185411"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span></span><span>
+</span><span id="line-35"></span><span id="local-6989586621680185447"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#getRecurse"><span class="hs-identifier hs-type">getRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185447"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185447"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span></span><span>
 </span><span id="line-36"></span><span id="getRecurse"><span class="annot"><span class="annottext">getRecurse :: FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#getRecurse"><span class="hs-identifier hs-var hs-var">getRecurse</span></a></span></span><span> </span><span class="hs-string">&quot;/&quot;</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-37"></span><span>  </span><span id="local-6989586621680185349"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185349"><span class="hs-identifier hs-var">root</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><span id="line-37"></span><span>  </span><span id="local-6989586621680185385"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185385"><span class="hs-identifier hs-var">root</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m Partial) -&gt; FilePath -&gt; m Partial
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="hs-string">&quot;/.fission.yaml&quot;</span></span><span>
-</span><span id="line-38"></span><span>  </span><span id="local-6989586621680185347"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185347"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><span id="line-38"></span><span>  </span><span id="local-6989586621680185383"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185383"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m Partial) -&gt; m FilePath -&gt; m Partial
 forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
@@ -61,45 +61,45 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; m Partial) -&gt; Partial -&gt; m Partial
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185347"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Partial -&gt; Partial
+</span><a href="#local-6989586621680185383"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Partial -&gt; Partial
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185349"><span class="hs-identifier hs-var">root</span></a></span><span>
+</span><a href="#local-6989586621680185385"><span class="hs-identifier hs-var">root</span></a></span><span>
 </span><span id="line-40"></span><span>
-</span><span id="line-41"></span><span class="annot"><a href="Fission.CLI.Environment.Partial.html#getRecurse"><span class="hs-identifier hs-var">getRecurse</span></a></span><span> </span><span id="local-6989586621680185346"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680185346"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-42"></span><span>  </span><span id="local-6989586621680185345"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185345"><span class="hs-identifier hs-var">parent</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><span id="line-41"></span><span class="annot"><a href="Fission.CLI.Environment.Partial.html#getRecurse"><span class="hs-identifier hs-var">getRecurse</span></a></span><span> </span><span id="local-6989586621680185382"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185382"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-42"></span><span>  </span><span id="local-6989586621680185381"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185381"><span class="hs-identifier hs-var">parent</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#getRecurse"><span class="hs-identifier hs-var">getRecurse</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m Partial) -&gt; FilePath -&gt; m Partial
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath
 </span><span class="hs-identifier hs-var">takeDirectory</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185346"><span class="hs-identifier hs-var">path</span></a></span><span>
-</span><span id="line-43"></span><span>  </span><span id="local-6989586621680185343"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185343"><span class="hs-identifier hs-var">curr</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><a href="#local-6989586621680185382"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><span id="line-43"></span><span>  </span><span id="local-6989586621680185379"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185379"><span class="hs-identifier hs-var">curr</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m Partial) -&gt; FilePath -&gt; m Partial
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185346"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><a href="#local-6989586621680185382"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
 </span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span>
 </span><span id="line-44"></span><span>  </span><span class="annot"><span class="annottext">Partial -&gt; m Partial
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; m Partial) -&gt; Partial -&gt; m Partial
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185345"><span class="hs-identifier hs-var">parent</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Partial -&gt; Partial
+</span><a href="#local-6989586621680185381"><span class="hs-identifier hs-var">parent</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Partial -&gt; Partial
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185343"><span class="hs-identifier hs-var">curr</span></a></span><span>
+</span><a href="#local-6989586621680185379"><span class="hs-identifier hs-var">curr</span></a></span><span>
 </span><span id="line-45"></span><span>
 </span><span id="line-46"></span><span class="hs-comment">-- | Recurses up to user root to find an env with basic auth data</span><span>
-</span><span id="line-47"></span><span id="local-6989586621680185341"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#findBasicAuth"><span class="hs-identifier hs-type">findBasicAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185341"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185341"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span class="hs-special">)</span></span><span>
+</span><span id="line-47"></span><span id="local-6989586621680185377"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#findBasicAuth"><span class="hs-identifier hs-type">findBasicAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185377"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185377"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span class="hs-special">)</span></span><span>
 </span><span id="line-48"></span><span id="findBasicAuth"><span class="annot"><span class="annottext">findBasicAuth :: m (Maybe BasicAuthData)
 </span><a href="Fission.CLI.Environment.Partial.html#findBasicAuth"><span class="hs-identifier hs-var hs-var">findBasicAuth</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-49"></span><span>  </span><span id="local-6989586621680185340"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185340"><span class="hs-identifier hs-var">currDir</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-49"></span><span>  </span><span id="local-6989586621680185376"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185376"><span class="hs-identifier hs-var">currDir</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><span class="hs-identifier hs-var">getCurrentDirectory</span></span><span>
 </span><span id="line-50"></span><span>  </span><span class="annot"><span class="annottext">(Partial -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Partial))
@@ -113,7 +113,7 @@ forall a. Maybe a -&gt; Bool
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeUserAuth%3APartial"><span class="hs-identifier hs-var hs-var">maybeUserAuth</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185340"><span class="hs-identifier hs-var">currDir</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe (FilePath, Partial))
+</span><a href="#local-6989586621680185376"><span class="hs-identifier hs-var">currDir</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe (FilePath, Partial))
 -&gt; (Maybe (FilePath, Partial) -&gt; m (Maybe BasicAuthData))
 -&gt; m (Maybe BasicAuthData)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
@@ -123,39 +123,39 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-52"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185336"><span class="annot"><span class="annottext">env :: Partial
-</span><a href="#local-6989586621680185336"><span class="hs-identifier hs-var">env</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData -&gt; m (Maybe BasicAuthData)
+</span><span id="line-52"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680185372"><span class="annot"><span class="annottext">env :: Partial
+</span><a href="#local-6989586621680185372"><span class="hs-identifier hs-var">env</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData -&gt; m (Maybe BasicAuthData)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Maybe BasicAuthData -&gt; m (Maybe BasicAuthData))
 -&gt; Maybe BasicAuthData -&gt; m (Maybe BasicAuthData)
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeUserAuth%3APartial"><span class="hs-identifier hs-var hs-var">maybeUserAuth</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185336"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680185372"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-53"></span><span>
 </span><span id="line-54"></span><span class="hs-comment">-- | Recurses up to user root to find a env that satisfies function &quot;f&quot;</span><span>
-</span><span id="line-55"></span><span id="local-6989586621680185397"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#findRecurse"><span class="hs-identifier hs-type">findRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-56"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185397"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-55"></span><span id="local-6989586621680185433"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#findRecurse"><span class="hs-identifier hs-type">findRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-56"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185433"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-57"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">)</span><span>
 </span><span id="line-58"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185397"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185433"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
 </span><span id="line-60"></span><span id="findRecurse"><span class="annot"><span class="annottext">findRecurse :: (Partial -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Partial))
-</span><a href="Fission.CLI.Environment.Partial.html#findRecurse"><span class="hs-identifier hs-var hs-var">findRecurse</span></a></span></span><span> </span><span id="local-6989586621680185335"><span class="annot"><span class="annottext">f :: Partial -&gt; Bool
-</span><a href="#local-6989586621680185335"><span class="hs-identifier hs-var">f</span></a></span></span><span> </span><span id="local-6989586621680185334"><span class="annot"><span class="annottext">p :: FilePath
-</span><a href="#local-6989586621680185334"><span class="hs-identifier hs-var">p</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680185333"><span class="annot"><span class="annottext">filepath :: FilePath
-</span><a href="#local-6989586621680185333"><span class="hs-identifier hs-var hs-var">filepath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185334"><span class="hs-identifier hs-var">p</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><a href="Fission.CLI.Environment.Partial.html#findRecurse"><span class="hs-identifier hs-var hs-var">findRecurse</span></a></span></span><span> </span><span id="local-6989586621680185371"><span class="annot"><span class="annottext">f :: Partial -&gt; Bool
+</span><a href="#local-6989586621680185371"><span class="hs-identifier hs-var">f</span></a></span></span><span> </span><span id="local-6989586621680185370"><span class="annot"><span class="annottext">p :: FilePath
+</span><a href="#local-6989586621680185370"><span class="hs-identifier hs-var">p</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680185369"><span class="annot"><span class="annottext">filepath :: FilePath
+</span><a href="#local-6989586621680185369"><span class="hs-identifier hs-var hs-var">filepath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185370"><span class="hs-identifier hs-var">p</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
 </span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span>
-</span><span id="line-62"></span><span>  </span><span id="local-6989586621680185332"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185332"><span class="hs-identifier hs-var">partial</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><span id="line-62"></span><span>  </span><span id="local-6989586621680185368"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185368"><span class="hs-identifier hs-var">partial</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185333"><span class="hs-identifier hs-var">filepath</span></a></span><span>
+</span><a href="#local-6989586621680185369"><span class="hs-identifier hs-var">filepath</span></a></span><span>
 </span><span id="line-63"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Partial -&gt; Bool
-</span><a href="#local-6989586621680185335"><span class="hs-identifier hs-var">f</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185332"><span class="hs-identifier hs-var">partial</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185334"><span class="hs-identifier hs-var">p</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680185371"><span class="hs-identifier hs-var">f</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185368"><span class="hs-identifier hs-var">partial</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185370"><span class="hs-identifier hs-var">p</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-64"></span><span>    </span><span class="hs-comment">-- if found, return</span><span>
 </span><span id="line-65"></span><span>    </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">True</span></span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, Partial) -&gt; m (Maybe (FilePath, Partial))
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
@@ -165,23 +165,23 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(FilePath, Partial) -&gt; Maybe (FilePath, Partial)
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185333"><span class="hs-identifier hs-var">filepath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185332"><span class="hs-identifier hs-var">partial</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680185369"><span class="hs-identifier hs-var">filepath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185368"><span class="hs-identifier hs-var">partial</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-66"></span><span>    </span><span class="hs-comment">-- if at root, check globalEnv (home dir)</span><span>
 </span><span id="line-67"></span><span>    </span><span class="hs-comment">-- necessary for WSL</span><span>
 </span><span id="line-68"></span><span>    </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span class="hs-string">&quot;/&quot;</span><span class="hs-special">)</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-69"></span><span>      </span><span id="local-6989586621680185331"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185331"><span class="hs-identifier hs-var">globalPath</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-69"></span><span>      </span><span id="local-6989586621680185367"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185367"><span class="hs-identifier hs-var">globalPath</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Partial.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
-</span><span id="line-70"></span><span>      </span><span id="local-6989586621680185330"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185330"><span class="hs-identifier hs-var">global</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><span id="line-70"></span><span>      </span><span id="local-6989586621680185366"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185366"><span class="hs-identifier hs-var">global</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185331"><span class="hs-identifier hs-var">globalPath</span></a></span><span>
+</span><a href="#local-6989586621680185367"><span class="hs-identifier hs-var">globalPath</span></a></span><span>
 </span><span id="line-71"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Bool
-</span><a href="#local-6989586621680185335"><span class="hs-identifier hs-var">f</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185330"><span class="hs-identifier hs-var">global</span></a></span><span>
+</span><a href="#local-6989586621680185371"><span class="hs-identifier hs-var">f</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185366"><span class="hs-identifier hs-var">global</span></a></span><span>
 </span><span id="line-72"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, Partial) -&gt; m (Maybe (FilePath, Partial))
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (FilePath, Partial) -&gt; m (Maybe (FilePath, Partial)))
@@ -190,8 +190,8 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(FilePath, Partial) -&gt; Maybe (FilePath, Partial)
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185331"><span class="hs-identifier hs-var">globalPath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185330"><span class="hs-identifier hs-var">global</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680185367"><span class="hs-identifier hs-var">globalPath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185366"><span class="hs-identifier hs-var">global</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-73"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, Partial) -&gt; m (Maybe (FilePath, Partial))
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, Partial)
@@ -203,25 +203,25 @@ forall (m :: * -&gt; *).
 MonadIO m =&gt;
 (Partial -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Partial))
 </span><a href="Fission.CLI.Environment.Partial.html#findRecurse"><span class="hs-identifier hs-var">findRecurse</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Bool
-</span><a href="#local-6989586621680185335"><span class="hs-identifier hs-var">f</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m (Maybe (FilePath, Partial)))
+</span><a href="#local-6989586621680185371"><span class="hs-identifier hs-var">f</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m (Maybe (FilePath, Partial)))
 -&gt; FilePath -&gt; m (Maybe (FilePath, Partial))
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath
 </span><span class="hs-identifier hs-var">takeDirectory</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185334"><span class="hs-identifier hs-var">p</span></a></span><span>
+</span><a href="#local-6989586621680185370"><span class="hs-identifier hs-var">p</span></a></span><span>
 </span><span id="line-76"></span><span>
 </span><span id="line-77"></span><span class="hs-comment">-- | Decodes file to partial environment</span><span>
-</span><span id="line-78"></span><span id="local-6989586621680185329"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-type">decode</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185329"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185329"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span></span><span>
+</span><span id="line-78"></span><span id="local-6989586621680185365"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-type">decode</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185365"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185365"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span></span><span>
 </span><span id="line-79"></span><span id="decode"><span class="annot"><span class="annottext">decode :: FilePath -&gt; m Partial
-</span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var hs-var">decode</span></a></span></span><span> </span><span id="local-6989586621680185328"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680185328"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO Partial -&gt; m Partial
+</span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var hs-var">decode</span></a></span></span><span> </span><span id="local-6989586621680185364"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185364"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO Partial -&gt; m Partial
 forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
 </span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="annot"><span class="annottext">(IO Partial -&gt; m Partial) -&gt; IO Partial -&gt; m Partial
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; IO (Either ParseException Partial)
 forall a. FromJSON a =&gt; FilePath -&gt; IO (Either ParseException a)
 </span><span class="hs-identifier hs-var">YAML.decodeFileEither</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185328"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Either ParseException Partial)
+</span><a href="#local-6989586621680185364"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Either ParseException Partial)
 -&gt; (Either ParseException Partial -&gt; IO Partial) -&gt; IO Partial
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
@@ -242,59 +242,59 @@ forall a. Monoid a =&gt; a
 -&gt; Maybe FilePath
 -&gt; Partial
 </span><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-var">Env.Partial</span></a></span><span>
-</span><span id="line-81"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680185324"><span class="annot"><span class="annottext">env :: Partial
-</span><a href="#local-6989586621680185324"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Partial -&gt; IO Partial
+</span><span id="line-81"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680185360"><span class="annot"><span class="annottext">env :: Partial
+</span><a href="#local-6989586621680185360"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Partial -&gt; IO Partial
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185324"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680185360"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-82"></span><span>
 </span><span id="line-83"></span><span class="hs-comment">-- | Writes partial environment to path</span><span>
-</span><span id="line-84"></span><span id="local-6989586621680185367"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#write"><span class="hs-identifier hs-type">write</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185367"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185367"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-84"></span><span id="local-6989586621680185403"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#write"><span class="hs-identifier hs-type">write</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185403"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185403"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-85"></span><span id="write"><span class="annot"><span class="annottext">write :: FilePath -&gt; Partial -&gt; m ()
-</span><a href="Fission.CLI.Environment.Partial.html#write"><span class="hs-identifier hs-var hs-var">write</span></a></span></span><span> </span><span id="local-6989586621680185323"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680185323"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680185322"><span class="annot"><span class="annottext">env :: Partial
-</span><a href="#local-6989586621680185322"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; ByteString -&gt; m ()
+</span><a href="Fission.CLI.Environment.Partial.html#write"><span class="hs-identifier hs-var hs-var">write</span></a></span></span><span> </span><span id="local-6989586621680185359"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185359"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680185358"><span class="annot"><span class="annottext">env :: Partial
+</span><a href="#local-6989586621680185358"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; ByteString -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; ByteString -&gt; m ()
 </span><span class="hs-identifier hs-var">writeBinaryFileDurable</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185323"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
+</span><a href="#local-6989586621680185359"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">YAML.encode</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185322"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680185358"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-86"></span><span>
 </span><span id="line-87"></span><span class="hs-comment">-- | Merges partial env with the env at the path and overwrites</span><span>
-</span><span id="line-88"></span><span id="local-6989586621680185319"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#writeMerge"><span class="hs-identifier hs-type">writeMerge</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185319"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185319"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-88"></span><span id="local-6989586621680185355"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#writeMerge"><span class="hs-identifier hs-type">writeMerge</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185355"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185355"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-89"></span><span id="writeMerge"><span class="annot"><span class="annottext">writeMerge :: FilePath -&gt; Partial -&gt; m ()
-</span><a href="Fission.CLI.Environment.Partial.html#writeMerge"><span class="hs-identifier hs-var hs-var">writeMerge</span></a></span></span><span> </span><span id="local-6989586621680185318"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680185318"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680185317"><span class="annot"><span class="annottext">newEnv :: Partial
-</span><a href="#local-6989586621680185317"><span class="hs-identifier hs-var">newEnv</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-90"></span><span>  </span><span id="local-6989586621680185316"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185316"><span class="hs-identifier hs-var">currEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><a href="Fission.CLI.Environment.Partial.html#writeMerge"><span class="hs-identifier hs-var hs-var">writeMerge</span></a></span></span><span> </span><span id="local-6989586621680185354"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680185354"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680185353"><span class="annot"><span class="annottext">newEnv :: Partial
+</span><a href="#local-6989586621680185353"><span class="hs-identifier hs-var">newEnv</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-90"></span><span>  </span><span id="local-6989586621680185352"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185352"><span class="hs-identifier hs-var">currEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185318"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><a href="#local-6989586621680185354"><span class="hs-identifier hs-var">path</span></a></span><span>
 </span><span id="line-91"></span><span>  </span><span class="annot"><span class="annottext">FilePath -&gt; ByteString -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; ByteString -&gt; m ()
 </span><span class="hs-identifier hs-var">writeBinaryFileDurable</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185318"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
+</span><a href="#local-6989586621680185354"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">YAML.encode</span></span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; ByteString) -&gt; Partial -&gt; ByteString
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185316"><span class="hs-identifier hs-var">currEnv</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Partial -&gt; Partial
+</span><a href="#local-6989586621680185352"><span class="hs-identifier hs-var">currEnv</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Partial -&gt; Partial
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185317"><span class="hs-identifier hs-var">newEnv</span></a></span><span>
+</span><a href="#local-6989586621680185353"><span class="hs-identifier hs-var">newEnv</span></a></span><span>
 </span><span id="line-92"></span><span>
 </span><span id="line-93"></span><span class="hs-comment">-- | globalEnv environment in users home</span><span>
-</span><span id="line-94"></span><span id="local-6989586621680185315"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#globalEnv"><span class="hs-identifier hs-type">globalEnv</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185315"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185315"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span></span><span>
+</span><span id="line-94"></span><span id="local-6989586621680185351"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#globalEnv"><span class="hs-identifier hs-type">globalEnv</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185351"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185351"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span></span><span>
 </span><span id="line-95"></span><span id="globalEnv"><span class="annot"><span class="annottext">globalEnv :: m FilePath
 </span><a href="Fission.CLI.Environment.Partial.html#globalEnv"><span class="hs-identifier hs-var hs-var">globalEnv</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-96"></span><span>  </span><span id="local-6989586621680185314"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185314"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-96"></span><span>  </span><span id="local-6989586621680185350"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185350"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><span class="hs-identifier hs-var">getHomeDirectory</span></span><span>
 </span><span id="line-97"></span><span>  </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
@@ -302,19 +302,19 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m FilePath) -&gt; FilePath -&gt; m FilePath
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185314"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><a href="#local-6989586621680185350"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
 </span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span>
 </span><span id="line-98"></span><span>
 </span><span id="line-99"></span><span class="annot"><a href="Fission.CLI.Environment.Partial.html#toFull"><span class="hs-identifier hs-type">toFull</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span>
 </span><span id="line-100"></span><span id="toFull"><span class="annot"><span class="annottext">toFull :: Partial -&gt; Environment
-</span><a href="Fission.CLI.Environment.Partial.html#toFull"><span class="hs-identifier hs-var hs-var">toFull</span></a></span></span><span> </span><span id="local-6989586621680185312"><span class="annot"><span class="annottext">partial :: Partial
-</span><a href="#local-6989586621680185312"><span class="hs-identifier hs-var">partial</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.CLI.Environment.Partial.html#toFull"><span class="hs-identifier hs-var hs-var">toFull</span></a></span></span><span> </span><span id="local-6989586621680185348"><span class="annot"><span class="annottext">partial :: Partial
+</span><a href="#local-6989586621680185348"><span class="hs-identifier hs-var">partial</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-101"></span><span>  </span><span class="annot"><span class="annottext">Environment :: Maybe (NonEmpty Peer) -&gt; Ignored -&gt; Maybe FilePath -&gt; Environment
 </span><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type hs-type">Environment</span></a></span><span>
 </span><span id="line-102"></span><span>    </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:peers:Environment :: Maybe (NonEmpty Peer)
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3Apeers%3AEnvironment"><span class="hs-identifier hs-var">peers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe (NonEmpty Peer)
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybePeers%3APartial"><span class="hs-identifier hs-var hs-var">maybePeers</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185312"><span class="hs-identifier hs-var">partial</span></a></span><span>
+</span><a href="#local-6989586621680185348"><span class="hs-identifier hs-var">partial</span></a></span><span>
 </span><span id="line-103"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:ignored:Environment :: Ignored
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3Aignored%3AEnvironment"><span class="hs-identifier hs-var">ignored</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Ignored -&gt; Maybe Ignored -&gt; Ignored
 forall a. a -&gt; Maybe a -&gt; a
@@ -322,17 +322,17 @@ forall a. a -&gt; Maybe a -&gt; a
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe Ignored
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeIgnored%3APartial"><span class="hs-identifier hs-var hs-var">maybeIgnored</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185312"><span class="hs-identifier hs-var">partial</span></a></span><span>
+</span><a href="#local-6989586621680185348"><span class="hs-identifier hs-var">partial</span></a></span><span>
 </span><span id="line-104"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:buildDir:Environment :: Maybe FilePath
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AbuildDir%3AEnvironment"><span class="hs-identifier hs-var">buildDir</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe FilePath
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var hs-var">maybeBuildDir</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185312"><span class="hs-identifier hs-var">partial</span></a></span><span>
+</span><a href="#local-6989586621680185348"><span class="hs-identifier hs-var">partial</span></a></span><span>
 </span><span id="line-105"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-106"></span><span>
 </span><span id="line-107"></span><span class="annot"><a href="Fission.CLI.Environment.Partial.html#fromFull"><span class="hs-identifier hs-type">fromFull</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span>
 </span><span id="line-108"></span><span id="fromFull"><span class="annot"><span class="annottext">fromFull :: Environment -&gt; Partial
-</span><a href="Fission.CLI.Environment.Partial.html#fromFull"><span class="hs-identifier hs-var hs-var">fromFull</span></a></span></span><span> </span><span id="local-6989586621680185302"><span class="annot"><span class="annottext">env :: Environment
-</span><a href="#local-6989586621680185302"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial :: Maybe BasicAuthData
+</span><a href="Fission.CLI.Environment.Partial.html#fromFull"><span class="hs-identifier hs-var hs-var">fromFull</span></a></span></span><span> </span><span id="local-6989586621680185338"><span class="annot"><span class="annottext">env :: Environment
+</span><a href="#local-6989586621680185338"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial :: Maybe BasicAuthData
 -&gt; Maybe (NonEmpty Peer)
 -&gt; Maybe Ignored
 -&gt; Maybe FilePath
@@ -345,7 +345,7 @@ forall a. Maybe a
 </span><span id="line-110"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybePeers:Partial :: Maybe (NonEmpty Peer)
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybePeers%3APartial"><span class="hs-identifier hs-var">maybePeers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Environment -&gt; Maybe (NonEmpty Peer)
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3Apeers%3AEnvironment"><span class="hs-identifier hs-var hs-var">peers</span></a></span><span> </span><span class="annot"><span class="annottext">Environment
-</span><a href="#local-6989586621680185302"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680185338"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-111"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeIgnored:Partial :: Maybe Ignored
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeIgnored%3APartial"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Ignored -&gt; Maybe Ignored
 forall a. a -&gt; Maybe a
@@ -353,47 +353,47 @@ forall a. a -&gt; Maybe a
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Environment -&gt; Ignored
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3Aignored%3AEnvironment"><span class="hs-identifier hs-var hs-var">ignored</span></a></span><span> </span><span class="annot"><span class="annottext">Environment
-</span><a href="#local-6989586621680185302"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680185338"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-112"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeBuildDir:Partial :: Maybe FilePath
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Environment -&gt; Maybe FilePath
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AbuildDir%3AEnvironment"><span class="hs-identifier hs-var hs-var">buildDir</span></a></span><span> </span><span class="annot"><span class="annottext">Environment
-</span><a href="#local-6989586621680185302"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680185338"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-113"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-114"></span><span>
 </span><span id="line-115"></span><span class="annot"><a href="Fission.CLI.Environment.Partial.html#updatePeers"><span class="hs-identifier hs-type">updatePeers</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Env.Partial</span></a></span><span>
 </span><span id="line-116"></span><span id="updatePeers"><span class="annot"><span class="annottext">updatePeers :: Partial -&gt; [Peer] -&gt; Partial
-</span><a href="Fission.CLI.Environment.Partial.html#updatePeers"><span class="hs-identifier hs-var hs-var">updatePeers</span></a></span></span><span> </span><span id="local-6989586621680185300"><span class="annot"><span class="annottext">env :: Partial
-</span><a href="#local-6989586621680185300"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span id="local-6989586621680185299"><span class="annot"><span class="annottext">peers :: [Peer]
-</span><a href="#local-6989586621680185299"><span class="hs-identifier hs-var">peers</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185300"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="Fission.CLI.Environment.Partial.html#updatePeers"><span class="hs-identifier hs-var hs-var">updatePeers</span></a></span></span><span> </span><span id="local-6989586621680185336"><span class="annot"><span class="annottext">env :: Partial
+</span><a href="#local-6989586621680185336"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span id="local-6989586621680185335"><span class="annot"><span class="annottext">peers :: [Peer]
+</span><a href="#local-6989586621680185335"><span class="hs-identifier hs-var">peers</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185336"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-117"></span><span>  </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:maybePeers:Partial :: Maybe (NonEmpty Peer)
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybePeers%3APartial"><span class="hs-identifier hs-var">maybePeers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer -&gt; Maybe (NonEmpty Peer)
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[Peer] -&gt; NonEmpty Peer
 forall a. [a] -&gt; NonEmpty a
 </span><span class="hs-identifier hs-var">NonEmpty.fromList</span></span><span> </span><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680185299"><span class="hs-identifier hs-var">peers</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">}</span><span>
+</span><a href="#local-6989586621680185335"><span class="hs-identifier hs-var">peers</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">}</span><span>
 </span><span id="line-118"></span><span>
 </span><span id="line-119"></span><span class="hs-comment">-- | Deletes user_auth from env at ~/.fission.yaml</span><span>
-</span><span id="line-120"></span><span id="local-6989586621680185297"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#deleteHomeAuth"><span class="hs-identifier hs-type">deleteHomeAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185297"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185297"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-120"></span><span id="local-6989586621680185333"><span class="annot"><a href="Fission.CLI.Environment.Partial.html#deleteHomeAuth"><span class="hs-identifier hs-type">deleteHomeAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680185333"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680185333"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-121"></span><span id="deleteHomeAuth"><span class="annot"><span class="annottext">deleteHomeAuth :: m ()
 </span><a href="Fission.CLI.Environment.Partial.html#deleteHomeAuth"><span class="hs-identifier hs-var hs-var">deleteHomeAuth</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-122"></span><span>  </span><span id="local-6989586621680185296"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185296"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-122"></span><span>  </span><span id="local-6989586621680185332"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680185332"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Partial.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
-</span><span id="line-123"></span><span>  </span><span id="local-6989586621680185295"><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185295"><span class="hs-identifier hs-var">currEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
+</span><span id="line-123"></span><span>  </span><span id="local-6989586621680185331"><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680185331"><span class="hs-identifier hs-var">currEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Partial
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Partial
 </span><a href="Fission.CLI.Environment.Partial.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185296"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><a href="#local-6989586621680185332"><span class="hs-identifier hs-var">path</span></a></span><span>
 </span><span id="line-124"></span><span>  </span><span class="annot"><span class="annottext">FilePath -&gt; Partial -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; Partial -&gt; m ()
 </span><a href="Fission.CLI.Environment.Partial.html#write"><span class="hs-identifier hs-var">write</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680185296"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; m ()) -&gt; Partial -&gt; m ()
+</span><a href="#local-6989586621680185332"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; m ()) -&gt; Partial -&gt; m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185295"><span class="hs-identifier hs-var">currEnv</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:maybeUserAuth:Partial :: Maybe BasicAuthData
+</span><a href="#local-6989586621680185331"><span class="hs-identifier hs-var">currEnv</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:maybeUserAuth:Partial :: Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeUserAuth%3APartial"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-special">}</span><span>

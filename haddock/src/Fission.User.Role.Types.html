@@ -7,7 +7,7 @@
 </span><span id="line-7"></span><span class="hs-keyword">data</span><span> </span><span id="Role"><span class="annot"><a href="Fission.User.Role.Types.html#Role"><span class="hs-identifier hs-var">Role</span></a></span></span><span>
 </span><span id="line-8"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="Regular"><span class="annot"><a href="Fission.User.Role.Types.html#Regular"><span class="hs-identifier hs-var">Regular</span></a></span></span><span>
 </span><span id="line-9"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Admin"><span class="annot"><a href="Fission.User.Role.Types.html#Admin"><span class="hs-identifier hs-var">Admin</span></a></span></span><span>
-</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680187994"><span id="local-6989586621680187996"><span id="local-6989586621680187998"><span class="annot"><span class="annottext">Int -&gt; Role -&gt; ShowS
+</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680188030"><span id="local-6989586621680188032"><span id="local-6989586621680188034"><span class="annot"><span class="annottext">Int -&gt; Role -&gt; ShowS
 [Role] -&gt; ShowS
 Role -&gt; String
 (Int -&gt; Role -&gt; ShowS)
@@ -21,7 +21,7 @@ $cshow :: Role -&gt; String
 showsPrec :: Int -&gt; Role -&gt; ShowS
 $cshowsPrec :: Int -&gt; Role -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-11"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680187985"><span id="local-6989586621680187987"><span id="local-6989586621680187989"><span id="local-6989586621680187991"><span class="annot"><span class="annottext">ReadPrec [Role]
+</span><span id="line-11"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188021"><span id="local-6989586621680188023"><span id="local-6989586621680188025"><span id="local-6989586621680188027"><span class="annot"><span class="annottext">ReadPrec [Role]
 ReadPrec Role
 Int -&gt; ReadS Role
 ReadS [Role]
@@ -39,7 +39,7 @@ $creadList :: ReadS [Role]
 readsPrec :: Int -&gt; ReadS Role
 $creadsPrec :: Int -&gt; ReadS Role
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Read</span></span></span></span></span></span><span>
-</span><span id="line-12"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680187980"><span id="local-6989586621680187982"><span class="annot"><span class="annottext">Role -&gt; Role -&gt; Bool
+</span><span id="line-12"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680188016"><span id="local-6989586621680188018"><span class="annot"><span class="annottext">Role -&gt; Role -&gt; Bool
 (Role -&gt; Role -&gt; Bool) -&gt; (Role -&gt; Role -&gt; Bool) -&gt; Eq Role
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Role -&gt; Role -&gt; Bool
@@ -49,5 +49,5 @@ $c== :: Role -&gt; Role -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
 </span><span id="line-13"></span><span>           </span><span class="hs-special">)</span><span>
 </span><span id="line-14"></span><span>
-</span><span id="line-15"></span><span id="local-6989586621680187972"><span id="local-6989586621680187974"><span id="local-6989586621680187976"><span class="hs-identifier">derivePersistField</span><span> </span><span class="hs-string">&quot;Role&quot;</span></span></span></span><span>
+</span><span id="line-15"></span><span id="local-6989586621680188008"><span id="local-6989586621680188010"><span id="local-6989586621680188012"><span class="hs-identifier">derivePersistField</span><span> </span><span class="hs-string">&quot;Role&quot;</span></span></span></span><span>
 </span><span id="line-16"></span></pre></body></html>

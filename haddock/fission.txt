@@ -7549,7 +7549,7 @@ type API = Summary "CID Index" :> Description "List of all of your pinned CIDs (
 allForUser :: (MonadDB t m, Retriever t) => Authorization -> ServerT API m
 
 module Fission.Web.IPFS.DAG
-type API = Summary "Upload file" :> Description "Upload some data not associated to a user app or file system" :> ReqBody '[PlainText, OctetStream] Serialized :> Post '[PlainText, OctetStream] CID
+type API = Summary "Pin an IPFS DAG structure" :> Description "Pin some data not associated to a user app or file system. We call these loose pins, likely to be deprecated." :> ReqBody '[PlainText, OctetStream] Serialized :> Post '[PlainText, OctetStream] CID
 put :: (MonadRemoteIPFS m, MonadLocalIPFS m, MonadLogger m, MonadThrow m, MonadTime m, MonadDB t m, Creator t) => Authorization -> ServerT API m
 
 module Fission.Web.IPFS.Download
