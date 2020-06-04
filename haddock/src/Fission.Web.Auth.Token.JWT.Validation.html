@@ -8,81 +8,80 @@
 </span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkRSA2048Signature"><span class="hs-identifier">checkRSA2048Signature</span></a></span><span>
 </span><span id="line-9"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-10"></span><span>
-</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Crypto.Error</span></span><span>
-</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Crypto.Hash.Algorithms</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">SHA256</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
-</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.PubKey.Ed25519</span></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.Ed25519</span></span><span>
-</span><span id="line-14"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.PubKey.RSA.PKCS15</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.RSA.PKCS</span></span><span>
-</span><span id="line-15"></span><span>
-</span><span id="line-16"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Control.Monad.Trans.Except</span></span><span>
-</span><span id="line-17"></span><span>
-</span><span id="line-18"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
-</span><span id="line-19"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.SemVer.Types.html"><span class="hs-identifier">Fission.SemVer.Types</span></a></span><span>
-</span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
-</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.html"><span class="hs-identifier">Fission.User</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
-</span><span id="line-23"></span><span>
-</span><span id="line-24"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html"><span class="hs-identifier">Fission.Authorization.ServerDID.Class</span></a></span><span>
-</span><span id="line-25"></span><span> </span><span>
-</span><span id="line-26"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Resolver</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Proof</span></span><span>
-</span><span id="line-27"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Crypto.Hash.Algorithms</span></span><span>                           </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">SHA256</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.PubKey.Ed25519</span></span><span>                            </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.Ed25519</span></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.PubKey.RSA.PKCS15</span></span><span>                         </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Crypto.RSA.PKCS</span></span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Control.Monad.Trans.Except</span></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.SemVer.Types.html"><span class="hs-identifier">Fission.SemVer.Types</span></a></span><span>
+</span><span id="line-19"></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span>                                      </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
+</span><span id="line-21"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.html"><span class="hs-identifier">Fission.User</span></a></span><span>                                     </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
+</span><span id="line-22"></span><span>
+</span><span id="line-23"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html"><span class="hs-identifier">Fission.Authorization.ServerDID.Class</span></a></span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Resolver</span></a></span><span>              </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Proof</span></span><span>
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Claims.Error</span></a></span><span>
 </span><span id="line-28"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Header.Error</span></a></span><span>
-</span><span id="line-29"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Claims.Error</span></a></span><span>
-</span><span id="line-30"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Signature.Error</span></a></span><span>
-</span><span id="line-31"></span><span>
-</span><span id="line-32"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Proof</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">JWT.Proof</span></span><span>
-</span><span id="line-33"></span><span> </span><span>
+</span><span id="line-29"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Signature.Error</span></a></span><span>
+</span><span id="line-30"></span><span>
+</span><span id="line-31"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Proof</span></a></span><span>                 </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">JWT.Proof</span></span><span>
+</span><span id="line-32"></span><span>
+</span><span id="line-33"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Signature.RS256.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">RS256</span></span><span>
 </span><span id="line-34"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Signature.Types</span></a></span><span>       </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Signature</span></span><span>
-</span><span id="line-35"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Signature.RS256.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">RS256</span></span><span>
-</span><span id="line-36"></span><span> </span><span>
-</span><span id="line-37"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT</span></a></span><span>       </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">JWT</span></span><span>
-</span><span id="line-38"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Error</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">JWT</span></span><span>
-</span><span id="line-39"></span><span>
-</span><span id="line-40"></span><span id="local-6989586621680196084"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#check"><span class="hs-identifier hs-type">check</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-41"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680196084"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680196084"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>      </span><span class="annot"><a href="#local-6989586621680196084"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-44"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-45"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-46"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-47"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680196084"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
-</span><span id="line-48"></span><span id="check"><span class="annot"><span class="annottext">check :: Text -&gt; JWT -&gt; m (Either Error JWT)
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check"><span class="hs-identifier hs-var hs-var">check</span></a></span></span><span> </span><span id="local-6989586621680196083"><span class="annot"><span class="annottext">rawContent :: Text
-</span><a href="#local-6989586621680196083"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span> </span><span id="local-6989586621680196082"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196082"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
+</span><span id="line-35"></span><span>
+</span><span id="line-36"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT</span></a></span><span>                       </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">JWT</span></span><span>
+</span><span id="line-37"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Error</span></a></span><span>                 </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">JWT</span></span><span>
+</span><span id="line-38"></span><span>
+</span><span id="line-39"></span><span id="local-6989586621680197572"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#check"><span class="hs-identifier hs-type">check</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680197572"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680197572"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>      </span><span class="annot"><a href="#local-6989586621680197572"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-43"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-44"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span>
+</span><span id="line-45"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-46"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680197572"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-47"></span><span id="check"><span class="annot"><span class="annottext">check :: RawContent -&gt; JWT -&gt; m (Either Error JWT)
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check"><span class="hs-identifier hs-var hs-var">check</span></a></span></span><span> </span><span id="local-6989586621680197571"><span class="annot"><span class="annottext">rawContent :: RawContent
+</span><a href="#local-6989586621680197571"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span> </span><span id="local-6989586621680197570"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197570"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *).
 (ServerDID m, Resolver m) =&gt;
-Text -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var">check'</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196083"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196082"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">(UTCTime -&gt; m (Either Error JWT))
+RawContent -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var">check'</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="#local-6989586621680197571"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197570"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">(UTCTime -&gt; m (Either Error JWT))
 -&gt; m UTCTime -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
 </span><span class="hs-operator hs-var">=&lt;&lt;</span></span><span> </span><span class="annot"><span class="annottext">m UTCTime
 forall (m :: * -&gt; *). MonadTime m =&gt; m UTCTime
 </span><span class="hs-identifier hs-var">currentTime</span></span><span>
-</span><span id="line-49"></span><span>
-</span><span id="line-50"></span><span class="hs-comment">-- NOTE: Despite also having an effect, this is broken out</span><span>
-</span><span id="line-51"></span><span class="hs-comment">-- so that we don't need to lookup time repeatedly in recursive checks</span><span>
-</span><span id="line-52"></span><span id="local-6989586621680196158"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-type">check'</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-53"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680196158"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-54"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680196158"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-55"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-56"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-57"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680196158"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
-</span><span id="line-60"></span><span id="check%27"><span class="annot"><span class="annottext">check' :: Text -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var hs-var">check'</span></a></span></span><span> </span><span id="local-6989586621680196079"><span class="annot"><span class="annottext">raw :: Text
-</span><a href="#local-6989586621680196079"><span class="hs-identifier hs-var">raw</span></a></span></span><span> </span><span id="local-6989586621680196078"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196078"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span id="local-6989586621680196077"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680196077"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-61"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Text -&gt; JWT -&gt; UTCTime -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#pureChecks"><span class="hs-identifier hs-var">pureChecks</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196079"><span class="hs-identifier hs-var">raw</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196078"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196077"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-62"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680196076"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680196076"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either Error JWT -&gt; m (Either Error JWT)
+</span><span id="line-48"></span><span>
+</span><span id="line-49"></span><span class="hs-comment">-- NOTE: Despite also having an effect, this is broken out</span><span>
+</span><span id="line-50"></span><span class="hs-comment">-- so that we don't need to lookup time repeatedly in recursive checks</span><span>
+</span><span id="line-51"></span><span id="local-6989586621680197645"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-type">check'</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-52"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680197645"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-53"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680197645"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-55"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680197645"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-59"></span><span id="check%27"><span class="annot"><span class="annottext">check' :: RawContent -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var hs-var">check'</span></a></span></span><span> </span><span id="local-6989586621680197567"><span class="annot"><span class="annottext">raw :: RawContent
+</span><a href="#local-6989586621680197567"><span class="hs-identifier hs-var">raw</span></a></span></span><span> </span><span id="local-6989586621680197566"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197566"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span id="local-6989586621680197565"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680197565"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; UTCTime -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#pureChecks"><span class="hs-identifier hs-var">pureChecks</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="#local-6989586621680197567"><span class="hs-identifier hs-var">raw</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197566"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680197565"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-61"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680197564"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680197564"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either Error JWT -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Error JWT -&gt; m (Either Error JWT))
 -&gt; Either Error JWT -&gt; m (Either Error JWT)
@@ -90,11 +89,11 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680196076"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-63"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ExceptT Error m JWT -&gt; m (Either Error JWT)
+</span><a href="#local-6989586621680197564"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-62"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ExceptT Error m JWT -&gt; m (Either Error JWT)
 forall e (m :: * -&gt; *) a. ExceptT e m a -&gt; m (Either e a)
 </span><span class="hs-identifier hs-var">runExceptT</span></span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-64"></span><span>      </span><span class="annot"><span class="annottext">ExceptT Error m JWT -&gt; ExceptT Error m ()
+</span><span id="line-63"></span><span>      </span><span class="annot"><span class="annottext">ExceptT Error m JWT -&gt; ExceptT Error m ()
 forall (f :: * -&gt; *) a. Functor f =&gt; f a -&gt; f ()
 </span><span class="hs-identifier hs-var">void</span></span><span> </span><span class="annot"><span class="annottext">(ExceptT Error m JWT -&gt; ExceptT Error m ())
 -&gt; (m (Either Error JWT) -&gt; ExceptT Error m JWT)
@@ -109,8 +108,8 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">JWT -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *). ServerDID m =&gt; JWT -&gt; m (Either Error JWT)
 </span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkReceiver"><span class="hs-identifier hs-var">checkReceiver</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196078"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-65"></span><span>      </span><span class="annot"><span class="annottext">m (Either Error JWT) -&gt; ExceptT Error m JWT
+</span><a href="#local-6989586621680197566"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-64"></span><span>      </span><span class="annot"><span class="annottext">m (Either Error JWT) -&gt; ExceptT Error m JWT
 forall e (m :: * -&gt; *) a. m (Either e a) -&gt; ExceptT e m a
 </span><span class="hs-identifier hs-var">ExceptT</span></span><span> </span><span class="annot"><span class="annottext">(m (Either Error JWT) -&gt; ExceptT Error m JWT)
 -&gt; m (Either Error JWT) -&gt; ExceptT Error m JWT
@@ -120,112 +119,112 @@ forall (m :: * -&gt; *).
 (ServerDID m, Resolver m) =&gt;
 UTCTime -&gt; JWT -&gt; m (Either Error JWT)
 </span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkProof"><span class="hs-identifier hs-var">checkProof</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196077"><span class="hs-identifier hs-var">now</span></a></span><span>       </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196078"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-66"></span><span>
-</span><span id="line-67"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#pureChecks"><span class="hs-identifier hs-type">pureChecks</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-68"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-69"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-70"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-71"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-72"></span><span id="pureChecks"><span class="annot"><span class="annottext">pureChecks :: Text -&gt; JWT -&gt; UTCTime -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#pureChecks"><span class="hs-identifier hs-var hs-var">pureChecks</span></a></span></span><span> </span><span id="local-6989586621680196069"><span class="annot"><span class="annottext">raw :: Text
-</span><a href="#local-6989586621680196069"><span class="hs-identifier hs-var">raw</span></a></span></span><span> </span><span id="local-6989586621680196068"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196068"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span id="local-6989586621680196067"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680196067"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-73"></span><span>  </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197565"><span class="hs-identifier hs-var">now</span></a></span><span>       </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197566"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-65"></span><span>
+</span><span id="line-66"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#pureChecks"><span class="hs-identifier hs-type">pureChecks</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-67"></span><span>     </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span>
+</span><span id="line-68"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-69"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-70"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-71"></span><span id="pureChecks"><span class="annot"><span class="annottext">pureChecks :: RawContent -&gt; JWT -&gt; UTCTime -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#pureChecks"><span class="hs-identifier hs-var hs-var">pureChecks</span></a></span></span><span> </span><span id="local-6989586621680197557"><span class="annot"><span class="annottext">raw :: RawContent
+</span><a href="#local-6989586621680197557"><span class="hs-identifier hs-var">raw</span></a></span></span><span> </span><span id="local-6989586621680197556"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197556"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span id="local-6989586621680197555"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680197555"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-72"></span><span>  </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 </span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkVersion"><span class="hs-identifier hs-var">checkVersion</span></a></span><span>       </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196068"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-74"></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; JWT -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkSignature"><span class="hs-identifier hs-var">checkSignature</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196069"><span class="hs-identifier hs-var">raw</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196068"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-75"></span><span>  </span><span class="annot"><span class="annottext">UTCTime -&gt; JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197556"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-73"></span><span>  </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkSignature"><span class="hs-identifier hs-var">checkSignature</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="#local-6989586621680197557"><span class="hs-identifier hs-var">raw</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197556"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-74"></span><span>  </span><span class="annot"><span class="annottext">UTCTime -&gt; JWT -&gt; Either Error JWT
 </span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkTime"><span class="hs-identifier hs-var">checkTime</span></a></span><span>      </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196067"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196068"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-76"></span><span>
-</span><span id="line-77"></span><span id="local-6989586621680196130"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkReceiver"><span class="hs-identifier hs-type">checkReceiver</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680196130"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680196130"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
-</span><span id="line-78"></span><span id="checkReceiver"><span class="annot"><span class="annottext">checkReceiver :: JWT -&gt; m (Either Error JWT)
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkReceiver"><span class="hs-identifier hs-var hs-var">checkReceiver</span></a></span></span><span> </span><span id="local-6989586621680196065"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196065"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:claims:JWT :: JWT -&gt; Claims
-</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">JWT.Claims</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680196061"><span class="annot"><span class="annottext">DID
+</span><a href="#local-6989586621680197555"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197556"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-75"></span><span>
+</span><span id="line-76"></span><span id="local-6989586621680197617"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkReceiver"><span class="hs-identifier hs-type">checkReceiver</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680197617"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680197617"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-77"></span><span id="checkReceiver"><span class="annot"><span class="annottext">checkReceiver :: JWT -&gt; m (Either Error JWT)
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkReceiver"><span class="hs-identifier hs-var hs-var">checkReceiver</span></a></span></span><span> </span><span id="local-6989586621680197553"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197553"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:claims:JWT :: JWT -&gt; Claims
+</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">JWT.Claims</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680197549"><span class="annot"><span class="annottext">DID
 $sel:receiver:Claims :: Claims -&gt; DID
 receiver :: DID
 </span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Areceiver%3AClaims"><span class="hs-identifier hs-var hs-var">receiver</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-79"></span><span>  </span><span id="local-6989586621680196059"><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680196059"><span class="hs-identifier hs-var">serverDID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m DID
+</span><span id="line-78"></span><span>  </span><span id="local-6989586621680197547"><span class="annot"><span class="annottext">DID
+</span><a href="#local-6989586621680197547"><span class="hs-identifier hs-var">serverDID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m DID
 forall (m :: * -&gt; *). ServerDID m =&gt; m DID
 </span><a href="Fission.Authorization.ServerDID.Class.html#getServerDID"><span class="hs-identifier hs-var">getServerDID</span></a></span><span>
-</span><span id="line-80"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680196061"><span class="hs-identifier hs-var">receiver</span></a></span><span> </span><span class="annot"><span class="annottext">DID -&gt; DID -&gt; Bool
+</span><span id="line-79"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">DID
+</span><a href="#local-6989586621680197549"><span class="hs-identifier hs-var">receiver</span></a></span><span> </span><span class="annot"><span class="annottext">DID -&gt; DID -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680196059"><span class="hs-identifier hs-var">serverDID</span></a></span><span>
-</span><span id="line-81"></span><span>    </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197547"><span class="hs-identifier hs-var">serverDID</span></a></span><span>
+</span><span id="line-80"></span><span>    </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196065"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-82"></span><span>    </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><a href="#local-6989586621680197553"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-81"></span><span>    </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#ClaimsError"><span class="hs-identifier hs-var">ClaimsError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html#IncorrectReceiver"><span class="hs-identifier hs-var">IncorrectReceiver</span></a></span><span>
-</span><span id="line-83"></span><span>
-</span><span id="line-84"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkVersion"><span class="hs-identifier hs-type">checkVersion</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-85"></span><span id="checkVersion"><span class="annot"><span class="annottext">checkVersion :: JWT -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkVersion"><span class="hs-identifier hs-var hs-var">checkVersion</span></a></span></span><span> </span><span id="local-6989586621680196055"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196055"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:header:JWT :: JWT -&gt; Header
+</span><span id="line-82"></span><span>
+</span><span id="line-83"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkVersion"><span class="hs-identifier hs-type">checkVersion</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-84"></span><span id="checkVersion"><span class="annot"><span class="annottext">checkVersion :: JWT -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkVersion"><span class="hs-identifier hs-var hs-var">checkVersion</span></a></span></span><span> </span><span id="local-6989586621680197543"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197543"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:header:JWT :: JWT -&gt; Header
 </span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aheader%3AJWT"><span class="hs-identifier hs-var">header</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">JWT.Header</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:uav:Header :: Header -&gt; SemVer
-</span><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#%24sel%3Auav%3AHeader"><span class="hs-identifier hs-var">uav</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span><span> </span><span id="local-6989586621680196050"><span class="annot"><span class="annottext">mjr :: Word8
-</span><a href="#local-6989586621680196050"><span class="hs-identifier hs-var">mjr</span></a></span></span><span> </span><span id="local-6989586621680196049"><span class="annot"><span class="annottext">mnr :: Word8
-</span><a href="#local-6989586621680196049"><span class="hs-identifier hs-var">mnr</span></a></span></span><span> </span><span id="local-6989586621680196048"><span class="annot"><span class="annottext">pch :: Word8
-</span><a href="#local-6989586621680196048"><span class="hs-identifier hs-var">pch</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-86"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680196050"><span class="hs-identifier hs-var">mjr</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Bool
+</span><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#%24sel%3Auav%3AHeader"><span class="hs-identifier hs-var">uav</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span><span> </span><span id="local-6989586621680197538"><span class="annot"><span class="annottext">mjr :: Word8
+</span><a href="#local-6989586621680197538"><span class="hs-identifier hs-var">mjr</span></a></span></span><span> </span><span id="local-6989586621680197537"><span class="annot"><span class="annottext">mnr :: Word8
+</span><a href="#local-6989586621680197537"><span class="hs-identifier hs-var">mnr</span></a></span></span><span> </span><span id="local-6989586621680197536"><span class="annot"><span class="annottext">pch :: Word8
+</span><a href="#local-6989586621680197536"><span class="hs-identifier hs-var">pch</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-85"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Word8
+</span><a href="#local-6989586621680197538"><span class="hs-identifier hs-var">mjr</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;</span></span><span> </span><span class="annot"><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">&amp;&amp;</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680196049"><span class="hs-identifier hs-var">mnr</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Bool
+</span><a href="#local-6989586621680197537"><span class="hs-identifier hs-var">mnr</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;=</span></span><span> </span><span class="annot"><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">&amp;&amp;</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680196048"><span class="hs-identifier hs-var">pch</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Bool
+</span><a href="#local-6989586621680197536"><span class="hs-identifier hs-var">pch</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;=</span></span><span> </span><span class="annot"><span class="hs-number">0</span></span><span>
-</span><span id="line-87"></span><span>    </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><span id="line-86"></span><span>    </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196055"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-88"></span><span>    </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><a href="#local-6989586621680197543"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-87"></span><span>    </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#HeaderError"><span class="hs-identifier hs-var">JWT.HeaderError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Error.html#UnsupportedVersion"><span class="hs-identifier hs-var">UnsupportedVersion</span></a></span><span>
-</span><span id="line-89"></span><span>
-</span><span id="line-90"></span><span id="local-6989586621680196129"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkProof"><span class="hs-identifier hs-type">checkProof</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-91"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680196129"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-92"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680196129"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-93"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-94"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-95"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-96"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680196129"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
-</span><span id="line-97"></span><span id="checkProof"><span class="annot"><span class="annottext">checkProof :: UTCTime -&gt; JWT -&gt; m (Either Error JWT)
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkProof"><span class="hs-identifier hs-var hs-var">checkProof</span></a></span></span><span> </span><span id="local-6989586621680196042"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680196042"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span id="local-6989586621680196041"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196041"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:claims:JWT :: JWT -&gt; Claims
-</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">Claims</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680196040"><span class="annot"><span class="annottext">Proof
+</span><span id="line-88"></span><span>
+</span><span id="line-89"></span><span id="local-6989586621680197616"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkProof"><span class="hs-identifier hs-type">checkProof</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-90"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680197616"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-91"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680197616"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-92"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-93"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-94"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-95"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680197616"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-96"></span><span id="checkProof"><span class="annot"><span class="annottext">checkProof :: UTCTime -&gt; JWT -&gt; m (Either Error JWT)
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkProof"><span class="hs-identifier hs-var hs-var">checkProof</span></a></span></span><span> </span><span id="local-6989586621680197530"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680197530"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span id="local-6989586621680197529"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197529"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:claims:JWT :: JWT -&gt; Claims
+</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">Claims</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680197528"><span class="annot"><span class="annottext">Proof
 $sel:proof:Claims :: Claims -&gt; Proof
 proof :: Proof
 </span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aproof%3AClaims"><span class="hs-identifier hs-var hs-var">proof</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-98"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Proof
-</span><a href="#local-6989586621680196040"><span class="hs-identifier hs-var">proof</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-99"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#RootCredential"><span class="hs-identifier hs-type">RootCredential</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-100"></span><span>      </span><span class="annot"><span class="annottext">Either Error JWT -&gt; m (Either Error JWT)
+</span><span id="line-97"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Proof
+</span><a href="#local-6989586621680197528"><span class="hs-identifier hs-var">proof</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-98"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#RootCredential"><span class="hs-identifier hs-type">RootCredential</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-99"></span><span>      </span><span class="annot"><span class="annottext">Either Error JWT -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Error JWT -&gt; m (Either Error JWT))
 -&gt; Either Error JWT -&gt; m (Either Error JWT)
@@ -233,23 +232,23 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196041"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-101"></span><span>
-</span><span id="line-102"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Reference"><span class="hs-identifier hs-type">Reference</span></a></span><span> </span><span id="local-6989586621680196036"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680196036"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-103"></span><span>      </span><span class="annot"><span class="annottext">CID -&gt; m (Either Error (Text, JWT))
+</span><a href="#local-6989586621680197529"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-100"></span><span>
+</span><span id="line-101"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Reference"><span class="hs-identifier hs-type">Reference</span></a></span><span> </span><span id="local-6989586621680197524"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680197524"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-102"></span><span>      </span><span class="annot"><span class="annottext">CID -&gt; m (Either Error (RawContent, JWT))
 forall (m :: * -&gt; *).
 Resolver m =&gt;
-CID -&gt; m (Either Error (Text, JWT))
+CID -&gt; m (Either Error (RawContent, JWT))
 </span><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#resolve"><span class="hs-identifier hs-var">Proof.resolve</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680196036"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error (Text, JWT))
--&gt; (Either Error (Text, JWT) -&gt; m (Either Error JWT))
+</span><a href="#local-6989586621680197524"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error (RawContent, JWT))
+-&gt; (Either Error (RawContent, JWT) -&gt; m (Either Error JWT))
 -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-104"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680196034"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680196034"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-105"></span><span>          </span><span class="annot"><span class="annottext">Either Error JWT -&gt; m (Either Error JWT)
+</span><span id="line-103"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680197522"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680197522"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-104"></span><span>          </span><span class="annot"><span class="annottext">Either Error JWT -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Error JWT -&gt; m (Either Error JWT))
 -&gt; (Error -&gt; Either Error JWT) -&gt; Error -&gt; m (Either Error JWT)
@@ -269,64 +268,64 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ResolverError"><span class="hs-identifier hs-var">JWT.Proof.ResolverError</span></a></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; m (Either Error JWT)) -&gt; Error -&gt; m (Either Error JWT)
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680196034"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-106"></span><span>         </span><span>
-</span><span id="line-107"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680196031"><span class="annot"><span class="annottext">rawProof :: Text
-</span><a href="#local-6989586621680196031"><span class="hs-identifier hs-var">rawProof</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680196030"><span class="annot"><span class="annottext">proofJWT :: JWT
-</span><a href="#local-6989586621680196030"><span class="hs-identifier hs-var">proofJWT</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-108"></span><span>          </span><span class="annot"><span class="annottext">Text -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
+</span><a href="#local-6989586621680197522"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-105"></span><span>
+</span><span id="line-106"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680197519"><span class="annot"><span class="annottext">rawProof :: RawContent
+</span><a href="#local-6989586621680197519"><span class="hs-identifier hs-var">rawProof</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680197518"><span class="annot"><span class="annottext">proofJWT :: JWT
+</span><a href="#local-6989586621680197518"><span class="hs-identifier hs-var">proofJWT</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-107"></span><span>          </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *).
 (ServerDID m, Resolver m) =&gt;
-Text -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var">check'</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196031"><span class="hs-identifier hs-var">rawProof</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196030"><span class="hs-identifier hs-var">proofJWT</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196042"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error JWT)
+RawContent -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var">check'</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="#local-6989586621680197519"><span class="hs-identifier hs-var">rawProof</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197518"><span class="hs-identifier hs-var">proofJWT</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680197530"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error JWT)
 -&gt; (Either Error JWT -&gt; Either Error JWT) -&gt; m (Either Error JWT)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-109"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680196028"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680196028"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><span id="line-108"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680197516"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680197516"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680196028"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-110"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
-</span><a href="#local-6989586621680196027"><span class="hs-identifier hs-var">checkDelegate</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196030"><span class="hs-identifier hs-var">proofJWT</span></a></span><span>
-</span><span id="line-111"></span><span>
-</span><span id="line-112"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Nested"><span class="hs-identifier hs-type">Nested</span></a></span><span> </span><span id="local-6989586621680196025"><span class="annot"><span class="annottext">rawProof :: Text
-</span><a href="#local-6989586621680196025"><span class="hs-identifier hs-var">rawProof</span></a></span></span><span> </span><span id="local-6989586621680196024"><span class="annot"><span class="annottext">proofJWT :: JWT
-</span><a href="#local-6989586621680196024"><span class="hs-identifier hs-var">proofJWT</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-113"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
+</span><a href="#local-6989586621680197516"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-109"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197515"><span class="hs-identifier hs-var">checkDelegate</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197518"><span class="hs-identifier hs-var">proofJWT</span></a></span><span>
+</span><span id="line-110"></span><span>
+</span><span id="line-111"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Nested"><span class="hs-identifier hs-type">Nested</span></a></span><span> </span><span id="local-6989586621680197513"><span class="annot"><span class="annottext">rawProof :: RawContent
+</span><a href="#local-6989586621680197513"><span class="hs-identifier hs-var">rawProof</span></a></span></span><span> </span><span id="local-6989586621680197512"><span class="annot"><span class="annottext">proofJWT :: JWT
+</span><a href="#local-6989586621680197512"><span class="hs-identifier hs-var">proofJWT</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-112"></span><span>      </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *).
 (ServerDID m, Resolver m) =&gt;
-Text -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var">check'</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196025"><span class="hs-identifier hs-var">rawProof</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196024"><span class="hs-identifier hs-var">proofJWT</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196042"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error JWT)
+RawContent -&gt; JWT -&gt; UTCTime -&gt; m (Either Error JWT)
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check%27"><span class="hs-identifier hs-var">check'</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="#local-6989586621680197513"><span class="hs-identifier hs-var">rawProof</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197512"><span class="hs-identifier hs-var">proofJWT</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680197530"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error JWT)
 -&gt; (Either Error JWT -&gt; Either Error JWT) -&gt; m (Either Error JWT)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-114"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680196023"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680196023"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><span id="line-113"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680197511"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680197511"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680196023"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-115"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
-</span><a href="#local-6989586621680196027"><span class="hs-identifier hs-var">checkDelegate</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196024"><span class="hs-identifier hs-var">proofJWT</span></a></span><span>
-</span><span id="line-116"></span><span>
-</span><span id="line-117"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-118"></span><span>      </span><span id="local-6989586621680196027"><span class="annot"><span class="annottext">checkDelegate :: JWT -&gt; Either Error JWT
-</span><a href="#local-6989586621680196027"><span class="hs-identifier hs-var hs-var">checkDelegate</span></a></span></span><span> </span><span id="local-6989586621680196022"><span class="annot"><span class="annottext">proofJWT :: JWT
-</span><a href="#local-6989586621680196022"><span class="hs-identifier hs-var">proofJWT</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-119"></span><span>        </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197511"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-114"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197515"><span class="hs-identifier hs-var">checkDelegate</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197512"><span class="hs-identifier hs-var">proofJWT</span></a></span><span>
+</span><span id="line-115"></span><span>
+</span><span id="line-116"></span><span>    </span><span class="hs-keyword">where</span><span>
+</span><span id="line-117"></span><span>      </span><span id="local-6989586621680197515"><span class="annot"><span class="annottext">checkDelegate :: JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197515"><span class="hs-identifier hs-var hs-var">checkDelegate</span></a></span></span><span> </span><span id="local-6989586621680197510"><span class="annot"><span class="annottext">proofJWT :: JWT
+</span><a href="#local-6989586621680197510"><span class="hs-identifier hs-var">proofJWT</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-118"></span><span>        </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; JWT -&gt; Either Error JWT
 </span><a href="Fission.Web.Auth.Token.JWT.Proof.html#delegatedInBounds"><span class="hs-identifier hs-var">JWT.Proof.delegatedInBounds</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196041"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196022"><span class="hs-identifier hs-var">proofJWT</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-120"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680196020"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680196020"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><a href="#local-6989586621680197529"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197510"><span class="hs-identifier hs-var">proofJWT</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-119"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680197508"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680197508"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT)
 -&gt; (Error -&gt; Error) -&gt; Error -&gt; Either Error JWT
@@ -336,84 +335,88 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html#ProofError"><span class="hs-identifier hs-var">ProofError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680196020"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-121"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197508"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-120"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196041"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-122"></span><span>
-</span><span id="line-123"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkTime"><span class="hs-identifier hs-type">checkTime</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-124"></span><span id="checkTime"><span class="annot"><span class="annottext">checkTime :: UTCTime -&gt; JWT -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkTime"><span class="hs-identifier hs-var hs-var">checkTime</span></a></span></span><span> </span><span id="local-6989586621680196019"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680196019"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span id="local-6989586621680196018"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196018"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:claims:JWT :: JWT -&gt; Claims
-</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">JWT.Claims</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span id="local-6989586621680196017"><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680197529"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-121"></span><span>
+</span><span id="line-122"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkTime"><span class="hs-identifier hs-type">checkTime</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-123"></span><span id="checkTime"><span class="annot"><span class="annottext">checkTime :: UTCTime -&gt; JWT -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkTime"><span class="hs-identifier hs-var hs-var">checkTime</span></a></span></span><span> </span><span id="local-6989586621680197507"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680197507"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span id="local-6989586621680197506"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197506"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:claims:JWT :: JWT -&gt; Claims
+</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">JWT.Claims</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span id="local-6989586621680197505"><span class="annot"><span class="annottext">UTCTime
 $sel:exp:Claims :: Claims -&gt; UTCTime
 exp :: UTCTime
-</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aexp%3AClaims"><span class="hs-identifier hs-var hs-var">exp</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680196015"><span class="annot"><span class="annottext">UTCTime
+</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aexp%3AClaims"><span class="hs-identifier hs-var hs-var">exp</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680197503"><span class="annot"><span class="annottext">UTCTime
 $sel:nbf:Claims :: Claims -&gt; UTCTime
 nbf :: UTCTime
 </span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Anbf%3AClaims"><span class="hs-identifier hs-var hs-var">nbf</span></a></span></span><span> </span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-125"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196019"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; UTCTime -&gt; Bool
+</span><span id="line-124"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680197507"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; UTCTime -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&gt;</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196017"><span class="hs-identifier hs-var">exp</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><a href="#local-6989586621680197505"><span class="hs-identifier hs-var">exp</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#ClaimsError"><span class="hs-identifier hs-var">JWT.ClaimsError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html#Expired"><span class="hs-identifier hs-var">Expired</span></a></span><span>
-</span><span id="line-126"></span><span>     </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196019"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; UTCTime -&gt; Bool
+</span><span id="line-125"></span><span>     </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680197507"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; UTCTime -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680196015"><span class="hs-identifier hs-var">nbf</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><a href="#local-6989586621680197503"><span class="hs-identifier hs-var">nbf</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#ClaimsError"><span class="hs-identifier hs-var">JWT.ClaimsError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Claims.Error.html#TooEarly"><span class="hs-identifier hs-var">TooEarly</span></a></span><span>
-</span><span id="line-127"></span><span>     </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span id="line-126"></span><span>     </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">otherwise</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196018"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-128"></span><span>
-</span><span id="line-129"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkSignature"><span class="hs-identifier hs-type">checkSignature</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-130"></span><span id="checkSignature"><span class="annot"><span class="annottext">checkSignature :: Text -&gt; JWT -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkSignature"><span class="hs-identifier hs-var hs-var">checkSignature</span></a></span></span><span> </span><span id="local-6989586621680196010"><span class="annot"><span class="annottext">rawContent :: Text
-</span><a href="#local-6989586621680196010"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span> </span><span id="local-6989586621680196009"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196009"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680196008"><span class="annot"><span class="annottext">Signature
+</span><a href="#local-6989586621680197506"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-127"></span><span>
+</span><span id="line-128"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkSignature"><span class="hs-identifier hs-type">checkSignature</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-129"></span><span id="checkSignature"><span class="annot"><span class="annottext">checkSignature :: RawContent -&gt; JWT -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkSignature"><span class="hs-identifier hs-var hs-var">checkSignature</span></a></span></span><span> </span><span id="local-6989586621680197498"><span class="annot"><span class="annottext">rawContent :: RawContent
+</span><a href="#local-6989586621680197498"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span> </span><span id="local-6989586621680197497"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197497"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680197496"><span class="annot"><span class="annottext">Signature
 $sel:sig:JWT :: JWT -&gt; Signature
 sig :: Signature
 </span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Asig%3AJWT"><span class="hs-identifier hs-var hs-var">sig</span></a></span></span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-131"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680196008"><span class="hs-identifier hs-var">sig</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-132"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Signature.Ed25519</span></a></span><span> </span><span class="hs-identifier">_</span><span>        </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; JWT -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkEd25519Signature"><span class="hs-identifier hs-var">checkEd25519Signature</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196010"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196009"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-133"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">Signature.RS256</span></a></span><span>   </span><span id="local-6989586621680196004"><span class="annot"><span class="annottext">rs256Sig :: Signature
-</span><a href="#local-6989586621680196004"><span class="hs-identifier hs-var">rs256Sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; JWT -&gt; Signature -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkRSA2048Signature"><span class="hs-identifier hs-var">checkRSA2048Signature</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196010"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196009"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680196004"><span class="hs-identifier hs-var">rs256Sig</span></a></span><span>
-</span><span id="line-134"></span><span>
-</span><span id="line-135"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkRSA2048Signature"><span class="hs-identifier hs-type">checkRSA2048Signature</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">RS256.Signature</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-136"></span><span id="checkRSA2048Signature"><span class="annot"><span class="annottext">checkRSA2048Signature :: Text -&gt; JWT -&gt; Signature -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkRSA2048Signature"><span class="hs-identifier hs-var hs-var">checkRSA2048Signature</span></a></span></span><span> </span><span id="local-6989586621680196003"><span class="annot"><span class="annottext">rawContent :: Text
-</span><a href="#local-6989586621680196003"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span> </span><span id="local-6989586621680196002"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680196002"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span id="local-6989586621680195999"><span id="local-6989586621680196000"><span id="local-6989586621680196001"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">RS256.Signature</span></a></span><span> </span><span id="local-6989586621680195997"><span class="annot"><span class="annottext">innerSig :: ByteString
-</span><a href="#local-6989586621680195997"><span class="hs-identifier hs-var">innerSig</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-137"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680195996"><span class="hs-identifier hs-var">publicKey</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-138"></span><span>    </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#RSAPublicKey"><span class="hs-identifier hs-type">RSAPublicKey</span></a></span><span> </span><span id="local-6989586621680195994"><span class="annot"><span class="annottext">pk :: PublicKey
-</span><a href="#local-6989586621680195994"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-139"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Maybe SHA256 -&gt; PublicKey -&gt; ByteString -&gt; ByteString -&gt; Bool
+</span><span id="line-130"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Signature
+</span><a href="#local-6989586621680197496"><span class="hs-identifier hs-var">sig</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-131"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Signature.Ed25519</span></a></span><span> </span><span class="hs-identifier">_</span><span>        </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkEd25519Signature"><span class="hs-identifier hs-var">checkEd25519Signature</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="#local-6989586621680197498"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197497"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-132"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">Signature.RS256</span></a></span><span>   </span><span id="local-6989586621680197492"><span class="annot"><span class="annottext">rs256Sig :: Signature
+</span><a href="#local-6989586621680197492"><span class="hs-identifier hs-var">rs256Sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; Signature -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkRSA2048Signature"><span class="hs-identifier hs-var">checkRSA2048Signature</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="#local-6989586621680197498"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680197497"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">Signature
+</span><a href="#local-6989586621680197492"><span class="hs-identifier hs-var">rs256Sig</span></a></span><span>
+</span><span id="line-133"></span><span>
+</span><span id="line-134"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkRSA2048Signature"><span class="hs-identifier hs-type">checkRSA2048Signature</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-135"></span><span>     </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span>
+</span><span id="line-136"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-137"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">RS256.Signature</span></a></span><span>
+</span><span id="line-138"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-139"></span><span id="checkRSA2048Signature"><span class="annot"><span class="annottext">checkRSA2048Signature :: RawContent -&gt; JWT -&gt; Signature -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkRSA2048Signature"><span class="hs-identifier hs-var hs-var">checkRSA2048Signature</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span> </span><span id="local-6989586621680197490"><span class="annot"><span class="annottext">raw :: Text
+</span><a href="#local-6989586621680197490"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680197489"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197489"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span id="local-6989586621680197486"><span id="local-6989586621680197487"><span id="local-6989586621680197488"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">RS256.Signature</span></a></span><span> </span><span id="local-6989586621680197484"><span class="annot"><span class="annottext">innerSig :: ByteString
+</span><a href="#local-6989586621680197484"><span class="hs-identifier hs-var">innerSig</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-140"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Public
+</span><a href="#local-6989586621680197483"><span class="hs-identifier hs-var">publicKey</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-141"></span><span>    </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#RSAPublicKey"><span class="hs-identifier hs-type">RSAPublicKey</span></a></span><span> </span><span id="local-6989586621680197481"><span class="annot"><span class="annottext">pk :: PublicKey
+</span><a href="#local-6989586621680197481"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-142"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Maybe SHA256 -&gt; PublicKey -&gt; ByteString -&gt; ByteString -&gt; Bool
 forall hashAlg.
 HashAlgorithmASN1 hashAlg =&gt;
 Maybe hashAlg -&gt; PublicKey -&gt; ByteString -&gt; ByteString -&gt; Bool
@@ -421,85 +424,74 @@ Maybe hashAlg -&gt; PublicKey -&gt; ByteString -&gt; ByteString -&gt; Bool
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">SHA256
 </span><span class="hs-identifier hs-var">SHA256</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">PublicKey
-</span><a href="#local-6989586621680195994"><span class="hs-identifier hs-var">pk</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680195991"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680195997"><span class="hs-identifier hs-var">innerSig</span></a></span><span>
-</span><span id="line-140"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197481"><span class="hs-identifier hs-var">pk</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680197478"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680197484"><span class="hs-identifier hs-var">innerSig</span></a></span><span>
+</span><span id="line-143"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680196002"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-141"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><a href="#local-6989586621680197489"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-144"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-var">JWT.SignatureError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html#SignatureDoesNotMatch"><span class="hs-identifier hs-var">SignatureDoesNotMatch</span></a></span><span>
-</span><span id="line-142"></span><span>
-</span><span id="line-143"></span><span>    </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-144"></span><span>      </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><span id="line-145"></span><span>
+</span><span id="line-146"></span><span>    </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-147"></span><span>      </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-var">JWT.SignatureError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html#InvalidPublicKey"><span class="hs-identifier hs-var">InvalidPublicKey</span></a></span><span>
-</span><span id="line-145"></span><span> </span><span>
-</span><span id="line-146"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-147"></span><span>    </span><span id="local-6989586621680195991"><span class="annot"><span class="annottext">content :: ByteString
-</span><a href="#local-6989586621680195991"><span class="hs-identifier hs-var hs-var">content</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
+</span><span id="line-148"></span><span>
+</span><span id="line-149"></span><span>  </span><span class="hs-keyword">where</span><span>
+</span><span id="line-150"></span><span>    </span><span id="local-6989586621680197478"><span class="annot"><span class="annottext">content :: ByteString
+</span><a href="#local-6989586621680197478"><span class="hs-identifier hs-var hs-var">content</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
 </span><span class="hs-identifier hs-var">encodeUtf8</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680196003"><span class="hs-identifier hs-var">rawContent</span></a></span><span>
-</span><span id="line-148"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">Claims</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:sender:Claims :: Claims -&gt; DID
-</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Asender%3AClaims"><span class="hs-identifier hs-var">sender</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">User.DID</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680195996"><span class="annot"><span class="annottext">Public
+</span><a href="#local-6989586621680197490"><span class="hs-identifier hs-var">raw</span></a></span><span>
+</span><span id="line-151"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">Claims</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:sender:Claims :: Claims -&gt; DID
+</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Asender%3AClaims"><span class="hs-identifier hs-var">sender</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">User.DID</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680197483"><span class="annot"><span class="annottext">Public
 $sel:publicKey:DID :: DID -&gt; Public
 publicKey :: Public
 </span><a href="Fission.User.DID.Types.html#%24sel%3ApublicKey%3ADID"><span class="hs-identifier hs-var hs-var">publicKey</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Claims
-</span><a href="#local-6989586621680196000"><span class="hs-identifier hs-var">claims</span></a></span><span>
-</span><span id="line-149"></span><span>
-</span><span id="line-150"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkEd25519Signature"><span class="hs-identifier hs-type">checkEd25519Signature</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
-</span><span id="line-151"></span><span id="checkEd25519Signature"><span class="annot"><span class="annottext">checkEd25519Signature :: Text -&gt; JWT -&gt; Either Error JWT
-</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkEd25519Signature"><span class="hs-identifier hs-var hs-var">checkEd25519Signature</span></a></span></span><span> </span><span id="local-6989586621680195983"><span class="annot"><span class="annottext">rawContent :: Text
-</span><a href="#local-6989586621680195983"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span> </span><span id="local-6989586621680195982"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680195982"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span id="local-6989586621680195979"><span id="local-6989586621680195980"><span id="local-6989586621680195981"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-152"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680195978"><span class="hs-identifier hs-var">publicKey</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; CryptoFailable Signature
-forall ba. ByteArrayAccess ba =&gt; ba -&gt; CryptoFailable Signature
-</span><span class="hs-identifier hs-var">Crypto.Ed25519.signature</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680195979"><span class="hs-identifier hs-var">sig</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-153"></span><span>    </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Ed25519PublicKey"><span class="hs-identifier hs-type">Ed25519PublicKey</span></a></span><span> </span><span id="local-6989586621680195975"><span class="annot"><span class="annottext">pk :: PublicKey
-</span><a href="#local-6989586621680195975"><span class="hs-identifier hs-var">pk</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CryptoPassed</span></span><span> </span><span id="local-6989586621680195973"><span class="annot"><span class="annottext">sig' :: Signature
-</span><a href="#local-6989586621680195973"><span class="hs-identifier hs-var">sig'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-154"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; ByteString -&gt; Signature -&gt; Bool
+</span><a href="#local-6989586621680197487"><span class="hs-identifier hs-var">claims</span></a></span><span>
+</span><span id="line-152"></span><span>
+</span><span id="line-153"></span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkEd25519Signature"><span class="hs-identifier hs-type">checkEd25519Signature</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Error.html#Error"><span class="hs-identifier hs-type">JWT.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-154"></span><span id="checkEd25519Signature"><span class="annot"><span class="annottext">checkEd25519Signature :: RawContent -&gt; JWT -&gt; Either Error JWT
+</span><a href="Fission.Web.Auth.Token.JWT.Validation.html#checkEd25519Signature"><span class="hs-identifier hs-var hs-var">checkEd25519Signature</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span> </span><span id="local-6989586621680197470"><span class="annot"><span class="annottext">raw :: Text
+</span><a href="#local-6989586621680197470"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680197469"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680197469"><span class="hs-identifier hs-var">jwt</span></a></span></span><span class="hs-glyph">@</span><span id="local-6989586621680197466"><span id="local-6989586621680197467"><span id="local-6989586621680197468"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-155"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Public
+</span><a href="#local-6989586621680197465"><span class="hs-identifier hs-var">publicKey</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Signature
+</span><a href="#local-6989586621680197466"><span class="hs-identifier hs-var">sig</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-156"></span><span>    </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Ed25519PublicKey"><span class="hs-identifier hs-type">Ed25519PublicKey</span></a></span><span> </span><span id="local-6989586621680197463"><span class="annot"><span class="annottext">pk :: PublicKey
+</span><a href="#local-6989586621680197463"><span class="hs-identifier hs-var">pk</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Signature.Ed25519</span></a></span><span> </span><span id="local-6989586621680197462"><span class="annot"><span class="annottext">edSig :: Signature
+</span><a href="#local-6989586621680197462"><span class="hs-identifier hs-var">edSig</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-157"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; ByteString -&gt; Signature -&gt; Bool
 forall ba.
 ByteArrayAccess ba =&gt;
 PublicKey -&gt; ba -&gt; Signature -&gt; Bool
 </span><span class="hs-identifier hs-var">Crypto.Ed25519.verify</span></span><span> </span><span class="annot"><span class="annottext">PublicKey
-</span><a href="#local-6989586621680195975"><span class="hs-identifier hs-var">pk</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; ByteString
+</span><a href="#local-6989586621680197463"><span class="hs-identifier hs-var">pk</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; ByteString
 </span><span class="hs-identifier hs-var">encodeUtf8</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680195983"><span class="hs-identifier hs-var">rawContent</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680195973"><span class="hs-identifier hs-var">sig'</span></a></span><span>
-</span><span id="line-155"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
+</span><a href="#local-6989586621680197470"><span class="hs-identifier hs-var">raw</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Signature
+</span><a href="#local-6989586621680197462"><span class="hs-identifier hs-var">edSig</span></a></span><span>
+</span><span id="line-158"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">JWT -&gt; Either Error JWT
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680195982"><span class="hs-identifier hs-var">jwt</span></a></span><span>
-</span><span id="line-156"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
+</span><a href="#local-6989586621680197469"><span class="hs-identifier hs-var">jwt</span></a></span><span>
+</span><span id="line-159"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-var">JWT.SignatureError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html#SignatureDoesNotMatch"><span class="hs-identifier hs-var">SignatureDoesNotMatch</span></a></span><span>
-</span><span id="line-157"></span><span>
-</span><span id="line-158"></span><span>    </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CryptoFailed</span></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-159"></span><span>      </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
-forall a b. a -&gt; Either a b
-</span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error JWT) -&gt; Error -&gt; Either Error JWT
-forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
-</span><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-var">JWT.SignatureError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html#InvalidSignature"><span class="hs-identifier hs-var">InvalidSignature</span></a></span><span>
-</span><span id="line-160"></span><span> </span><span>
+</span><span id="line-160"></span><span>
 </span><span id="line-161"></span><span>    </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-162"></span><span>      </span><span class="annot"><span class="annottext">Error -&gt; Either Error JWT
 forall a b. a -&gt; Either a b
@@ -508,12 +500,12 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Error.html#SignatureError"><span class="hs-identifier hs-var">JWT.SignatureError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.Error.html#InvalidPublicKey"><span class="hs-identifier hs-var">InvalidPublicKey</span></a></span><span>
-</span><span id="line-163"></span><span>    </span><span>
+</span><span id="line-163"></span><span>
 </span><span id="line-164"></span><span>  </span><span class="hs-keyword">where</span><span>
 </span><span id="line-165"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">Claims</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:sender:Claims :: Claims -&gt; DID
-</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Asender%3AClaims"><span class="hs-identifier hs-var">sender</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">User.DID</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680195978"><span class="annot"><span class="annottext">Public
+</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Asender%3AClaims"><span class="hs-identifier hs-var">sender</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">User.DID</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680197465"><span class="annot"><span class="annottext">Public
 publicKey :: Public
 $sel:publicKey:DID :: DID -&gt; Public
-</span><a href="#local-6989586621680195978"><span class="hs-identifier hs-var hs-var">publicKey</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Claims
-</span><a href="#local-6989586621680195980"><span class="hs-identifier hs-var">claims</span></a></span><span>
+</span><a href="#local-6989586621680197465"><span class="hs-identifier hs-var hs-var">publicKey</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Claims
+</span><a href="#local-6989586621680197467"><span class="hs-identifier hs-var">claims</span></a></span><span>
 </span><span id="line-166"></span></pre></body></html>

@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.3.7
+@version 2.3.8
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -6794,6 +6794,22 @@ instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.JWT.Header.T
 instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.Header.Types.Header
 instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.Header.Types.Header
 
+module Fission.Web.Auth.Token.JWT.RawContent.Types
+
+-- | Newtype wrapper for raw content (i.e. the part that gets signed &amp;
+--   verified)
+newtype RawContent
+RawContent :: Text -> RawContent
+[$sel:unRawContent:RawContent] :: RawContent -> Text
+instance GHC.Show.Show Fission.Web.Auth.Token.JWT.RawContent.Types.RawContent
+instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.RawContent.Types.RawContent
+instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.RawContent.Types.RawContent
+
+module Fission.Web.Auth.Token.JWT.RawContent
+
+-- | Smart constructor for <a>RawContent</a>
+contentOf :: Text -> RawContent
+
 module Fission.Web.Auth.Token.JWT.Signature.RS256.Types
 newtype Signature
 Signature :: ByteString -> Signature
@@ -6839,7 +6855,7 @@ Claims :: !DID -> !DID -> !Text -> !Potency -> !Proof -> !UTCTime -> !UTCTime ->
 [$sel:nbf:Claims] :: Claims -> !UTCTime
 data Proof
 RootCredential :: Proof
-Nested :: Text -> JWT -> Proof
+Nested :: RawContent -> JWT -> Proof
 Reference :: CID -> Proof
 signEd25519 :: Header -> Claims -> SecretKey -> Signature
 signRS256 :: MonadRandom m => Header -> Claims -> PrivateKey -> m (Either Error Signature)
@@ -6879,9 +6895,9 @@ instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.Proof
 -- | Authorization types; primarily more semantic aliases
 module Fission.Web.Auth.Token.Bearer.Types
 data Token
-Token :: !JWT -> !Maybe Text -> Token
+Token :: !JWT -> !Maybe RawContent -> Token
 [$sel:jwt:Token] :: Token -> !JWT
-[$sel:rawContent:Token] :: Token -> !Maybe Text
+[$sel:rawContent:Token] :: Token -> !Maybe RawContent
 instance GHC.Classes.Eq Fission.Web.Auth.Token.Bearer.Types.Token
 instance GHC.Show.Show Fission.Web.Auth.Token.Bearer.Types.Token
 instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.Bearer.Types.Token
@@ -6897,7 +6913,7 @@ module Fission.Internal.Fixture.Bearer
 jsonRSA2048 :: Text
 tokenRSA2048 :: Token
 jwtRSA2048 :: JWT
-rawContent :: Text
+rawContent :: RawContent
 validTime :: UTCTime
 
 module Fission.Internal.Fixture
@@ -7147,7 +7163,7 @@ instance Fission.Web.Error.Class.ToServerError Fission.Web.Auth.Token.JWT.Resolv
 
 module Fission.Web.Auth.Token.JWT.Resolver.Class
 class Monad m => Resolver m
-resolve :: Resolver m => CID -> m (Either Error (Text, JWT))
+resolve :: Resolver m => CID -> m (Either Error (RawContent, JWT))
 
 module Fission.Web.Auth.Token.JWT.Resolver
 
@@ -7360,13 +7376,13 @@ module Fission.User
 type CRUD m = (Retriever m, Creator m, Modifier m, Destroyer m)
 
 module Fission.Web.Auth.Token.JWT.Validation
-check :: (Resolver m, ServerDID m, MonadTime m) => Text -> JWT -> m (Either Error JWT)
-check' :: (ServerDID m, Resolver m) => Text -> JWT -> UTCTime -> m (Either Error JWT)
-pureChecks :: Text -> JWT -> UTCTime -> Either Error JWT
+check :: (Resolver m, ServerDID m, MonadTime m) => RawContent -> JWT -> m (Either Error JWT)
+check' :: (ServerDID m, Resolver m) => RawContent -> JWT -> UTCTime -> m (Either Error JWT)
+pureChecks :: RawContent -> JWT -> UTCTime -> Either Error JWT
 checkTime :: UTCTime -> JWT -> Either Error JWT
-checkSignature :: Text -> JWT -> Either Error JWT
-checkEd25519Signature :: Text -> JWT -> Either Error JWT
-checkRSA2048Signature :: Text -> JWT -> Signature -> Either Error JWT
+checkSignature :: RawContent -> JWT -> Either Error JWT
+checkEd25519Signature :: RawContent -> JWT -> Either Error JWT
+checkRSA2048Signature :: RawContent -> JWT -> Signature -> Either Error JWT
 
 module Fission.Web.Auth.Token.UCAN
 

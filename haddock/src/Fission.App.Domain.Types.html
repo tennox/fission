@@ -6,7 +6,7 @@
 </span><span id="line-6"></span><span>
 </span><span id="line-7"></span><span class="hs-comment">-- | Hack to work around nullable uniqueness constraints (DB-specific)</span><span>
 </span><span id="line-8"></span><span class="hs-keyword">data</span><span> </span><span id="IsBare"><span class="annot"><a href="Fission.App.Domain.Types.html#IsBare"><span class="hs-identifier hs-var">IsBare</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="IsBare"><span class="annot"><a href="Fission.App.Domain.Types.html#IsBare"><span class="hs-identifier hs-var">IsBare</span></a></span></span><span>
-</span><span id="line-9"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680186230"><span id="local-6989586621680186232"><span id="local-6989586621680186234"><span class="annot"><span class="annottext">Int -&gt; IsBare -&gt; ShowS
+</span><span id="line-9"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680187671"><span id="local-6989586621680187673"><span id="local-6989586621680187675"><span class="annot"><span class="annottext">Int -&gt; IsBare -&gt; ShowS
 [IsBare] -&gt; ShowS
 IsBare -&gt; String
 (Int -&gt; IsBare -&gt; ShowS)
@@ -19,7 +19,7 @@ show :: IsBare -&gt; String
 $cshow :: IsBare -&gt; String
 showsPrec :: Int -&gt; IsBare -&gt; ShowS
 $cshowsPrec :: Int -&gt; IsBare -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680186225"><span id="local-6989586621680186227"><span class="annot"><span class="annottext">IsBare -&gt; IsBare -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680187666"><span id="local-6989586621680187668"><span class="annot"><span class="annottext">IsBare -&gt; IsBare -&gt; Bool
 (IsBare -&gt; IsBare -&gt; Bool)
 -&gt; (IsBare -&gt; IsBare -&gt; Bool) -&gt; Eq IsBare
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -30,12 +30,12 @@ $c== :: IsBare -&gt; IsBare -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-10"></span><span>
 </span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><a href="Fission.App.Domain.Types.html#IsBare"><span class="hs-identifier hs-type">IsBare</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-12"></span><span>  </span><span id="local-6989586621680186220"><span class="annot"><span class="annottext">toPersistValue :: IsBare -&gt; PersistValue
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680187661"><span class="annot"><span class="annottext">toPersistValue :: IsBare -&gt; PersistValue
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="annot"><a href="Fission.App.Domain.Types.html#IsBare"><span class="hs-identifier hs-type">IsBare</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; PersistValue
 </span><span class="hs-identifier hs-var">PersistBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span>  </span><span id="local-6989586621680186217"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text IsBare
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680187658"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text IsBare
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">PersistBool</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">True</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IsBare -&gt; Either Text IsBare
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">IsBare
@@ -45,7 +45,7 @@ forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Not App.Domain.IsBare&quot;</span></span><span>
 </span><span id="line-16"></span><span>
 </span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><a href="Fission.App.Domain.Types.html#IsBare"><span class="hs-identifier hs-type">IsBare</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-18"></span><span>  </span><span id="local-6989586621680186212"><span class="annot"><span class="annottext">sqlType :: Proxy IsBare -&gt; SqlType
+</span><span id="line-18"></span><span>  </span><span id="local-6989586621680187653"><span class="annot"><span class="annottext">sqlType :: Proxy IsBare -&gt; SqlType
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
 </span><span class="hs-identifier hs-var">SqlBool</span></span><span>
 </span><span id="line-19"></span></pre></body></html>

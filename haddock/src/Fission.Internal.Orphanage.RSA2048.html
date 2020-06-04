@@ -7,8 +7,8 @@
 </span><span id="line-7"></span><span>
 </span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-9"></span><span>
-</span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680183737"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-11"></span><span>  </span><span id="local-6989586621680183735"><span class="annot"><span class="annottext">arbitrary :: Gen SecretKey
+</span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185162"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span>  </span><span id="local-6989586621680185160"><span class="annot"><span class="annottext">arbitrary :: Gen SecretKey
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SecretKey -&gt; Gen SecretKey
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(SecretKey -&gt; Gen SecretKey)

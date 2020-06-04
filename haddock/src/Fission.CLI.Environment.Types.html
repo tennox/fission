@@ -14,55 +14,55 @@
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AbuildDir%3AEnvironment"><span class="hs-identifier hs-var hs-var">buildDir</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">)</span><span>
 </span><span id="line-12"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185195"><span id="local-6989586621680185197"><span id="local-6989586621680185199"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-15"></span><span>  </span><span id="local-6989586621680185193"><span class="annot"><span class="annottext">toJSON :: Environment -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680185189"><span id="local-6989586621680185190"><span id="local-6989586621680185191"><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186636"><span id="local-6989586621680186638"><span id="local-6989586621680186640"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680186634"><span class="annot"><span class="annottext">toJSON :: Environment -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680186630"><span id="local-6989586621680186631"><span id="local-6989586621680186632"><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span>
 </span><span id="line-16"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;peers&quot;</span></span><span>     </span><span class="annot"><span class="annottext">Text -&gt; Maybe (NonEmpty Peer) -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Maybe (NonEmpty Peer)
-</span><a href="#local-6989586621680185191"><span class="hs-identifier hs-var">peers</span></a></span><span>
+</span><a href="#local-6989586621680186632"><span class="hs-identifier hs-var">peers</span></a></span><span>
 </span><span id="line-17"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;ignore&quot;</span></span><span>    </span><span class="annot"><span class="annottext">Text -&gt; Ignored -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Ignored
-</span><a href="#local-6989586621680185190"><span class="hs-identifier hs-var">ignored</span></a></span><span>
+</span><a href="#local-6989586621680186631"><span class="hs-identifier hs-var">ignored</span></a></span><span>
 </span><span id="line-18"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Maybe FilePath -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680185189"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
+</span><a href="#local-6989586621680186630"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
 </span><span id="line-19"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185184"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-22"></span><span>  </span><span id="local-6989586621680185182"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Environment
+</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186625"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-22"></span><span>  </span><span id="local-6989586621680186623"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Environment
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath
 -&gt; (Object -&gt; Parser Environment) -&gt; Value -&gt; Parser Environment
 forall a. FilePath -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Environment&quot;</span></span><span> </span><span class="annot"><span class="annottext">((Object -&gt; Parser Environment) -&gt; Value -&gt; Parser Environment)
 -&gt; (Object -&gt; Parser Environment) -&gt; Value -&gt; Parser Environment
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680185178"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680185178"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680186619"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680186619"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-23"></span><span>    </span><span class="annot"><span class="annottext">Maybe (NonEmpty Peer) -&gt; Ignored -&gt; Maybe FilePath -&gt; Environment
 </span><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-var">Environment</span></a></span><span> </span><span class="annot"><span class="annottext">(Maybe (NonEmpty Peer) -&gt; Ignored -&gt; Maybe FilePath -&gt; Environment)
 -&gt; Parser (Maybe (NonEmpty Peer))
 -&gt; Parser (Ignored -&gt; Maybe FilePath -&gt; Environment)
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680185178"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (NonEmpty Peer))
+</span><a href="#local-6989586621680186619"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (NonEmpty Peer))
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;peers&quot;</span></span><span>
 </span><span id="line-24"></span><span>                </span><span class="annot"><span class="annottext">Parser (Ignored -&gt; Maybe FilePath -&gt; Environment)
 -&gt; Parser Ignored -&gt; Parser (Maybe FilePath -&gt; Environment)
 forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680185178"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Ignored
+</span><a href="#local-6989586621680186619"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Ignored
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ignore&quot;</span></span><span>
 </span><span id="line-25"></span><span>                </span><span class="annot"><span class="annottext">Parser (Maybe FilePath -&gt; Environment)
 -&gt; Parser (Maybe FilePath) -&gt; Parser Environment
 forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680185178"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
+</span><a href="#local-6989586621680186619"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span>
 </span><span id="line-26"></span></pre></body></html>

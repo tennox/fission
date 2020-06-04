@@ -7,11 +7,11 @@
 </span><span id="line-7"></span><span>
 </span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-9"></span><span>
-</span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680184147"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BaseUrl</span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-11"></span><span>  </span><span id="local-6989586621680184145"><span class="annot"><span class="annottext">arbitrary :: Gen BaseUrl
+</span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185572"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BaseUrl</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span>  </span><span id="local-6989586621680185570"><span class="annot"><span class="annottext">arbitrary :: Gen BaseUrl
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-12"></span><span>    </span><span id="local-6989586621680184143"><span class="annot"><span class="annottext">Scheme
-</span><a href="#local-6989586621680184143"><span class="hs-identifier hs-var">baseUrlScheme</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[Gen Scheme] -&gt; Gen Scheme
+</span><span id="line-12"></span><span>    </span><span id="local-6989586621680185568"><span class="annot"><span class="annottext">Scheme
+</span><a href="#local-6989586621680185568"><span class="hs-identifier hs-var">baseUrlScheme</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[Gen Scheme] -&gt; Gen Scheme
 forall a. [Gen a] -&gt; Gen a
 </span><span class="hs-identifier hs-var">oneof</span></span><span> </span><span class="annot"><span class="annottext">([Gen Scheme] -&gt; Gen Scheme) -&gt; [Gen Scheme] -&gt; Gen Scheme
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -24,16 +24,16 @@ Scheme
 </span><span class="hs-identifier hs-var">Client.Http</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [Scheme]
 Scheme
 </span><span class="hs-identifier hs-var">Client.Https</span></span><span class="hs-special">]</span><span>
-</span><span id="line-13"></span><span>    </span><span id="local-6989586621680184137"><span class="annot"><span class="annottext">[Char]
-</span><a href="#local-6989586621680184137"><span class="hs-identifier hs-var">baseUrlHost</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen [Char]
+</span><span id="line-13"></span><span>    </span><span id="local-6989586621680185562"><span class="annot"><span class="annottext">[Char]
+</span><a href="#local-6989586621680185562"><span class="hs-identifier hs-var">baseUrlHost</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen [Char]
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-14"></span><span>    </span><span id="local-6989586621680184136"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680184136"><span class="hs-identifier hs-var">baseUrlPort</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Int
+</span><span id="line-14"></span><span>    </span><span id="local-6989586621680185561"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680185561"><span class="hs-identifier hs-var">baseUrlPort</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Int
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-15"></span><span>    </span><span id="local-6989586621680184135"><span class="annot"><span class="annottext">[Char]
-</span><a href="#local-6989586621680184135"><span class="hs-identifier hs-var">baseUrlPath</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen [Char]
+</span><span id="line-15"></span><span>    </span><span id="local-6989586621680185560"><span class="annot"><span class="annottext">[Char]
+</span><a href="#local-6989586621680185560"><span class="hs-identifier hs-var">baseUrlPath</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen [Char]
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-16"></span><span>
@@ -41,7 +41,7 @@ forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-type hs-type">BaseUrl</span></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
 </span><span id="line-18"></span><span>
 </span><span id="line-19"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BaseUrl</span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-20"></span><span>  </span><span id="local-6989586621680184126"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy BaseUrl -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680185551"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy BaseUrl -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-21"></span><span>    </span><span class="annot"><span class="annottext">Schema
 forall a. Monoid a =&gt; a

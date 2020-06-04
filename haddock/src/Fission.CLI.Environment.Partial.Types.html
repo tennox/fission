@@ -19,9 +19,9 @@
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var hs-var">maybeBuildDir</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">)</span><span>
 </span><span id="line-16"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-17"></span><span>
-</span><span id="line-18"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185279"><span id="local-6989586621680185281"><span id="local-6989586621680185283"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-19"></span><span>  </span><span id="local-6989586621680185277"><span class="annot"><span class="annottext">toJSON :: Partial -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680185272"><span id="local-6989586621680185273"><span id="local-6989586621680185274"><span id="local-6989586621680185275"><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><span id="line-18"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186720"><span id="local-6989586621680186722"><span id="local-6989586621680186724"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-19"></span><span>  </span><span id="local-6989586621680186718"><span class="annot"><span class="annottext">toJSON :: Partial -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680186713"><span id="local-6989586621680186714"><span id="local-6989586621680186715"><span id="local-6989586621680186716"><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span> </span><span class="annot"><span class="annottext">([Pair] -&gt; Value) -&gt; [Pair] -&gt; Value
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">[Maybe Pair] -&gt; [Pair]
@@ -32,36 +32,36 @@ forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(BasicAuthData -&gt; Pair) -&gt; Maybe BasicAuthData -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData
-</span><a href="#local-6989586621680185275"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span><span>
+</span><a href="#local-6989586621680186716"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span><span>
 </span><span id="line-21"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;peers&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; NonEmpty Peer -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span>     </span><span class="annot"><span class="annottext">(NonEmpty Peer -&gt; Pair) -&gt; Maybe (NonEmpty Peer) -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe (NonEmpty Peer)
-</span><a href="#local-6989586621680185274"><span class="hs-identifier hs-var">maybePeers</span></a></span><span>
+</span><a href="#local-6989586621680186715"><span class="hs-identifier hs-var">maybePeers</span></a></span><span>
 </span><span id="line-22"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;ignore&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Ignored -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span>    </span><span class="annot"><span class="annottext">(Ignored -&gt; Pair) -&gt; Maybe Ignored -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Ignored
-</span><a href="#local-6989586621680185273"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>
+</span><a href="#local-6989586621680186714"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>
 </span><span id="line-23"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; FilePath -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; Pair) -&gt; Maybe FilePath -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680185272"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>
+</span><a href="#local-6989586621680186713"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>
 </span><span id="line-24"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-25"></span><span>
-</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185264"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680185262"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Partial
+</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186705"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680186703"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Partial
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; (Object -&gt; Parser Partial) -&gt; Value -&gt; Parser Partial
 forall a. FilePath -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Partial&quot;</span></span><span> </span><span class="annot"><span class="annottext">((Object -&gt; Parser Partial) -&gt; Value -&gt; Parser Partial)
 -&gt; (Object -&gt; Parser Partial) -&gt; Value -&gt; Parser Partial
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680185259"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680185259"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680186700"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680186700"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-28"></span><span>    </span><span class="annot"><span class="annottext">Maybe BasicAuthData
 -&gt; Maybe (NonEmpty Peer)
 -&gt; Maybe Ignored
@@ -78,7 +78,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
       -&gt; Maybe Ignored -&gt; Maybe FilePath -&gt; Partial)
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680185259"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe BasicAuthData)
+</span><a href="#local-6989586621680186700"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe BasicAuthData)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;user_auth&quot;</span></span><span>
 </span><span id="line-29"></span><span>            </span><span class="annot"><span class="annottext">Parser
@@ -88,29 +88,29 @@ forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 -&gt; Parser (Maybe Ignored -&gt; Maybe FilePath -&gt; Partial)
 forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680185259"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (NonEmpty Peer))
+</span><a href="#local-6989586621680186700"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (NonEmpty Peer))
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;peers&quot;</span></span><span>
 </span><span id="line-30"></span><span>            </span><span class="annot"><span class="annottext">Parser (Maybe Ignored -&gt; Maybe FilePath -&gt; Partial)
 -&gt; Parser (Maybe Ignored) -&gt; Parser (Maybe FilePath -&gt; Partial)
 forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680185259"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Ignored)
+</span><a href="#local-6989586621680186700"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Ignored)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ignore&quot;</span></span><span>
 </span><span id="line-31"></span><span>            </span><span class="annot"><span class="annottext">Parser (Maybe FilePath -&gt; Partial)
 -&gt; Parser (Maybe FilePath) -&gt; Parser Partial
 forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680185259"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
+</span><a href="#local-6989586621680186700"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span>
 </span><span id="line-32"></span><span>
-</span><span id="line-33"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185253"><span id="local-6989586621680185255"><span class="annot"><span class="hs-identifier hs-type">Semigroup</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-34"></span><span>  </span><span id="local-6989586621680185251"><span class="annot"><span class="annottext">a :: Partial
-</span><a href="#local-6989586621680185251"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680185250"><span class="annot"><span class="annottext">&lt;&gt; :: Partial -&gt; Partial -&gt; Partial
-</span><span class="hs-operator hs-var hs-var hs-var hs-var">&lt;&gt;</span></span></span><span> </span><span id="local-6989586621680185249"><span class="annot"><span class="annottext">b :: Partial
-</span><a href="#local-6989586621680185249"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial :: Maybe BasicAuthData
+</span><span id="line-33"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186694"><span id="local-6989586621680186696"><span class="annot"><span class="hs-identifier hs-type">Semigroup</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-34"></span><span>  </span><span id="local-6989586621680186692"><span class="annot"><span class="annottext">a :: Partial
+</span><a href="#local-6989586621680186692"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680186691"><span class="annot"><span class="annottext">&lt;&gt; :: Partial -&gt; Partial -&gt; Partial
+</span><span class="hs-operator hs-var hs-var hs-var hs-var">&lt;&gt;</span></span></span><span> </span><span id="local-6989586621680186690"><span class="annot"><span class="annottext">b :: Partial
+</span><a href="#local-6989586621680186690"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial :: Maybe BasicAuthData
 -&gt; Maybe (NonEmpty Peer)
 -&gt; Maybe Ignored
 -&gt; Maybe FilePath
@@ -123,8 +123,8 @@ forall field.
 (Partial -&gt; Maybe field) -&gt; Partial -&gt; Partial -&gt; Maybe field
 </span><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-var">getField</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeUserAuth%3APartial"><span class="hs-identifier hs-var hs-var">maybeUserAuth</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185251"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185249"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680186692"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680186690"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-36"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybePeers:Partial :: Maybe (NonEmpty Peer)
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybePeers%3APartial"><span class="hs-identifier hs-var">maybePeers</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; Maybe (NonEmpty Peer))
 -&gt; Partial -&gt; Partial -&gt; Maybe (NonEmpty Peer)
@@ -132,28 +132,28 @@ forall field.
 (Partial -&gt; Maybe field) -&gt; Partial -&gt; Partial -&gt; Maybe field
 </span><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-var">getField</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe (NonEmpty Peer)
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybePeers%3APartial"><span class="hs-identifier hs-var hs-var">maybePeers</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185251"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185249"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680186692"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680186690"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-37"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeIgnored:Partial :: Maybe Ignored
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeIgnored%3APartial"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; Maybe Ignored) -&gt; Partial -&gt; Partial -&gt; Maybe Ignored
 forall field.
 (Partial -&gt; Maybe field) -&gt; Partial -&gt; Partial -&gt; Maybe field
 </span><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-var">getField</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe Ignored
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeIgnored%3APartial"><span class="hs-identifier hs-var hs-var">maybeIgnored</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185251"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185249"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680186692"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680186690"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-38"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeBuildDir:Partial :: Maybe FilePath
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Partial -&gt; Maybe FilePath) -&gt; Partial -&gt; Partial -&gt; Maybe FilePath
 forall field.
 (Partial -&gt; Maybe field) -&gt; Partial -&gt; Partial -&gt; Maybe field
 </span><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-var">getField</span></a></span><span> </span><span class="annot"><span class="annottext">Partial -&gt; Maybe FilePath
 </span><a href="Fission.CLI.Environment.Partial.Types.html#%24sel%3AmaybeBuildDir%3APartial"><span class="hs-identifier hs-var hs-var">maybeBuildDir</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185251"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185249"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680186692"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680186690"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-39"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-40"></span><span>
-</span><span id="line-41"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680185241"><span id="local-6989586621680185243"><span class="annot"><span class="hs-identifier hs-type">Monoid</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-42"></span><span>  </span><span id="local-6989586621680185239"><span class="annot"><span class="annottext">mempty :: Partial
+</span><span id="line-41"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680186682"><span id="local-6989586621680186684"><span class="annot"><span class="hs-identifier hs-type">Monoid</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-42"></span><span>  </span><span id="local-6989586621680186680"><span class="annot"><span class="annottext">mempty :: Partial
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">mempty</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Partial :: Maybe BasicAuthData
 -&gt; Maybe (NonEmpty Peer)
 -&gt; Maybe Ignored
@@ -178,18 +178,18 @@ forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-47"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-48"></span><span>
-</span><span id="line-49"></span><span id="local-6989586621680185296"><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-type">getField</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="#local-6989586621680185296"><span class="hs-identifier hs-type">field</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="#local-6989586621680185296"><span class="hs-identifier hs-type">field</span></a></span></span><span>
+</span><span id="line-49"></span><span id="local-6989586621680186737"><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-type">getField</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="#local-6989586621680186737"><span class="hs-identifier hs-type">field</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Partial.Types.html#Partial"><span class="hs-identifier hs-type">Partial</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="#local-6989586621680186737"><span class="hs-identifier hs-type">field</span></a></span></span><span>
 </span><span id="line-50"></span><span id="getField"><span class="annot"><span class="annottext">getField :: (Partial -&gt; Maybe field) -&gt; Partial -&gt; Partial -&gt; Maybe field
-</span><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-var hs-var">getField</span></a></span></span><span> </span><span id="local-6989586621680185238"><span class="annot"><span class="annottext">accessor :: Partial -&gt; Maybe field
-</span><a href="#local-6989586621680185238"><span class="hs-identifier hs-var">accessor</span></a></span></span><span> </span><span id="local-6989586621680185237"><span class="annot"><span class="annottext">a :: Partial
-</span><a href="#local-6989586621680185237"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680185236"><span class="annot"><span class="annottext">b :: Partial
-</span><a href="#local-6989586621680185236"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe field -&gt; (field -&gt; Maybe field) -&gt; Maybe field -&gt; Maybe field
+</span><a href="Fission.CLI.Environment.Partial.Types.html#getField"><span class="hs-identifier hs-var hs-var">getField</span></a></span></span><span> </span><span id="local-6989586621680186679"><span class="annot"><span class="annottext">accessor :: Partial -&gt; Maybe field
+</span><a href="#local-6989586621680186679"><span class="hs-identifier hs-var">accessor</span></a></span></span><span> </span><span id="local-6989586621680186678"><span class="annot"><span class="annottext">a :: Partial
+</span><a href="#local-6989586621680186678"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680186677"><span class="annot"><span class="annottext">b :: Partial
+</span><a href="#local-6989586621680186677"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe field -&gt; (field -&gt; Maybe field) -&gt; Maybe field -&gt; Maybe field
 forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
 </span><span class="hs-identifier hs-var">maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Partial -&gt; Maybe field
-</span><a href="#local-6989586621680185238"><span class="hs-identifier hs-var">accessor</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185237"><span class="hs-identifier hs-var">a</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">field -&gt; Maybe field
+</span><a href="#local-6989586621680186679"><span class="hs-identifier hs-var">accessor</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680186678"><span class="hs-identifier hs-var">a</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">field -&gt; Maybe field
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Partial -&gt; Maybe field
-</span><a href="#local-6989586621680185238"><span class="hs-identifier hs-var">accessor</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
-</span><a href="#local-6989586621680185236"><span class="hs-identifier hs-var">b</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680186679"><span class="hs-identifier hs-var">accessor</span></a></span><span> </span><span class="annot"><span class="annottext">Partial
+</span><a href="#local-6989586621680186677"><span class="hs-identifier hs-var">b</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-51"></span></pre></body></html>

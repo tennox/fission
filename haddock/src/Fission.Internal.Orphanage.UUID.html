@@ -10,11 +10,11 @@
 </span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-11"></span><span>
 </span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-13"></span><span>  </span><span id="local-6989586621680183537"><span class="annot"><span class="annottext">toPersistValue :: UUID -&gt; PersistValue
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span id="local-6989586621680183535"><span class="annot"><span class="annottext">uuid :: UUID
-</span><a href="#local-6989586621680183535"><span class="hs-identifier hs-var">uuid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680184962"><span class="annot"><span class="annottext">toPersistValue :: UUID -&gt; PersistValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span id="local-6989586621680184960"><span class="annot"><span class="annottext">uuid :: UUID
+</span><a href="#local-6989586621680184960"><span class="hs-identifier hs-var">uuid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-14"></span><span>    </span><span class="annot"><span class="annottext">UUID
-</span><a href="#local-6989586621680183535"><span class="hs-identifier hs-var">uuid</span></a></span><span>
+</span><a href="#local-6989586621680184960"><span class="hs-identifier hs-var">uuid</span></a></span><span>
 </span><span id="line-15"></span><span>      </span><span class="annot"><span class="annottext">UUID -&gt; (UUID -&gt; String) -&gt; String
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">UUID -&gt; String
@@ -28,11 +28,11 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; PersistValue
 </span><span class="hs-identifier hs-var">PersistDbSpecific</span></span><span>
 </span><span id="line-18"></span><span>
-</span><span id="line-19"></span><span>  </span><span id="local-6989586621680183530"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text UUID
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">PersistDbSpecific</span></span><span> </span><span id="local-6989586621680183528"><span class="annot"><span class="annottext">txt :: ByteString
-</span><a href="#local-6989586621680183528"><span class="hs-identifier hs-var">txt</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-19"></span><span>  </span><span id="local-6989586621680184955"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text UUID
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">PersistDbSpecific</span></span><span> </span><span id="local-6989586621680184953"><span class="annot"><span class="annottext">txt :: ByteString
+</span><a href="#local-6989586621680184953"><span class="hs-identifier hs-var">txt</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-20"></span><span>    </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680183528"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><a href="#local-6989586621680184953"><span class="hs-identifier hs-var">txt</span></a></span><span>
 </span><span id="line-21"></span><span>      </span><span class="annot"><span class="annottext">ByteString -&gt; (ByteString -&gt; String) -&gt; String
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; String
@@ -44,11 +44,11 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span id="line-23"></span><span>      </span><span class="annot"><span class="annottext">Maybe UUID -&gt; (Maybe UUID -&gt; Either Text UUID) -&gt; Either Text UUID
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-24"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680183525"><span class="annot"><span class="annottext">x :: UUID
-</span><a href="#local-6989586621680183525"><span class="hs-identifier hs-var">x</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">UUID -&gt; Either Text UUID
+</span><span id="line-24"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680184950"><span class="annot"><span class="annottext">x :: UUID
+</span><a href="#local-6989586621680184950"><span class="hs-identifier hs-var">x</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">UUID -&gt; Either Text UUID
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">UUID
-</span><a href="#local-6989586621680183525"><span class="hs-identifier hs-var">x</span></a></span><span>
+</span><a href="#local-6989586621680184950"><span class="hs-identifier hs-var">x</span></a></span><span>
 </span><span id="line-25"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text UUID
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Invalid UUID&quot;</span></span><span>
@@ -59,7 +59,7 @@ forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Not PersistDBSpecific&quot;</span></span><span>
 </span><span id="line-29"></span><span>
 </span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-31"></span><span>  </span><span id="local-6989586621680183521"><span class="annot"><span class="annottext">sqlType :: Proxy UUID -&gt; SqlType
+</span><span id="line-31"></span><span>  </span><span id="local-6989586621680184946"><span class="annot"><span class="annottext">sqlType :: Proxy UUID -&gt; SqlType
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; SqlType
 </span><span class="hs-identifier hs-var">SqlOther</span></span><span> </span><span class="annot"><span class="hs-string">&quot;uuid&quot;</span></span><span>
 </span><span id="line-32"></span></pre></body></html>
