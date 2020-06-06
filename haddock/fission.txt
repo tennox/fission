@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.3.8
+@version 2.3.9
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
