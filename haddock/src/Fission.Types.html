@@ -59,9 +59,9 @@
 </span><span id="line-59"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.App.Domain.html"><span class="hs-identifier">Fission.App.Domain</span></a></span><span>                    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App.Domain</span></span><span>
 </span><span id="line-60"></span><span>
 </span><span id="line-61"></span><span class="hs-comment">-- | The top-level app type</span><span>
-</span><span id="line-62"></span><span class="hs-keyword">newtype</span><span> </span><span id="Fission"><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-var">Fission</span></a></span></span><span> </span><span id="local-6989586621680201996"><span class="annot"><a href="#local-6989586621680201996"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Fission"><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-var">Fission</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunFission%3AFission"><span class="annot"><span class="annottext">Fission a -&gt; RIO Config a
-</span><a href="Fission.Types.html#%24sel%3AunFission%3AFission"><span class="hs-identifier hs-var hs-var">unFission</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">RIO</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201996"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-63"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680201789"><span id="local-6989586621680201791"><span class="annot"><span class="annottext">a -&gt; Fission b -&gt; Fission a
+</span><span id="line-62"></span><span class="hs-keyword">newtype</span><span> </span><span id="Fission"><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-var">Fission</span></a></span></span><span> </span><span id="local-6989586621680206434"><span class="annot"><a href="#local-6989586621680206434"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Fission"><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-var">Fission</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunFission%3AFission"><span class="annot"><span class="annottext">Fission a -&gt; RIO Config a
+</span><a href="Fission.Types.html#%24sel%3AunFission%3AFission"><span class="hs-identifier hs-var hs-var">unFission</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">RIO</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680206434"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-63"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680206227"><span id="local-6989586621680206229"><span class="annot"><span class="annottext">a -&gt; Fission b -&gt; Fission a
 (a -&gt; b) -&gt; Fission a -&gt; Fission b
 (forall a b. (a -&gt; b) -&gt; Fission a -&gt; Fission b)
 -&gt; (forall a b. a -&gt; Fission b -&gt; Fission a) -&gt; Functor Fission
@@ -75,7 +75,7 @@ $c&lt;$ :: forall a b. a -&gt; Fission b -&gt; Fission a
 fmap :: (a -&gt; b) -&gt; Fission a -&gt; Fission b
 $cfmap :: forall a b. (a -&gt; b) -&gt; Fission a -&gt; Fission b
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Functor</span></span></span></span><span>
-</span><span id="line-64"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201777"><span id="local-6989586621680201779"><span id="local-6989586621680201781"><span id="local-6989586621680201783"><span id="local-6989586621680201785"><span class="annot"><span class="annottext">Functor Fission
+</span><span id="line-64"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206215"><span id="local-6989586621680206217"><span id="local-6989586621680206219"><span id="local-6989586621680206221"><span id="local-6989586621680206223"><span class="annot"><span class="annottext">Functor Fission
 a -&gt; Fission a
 Functor Fission =&gt;
 (forall a. a -&gt; Fission a)
@@ -114,7 +114,7 @@ pure :: a -&gt; Fission a
 $cpure :: forall a. a -&gt; Fission a
 $cp1Applicative :: Functor Fission
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Applicative</span></span></span></span></span></span></span><span>
-</span><span id="line-65"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201769"><span id="local-6989586621680201771"><span id="local-6989586621680201773"><span class="annot"><span class="annottext">Applicative Fission
+</span><span id="line-65"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206207"><span id="local-6989586621680206209"><span id="local-6989586621680206211"><span class="annot"><span class="annottext">Applicative Fission
 a -&gt; Fission a
 Applicative Fission =&gt;
 (forall a b. Fission a -&gt; (a -&gt; Fission b) -&gt; Fission b)
@@ -140,7 +140,7 @@ $c&gt;&gt; :: forall a b. Fission a -&gt; Fission b -&gt; Fission b
 $c&gt;&gt;= :: forall a b. Fission a -&gt; (a -&gt; Fission b) -&gt; Fission b
 $cp1Monad :: Applicative Fission
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Monad</span></span></span></span></span><span>
-</span><span id="line-66"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201765"><span class="annot"><span class="annottext">Monad Fission
+</span><span id="line-66"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206203"><span class="annot"><span class="annottext">Monad Fission
 Monad Fission =&gt; (forall a. IO a -&gt; Fission a) -&gt; MonadIO Fission
 IO a -&gt; Fission a
 forall a. IO a -&gt; Fission a
@@ -151,7 +151,7 @@ liftIO :: IO a -&gt; Fission a
 $cliftIO :: forall a. IO a -&gt; Fission a
 $cp1MonadIO :: Monad Fission
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var">MonadIO</span></span></span><span>
-</span><span id="line-67"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201759"><span id="local-6989586621680201761"><span class="annot"><span class="annottext">MonadIO Fission
+</span><span id="line-67"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206197"><span id="local-6989586621680206199"><span class="annot"><span class="annottext">MonadIO Fission
 Fission (UnliftIO Fission)
 MonadIO Fission =&gt;
 Fission (UnliftIO Fission)
@@ -170,8 +170,8 @@ askUnliftIO :: Fission (UnliftIO Fission)
 $caskUnliftIO :: Fission (UnliftIO Fission)
 $cp1MonadUnliftIO :: MonadIO Fission
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var">MonadUnliftIO</span></span></span></span><span>
-</span><span id="line-68"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201751"><span id="local-6989586621680201753"><span id="local-6989586621680201755"><span class="annot"><span class="hs-identifier hs-type">MonadReader</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span></span></span></span><span>
-</span><span id="line-69"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201747"><span class="annot"><span class="annottext">Monad Fission
+</span><span id="line-68"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206189"><span id="local-6989586621680206191"><span id="local-6989586621680206193"><span class="annot"><span class="hs-identifier hs-type">MonadReader</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span></span></span></span><span>
+</span><span id="line-69"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206185"><span class="annot"><span class="annottext">Monad Fission
 e -&gt; Fission a
 Monad Fission =&gt;
 (forall e a. Exception e =&gt; e -&gt; Fission a) -&gt; MonadThrow Fission
@@ -183,7 +183,7 @@ throwM :: e -&gt; Fission a
 $cthrowM :: forall e a. Exception e =&gt; e -&gt; Fission a
 $cp1MonadThrow :: Monad Fission
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var">MonadThrow</span></span></span><span>
-</span><span id="line-70"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201743"><span class="annot"><span class="annottext">MonadThrow Fission
+</span><span id="line-70"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206181"><span class="annot"><span class="annottext">MonadThrow Fission
 MonadThrow Fission =&gt;
 (forall e a.
  Exception e =&gt;
@@ -203,7 +203,7 @@ Exception e =&gt;
 Fission a -&gt; (e -&gt; Fission a) -&gt; Fission a
 $cp1MonadCatch :: MonadThrow Fission
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var">MonadCatch</span></span></span><span>
-</span><span id="line-71"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201735"><span id="local-6989586621680201737"><span id="local-6989586621680201739"><span class="annot"><span class="annottext">MonadCatch Fission
+</span><span id="line-71"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206173"><span id="local-6989586621680206175"><span id="local-6989586621680206177"><span class="annot"><span class="annottext">MonadCatch Fission
 MonadCatch Fission =&gt;
 (forall b.
  ((forall a. Fission a -&gt; Fission a) -&gt; Fission b) -&gt; Fission b)
@@ -255,12 +255,12 @@ $cp1MonadMask :: MonadCatch Fission
 </span><span id="line-72"></span><span>                   </span><span class="hs-special">)</span><span>
 </span><span id="line-73"></span><span>
 </span><span id="line-74"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-75"></span><span>  </span><span id="local-6989586621680201730"><span class="annot"><span class="annottext">monadLoggerLog :: Loc -&gt; LogSource -&gt; LogLevel -&gt; msg -&gt; Fission ()
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">monadLoggerLog</span></span></span><span> </span><span id="local-6989586621680201728"><span class="annot"><span class="annottext">loc :: Loc
-</span><a href="#local-6989586621680201728"><span class="hs-identifier hs-var">loc</span></a></span></span><span> </span><span id="local-6989586621680201727"><span class="annot"><span class="annottext">src :: LogSource
-</span><a href="#local-6989586621680201727"><span class="hs-identifier hs-var">src</span></a></span></span><span> </span><span id="local-6989586621680201726"><span class="annot"><span class="annottext">lvl :: LogLevel
-</span><a href="#local-6989586621680201726"><span class="hs-identifier hs-var">lvl</span></a></span></span><span> </span><span id="local-6989586621680201725"><span class="annot"><span class="annottext">msg :: msg
-</span><a href="#local-6989586621680201725"><span class="hs-identifier hs-var">msg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RIO Config () -&gt; Fission ()
+</span><span id="line-75"></span><span>  </span><span id="local-6989586621680206168"><span class="annot"><span class="annottext">monadLoggerLog :: Loc -&gt; LogSource -&gt; LogLevel -&gt; msg -&gt; Fission ()
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">monadLoggerLog</span></span></span><span> </span><span id="local-6989586621680206166"><span class="annot"><span class="annottext">loc :: Loc
+</span><a href="#local-6989586621680206166"><span class="hs-identifier hs-var">loc</span></a></span></span><span> </span><span id="local-6989586621680206165"><span class="annot"><span class="annottext">src :: LogSource
+</span><a href="#local-6989586621680206165"><span class="hs-identifier hs-var">src</span></a></span></span><span> </span><span id="local-6989586621680206164"><span class="annot"><span class="annottext">lvl :: LogLevel
+</span><a href="#local-6989586621680206164"><span class="hs-identifier hs-var">lvl</span></a></span></span><span> </span><span id="local-6989586621680206163"><span class="annot"><span class="annottext">msg :: msg
+</span><a href="#local-6989586621680206163"><span class="hs-identifier hs-var">msg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RIO Config () -&gt; Fission ()
 forall a. RIO Config a -&gt; Fission a
 </span><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-var">Fission</span></a></span><span> </span><span class="annot"><span class="annottext">(RIO Config () -&gt; Fission ()) -&gt; RIO Config () -&gt; Fission ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -269,13 +269,13 @@ forall (m :: * -&gt; *) msg.
 (MonadLogger m, ToLogStr msg) =&gt;
 Loc -&gt; LogSource -&gt; LogLevel -&gt; msg -&gt; m ()
 </span><span class="hs-identifier hs-var">monadLoggerLog</span></span><span> </span><span class="annot"><span class="annottext">Loc
-</span><a href="#local-6989586621680201728"><span class="hs-identifier hs-var">loc</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201727"><span class="hs-identifier hs-var">src</span></a></span><span> </span><span class="annot"><span class="annottext">LogLevel
-</span><a href="#local-6989586621680201726"><span class="hs-identifier hs-var">lvl</span></a></span><span> </span><span class="annot"><span class="annottext">msg
-</span><a href="#local-6989586621680201725"><span class="hs-identifier hs-var">msg</span></a></span><span>
+</span><a href="#local-6989586621680206166"><span class="hs-identifier hs-var">loc</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource
+</span><a href="#local-6989586621680206165"><span class="hs-identifier hs-var">src</span></a></span><span> </span><span class="annot"><span class="annottext">LogLevel
+</span><a href="#local-6989586621680206164"><span class="hs-identifier hs-var">lvl</span></a></span><span> </span><span class="annot"><span class="annottext">msg
+</span><a href="#local-6989586621680206163"><span class="hs-identifier hs-var">msg</span></a></span><span>
 </span><span id="line-76"></span><span>
 </span><span id="line-77"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-78"></span><span>  </span><span id="local-6989586621680201721"><span class="annot"><span class="annottext">currentTime :: Fission UTCTime
+</span><span id="line-78"></span><span>  </span><span id="local-6989586621680206159"><span class="annot"><span class="annottext">currentTime :: Fission UTCTime
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">currentTime</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO UTCTime -&gt; Fission UTCTime
 forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
 </span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="annot"><span class="annottext">IO UTCTime
@@ -283,18 +283,18 @@ forall (m :: * -&gt; *). MonadIO m =&gt; m UTCTime
 </span><span class="hs-identifier hs-var">getCurrentTime</span></span><span>
 </span><span id="line-79"></span><span>
 </span><span id="line-80"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-81"></span><span>  </span><span id="local-6989586621680201714"><span class="annot"><span class="annottext">getHost :: Fission Host
+</span><span id="line-81"></span><span>  </span><span id="local-6989586621680206152"><span class="annot"><span class="annottext">getHost :: Fission Host
 </span><a href="Fission.Web.Server.Reflective.Class.html#getHost"><span class="hs-identifier hs-var hs-var hs-var hs-var">getHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Host) -&gt; Fission Host
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Host
 </span><a href="Fission.Config.Types.html#%24sel%3Ahost%3AConfig"><span class="hs-identifier hs-var hs-var">host</span></a></span><span>
 </span><span id="line-82"></span><span>
 </span><span id="line-83"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-84"></span><span>  </span><span id="local-6989586621680201707"><span class="annot"><span class="annottext">runDB :: Transaction Fission a -&gt; Fission a
-</span><a href="Fission.Internal.MonadDB.Class.html#runDB"><span class="hs-identifier hs-var hs-var hs-var hs-var">runDB</span></a></span></span><span> </span><span id="local-6989586621680201705"><span class="annot"><span class="annottext">transaction :: Transaction Fission a
-</span><a href="#local-6989586621680201705"><span class="hs-identifier hs-var">transaction</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-85"></span><span>    </span><span id="local-6989586621680201704"><span class="annot"><span class="annottext">Pool SqlBackend
-</span><a href="#local-6989586621680201704"><span class="hs-identifier hs-var">pool</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Pool SqlBackend) -&gt; Fission (Pool SqlBackend)
+</span><span id="line-84"></span><span>  </span><span id="local-6989586621680206145"><span class="annot"><span class="annottext">runDB :: Transaction Fission a -&gt; Fission a
+</span><a href="Fission.Internal.MonadDB.Class.html#runDB"><span class="hs-identifier hs-var hs-var hs-var hs-var">runDB</span></a></span></span><span> </span><span id="local-6989586621680206143"><span class="annot"><span class="annottext">transaction :: Transaction Fission a
+</span><a href="#local-6989586621680206143"><span class="hs-identifier hs-var">transaction</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-85"></span><span>    </span><span id="local-6989586621680206142"><span class="annot"><span class="annottext">Pool SqlBackend
+</span><a href="#local-6989586621680206142"><span class="hs-identifier hs-var">pool</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Pool SqlBackend) -&gt; Fission (Pool SqlBackend)
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Pool SqlBackend
 </span><a href="Fission.Config.Types.html#%24sel%3AdbPool%3AConfig"><span class="hs-identifier hs-var hs-var">dbPool</span></a></span><span>
@@ -303,25 +303,25 @@ forall (m :: * -&gt; *) backend a.
 (MonadUnliftIO m, BackendCompatible SqlBackend backend) =&gt;
 ReaderT backend m a -&gt; Pool backend -&gt; m a
 </span><span class="hs-identifier hs-var">SQL.runSqlPool</span></span><span> </span><span class="annot"><span class="annottext">Transaction Fission a
-</span><a href="#local-6989586621680201705"><span class="hs-identifier hs-var">transaction</span></a></span><span> </span><span class="annot"><span class="annottext">Pool SqlBackend
-</span><a href="#local-6989586621680201704"><span class="hs-identifier hs-var">pool</span></a></span><span>
+</span><a href="#local-6989586621680206143"><span class="hs-identifier hs-var">transaction</span></a></span><span> </span><span class="annot"><span class="annottext">Pool SqlBackend
+</span><a href="#local-6989586621680206142"><span class="hs-identifier hs-var">pool</span></a></span><span>
 </span><span id="line-87"></span><span>
 </span><span id="line-88"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadAWS</span></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-89"></span><span>  </span><span id="local-6989586621680201694"><span class="annot"><span class="annottext">liftAWS :: AWS a -&gt; Fission a
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">liftAWS</span></span></span><span> </span><span id="local-6989586621680201692"><span class="annot"><span class="annottext">awsAction :: AWS a
-</span><a href="#local-6989586621680201692"><span class="hs-identifier hs-var">awsAction</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-90"></span><span>    </span><span id="local-6989586621680201691"><span class="annot"><span class="annottext">AccessKey
-</span><a href="#local-6989586621680201691"><span class="hs-identifier hs-var">accessKey</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; AccessKey) -&gt; Fission AccessKey
+</span><span id="line-89"></span><span>  </span><span id="local-6989586621680206132"><span class="annot"><span class="annottext">liftAWS :: AWS a -&gt; Fission a
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">liftAWS</span></span></span><span> </span><span id="local-6989586621680206130"><span class="annot"><span class="annottext">awsAction :: AWS a
+</span><a href="#local-6989586621680206130"><span class="hs-identifier hs-var">awsAction</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-90"></span><span>    </span><span id="local-6989586621680206129"><span class="annot"><span class="annottext">AccessKey
+</span><a href="#local-6989586621680206129"><span class="hs-identifier hs-var">accessKey</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; AccessKey) -&gt; Fission AccessKey
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; AccessKey
 </span><a href="Fission.Config.Types.html#%24sel%3AawsAccessKey%3AConfig"><span class="hs-identifier hs-var hs-var">awsAccessKey</span></a></span><span>
-</span><span id="line-91"></span><span>    </span><span id="local-6989586621680201689"><span class="annot"><span class="annottext">SecretKey
-</span><a href="#local-6989586621680201689"><span class="hs-identifier hs-var">secretKey</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; SecretKey) -&gt; Fission SecretKey
+</span><span id="line-91"></span><span>    </span><span id="local-6989586621680206127"><span class="annot"><span class="annottext">SecretKey
+</span><a href="#local-6989586621680206127"><span class="hs-identifier hs-var">secretKey</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; SecretKey) -&gt; Fission SecretKey
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; SecretKey
 </span><a href="Fission.Config.Types.html#%24sel%3AawsSecretKey%3AConfig"><span class="hs-identifier hs-var hs-var">awsSecretKey</span></a></span><span>
-</span><span id="line-92"></span><span>    </span><span id="local-6989586621680201687"><span class="annot"><span class="annottext">Env
-</span><a href="#local-6989586621680201687"><span class="hs-identifier hs-var">env</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Credentials -&gt; Fission Env
+</span><span id="line-92"></span><span>    </span><span id="local-6989586621680206125"><span class="annot"><span class="annottext">Env
+</span><a href="#local-6989586621680206125"><span class="hs-identifier hs-var">env</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Credentials -&gt; Fission Env
 forall (m :: * -&gt; *).
 (Applicative m, MonadIO m, MonadCatch m) =&gt;
 Credentials -&gt; m Env
@@ -329,8 +329,8 @@ Credentials -&gt; m Env
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">AccessKey -&gt; SecretKey -&gt; Credentials
 </span><span class="hs-identifier hs-var">FromKeys</span></span><span> </span><span class="annot"><span class="annottext">AccessKey
-</span><a href="#local-6989586621680201691"><span class="hs-identifier hs-var">accessKey</span></a></span><span> </span><span class="annot"><span class="annottext">SecretKey
-</span><a href="#local-6989586621680201689"><span class="hs-identifier hs-var">secretKey</span></a></span><span>
+</span><a href="#local-6989586621680206129"><span class="hs-identifier hs-var">accessKey</span></a></span><span> </span><span class="annot"><span class="annottext">SecretKey
+</span><a href="#local-6989586621680206127"><span class="hs-identifier hs-var">secretKey</span></a></span><span>
 </span><span id="line-93"></span><span>
 </span><span id="line-94"></span><span>    </span><span class="annot"><span class="annottext">ResourceT Fission a -&gt; Fission a
 forall (m :: * -&gt; *) a. MonadUnliftIO m =&gt; ResourceT m a -&gt; m a
@@ -342,89 +342,89 @@ forall (m :: * -&gt; *) r a.
 (MonadResource m, HasEnv r) =&gt;
 r -&gt; AWS a -&gt; m a
 </span><span class="hs-identifier hs-var">runAWS</span></span><span> </span><span class="annot"><span class="annottext">Env
-</span><a href="#local-6989586621680201687"><span class="hs-identifier hs-var">env</span></a></span><span> </span><span class="annot"><span class="annottext">AWS a
-</span><a href="#local-6989586621680201692"><span class="hs-identifier hs-var">awsAction</span></a></span><span>
+</span><a href="#local-6989586621680206125"><span class="hs-identifier hs-var">env</span></a></span><span> </span><span class="annot"><span class="annottext">AWS a
+</span><a href="#local-6989586621680206130"><span class="hs-identifier hs-var">awsAction</span></a></span><span>
 </span><span id="line-95"></span><span>
 </span><span id="line-96"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.AWS.Route53.Class.html#MonadRoute53"><span class="hs-identifier hs-type">MonadRoute53</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-97"></span><span>  </span><span id="local-6989586621680201679"><span class="annot"><span class="annottext">update :: RecordType
+</span><span id="line-97"></span><span>  </span><span id="local-6989586621680206117"><span class="annot"><span class="annottext">update :: RecordType
 -&gt; DomainName
 -&gt; LogSource
 -&gt; Fission (Either ServerError ChangeResourceRecordSetsResponse)
-</span><a href="Fission.AWS.Route53.Class.html#update"><span class="hs-identifier hs-var hs-var hs-var hs-var">update</span></a></span></span><span> </span><span id="local-6989586621680201677"><span class="annot"><span class="annottext">recordType :: RecordType
-</span><a href="#local-6989586621680201677"><span class="hs-identifier hs-var">recordType</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">URL.DomainName</span></a></span><span> </span><span id="local-6989586621680201675"><span class="annot"><span class="annottext">domain :: LogSource
-</span><a href="#local-6989586621680201675"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680201674"><span class="annot"><span class="annottext">content :: LogSource
-</span><a href="#local-6989586621680201674"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-98"></span><span>    </span><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-type">AWS.Route53MockEnabled</span></a></span><span> </span><span id="local-6989586621680201672"><span class="annot"><span class="annottext">mockRoute53 :: Bool
-</span><a href="#local-6989586621680201672"><span class="hs-identifier hs-var">mockRoute53</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Route53MockEnabled) -&gt; Fission Route53MockEnabled
+</span><a href="Fission.AWS.Route53.Class.html#update"><span class="hs-identifier hs-var hs-var hs-var hs-var">update</span></a></span></span><span> </span><span id="local-6989586621680206115"><span class="annot"><span class="annottext">recordType :: RecordType
+</span><a href="#local-6989586621680206115"><span class="hs-identifier hs-var">recordType</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">URL.DomainName</span></a></span><span> </span><span id="local-6989586621680206113"><span class="annot"><span class="annottext">domain :: LogSource
+</span><a href="#local-6989586621680206113"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680206112"><span class="annot"><span class="annottext">content :: LogSource
+</span><a href="#local-6989586621680206112"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-98"></span><span>    </span><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-type">AWS.Route53MockEnabled</span></a></span><span> </span><span id="local-6989586621680206110"><span class="annot"><span class="annottext">mockRoute53 :: Bool
+</span><a href="#local-6989586621680206110"><span class="hs-identifier hs-var">mockRoute53</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Route53MockEnabled) -&gt; Fission Route53MockEnabled
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Route53MockEnabled
 </span><a href="Fission.Config.Types.html#%24sel%3AawsRoute53MockEnabled%3AConfig"><span class="hs-identifier hs-var hs-var">awsRoute53MockEnabled</span></a></span><span>
 </span><span id="line-99"></span><span>
 </span><span id="line-100"></span><span>    </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680201672"><span class="hs-identifier hs-var">mockRoute53</span></a></span><span>
+</span><a href="#local-6989586621680206110"><span class="hs-identifier hs-var">mockRoute53</span></a></span><span>
 </span><span id="line-101"></span><span>       </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">Fission (Either ServerError ChangeResourceRecordSetsResponse)
-</span><a href="#local-6989586621680201670"><span class="hs-identifier hs-var">changeRecordMock</span></a></span><span>
+</span><a href="#local-6989586621680206108"><span class="hs-identifier hs-var">changeRecordMock</span></a></span><span>
 </span><span id="line-102"></span><span>       </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Fission (Either ServerError ChangeResourceRecordSetsResponse)
-</span><a href="#local-6989586621680201669"><span class="hs-identifier hs-var">changeRecord'</span></a></span><span>
+</span><a href="#local-6989586621680206107"><span class="hs-identifier hs-var">changeRecord'</span></a></span><span>
 </span><span id="line-103"></span><span>
 </span><span id="line-104"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-105"></span><span>      </span><span id="local-6989586621680201670"><span class="annot"><span class="annottext">changeRecordMock :: Fission (Either ServerError ChangeResourceRecordSetsResponse)
-</span><a href="#local-6989586621680201670"><span class="hs-identifier hs-var hs-var">changeRecordMock</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-106"></span><span>          </span><span id="local-6989586621680201668"><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201668"><span class="hs-identifier hs-var">mockTime</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission UTCTime
+</span><span id="line-105"></span><span>      </span><span id="local-6989586621680206108"><span class="annot"><span class="annottext">changeRecordMock :: Fission (Either ServerError ChangeResourceRecordSetsResponse)
+</span><a href="#local-6989586621680206108"><span class="hs-identifier hs-var hs-var">changeRecordMock</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-106"></span><span>          </span><span id="local-6989586621680206106"><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680206106"><span class="hs-identifier hs-var">mockTime</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission UTCTime
 forall (m :: * -&gt; *). MonadTime m =&gt; m UTCTime
 </span><span class="hs-identifier hs-var">currentTime</span></span><span>
 </span><span id="line-107"></span><span>
 </span><span id="line-108"></span><span>          </span><span class="hs-keyword">let</span><span>
-</span><span id="line-109"></span><span>            </span><span id="local-6989586621680201667"><span class="annot"><span class="annottext">mockMessage :: [Char]
-</span><a href="#local-6989586621680201667"><span class="hs-identifier hs-var hs-var">mockMessage</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[[Char]] -&gt; [Char]
+</span><span id="line-109"></span><span>            </span><span id="local-6989586621680206105"><span class="annot"><span class="annottext">mockMessage :: [Char]
+</span><a href="#local-6989586621680206105"><span class="hs-identifier hs-var hs-var">mockMessage</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[[Char]] -&gt; [Char]
 forall a. Monoid a =&gt; [a] -&gt; a
 </span><span class="hs-identifier hs-var">mconcat</span></span><span>
 </span><span id="line-110"></span><span>              </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;MOCK: Updating DNS &quot;</span></span><span>
 </span><span id="line-111"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">RecordType -&gt; [Char]
 forall a. Show a =&gt; a -&gt; [Char]
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">RecordType
-</span><a href="#local-6989586621680201677"><span class="hs-identifier hs-var">recordType</span></a></span><span>
+</span><a href="#local-6989586621680206115"><span class="hs-identifier hs-var">recordType</span></a></span><span>
 </span><span id="line-112"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot; record at: &quot;</span></span><span>
 </span><span id="line-113"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; [Char]
 forall a. Show a =&gt; a -&gt; [Char]
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201675"><span class="hs-identifier hs-var">domain</span></a></span><span>
+</span><a href="#local-6989586621680206113"><span class="hs-identifier hs-var">domain</span></a></span><span>
 </span><span id="line-114"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot; with &quot;</span></span><span>
 </span><span id="line-115"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; [Char]
 forall a. Show a =&gt; a -&gt; [Char]
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201674"><span class="hs-identifier hs-var">content</span></a></span><span>
+</span><a href="#local-6989586621680206112"><span class="hs-identifier hs-var">content</span></a></span><span>
 </span><span id="line-116"></span><span>              </span><span class="hs-special">]</span><span>
 </span><span id="line-117"></span><span>
-</span><span id="line-118"></span><span>            </span><span id="local-6989586621680201665"><span class="annot"><span class="annottext">mockId :: p
-</span><a href="#local-6989586621680201665"><span class="hs-identifier hs-var hs-var">mockId</span></a></span></span><span>             </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;test123&quot;</span></span><span>
-</span><span id="line-119"></span><span>            </span><span id="local-6989586621680201664"><span class="annot"><span class="annottext">mockChangeInfo :: ChangeInfo
-</span><a href="#local-6989586621680201664"><span class="hs-identifier hs-var hs-var">mockChangeInfo</span></a></span></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ResourceId -&gt; ChangeStatus -&gt; UTCTime -&gt; ChangeInfo
+</span><span id="line-118"></span><span>            </span><span id="local-6989586621680206103"><span class="annot"><span class="annottext">mockId :: p
+</span><a href="#local-6989586621680206103"><span class="hs-identifier hs-var hs-var">mockId</span></a></span></span><span>             </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;test123&quot;</span></span><span>
+</span><span id="line-119"></span><span>            </span><span id="local-6989586621680206102"><span class="annot"><span class="annottext">mockChangeInfo :: ChangeInfo
+</span><a href="#local-6989586621680206102"><span class="hs-identifier hs-var hs-var">mockChangeInfo</span></a></span></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ResourceId -&gt; ChangeStatus -&gt; UTCTime -&gt; ChangeInfo
 </span><span class="hs-identifier hs-var">changeInfo</span></span><span> </span><span class="annot"><span class="annottext">ResourceId
 forall p. IsString p =&gt; p
-</span><a href="#local-6989586621680201665"><span class="hs-identifier hs-var">mockId</span></a></span><span> </span><span class="annot"><span class="annottext">ChangeStatus
+</span><a href="#local-6989586621680206103"><span class="hs-identifier hs-var">mockId</span></a></span><span> </span><span class="annot"><span class="annottext">ChangeStatus
 </span><span class="hs-identifier hs-var">Pending</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201668"><span class="hs-identifier hs-var">mockTime</span></a></span><span>
-</span><span id="line-120"></span><span>            </span><span id="local-6989586621680201661"><span class="annot"><span class="annottext">mockRecordResponse :: ChangeResourceRecordSetsResponse
-</span><a href="#local-6989586621680201661"><span class="hs-identifier hs-var hs-var">mockRecordResponse</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ChangeInfo -&gt; ChangeResourceRecordSetsResponse
+</span><a href="#local-6989586621680206106"><span class="hs-identifier hs-var">mockTime</span></a></span><span>
+</span><span id="line-120"></span><span>            </span><span id="local-6989586621680206099"><span class="annot"><span class="annottext">mockRecordResponse :: ChangeResourceRecordSetsResponse
+</span><a href="#local-6989586621680206099"><span class="hs-identifier hs-var hs-var">mockRecordResponse</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ChangeInfo -&gt; ChangeResourceRecordSetsResponse
 </span><span class="hs-identifier hs-var">changeResourceRecordSetsResponse</span></span><span> </span><span class="annot"><span class="hs-number">300</span></span><span> </span><span class="annot"><span class="annottext">ChangeInfo
-</span><a href="#local-6989586621680201664"><span class="hs-identifier hs-var">mockChangeInfo</span></a></span><span>
+</span><a href="#local-6989586621680206102"><span class="hs-identifier hs-var">mockChangeInfo</span></a></span><span>
 </span><span id="line-121"></span><span>
 </span><span id="line-122"></span><span>          </span><span class="annot"><span class="annottext">[Char] -&gt; Fission ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
 msg -&gt; m ()
 </span><a href="Fission.Internal.Log.html#logDebug"><span class="hs-identifier hs-var">logDebug</span></a></span><span> </span><span class="annot"><span class="annottext">[Char]
-</span><a href="#local-6989586621680201667"><span class="hs-identifier hs-var">mockMessage</span></a></span><span>
+</span><a href="#local-6989586621680206105"><span class="hs-identifier hs-var">mockMessage</span></a></span><span>
 </span><span id="line-123"></span><span>          </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ChangeResourceRecordSetsResponse
 -&gt; Either ServerError ChangeResourceRecordSetsResponse
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">ChangeResourceRecordSetsResponse
-</span><a href="#local-6989586621680201661"><span class="hs-identifier hs-var">mockRecordResponse</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680206099"><span class="hs-identifier hs-var">mockRecordResponse</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-124"></span><span>
-</span><span id="line-125"></span><span>      </span><span id="local-6989586621680201669"><span class="annot"><span class="annottext">changeRecord' :: Fission (Either ServerError ChangeResourceRecordSetsResponse)
-</span><a href="#local-6989586621680201669"><span class="hs-identifier hs-var hs-var">changeRecord'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-125"></span><span>      </span><span id="local-6989586621680206107"><span class="annot"><span class="annottext">changeRecord' :: Fission (Either ServerError ChangeResourceRecordSetsResponse)
+</span><a href="#local-6989586621680206107"><span class="hs-identifier hs-var hs-var">changeRecord'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-126"></span><span>        </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Fission ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -436,11 +436,11 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; Utf8Builder
 forall a. Show a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">displayShow</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201675"><span class="hs-identifier hs-var">domain</span></a></span><span>
+</span><a href="#local-6989586621680206113"><span class="hs-identifier hs-var">domain</span></a></span><span>
 </span><span id="line-127"></span><span>
-</span><span id="line-128"></span><span>        </span><span id="local-6989586621680201657"><span class="annot"><span class="annottext">ChangeResourceRecordSets
-</span><a href="#local-6989586621680201657"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission ChangeResourceRecordSets
-</span><a href="#local-6989586621680201656"><span class="hs-identifier hs-var">createChangeRequest</span></a></span><span>
+</span><span id="line-128"></span><span>        </span><span id="local-6989586621680206095"><span class="annot"><span class="annottext">ChangeResourceRecordSets
+</span><a href="#local-6989586621680206095"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission ChangeResourceRecordSets
+</span><a href="#local-6989586621680206094"><span class="hs-identifier hs-var">createChangeRequest</span></a></span><span>
 </span><span id="line-129"></span><span>
 </span><span id="line-130"></span><span>        </span><span class="annot"><span class="annottext">Region
 -&gt; AWS (Either ServerError ChangeResourceRecordSetsResponse)
@@ -448,34 +448,34 @@ forall a. Show a =&gt; a -&gt; Utf8Builder
 forall (m :: * -&gt; *) a. MonadAWS m =&gt; Region -&gt; AWS a -&gt; m a
 </span><span class="hs-identifier hs-var">AWS.within</span></span><span> </span><span class="annot"><span class="annottext">Region
 </span><span class="hs-identifier hs-var">NorthVirginia</span></span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-131"></span><span>          </span><span id="local-6989586621680201653"><span class="annot"><span class="annottext">ChangeResourceRecordSetsResponse
-</span><a href="#local-6989586621680201653"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ChangeResourceRecordSets
+</span><span id="line-131"></span><span>          </span><span id="local-6989586621680206091"><span class="annot"><span class="annottext">ChangeResourceRecordSetsResponse
+</span><a href="#local-6989586621680206091"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ChangeResourceRecordSets
 -&gt; AWST' Env (ResourceT IO) (Rs ChangeResourceRecordSets)
 forall (m :: * -&gt; *) a. (MonadAWS m, AWSRequest a) =&gt; a -&gt; m (Rs a)
 </span><span class="hs-identifier hs-var">send</span></span><span> </span><span class="annot"><span class="annottext">ChangeResourceRecordSets
-</span><a href="#local-6989586621680201657"><span class="hs-identifier hs-var">req</span></a></span><span>
+</span><a href="#local-6989586621680206095"><span class="hs-identifier hs-var">req</span></a></span><span>
 </span><span id="line-132"></span><span>          </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">ChangeResourceRecordSetsResponse
 -&gt; Either ServerError ChangeResourceRecordSetsResponse
 </span><a href="Fission.AWS.html#validate"><span class="hs-identifier hs-var">validate</span></a></span><span> </span><span class="annot"><span class="annottext">ChangeResourceRecordSetsResponse
-</span><a href="#local-6989586621680201653"><span class="hs-identifier hs-var">res</span></a></span><span>
+</span><a href="#local-6989586621680206091"><span class="hs-identifier hs-var">res</span></a></span><span>
 </span><span id="line-133"></span><span>
 </span><span id="line-134"></span><span>      </span><span class="hs-comment">-- | Create the AWS change request for Route53</span><span>
-</span><span id="line-135"></span><span>      </span><span id="local-6989586621680201656"><span class="annot"><span class="annottext">createChangeRequest :: Fission ChangeResourceRecordSets
-</span><a href="#local-6989586621680201656"><span class="hs-identifier hs-var hs-var">createChangeRequest</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-136"></span><span>        </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span><span> </span><span id="local-6989586621680201649"><span class="annot"><span class="annottext">zoneId :: LogSource
-</span><a href="#local-6989586621680201649"><span class="hs-identifier hs-var">zoneId</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; ZoneID) -&gt; Fission ZoneID
+</span><span id="line-135"></span><span>      </span><span id="local-6989586621680206094"><span class="annot"><span class="annottext">createChangeRequest :: Fission ChangeResourceRecordSets
+</span><a href="#local-6989586621680206094"><span class="hs-identifier hs-var hs-var">createChangeRequest</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-136"></span><span>        </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span><span> </span><span id="local-6989586621680206087"><span class="annot"><span class="annottext">zoneId :: LogSource
+</span><a href="#local-6989586621680206087"><span class="hs-identifier hs-var">zoneId</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; ZoneID) -&gt; Fission ZoneID
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; ZoneID
 </span><a href="Fission.Config.Types.html#%24sel%3AawsZoneID%3AConfig"><span class="hs-identifier hs-var hs-var">awsZoneID</span></a></span><span>
 </span><span id="line-137"></span><span>        </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201674"><span class="hs-identifier hs-var">content</span></a></span><span>
+</span><a href="#local-6989586621680206112"><span class="hs-identifier hs-var">content</span></a></span><span>
 </span><span id="line-138"></span><span>          </span><span class="annot"><span class="annottext">LogSource -&gt; (LogSource -&gt; ResourceRecordSet) -&gt; ResourceRecordSet
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ResourceRecordSet -&gt; LogSource -&gt; ResourceRecordSet
-</span><a href="#local-6989586621680201646"><span class="hs-identifier hs-var">addValue</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">LogSource -&gt; RecordType -&gt; ResourceRecordSet
+</span><a href="#local-6989586621680206084"><span class="hs-identifier hs-var">addValue</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">LogSource -&gt; RecordType -&gt; ResourceRecordSet
 </span><span class="hs-identifier hs-var">resourceRecordSet</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201675"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">RecordType
-</span><a href="#local-6989586621680201677"><span class="hs-identifier hs-var">recordType</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680206113"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">RecordType
+</span><a href="#local-6989586621680206115"><span class="hs-identifier hs-var">recordType</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-139"></span><span>          </span><span class="annot"><span class="annottext">ResourceRecordSet -&gt; (ResourceRecordSet -&gt; Change) -&gt; Change
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ChangeAction -&gt; ResourceRecordSet -&gt; Change
@@ -497,7 +497,7 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ResourceId -&gt; ChangeBatch -&gt; ChangeResourceRecordSets
 </span><span class="hs-identifier hs-var">changeResourceRecordSets</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">LogSource -&gt; ResourceId
 </span><span class="hs-identifier hs-var">ResourceId</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201649"><span class="hs-identifier hs-var">zoneId</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680206087"><span class="hs-identifier hs-var">zoneId</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-143"></span><span>          </span><span class="annot"><span class="annottext">ChangeResourceRecordSets
 -&gt; (ChangeResourceRecordSets -&gt; Fission ChangeResourceRecordSets)
 -&gt; Fission ChangeResourceRecordSets
@@ -506,13 +506,13 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span>
 </span><span id="line-144"></span><span>
-</span><span id="line-145"></span><span>      </span><span class="annot"><a href="#local-6989586621680201646"><span class="hs-identifier hs-type">addValue</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ResourceRecordSet</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ResourceRecordSet</span></span><span>
-</span><span id="line-146"></span><span>      </span><span id="local-6989586621680201646"><span class="annot"><span class="annottext">addValue :: ResourceRecordSet -&gt; LogSource -&gt; ResourceRecordSet
-</span><a href="#local-6989586621680201646"><span class="hs-identifier hs-var hs-var">addValue</span></a></span></span><span> </span><span id="local-6989586621680201638"><span class="annot"><span class="annottext">recordSet :: ResourceRecordSet
-</span><a href="#local-6989586621680201638"><span class="hs-identifier hs-var">recordSet</span></a></span></span><span> </span><span id="local-6989586621680201637"><span class="annot"><span class="annottext">value :: LogSource
-</span><a href="#local-6989586621680201637"><span class="hs-identifier hs-var">value</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-145"></span><span>      </span><span class="annot"><a href="#local-6989586621680206084"><span class="hs-identifier hs-type">addValue</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ResourceRecordSet</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ResourceRecordSet</span></span><span>
+</span><span id="line-146"></span><span>      </span><span id="local-6989586621680206084"><span class="annot"><span class="annottext">addValue :: ResourceRecordSet -&gt; LogSource -&gt; ResourceRecordSet
+</span><a href="#local-6989586621680206084"><span class="hs-identifier hs-var hs-var">addValue</span></a></span></span><span> </span><span id="local-6989586621680206076"><span class="annot"><span class="annottext">recordSet :: ResourceRecordSet
+</span><a href="#local-6989586621680206076"><span class="hs-identifier hs-var">recordSet</span></a></span></span><span> </span><span id="local-6989586621680206075"><span class="annot"><span class="annottext">value :: LogSource
+</span><a href="#local-6989586621680206075"><span class="hs-identifier hs-var">value</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-147"></span><span>        </span><span class="annot"><span class="annottext">ResourceRecordSet
-</span><a href="#local-6989586621680201638"><span class="hs-identifier hs-var">recordSet</span></a></span><span>
+</span><a href="#local-6989586621680206076"><span class="hs-identifier hs-var">recordSet</span></a></span><span>
 </span><span id="line-148"></span><span>          </span><span class="annot"><span class="annottext">ResourceRecordSet
 -&gt; (ResourceRecordSet -&gt; ResourceRecordSet) -&gt; ResourceRecordSet
 forall a b. a -&gt; (a -&gt; b) -&gt; b
@@ -542,39 +542,39 @@ forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">LogSource -&gt; ResourceRecord
 </span><span class="hs-identifier hs-var">resourceRecord</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201637"><span class="hs-identifier hs-var">value</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680206075"><span class="hs-identifier hs-var">value</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-150"></span><span>
 </span><span id="line-151"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-152"></span><span>  </span><span id="local-6989586621680201628"><span class="annot"><span class="annottext">set :: DomainName
+</span><span id="line-152"></span><span>  </span><span id="local-6989586621680206066"><span class="annot"><span class="annottext">set :: DomainName
 -&gt; Maybe Subdomain
 -&gt; CID
 -&gt; Fission (Either ServerError DomainName)
-</span><a href="Fission.IPFS.DNSLink.Class.html#set"><span class="hs-identifier hs-var hs-var hs-var hs-var">set</span></a></span></span><span> </span><span id="local-6989586621680201626"><span class="annot"><span class="annottext">domain :: DomainName
-</span><a href="#local-6989586621680201626"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span id="local-6989586621680201625"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
-</span><a href="#local-6989586621680201625"><span class="hs-identifier hs-var">maySubdomain</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680201623"><span class="annot"><span class="annottext">hash :: LogSource
-</span><a href="#local-6989586621680201623"><span class="hs-identifier hs-var">hash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-153"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Gateway</span></span><span> </span><span id="local-6989586621680201621"><span class="annot"><span class="annottext">gateway :: LogSource
-</span><a href="#local-6989586621680201621"><span class="hs-identifier hs-var">gateway</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Gateway) -&gt; Fission Gateway
+</span><a href="Fission.IPFS.DNSLink.Class.html#set"><span class="hs-identifier hs-var hs-var hs-var hs-var">set</span></a></span></span><span> </span><span id="local-6989586621680206064"><span class="annot"><span class="annottext">domain :: DomainName
+</span><a href="#local-6989586621680206064"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span id="local-6989586621680206063"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
+</span><a href="#local-6989586621680206063"><span class="hs-identifier hs-var">maySubdomain</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680206061"><span class="annot"><span class="annottext">hash :: LogSource
+</span><a href="#local-6989586621680206061"><span class="hs-identifier hs-var">hash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-153"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Gateway</span></span><span> </span><span id="local-6989586621680206059"><span class="annot"><span class="annottext">gateway :: LogSource
+</span><a href="#local-6989586621680206059"><span class="hs-identifier hs-var">gateway</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Gateway) -&gt; Fission Gateway
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Gateway
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsGateway%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsGateway</span></a></span><span>
 </span><span id="line-154"></span><span>
 </span><span id="line-155"></span><span>    </span><span class="hs-keyword">let</span><span>
-</span><span id="line-156"></span><span>      </span><span id="local-6989586621680201619"><span class="annot"><span class="annottext">baseURL :: DomainName
-</span><a href="#local-6989586621680201619"><span class="hs-identifier hs-var hs-var">baseURL</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Maybe Subdomain -&gt; DomainName
+</span><span id="line-156"></span><span>      </span><span id="local-6989586621680206057"><span class="annot"><span class="annottext">baseURL :: DomainName
+</span><a href="#local-6989586621680206057"><span class="hs-identifier hs-var hs-var">baseURL</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Maybe Subdomain -&gt; DomainName
 </span><a href="Fission.URL.Subdomain.html#normalizePrefix"><span class="hs-identifier hs-var">URL.normalizePrefix</span></a></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201626"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680201625"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
-</span><span id="line-157"></span><span>      </span><span id="local-6989586621680201617"><span class="annot"><span class="annottext">dnsLinkURL :: DomainName
-</span><a href="#local-6989586621680201617"><span class="hs-identifier hs-var hs-var">dnsLinkURL</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Subdomain -&gt; DomainName
+</span><a href="#local-6989586621680206064"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
+</span><a href="#local-6989586621680206063"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
+</span><span id="line-157"></span><span>      </span><span id="local-6989586621680206055"><span class="annot"><span class="annottext">dnsLinkURL :: DomainName
+</span><a href="#local-6989586621680206055"><span class="hs-identifier hs-var hs-var">dnsLinkURL</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Subdomain -&gt; DomainName
 </span><a href="Fission.URL.Subdomain.html#prefix"><span class="hs-identifier hs-var">URL.prefix</span></a></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201619"><span class="hs-identifier hs-var">baseURL</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">LogSource -&gt; Subdomain
+</span><a href="#local-6989586621680206057"><span class="hs-identifier hs-var">baseURL</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">LogSource -&gt; Subdomain
 </span><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-var">URL.Subdomain</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;_dnslink&quot;</span></span><span class="hs-special">)</span><span>
-</span><span id="line-158"></span><span>      </span><span id="local-6989586621680201614"><span class="annot"><span class="annottext">dnsLink :: LogSource
-</span><a href="#local-6989586621680201614"><span class="hs-identifier hs-var hs-var">dnsLink</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;dnslink=/ipfs/&quot;</span></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; LogSource -&gt; LogSource
+</span><span id="line-158"></span><span>      </span><span id="local-6989586621680206052"><span class="annot"><span class="annottext">dnsLink :: LogSource
+</span><a href="#local-6989586621680206052"><span class="hs-identifier hs-var hs-var">dnsLink</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;dnslink=/ipfs/&quot;</span></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; LogSource -&gt; LogSource
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201623"><span class="hs-identifier hs-var">hash</span></a></span><span>
+</span><a href="#local-6989586621680206061"><span class="hs-identifier hs-var">hash</span></a></span><span>
 </span><span id="line-159"></span><span>
 </span><span id="line-160"></span><span>    </span><span class="annot"><span class="annottext">RecordType
 -&gt; DomainName
@@ -588,22 +588,22 @@ RecordType
 -&gt; m (Either ServerError ChangeResourceRecordSetsResponse)
 </span><a href="Fission.AWS.Route53.Class.html#update"><span class="hs-identifier hs-var">update</span></a></span><span> </span><span class="annot"><span class="annottext">RecordType
 </span><span class="hs-identifier hs-var">Cname</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201619"><span class="hs-identifier hs-var">baseURL</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201621"><span class="hs-identifier hs-var">gateway</span></a></span><span> </span><span class="annot"><span class="annottext">Fission (Either ServerError ChangeResourceRecordSetsResponse)
+</span><a href="#local-6989586621680206057"><span class="hs-identifier hs-var">baseURL</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource
+</span><a href="#local-6989586621680206059"><span class="hs-identifier hs-var">gateway</span></a></span><span> </span><span class="annot"><span class="annottext">Fission (Either ServerError ChangeResourceRecordSetsResponse)
 -&gt; (Either ServerError ChangeResourceRecordSetsResponse
     -&gt; Fission (Either ServerError DomainName))
 -&gt; Fission (Either ServerError DomainName)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-161"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201612"><span class="annot"><span class="annottext">err :: ServerError
-</span><a href="#local-6989586621680201612"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-161"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680206050"><span class="annot"><span class="annottext">err :: ServerError
+</span><a href="#local-6989586621680206050"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-162"></span><span>        </span><span class="annot"><span class="annottext">Either ServerError DomainName
 -&gt; Fission (Either ServerError DomainName)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ServerError -&gt; Either ServerError DomainName
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">ServerError
-</span><a href="#local-6989586621680201612"><span class="hs-identifier hs-var">err</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680206050"><span class="hs-identifier hs-var">err</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-163"></span><span>
 </span><span id="line-164"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-165"></span><span>        </span><span class="annot"><span class="annottext">RecordType
@@ -618,10 +618,10 @@ RecordType
 -&gt; m (Either ServerError ChangeResourceRecordSetsResponse)
 </span><a href="Fission.AWS.Route53.Class.html#update"><span class="hs-identifier hs-var">update</span></a></span><span> </span><span class="annot"><span class="annottext">RecordType
 </span><span class="hs-identifier hs-var">Txt</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201617"><span class="hs-identifier hs-var">dnsLinkURL</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; LogSource -&gt; LogSource
+</span><a href="#local-6989586621680206055"><span class="hs-identifier hs-var">dnsLinkURL</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; LogSource -&gt; LogSource
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201614"><span class="hs-identifier hs-var">dnsLink</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; LogSource -&gt; LogSource
+</span><a href="#local-6989586621680206052"><span class="hs-identifier hs-var">dnsLink</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; LogSource -&gt; LogSource
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;\&quot;&quot;</span></span><span class="hs-special">)</span><span>
 </span><span id="line-166"></span><span>          </span><span class="annot"><span class="annottext">Fission (Either ServerError ChangeResourceRecordSetsResponse)
@@ -632,14 +632,14 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Either ServerError DomainName
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201619"><span class="hs-identifier hs-var">baseURL</span></a></span><span>
+</span><a href="#local-6989586621680206057"><span class="hs-identifier hs-var">baseURL</span></a></span><span>
 </span><span id="line-167"></span><span>
-</span><span id="line-168"></span><span>  </span><span id="local-6989586621680201609"><span class="annot"><span class="annottext">setBase :: Subdomain -&gt; CID -&gt; Fission (Either ServerError DomainName)
-</span><a href="Fission.IPFS.DNSLink.Class.html#setBase"><span class="hs-identifier hs-var hs-var hs-var hs-var">setBase</span></a></span></span><span> </span><span id="local-6989586621680201607"><span class="annot"><span class="annottext">subdomain :: Subdomain
-</span><a href="#local-6989586621680201607"><span class="hs-identifier hs-var">subdomain</span></a></span></span><span> </span><span id="local-6989586621680201606"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680201606"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-169"></span><span>    </span><span id="local-6989586621680201605"><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201605"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; DomainName) -&gt; Fission DomainName
+</span><span id="line-168"></span><span>  </span><span id="local-6989586621680206047"><span class="annot"><span class="annottext">setBase :: Subdomain -&gt; CID -&gt; Fission (Either ServerError DomainName)
+</span><a href="Fission.IPFS.DNSLink.Class.html#setBase"><span class="hs-identifier hs-var hs-var hs-var hs-var">setBase</span></a></span></span><span> </span><span id="local-6989586621680206045"><span class="annot"><span class="annottext">subdomain :: Subdomain
+</span><a href="#local-6989586621680206045"><span class="hs-identifier hs-var">subdomain</span></a></span></span><span> </span><span id="local-6989586621680206044"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680206044"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-169"></span><span>    </span><span id="local-6989586621680206043"><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680206043"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; DomainName) -&gt; Fission DomainName
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; DomainName
 </span><a href="Fission.Config.Types.html#%24sel%3AbaseAppDomainName%3AConfig"><span class="hs-identifier hs-var hs-var">baseAppDomainName</span></a></span><span>
@@ -652,14 +652,14 @@ MonadDNSLink m =&gt;
 DomainName
 -&gt; Maybe Subdomain -&gt; CID -&gt; m (Either ServerError DomainName)
 </span><a href="Fission.IPFS.DNSLink.Class.html#set"><span class="hs-identifier hs-var">DNSLink.set</span></a></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201605"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Subdomain -&gt; Maybe Subdomain
+</span><a href="#local-6989586621680206043"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Subdomain -&gt; Maybe Subdomain
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Subdomain
-</span><a href="#local-6989586621680201607"><span class="hs-identifier hs-var">subdomain</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680201606"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><a href="#local-6989586621680206045"><span class="hs-identifier hs-var">subdomain</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680206044"><span class="hs-identifier hs-var">cid</span></a></span><span>
 </span><span id="line-171"></span><span>
 </span><span id="line-172"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.IPFS.Linked.Class.html#MonadLinkedIPFS"><span class="hs-identifier hs-type">MonadLinkedIPFS</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-173"></span><span>  </span><span id="local-6989586621680201600"><span class="annot"><span class="annottext">getLinkedPeers :: Fission (NonEmpty Peer)
+</span><span id="line-173"></span><span>  </span><span id="local-6989586621680206038"><span class="annot"><span class="annottext">getLinkedPeers :: Fission (NonEmpty Peer)
 </span><a href="Fission.IPFS.Linked.Class.html#getLinkedPeers"><span class="hs-identifier hs-var hs-var hs-var hs-var">getLinkedPeers</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Peer -&gt; NonEmpty Peer
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">(Peer -&gt; NonEmpty Peer) -&gt; Fission Peer -&gt; Fission (NonEmpty Peer)
@@ -670,33 +670,33 @@ forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsRemotePeer%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsRemotePeer</span></a></span><span>
 </span><span id="line-174"></span><span>
 </span><span id="line-175"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-176"></span><span>  </span><span id="local-6989586621680201593"><span class="annot"><span class="annottext">runLocal :: [[Char]] -&gt; ByteString -&gt; Fission (Either Error ByteString)
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">runLocal</span></span></span><span> </span><span id="local-6989586621680201591"><span class="annot"><span class="annottext">opts :: [[Char]]
-</span><a href="#local-6989586621680201591"><span class="hs-identifier hs-var">opts</span></a></span></span><span> </span><span id="local-6989586621680201590"><span class="annot"><span class="annottext">arg :: ByteString
-</span><a href="#local-6989586621680201590"><span class="hs-identifier hs-var">arg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-177"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.BinPath</span></span><span> </span><span id="local-6989586621680201588"><span class="annot"><span class="annottext">ipfs :: [Char]
-</span><a href="#local-6989586621680201588"><span class="hs-identifier hs-var">ipfs</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; BinPath) -&gt; Fission BinPath
+</span><span id="line-176"></span><span>  </span><span id="local-6989586621680206031"><span class="annot"><span class="annottext">runLocal :: [[Char]] -&gt; ByteString -&gt; Fission (Either Error ByteString)
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">runLocal</span></span></span><span> </span><span id="local-6989586621680206029"><span class="annot"><span class="annottext">opts :: [[Char]]
+</span><a href="#local-6989586621680206029"><span class="hs-identifier hs-var">opts</span></a></span></span><span> </span><span id="local-6989586621680206028"><span class="annot"><span class="annottext">arg :: ByteString
+</span><a href="#local-6989586621680206028"><span class="hs-identifier hs-var">arg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-177"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.BinPath</span></span><span> </span><span id="local-6989586621680206026"><span class="annot"><span class="annottext">ipfs :: [Char]
+</span><a href="#local-6989586621680206026"><span class="hs-identifier hs-var">ipfs</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; BinPath) -&gt; Fission BinPath
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; BinPath
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsPath%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsPath</span></a></span><span>
-</span><span id="line-178"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Timeout</span></span><span> </span><span id="local-6989586621680201585"><span class="annot"><span class="annottext">secs :: Natural
-</span><a href="#local-6989586621680201585"><span class="hs-identifier hs-var">secs</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Timeout) -&gt; Fission Timeout
+</span><span id="line-178"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Timeout</span></span><span> </span><span id="local-6989586621680206023"><span class="annot"><span class="annottext">secs :: Natural
+</span><a href="#local-6989586621680206023"><span class="hs-identifier hs-var">secs</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Timeout) -&gt; Fission Timeout
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Timeout
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsTimeout%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsTimeout</span></a></span><span>
 </span><span id="line-179"></span><span>
-</span><span id="line-180"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680201583"><span class="annot"><span class="annottext">opts' :: [[Char]]
-</span><a href="#local-6989586621680201583"><span class="hs-identifier hs-var hs-var">opts'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;--timeout=&quot;</span></span><span> </span><span class="annot"><span class="annottext">[Char] -&gt; [Char] -&gt; [Char]
+</span><span id="line-180"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680206021"><span class="annot"><span class="annottext">opts' :: [[Char]]
+</span><a href="#local-6989586621680206021"><span class="hs-identifier hs-var hs-var">opts'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;--timeout=&quot;</span></span><span> </span><span class="annot"><span class="annottext">[Char] -&gt; [Char] -&gt; [Char]
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Natural -&gt; [Char]
 forall a. Show a =&gt; a -&gt; [Char]
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680201585"><span class="hs-identifier hs-var">secs</span></a></span><span> </span><span class="annot"><span class="annottext">[Char] -&gt; [Char] -&gt; [Char]
+</span><a href="#local-6989586621680206023"><span class="hs-identifier hs-var">secs</span></a></span><span> </span><span class="annot"><span class="annottext">[Char] -&gt; [Char] -&gt; [Char]
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;s&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Char] -&gt; [[Char]] -&gt; [[Char]]
 forall a. a -&gt; [a] -&gt; [a]
 </span><span class="hs-glyph hs-var">:</span></span><span> </span><span class="annot"><span class="annottext">[[Char]]
-</span><a href="#local-6989586621680201591"><span class="hs-identifier hs-var">opts</span></a></span><span>
+</span><a href="#local-6989586621680206029"><span class="hs-identifier hs-var">opts</span></a></span><span>
 </span><span id="line-181"></span><span>
 </span><span id="line-182"></span><span>    </span><span class="annot"><span class="annottext">(ProcessConfig () (STM ByteString) ()
  -&gt; Fission (ExitCode, ByteString, ByteString))
@@ -717,27 +717,27 @@ MonadIO m =&gt;
 ProcessConfig stdin stdoutIgnored stderrIgnored
 -&gt; m (ExitCode, ByteString, ByteString)
 </span><span class="hs-identifier hs-var">readProcess</span></span><span> </span><span class="annot"><span class="annottext">[Char]
-</span><a href="#local-6989586621680201588"><span class="hs-identifier hs-var">ipfs</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString -&gt; StreamIn ()
+</span><a href="#local-6989586621680206026"><span class="hs-identifier hs-var">ipfs</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString -&gt; StreamIn ()
 </span><span class="hs-identifier hs-var">byteStringInput</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201590"><span class="hs-identifier hs-var">arg</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">StreamOut (STM ByteString)
+</span><a href="#local-6989586621680206028"><span class="hs-identifier hs-var">arg</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">StreamOut (STM ByteString)
 </span><span class="hs-identifier hs-var">byteStringOutput</span></span><span> </span><span class="annot"><span class="annottext">[[Char]]
-</span><a href="#local-6989586621680201583"><span class="hs-identifier hs-var">opts'</span></a></span><span> </span><span class="annot"><span class="annottext">Fission (ExitCode, ByteString, ByteString)
+</span><a href="#local-6989586621680206021"><span class="hs-identifier hs-var">opts'</span></a></span><span> </span><span class="annot"><span class="annottext">Fission (ExitCode, ByteString, ByteString)
 -&gt; ((ExitCode, ByteString, ByteString) -&gt; Either Error ByteString)
 -&gt; Fission (Either Error ByteString)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-183"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ExitSuccess</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201577"><span class="annot"><span class="annottext">contents :: ByteString
-</span><a href="#local-6989586621680201577"><span class="hs-identifier hs-var">contents</span></a></span></span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-183"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ExitSuccess</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206015"><span class="annot"><span class="annottext">contents :: ByteString
+</span><a href="#local-6989586621680206015"><span class="hs-identifier hs-var">contents</span></a></span></span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-184"></span><span>        </span><span class="annot"><span class="annottext">ByteString -&gt; Either Error ByteString
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201577"><span class="hs-identifier hs-var">contents</span></a></span><span>
+</span><a href="#local-6989586621680206015"><span class="hs-identifier hs-var">contents</span></a></span><span>
 </span><span id="line-185"></span><span>
-</span><span id="line-186"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ExitFailure</span></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201575"><span class="annot"><span class="annottext">stdErr :: ByteString
-</span><a href="#local-6989586621680201575"><span class="hs-identifier hs-var">stdErr</span></a></span></span><span class="hs-special">)</span><span>
+</span><span id="line-186"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ExitFailure</span></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680206013"><span class="annot"><span class="annottext">stdErr :: ByteString
+</span><a href="#local-6989586621680206013"><span class="hs-identifier hs-var">stdErr</span></a></span></span><span class="hs-special">)</span><span>
 </span><span id="line-187"></span><span>        </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; Bool
 </span><span class="hs-identifier hs-var">Lazy.isSuffixOf</span></span><span> </span><span class="annot"><span class="hs-string">&quot;context deadline exceeded&quot;</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201575"><span class="hs-identifier hs-var">stdErr</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><a href="#local-6989586621680206013"><span class="hs-identifier hs-var">stdErr</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-188"></span><span>            </span><span class="annot"><span class="annottext">Error -&gt; Either Error ByteString
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error ByteString)
@@ -745,7 +745,7 @@ forall a b. a -&gt; Either a b
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Natural -&gt; Error
 </span><span class="hs-identifier hs-var">Process.Timeout</span></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680201585"><span class="hs-identifier hs-var">secs</span></a></span><span>
+</span><a href="#local-6989586621680206023"><span class="hs-identifier hs-var">secs</span></a></span><span>
 </span><span id="line-189"></span><span>
 </span><span id="line-190"></span><span>        </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">otherwise</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
@@ -756,24 +756,24 @@ forall a b. a -&gt; Either a b
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Error
 </span><span class="hs-identifier hs-var">Process.UnknownErr</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201575"><span class="hs-identifier hs-var">stdErr</span></a></span><span>
+</span><a href="#local-6989586621680206013"><span class="hs-identifier hs-var">stdErr</span></a></span><span>
 </span><span id="line-192"></span><span>
-</span><span id="line-193"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680201562"><span id="local-6989586621680201564"><span id="local-6989586621680201566"><span id="local-6989586621680201568"><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-194"></span><span>  </span><span id="local-6989586621680201560"><span class="annot"><span class="annottext">runRemote :: ClientM a -&gt; Fission (Either ClientError a)
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">runRemote</span></span></span><span> </span><span id="local-6989586621680201558"><span class="annot"><span class="annottext">query :: ClientM a
-</span><a href="#local-6989586621680201558"><span class="hs-identifier hs-var">query</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-195"></span><span>    </span><span id="local-6989586621680201557"><span class="annot"><span class="annottext">Peer
-</span><a href="#local-6989586621680201557"><span class="hs-identifier hs-var">peerID</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Peer) -&gt; Fission Peer
+</span><span id="line-193"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680206000"><span id="local-6989586621680206002"><span id="local-6989586621680206004"><span id="local-6989586621680206006"><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-194"></span><span>  </span><span id="local-6989586621680205998"><span class="annot"><span class="annottext">runRemote :: ClientM a -&gt; Fission (Either ClientError a)
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">runRemote</span></span></span><span> </span><span id="local-6989586621680205996"><span class="annot"><span class="annottext">query :: ClientM a
+</span><a href="#local-6989586621680205996"><span class="hs-identifier hs-var">query</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-195"></span><span>    </span><span id="local-6989586621680205995"><span class="annot"><span class="annottext">Peer
+</span><a href="#local-6989586621680205995"><span class="hs-identifier hs-var">peerID</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Peer) -&gt; Fission Peer
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Peer
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsRemotePeer%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsRemotePeer</span></a></span><span>
-</span><span id="line-196"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.URL</span></span><span> </span><span id="local-6989586621680201555"><span class="annot"><span class="annottext">url :: BaseUrl
-</span><a href="#local-6989586621680201555"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; URL) -&gt; Fission URL
+</span><span id="line-196"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">IPFS.URL</span></span><span> </span><span id="local-6989586621680205993"><span class="annot"><span class="annottext">url :: BaseUrl
+</span><a href="#local-6989586621680205993"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; URL) -&gt; Fission URL
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; URL
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsURL%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsURL</span></a></span><span>
-</span><span id="line-197"></span><span>    </span><span id="local-6989586621680201553"><span class="annot"><span class="annottext">Manager
-</span><a href="#local-6989586621680201553"><span class="hs-identifier hs-var">manager</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Manager) -&gt; Fission Manager
+</span><span id="line-197"></span><span>    </span><span id="local-6989586621680205991"><span class="annot"><span class="annottext">Manager
+</span><a href="#local-6989586621680205991"><span class="hs-identifier hs-var">manager</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Manager) -&gt; Fission Manager
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Manager
 </span><a href="Fission.Config.Types.html#%24sel%3AhttpManager%3AConfig"><span class="hs-identifier hs-var hs-var">httpManager</span></a></span><span>
@@ -783,7 +783,7 @@ forall (m :: * -&gt; *).
 MonadLocalIPFS m =&gt;
 Peer -&gt; Int -&gt; m (Either Error ())
 </span><span class="hs-identifier hs-var">Peer.connectRetry</span></span><span> </span><span class="annot"><span class="annottext">Peer
-</span><a href="#local-6989586621680201557"><span class="hs-identifier hs-var">peerID</span></a></span><span> </span><span class="annot"><span class="hs-number">2</span></span><span>
+</span><a href="#local-6989586621680205995"><span class="hs-identifier hs-var">peerID</span></a></span><span> </span><span class="annot"><span class="hs-number">2</span></span><span>
 </span><span id="line-199"></span><span>
 </span><span id="line-200"></span><span>    </span><span class="annot"><span class="annottext">IO (Either ClientError a) -&gt; Fission (Either ClientError a)
 forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
@@ -795,24 +795,24 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">ClientM a -&gt; ClientEnv -&gt; IO (Either ClientError a)
 forall a. ClientM a -&gt; ClientEnv -&gt; IO (Either ClientError a)
 </span><span class="hs-identifier hs-var">runClientM</span></span><span> </span><span class="annot"><span class="annottext">ClientM a
-</span><a href="#local-6989586621680201558"><span class="hs-identifier hs-var">query</span></a></span><span> </span><span class="annot"><span class="annottext">(ClientEnv -&gt; Fission (Either ClientError a))
+</span><a href="#local-6989586621680205996"><span class="hs-identifier hs-var">query</span></a></span><span> </span><span class="annot"><span class="annottext">(ClientEnv -&gt; Fission (Either ClientError a))
 -&gt; ClientEnv -&gt; Fission (Either ClientError a)
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Manager -&gt; BaseUrl -&gt; ClientEnv
 </span><span class="hs-identifier hs-var">mkClientEnv</span></span><span> </span><span class="annot"><span class="annottext">Manager
-</span><a href="#local-6989586621680201553"><span class="hs-identifier hs-var">manager</span></a></span><span> </span><span class="annot"><span class="annottext">BaseUrl
-</span><a href="#local-6989586621680201555"><span class="hs-identifier hs-var">url</span></a></span><span>
+</span><a href="#local-6989586621680205991"><span class="hs-identifier hs-var">manager</span></a></span><span> </span><span class="annot"><span class="annottext">BaseUrl
+</span><a href="#local-6989586621680205993"><span class="hs-identifier hs-var">url</span></a></span><span>
 </span><span id="line-201"></span><span>
 </span><span id="line-202"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Class.html#MonadBasicAuth"><span class="hs-identifier hs-type">MonadBasicAuth</span></a></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Auth.Types.html#Auth"><span class="hs-identifier hs-type">Heroku.Auth</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-203"></span><span>  </span><span id="local-6989586621680201544"><span class="annot"><span class="annottext">getVerifier :: Fission (BasicAuthCheck Auth)
+</span><span id="line-203"></span><span>  </span><span id="local-6989586621680205982"><span class="annot"><span class="annottext">getVerifier :: Fission (BasicAuthCheck Auth)
 </span><a href="Fission.Web.Auth.Token.Basic.Class.html#getVerifier"><span class="hs-identifier hs-var hs-var hs-var hs-var">getVerifier</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-204"></span><span>    </span><span class="annot"><a href="Fission.Platform.Heroku.ID.Types.html#ID"><span class="hs-identifier hs-type">Heroku.ID</span></a></span><span>       </span><span id="local-6989586621680201541"><span class="annot"><span class="annottext">hkuID :: ByteString
-</span><a href="#local-6989586621680201541"><span class="hs-identifier hs-var">hkuID</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; ID) -&gt; Fission ID
+</span><span id="line-204"></span><span>    </span><span class="annot"><a href="Fission.Platform.Heroku.ID.Types.html#ID"><span class="hs-identifier hs-type">Heroku.ID</span></a></span><span>       </span><span id="local-6989586621680205979"><span class="annot"><span class="annottext">hkuID :: ByteString
+</span><a href="#local-6989586621680205979"><span class="hs-identifier hs-var">hkuID</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; ID) -&gt; Fission ID
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; ID
 </span><a href="Fission.Config.Types.html#%24sel%3AherokuID%3AConfig"><span class="hs-identifier hs-var hs-var">herokuID</span></a></span><span>
-</span><span id="line-205"></span><span>    </span><span class="annot"><a href="Fission.Platform.Heroku.Password.Types.html#Password"><span class="hs-identifier hs-type">Heroku.Password</span></a></span><span> </span><span id="local-6989586621680201538"><span class="annot"><span class="annottext">hkuPass :: ByteString
-</span><a href="#local-6989586621680201538"><span class="hs-identifier hs-var">hkuPass</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Password) -&gt; Fission Password
+</span><span id="line-205"></span><span>    </span><span class="annot"><a href="Fission.Platform.Heroku.Password.Types.html#Password"><span class="hs-identifier hs-type">Heroku.Password</span></a></span><span> </span><span id="local-6989586621680205976"><span class="annot"><span class="annottext">hkuPass :: ByteString
+</span><a href="#local-6989586621680205976"><span class="hs-identifier hs-var">hkuPass</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Password) -&gt; Fission Password
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Password
 </span><a href="Fission.Config.Types.html#%24sel%3AherokuPassword%3AConfig"><span class="hs-identifier hs-var hs-var">herokuPassword</span></a></span><span>
@@ -827,26 +827,26 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; BasicAuthCheck ByteString
 </span><a href="Fission.Web.Auth.html#basic"><span class="hs-identifier hs-var">Auth.basic</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201541"><span class="hs-identifier hs-var">hkuID</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201538"><span class="hs-identifier hs-var">hkuPass</span></a></span><span>
+</span><a href="#local-6989586621680205979"><span class="hs-identifier hs-var">hkuID</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680205976"><span class="hs-identifier hs-var">hkuPass</span></a></span><span>
 </span><span id="line-207"></span><span>
 </span><span id="line-208"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Class.html#MonadAuth"><span class="hs-identifier hs-type">MonadAuth</span></a></span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-209"></span><span>  </span><span id="local-6989586621680201531"><span class="annot"><span class="annottext">getVerifier :: Fission (AuthHandler Request DID)
+</span><span id="line-209"></span><span>  </span><span id="local-6989586621680205969"><span class="annot"><span class="annottext">getVerifier :: Fission (AuthHandler Request DID)
 </span><a href="Fission.Web.Auth.Class.html#getVerifier"><span class="hs-identifier hs-var hs-var hs-var hs-var">getVerifier</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-210"></span><span>    </span><span id="local-6989586621680201529"><span class="annot"><span class="annottext">Config
-</span><a href="#local-6989586621680201529"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission Config
+</span><span id="line-210"></span><span>    </span><span id="local-6989586621680205967"><span class="annot"><span class="annottext">Config
+</span><a href="#local-6989586621680205967"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission Config
 forall r (m :: * -&gt; *). MonadReader r m =&gt; m r
 </span><span class="hs-identifier hs-var">ask</span></span><span>
 </span><span id="line-211"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">(Request -&gt; Handler DID) -&gt; AuthHandler Request DID
 forall r usr. (r -&gt; Handler usr) -&gt; AuthHandler r usr
-</span><span class="hs-identifier hs-var">mkAuthHandler</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680201526"><span class="annot"><span class="annottext">req :: Request
-</span><a href="#local-6989586621680201526"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">mkAuthHandler</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680205964"><span class="annot"><span class="annottext">req :: Request
+</span><a href="#local-6989586621680205964"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-212"></span><span>      </span><span class="annot"><span class="annottext">(RIO Config DID -&gt; IO DID) -&gt; RIO Config DID -&gt; Handler DID
 forall (m :: * -&gt; *) a. (m a -&gt; IO a) -&gt; m a -&gt; Handler a
 </span><a href="Fission.Web.Handler.html#toHandler"><span class="hs-identifier hs-var">toHandler</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Config -&gt; RIO Config DID -&gt; IO DID
 forall (m :: * -&gt; *) env a. MonadIO m =&gt; env -&gt; RIO env a -&gt; m a
 </span><span class="hs-identifier hs-var">runRIO</span></span><span> </span><span class="annot"><span class="annottext">Config
-</span><a href="#local-6989586621680201529"><span class="hs-identifier hs-var">cfg</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(RIO Config DID -&gt; Handler DID)
+</span><a href="#local-6989586621680205967"><span class="hs-identifier hs-var">cfg</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(RIO Config DID -&gt; Handler DID)
 -&gt; (Fission DID -&gt; RIO Config DID) -&gt; Fission DID -&gt; Handler DID
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Fission DID -&gt; RIO Config DID
@@ -859,27 +859,27 @@ forall (m :: * -&gt; *).
  MonadTime m) =&gt;
 Request -&gt; m DID
 </span><a href="Fission.Web.Auth.DID.html#handler"><span class="hs-identifier hs-var">Auth.DID.handler</span></a></span><span> </span><span class="annot"><span class="annottext">Request
-</span><a href="#local-6989586621680201526"><span class="hs-identifier hs-var">req</span></a></span><span>
+</span><a href="#local-6989586621680205964"><span class="hs-identifier hs-var">req</span></a></span><span>
 </span><span id="line-213"></span><span>
 </span><span id="line-214"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Class.html#MonadAuth"><span class="hs-identifier hs-type">MonadAuth</span></a></span><span> </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-215"></span><span>  </span><span id="local-6989586621680201520"><span class="annot"><span class="annottext">getVerifier :: Fission (AuthHandler Request Authorization)
-</span><a href="#local-6989586621680201520"><span class="hs-identifier hs-var hs-var hs-var hs-var">getVerifier</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-216"></span><span>    </span><span id="local-6989586621680201519"><span class="annot"><span class="annottext">Config
-</span><a href="#local-6989586621680201519"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission Config
+</span><span id="line-215"></span><span>  </span><span id="local-6989586621680205958"><span class="annot"><span class="annottext">getVerifier :: Fission (AuthHandler Request Authorization)
+</span><a href="#local-6989586621680205958"><span class="hs-identifier hs-var hs-var hs-var hs-var">getVerifier</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-216"></span><span>    </span><span id="local-6989586621680205957"><span class="annot"><span class="annottext">Config
+</span><a href="#local-6989586621680205957"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission Config
 forall r (m :: * -&gt; *). MonadReader r m =&gt; m r
 </span><span class="hs-identifier hs-var">ask</span></span><span>
 </span><span id="line-217"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">(Request -&gt; Handler Authorization)
 -&gt; AuthHandler Request Authorization
 forall r usr. (r -&gt; Handler usr) -&gt; AuthHandler r usr
-</span><span class="hs-identifier hs-var">mkAuthHandler</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680201518"><span class="annot"><span class="annottext">req :: Request
-</span><a href="#local-6989586621680201518"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">mkAuthHandler</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680205956"><span class="annot"><span class="annottext">req :: Request
+</span><a href="#local-6989586621680205956"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-218"></span><span>      </span><span class="annot"><span class="annottext">(RIO Config Authorization -&gt; IO Authorization)
 -&gt; RIO Config Authorization -&gt; Handler Authorization
 forall (m :: * -&gt; *) a. (m a -&gt; IO a) -&gt; m a -&gt; Handler a
 </span><a href="Fission.Web.Handler.html#toHandler"><span class="hs-identifier hs-var">toHandler</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Config -&gt; RIO Config Authorization -&gt; IO Authorization
 forall (m :: * -&gt; *) env a. MonadIO m =&gt; env -&gt; RIO env a -&gt; m a
 </span><span class="hs-identifier hs-var">runRIO</span></span><span> </span><span class="annot"><span class="annottext">Config
-</span><a href="#local-6989586621680201519"><span class="hs-identifier hs-var">cfg</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(RIO Config Authorization -&gt; Handler Authorization)
+</span><a href="#local-6989586621680205957"><span class="hs-identifier hs-var">cfg</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(RIO Config Authorization -&gt; Handler Authorization)
 -&gt; (Fission Authorization -&gt; RIO Config Authorization)
 -&gt; Fission Authorization
 -&gt; Handler Authorization
@@ -895,27 +895,27 @@ forall (m :: * -&gt; *) (t :: * -&gt; *).
  MonadDB t m, Retriever t) =&gt;
 Request -&gt; m Authorization
 </span><a href="Fission.Web.Auth.Token.html#handler"><span class="hs-identifier hs-var">Auth.Token.handler</span></a></span><span> </span><span class="annot"><span class="annottext">Request
-</span><a href="#local-6989586621680201518"><span class="hs-identifier hs-var">req</span></a></span><span>
+</span><a href="#local-6989586621680205956"><span class="hs-identifier hs-var">req</span></a></span><span>
 </span><span id="line-219"></span><span>
 </span><span id="line-220"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-221"></span><span>  </span><span id="local-6989586621680201513"><span class="annot"><span class="annottext">initial :: Fission DomainName
+</span><span id="line-221"></span><span>  </span><span id="local-6989586621680205951"><span class="annot"><span class="annottext">initial :: Fission DomainName
 </span><a href="Fission.App.Domain.Initializer.Class.html#initial"><span class="hs-identifier hs-var hs-var hs-var hs-var">initial</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; DomainName) -&gt; Fission DomainName
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; DomainName
 </span><a href="Fission.Config.Types.html#%24sel%3AbaseAppDomainName%3AConfig"><span class="hs-identifier hs-var hs-var">baseAppDomainName</span></a></span><span>
 </span><span id="line-222"></span><span>
 </span><span id="line-223"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-224"></span><span>  </span><span id="local-6989586621680201508"><span class="annot"><span class="annottext">placeholder :: Fission CID
+</span><span id="line-224"></span><span>  </span><span id="local-6989586621680205946"><span class="annot"><span class="annottext">placeholder :: Fission CID
 </span><a href="Fission.App.Content.Initializer.Class.html#placeholder"><span class="hs-identifier hs-var hs-var hs-var hs-var">placeholder</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; CID) -&gt; Fission CID
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; CID
 </span><a href="Fission.Config.Types.html#%24sel%3AappPlaceholder%3AConfig"><span class="hs-identifier hs-var hs-var">appPlaceholder</span></a></span><span>
 </span><span id="line-225"></span><span>
 </span><span id="line-226"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">JWT.Resolver</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-227"></span><span>  </span><span id="local-6989586621680201502"><span class="annot"><span class="annottext">resolve :: CID -&gt; Fission (Either Error (RawContent, JWT))
-</span><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#resolve"><span class="hs-identifier hs-var hs-var hs-var hs-var">resolve</span></a></span></span><span> </span><span id="local-6989586621680201500"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680201500"><span class="hs-identifier hs-var">cid</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680201499"><span class="annot"><span class="annottext">hash :: LogSource
-</span><a href="#local-6989586621680201499"><span class="hs-identifier hs-var">hash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-227"></span><span>  </span><span id="local-6989586621680205940"><span class="annot"><span class="annottext">resolve :: CID -&gt; Fission (Either Error (RawContent, JWT))
+</span><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#resolve"><span class="hs-identifier hs-var hs-var hs-var hs-var">resolve</span></a></span></span><span> </span><span id="local-6989586621680205938"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680205938"><span class="hs-identifier hs-var">cid</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680205937"><span class="annot"><span class="annottext">hash :: LogSource
+</span><a href="#local-6989586621680205937"><span class="hs-identifier hs-var">hash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-228"></span><span>    </span><span class="annot"><span class="annottext">[[Char]] -&gt; ByteString -&gt; Fission (Either Error ByteString)
 forall (m :: * -&gt; *).
 MonadLocalIPFS m =&gt;
@@ -925,13 +925,13 @@ MonadLocalIPFS m =&gt;
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; ByteString
 </span><span class="hs-identifier hs-var">encodeUtf8</span></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201499"><span class="hs-identifier hs-var">hash</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Fission (Either Error ByteString)
+</span><a href="#local-6989586621680205937"><span class="hs-identifier hs-var">hash</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Fission (Either Error ByteString)
 -&gt; (Either Error ByteString -&gt; Either Error (RawContent, JWT))
 -&gt; Fission (Either Error (RawContent, JWT))
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-229"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201496"><span class="annot"><span class="annottext">errMsg :: Error
-</span><a href="#local-6989586621680201496"><span class="hs-identifier hs-var">errMsg</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-229"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680205934"><span class="annot"><span class="annottext">errMsg :: Error
+</span><a href="#local-6989586621680205934"><span class="hs-identifier hs-var">errMsg</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-230"></span><span>        </span><span class="annot"><span class="annottext">Error -&gt; Either Error (RawContent, JWT)
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error (RawContent, JWT))
@@ -939,16 +939,16 @@ forall a b. a -&gt; Either a b
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">CID -&gt; Error -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Resolver.Error.html#CannotResolve"><span class="hs-identifier hs-var">CannotResolve</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680201500"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680201496"><span class="hs-identifier hs-var">errMsg</span></a></span><span>
+</span><a href="#local-6989586621680205938"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Error
+</span><a href="#local-6989586621680205934"><span class="hs-identifier hs-var">errMsg</span></a></span><span>
 </span><span id="line-231"></span><span>
 </span><span id="line-232"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
-</span><span class="hs-identifier hs-var">Lazy.toStrict</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span id="local-6989586621680201493"><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201493"><span class="hs-identifier hs-var">resolvedBS</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">Lazy.toStrict</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span id="local-6989586621680205931"><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680205931"><span class="hs-identifier hs-var">resolvedBS</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-233"></span><span>        </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either [Char] JWT
 forall a. FromJSON a =&gt; ByteString -&gt; Either [Char] a
 </span><span class="hs-identifier hs-var">eitherDecodeStrict</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201493"><span class="hs-identifier hs-var">resolvedBS</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680205931"><span class="hs-identifier hs-var">resolvedBS</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-234"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span class="hs-identifier">_</span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error (RawContent, JWT)
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error (RawContent, JWT))
@@ -956,44 +956,44 @@ forall a b. a -&gt; Either a b
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Error
 </span><a href="Fission.Web.Auth.Token.JWT.Resolver.Error.html#InvalidJWT"><span class="hs-identifier hs-var">InvalidJWT</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201493"><span class="hs-identifier hs-var">resolvedBS</span></a></span><span>
-</span><span id="line-235"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680201490"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680201490"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">(RawContent, JWT) -&gt; Either Error (RawContent, JWT)
+</span><a href="#local-6989586621680205931"><span class="hs-identifier hs-var">resolvedBS</span></a></span><span>
+</span><span id="line-235"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680205928"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680205928"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">(RawContent, JWT) -&gt; Either Error (RawContent, JWT)
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">LogSource -&gt; RawContent
 </span><a href="Fission.Web.Auth.Token.JWT.RawContent.html#contentOf"><span class="hs-identifier hs-var">JWT.contentOf</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString -&gt; LogSource
 </span><span class="hs-identifier hs-var">decodeUtf8Lenient</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680201493"><span class="hs-identifier hs-var">resolvedBS</span></a></span><span class="hs-special">)</span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680201490"><span class="hs-identifier hs-var">jwt</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680205931"><span class="hs-identifier hs-var">resolvedBS</span></a></span><span class="hs-special">)</span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680205928"><span class="hs-identifier hs-var">jwt</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-236"></span><span>
 </span><span id="line-237"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-238"></span><span>  </span><span id="local-6989586621680201484"><span class="annot"><span class="annottext">getServerDID :: Fission DID
+</span><span id="line-238"></span><span>  </span><span id="local-6989586621680205922"><span class="annot"><span class="annottext">getServerDID :: Fission DID
 </span><a href="Fission.Authorization.ServerDID.Class.html#getServerDID"><span class="hs-identifier hs-var hs-var hs-var hs-var">getServerDID</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; DID) -&gt; Fission DID
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; DID
 </span><a href="Fission.Config.Types.html#%24sel%3AfissionDID%3AConfig"><span class="hs-identifier hs-var hs-var">fissionDID</span></a></span><span>
 </span><span id="line-239"></span><span>
 </span><span id="line-240"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#PublicizeServerDID"><span class="hs-identifier hs-type">PublicizeServerDID</span></a></span><span> </span><span class="annot"><a href="Fission.Types.html#Fission"><span class="hs-identifier hs-type">Fission</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-241"></span><span>  </span><span id="local-6989586621680201478"><span class="annot"><span class="annottext">publicize :: Fission (Either ServerError ())
+</span><span id="line-241"></span><span>  </span><span id="local-6989586621680205916"><span class="annot"><span class="annottext">publicize :: Fission (Either ServerError ())
 </span><a href="Fission.Authorization.ServerDID.Class.html#publicize"><span class="hs-identifier hs-var hs-var hs-var hs-var">publicize</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-242"></span><span>    </span><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-type">AWS.Route53MockEnabled</span></a></span><span> </span><span id="local-6989586621680201476"><span class="annot"><span class="annottext">mockRoute53 :: Bool
-</span><a href="#local-6989586621680201476"><span class="hs-identifier hs-var">mockRoute53</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Route53MockEnabled) -&gt; Fission Route53MockEnabled
+</span><span id="line-242"></span><span>    </span><span class="annot"><a href="Fission.AWS.Types.html#Route53MockEnabled"><span class="hs-identifier hs-type">AWS.Route53MockEnabled</span></a></span><span> </span><span id="local-6989586621680205914"><span class="annot"><span class="annottext">mockRoute53 :: Bool
+</span><a href="#local-6989586621680205914"><span class="hs-identifier hs-var">mockRoute53</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; Route53MockEnabled) -&gt; Fission Route53MockEnabled
 forall r (m :: * -&gt; *) a. MonadReader r m =&gt; (r -&gt; a) -&gt; m a
 </span><span class="hs-identifier hs-var">asks</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; Route53MockEnabled
 </span><a href="Fission.Config.Types.html#%24sel%3AawsRoute53MockEnabled%3AConfig"><span class="hs-identifier hs-var hs-var">awsRoute53MockEnabled</span></a></span><span>
 </span><span id="line-243"></span><span>
-</span><span id="line-244"></span><span>    </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Host</span></a></span><span> </span><span id="local-6989586621680201474"><span class="annot"><span class="annottext">host :: BaseUrl
-</span><a href="#local-6989586621680201474"><span class="hs-identifier hs-var">host</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission Host
+</span><span id="line-244"></span><span>    </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Host</span></a></span><span> </span><span id="local-6989586621680205912"><span class="annot"><span class="annottext">host :: BaseUrl
+</span><a href="#local-6989586621680205912"><span class="hs-identifier hs-var">host</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission Host
 forall (m :: * -&gt; *). MonadReflectiveServer m =&gt; m Host
 </span><a href="Fission.Web.Server.Reflective.Class.html#getHost"><span class="hs-identifier hs-var">Reflective.getHost</span></a></span><span>
-</span><span id="line-245"></span><span>    </span><span id="local-6989586621680201473"><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680201473"><span class="hs-identifier hs-var">did</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission DID
+</span><span id="line-245"></span><span>    </span><span id="local-6989586621680205911"><span class="annot"><span class="annottext">DID
+</span><a href="#local-6989586621680205911"><span class="hs-identifier hs-var">did</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Fission DID
 forall (m :: * -&gt; *). ServerDID m =&gt; m DID
 </span><a href="Fission.Authorization.ServerDID.Class.html#getServerDID"><span class="hs-identifier hs-var">getServerDID</span></a></span><span>
 </span><span id="line-246"></span><span>
 </span><span id="line-247"></span><span>    </span><span class="hs-keyword">let</span><span>
-</span><span id="line-248"></span><span>      </span><span id="local-6989586621680201472"><span class="annot"><span class="annottext">ourDomain :: DomainName
-</span><a href="#local-6989586621680201472"><span class="hs-identifier hs-var hs-var">ourDomain</span></a></span></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; DomainName
+</span><span id="line-248"></span><span>      </span><span id="local-6989586621680205910"><span class="annot"><span class="annottext">ourDomain :: DomainName
+</span><a href="#local-6989586621680205910"><span class="hs-identifier hs-var hs-var">ourDomain</span></a></span></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; DomainName
 </span><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">URL.DomainName</span></a></span><span> </span><span class="annot"><span class="annottext">(LogSource -&gt; DomainName)
 -&gt; ([Char] -&gt; LogSource) -&gt; [Char] -&gt; DomainName
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -1002,16 +1002,16 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">BaseUrl -&gt; [Char]
 </span><span class="hs-identifier hs-var hs-var">baseUrlHost</span></span><span> </span><span class="annot"><span class="annottext">BaseUrl
-</span><a href="#local-6989586621680201474"><span class="hs-identifier hs-var">host</span></a></span><span>
-</span><span id="line-249"></span><span>      </span><span id="local-6989586621680201469"><span class="annot"><span class="annottext">txtRecordURL :: DomainName
-</span><a href="#local-6989586621680201469"><span class="hs-identifier hs-var hs-var">txtRecordURL</span></a></span></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Subdomain -&gt; DomainName
+</span><a href="#local-6989586621680205912"><span class="hs-identifier hs-var">host</span></a></span><span>
+</span><span id="line-249"></span><span>      </span><span id="local-6989586621680205907"><span class="annot"><span class="annottext">txtRecordURL :: DomainName
+</span><a href="#local-6989586621680205907"><span class="hs-identifier hs-var hs-var">txtRecordURL</span></a></span></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Subdomain -&gt; DomainName
 </span><a href="Fission.URL.Subdomain.html#prefix"><span class="hs-identifier hs-var">URL.prefix</span></a></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201472"><span class="hs-identifier hs-var">ourDomain</span></a></span><span> </span><span class="annot"><span class="annottext">(Subdomain -&gt; DomainName) -&gt; Subdomain -&gt; DomainName
+</span><a href="#local-6989586621680205910"><span class="hs-identifier hs-var">ourDomain</span></a></span><span> </span><span class="annot"><span class="annottext">(Subdomain -&gt; DomainName) -&gt; Subdomain -&gt; DomainName
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">LogSource -&gt; Subdomain
 </span><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-var">URL.Subdomain</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;_did&quot;</span></span><span>
-</span><span id="line-250"></span><span>      </span><span id="local-6989586621680201468"><span class="annot"><span class="annottext">txtRecordValue :: LogSource
-</span><a href="#local-6989586621680201468"><span class="hs-identifier hs-var hs-var">txtRecordValue</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; LogSource
+</span><span id="line-250"></span><span>      </span><span id="local-6989586621680205906"><span class="annot"><span class="annottext">txtRecordValue :: LogSource
+</span><a href="#local-6989586621680205906"><span class="hs-identifier hs-var hs-var">txtRecordValue</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; LogSource
 </span><span class="hs-identifier hs-var">decodeUtf8Lenient</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; LogSource)
 -&gt; (ByteString -&gt; ByteString) -&gt; ByteString -&gt; LogSource
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -1021,10 +1021,10 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">DID -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">JSON.encode</span></span><span> </span><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680201473"><span class="hs-identifier hs-var">did</span></a></span><span>
+</span><a href="#local-6989586621680205911"><span class="hs-identifier hs-var">did</span></a></span><span>
 </span><span id="line-251"></span><span>
 </span><span id="line-252"></span><span>    </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680201476"><span class="hs-identifier hs-var">mockRoute53</span></a></span><span>
+</span><a href="#local-6989586621680205914"><span class="hs-identifier hs-var">mockRoute53</span></a></span><span>
 </span><span id="line-253"></span><span>      </span><span class="hs-keyword">then</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-254"></span><span>        </span><span class="annot"><span class="annottext">LogSource -&gt; Fission ()
 forall msg (m :: * -&gt; *).
@@ -1039,11 +1039,11 @@ forall a. Monoid a =&gt; [a] -&gt; a
 </span><span id="line-256"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; LogSource
 forall a. Display a =&gt; a -&gt; LogSource
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201469"><span class="hs-identifier hs-var">txtRecordURL</span></a></span><span>
+</span><a href="#local-6989586621680205907"><span class="hs-identifier hs-var">txtRecordURL</span></a></span><span>
 </span><span id="line-257"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot; to &quot;</span></span><span>
 </span><span id="line-258"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Item [LogSource]
 LogSource
-</span><a href="#local-6989586621680201468"><span class="hs-identifier hs-var">txtRecordValue</span></a></span><span>
+</span><a href="#local-6989586621680205906"><span class="hs-identifier hs-var">txtRecordValue</span></a></span><span>
 </span><span id="line-259"></span><span>          </span><span class="hs-special">]</span><span>
 </span><span id="line-260"></span><span>
 </span><span id="line-261"></span><span>        </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Either ServerError ()
@@ -1063,34 +1063,34 @@ RecordType
 -&gt; m (Either ServerError ChangeResourceRecordSetsResponse)
 </span><a href="Fission.AWS.Route53.Class.html#update"><span class="hs-identifier hs-var">update</span></a></span><span> </span><span class="annot"><span class="annottext">RecordType
 </span><span class="hs-identifier hs-var">Txt</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680201469"><span class="hs-identifier hs-var">txtRecordURL</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource
-</span><a href="#local-6989586621680201468"><span class="hs-identifier hs-var">txtRecordValue</span></a></span><span> </span><span class="annot"><span class="annottext">Fission (Either ServerError ChangeResourceRecordSetsResponse)
+</span><a href="#local-6989586621680205907"><span class="hs-identifier hs-var">txtRecordURL</span></a></span><span> </span><span class="annot"><span class="annottext">LogSource
+</span><a href="#local-6989586621680205906"><span class="hs-identifier hs-var">txtRecordValue</span></a></span><span> </span><span class="annot"><span class="annottext">Fission (Either ServerError ChangeResourceRecordSetsResponse)
 -&gt; (Either ServerError ChangeResourceRecordSetsResponse
     -&gt; Either ServerError ())
 -&gt; Fission (Either ServerError ())
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-265"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201463"><span class="annot"><span class="annottext">err :: ServerError
-</span><a href="#local-6989586621680201463"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-265"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680205901"><span class="annot"><span class="annottext">err :: ServerError
+</span><a href="#local-6989586621680205901"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-266"></span><span>            </span><span class="annot"><span class="annottext">ServerError -&gt; Either ServerError ()
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">ServerError
-</span><a href="#local-6989586621680201463"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680205901"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-267"></span><span>
-</span><span id="line-268"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680201462"><span class="annot"><span class="annottext">resp :: ChangeResourceRecordSetsResponse
-</span><a href="#local-6989586621680201462"><span class="hs-identifier hs-var">resp</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-268"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680205900"><span class="annot"><span class="annottext">resp :: ChangeResourceRecordSetsResponse
+</span><a href="#local-6989586621680205900"><span class="hs-identifier hs-var">resp</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-269"></span><span>            </span><span class="hs-keyword">let</span><span>
-</span><span id="line-270"></span><span>              </span><span id="local-6989586621680201461"><span class="annot"><span class="annottext">status :: Int
-</span><a href="#local-6989586621680201461"><span class="hs-identifier hs-var hs-var">status</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Getting Int ChangeResourceRecordSetsResponse Int
+</span><span id="line-270"></span><span>              </span><span id="local-6989586621680205899"><span class="annot"><span class="annottext">status :: Int
+</span><a href="#local-6989586621680205899"><span class="hs-identifier hs-var hs-var">status</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Getting Int ChangeResourceRecordSetsResponse Int
 -&gt; ChangeResourceRecordSetsResponse -&gt; Int
 forall s (m :: * -&gt; *) a. MonadReader s m =&gt; Getting a s a -&gt; m a
 </span><span class="hs-identifier hs-var">view</span></span><span> </span><span class="annot"><span class="annottext">Getting Int ChangeResourceRecordSetsResponse Int
 Lens' ChangeResourceRecordSetsResponse Int
 </span><span class="hs-identifier hs-var">crrsrsResponseStatus</span></span><span> </span><span class="annot"><span class="annottext">ChangeResourceRecordSetsResponse
-</span><a href="#local-6989586621680201462"><span class="hs-identifier hs-var">resp</span></a></span><span>
+</span><a href="#local-6989586621680205900"><span class="hs-identifier hs-var">resp</span></a></span><span>
 </span><span id="line-271"></span><span>            </span><span class="hs-keyword">in</span><span>
 </span><span id="line-272"></span><span>              </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680201461"><span class="hs-identifier hs-var">status</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680205899"><span class="hs-identifier hs-var">status</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;</span></span><span> </span><span class="annot"><span class="hs-number">300</span></span><span>
 </span><span id="line-273"></span><span>                </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">Either ServerError ()
@@ -1104,5 +1104,5 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; ServerError
 forall err. ToServerError err =&gt; err -&gt; ServerError
 </span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var">Web.Error.toServerError</span></a></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680201461"><span class="hs-identifier hs-var">status</span></a></span><span>
+</span><a href="#local-6989586621680205899"><span class="hs-identifier hs-var">status</span></a></span><span>
 </span><span id="line-275"></span></pre></body></html>

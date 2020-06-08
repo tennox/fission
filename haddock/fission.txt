@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.3.9
+@version 2.3.10
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -7167,11 +7167,32 @@ resolve :: Resolver m => CID -> m (Either Error (RawContent, JWT))
 
 module Fission.Web.Auth.Token.JWT.Resolver
 
+
+-- | A real world example with a nested proof
+module Fission.Internal.Fixture.Bearer.Nested
+jsonRSA2048 :: Text
+tokenRSA2048 :: Token
+jwtRSA2048 :: JWT
+rawContent :: RawContent
+validTime :: UTCTime
+newtype InTimeBounds a
+InTimeBounds :: Identity a -> InTimeBounds a
+[$sel:unwrap:InTimeBounds] :: InTimeBounds a -> Identity a
+instance GHC.Show.Show a => GHC.Show.Show (Fission.Internal.Fixture.Bearer.Nested.InTimeBounds a)
+instance GHC.Classes.Eq a => GHC.Classes.Eq (Fission.Internal.Fixture.Bearer.Nested.InTimeBounds a)
+instance GHC.Base.Monad Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance GHC.Base.Applicative Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance GHC.Base.Functor Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance Fission.Web.Auth.Token.JWT.Resolver.Class.Resolver Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance Fission.Authorization.ServerDID.Class.ServerDID Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance Control.Monad.Time.MonadTime Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+
 module Fission.Web.Auth.Token.JWT.Proof.Error
 data Error
 InvalidSignatureChain :: Error
 ScopeOutOfBounds :: Error
 PotencyEscelation :: Error
+TimeNotSubset :: Error
 ResolverError :: Error -> Error
 instance GHC.Exception.Type.Exception Fission.Web.Auth.Token.JWT.Proof.Error.Error
 instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Proof.Error.Error
@@ -7378,7 +7399,7 @@ type CRUD m = (Retriever m, Creator m, Modifier m, Destroyer m)
 module Fission.Web.Auth.Token.JWT.Validation
 check :: (Resolver m, ServerDID m, MonadTime m) => RawContent -> JWT -> m (Either Error JWT)
 check' :: (ServerDID m, Resolver m) => RawContent -> JWT -> UTCTime -> m (Either Error JWT)
-pureChecks :: RawContent -> JWT -> UTCTime -> Either Error JWT
+pureChecks :: RawContent -> JWT -> Either Error JWT
 checkTime :: UTCTime -> JWT -> Either Error JWT
 checkSignature :: RawContent -> JWT -> Either Error JWT
 checkEd25519Signature :: RawContent -> JWT -> Either Error JWT

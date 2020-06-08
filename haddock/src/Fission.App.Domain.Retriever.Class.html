@@ -15,15 +15,15 @@
 </span><span id="line-15"></span><span>  </span><span class="hs-special">'</span><span class="hs-special">[</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span>
 </span><span id="line-16"></span><span>   </span><span class="hs-special">]</span><span>
 </span><span id="line-17"></span><span>
-</span><span id="line-18"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680196519"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Retriever"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-var">Retriever</span></a></span></span><span> </span><span id="local-6989586621680196519"><span class="annot"><a href="#local-6989586621680196519"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-19"></span><span>  </span><span id="allForOwner"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#allForOwner"><span class="hs-identifier hs-type">allForOwner</span></a></span></span><span>         </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680196519"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span class="hs-special">]</span><span>
-</span><span id="line-20"></span><span>  </span><span id="allForApp"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#allForApp"><span class="hs-identifier hs-type">allForApp</span></a></span></span><span>           </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680196519"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span class="hs-special">]</span><span>
-</span><span id="line-21"></span><span>  </span><span id="allSiblingsByDomain"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#allSiblingsByDomain"><span class="hs-identifier hs-type">allSiblingsByDomain</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680196519"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span class="hs-special">]</span><span class="hs-special">)</span><span>
+</span><span id="line-18"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680200971"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Retriever"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-var">Retriever</span></a></span></span><span> </span><span id="local-6989586621680200971"><span class="annot"><a href="#local-6989586621680200971"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-19"></span><span>  </span><span id="allForOwner"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#allForOwner"><span class="hs-identifier hs-type">allForOwner</span></a></span></span><span>         </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680200971"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-20"></span><span>  </span><span id="allForApp"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#allForApp"><span class="hs-identifier hs-type">allForApp</span></a></span></span><span>           </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680200971"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-21"></span><span>  </span><span id="allSiblingsByDomain"><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#allSiblingsByDomain"><span class="hs-identifier hs-type">allSiblingsByDomain</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680200971"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span class="hs-special">]</span><span class="hs-special">)</span><span>
 </span><span id="line-22"></span><span>
-</span><span id="line-23"></span><span id="local-6989586621680196457"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680196457"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">Retriever</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680196457"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-24"></span><span>  </span><span id="local-6989586621680196451"><span class="annot"><span class="annottext">allForApp :: AppId -&gt; Transaction m [Entity AppDomain]
-</span><a href="#local-6989586621680196451"><span class="hs-identifier hs-var hs-var hs-var hs-var">allForApp</span></a></span></span><span> </span><span id="local-6989586621680196450"><span class="annot"><span class="annottext">appId :: AppId
-</span><a href="#local-6989586621680196450"><span class="hs-identifier hs-var">appId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Filter AppDomain]
+</span><span id="line-23"></span><span id="local-6989586621680200909"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680200909"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">Retriever</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680200909"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-24"></span><span>  </span><span id="local-6989586621680200903"><span class="annot"><span class="annottext">allForApp :: AppId -&gt; Transaction m [Entity AppDomain]
+</span><a href="#local-6989586621680200903"><span class="hs-identifier hs-var hs-var hs-var hs-var">allForApp</span></a></span></span><span> </span><span id="local-6989586621680200902"><span class="annot"><span class="annottext">appId :: AppId
+</span><a href="#local-6989586621680200902"><span class="hs-identifier hs-var">appId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Filter AppDomain]
 -&gt; [SelectOpt AppDomain] -&gt; Transaction m [Entity AppDomain]
 forall (m :: * -&gt; *) backend record.
 (MonadIO m, PersistQueryRead backend,
@@ -37,16 +37,16 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Filter v
 </span><span class="hs-operator hs-var">P.==.</span></span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680196450"><span class="hs-identifier hs-var">appId</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
+</span><a href="#local-6989586621680200902"><span class="hs-identifier hs-var">appId</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
 </span><span id="line-25"></span><span>
-</span><span id="line-26"></span><span>  </span><span id="local-6989586621680196446"><span class="annot"><span class="annottext">allSiblingsByDomain :: DomainName
+</span><span id="line-26"></span><span>  </span><span id="local-6989586621680200898"><span class="annot"><span class="annottext">allSiblingsByDomain :: DomainName
 -&gt; Maybe Subdomain
 -&gt; Transaction m (Either Errors [Entity AppDomain])
-</span><a href="#local-6989586621680196446"><span class="hs-identifier hs-var hs-var hs-var hs-var">allSiblingsByDomain</span></a></span></span><span> </span><span id="local-6989586621680196445"><span class="annot"><span class="annottext">domainName :: DomainName
-</span><a href="#local-6989586621680196445"><span class="hs-identifier hs-var">domainName</span></a></span></span><span> </span><span id="local-6989586621680196444"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
-</span><a href="#local-6989586621680196444"><span class="hs-identifier hs-var">maySubdomain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-27"></span><span>    </span><span id="local-6989586621680196443"><span class="annot"><span class="annottext">Maybe (Entity AppDomain)
-</span><a href="#local-6989586621680196443"><span class="hs-identifier hs-var">mayAppDomain</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[Filter AppDomain]
+</span><a href="#local-6989586621680200898"><span class="hs-identifier hs-var hs-var hs-var hs-var">allSiblingsByDomain</span></a></span></span><span> </span><span id="local-6989586621680200897"><span class="annot"><span class="annottext">domainName :: DomainName
+</span><a href="#local-6989586621680200897"><span class="hs-identifier hs-var">domainName</span></a></span></span><span> </span><span id="local-6989586621680200896"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
+</span><a href="#local-6989586621680200896"><span class="hs-identifier hs-var">maySubdomain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-27"></span><span>    </span><span id="local-6989586621680200895"><span class="annot"><span class="annottext">Maybe (Entity AppDomain)
+</span><a href="#local-6989586621680200895"><span class="hs-identifier hs-var">mayAppDomain</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[Filter AppDomain]
 -&gt; [SelectOpt AppDomain]
 -&gt; ReaderT SqlBackend m (Maybe (Entity AppDomain))
 forall backend (m :: * -&gt; *) record.
@@ -62,7 +62,7 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Filter v
 </span><span class="hs-operator hs-var">P.==.</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680196445"><span class="hs-identifier hs-var">domainName</span></a></span><span>
+</span><a href="#local-6989586621680200897"><span class="hs-identifier hs-var">domainName</span></a></span><span>
 </span><span id="line-29"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField AppDomain (Maybe Subdomain)
 forall typ. (typ ~ Maybe Subdomain) =&gt; EntityField AppDomain typ
 </span><a href="Fission.Models.html#AppDomainSubdomain"><span class="hs-identifier hs-var">AppDomainSubdomain</span></a></span><span>  </span><span class="annot"><span class="annottext">EntityField AppDomain (Maybe Subdomain)
@@ -71,12 +71,12 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Filter v
 </span><span class="hs-operator hs-var">P.==.</span></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680196444"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
+</span><a href="#local-6989586621680200896"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
 </span><span id="line-30"></span><span>      </span><span class="hs-special">]</span><span>
 </span><span id="line-31"></span><span>      </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
 </span><span id="line-32"></span><span>
 </span><span id="line-33"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe (Entity AppDomain)
-</span><a href="#local-6989586621680196443"><span class="hs-identifier hs-var">mayAppDomain</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680200895"><span class="hs-identifier hs-var">mayAppDomain</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-34"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-35"></span><span>        </span><span class="annot"><span class="annottext">Either Errors [Entity AppDomain]
 -&gt; Transaction m (Either Errors [Entity AppDomain])
@@ -100,7 +100,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall entity. NotFound entity
 </span><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-var">NotFound</span></a></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span>
 </span><span id="line-36"></span><span>
-</span><span id="line-37"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680196433"><span class="annot"><span class="annottext">AppId
+</span><span id="line-37"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="annot"><a href="Fission.Models.html#AppDomain"><span class="hs-identifier hs-type">AppDomain</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680200885"><span class="annot"><span class="annottext">AppId
 $sel:appDomainAppId:AppDomain :: AppDomain -&gt; AppId
 appDomainAppId :: AppId
 </span><a href="Fission.Models.html#%24sel%3AappDomainAppId%3AAppDomain"><span class="hs-identifier hs-var hs-var">appDomainAppId</span></a></span></span><span class="hs-special">}</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
@@ -124,11 +124,11 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Filter v
 </span><span class="hs-operator hs-var">P.==.</span></span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680196433"><span class="hs-identifier hs-var">appDomainAppId</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
+</span><a href="#local-6989586621680200885"><span class="hs-identifier hs-var">appDomainAppId</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
 </span><span id="line-39"></span><span>
-</span><span id="line-40"></span><span>  </span><span id="local-6989586621680196430"><span class="annot"><span class="annottext">allForOwner :: UserId -&gt; Transaction m [Entity AppDomain]
-</span><a href="#local-6989586621680196430"><span class="hs-identifier hs-var hs-var hs-var hs-var">allForOwner</span></a></span></span><span> </span><span id="local-6989586621680196429"><span class="annot"><span class="annottext">ownerId :: UserId
-</span><a href="#local-6989586621680196429"><span class="hs-identifier hs-var">ownerId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-40"></span><span>  </span><span id="local-6989586621680200882"><span class="annot"><span class="annottext">allForOwner :: UserId -&gt; Transaction m [Entity AppDomain]
+</span><a href="#local-6989586621680200882"><span class="hs-identifier hs-var hs-var hs-var hs-var">allForOwner</span></a></span></span><span> </span><span id="local-6989586621680200881"><span class="annot"><span class="annottext">ownerId :: UserId
+</span><a href="#local-6989586621680200881"><span class="hs-identifier hs-var">ownerId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-41"></span><span>    </span><span class="annot"><span class="annottext">SqlQuery (SqlExpr (Entity AppDomain))
 -&gt; Transaction m [Entity AppDomain]
 forall a r (m :: * -&gt; *).
@@ -143,15 +143,15 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
  -&gt; SqlQuery (SqlExpr (Entity AppDomain)))
 -&gt; SqlQuery (SqlExpr (Entity AppDomain))
 forall a b. From a =&gt; (a -&gt; SqlQuery b) -&gt; SqlQuery b
-</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680196426"><span class="annot"><span class="annottext">app :: SqlExpr (Entity App)
-</span><a href="#local-6989586621680196426"><span class="hs-identifier hs-var">app</span></a></span></span><span> </span><span class="annot"><span class="hs-operator hs-type">`InnerJoin`</span></span><span> </span><span id="local-6989586621680196424"><span class="annot"><span class="annottext">appDomain :: SqlExpr (Entity AppDomain)
-</span><a href="#local-6989586621680196424"><span class="hs-identifier hs-var">appDomain</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680200878"><span class="annot"><span class="annottext">app :: SqlExpr (Entity App)
+</span><a href="#local-6989586621680200878"><span class="hs-identifier hs-var">app</span></a></span></span><span> </span><span class="annot"><span class="hs-operator hs-type">`InnerJoin`</span></span><span> </span><span id="local-6989586621680200876"><span class="annot"><span class="annottext">appDomain :: SqlExpr (Entity AppDomain)
+</span><a href="#local-6989586621680200876"><span class="hs-identifier hs-var">appDomain</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-42"></span><span>      </span><span class="annot"><span class="annottext">SqlExpr (Value Bool) -&gt; SqlQuery ()
 </span><span class="hs-identifier hs-var">on</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Value Bool) -&gt; SqlQuery ())
 -&gt; SqlExpr (Value Bool) -&gt; SqlQuery ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
-</span><a href="#local-6989586621680196426"><span class="hs-identifier hs-var">app</span></a></span><span>       </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
+</span><a href="#local-6989586621680200878"><span class="hs-identifier hs-var">app</span></a></span><span>       </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
 -&gt; EntityField App UserId -&gt; SqlExpr (Value UserId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -166,11 +166,11 @@ SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; SqlExpr (Value UserId)
 forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
 </span><span class="hs-identifier hs-var">val</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680196429"><span class="hs-identifier hs-var">ownerId</span></a></span><span>
+</span><a href="#local-6989586621680200881"><span class="hs-identifier hs-var">ownerId</span></a></span><span>
 </span><span id="line-43"></span><span>        </span><span class="annot"><span class="annottext">SqlExpr (Value Bool)
 -&gt; SqlExpr (Value Bool) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">&amp;&amp;.</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity AppDomain)
-</span><a href="#local-6989586621680196424"><span class="hs-identifier hs-var">appDomain</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity AppDomain)
+</span><a href="#local-6989586621680200876"><span class="hs-identifier hs-var">appDomain</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity AppDomain)
 -&gt; EntityField AppDomain AppId -&gt; SqlExpr (Value AppId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -183,7 +183,7 @@ forall typ.
 PersistField typ =&gt;
 SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
-</span><a href="#local-6989586621680196426"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
+</span><a href="#local-6989586621680200878"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
 -&gt; EntityField App AppId -&gt; SqlExpr (Value AppId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -193,5 +193,5 @@ forall typ. (typ ~ AppId) =&gt; EntityField App typ
 </span><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-var">AppId</span></a></span><span>
 </span><span id="line-44"></span><span>
 </span><span id="line-45"></span><span>      </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity AppDomain)
-</span><a href="#local-6989586621680196424"><span class="hs-identifier hs-var">appDomain</span></a></span></span><span>
+</span><a href="#local-6989586621680200876"><span class="hs-identifier hs-var">appDomain</span></a></span></span><span>
 </span><span id="line-46"></span></pre></body></html>

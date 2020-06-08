@@ -8,22 +8,22 @@
 </span><span id="line-8"></span><span>
 </span><span id="line-9"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-10"></span><span>
-</span><span id="line-11"></span><span id="local-6989586621680185197"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="#local-6989586621680185197"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="#local-6989586621680185197"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-12"></span><span>  </span><span id="local-6989586621680185193"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; [a] -&gt; ByteString
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680185191"><span class="annot"><span class="annottext">proxy :: Proxy PlainText
-</span><a href="#local-6989586621680185191"><span class="hs-identifier hs-var">proxy</span></a></span></span><span> </span><span id="local-6989586621680185190"><span class="annot"><span class="annottext">values :: [a]
-</span><a href="#local-6989586621680185190"><span class="hs-identifier hs-var">values</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;[&quot;</span></span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
+</span><span id="line-11"></span><span id="local-6989586621680189493"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="#local-6989586621680189493"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="#local-6989586621680189493"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680189489"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; [a] -&gt; ByteString
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680189487"><span class="annot"><span class="annottext">proxy :: Proxy PlainText
+</span><a href="#local-6989586621680189487"><span class="hs-identifier hs-var">proxy</span></a></span></span><span> </span><span id="local-6989586621680189486"><span class="annot"><span class="annottext">values :: [a]
+</span><a href="#local-6989586621680189486"><span class="hs-identifier hs-var">values</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;[&quot;</span></span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680185189"><span class="hs-identifier hs-var">meat</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
+</span><a href="#local-6989586621680189485"><span class="hs-identifier hs-var">meat</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span class="annot"><span class="hs-string">&quot;]&quot;</span></span><span>
 </span><span id="line-13"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-14"></span><span>      </span><span class="annot"><a href="#local-6989586621680185189"><span class="hs-identifier hs-type">meat</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Lazy.ByteString</span></span><span>
-</span><span id="line-15"></span><span>      </span><span id="local-6989586621680185189"><span class="annot"><span class="annottext">meat :: ByteString
-</span><a href="#local-6989586621680185189"><span class="hs-identifier hs-var hs-var">meat</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-14"></span><span>      </span><span class="annot"><a href="#local-6989586621680189485"><span class="hs-identifier hs-type">meat</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Lazy.ByteString</span></span><span>
+</span><span id="line-15"></span><span>      </span><span id="local-6989586621680189485"><span class="annot"><span class="annottext">meat :: ByteString
+</span><a href="#local-6989586621680189485"><span class="hs-identifier hs-var hs-var">meat</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-16"></span><span>        </span><span class="annot"><span class="annottext">[a]
-</span><a href="#local-6989586621680185190"><span class="hs-identifier hs-var">values</span></a></span><span>
+</span><a href="#local-6989586621680189486"><span class="hs-identifier hs-var">values</span></a></span><span>
 </span><span id="line-17"></span><span>          </span><span class="annot"><span class="annottext">[a] -&gt; ([a] -&gt; [ByteString]) -&gt; [ByteString]
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(a -&gt; ByteString) -&gt; [a] -&gt; [ByteString]
@@ -33,19 +33,19 @@ forall k (ctype :: k) a.
 MimeRender ctype a =&gt;
 Proxy ctype -&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">mimeRender</span></span><span> </span><span class="annot"><span class="annottext">Proxy PlainText
-</span><a href="#local-6989586621680185191"><span class="hs-identifier hs-var">proxy</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680189487"><span class="hs-identifier hs-var">proxy</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-18"></span><span>          </span><span class="annot"><span class="annottext">[ByteString] -&gt; ([ByteString] -&gt; ByteString) -&gt; ByteString
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; [ByteString] -&gt; ByteString
 </span><span class="hs-identifier hs-var">Lazy.intercalate</span></span><span> </span><span class="annot"><span class="hs-string">&quot;,&quot;</span></span></span><span>
 </span><span id="line-19"></span><span>
-</span><span id="line-20"></span><span id="local-6989586621680185186"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="#local-6989586621680185186"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">NonEmpty</span></span><span> </span><span class="annot"><a href="#local-6989586621680185186"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-21"></span><span>  </span><span id="local-6989586621680185183"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; NonEmpty a -&gt; ByteString
-</span><a href="#local-6989586621680185183"><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></a></span></span><span> </span><span id="local-6989586621680185182"><span class="annot"><span class="annottext">proxy :: Proxy PlainText
-</span><a href="#local-6989586621680185182"><span class="hs-identifier hs-var">proxy</span></a></span></span><span> </span><span id="local-6989586621680185181"><span class="annot"><span class="annottext">values :: NonEmpty a
-</span><a href="#local-6989586621680185181"><span class="hs-identifier hs-var">values</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-20"></span><span id="local-6989586621680189482"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="#local-6989586621680189482"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">NonEmpty</span></span><span> </span><span class="annot"><a href="#local-6989586621680189482"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-21"></span><span>  </span><span id="local-6989586621680189479"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; NonEmpty a -&gt; ByteString
+</span><a href="#local-6989586621680189479"><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></a></span></span><span> </span><span id="local-6989586621680189478"><span class="annot"><span class="annottext">proxy :: Proxy PlainText
+</span><a href="#local-6989586621680189478"><span class="hs-identifier hs-var">proxy</span></a></span></span><span> </span><span id="local-6989586621680189477"><span class="annot"><span class="annottext">values :: NonEmpty a
+</span><a href="#local-6989586621680189477"><span class="hs-identifier hs-var">values</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-22"></span><span>    </span><span class="annot"><span class="annottext">NonEmpty a
-</span><a href="#local-6989586621680185181"><span class="hs-identifier hs-var">values</span></a></span><span>
+</span><a href="#local-6989586621680189477"><span class="hs-identifier hs-var">values</span></a></span><span>
 </span><span id="line-23"></span><span>      </span><span class="annot"><span class="annottext">NonEmpty a -&gt; (NonEmpty a -&gt; [a]) -&gt; [a]
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty a -&gt; [a]
@@ -58,5 +58,5 @@ forall k (ctype :: k) a.
 MimeRender ctype a =&gt;
 Proxy ctype -&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">mimeRender</span></span><span> </span><span class="annot"><span class="annottext">Proxy PlainText
-</span><a href="#local-6989586621680185182"><span class="hs-identifier hs-var">proxy</span></a></span></span><span>
+</span><a href="#local-6989586621680189478"><span class="hs-identifier hs-var">proxy</span></a></span></span><span>
 </span><span id="line-25"></span></pre></body></html>

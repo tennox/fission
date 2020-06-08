@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# OPTIONS_GHC -fno-warn-incomplete-uni-patterns #-}</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-comment">-- | A real world example with a nested proof</span><span>
+</span><span id="line-4"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Fixture.Bearer.Nested</span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#jsonRSA2048"><span class="hs-identifier">jsonRSA2048</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#tokenRSA2048"><span class="hs-identifier">tokenRSA2048</span></a></span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#jwtRSA2048"><span class="hs-identifier">jwtRSA2048</span></a></span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#rawContent"><span class="hs-identifier">rawContent</span></a></span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#validTime"><span class="hs-identifier">validTime</span></a></span><span>
+</span><span id="line-10"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier">InTimeBounds</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.API</span></span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html"><span class="hs-identifier">Fission.Authorization.ServerDID.Class</span></a></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Internal.Time.html"><span class="hs-identifier">Fission.Internal.Time</span></a></span><span>                 </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Time</span></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-19"></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Bearer.Types.html"><span class="hs-identifier">Fission.Web.Auth.Token.Bearer.Types</span></a></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Bearer</span></span><span>
+</span><span id="line-21"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT</span></a></span><span>            </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">JWT</span></span><span>
+</span><span id="line-22"></span><span>
+</span><span id="line-23"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Resolver</span></a></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Proof</span></span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">newtype</span><span> </span><span id="InTimeBounds"><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-var">InTimeBounds</span></a></span></span><span> </span><span id="local-6989586621680200017"><span class="annot"><a href="#local-6989586621680200017"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="InTimeBounds"><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-var">InTimeBounds</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Aunwrap%3AInTimeBounds"><span class="annot"><span class="annottext">InTimeBounds a -&gt; Identity a
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#%24sel%3Aunwrap%3AInTimeBounds"><span class="hs-identifier hs-var hs-var">unwrap</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Identity</span></span><span> </span><span class="annot"><a href="#local-6989586621680200017"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>
+</span><span id="line-27"></span><span>    </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680200011"><span id="local-6989586621680200013"><span class="annot"><span class="annottext">a -&gt; InTimeBounds b -&gt; InTimeBounds a
+(a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+(forall a b. (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b)
+-&gt; (forall a b. a -&gt; InTimeBounds b -&gt; InTimeBounds a)
+-&gt; Functor InTimeBounds
+forall a b. a -&gt; InTimeBounds b -&gt; InTimeBounds a
+forall a b. (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+forall (f :: * -&gt; *).
+(forall a b. (a -&gt; b) -&gt; f a -&gt; f b)
+-&gt; (forall a b. a -&gt; f b -&gt; f a) -&gt; Functor f
+&lt;$ :: a -&gt; InTimeBounds b -&gt; InTimeBounds a
+$c&lt;$ :: forall a b. a -&gt; InTimeBounds b -&gt; InTimeBounds a
+fmap :: (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+$cfmap :: forall a b. (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Functor</span></span></span></span><span>
+</span><span id="line-28"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680199999"><span id="local-6989586621680200001"><span id="local-6989586621680200003"><span id="local-6989586621680200005"><span id="local-6989586621680200007"><span class="annot"><span class="annottext">Functor InTimeBounds
+a -&gt; InTimeBounds a
+Functor InTimeBounds =&gt;
+(forall a. a -&gt; InTimeBounds a)
+-&gt; (forall a b.
+    InTimeBounds (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b)
+-&gt; (forall a b c.
+    (a -&gt; b -&gt; c)
+    -&gt; InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds c)
+-&gt; (forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b)
+-&gt; (forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds a)
+-&gt; Applicative InTimeBounds
+InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds a
+InTimeBounds (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+(a -&gt; b -&gt; c) -&gt; InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds c
+forall a. a -&gt; InTimeBounds a
+forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds a
+forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+forall a b.
+InTimeBounds (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+forall a b c.
+(a -&gt; b -&gt; c) -&gt; InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds c
+forall (f :: * -&gt; *).
+Functor f =&gt;
+(forall a. a -&gt; f a)
+-&gt; (forall a b. f (a -&gt; b) -&gt; f a -&gt; f b)
+-&gt; (forall a b c. (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c)
+-&gt; (forall a b. f a -&gt; f b -&gt; f b)
+-&gt; (forall a b. f a -&gt; f b -&gt; f a)
+-&gt; Applicative f
+&lt;* :: InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds a
+$c&lt;* :: forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds a
+*&gt; :: InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+$c*&gt; :: forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+liftA2 :: (a -&gt; b -&gt; c) -&gt; InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds c
+$cliftA2 :: forall a b c.
+(a -&gt; b -&gt; c) -&gt; InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds c
+&lt;*&gt; :: InTimeBounds (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+$c&lt;*&gt; :: forall a b.
+InTimeBounds (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
+pure :: a -&gt; InTimeBounds a
+$cpure :: forall a. a -&gt; InTimeBounds a
+$cp1Applicative :: Functor InTimeBounds
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Applicative</span></span></span></span></span></span></span><span>
+</span><span id="line-29"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680199991"><span id="local-6989586621680199993"><span id="local-6989586621680199995"><span class="annot"><span class="annottext">Applicative InTimeBounds
+a -&gt; InTimeBounds a
+Applicative InTimeBounds =&gt;
+(forall a b.
+ InTimeBounds a -&gt; (a -&gt; InTimeBounds b) -&gt; InTimeBounds b)
+-&gt; (forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b)
+-&gt; (forall a. a -&gt; InTimeBounds a)
+-&gt; Monad InTimeBounds
+InTimeBounds a -&gt; (a -&gt; InTimeBounds b) -&gt; InTimeBounds b
+InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+forall a. a -&gt; InTimeBounds a
+forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+forall a b.
+InTimeBounds a -&gt; (a -&gt; InTimeBounds b) -&gt; InTimeBounds b
+forall (m :: * -&gt; *).
+Applicative m =&gt;
+(forall a b. m a -&gt; (a -&gt; m b) -&gt; m b)
+-&gt; (forall a b. m a -&gt; m b -&gt; m b)
+-&gt; (forall a. a -&gt; m a)
+-&gt; Monad m
+return :: a -&gt; InTimeBounds a
+$creturn :: forall a. a -&gt; InTimeBounds a
+&gt;&gt; :: InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+$c&gt;&gt; :: forall a b. InTimeBounds a -&gt; InTimeBounds b -&gt; InTimeBounds b
+&gt;&gt;= :: InTimeBounds a -&gt; (a -&gt; InTimeBounds b) -&gt; InTimeBounds b
+$c&gt;&gt;= :: forall a b.
+InTimeBounds a -&gt; (a -&gt; InTimeBounds b) -&gt; InTimeBounds b
+$cp1Monad :: Applicative InTimeBounds
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Monad</span></span></span></span></span><span>
+</span><span id="line-30"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680199986"><span id="local-6989586621680199988"><span class="annot"><span class="annottext">InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
+(InTimeBounds a -&gt; InTimeBounds a -&gt; Bool)
+-&gt; (InTimeBounds a -&gt; InTimeBounds a -&gt; Bool)
+-&gt; Eq (InTimeBounds a)
+forall a. Eq a =&gt; InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
+$c/= :: forall a. Eq a =&gt; InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
+== :: InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
+$c== :: forall a. Eq a =&gt; InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-31"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680199979"><span id="local-6989586621680199981"><span id="local-6989586621680199983"><span class="annot"><span class="annottext">Int -&gt; InTimeBounds a -&gt; ShowS
+[InTimeBounds a] -&gt; ShowS
+InTimeBounds a -&gt; String
+(Int -&gt; InTimeBounds a -&gt; ShowS)
+-&gt; (InTimeBounds a -&gt; String)
+-&gt; ([InTimeBounds a] -&gt; ShowS)
+-&gt; Show (InTimeBounds a)
+forall a. Show a =&gt; Int -&gt; InTimeBounds a -&gt; ShowS
+forall a. Show a =&gt; [InTimeBounds a] -&gt; ShowS
+forall a. Show a =&gt; InTimeBounds a -&gt; String
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [InTimeBounds a] -&gt; ShowS
+$cshowList :: forall a. Show a =&gt; [InTimeBounds a] -&gt; ShowS
+show :: InTimeBounds a -&gt; String
+$cshow :: forall a. Show a =&gt; InTimeBounds a -&gt; String
+showsPrec :: Int -&gt; InTimeBounds a -&gt; ShowS
+$cshowsPrec :: forall a. Show a =&gt; Int -&gt; InTimeBounds a -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-32"></span><span>    </span><span class="hs-special">)</span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-type">InTimeBounds</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680199974"><span class="annot"><span class="annottext">resolve :: CID -&gt; InTimeBounds (Either Error (RawContent, JWT))
+</span><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#resolve"><span class="hs-identifier hs-var hs-var hs-var hs-var">resolve</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; CID -&gt; InTimeBounds (Either Error (RawContent, JWT))
+forall a. HasCallStack =&gt; String -&gt; a
+</span><span class="hs-identifier hs-var">error</span></span><span> </span><span class="annot"><span class="hs-string">&quot;shouldn't hit this in our specific case&quot;</span></span><span>
+</span><span id="line-36"></span><span>
+</span><span id="line-37"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-type">InTimeBounds</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-38"></span><span>  </span><span id="local-6989586621680199968"><span class="annot"><span class="annottext">getServerDID :: InTimeBounds DID
+</span><a href="Fission.Authorization.ServerDID.Class.html#getServerDID"><span class="hs-identifier hs-var hs-var hs-var hs-var">getServerDID</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DID -&gt; InTimeBounds DID
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">DID
+forall b. FromJSON b =&gt; b
+</span><a href="#local-6989586621680199966"><span class="hs-identifier hs-var">did</span></a></span><span>
+</span><span id="line-39"></span><span>    </span><span class="hs-keyword">where</span><span>
+</span><span id="line-40"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680199966"><span class="annot"><span class="annottext">did :: b
+</span><a href="#local-6989586621680199966"><span class="hs-identifier hs-var">did</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either String b
+forall a. FromJSON a =&gt; ByteString -&gt; Either String a
+</span><span class="hs-identifier hs-var">eitherDecode</span></span><span> </span><span class="annot"><span class="hs-string">&quot;\&quot;did:key:zStEZpzSMtTt9k2vszgvCwF4fLQQSyA15W5AQ4z3AR6Bx4eFJ5crJFbuGxKmbma4\&quot;&quot;</span></span><span>
+</span><span id="line-41"></span><span>
+</span><span id="line-42"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-type">InTimeBounds</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-43"></span><span>  </span><span id="local-6989586621680199961"><span class="annot"><span class="annottext">currentTime :: InTimeBounds UTCTime
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">currentTime</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; InTimeBounds UTCTime
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">(UTCTime -&gt; InTimeBounds UTCTime)
+-&gt; UTCTime -&gt; InTimeBounds UTCTime
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; UTCTime
+</span><a href="Fission.Internal.Time.html#fromSeconds"><span class="hs-identifier hs-var">Time.fromSeconds</span></a></span><span> </span><span class="annot"><span class="hs-number">1591627760</span></span><span>
+</span><span id="line-44"></span><span>
+</span><span id="line-45"></span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#validTime"><span class="hs-identifier hs-type">validTime</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-46"></span><span id="validTime"><span class="annot"><span class="annottext">validTime :: UTCTime
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#validTime"><span class="hs-identifier hs-var hs-var">validTime</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; UTCTime
+</span><a href="Fission.Internal.Time.html#fromSeconds"><span class="hs-identifier hs-var">fromSeconds</span></a></span><span> </span><span class="annot"><span class="hs-number">0</span></span><span> </span><span class="hs-comment">-- i.e. waaaay before the expiry :P</span><span>
+</span><span id="line-47"></span><span>
+</span><span id="line-48"></span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#rawContent"><span class="hs-identifier hs-type">rawContent</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">JWT.RawContent</span></a></span><span>
+</span><span id="line-49"></span><span id="rawContent"><span class="annot"><span class="annottext">rawContent :: RawContent
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#rawContent"><span class="hs-identifier hs-var hs-var">rawContent</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; RawContent
+</span><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-var">JWT.RawContent</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsInVhdiI6IjAuMS4wIn0.eyJhdWQiOiJkaWQ6a2V5OnpTdEVacHpTTXRUdDlrMnZzemd2Q3dGNGZMUVFTeUExNVc1QVE0ejNBUjZCeDRlRko1Y3JKRmJ1R3hLbWJtYTQiLCJleHAiOjE1OTE2Mjc4NDEsImlzcyI6ImRpZDprZXk6ejEzVjNTb2cyWWFVS2hkR0NtZ3g5VVp1VzFvMVNoRkpZYzZEdkdZZTdOVHQ2ODlOb0wzazdIdXdCUXhKZFBqdllURHhFd3kxbTh3YjZwOTRjNm1NWTRmTnFBV0RkeVk3NVNWMnFEODVLNU1ZcVpqYUpZOGM0NzFBUEZydkpTZEo1QXo1REVDaENnV0xOdkVYRjJxaFlSMkZWaVprVGhvRVB0Mk5ZcHVxZ0txZVZvS1RpZkRpd3JYeUhka3hCazJNOWNQZE5HaGczRE0xWTZyVGY2RDJIZ2JlUnF2OGtvVW9xeWlLTWpYYUZTZlFZVkY3cGZGWGhOYWdKRGZqcG9xQ3FWWFllaTFQbU43UzM0cFdvcTZwUmRQczY5N2F4VVRFNXZQeXNlU3ROc3o4SGFqdUp2NzlDSENNZ2RvRkJzOXc3UHZNSFVEeGdHUWR0c3hBQXZKRzRxVGJkU0I2bUd2TFp0cGE5czFNemNIcDVEV1NjaUJxNnF1aG1SSHRTVFdHNW9FSnRTdlN4QlhTczJoZFBId0I0QVUiLCJuYmYiOjE1OTE2Mjc3NTEsInByZiI6ImV5SmhiR2NpT2lKU1V6STFOaUlzSW5SNWNDSTZJa3BYVkNJc0luVmhkaUk2SWpBdU1TNHdJbjAuZXlKaGRXUWlPaUprYVdRNmEyVjVPbm94TTFZelUyOW5NbGxoVlV0b1pFZERiV2Q0T1ZWYWRWY3hiekZUYUVaS1dXTTJSSFpIV1dVM1RsUjBOamc1VG05TU0yczNTSFYzUWxGNFNtUlFhblpaVkVSNFJYZDVNVzA0ZDJJMmNEazBZelp0VFZrMFprNXhRVmRFWkhsWk56VlRWakp4UkRnMVN6Vk5XWEZhYW1GS1dUaGpORGN4UVZCR2NuWktVMlJLTlVGNk5VUkZRMmhEWjFkTVRuWkZXRVl5Y1doWlVqSkdWbWxhYTFSb2IwVlFkREpPV1hCMWNXZExjV1ZXYjB0VWFXWkVhWGR5V0hsSVpHdDRRbXN5VFRsalVHUk9SMmhuTTBSTk1WazJjbFJtTmtReVNHZGlaVkp4ZGpocmIxVnZjWGxwUzAxcVdHRkdVMlpSV1ZaR04zQm1SbGhvVG1GblNrUm1hbkJ2Y1VOeFZsaFpaV2t4VUcxT04xTXpOSEJYYjNFMmNGSmtVSE0yT1RkaGVGVlVSVFYyVUhselpWTjBUbk42T0VoaGFuVktkamM1UTBoRFRXZGtiMFpDY3psM04xQjJUVWhWUkhoblIxRmtkSE40UVVGMlNrYzBjVlJpWkZOQ05tMUhka3hhZEhCaE9YTXhUWHBqU0hBMVJGZFRZMmxDY1RaeGRXaHRVa2gwVTFSWFJ6VnZSVXAwVTNaVGVFSllVM015YUdSUVNIZENORUZWSWl3aVpYaHdJam94TlRrME1qRTVOelE0TENKcGMzTWlPaUprYVdRNmEyVjVPbm94TTFZelUyOW5NbGxoVlV0b1pFZERiV2Q0T1ZWYWRWY3hiekZUYUVaS1dXTTJSSFpIV1dVM1RsUjBOamc1VG05TU0wWjFRVlIwVlZCV1p6ZHBXRGQ0YlUxdGNrbzJNVE0wVkcxaE1tSkdWWE5YVVhreVRtUkhTREZYYVRSSWVVNWhOemh3VG0xU1RrRkdVRWhHU21KcVNqRnhZemc0TkZoeE1XbHlhV2wwY1ZKVk0zQmtkRVJSVFhobmIyRjNNVUptVFZkRlRVWnJkVmxWUm5Gd1JFdGlSMHd6WTNKQ2VtNUxkbFpNZDJsRGExQkhiM2h0V0VGWE4waFZOemw2TmxCVVRVZDVVMHRDUlVGMVdERjNSVE0wTlRKQ05rbzVOblphZFc5aVJUTlpZVUV5T0hsTFMwaE1OV2xxWmtKVVJFVTFaRTF6TmpWaFJraGlSbVZUZDNONlJtMWxkVkZxTkdkS1JEVklaMUJOYjI1bGRHZzNUSFZIWlhVMFlWVldWMFZDVkZKdk5sWmlTbFpRTVdKSVNqZHhUbUZRWW1JMFNrUjRTa2hFUkhaeFV6Vm9PRlJCZFZVMmIweFNUa1ZuTTJSdU4xSnBjV295VW1ST1ZYbFRkbkZxVkU0MWQzUk1VMjl3ZGtSNlFVSXllbFl5VUhSYWNETjJNVEZPYjJaRWEyNTJSWFpYYTBONmRYbFdRVnA1VFVGbk9HZGFXa2RESWl3aWJtSm1Jam94TlRreE5qSTNOamc0TENKd2RHTWlPaUpCVUZCRlRrUWlMQ0p6WTNBaU9pSXZJbjAuZWFIcmZuaFJkdy1ob1B3Q2RjVXpTX09abm5VXzFIR3RwU0JHenM1SmtDcGs5RlVQZVYwU2xVbF9kUkI0UzZ0M2xnbi14UHVoaVA3WE5kMGM3Qm9hZFd0SkxMSlY4VV9MZ2pUUUdMa1h4al9yVTZrYXA4bFRibllneDZPZzFiZi10bUhlVVVCNFZOY2RFUGlTMFRUYllMZlFDN05rLTZzbWkwekNYQlVBd1JrLURSQURtdkdhMzloVzFMQlFqWl9oejVhOVRYTTlRb0drS0szQkxDM2JVbXFKU1Y0SjVCTmlxanQ0TktqOUo1RjVYYjdHNTd4MkttWkVMYUw1U2NYV1lvWmpxVlJNWF9MY3k1WE4xaUJvWmFHVHlFbzlVNVBNYzhRSVRoaEdQTXNtc2JTS1cxc1AyUFF6OGNOUHh5b2NXYmZsT0dQZkVGZ21aenk4RGwxTkN3IiwicHRjIjoiQVBQRU5EIiwic2NwIjoiLyJ9&quot;</span></span><span>
+</span><span id="line-50"></span><span>
+</span><span id="line-51"></span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#jsonRSA2048"><span class="hs-identifier hs-type">jsonRSA2048</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
+</span><span id="line-52"></span><span id="jsonRSA2048"><span class="annot"><span class="annottext">jsonRSA2048 :: Text
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#jsonRSA2048"><span class="hs-identifier hs-var hs-var">jsonRSA2048</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Bearer &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">RawContent -&gt; Text
+</span><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#%24sel%3AunRawContent%3ARawContent"><span class="hs-identifier hs-var hs-var">unRawContent</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#rawContent"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.Q7dBT4vbz9tgWlLgGgex-sk69immscmpvz-r7TQfxgIsJUBwLiWk0q0mxW5l1In2x_HU_Q42N9C5XOnoYwauPGsjOmtisGNtWCzNuUWDPdHfcBVcg1CEFt0FtTr2zM0WT7TaiWh6WK5J16G3Sf1Nd2uxWCXYIMZWng7lvbKqOY-ME0M4eIHQ6gh1oS45rQhvxQ33NS8p17mET3KvZ3OlQVXsk641N8tSJPgJv-Y4Io5b4HpiYWO9Z2E4N_r4DkexW3D8ztdcBtCVIqPVjOKtA63jX1cFaqU7Rs0z_KpvPlQqOh4BQeI1AjGSrgnckmIgMFn11Dx98DsxwIxN8NrD_g&quot;</span></span><span>
+</span><span id="line-53"></span><span>
+</span><span id="line-54"></span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#tokenRSA2048"><span class="hs-identifier hs-type">tokenRSA2048</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Bearer.Types.html#Token"><span class="hs-identifier hs-type">Bearer.Token</span></a></span><span>
+</span><span id="line-55"></span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#jwtRSA2048"><span class="hs-identifier hs-type">jwtRSA2048</span></a></span><span>   </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span>
+</span><span id="line-56"></span><span>
+</span><span id="line-57"></span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="tokenRSA2048"><span class="annot"><span class="annottext">tokenRSA2048 :: Token
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#tokenRSA2048"><span class="hs-identifier hs-var">tokenRSA2048</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Bearer.Types.html#Token"><span class="hs-identifier hs-type">Bearer.Token</span></a></span><span> </span><span id="jwtRSA2048"><span class="annot"><span class="annottext">jwtRSA2048 :: JWT
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#jwtRSA2048"><span class="hs-identifier hs-var">jwtRSA2048</span></a></span></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text Token
+forall a. FromHttpApiData a =&gt; Text -&gt; Either Text a
+</span><span class="hs-identifier hs-var">parseUrlPiece</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#jsonRSA2048"><span class="hs-identifier hs-var">jsonRSA2048</span></a></span><span>
+</span><span id="line-58"></span></pre></body></html>

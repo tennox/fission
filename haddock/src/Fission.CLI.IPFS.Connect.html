@@ -22,18 +22,18 @@
 </span><span id="line-22"></span><span>
 </span><span id="line-23"></span><span>
 </span><span id="line-24"></span><span class="hs-comment">-- | Connect to the Fission IPFS network with a set amount of retries</span><span>
-</span><span id="line-25"></span><span id="local-6989586621680199503"><span class="annot"><a href="Fission.CLI.IPFS.Connect.html#swarmConnectWithRetry"><span class="hs-identifier hs-type">swarmConnectWithRetry</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-26"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680199503"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680199503"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-28"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680199503"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-29"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680199503"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-25"></span><span id="local-6989586621680203941"><span class="annot"><a href="Fission.CLI.IPFS.Connect.html#swarmConnectWithRetry"><span class="hs-identifier hs-type">swarmConnectWithRetry</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680203941"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680203941"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-28"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680203941"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-29"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680203941"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-30"></span><span>  </span><span class="hs-special">)</span><span>
 </span><span id="line-31"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span><span>
 </span><span id="line-32"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
-</span><span id="line-33"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680199503"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">SomeException</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-33"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680203941"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">SomeException</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
 </span><span id="line-34"></span><span id="swarmConnectWithRetry"><span class="annot"><span class="annottext">swarmConnectWithRetry :: Peer -&gt; Int -&gt; m (Either SomeException ())
-</span><a href="Fission.CLI.IPFS.Connect.html#swarmConnectWithRetry"><span class="hs-identifier hs-var hs-var">swarmConnectWithRetry</span></a></span></span><span> </span><span id="local-6989586621680199488"><span class="annot"><span class="annottext">_peer :: Peer
-</span><a href="#local-6989586621680199488"><span class="hs-identifier hs-var">_peer</span></a></span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">-</span><span class="hs-number">1</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.CLI.IPFS.Connect.html#swarmConnectWithRetry"><span class="hs-identifier hs-var hs-var">swarmConnectWithRetry</span></a></span></span><span> </span><span id="local-6989586621680203926"><span class="annot"><span class="annottext">_peer :: Peer
+</span><a href="#local-6989586621680203926"><span class="hs-identifier hs-var">_peer</span></a></span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">-</span><span class="hs-number">1</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-35"></span><span>  </span><span class="annot"><span class="annottext">Either SomeException () -&gt; m (Either SomeException ())
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either SomeException () -&gt; m (Either SomeException ()))
@@ -51,15 +51,15 @@ forall e. Exception e =&gt; e -&gt; SomeException
 </span><span class="hs-identifier hs-var">toException</span></span><span> </span><span class="annot"><span class="annottext">Err
 </span><a href="Fission.CLI.IPFS.Error.Types.html#UnableToConnect"><span class="hs-identifier hs-var">UnableToConnect</span></a></span><span>
 </span><span id="line-36"></span><span>
-</span><span id="line-37"></span><span class="annot"><a href="Fission.CLI.IPFS.Connect.html#swarmConnectWithRetry"><span class="hs-identifier hs-var">swarmConnectWithRetry</span></a></span><span> </span><span id="local-6989586621680199484"><span class="annot"><span class="annottext">peer :: Peer
-</span><a href="#local-6989586621680199484"><span class="hs-identifier hs-var">peer</span></a></span></span><span> </span><span id="local-6989586621680199483"><span class="annot"><span class="annottext">tries :: Int
-</span><a href="#local-6989586621680199483"><span class="hs-identifier hs-var">tries</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-37"></span><span class="annot"><a href="Fission.CLI.IPFS.Connect.html#swarmConnectWithRetry"><span class="hs-identifier hs-var">swarmConnectWithRetry</span></a></span><span> </span><span id="local-6989586621680203922"><span class="annot"><span class="annottext">peer :: Peer
+</span><a href="#local-6989586621680203922"><span class="hs-identifier hs-var">peer</span></a></span></span><span> </span><span id="local-6989586621680203921"><span class="annot"><span class="annottext">tries :: Int
+</span><a href="#local-6989586621680203921"><span class="hs-identifier hs-var">tries</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-38"></span><span>  </span><span class="annot"><span class="annottext">Peer -&gt; m (Either Error ())
 forall (m :: * -&gt; *).
 MonadLocalIPFS m =&gt;
 Peer -&gt; m (Either Error ())
 </span><span class="hs-identifier hs-var">IPFS.Peer.connect</span></span><span> </span><span class="annot"><span class="annottext">Peer
-</span><a href="#local-6989586621680199484"><span class="hs-identifier hs-var">peer</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error ())
+</span><a href="#local-6989586621680203922"><span class="hs-identifier hs-var">peer</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error ())
 -&gt; (Either Error () -&gt; m (Either SomeException ()))
 -&gt; m (Either SomeException ())
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
@@ -71,8 +71,8 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 forall err. Either err ()
 </span><a href="Fission.Prelude.html#ok"><span class="hs-identifier hs-var">ok</span></a></span><span>
 </span><span id="line-41"></span><span>
-</span><span id="line-42"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680199480"><span class="annot"><span class="annottext">_err :: Error
-</span><a href="#local-6989586621680199480"><span class="hs-identifier hs-var">_err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-42"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680203918"><span class="annot"><span class="annottext">_err :: Error
+</span><a href="#local-6989586621680203918"><span class="hs-identifier hs-var">_err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-43"></span><span>      </span><span class="annot"><span class="annottext">m (Either ClientError (NonEmpty Peer))
 forall (m :: * -&gt; *).
 (MonadUnliftIO m, MonadWebClient m) =&gt;
@@ -101,8 +101,8 @@ forall e. Exception e =&gt; e -&gt; SomeException
 </span><span class="hs-identifier hs-var">toException</span></span><span> </span><span class="annot"><span class="annottext">Err
 </span><a href="Fission.CLI.IPFS.Error.Types.html#UnableToConnect"><span class="hs-identifier hs-var">UnableToConnect</span></a></span><span>
 </span><span id="line-46"></span><span>
-</span><span id="line-47"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680199478"><span class="annot"><span class="annottext">peers :: NonEmpty Peer
-</span><a href="#local-6989586621680199478"><span class="hs-identifier hs-var">peers</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-47"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680203916"><span class="annot"><span class="annottext">peers :: NonEmpty Peer
+</span><a href="#local-6989586621680203916"><span class="hs-identifier hs-var">peers</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-48"></span><span>          </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
 </span><a href="Fission.Internal.UTF8.html#putText"><span class="hs-identifier hs-var">UTF8.putText</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;&#128752; Unable to connect to the Fission IPFS peer, trying again...\n&quot;</span></span><span>
@@ -114,13 +114,13 @@ Peer -&gt; Int -&gt; m (Either SomeException ())
 </span><a href="Fission.CLI.IPFS.Connect.html#swarmConnectWithRetry"><span class="hs-identifier hs-var">swarmConnectWithRetry</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">NonEmpty Peer -&gt; Peer
 forall a. NonEmpty a -&gt; a
 </span><span class="hs-identifier hs-var">head</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer
-</span><a href="#local-6989586621680199478"><span class="hs-identifier hs-var">peers</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680199483"><span class="hs-identifier hs-var">tries</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
+</span><a href="#local-6989586621680203916"><span class="hs-identifier hs-var">peers</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680203921"><span class="hs-identifier hs-var">tries</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
 forall a. Num a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-glyph hs-var">-</span></span><span> </span><span class="annot"><span class="hs-number">1</span></span><span class="hs-special">)</span><span>
 </span><span id="line-50"></span><span>
 </span><span id="line-51"></span><span class="hs-comment">-- | Create a could not connect to Fission peer message for the terminal</span><span>
-</span><span id="line-52"></span><span id="local-6989586621680199475"><span class="annot"><a href="Fission.CLI.IPFS.Connect.html#couldNotSwarmConnect"><span class="hs-identifier hs-type">couldNotSwarmConnect</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680199475"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680199475"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-52"></span><span id="local-6989586621680203913"><span class="annot"><a href="Fission.CLI.IPFS.Connect.html#couldNotSwarmConnect"><span class="hs-identifier hs-type">couldNotSwarmConnect</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680203913"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680203913"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-53"></span><span id="couldNotSwarmConnect"><span class="annot"><span class="annottext">couldNotSwarmConnect :: m ()
 </span><a href="Fission.CLI.IPFS.Connect.html#couldNotSwarmConnect"><span class="hs-identifier hs-var hs-var">couldNotSwarmConnect</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-54"></span><span>  </span><span class="annot"><span class="annottext">IO () -&gt; m ()
