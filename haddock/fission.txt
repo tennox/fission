@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.3.10
+@version 2.4.0
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -37,6 +37,9 @@ module Fission.Internal.Orphanage.CID
 instance Test.QuickCheck.Arbitrary.Arbitrary Network.IPFS.CID.Types.CID
 instance Database.Persist.Class.PersistField.PersistField Network.IPFS.CID.Types.CID
 instance Database.Persist.Sql.Class.PersistFieldSql Network.IPFS.CID.Types.CID
+
+module Fission.Internal.Orphanage.ClientError
+instance RIO.Prelude.Display.Display Servant.Client.Core.ClientError.ClientError
 
 module Fission.Internal.Orphanage.OpenUnion
 instance RIO.Prelude.Display.Display (Data.WorldPeace.Union.OpenUnion '[])
@@ -5461,63 +5464,6 @@ UnableToConnect :: Err
 instance GHC.Exception.Type.Exception Fission.CLI.IPFS.Error.Types.Err
 instance GHC.Show.Show Fission.CLI.IPFS.Error.Types.Err
 
-module Fission.CLI.Environment.Types
-data Environment
-Environment :: Maybe (NonEmpty Peer) -> Ignored -> Maybe FilePath -> Environment
-[$sel:peers:Environment] :: Environment -> Maybe (NonEmpty Peer)
-[$sel:ignored:Environment] :: Environment -> Ignored
-[$sel:buildDir:Environment] :: Environment -> Maybe FilePath
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.CLI.Environment.Types.Environment
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.CLI.Environment.Types.Environment
-
-module Fission.CLI.Environment.Partial.Types
-data Partial
-Partial :: Maybe BasicAuthData -> Maybe (NonEmpty Peer) -> Maybe Ignored -> Maybe FilePath -> Partial
-[$sel:maybeUserAuth:Partial] :: Partial -> Maybe BasicAuthData
-[$sel:maybePeers:Partial] :: Partial -> Maybe (NonEmpty Peer)
-[$sel:maybeIgnored:Partial] :: Partial -> Maybe Ignored
-[$sel:maybeBuildDir:Partial] :: Partial -> Maybe FilePath
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.CLI.Environment.Partial.Types.Partial
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.CLI.Environment.Partial.Types.Partial
-instance GHC.Base.Semigroup Fission.CLI.Environment.Partial.Types.Partial
-instance GHC.Base.Monoid Fission.CLI.Environment.Partial.Types.Partial
-
-module Fission.CLI.Environment.Partial
-
--- | Gets hierarchical environment by recursed through file system
-get :: MonadIO m => m Partial
-
--- | Recurses up to user root to find an env with basic auth data
-findBasicAuth :: MonadIO m => m (Maybe BasicAuthData)
-
--- | Recurses up to user root to find a env that satisfies function "f"
-findRecurse :: MonadIO m => (Partial -> Bool) -> FilePath -> m (Maybe (FilePath, Partial))
-
--- | Decodes file to partial environment
-decode :: MonadIO m => FilePath -> m Partial
-
--- | Writes partial environment to path
-write :: MonadIO m => FilePath -> Partial -> m ()
-
--- | Merges partial env with the env at the path and overwrites
-writeMerge :: MonadIO m => FilePath -> Partial -> m ()
-
--- | globalEnv environment in users home
-globalEnv :: MonadIO m => m FilePath
-toFull :: Partial -> Environment
-fromFull :: Environment -> Partial
-updatePeers :: Partial -> [Peer] -> Partial
-
--- | Deletes user_auth from env at ~/.fission.yaml
-deleteHomeAuth :: MonadIO m => m ()
-
-module Fission.CLI.Prompt.BuildDir
-
--- | Checks user's current build dir by: * recursively checking
---   .fission.yaml * guessing a build dir from common static site
---   generators * prompting the user with that build dir
-checkBuildDir :: (MonadIO m, MonadLogger m) => FilePath -> m FilePath
-
 module Fission.CLI.Environment.Error
 data Env
 EnvNotFound :: Env
@@ -5533,14 +5479,6 @@ module Fission.CLI.Environment.Class
 class Monad m => MonadEnvironment m
 getIgnoredFiles :: MonadEnvironment m => m Ignored
 instance Fission.CLI.Environment.Class.MonadEnvironment m => Fission.CLI.Environment.Class.MonadEnvironment (Control.Monad.Trans.Except.ExceptT GHC.Exception.Type.SomeException m)
-
-
--- | Success messages and conditions
-module Fission.CLI.Display.Success
-live :: MonadIO m => Text -> m ()
-putOk :: MonadIO m => Text -> m ()
-dnsUpdated :: MonadIO m => Text -> m ()
-loggedInAs :: MonadIO m => Text -> m ()
 
 
 -- | Visual flourishes for indicating a loading state
@@ -5567,31 +5505,6 @@ module Fission.CLI.Display.Wait
 waitFor :: MonadUnliftIO m => ByteString -> m a -> m a
 
 
--- | File sync, IPFS-style
-module Fission.CLI.Display.Error
-
--- | Display a given error to the user and log an error to the debug log.
-put :: (MonadIO m, MonadLogger m, Show err) => err -> Text -> m ()
-
--- | Display a generic error message to the user and log an error to the
---   debug log.
-put' :: (MonadIO m, MonadLogger m, Show err) => err -> m ()
-putErrOr :: (MonadIO m, MonadLogger m, Show err) => (t -> m ()) -> Either err t -> m ()
-
--- | Display an error message to a user encouraging them to run `fission
---   setup` Error depends on if they have basic auth saved somewhere (ie if
---   they are an existing user)
-notConnected :: (MonadIO m, MonadLogger m, Exception err) => err -> m ()
-
-module Fission.CLI.Prompt.Fields
-
--- | Prompt a user for a value and do not accept an empty value
-getRequired :: (MonadIO m, MonadLogger m) => ByteString -> m ByteString
-
--- | Prompt a user for a secret and do not accept an empty value
-getRequiredSecret :: (MonadIO m, MonadLogger m) => ByteString -> m ByteString
-
-
 -- | Helpers for working with a cursor in a console
 module Fission.CLI.Display.Cursor
 
@@ -5604,6 +5517,7 @@ NoKeyFile :: Error
 NotRegistered :: Error
 CannotConnect :: Error
 PeersNotFound :: Error
+NoApp :: Error
 instance GHC.Exception.Type.Exception Fission.CLI.Config.Connected.Error.Types.Error
 instance GHC.Show.Show Fission.CLI.Config.Connected.Error.Types.Error
 instance GHC.Classes.Eq Fission.CLI.Config.Connected.Error.Types.Error
@@ -5623,6 +5537,8 @@ data Options
 Options :: Bool -> FilePath -> Options
 [$sel:dnsOnly:Options] :: Options -> Bool
 [$sel:path:Options] :: Options -> FilePath
+instance GHC.Classes.Eq Fission.CLI.Command.Up.Types.Options
+instance GHC.Show.Show Fission.CLI.Command.Up.Types.Options
 
 module Fission.CLI.Command.Types
 data Command m input output
@@ -5633,13 +5549,16 @@ Command :: !Text -> !Text -> !Parser input -> !input -> m output -> Command m in
 [$sel:handler:Command] :: Command m input output -> !input -> m output
 type Leaf = ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 
+module Fission.CLI.Command.App.Init.Types
 
--- | Grab files directly from IPFS
-module Fission.CLI.Command.Down
-
--- | The command to attach to the CLI tree
-cmd :: (MonadUnliftIO m, MonadLocalIPFS m, MonadLogger m) => Command m CID ()
-($sel:handler:Command) :: Command m input output -> input -> m output
+-- | Arguments, flags &amp; switches for the `app init` command
+data Options
+Options :: !FilePath -> !Maybe FilePath -> Options
+[$sel:appDir:Options] :: Options -> !FilePath
+[$sel:buildDir:Options] :: Options -> !Maybe FilePath
+newtype OptionalFilePath
+OptionalFilePath :: Maybe FilePath -> OptionalFilePath
+instance Data.String.IsString Fission.CLI.Command.App.Init.Types.OptionalFilePath
 
 module Fission.CLI.Command
 runWith :: (m () -> IO ()) -> Command m input () -> Leaf
@@ -5668,16 +5587,6 @@ instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Authorization.Potency.Types
 instance Data.Aeson.Types.ToJSON.ToJSON Fission.Authorization.Potency.Types.Potency
 instance Data.Aeson.Types.FromJSON.FromJSON Fission.Authorization.Potency.Types.Potency
 
-module Fission.App.Domain.Types
-
--- | Hack to work around nullable uniqueness constraints (DB-specific)
-data IsBare
-IsBare :: IsBare
-instance GHC.Classes.Eq Fission.App.Domain.Types.IsBare
-instance GHC.Show.Show Fission.App.Domain.Types.IsBare
-instance Database.Persist.Class.PersistField.PersistField Fission.App.Domain.Types.IsBare
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.App.Domain.Types.IsBare
-
 module Fission.App.Content.Initializer.Class
 class Monad m => Initializer m
 
@@ -5696,11 +5605,13 @@ module Fission.AWS.Zone.Types
 newtype ZoneID
 ZoneID :: Text -> ZoneID
 [$sel:getZoneID:ZoneID] :: ZoneID -> Text
-instance Data.String.IsString Fission.AWS.Zone.Types.ZoneID
-instance Data.Swagger.Internal.Schema.ToSchema Fission.AWS.Zone.Types.ZoneID
 instance GHC.Show.Show Fission.AWS.Zone.Types.ZoneID
-instance GHC.Generics.Generic Fission.AWS.Zone.Types.ZoneID
 instance GHC.Classes.Eq Fission.AWS.Zone.Types.ZoneID
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.AWS.Zone.Types.ZoneID
+instance RIO.Prelude.Display.Display Fission.AWS.Zone.Types.ZoneID
+instance Database.Persist.Class.PersistField.PersistField Fission.AWS.Zone.Types.ZoneID
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.AWS.Zone.Types.ZoneID
+instance Data.Swagger.Internal.Schema.ToSchema Fission.AWS.Zone.Types.ZoneID
 instance Data.Aeson.Types.FromJSON.FromJSON Fission.AWS.Zone.Types.ZoneID
 
 
@@ -5711,11 +5622,11 @@ module Fission.AWS.Types
 newtype ZoneID
 ZoneID :: Text -> ZoneID
 [$sel:getZoneID:ZoneID] :: ZoneID -> Text
-newtype Route53MockEnabled
-Route53MockEnabled :: Bool -> Route53MockEnabled
-instance GHC.Classes.Eq Fission.AWS.Types.Route53MockEnabled
-instance GHC.Show.Show Fission.AWS.Types.Route53MockEnabled
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.AWS.Types.Route53MockEnabled
+newtype MockRoute53
+MockRoute53 :: Bool -> MockRoute53
+instance GHC.Classes.Eq Fission.AWS.Types.MockRoute53
+instance GHC.Show.Show Fission.AWS.Types.MockRoute53
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.AWS.Types.MockRoute53
 
 
 -- | Random values
@@ -5794,7 +5705,6 @@ module Fission.URL.DomainName.Types
 newtype DomainName
 DomainName :: Text -> DomainName
 [$sel:get:DomainName] :: DomainName -> Text
-instance RIO.Prelude.Display.Display Fission.URL.DomainName.Types.DomainName
 instance Web.PathPieces.PathPiece Fission.URL.DomainName.Types.DomainName
 instance Data.String.IsString Fission.URL.DomainName.Types.DomainName
 instance GHC.Classes.Ord Fission.URL.DomainName.Types.DomainName
@@ -5802,6 +5712,7 @@ instance GHC.Read.Read Fission.URL.DomainName.Types.DomainName
 instance GHC.Show.Show Fission.URL.DomainName.Types.DomainName
 instance GHC.Generics.Generic Fission.URL.DomainName.Types.DomainName
 instance GHC.Classes.Eq Fission.URL.DomainName.Types.DomainName
+instance RIO.Prelude.Display.Display Fission.URL.DomainName.Types.DomainName
 instance Database.Persist.Class.PersistField.PersistField Fission.URL.DomainName.Types.DomainName
 instance Database.Persist.Sql.Class.PersistFieldSql Fission.URL.DomainName.Types.DomainName
 instance Data.Swagger.Internal.Schema.ToSchema Fission.URL.DomainName.Types.DomainName
@@ -5816,12 +5727,6 @@ instance Servant.API.ContentTypes.MimeUnrender Servant.API.ContentTypes.PlainTex
 
 module Fission.URL.DomainName
 
-module Fission.Domain.Error
-data DoesNotExist
-DoesNotExist :: DomainName -> DoesNotExist
-instance GHC.Classes.Eq Fission.Domain.Error.DoesNotExist
-instance GHC.Show.Show Fission.Domain.Error.DoesNotExist
-
 module Fission.App.Domain.Initializer.Class
 class Monad m => Initializer m
 
@@ -5831,17 +5736,24 @@ instance Fission.App.Domain.Initializer.Class.Initializer m => Fission.App.Domai
 
 module Fission.App.Domain.Initializer
 
+module Fission.URL.Path.Types
+data Path a
+WithPath :: a -> [Text] -> Path a
+instance GHC.Show.Show a => GHC.Show.Show (Fission.URL.Path.Types.Path a)
+instance GHC.Classes.Eq a => GHC.Classes.Eq (Fission.URL.Path.Types.Path a)
+instance RIO.Prelude.Display.Display a => RIO.Prelude.Display.Display (Fission.URL.Path.Types.Path a)
+
 module Fission.URL.Subdomain.Types
 
 -- | Type safety wrapper for subdomains
 newtype Subdomain
 Subdomain :: Text -> Subdomain
 [$sel:get:Subdomain] :: Subdomain -> Text
-instance RIO.Prelude.Display.Display Fission.URL.Subdomain.Types.Subdomain
 instance Data.String.IsString Fission.URL.Subdomain.Types.Subdomain
 instance GHC.Show.Show Fission.URL.Subdomain.Types.Subdomain
-instance GHC.Generics.Generic Fission.URL.Subdomain.Types.Subdomain
 instance GHC.Classes.Eq Fission.URL.Subdomain.Types.Subdomain
+instance RIO.Prelude.Display.Display Fission.URL.Subdomain.Types.Subdomain
+instance GHC.Base.Semigroup Fission.URL.Subdomain.Types.Subdomain
 instance Data.Aeson.Types.ToJSON.ToJSON Fission.URL.Subdomain.Types.Subdomain
 instance Database.Persist.Class.PersistField.PersistField Fission.URL.Subdomain.Types.Subdomain
 instance Database.Persist.Sql.Class.PersistFieldSql Fission.URL.Subdomain.Types.Subdomain
@@ -5855,23 +5767,8 @@ instance Servant.API.ContentTypes.MimeUnrender Servant.API.ContentTypes.PlainTex
 instance Test.QuickCheck.Arbitrary.Arbitrary Fission.URL.Subdomain.Types.Subdomain
 
 
--- | URL helpers
+-- | Subdomain helpers
 module Fission.URL.Subdomain
-
--- | Prefix a domain named with an optional subdomain.
-normalizePrefix :: DomainName -> Maybe Subdomain -> DomainName
-
--- | Prefix a domain with a subdomain.
---   
---   $setup &gt;&gt;&gt; :set -XOverloadedStrings
---   
---   <pre>
---   &gt;&gt;&gt; prefix (DomainName "domain") (Subdomain "sub")
---   DomainName {get = "sub.domain"}
---   </pre>
-prefix :: DomainName -> Subdomain -> DomainName
-
-module Fission.URL
 
 module Fission.URL.Types
 data URL
@@ -5879,27 +5776,22 @@ URL :: DomainName -> Maybe Subdomain -> URL
 [$sel:domainName:URL] :: URL -> DomainName
 [$sel:subdomain:URL] :: URL -> Maybe Subdomain
 instance GHC.Classes.Eq Fission.URL.Types.URL
+instance RIO.Prelude.Display.Display Fission.URL.Types.URL
 instance GHC.Show.Show Fission.URL.Types.URL
+instance Web.Internal.HttpApiData.ToHttpApiData Fission.URL.Types.URL
 instance Web.Internal.HttpApiData.FromHttpApiData Fission.URL.Types.URL
 instance Data.Swagger.Internal.ParamSchema.ToParamSchema Fission.URL.Types.URL
 instance Data.Swagger.Internal.Schema.ToSchema Fission.URL.Types.URL
 instance Data.Aeson.Types.ToJSON.ToJSON Fission.URL.Types.URL
 instance Data.Aeson.Types.FromJSON.FromJSON Fission.URL.Types.URL
 
-module Fission.AWS.Route53.Class
-class MonadAWS m => MonadRoute53 m
-update :: MonadRoute53 m => RecordType -> DomainName -> Text -> m (Either ServerError ChangeResourceRecordSetsResponse)
-instance Fission.AWS.Route53.Class.MonadRoute53 m => Fission.AWS.Route53.Class.MonadRoute53 (Fission.Internal.MonadDB.Types.Transaction m)
+module Fission.App.URL.Class
 
-module Fission.IPFS.DNSLink.Class
-class MonadRoute53 m => MonadDNSLink m
-set :: MonadDNSLink m => DomainName -> Maybe Subdomain -> CID -> m (Either ServerError DomainName)
-setBase :: MonadDNSLink m => Subdomain -> CID -> m (Either ServerError DomainName)
-instance Fission.IPFS.DNSLink.Class.MonadDNSLink m => Fission.IPFS.DNSLink.Class.MonadDNSLink (Fission.Internal.MonadDB.Types.Transaction m)
+-- | Interface for getting the base app URL
+class Monad m => HasAppURL m
 
-module Fission.IPFS.DNSLink
-
-module Fission.AWS.Route53
+-- | Get the base app URL (at time of writing: 'fission.app')
+getAppURL :: HasAppURL m => m URL
 
 module Fission.User.DID.Method.Types
 data Method
@@ -5980,6 +5872,19 @@ instance Data.Aeson.Types.ToJSON.ToJSON Fission.User.DID.Types.DID
 instance Data.Aeson.Types.FromJSON.FromJSON Fission.User.DID.Types.DID
 
 module Fission.User.DID
+
+module Fission.CLI.Environment.Types
+
+-- | Virtual environment built up from many layers of <a>Override</a>.
+data Environment
+Environment :: ![Peer] -> !Ignored -> !Maybe URL -> !Maybe FilePath -> !Maybe DID -> Environment
+[$sel:peers:Environment] :: Environment -> ![Peer]
+[$sel:ignored:Environment] :: Environment -> !Ignored
+[$sel:appURL:Environment] :: Environment -> !Maybe URL
+[$sel:buildDir:Environment] :: Environment -> !Maybe FilePath
+[$sel:serverDID:Environment] :: Environment -> !Maybe DID
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.CLI.Environment.Types.Environment
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.CLI.Environment.Types.Environment
 
 module Fission.Authorization.ServerDID.Class
 class Monad m => ServerDID m
@@ -6086,619 +5991,6 @@ instance Test.QuickCheck.Arbitrary.Arbitrary Fission.User.Provision.Types.Provis
 instance Data.Aeson.Types.FromJSON.FromJSON Fission.User.Provision.Types.Provision
 instance Data.Aeson.Types.ToJSON.ToJSON Fission.User.Provision.Types.Provision
 instance Data.Swagger.Internal.Schema.ToSchema Fission.User.Provision.Types.Provision
-
-module Fission.Models
-data HerokuAddOn
-HerokuAddOn :: !UUID -> !Maybe Region -> !UTCTime -> !UTCTime -> HerokuAddOn
-[$sel:herokuAddOnUuid:HerokuAddOn] :: HerokuAddOn -> !UUID
-[$sel:herokuAddOnRegion:HerokuAddOn] :: HerokuAddOn -> !Maybe Region
-[$sel:herokuAddOnInsertedAt:HerokuAddOn] :: HerokuAddOn -> !UTCTime
-[$sel:herokuAddOnModifiedAt:HerokuAddOn] :: HerokuAddOn -> !UTCTime
-type HerokuAddOnId = Key HerokuAddOn
-data User
-User :: !Maybe Public -> !Maybe Email -> !Username -> !Role -> !Bool -> !CID -> !Maybe (Key HerokuAddOn) -> !Maybe SecretDigest -> !UTCTime -> !UTCTime -> User
-[$sel:userPublicKey:User] :: User -> !Maybe Public
-[$sel:userEmail:User] :: User -> !Maybe Email
-[$sel:userUsername:User] :: User -> !Username
-[$sel:userRole:User] :: User -> !Role
-[$sel:userActive:User] :: User -> !Bool
-[$sel:userDataRoot:User] :: User -> !CID
-[$sel:userHerokuAddOnId:User] :: User -> !Maybe (Key HerokuAddOn)
-[$sel:userSecretDigest:User] :: User -> !Maybe SecretDigest
-[$sel:userInsertedAt:User] :: User -> !UTCTime
-[$sel:userModifiedAt:User] :: User -> !UTCTime
-type UserId = Key User
-data UpdateUserDataRootEvent
-UpdateUserDataRootEvent :: !Key User -> !CID -> !UTCTime -> UpdateUserDataRootEvent
-[$sel:updateUserDataRootEventUserId:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !Key User
-[$sel:updateUserDataRootEventNewDataRoot:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !CID
-[$sel:updateUserDataRootEventInsertedAt:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !UTCTime
-type UpdateUserDataRootEventId = Key UpdateUserDataRootEvent
-data LoosePin
-LoosePin :: !Key User -> !CID -> !UTCTime -> LoosePin
-[$sel:loosePinOwnerId:LoosePin] :: LoosePin -> !Key User
-[$sel:loosePinCid:LoosePin] :: LoosePin -> !CID
-[$sel:loosePinInsertedAt:LoosePin] :: LoosePin -> !UTCTime
-type LoosePinId = Key LoosePin
-data Domain
-Domain :: !Key User -> !DomainName -> !UTCTime -> !UTCTime -> Domain
-[$sel:domainOwnerId:Domain] :: Domain -> !Key User
-[$sel:domainDomainName:Domain] :: Domain -> !DomainName
-[$sel:domainInsertedAt:Domain] :: Domain -> !UTCTime
-[$sel:domainModifiedAt:Domain] :: Domain -> !UTCTime
-type DomainId = Key Domain
-data App
-App :: !Key User -> !CID -> !UTCTime -> !UTCTime -> App
-[$sel:appOwnerId:App] :: App -> !Key User
-[$sel:appCid:App] :: App -> !CID
-[$sel:appInsertedAt:App] :: App -> !UTCTime
-[$sel:appModifiedAt:App] :: App -> !UTCTime
-type AppId = Key App
-data CreateAppEvent
-CreateAppEvent :: !Key User -> !CID -> !UTCTime -> CreateAppEvent
-[$sel:createAppEventOwnerId:CreateAppEvent] :: CreateAppEvent -> !Key User
-[$sel:createAppEventCid:CreateAppEvent] :: CreateAppEvent -> !CID
-[$sel:createAppEventInsertedAt:CreateAppEvent] :: CreateAppEvent -> !UTCTime
-type CreateAppEventId = Key CreateAppEvent
-data DestroyAppEvent
-DestroyAppEvent :: !Key App -> !UTCTime -> DestroyAppEvent
-[$sel:destroyAppEventAppId:DestroyAppEvent] :: DestroyAppEvent -> !Key App
-[$sel:destroyAppEventInsertedAt:DestroyAppEvent] :: DestroyAppEvent -> !UTCTime
-type DestroyAppEventId = Key DestroyAppEvent
-data SetAppCIDEvent
-SetAppCIDEvent :: !Key App -> !CID -> !UTCTime -> SetAppCIDEvent
-[$sel:setAppCIDEventAppId:SetAppCIDEvent] :: SetAppCIDEvent -> !Key App
-[$sel:setAppCIDEventNewCID:SetAppCIDEvent] :: SetAppCIDEvent -> !CID
-[$sel:setAppCIDEventInsertedAt:SetAppCIDEvent] :: SetAppCIDEvent -> !UTCTime
-type SetAppCIDEventId = Key SetAppCIDEvent
-data AppDomain
-AppDomain :: !Key App -> !DomainName -> !Maybe Subdomain -> !Maybe IsBare -> !UTCTime -> AppDomain
-[$sel:appDomainAppId:AppDomain] :: AppDomain -> !Key App
-[$sel:appDomainDomainName:AppDomain] :: AppDomain -> !DomainName
-[$sel:appDomainSubdomain:AppDomain] :: AppDomain -> !Maybe Subdomain
-[$sel:appDomainIsBareDomain:AppDomain] :: AppDomain -> !Maybe IsBare
-[$sel:appDomainInsertedAt:AppDomain] :: AppDomain -> !UTCTime
-type AppDomainId = Key AppDomain
-data AssociateAppDomainEvent
-AssociateAppDomainEvent :: !Key App -> !DomainName -> !Maybe Subdomain -> !UTCTime -> AssociateAppDomainEvent
-[$sel:associateAppDomainEventAppId:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !Key App
-[$sel:associateAppDomainEventDomainName:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !DomainName
-[$sel:associateAppDomainEventSubdomain:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !Maybe Subdomain
-[$sel:associateAppDomainEventInsertedAt:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !UTCTime
-type AssociateAppDomainEventId = Key AssociateAppDomainEvent
-data DissociateAppDomainEvent
-DissociateAppDomainEvent :: !Key App -> !DomainName -> !Maybe Subdomain -> !UTCTime -> DissociateAppDomainEvent
-[$sel:dissociateAppDomainEventAppId:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !Key App
-[$sel:dissociateAppDomainEventDomainName:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !DomainName
-[$sel:dissociateAppDomainEventSubdomain:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !Maybe Subdomain
-[$sel:dissociateAppDomainEventInsertedAt:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !UTCTime
-type DissociateAppDomainEventId = Key DissociateAppDomainEvent
-migrateAll :: Migration
-instance GHC.Classes.Eq Fission.Models.DissociateAppDomainEvent
-instance GHC.Show.Show Fission.Models.DissociateAppDomainEvent
-instance GHC.Classes.Eq Fission.Models.AssociateAppDomainEvent
-instance GHC.Show.Show Fission.Models.AssociateAppDomainEvent
-instance GHC.Classes.Eq Fission.Models.AppDomain
-instance GHC.Show.Show Fission.Models.AppDomain
-instance GHC.Classes.Eq Fission.Models.SetAppCIDEvent
-instance GHC.Show.Show Fission.Models.SetAppCIDEvent
-instance GHC.Classes.Eq Fission.Models.DestroyAppEvent
-instance GHC.Show.Show Fission.Models.DestroyAppEvent
-instance GHC.Classes.Eq Fission.Models.CreateAppEvent
-instance GHC.Show.Show Fission.Models.CreateAppEvent
-instance GHC.Classes.Eq Fission.Models.App
-instance GHC.Show.Show Fission.Models.App
-instance GHC.Classes.Eq Fission.Models.Domain
-instance GHC.Show.Show Fission.Models.Domain
-instance GHC.Classes.Eq Fission.Models.LoosePin
-instance GHC.Show.Show Fission.Models.LoosePin
-instance GHC.Classes.Eq Fission.Models.UpdateUserDataRootEvent
-instance GHC.Show.Show Fission.Models.UpdateUserDataRootEvent
-instance GHC.Classes.Eq Fission.Models.User
-instance GHC.Show.Show Fission.Models.User
-instance GHC.Classes.Eq Fission.Models.HerokuAddOn
-instance GHC.Show.Show Fission.Models.HerokuAddOn
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.HerokuAddOn)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.User)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.LoosePin)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.AppDomain)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
-instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.DissociateAppDomainEvent
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.DissociateAppDomainEvent
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.DissociateAppDomainEvent
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.DissociateAppDomainEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.DissociateAppDomainEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.DissociateAppDomainEvent
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.DissociateAppDomainEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.DissociateAppDomainEvent backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.AssociateAppDomainEvent
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.AssociateAppDomainEvent
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.AssociateAppDomainEvent
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.AssociateAppDomainEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.AssociateAppDomainEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.AssociateAppDomainEvent
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.AssociateAppDomainEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.AssociateAppDomainEvent backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.AppDomain
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.AppDomain
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.AppDomain
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.AppDomain
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.AppDomain
-instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.AppDomain
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.AppDomain GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.AppDomain backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.SetAppCIDEvent
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.SetAppCIDEvent
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.SetAppCIDEvent
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.SetAppCIDEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.SetAppCIDEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.SetAppCIDEvent
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.SetAppCIDEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.SetAppCIDEvent backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.DestroyAppEvent
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.DestroyAppEvent
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.DestroyAppEvent
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.DestroyAppEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.DestroyAppEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.DestroyAppEvent
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.DestroyAppEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.DestroyAppEvent backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.CreateAppEvent
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.CreateAppEvent
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.CreateAppEvent
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.CreateAppEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.CreateAppEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.CreateAppEvent
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.CreateAppEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.CreateAppEvent backend
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Models.AppId
-instance Data.Swagger.Internal.Schema.ToSchema Fission.Models.AppId
-instance Data.Swagger.Internal.ParamSchema.ToParamSchema Fission.Models.AppId
-instance RIO.Prelude.Display.Display Fission.Models.AppId
-instance Data.Aeson.Types.ToJSON.ToJSONKey Fission.Models.AppId
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.App
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.App
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.App
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.App
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.App
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.App
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.App GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.App backend
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.Domain
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.Domain
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.Domain
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.Domain
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.Domain
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.Domain GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.Domain backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.LoosePin
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.LoosePin
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.LoosePin
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.LoosePin
-instance Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.LoosePin
-instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.LoosePin
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.LoosePin GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.LoosePin backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.UpdateUserDataRootEvent
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.UpdateUserDataRootEvent
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.UpdateUserDataRootEvent
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.UpdateUserDataRootEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.UpdateUserDataRootEvent
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.UpdateUserDataRootEvent
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.UpdateUserDataRootEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.UpdateUserDataRootEvent backend
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Models.UserId
-instance RIO.Prelude.Display.Display Fission.Models.UserId
-instance Fission.Security.Digestable Fission.Models.UserId
-instance Data.Swagger.Internal.Schema.ToSchema Fission.Models.UserId
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.User
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.User
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.User
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.User
-instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.User
-instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.User
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.User GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.User backend
-instance Database.Persist.Class.PersistField.PersistField Fission.Models.HerokuAddOn
-instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.HerokuAddOn
-instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.HerokuAddOn
-instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.HerokuAddOn
-instance Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.HerokuAddOn
-instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.HerokuAddOn
-instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.HerokuAddOn GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.HerokuAddOn backend
-
-module Fission.User.Retriever.Class
-class Monad m => Retriever m
-getByUsername :: Retriever m => Username -> m (Maybe (Entity User))
-getByPublicKey :: Retriever m => Public -> m (Maybe (Entity User))
-getByHerokuAddOnId :: Retriever m => HerokuAddOnId -> m (Maybe (Entity User))
-getByEmail :: Retriever m => Email -> m (Maybe (Entity User))
-instance Control.Monad.IO.Class.MonadIO m => Fission.User.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.User.Retriever
-
-module Fission.User.Destroyer.Class
-
--- | Destroy <tt>User</tt>s
-class Monad m => Destroyer m
-destroy :: Destroyer m => UserId -> m ()
-instance Control.Monad.IO.Class.MonadIO m => Fission.User.Destroyer.Class.Destroyer (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.User.Destroyer
-
-module Fission.Platform.Heroku.Provision.Types
-
--- | Response Parameters
---   
---   From Heroku
---   
---   <pre>
---   In addition to the id parameter as documented under asynchronous provisioning,
---   you should include a config parameter along with any other optional parameters
---   of your choosing.
---   
---   Name: config
---   Type: object
---   
---   Description:
---   Configuration variables to be set as environment variables on any applications
---   that use this add-on resource. All environment variables that you send should
---   have the same prefix: your add-on’s name, capitalized. However,
---   within the context of a Heroku app, the prefix may be different for a variety
---   of reasons. For example, if your add-on is named fast-db and you are setting
---   FAST_DB_URL, the variable name on the application will default to FAST_DB_URL
---   but would be PRIMARY_DB_URL if the user added the add-on with
---   the prefix PRIMARY_DB.
---   
---   Example:
---   HTTP/1.1 200 OK
---   { "MYADDON_URL": "http://myaddon.com/52e82f5d73" }
---   </pre>
-data Provision
-Provision :: UserId -> Provision -> [Peer] -> Text -> Provision
-
--- | User ID
-[$sel:id:Provision] :: Provision -> UserId
-
--- | Heroku env var payload
-[$sel:config:Provision] :: Provision -> Provision
-
--- | IPFS peer list
-[$sel:peers:Provision] :: Provision -> [Peer]
-
--- | A helpful human-readable message
-[$sel:message:Provision] :: Provision -> Text
-instance GHC.Show.Show Fission.Platform.Heroku.Provision.Types.Provision
-instance GHC.Classes.Eq Fission.Platform.Heroku.Provision.Types.Provision
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Platform.Heroku.Provision.Types.Provision
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.Platform.Heroku.Provision.Types.Provision
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.Platform.Heroku.Provision.Types.Provision
-instance Data.Swagger.Internal.Schema.ToSchema Fission.Platform.Heroku.Provision.Types.Provision
-
-module Fission.Platform.Heroku.AddOn.Retriever.Class
-class Monad m => Retriever m
-getByUUID :: Retriever m => UUID -> m (Maybe (Entity HerokuAddOn))
-instance Control.Monad.IO.Class.MonadIO m => Fission.Platform.Heroku.AddOn.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.Platform.Heroku.AddOn.Retriever
-
-module Fission.Platform.Heroku.AddOn.Destroyer.Class
-
--- | Destroy <tt>Heroku.AddOn</tt>s
-class Monad m => Destroyer m
-destroyByUUID :: Destroyer m => UUID -> m ()
-instance Control.Monad.IO.Class.MonadIO m => Fission.Platform.Heroku.AddOn.Destroyer.Class.Destroyer (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.Platform.Heroku.AddOn.Destroyer
-
-module Fission.Ownership.Class
-class Owned item
-ownerId :: Owned item => item -> UserId
-instance Fission.Ownership.Class.Owned model => Fission.Ownership.Class.Owned (Database.Persist.Class.PersistEntity.Entity model)
-instance Fission.Ownership.Class.Owned (Database.Persist.Class.PersistEntity.Entity Fission.Models.User)
-instance Fission.Ownership.Class.Owned Fission.Models.App
-instance Fission.Ownership.Class.Owned Fission.Models.Domain
-instance Fission.Ownership.Class.Owned Fission.Models.LoosePin
-
-module Fission.Ownership
-isOwnedBy :: Owned item => UserId -> item -> Bool
-
-module Fission.LoosePin.Retriever.Class
-class Monad m => Retriever m
-
--- | CIDs associated with a user
-getByUserId :: Retriever m => UserId -> m [Entity LoosePin]
-
--- | Find all CIDs that remain from a list
-getByCids :: Retriever m => [CID] -> m [Entity LoosePin]
-instance Control.Monad.IO.Class.MonadIO m => Fission.LoosePin.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.LoosePin.Retriever
-
-
--- | Database mutations for <a>LoosePin</a>s
-module Fission.LoosePin.Destroyer.Class
-
--- | Actions for destroying <tt>LoosePin</tt>s
-class Monad m => Destroyer m
-
--- | Destroy a specific <tt>LoosePin</tt>
-destroy :: Destroyer m => UserId -> CID -> m ()
-
--- | Destroy several <tt>LoosePin</tt>s by they primary keys
-destroyMany :: Destroyer m => UserId -> [LoosePinId] -> m ()
-instance Control.Monad.IO.Class.MonadIO m => Fission.LoosePin.Destroyer.Class.Destroyer (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.LoosePin.Destroyer
-
-
--- | Database mutations for <a>LoosePin</a>s
-module Fission.LoosePin.Creator.Class
-
--- | Actions for creating new <tt>LoosePin</tt>s
-class Monad m => Creator m
-
--- | Create a new, timestamped entry
-create :: Creator m => UserId -> CID -> UTCTime -> m (Maybe LoosePinId)
-
--- | Create new <a>LoosePin</a>s, ignoring existing values (set-like)
-createMany :: Creator m => UserId -> [CID] -> UTCTime -> m [CID]
-instance Control.Monad.IO.Class.MonadIO m => Fission.LoosePin.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.LoosePin.Creator
-
-module Fission.LoosePin
-type CRUD m = (Retriever m, Creator m, Destroyer m)
-
-module Fission.Internal.Fixture.User
-user :: User
-
-
--- | Fission authorization
-module Fission.Authorization.Types
-
--- | The final high-level authorization -- internal use only
-data Authorization
-Authorization :: !Either Heroku DID -> !Entity User -> !Potency -> !Text -> Authorization
-[$sel:sender:Authorization] :: Authorization -> !Either Heroku DID
-[$sel:about:Authorization] :: Authorization -> !Entity User
-[$sel:potency:Authorization] :: Authorization -> !Potency
-[$sel:scope:Authorization] :: Authorization -> !Text
-data Heroku
-Heroku :: Heroku
-instance GHC.Classes.Eq Fission.Authorization.Types.Authorization
-instance GHC.Show.Show Fission.Authorization.Types.Authorization
-instance GHC.Classes.Eq Fission.Authorization.Types.Heroku
-instance GHC.Show.Show Fission.Authorization.Types.Heroku
-instance RIO.Prelude.Display.Display Fission.Authorization.Types.Authorization
-
-module Fission.Internal.Mock.Config.Types
-data Config
-Config :: (DomainName -> Maybe Subdomain -> CID -> Either ServerError DomainName) -> DomainName -> (RecordType -> DomainName -> Text -> Either ServerError ChangeResourceRecordSetsResponse) -> UTCTime -> NonEmpty Peer -> AuthHandler Request (Entity User) -> AuthHandler Request DID -> AuthHandler Request Authorization -> BasicAuthCheck Auth -> Bool -> Either Error RawMessage -> Either ClientError CID -> Either ClientError Serialized -> Either ClientError Response -> Either ClientError Response -> Config
-[$sel:setDNSLink:Config] :: Config -> DomainName -> Maybe Subdomain -> CID -> Either ServerError DomainName
-[$sel:getBaseDomain:Config] :: Config -> DomainName
-[$sel:updateRoute53:Config] :: Config -> RecordType -> DomainName -> Text -> Either ServerError ChangeResourceRecordSetsResponse
-[$sel:now:Config] :: Config -> UTCTime
-[$sel:linkedPeers:Config] :: Config -> NonEmpty Peer
-[$sel:userVerifier:Config] :: Config -> AuthHandler Request (Entity User)
-[$sel:didVerifier:Config] :: Config -> AuthHandler Request DID
-[$sel:authVerifier:Config] :: Config -> AuthHandler Request Authorization
-[$sel:herokuVerifier:Config] :: Config -> BasicAuthCheck Auth
-[$sel:forceAuthed:Config] :: Config -> Bool
-[$sel:localIPFSCall:Config] :: Config -> Either Error RawMessage
-[$sel:remoteIPFSAdd:Config] :: Config -> Either ClientError CID
-[$sel:remoteIPFSCat:Config] :: Config -> Either ClientError Serialized
-[$sel:remoteIPFSPin:Config] :: Config -> Either ClientError Response
-[$sel:remoteIPFSUnpin:Config] :: Config -> Either ClientError Response
-
-module Fission.Internal.Mock.Config
-defaultConfig :: Config
-
-module Fission.Authorization
-latestVersion :: SemVer
-
-module Fission.Internal.Mock.Effect.Types
-data RunDB
-RunDB :: RunDB
-data CheckTime
-CheckTime :: CheckTime
-data RunAWS
-RunAWS :: RunAWS
-data UpdateRoute53
-UpdateRoute53 :: UpdateRoute53
-data SetDNSLink
-SetDNSLink :: SetDNSLink
-data RunLocalIPFS
-RunLocalIPFS :: RunLocalIPFS
-data RunRemoteIPFS
-RemoteIPFSGeneric :: RunRemoteIPFS
-RemoteIPFSAdd :: ByteString -> RunRemoteIPFS
-RemoteIPFSCat :: CID -> RunRemoteIPFS
-RemoteIPFSPin :: CID -> RunRemoteIPFS
-RemoteIPFSUnpin :: CID -> Bool -> RunRemoteIPFS
-data LogMsg
-LogMsg :: LogLevel -> LogStr -> LogMsg
-data CreateHerokuAddOn
-CreateHerokuAddOn :: UUID -> CreateHerokuAddOn
-data DestroyHerokuAddOn
-DestroyHerokuAddOn :: UUID -> DestroyHerokuAddOn
-data RetrieveUser
-GetUserByUsername :: Username -> RetrieveUser
-GetUserByPublicKey :: Public -> RetrieveUser
-GetUserByHerokuAddOnId :: HerokuAddOnId -> RetrieveUser
-GetUserByEmail :: Email -> RetrieveUser
-data CreateUser
-CreateUser :: CreateUser
-data ModifyUser
-ModifyUser :: UserId -> ModifyUser
-data DestroyUser
-DestroyUser :: UserId -> DestroyUser
-data RetrieveLoosePin
-GetLoosePinByUserId :: UserId -> RetrieveLoosePin
-GetLoosePinByCID :: CID -> RetrieveLoosePin
-data CreateLoosePin
-CreateLoosePin :: UserId -> CID -> CreateLoosePin
-data DestroyLoosePin
-DestroyLoosePin :: UserId -> CID -> DestroyLoosePin
-DestroyLoosePinById :: UserId -> LoosePinId -> DestroyLoosePin
-type FissionEffs = '[CheckTime, RunAWS, RunDB, SetDNSLink, UpdateRoute53, RunLocalIPFS, RunRemoteIPFS, LogMsg, DestroyHerokuAddOn, DestroyUser, DestroyLoosePin, RetrieveUser, RetrieveLoosePin, ModifyUser, CreateUser, CreateLoosePin, CreateHerokuAddOn]
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.DestroyLoosePin
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.DestroyLoosePin
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CreateLoosePin
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CreateLoosePin
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RetrieveLoosePin
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RetrieveLoosePin
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.DestroyUser
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.DestroyUser
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.ModifyUser
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.ModifyUser
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CreateUser
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CreateUser
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RetrieveUser
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RetrieveUser
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CreateHerokuAddOn
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CreateHerokuAddOn
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.DestroyHerokuAddOn
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.DestroyHerokuAddOn
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.LogMsg
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.LogMsg
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunRemoteIPFS
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunRemoteIPFS
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunLocalIPFS
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunLocalIPFS
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.SetDNSLink
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.SetDNSLink
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.UpdateRoute53
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.UpdateRoute53
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunAWS
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunAWS
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CheckTime
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CheckTime
-instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunDB
-instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunDB
-
-module Fission.Internal.Mock.Effect
-log :: (IsMember eff log, Applicative t, MonadWriter (t (OpenUnion log)) m) => eff -> m ()
 
 module Fission.Web.Auth.Class
 class Monad m => MonadAuth who m
@@ -6895,9 +6187,13 @@ instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.Proof
 -- | Authorization types; primarily more semantic aliases
 module Fission.Web.Auth.Token.Bearer.Types
 data Token
-Token :: !JWT -> !Maybe RawContent -> Token
+Token :: !JWT -> !RawContent -> Token
+
+-- | The actual token
 [$sel:jwt:Token] :: Token -> !JWT
-[$sel:rawContent:Token] :: Token -> !Maybe RawContent
+
+-- | Primarily to pass in to the verifier
+[$sel:rawContent:Token] :: Token -> !RawContent
 instance GHC.Classes.Eq Fission.Web.Auth.Token.Bearer.Types.Token
 instance GHC.Show.Show Fission.Web.Auth.Token.Bearer.Types.Token
 instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.Bearer.Types.Token
@@ -6915,8 +6211,6 @@ tokenRSA2048 :: Token
 jwtRSA2048 :: JWT
 rawContent :: RawContent
 validTime :: UTCTime
-
-module Fission.Internal.Fixture
 
 module Fission.Web.Auth.Token.Types
 data Token
@@ -6942,15 +6236,6 @@ module Fission.Web.Client.Class
 class Monad m => MonadWebClient m
 sendRequest :: MonadWebClient m => ClientM a -> m (Either ClientError a)
 
-module Fission.Web.Client.JWT
-mkAuthReq :: (MonadIO m, MonadTime m, ServerDID m, MonadWebAuth m SecretKey) => m (Request -> Request)
-ucan :: UTCTime -> DID -> SecretKey -> Proof -> JWT
-
-module Fission.Web.Client
-sendRequestM :: MonadWebClient m => m (ClientM a) -> m (Either ClientError a)
-withPayload :: Functor f => f (a -> b) -> a -> f b
-authClient :: (MonadIO m, MonadTime m, ServerDID m, MonadWebAuth m (AuthClientData a), MonadWebAuth m SecretKey, HasClient ClientM api, Client ClientM api ~ (AuthenticatedRequest a -> f b)) => Proxy api -> m (f b)
-
 module Fission.Web.Client.Types
 newtype Runner
 Runner :: (forall a. ClientM a -> IO (Either ClientError a)) -> Runner
@@ -6973,14 +6258,10 @@ instance (Fission.Web.Error.Class.ToServerError a, Fission.Web.Error.Class.ToSer
 -- | Web error handling, common patterns, and other helpers
 module Fission.Web.Error
 ensure :: (MonadLogger m, MonadThrow m, Display err, ToServerError err) => Either err a -> m a
-ensureM :: (MonadLogger m, MonadThrow m, Display err, ToServerError err) => Either err a -> m a
+ensureM :: (MonadLogger m, MonadThrow m, Display err, ToServerError err) => m (Either err a) -> m a
 ensureMaybe :: (MonadLogger m, MonadThrow m, Display err, ToServerError err) => err -> Maybe a -> m a
 throw :: (MonadLogger m, MonadThrow m, Display err, ToServerError err) => err -> m a
 withMessage :: Display err => err -> ServerError -> ServerError
-
-module Fission.Web.DNS
-type API = Summary "Set default app's DNSLink" :> Description "DEPRECATED \9940 Set default app's DNSLink to a CID" :> Capture "cid" CID :> PutAccepted '[PlainText, OctetStream] DomainName
-server :: (MonadLogger m, MonadDNSLink m) => Authorization -> ServerT API m
 
 module Fission.Web.Auth.Error
 data Error
@@ -7084,12 +6365,6 @@ isUsernameChar :: Char -> Bool
 -- | Top-level username module
 module Fission.User.Username
 
-
--- | Validate user
-module Fission.User.Validation
-check :: User -> Either Invalid User
-isValid :: User -> Bool
-
 module Fission.User.Password.Error
 data FailedDigest
 FailedDigest :: FailedDigest
@@ -7105,15 +6380,6 @@ module Fission.User.Password
 random :: MonadIO m => m Password
 hashPassword :: MonadIO m => Password -> m (Either FailedDigest Text)
 
-module Fission.User.Modifier.Class
-class Monad m => Modifier m
-updatePassword :: Modifier m => UserId -> Password -> UTCTime -> m (Either FailedDigest Password)
-updatePublicKey :: Modifier m => UserId -> Public -> UTCTime -> m Public
-setData :: Modifier m => UserId -> CID -> UTCTime -> m (Either ServerError ())
-instance (Fission.IPFS.DNSLink.Class.MonadDNSLink m, Control.Monad.IO.Class.MonadIO m) => Fission.User.Modifier.Class.Modifier (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.User.Modifier
-
 module Fission.User.Creator.Error
 data AlreadyExists
 ConflictingUsername :: Username -> AlreadyExists
@@ -7123,22 +6389,6 @@ instance GHC.Classes.Eq Fission.User.Creator.Error.AlreadyExists
 instance GHC.Show.Show Fission.User.Creator.Error.AlreadyExists
 instance RIO.Prelude.Display.Display Fission.User.Creator.Error.AlreadyExists
 instance Fission.Web.Error.Class.ToServerError Fission.User.Creator.Error.AlreadyExists
-
-module Fission.Error.AlreadyExists.Types
-data AlreadyExists entity
-AlreadyExists :: AlreadyExists entity
-instance Data.Typeable.Internal.Typeable entity => GHC.Exception.Type.Exception (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
-instance GHC.Classes.Eq (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
-instance GHC.Show.Show (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
-instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists entity) => Fission.Web.Error.Class.ToServerError (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
-instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.User)
-instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.LoosePin)
-instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.Domain)
-instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.App)
-instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.HerokuAddOn)
-
-module Fission.AWS
-validate :: ChangeResourceRecordSetsResponse -> Either ServerError ChangeResourceRecordSetsResponse
 
 module Fission.Web.Auth.Token.JWT.Signature.Error
 data Error
@@ -7241,6 +6491,762 @@ instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.Error.Error
 instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Error.Error
 instance Fission.Web.Error.Class.ToServerError Fission.Web.Auth.Token.JWT.Error.Error
 
+module Fission.URL.Errors
+data InvalidURL
+InvalidURL :: InvalidURL
+instance GHC.Show.Show Fission.URL.Errors.InvalidURL
+instance GHC.Classes.Eq Fission.URL.Errors.InvalidURL
+instance RIO.Prelude.Display.Display Fission.URL.Errors.InvalidURL
+instance Fission.Web.Error.Class.ToServerError Fission.URL.Errors.InvalidURL
+
+module Fission.URL
+prefix' :: Subdomain -> URL -> URL
+zeroOrOneSubdomain :: URL -> Either InvalidURL URL
+
+module Fission.Models
+data HerokuAddOn
+HerokuAddOn :: !UUID -> !Maybe Region -> !UTCTime -> !UTCTime -> HerokuAddOn
+[$sel:herokuAddOnUuid:HerokuAddOn] :: HerokuAddOn -> !UUID
+[$sel:herokuAddOnRegion:HerokuAddOn] :: HerokuAddOn -> !Maybe Region
+[$sel:herokuAddOnInsertedAt:HerokuAddOn] :: HerokuAddOn -> !UTCTime
+[$sel:herokuAddOnModifiedAt:HerokuAddOn] :: HerokuAddOn -> !UTCTime
+type HerokuAddOnId = Key HerokuAddOn
+data User
+User :: !Maybe Public -> !Maybe Email -> !Username -> !Role -> !Bool -> !CID -> !Maybe (Key HerokuAddOn) -> !Maybe SecretDigest -> !UTCTime -> !UTCTime -> User
+[$sel:userPublicKey:User] :: User -> !Maybe Public
+[$sel:userEmail:User] :: User -> !Maybe Email
+[$sel:userUsername:User] :: User -> !Username
+[$sel:userRole:User] :: User -> !Role
+[$sel:userActive:User] :: User -> !Bool
+[$sel:userDataRoot:User] :: User -> !CID
+[$sel:userHerokuAddOnId:User] :: User -> !Maybe (Key HerokuAddOn)
+[$sel:userSecretDigest:User] :: User -> !Maybe SecretDigest
+[$sel:userInsertedAt:User] :: User -> !UTCTime
+[$sel:userModifiedAt:User] :: User -> !UTCTime
+type UserId = Key User
+data UpdateUserDataRootEvent
+UpdateUserDataRootEvent :: !Key User -> !CID -> !UTCTime -> UpdateUserDataRootEvent
+[$sel:updateUserDataRootEventUserId:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !Key User
+[$sel:updateUserDataRootEventNewDataRoot:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !CID
+[$sel:updateUserDataRootEventInsertedAt:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !UTCTime
+type UpdateUserDataRootEventId = Key UpdateUserDataRootEvent
+data LoosePin
+LoosePin :: !Key User -> !CID -> !UTCTime -> LoosePin
+[$sel:loosePinOwnerId:LoosePin] :: LoosePin -> !Key User
+[$sel:loosePinCid:LoosePin] :: LoosePin -> !CID
+[$sel:loosePinInsertedAt:LoosePin] :: LoosePin -> !UTCTime
+type LoosePinId = Key LoosePin
+data Domain
+Domain :: !DomainName -> !Key User -> !ZoneID -> !UTCTime -> !UTCTime -> Domain
+[$sel:domainDomainName:Domain] :: Domain -> !DomainName
+[$sel:domainOwnerId:Domain] :: Domain -> !Key User
+[$sel:domainZoneId:Domain] :: Domain -> !ZoneID
+[$sel:domainInsertedAt:Domain] :: Domain -> !UTCTime
+[$sel:domainModifiedAt:Domain] :: Domain -> !UTCTime
+type DomainId = Key Domain
+data App
+App :: !Key User -> !CID -> !UTCTime -> !UTCTime -> App
+[$sel:appOwnerId:App] :: App -> !Key User
+[$sel:appCid:App] :: App -> !CID
+[$sel:appInsertedAt:App] :: App -> !UTCTime
+[$sel:appModifiedAt:App] :: App -> !UTCTime
+type AppId = Key App
+data CreateAppEvent
+CreateAppEvent :: !Key User -> !CID -> !UTCTime -> CreateAppEvent
+[$sel:createAppEventOwnerId:CreateAppEvent] :: CreateAppEvent -> !Key User
+[$sel:createAppEventCid:CreateAppEvent] :: CreateAppEvent -> !CID
+[$sel:createAppEventInsertedAt:CreateAppEvent] :: CreateAppEvent -> !UTCTime
+type CreateAppEventId = Key CreateAppEvent
+data DestroyAppEvent
+DestroyAppEvent :: !Key App -> !UTCTime -> DestroyAppEvent
+[$sel:destroyAppEventAppId:DestroyAppEvent] :: DestroyAppEvent -> !Key App
+[$sel:destroyAppEventInsertedAt:DestroyAppEvent] :: DestroyAppEvent -> !UTCTime
+type DestroyAppEventId = Key DestroyAppEvent
+data SetAppCIDEvent
+SetAppCIDEvent :: !Key App -> !CID -> !UTCTime -> SetAppCIDEvent
+[$sel:setAppCIDEventAppId:SetAppCIDEvent] :: SetAppCIDEvent -> !Key App
+[$sel:setAppCIDEventNewCID:SetAppCIDEvent] :: SetAppCIDEvent -> !CID
+[$sel:setAppCIDEventInsertedAt:SetAppCIDEvent] :: SetAppCIDEvent -> !UTCTime
+type SetAppCIDEventId = Key SetAppCIDEvent
+data AppDomain
+AppDomain :: !Key App -> !DomainName -> !Maybe Subdomain -> !Checkmark -> !UTCTime -> AppDomain
+[$sel:appDomainAppId:AppDomain] :: AppDomain -> !Key App
+[$sel:appDomainDomainName:AppDomain] :: AppDomain -> !DomainName
+[$sel:appDomainSubdomain:AppDomain] :: AppDomain -> !Maybe Subdomain
+[$sel:appDomainIsPrimary:AppDomain] :: AppDomain -> !Checkmark
+[$sel:appDomainInsertedAt:AppDomain] :: AppDomain -> !UTCTime
+type AppDomainId = Key AppDomain
+data AssociateAppDomainEvent
+AssociateAppDomainEvent :: !Key App -> !DomainName -> !Maybe Subdomain -> !UTCTime -> AssociateAppDomainEvent
+[$sel:associateAppDomainEventAppId:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !Key App
+[$sel:associateAppDomainEventDomainName:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !DomainName
+[$sel:associateAppDomainEventSubdomain:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !Maybe Subdomain
+[$sel:associateAppDomainEventInsertedAt:AssociateAppDomainEvent] :: AssociateAppDomainEvent -> !UTCTime
+type AssociateAppDomainEventId = Key AssociateAppDomainEvent
+data DissociateAppDomainEvent
+DissociateAppDomainEvent :: !Key App -> !DomainName -> !Maybe Subdomain -> !UTCTime -> DissociateAppDomainEvent
+[$sel:dissociateAppDomainEventAppId:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !Key App
+[$sel:dissociateAppDomainEventDomainName:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !DomainName
+[$sel:dissociateAppDomainEventSubdomain:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !Maybe Subdomain
+[$sel:dissociateAppDomainEventInsertedAt:DissociateAppDomainEvent] :: DissociateAppDomainEvent -> !UTCTime
+type DissociateAppDomainEventId = Key DissociateAppDomainEvent
+migrateAll :: Migration
+instance GHC.Classes.Eq Fission.Models.DissociateAppDomainEvent
+instance GHC.Show.Show Fission.Models.DissociateAppDomainEvent
+instance GHC.Classes.Eq Fission.Models.AssociateAppDomainEvent
+instance GHC.Show.Show Fission.Models.AssociateAppDomainEvent
+instance GHC.Classes.Eq Fission.Models.AppDomain
+instance GHC.Show.Show Fission.Models.AppDomain
+instance GHC.Classes.Eq Fission.Models.SetAppCIDEvent
+instance GHC.Show.Show Fission.Models.SetAppCIDEvent
+instance GHC.Classes.Eq Fission.Models.DestroyAppEvent
+instance GHC.Show.Show Fission.Models.DestroyAppEvent
+instance GHC.Classes.Eq Fission.Models.CreateAppEvent
+instance GHC.Show.Show Fission.Models.CreateAppEvent
+instance GHC.Classes.Eq Fission.Models.App
+instance GHC.Show.Show Fission.Models.App
+instance GHC.Classes.Eq Fission.Models.Domain
+instance GHC.Show.Show Fission.Models.Domain
+instance GHC.Classes.Eq Fission.Models.LoosePin
+instance GHC.Show.Show Fission.Models.LoosePin
+instance GHC.Classes.Eq Fission.Models.UpdateUserDataRootEvent
+instance GHC.Show.Show Fission.Models.UpdateUserDataRootEvent
+instance GHC.Classes.Eq Fission.Models.User
+instance GHC.Show.Show Fission.Models.User
+instance GHC.Classes.Eq Fission.Models.HerokuAddOn
+instance GHC.Show.Show Fission.Models.HerokuAddOn
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.HerokuAddOn)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.HerokuAddOn)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.User)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.User)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.UpdateUserDataRootEvent)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.LoosePin)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.LoosePin)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.Domain)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.Domain)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.App)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.CreateAppEvent)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.DestroyAppEvent)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.SetAppCIDEvent)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.AppDomain)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Unique Fission.Models.AppDomain)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.AssociateAppDomainEvent)
+instance Data.Aeson.Types.FromJSON.FromJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance Data.Aeson.Types.ToJSON.ToJSON (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance Database.Persist.Sql.Class.PersistFieldSql (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance Database.Persist.Class.PersistField.PersistField (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance Web.Internal.HttpApiData.FromHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance Web.Internal.HttpApiData.ToHttpApiData (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance Web.PathPieces.PathPiece (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance GHC.Classes.Ord (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance GHC.Classes.Eq (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance GHC.Read.Read (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance GHC.Show.Show (Database.Persist.Class.PersistEntity.Key Fission.Models.DissociateAppDomainEvent)
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.DissociateAppDomainEvent
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.DissociateAppDomainEvent
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.DissociateAppDomainEvent
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.DissociateAppDomainEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.DissociateAppDomainEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.DissociateAppDomainEvent
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.DissociateAppDomainEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.DissociateAppDomainEvent backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.AssociateAppDomainEvent
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.AssociateAppDomainEvent
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.AssociateAppDomainEvent
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.AssociateAppDomainEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.AssociateAppDomainEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.AssociateAppDomainEvent
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.AssociateAppDomainEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.AssociateAppDomainEvent backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.AppDomain
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.AppDomain
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.AppDomain
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.AppDomain
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.AppDomain
+instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.AppDomain
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.AppDomain GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.AppDomain backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.SetAppCIDEvent
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.SetAppCIDEvent
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.SetAppCIDEvent
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.SetAppCIDEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.SetAppCIDEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.SetAppCIDEvent
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.SetAppCIDEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.SetAppCIDEvent backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.DestroyAppEvent
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.DestroyAppEvent
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.DestroyAppEvent
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.DestroyAppEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.DestroyAppEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.DestroyAppEvent
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.DestroyAppEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.DestroyAppEvent backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.CreateAppEvent
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.CreateAppEvent
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.CreateAppEvent
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.CreateAppEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.CreateAppEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.CreateAppEvent
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.CreateAppEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.CreateAppEvent backend
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Models.AppId
+instance Data.Swagger.Internal.Schema.ToSchema Fission.Models.AppId
+instance Data.Swagger.Internal.ParamSchema.ToParamSchema Fission.Models.AppId
+instance RIO.Prelude.Display.Display Fission.Models.AppId
+instance Data.Aeson.Types.ToJSON.ToJSONKey Fission.Models.AppId
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.App
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.App
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.App
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.App
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.App
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.App
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.App GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.App backend
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.Domain
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.Domain
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.Domain
+instance Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.Domain
+instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.Domain
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.Domain GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.Domain backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.LoosePin
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.LoosePin
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.LoosePin
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.LoosePin
+instance Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.LoosePin
+instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.LoosePin
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.LoosePin GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.LoosePin backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.UpdateUserDataRootEvent
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.UpdateUserDataRootEvent
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.UpdateUserDataRootEvent
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.UpdateUserDataRootEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.UpdateUserDataRootEvent
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.UpdateUserDataRootEvent
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.UpdateUserDataRootEvent GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.UpdateUserDataRootEvent backend
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Models.UserId
+instance RIO.Prelude.Display.Display Fission.Models.UserId
+instance Fission.Security.Digestable Fission.Models.UserId
+instance Data.Swagger.Internal.Schema.ToSchema Fission.Models.UserId
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.User
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.User
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.User
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.User
+instance (TypeError ...) => Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.User
+instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.User
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.User GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.User backend
+instance Database.Persist.Class.PersistField.PersistField Fission.Models.HerokuAddOn
+instance Database.Persist.Sql.Class.PersistFieldSql Fission.Models.HerokuAddOn
+instance Database.Persist.Class.PersistEntity.PersistEntity Fission.Models.HerokuAddOn
+instance Database.Persist.Class.PersistStore.ToBackendKey Database.Persist.Sql.Types.Internal.SqlBackend Fission.Models.HerokuAddOn
+instance Database.Persist.Class.PersistUnique.OnlyOneUniqueKey Fission.Models.HerokuAddOn
+instance Database.Persist.Class.PersistUnique.AtLeastOneUniqueKey Fission.Models.HerokuAddOn
+instance (Database.Persist.Class.PersistQuery backend, Database.Persist.Class.PersistEntity.PersistEntityBackend Fission.Models.HerokuAddOn GHC.Types.~ Database.Persist.Class.PersistStore.BaseBackend backend) => Database.Persist.Class.DeleteCascade.DeleteCascade Fission.Models.HerokuAddOn backend
+
+
+-- | Validate user
+module Fission.User.Validation
+check :: User -> Either Invalid User
+isValid :: User -> Bool
+
+module Fission.User.Retriever.Class
+class Monad m => Retriever m
+getById :: Retriever m => UserId -> m (Maybe (Entity User))
+getByUsername :: Retriever m => Username -> m (Maybe (Entity User))
+getByPublicKey :: Retriever m => Public -> m (Maybe (Entity User))
+getByHerokuAddOnId :: Retriever m => HerokuAddOnId -> m (Maybe (Entity User))
+getByEmail :: Retriever m => Email -> m (Maybe (Entity User))
+instance Control.Monad.IO.Class.MonadIO m => Fission.User.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.User.Retriever
+
+module Fission.Platform.Heroku.Provision.Types
+
+-- | Response Parameters
+--   
+--   From Heroku
+--   
+--   <pre>
+--   In addition to the id parameter as documented under asynchronous provisioning,
+--   you should include a config parameter along with any other optional parameters
+--   of your choosing.
+--   
+--   Name: config
+--   Type: object
+--   
+--   Description:
+--   Configuration variables to be set as environment variables on any applications
+--   that use this add-on resource. All environment variables that you send should
+--   have the same prefix: your add-on’s name, capitalized. However,
+--   within the context of a Heroku app, the prefix may be different for a variety
+--   of reasons. For example, if your add-on is named fast-db and you are setting
+--   FAST_DB_URL, the variable name on the application will default to FAST_DB_URL
+--   but would be PRIMARY_DB_URL if the user added the add-on with
+--   the prefix PRIMARY_DB.
+--   
+--   Example:
+--   HTTP/1.1 200 OK
+--   { "MYADDON_URL": "http://myaddon.com/52e82f5d73" }
+--   </pre>
+data Provision
+Provision :: UserId -> Provision -> [Peer] -> Text -> Provision
+
+-- | User ID
+[$sel:id:Provision] :: Provision -> UserId
+
+-- | Heroku env var payload
+[$sel:config:Provision] :: Provision -> Provision
+
+-- | IPFS peer list
+[$sel:peers:Provision] :: Provision -> [Peer]
+
+-- | A helpful human-readable message
+[$sel:message:Provision] :: Provision -> Text
+instance GHC.Show.Show Fission.Platform.Heroku.Provision.Types.Provision
+instance GHC.Classes.Eq Fission.Platform.Heroku.Provision.Types.Provision
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Platform.Heroku.Provision.Types.Provision
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.Platform.Heroku.Provision.Types.Provision
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.Platform.Heroku.Provision.Types.Provision
+instance Data.Swagger.Internal.Schema.ToSchema Fission.Platform.Heroku.Provision.Types.Provision
+
+module Fission.Platform.Heroku.AddOn.Retriever.Class
+class Monad m => Retriever m
+getByUUID :: Retriever m => UUID -> m (Maybe (Entity HerokuAddOn))
+instance Control.Monad.IO.Class.MonadIO m => Fission.Platform.Heroku.AddOn.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.Platform.Heroku.AddOn.Retriever
+
+module Fission.Platform.Heroku.AddOn.Destroyer.Class
+
+-- | Destroy <tt>Heroku.AddOn</tt>s
+class Monad m => Destroyer m
+destroyByUUID :: Destroyer m => UUID -> m ()
+instance Control.Monad.IO.Class.MonadIO m => Fission.Platform.Heroku.AddOn.Destroyer.Class.Destroyer (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.Platform.Heroku.AddOn.Destroyer
+
+module Fission.Ownership.Class
+class Owned item
+ownerId :: Owned item => item -> UserId
+instance Fission.Ownership.Class.Owned model => Fission.Ownership.Class.Owned (Database.Persist.Class.PersistEntity.Entity model)
+instance Fission.Ownership.Class.Owned (Database.Persist.Class.PersistEntity.Entity Fission.Models.User)
+instance Fission.Ownership.Class.Owned Fission.Models.App
+instance Fission.Ownership.Class.Owned Fission.Models.Domain
+instance Fission.Ownership.Class.Owned Fission.Models.LoosePin
+
+module Fission.Ownership
+isOwnedBy :: Owned item => UserId -> item -> Bool
+
+module Fission.LoosePin.Retriever.Class
+class Monad m => Retriever m
+
+-- | CIDs associated with a user
+getByUserId :: Retriever m => UserId -> m [Entity LoosePin]
+
+-- | Find all CIDs that remain from a list
+getByCids :: Retriever m => [CID] -> m [Entity LoosePin]
+instance Control.Monad.IO.Class.MonadIO m => Fission.LoosePin.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.LoosePin.Retriever
+
+
+-- | Database mutations for <a>LoosePin</a>s
+module Fission.LoosePin.Destroyer.Class
+
+-- | Actions for destroying <tt>LoosePin</tt>s
+class Monad m => Destroyer m
+
+-- | Destroy a specific <tt>LoosePin</tt>
+destroy :: Destroyer m => UserId -> CID -> m ()
+
+-- | Destroy several <tt>LoosePin</tt>s by they primary keys
+destroyMany :: Destroyer m => UserId -> [LoosePinId] -> m ()
+instance Control.Monad.IO.Class.MonadIO m => Fission.LoosePin.Destroyer.Class.Destroyer (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.LoosePin.Destroyer
+
+
+-- | Database mutations for <a>LoosePin</a>s
+module Fission.LoosePin.Creator.Class
+
+-- | Actions for creating new <tt>LoosePin</tt>s
+class Monad m => Creator m
+
+-- | Create a new, timestamped entry
+create :: Creator m => UserId -> CID -> UTCTime -> m (Maybe LoosePinId)
+
+-- | Create new <a>LoosePin</a>s, ignoring existing values (set-like)
+createMany :: Creator m => UserId -> [CID] -> UTCTime -> m [CID]
+instance Control.Monad.IO.Class.MonadIO m => Fission.LoosePin.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.LoosePin.Creator
+
+module Fission.LoosePin
+type CRUD m = (Retriever m, Creator m, Destroyer m)
+
+module Fission.Internal.Mock.Effect.Types
+data RunDB
+RunDB :: RunDB
+data CheckTime
+CheckTime :: CheckTime
+data RunAWS
+RunAWS :: RunAWS
+data UpdateRoute53
+UpdateRoute53 :: UpdateRoute53
+data ClearRoute53
+ClearRoute53 :: ClearRoute53
+data SetDNSLink
+SetDNSLink :: SetDNSLink
+data FollowDNSLink
+FollowDNSLink :: URL -> Path URL -> FollowDNSLink
+data RunLocalIPFS
+RunLocalIPFS :: RunLocalIPFS
+data RunRemoteIPFS
+RemoteIPFSGeneric :: RunRemoteIPFS
+RemoteIPFSAdd :: ByteString -> RunRemoteIPFS
+RemoteIPFSCat :: CID -> RunRemoteIPFS
+RemoteIPFSPin :: CID -> RunRemoteIPFS
+RemoteIPFSUnpin :: CID -> Bool -> RunRemoteIPFS
+data LogMsg
+LogMsg :: LogLevel -> LogStr -> LogMsg
+data CreateHerokuAddOn
+CreateHerokuAddOn :: UUID -> CreateHerokuAddOn
+data DestroyHerokuAddOn
+DestroyHerokuAddOn :: UUID -> DestroyHerokuAddOn
+data RetrieveUser
+GetUserByUsername :: Username -> RetrieveUser
+GetUserByPublicKey :: Public -> RetrieveUser
+GetUserByHerokuAddOnId :: HerokuAddOnId -> RetrieveUser
+GetUserByEmail :: Email -> RetrieveUser
+GetUserById :: UserId -> RetrieveUser
+data CreateUser
+CreateUser :: CreateUser
+data ModifyUser
+ModifyUser :: UserId -> ModifyUser
+data DestroyUser
+DestroyUser :: UserId -> DestroyUser
+data RetrieveLoosePin
+GetLoosePinByUserId :: UserId -> RetrieveLoosePin
+GetLoosePinByCID :: CID -> RetrieveLoosePin
+data CreateLoosePin
+CreateLoosePin :: UserId -> CID -> CreateLoosePin
+data DestroyLoosePin
+DestroyLoosePin :: UserId -> CID -> DestroyLoosePin
+DestroyLoosePinById :: UserId -> LoosePinId -> DestroyLoosePin
+type FissionEffs = '[CheckTime, RunAWS, RunDB, SetDNSLink, FollowDNSLink, UpdateRoute53, ClearRoute53, RunLocalIPFS, RunRemoteIPFS, LogMsg, DestroyHerokuAddOn, DestroyUser, DestroyLoosePin, RetrieveUser, RetrieveLoosePin, ModifyUser, CreateUser, CreateLoosePin, CreateHerokuAddOn]
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.DestroyLoosePin
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.DestroyLoosePin
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CreateLoosePin
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CreateLoosePin
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RetrieveLoosePin
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RetrieveLoosePin
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.DestroyUser
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.DestroyUser
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.ModifyUser
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.ModifyUser
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CreateUser
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CreateUser
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RetrieveUser
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RetrieveUser
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CreateHerokuAddOn
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CreateHerokuAddOn
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.DestroyHerokuAddOn
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.DestroyHerokuAddOn
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.LogMsg
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.LogMsg
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunRemoteIPFS
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunRemoteIPFS
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunLocalIPFS
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunLocalIPFS
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.FollowDNSLink
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.FollowDNSLink
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.SetDNSLink
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.SetDNSLink
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.ClearRoute53
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.ClearRoute53
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.UpdateRoute53
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.UpdateRoute53
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunAWS
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunAWS
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.CheckTime
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.CheckTime
+instance GHC.Show.Show Fission.Internal.Mock.Effect.Types.RunDB
+instance GHC.Classes.Eq Fission.Internal.Mock.Effect.Types.RunDB
+
+module Fission.Internal.Mock.Effect
+log :: (IsMember eff log, Applicative t, MonadWriter (t (OpenUnion log)) m) => eff -> m ()
+
+module Fission.Internal.Fixture.User
+user :: User
+
+module Fission.Internal.Fixture
+
+module Fission.Error.AlreadyExists.Types
+data AlreadyExists entity
+AlreadyExists :: AlreadyExists entity
+instance Data.Typeable.Internal.Typeable entity => GHC.Exception.Type.Exception (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
+instance GHC.Classes.Eq (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
+instance GHC.Show.Show (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
+instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists entity) => Fission.Web.Error.Class.ToServerError (Fission.Error.AlreadyExists.Types.AlreadyExists entity)
+instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.User)
+instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.LoosePin)
+instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.Domain)
+instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.App)
+instance RIO.Prelude.Display.Display (Fission.Error.AlreadyExists.Types.AlreadyExists Fission.Models.HerokuAddOn)
+
+module Fission.Domain.Creator.Class
+
+-- | Domain registration / creation
+class Monad m => Creator m
+
+-- | Register a new domain name
+create :: Creator m => DomainName -> UserId -> ZoneID -> UTCTime -> m ()
+instance Control.Monad.IO.Class.MonadIO m => Fission.Domain.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
+
+
+-- | Fission authorization
+module Fission.Authorization.Types
+
+-- | The final high-level authorization -- internal use only
+data Authorization
+Authorization :: !Either Heroku DID -> !Entity User -> !Potency -> !Text -> Authorization
+[$sel:sender:Authorization] :: Authorization -> !Either Heroku DID
+[$sel:about:Authorization] :: Authorization -> !Entity User
+[$sel:potency:Authorization] :: Authorization -> !Potency
+[$sel:scope:Authorization] :: Authorization -> !Text
+data Heroku
+Heroku :: Heroku
+instance GHC.Classes.Eq Fission.Authorization.Types.Authorization
+instance GHC.Show.Show Fission.Authorization.Types.Authorization
+instance GHC.Classes.Eq Fission.Authorization.Types.Heroku
+instance GHC.Show.Show Fission.Authorization.Types.Heroku
+instance RIO.Prelude.Display.Display Fission.Authorization.Types.Authorization
+
+module Fission.Authorization
+latestVersion :: SemVer
+
+module Fission.Web.Client.JWT
+mkAuthReq :: (MonadIO m, MonadTime m, ServerDID m, MonadWebAuth m SecretKey) => m (Request -> Request)
+ucan :: UTCTime -> DID -> SecretKey -> Proof -> JWT
+
+module Fission.Web.Client
+sendRequestM :: MonadWebClient m => m (ClientM a) -> m (Either ClientError a)
+withPayload :: Functor f => f (a -> b) -> a -> f b
+infixl 1 `withPayload`
+authClient :: (MonadIO m, MonadTime m, MonadLogger m, ServerDID m, MonadWebAuth m (AuthClientData a), MonadWebAuth m SecretKey, HasClient ClientM api, Client ClientM api ~ (AuthenticatedRequest a -> f b)) => Proxy api -> m (f b)
+
+module Fission.CLI.Environment.Override.Types
+
+-- | This is the part that actually gets written to disk.
+--   <tt>Environment</tt> is constructed virtually from layers of
+--   <a>Override</a>s.
+data Override
+Override :: ![Peer] -> !Maybe URL -> !Maybe BasicAuthData -> !Maybe Ignored -> !Maybe FilePath -> !Maybe DID -> Override
+[$sel:peers:Override] :: Override -> ![Peer]
+[$sel:maybeAppURL:Override] :: Override -> !Maybe URL
+[$sel:maybeUserAuth:Override] :: Override -> !Maybe BasicAuthData
+[$sel:maybeIgnored:Override] :: Override -> !Maybe Ignored
+[$sel:maybeBuildDir:Override] :: Override -> !Maybe FilePath
+[$sel:maybeServerDID:Override] :: Override -> !Maybe DID
+instance GHC.Base.Semigroup Fission.CLI.Environment.Override.Types.Override
+instance GHC.Base.Monoid Fission.CLI.Environment.Override.Types.Override
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.CLI.Environment.Override.Types.Override
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.CLI.Environment.Override.Types.Override
+
+module Fission.CLI.Environment.Override
+
+-- | Gets hierarchical environment by recursed through file system
+get :: MonadIO m => m Override
+
+-- | Recurses up to user root to find an env with basic auth data
+findBasicAuth :: MonadIO m => m (Maybe BasicAuthData)
+
+-- | Recurses up to user root to find a env that satisfies the
+--   <tt>finder</tt> predicate
+findRecurse :: MonadIO m => (Override -> Bool) -> FilePath -> m (Maybe (FilePath, Override))
+
+-- | Decodes file to partial environment
+decode :: MonadIO m => FilePath -> m Override
+
+-- | Writes partial environment to path
+write :: MonadIO m => FilePath -> Override -> m ()
+
+-- | Merge a partial env with an existing env at the path
+writeMerge :: MonadIO m => FilePath -> Override -> m ()
+
+-- | globalEnv environment in users home
+globalEnv :: MonadIO m => m FilePath
+toFull :: Override -> Environment
+fromFull :: Environment -> Override
+
+-- | Deletes user_auth from env at ~/.fission.yaml
+deleteHomeAuth :: MonadIO m => m ()
+
+module Fission.CLI.Prompt.BuildDir
+
+-- | Checks user's current build dir by: * recursively checking
+--   .fission.yaml * guessing a build dir from common static site
+--   generators * prompting the user with that build dir
+checkBuildDir :: (MonadIO m, MonadLogger m) => FilePath -> m FilePath
+
+-- | Check path to see if a possible build folder exists there
+guessBuildDir :: MonadIO m => FilePath -> m (Maybe FilePath)
+
+
+-- | File sync, IPFS-style
+module Fission.CLI.Display.Error
+
+-- | Display a given error to the user and log an error to the debug log.
+put :: (MonadIO m, MonadLogger m, Show err) => err -> Text -> m ()
+
+-- | Display a generic error message to the user and log an error to the
+--   debug log.
+put' :: (MonadIO m, MonadLogger m, Show err) => err -> m ()
+putErrOr :: (MonadIO m, MonadLogger m, Show err) => (t -> m ()) -> Either err t -> m ()
+
+-- | Display an error message to a user encouraging them to run `fission
+--   setup` Error depends on if they have basic auth saved somewhere (ie if
+--   they are an existing user)
+notConnected :: (MonadIO m, MonadLogger m, Exception err) => err -> m ()
+
+module Fission.CLI.Prompt.Fields
+
+-- | Prompt a user for a value and do not accept an empty value
+getRequired :: (MonadIO m, MonadLogger m) => ByteString -> m ByteString
+
+-- | Prompt a user for a secret and do not accept an empty value
+getRequiredSecret :: (MonadIO m, MonadLogger m) => ByteString -> m ByteString
+
+
+-- | Success messages and conditions
+module Fission.CLI.Display.Success
+live :: MonadIO m => CID -> m ()
+putOk :: MonadIO m => Text -> m ()
+dnsUpdated :: MonadIO m => URL -> m ()
+loggedInAs :: MonadIO m => Text -> m ()
+
+
+-- | Grab files directly from IPFS
+module Fission.CLI.Command.Down
+
+-- | The command to attach to the CLI tree
+cmd :: (MonadUnliftIO m, MonadLocalIPFS m, MonadLogger m) => Command m CID ()
+($sel:handler:Command) :: Command m input output -> input -> m output
+
+module Fission.AWS.Route53.Class
+
+-- | Low-level Route53 interface / no auth checks do not use directly
+class MonadAWS m => MonadRoute53 m
+set :: MonadRoute53 m => RecordType -> URL -> ZoneID -> NonEmpty Text -> m (Either ServerError ChangeResourceRecordSetsResponse)
+clear :: MonadRoute53 m => RecordType -> URL -> ZoneID -> m (Either ServerError ChangeResourceRecordSetsResponse)
+
+module Fission.AWS.Route53
+
+module Fission.AWS
+validate :: ChangeResourceRecordSetsResponse -> Either ServerError ChangeResourceRecordSetsResponse
+
 module Fission.Error.NotFound.Types
 data NotFound entity
 NotFound :: NotFound entity
@@ -7251,8 +7257,10 @@ instance Fission.Web.Error.Class.ToServerError (Fission.Error.NotFound.Types.Not
 instance RIO.Prelude.Display.Display (Fission.Error.NotFound.Types.NotFound Fission.Models.User)
 instance RIO.Prelude.Display.Display (Fission.Error.NotFound.Types.NotFound Fission.Models.LoosePin)
 instance RIO.Prelude.Display.Display (Fission.Error.NotFound.Types.NotFound Fission.Models.Domain)
+instance RIO.Prelude.Display.Display (Fission.Error.NotFound.Types.NotFound Fission.URL.Types.URL)
 instance RIO.Prelude.Display.Display (Fission.Error.NotFound.Types.NotFound Fission.Models.App)
 instance RIO.Prelude.Display.Display (Fission.Error.NotFound.Types.NotFound Fission.Models.AppDomain)
+instance RIO.Prelude.Display.Display (Fission.Error.NotFound.Types.NotFound Fission.AWS.Zone.Types.ZoneID)
 
 module Fission.Error.ActionNotAuthorized.Types
 data ActionNotAuthorized entity
@@ -7275,15 +7283,82 @@ module Fission.Platform.Heroku.AddOn.Creator
 module Fission.Platform.Heroku.AddOn
 type CRUD m = (Creator m, Destroyer m, Retriever m)
 
+module Fission.IPFS.DNSLink.Class
+
+-- | Low-level <tt>DNSLink</tt> interface
+class MonadRoute53 m => MonadDNSLink m
+set :: MonadDNSLink m => UserId -> URL -> ZoneID -> CID -> m (Either Errors URL)
+follow :: MonadDNSLink m => UserId -> URL -> ZoneID -> Path URL -> m (Either Errors ())
+type Errors = OpenUnion '[ServerError, InvalidURL, NotFound URL, ActionNotAuthorized URL]
+
+module Fission.Internal.Mock.Config.Types
+data Config
+Config :: (DomainName -> Maybe Subdomain -> CID -> Either Errors URL) -> (URL -> Path URL -> Either Errors ()) -> DomainName -> (RecordType -> URL -> ZoneID -> NonEmpty Text -> Either ServerError ChangeResourceRecordSetsResponse) -> (RecordType -> URL -> Either ServerError ChangeResourceRecordSetsResponse) -> UTCTime -> NonEmpty Peer -> AuthHandler Request (Entity User) -> AuthHandler Request DID -> AuthHandler Request Authorization -> BasicAuthCheck Auth -> Bool -> Either Error RawMessage -> Either ClientError CID -> Either ClientError Serialized -> Either ClientError Response -> Either ClientError Response -> Config
+[$sel:setDNSLink:Config] :: Config -> DomainName -> Maybe Subdomain -> CID -> Either Errors URL
+[$sel:followDNSLink:Config] :: Config -> URL -> Path URL -> Either Errors ()
+[$sel:getBaseDomain:Config] :: Config -> DomainName
+[$sel:updateRoute53:Config] :: Config -> RecordType -> URL -> ZoneID -> NonEmpty Text -> Either ServerError ChangeResourceRecordSetsResponse
+[$sel:clearRoute53:Config] :: Config -> RecordType -> URL -> Either ServerError ChangeResourceRecordSetsResponse
+[$sel:now:Config] :: Config -> UTCTime
+[$sel:linkedPeers:Config] :: Config -> NonEmpty Peer
+[$sel:userVerifier:Config] :: Config -> AuthHandler Request (Entity User)
+[$sel:didVerifier:Config] :: Config -> AuthHandler Request DID
+[$sel:authVerifier:Config] :: Config -> AuthHandler Request Authorization
+[$sel:herokuVerifier:Config] :: Config -> BasicAuthCheck Auth
+[$sel:forceAuthed:Config] :: Config -> Bool
+[$sel:localIPFSCall:Config] :: Config -> Either Error RawMessage
+[$sel:remoteIPFSAdd:Config] :: Config -> Either ClientError CID
+[$sel:remoteIPFSCat:Config] :: Config -> Either ClientError Serialized
+[$sel:remoteIPFSPin:Config] :: Config -> Either ClientError Response
+[$sel:remoteIPFSUnpin:Config] :: Config -> Either ClientError Response
+
+module Fission.Internal.Mock.Config
+defaultConfig :: Config
+
+module Fission.IPFS.DNSLink
+
 module Fission.Error
 openLeft :: IsMember err errs => err -> Either (OpenUnion errs) a
 relaxedLeft :: Contains errsA errsB => OpenUnion errsA -> Either (OpenUnion errsB) a
 fromMaybe :: IsMember err errs => err -> (a -> b) -> Maybe a -> Either (OpenUnion errs) b
 fromMaybe' :: IsMember err errs => err -> Maybe a -> Either (OpenUnion errs) a
 
+module Fission.User.Modifier.Class
+class Monad m => Modifier m
+updatePassword :: Modifier m => UserId -> Password -> UTCTime -> m (Either FailedDigest Password)
+updatePublicKey :: Modifier m => UserId -> Public -> UTCTime -> m (Either Errors Public)
+setData :: Modifier m => UserId -> CID -> UTCTime -> m (Either Errors ())
+type Errors = OpenUnion '[NotFound User, NotFound URL, ActionNotAuthorized URL, ServerError, InvalidURL]
+instance Control.Monad.IO.Class.MonadIO m => Fission.User.Modifier.Class.Modifier (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.User.Modifier
+
+module Fission.Web.DNS
+type API = Summary "Set account's DNSLink" :> Description "DEPRECATED \9940 Set account's DNSLink to a CID" :> Capture "cid" CID :> PutAccepted '[PlainText, OctetStream] DomainName
+server :: (MonadTime m, MonadThrow m, MonadLogger m, Modifier m) => Authorization -> ServerT API m
+
+module Fission.User.Destroyer.Class
+
+-- | Destroy <tt>User</tt>s
+class Monad m => Destroyer m
+deactivate :: Destroyer m => UserId -> UserId -> m (Either (ActionNotAuthorized User) ())
+instance Control.Monad.IO.Class.MonadIO m => Fission.User.Destroyer.Class.Destroyer (Fission.Internal.MonadDB.Types.Transaction m)
+
+module Fission.User.Destroyer
+
+module Fission.Domain.Retriever.Class
+class Monad m => Retriever m
+getByDomainName :: Retriever m => DomainName -> m (Either (NotFound Domain) Domain)
+instance Control.Monad.IO.Class.MonadIO m => Fission.Domain.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
+
+
+-- | DNS / Domain actions
+module Fission.Domain
+
 module Fission.App.Retriever.Class
 class Monad m => Retriever m
 byId :: Retriever m => UserId -> AppId -> m (Either Errors (Entity App))
+byURL :: Retriever m => UserId -> URL -> m (Either Errors (Entity App))
 ownedBy :: Retriever m => UserId -> m [Entity App]
 instance Control.Monad.IO.Class.MonadIO m => Fission.App.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
 
@@ -7291,9 +7366,9 @@ module Fission.App.Retriever
 
 module Fission.App.Modifier.Class
 class Monad m => Modifier m
-updateCID :: Modifier m => UserId -> AppId -> CID -> UTCTime -> m (Either Errors ())
-type Errors = OpenUnion '[NotFound App, ActionNotAuthorized App]
-instance Fission.IPFS.DNSLink.Class.MonadDNSLink m => Fission.App.Modifier.Class.Modifier (Fission.Internal.MonadDB.Types.Transaction m)
+setCID :: Modifier m => UserId -> URL -> CID -> Bool -> UTCTime -> m (Either Errors AppId)
+type Errors = OpenUnion '[NotFound App, NotFound AppDomain, NotFound Domain, NotFound URL, ActionNotAuthorized App, ActionNotAuthorized AppDomain, ActionNotAuthorized URL, Error, ServerError, InvalidURL]
+instance Control.Monad.IO.Class.MonadIO m => Fission.App.Modifier.Class.Modifier (Fission.Internal.MonadDB.Types.Transaction m)
 
 module Fission.App.Modifier
 
@@ -7302,25 +7377,26 @@ class Monad m => Retriever m
 allForOwner :: Retriever m => UserId -> m [Entity AppDomain]
 allForApp :: Retriever m => AppId -> m [Entity AppDomain]
 allSiblingsByDomain :: Retriever m => DomainName -> Maybe Subdomain -> m (Either Errors [Entity AppDomain])
-type Errors = OpenUnion '[NotFound AppDomain]
+primarySibling :: Retriever m => UserId -> URL -> m (Either Errors (Entity AppDomain))
+type Errors = OpenUnion '[NotFound AppDomain, ActionNotAuthorized AppDomain, NotFound App, ActionNotAuthorized App]
 instance Control.Monad.IO.Class.MonadIO m => Fission.App.Domain.Retriever.Class.Retriever (Fission.Internal.MonadDB.Types.Transaction m)
 
 module Fission.App.Domain.Retriever
 
 module Fission.App.Destroyer.Class
 class Monad m => Destroyer m
-destroy :: Destroyer m => UserId -> AppId -> UTCTime -> m (Either Errors ())
-destroyByURL :: Destroyer m => UserId -> DomainName -> Maybe Subdomain -> UTCTime -> m (Either Errors ())
-type Errors = OpenUnion '[NotFound App, ActionNotAuthorized App, NotFound AppDomain]
+destroy :: Destroyer m => UserId -> AppId -> UTCTime -> m (Either Errors [URL])
+destroyByURL :: Destroyer m => UserId -> DomainName -> Maybe Subdomain -> UTCTime -> m (Either Errors [URL])
+type Errors = OpenUnion '[NotFound App, ActionNotAuthorized App, NotFound AppDomain, ActionNotAuthorized AppDomain, NotFound ZoneID, ServerError]
 instance Control.Monad.IO.Class.MonadIO m => Fission.App.Destroyer.Class.Destroyer (Fission.Internal.MonadDB.Types.Transaction m)
 
 module Fission.Web.App.Destroy
 type API = ByURLAPI :<|> ByIdAPI
 type ByURLAPI = Summary "Destroy app by URL" :> Description "Destroy app by any associated URL" :> "associated" :> Capture "url" URL :> DeleteNoContent '[JSON] NoContent
 type ByIdAPI = Summary "Destroy app by ID" :> Description "Destroy app by its ID" :> Capture "appId" AppId :> DeleteNoContent '[JSON] NoContent
-server :: (MonadTime m, MonadThrow m, MonadLogger m, MonadDB t m, Destroyer t) => Authorization -> ServerT API m
-destroyById :: (MonadTime m, MonadThrow m, MonadLogger m, MonadDB t m, Destroyer t) => Authorization -> ServerT ByIdAPI m
-destroyByURL :: (MonadTime m, MonadThrow m, MonadLogger m, MonadDB t m, Destroyer t) => Authorization -> ServerT ByURLAPI m
+server :: (MonadTime m, MonadThrow m, MonadLogger m, Destroyer m) => Authorization -> ServerT API m
+destroyById :: (MonadTime m, MonadThrow m, MonadLogger m, Destroyer m) => Authorization -> ServerT ByIdAPI m
+destroyByURL :: (MonadTime m, MonadThrow m, MonadLogger m, Destroyer m) => Authorization -> ServerT ByURLAPI m
 
 module Fission.App.Destroyer
 
@@ -7350,7 +7426,7 @@ module Fission.App.Domain.Dissociator
 
 module Fission.App.Domain.Associator.Class
 class Monad m => Associator m
-associate :: Associator m => UserId -> AppId -> DomainName -> Maybe Subdomain -> UTCTime -> m (Either Errors ())
+associate :: Associator m => UserId -> AppId -> Checkmark -> DomainName -> Maybe Subdomain -> UTCTime -> m (Either Errors ())
 type Errors = OpenUnion '[AlreadyAssociated, ActionNotAuthorized App, NotFound App]
 instance Control.Monad.IO.Class.MonadIO m => Fission.App.Domain.Associator.Class.Associator (Fission.Internal.MonadDB.Types.Transaction m)
 
@@ -7364,36 +7440,52 @@ class Monad m => Retriever m
 allForOwner :: Retriever m => UserId -> m [Entity AppDomain]
 allForApp :: Retriever m => AppId -> m [Entity AppDomain]
 allSiblingsByDomain :: Retriever m => DomainName -> Maybe Subdomain -> m (Either Errors [Entity AppDomain])
+primarySibling :: Retriever m => UserId -> URL -> m (Either Errors (Entity AppDomain))
 type Actions m = (Initializer m, Associator m, Dissociator m, Retriever m)
 
 module Fission.App.Creator.Class
 class Monad m => Creator m
 create :: Creator m => UserId -> CID -> UTCTime -> m (Either Errors (AppId, Subdomain))
-type Errors = OpenUnion '[ServerError, AlreadyAssociated, ActionNotAuthorized App, NotFound App]
-instance (Fission.App.Domain.Initializer.Class.Initializer m, Fission.IPFS.DNSLink.Class.MonadDNSLink m) => Fission.App.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
+type Errors = OpenUnion '[ServerError, AlreadyAssociated, ActionNotAuthorized App, NotFound App, ActionNotAuthorized URL, NotFound URL, InvalidURL]
+instance (Control.Monad.IO.Class.MonadIO m, Fission.App.Domain.Initializer.Class.Initializer m) => Fission.App.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
 
 module Fission.App.Creator
-createWithPlaceholder :: (Initializer m, Creator m) => UserId -> UTCTime -> m (Either Errors (AppId, Subdomain))
+createWithPlaceholder :: (Creator m, Initializer m) => UserId -> UTCTime -> m (Either Errors (AppId, Subdomain))
 
 module Fission.Web.App.Create
-type API = Summary "Create app" :> Description "Creates a new app, assigns an initial subdomain, and sets an asset placeholder" :> PostAccepted '[JSON] (Subdomain, DomainName)
-create :: (Initializer m, MonadTime m, MonadLogger m, MonadDNSLink m, MonadDB t m, Creator t, Initializer t) => Authorization -> ServerT API m
+type API = Summary "Create app" :> Description "Creates a new app, assigns an initial subdomain, and sets an asset placeholder" :> PostAccepted '[JSON] URL
+create :: (Initializer m, Initializer m, Creator m, MonadTime m, MonadLogger m, MonadDNSLink m) => Authorization -> ServerT API m
 
 module Fission.User.Creator.Class
 class Creator m => Creator m
 
 -- | Create a new, timestamped entry
-create :: Creator m => Username -> Public -> Email -> UTCTime -> m (Either Errors (UserId, Subdomain))
+create :: Creator m => Username -> Public -> Email -> UTCTime -> m (Either Errors UserId)
 createWithPassword :: Creator m => Username -> Password -> Email -> UTCTime -> m (Either Errors UserId)
 
 -- | Create a new, timestamped entry and heroku add-on
 createWithHeroku :: Creator m => UUID -> Region -> Username -> Password -> UTCTime -> m (Either Errors UserId)
-type Errors = OpenUnion '[ActionNotAuthorized App, NotFound App, AlreadyExists HerokuAddOn, AlreadyAssociated, AlreadyExists, Invalid, FailedDigest, ServerError]
-instance (Control.Monad.IO.Class.MonadIO m, Fission.IPFS.DNSLink.Class.MonadDNSLink m, Fission.App.Domain.Initializer.Class.Initializer m, Fission.App.Content.Initializer.Class.Initializer m) => Fission.User.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
+type Errors = OpenUnion '[ActionNotAuthorized App, NotFound App, ActionNotAuthorized URL, NotFound URL, AlreadyExists HerokuAddOn, AlreadyAssociated, AlreadyExists, NotFound User, Invalid, FailedDigest, InvalidURL, ServerError]
+instance (Control.Monad.IO.Class.MonadIO m, Fission.App.Domain.Initializer.Class.Initializer m, Fission.App.Content.Initializer.Class.Initializer m) => Fission.User.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
 
 module Fission.User.Creator
 
 module Fission.User
+data AlreadyExists
+ConflictingUsername :: Username -> AlreadyExists
+ConflictingPublicKey :: Public -> AlreadyExists
+class Creator m => Creator m
+
+-- | Create a new, timestamped entry
+create :: Creator m => Username -> Public -> Email -> UTCTime -> m (Either Errors UserId)
+createWithPassword :: Creator m => Username -> Password -> Email -> UTCTime -> m (Either Errors UserId)
+
+-- | Create a new, timestamped entry and heroku add-on
+createWithHeroku :: Creator m => UUID -> Region -> Username -> Password -> UTCTime -> m (Either Errors UserId)
+class Monad m => Modifier m
+updatePassword :: Modifier m => UserId -> Password -> UTCTime -> m (Either FailedDigest Password)
+updatePublicKey :: Modifier m => UserId -> Public -> UTCTime -> m (Either Errors Public)
+setData :: Modifier m => UserId -> CID -> UTCTime -> m (Either Errors ())
 type CRUD m = (Retriever m, Creator m, Modifier m, Destroyer m)
 
 module Fission.Web.Auth.Token.JWT.Validation
@@ -7454,12 +7546,11 @@ handler :: (Resolver m, ServerDID m, MonadLogger m, MonadThrow m, MonadTime m) =
 
 module Fission.CLI.Config.Connected.Types
 data ConnectedConfig
-ConnectedConfig :: !Manager -> !SecretKey -> !DID -> !DID -> !Maybe JWT -> !BaseUrl -> !LogFunc -> !ProcessContext -> !BinPath -> !Timeout -> !Peer -> !Ignored -> ConnectedConfig
+ConnectedConfig :: !Manager -> !SecretKey -> !DID -> !DID -> !BaseUrl -> !LogFunc -> !ProcessContext -> !BinPath -> !Timeout -> !Peer -> !Ignored -> ConnectedConfig
 [$sel:httpManager:ConnectedConfig] :: ConnectedConfig -> !Manager
 [$sel:secretKey:ConnectedConfig] :: ConnectedConfig -> !SecretKey
 [$sel:cliDID:ConnectedConfig] :: ConnectedConfig -> !DID
 [$sel:serverDID:ConnectedConfig] :: ConnectedConfig -> !DID
-[$sel:ucanLink:ConnectedConfig] :: ConnectedConfig -> !Maybe JWT
 [$sel:fissionURL:ConnectedConfig] :: ConnectedConfig -> !BaseUrl
 [$sel:logFunc:ConnectedConfig] :: ConnectedConfig -> !LogFunc
 [$sel:processCtx:ConnectedConfig] :: ConnectedConfig -> !ProcessContext
@@ -7485,7 +7576,6 @@ instance Network.IPFS.Local.Class.MonadLocalIPFS Fission.CLI.Config.Connected.Ty
 instance Fission.CLI.Environment.Class.MonadEnvironment Fission.CLI.Config.Connected.Types.FissionConnected
 instance Fission.Web.Client.Class.MonadWebClient Fission.CLI.Config.Connected.Types.FissionConnected
 instance Fission.Web.Client.Auth.Class.MonadWebAuth Fission.CLI.Config.Connected.Types.FissionConnected Fission.User.DID.Types.DID
-instance Fission.Web.Client.Auth.Class.MonadWebAuth Fission.CLI.Config.Connected.Types.FissionConnected (GHC.Maybe.Maybe Fission.Web.Auth.Token.JWT.JWT)
 instance Control.Monad.Time.MonadTime Fission.CLI.Config.Connected.Types.FissionConnected
 instance Fission.Web.Client.Auth.Class.MonadWebAuth Fission.CLI.Config.Connected.Types.FissionConnected Fission.Web.Auth.Token.Types.Token
 instance Fission.Web.Client.Auth.Class.MonadWebAuth Fission.CLI.Config.Connected.Types.FissionConnected Crypto.PubKey.Ed25519.SecretKey
@@ -7537,19 +7627,20 @@ runBase :: MonadIO m => BaseConfig -> FissionBase a -> m a
 module Fission.App
 class Monad m => Retriever m
 byId :: Retriever m => UserId -> AppId -> m (Either Errors (Entity App))
+byURL :: Retriever m => UserId -> URL -> m (Either Errors (Entity App))
 ownedBy :: Retriever m => UserId -> m [Entity App]
 class Monad m => Creator m
 create :: Creator m => UserId -> CID -> UTCTime -> m (Either Errors (AppId, Subdomain))
 class Monad m => Modifier m
-updateCID :: Modifier m => UserId -> AppId -> CID -> UTCTime -> m (Either Errors ())
+setCID :: Modifier m => UserId -> URL -> CID -> Bool -> UTCTime -> m (Either Errors AppId)
 class Monad m => Destroyer m
-destroy :: Destroyer m => UserId -> AppId -> UTCTime -> m (Either Errors ())
-destroyByURL :: Destroyer m => UserId -> DomainName -> Maybe Subdomain -> UTCTime -> m (Either Errors ())
+destroy :: Destroyer m => UserId -> AppId -> UTCTime -> m (Either Errors [URL])
+destroyByURL :: Destroyer m => UserId -> DomainName -> Maybe Subdomain -> UTCTime -> m (Either Errors [URL])
 type CRUD m = (Retriever m, Creator m, Modifier m, Destroyer m)
 
 module Fission.Web.App.Update
-type API = Summary "Set app content" :> Description "Update the content (CID) for an app" :> Capture "appID" AppId :> Capture "newCID" CID :> PatchAccepted '[JSON] NoContent
-update :: (MonadLogger m, MonadThrow m, MonadTime m, MonadDB t m, Modifier t) => Authorization -> ServerT API m
+type API = Summary "Set app content" :> Description "Update the content (CID) for an app" :> Capture "App URL" URL :> Capture "New CID" CID :> QueryParam "copy-data" Bool :> PatchAccepted '[JSON] NoContent
+update :: (MonadLogger m, MonadThrow m, MonadTime m, Modifier m) => Authorization -> ServerT API m
 
 module Fission.Web.App.Index
 type API = Summary "App index" :> Description "A list of all of your apps and their associated domain names" :> Get '[JSON] (Map AppId [URL])
@@ -7557,7 +7648,7 @@ index :: (MonadDB t m, Retriever t, Retriever t) => Authorization -> ServerT API
 
 module Fission.Web.App
 type API = API :<|> API :<|> API :<|> API
-server :: (Initializer m, MonadTime m, MonadLogger m, MonadDNSLink m, MonadDB t m, CRUD t, Initializer t, Retriever t) => Authorization -> ServerT API m
+server :: (Initializer m, CRUD m, Initializer m, MonadTime m, MonadLogger m, MonadDNSLink m, MonadDB t m, CRUD t, Retriever t) => Authorization -> ServerT API m
 
 module Fission.Web.Handler
 
@@ -7594,7 +7685,7 @@ type API = PathAPI :<|> QueryAPI
 get :: (MonadLocalIPFS m, MonadLogger m, MonadThrow m) => ServerT API m
 
 module Fission.Web.IPFS.Peer
-type API = Summary "Peer inded" :> Description "List of recommended IPFS peers" :> Get '[JSON, PlainText, OctetStream] (NonEmpty Peer)
+type API = Summary "Peer index" :> Description "List of recommended IPFS peers" :> Get '[JSON, PlainText, OctetStream] (NonEmpty Peer)
 
 -- | Get a list of valid IPFS addresses that a user could use to join our
 --   network
@@ -7744,11 +7835,11 @@ module Fission.Web.Server.Reflective
 
 module Fission.Web.Heroku.Provision
 type API = Summary "Provision" :> Description "Provision a new Heroku add-on (for the Heroku partner service only)" :> ReqBody '[JSON] Request :> Post '[VendorJSONv3] Provision
-create :: (MonadTime m, MonadThrow m, MonadLogger m, MonadLocalIPFS m, MonadReflectiveServer m, MonadDB t m, Creator t) => ServerT API m
+create :: (MonadIO m, MonadThrow m, MonadLogger m, MonadLocalIPFS m, MonadReflectiveServer m, Creator m) => ServerT API m
 
 module Fission.Web.Heroku
 type API = API :<|> API
-server :: (MonadReflectiveServer m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadLogger m, MonadThrow m, MonadTime m, MonadDB t m, MonadLogger t, MonadThrow t, Creator t, Retriever t, Destroyer t, Retriever t, Destroyer t, Destroyer t, Retriever t) => ServerT API m
+server :: (MonadReflectiveServer m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadLogger m, MonadThrow m, Creator m, MonadDB t m, MonadLogger t, MonadThrow t, Retriever t, Destroyer t, Retriever t, Destroyer t, Destroyer t, Retriever t) => ServerT API m
 
 module Fission.Internal.Mock.Types
 
@@ -7777,8 +7868,8 @@ instance Fission.Web.Auth.Class.MonadAuth (Database.Persist.Class.PersistEntity.
 instance Fission.Web.Auth.Class.MonadAuth Fission.Authorization.Types.Authorization (Fission.Internal.Mock.Types.Mock effs)
 instance Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.RunAWS effs => Network.AWS.MonadAWS (Fission.Internal.Mock.Types.Mock effs)
 instance Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.CheckTime effs => Control.Monad.Time.MonadTime (Fission.Internal.Mock.Types.Mock effs)
-instance (Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.RunAWS effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.UpdateRoute53 effs) => Fission.AWS.Route53.Class.MonadRoute53 (Fission.Internal.Mock.Types.Mock effs)
-instance (Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.UpdateRoute53 effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.SetDNSLink effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.RunAWS effs) => Fission.IPFS.DNSLink.Class.MonadDNSLink (Fission.Internal.Mock.Types.Mock effs)
+instance (Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.RunAWS effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.UpdateRoute53 effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.ClearRoute53 effs) => Fission.AWS.Route53.Class.MonadRoute53 (Fission.Internal.Mock.Types.Mock effs)
+instance (Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.UpdateRoute53 effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.ClearRoute53 effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.SetDNSLink effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.FollowDNSLink effs, Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.RunAWS effs) => Fission.IPFS.DNSLink.Class.MonadDNSLink (Fission.Internal.Mock.Types.Mock effs)
 instance Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.RunLocalIPFS effs => Network.IPFS.Local.Class.MonadLocalIPFS (Fission.Internal.Mock.Types.Mock effs)
 instance Data.WorldPeace.Union.IsMember Fission.Internal.Mock.Effect.Types.RunRemoteIPFS effs => Network.IPFS.Remote.Class.MonadRemoteIPFS (Fission.Internal.Mock.Types.Mock effs)
 instance Fission.Web.Server.Reflective.Class.MonadReflectiveServer (Fission.Internal.Mock.Types.Mock effs)
@@ -7808,28 +7899,31 @@ module Fission.Config.Types
 
 -- | The top level <tt>Fission</tt> application <a>RIO</a> configuration
 data Config
-Config :: !ProcessContext -> !LogFunc -> !Manager -> !BinPath -> !URL -> !Peer -> !Timeout -> !Gateway -> !Host -> !Pool SqlBackend -> !ID -> !Password -> !AccessKey -> !SecretKey -> !ZoneID -> !Route53MockEnabled -> !CID -> !DomainName -> !DomainName -> !CID -> !DID -> Config
+Config :: !ProcessContext -> !LogFunc -> !Manager -> !Pool SqlBackend -> !BinPath -> !URL -> !Peer -> !Timeout -> !Gateway -> !ID -> !Password -> !AccessKey -> !SecretKey -> !MockRoute53 -> !DomainName -> !ZoneID -> !CID -> !DomainName -> !ZoneID -> !CID -> !Host -> !DID -> !ZoneID -> !URL -> Config
 [$sel:processCtx:Config] :: Config -> !ProcessContext
 [$sel:logFunc:Config] :: Config -> !LogFunc
 [$sel:httpManager:Config] :: Config -> !Manager
+[$sel:dbPool:Config] :: Config -> !Pool SqlBackend
 [$sel:ipfsPath:Config] :: Config -> !BinPath
 [$sel:ipfsURL:Config] :: Config -> !URL
 [$sel:ipfsRemotePeer:Config] :: Config -> !Peer
 [$sel:ipfsTimeout:Config] :: Config -> !Timeout
 [$sel:ipfsGateway:Config] :: Config -> !Gateway
-[$sel:host:Config] :: Config -> !Host
-[$sel:dbPool:Config] :: Config -> !Pool SqlBackend
 [$sel:herokuID:Config] :: Config -> !ID
 [$sel:herokuPassword:Config] :: Config -> !Password
 [$sel:awsAccessKey:Config] :: Config -> !AccessKey
 [$sel:awsSecretKey:Config] :: Config -> !SecretKey
-[$sel:awsZoneID:Config] :: Config -> !ZoneID
-[$sel:awsRoute53MockEnabled:Config] :: Config -> !Route53MockEnabled
+[$sel:awsMockRoute53:Config] :: Config -> !MockRoute53
+[$sel:baseAppDomain:Config] :: Config -> !DomainName
+[$sel:baseAppZoneID:Config] :: Config -> !ZoneID
 [$sel:appPlaceholder:Config] :: Config -> !CID
-[$sel:baseAppDomainName:Config] :: Config -> !DomainName
-[$sel:baseUserDataRootDomain:Config] :: Config -> !DomainName
+[$sel:userRootDomain:Config] :: Config -> !DomainName
+[$sel:userZoneID:Config] :: Config -> !ZoneID
 [$sel:defaultDataCID:Config] :: Config -> !CID
+[$sel:host:Config] :: Config -> !Host
 [$sel:fissionDID:Config] :: Config -> !DID
+[$sel:serverZoneID:Config] :: Config -> !ZoneID
+[$sel:liveDriveURL:Config] :: Config -> !URL
 instance GHC.Show.Show Fission.Config.Types.Config
 instance RIO.Process.HasProcessContext Fission.Config.Types.Config
 instance RIO.Prelude.Logger.HasLogFunc Fission.Config.Types.Config
@@ -7867,6 +7961,17 @@ instance Fission.App.Content.Initializer.Class.Initializer Fission.Types.Fission
 instance Fission.Web.Auth.Token.JWT.Resolver.Class.Resolver Fission.Types.Fission
 instance Fission.Authorization.ServerDID.Class.ServerDID Fission.Types.Fission
 instance Fission.Authorization.ServerDID.Class.PublicizeServerDID Fission.Types.Fission
+instance Fission.User.Retriever.Class.Retriever Fission.Types.Fission
+instance Fission.User.Creator.Class.Creator Fission.Types.Fission
+instance Fission.User.Modifier.Class.Modifier Fission.Types.Fission
+instance Fission.User.Destroyer.Class.Destroyer Fission.Types.Fission
+instance Fission.App.Retriever.Class.Retriever Fission.Types.Fission
+instance Fission.App.Creator.Class.Creator Fission.Types.Fission
+instance Fission.App.Modifier.Class.Modifier Fission.Types.Fission
+instance Fission.App.Destroyer.Class.Destroyer Fission.Types.Fission
+instance Fission.Platform.Heroku.AddOn.Creator.Class.Creator Fission.Types.Fission
+instance Fission.Domain.Retriever.Class.Retriever Fission.Types.Fission
+instance Fission.Domain.Creator.Class.Creator Fission.Types.Fission
 
 module Fission
 
@@ -7876,8 +7981,8 @@ runFission :: MonadIO m => Config -> Fission a -> m a
 module Fission.Web.User.Create
 type API = Summary "Create user with DID and UCAN proof" :> Description "Register a new user (must auth with user-controlled DID)" :> ReqBody '[JSON] Registration :> PutCreated '[JSON] NoContent
 type PasswordAPI = Summary "Create user with password" :> Description "DEPRECATED \9940 Register a new user (must auth with user-controlled DID)" :> ReqBody '[JSON] Registration :> PostCreated '[JSON] ()
-withDID :: (MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m, Creator t) => DID -> ServerT API m
-withPassword :: (MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m, Creator t) => ServerT PasswordAPI m
+withDID :: (MonadDNSLink m, MonadLogger m, MonadTime m, Creator m) => DID -> ServerT API m
+withPassword :: (MonadDNSLink m, MonadLogger m, MonadTime m, Creator m) => ServerT PasswordAPI m
 
 module Fission.Web.User.Password.Reset.Types
 newtype Reset
@@ -7891,15 +7996,15 @@ instance Data.Swagger.Internal.Schema.ToSchema Fission.Web.User.Password.Reset.T
 
 module Fission.Web.User.Password.Reset
 type API = Summary "Reset password" :> Description "DEPRECATED \9940 Reset password" :> ReqBody '[JSON] Reset :> Put '[JSON] Password
-server :: (MonadThrow m, MonadLogger m, MonadTime m, MonadDB t m, Modifier t) => Authorization -> ServerT API m
+server :: (MonadThrow m, MonadLogger m, MonadTime m, MonadIO m, Modifier m) => Authorization -> ServerT API m
 
 module Fission.Web.User.UpdateData
 type API = Summary "Update data root" :> Description "Set/update currently authenticated user's file system content" :> Capture "newCID" CID :> PatchNoContent '[PlainText, OctetStream, JSON] NoContent
-server :: (MonadLogger m, MonadThrow m, MonadTime m, MonadDB t m, Modifier t) => Authorization -> ServerT API m
+server :: (MonadLogger m, MonadThrow m, MonadTime m, Modifier m) => Authorization -> ServerT API m
 
 module Fission.Web.User.UpdatePublicKey
 type API = Summary "Update Public Key" :> Description "Set currently authenticated user's root public key to another one" :> ReqBody '[JSON] Public :> Patch '[PlainText, OctetStream, JSON] NoContent
-server :: (MonadTime m, MonadDB t m, Modifier t) => Authorization -> ServerT API m
+server :: (MonadTime m, MonadLogger m, MonadThrow m, Modifier m) => Authorization -> ServerT API m
 
 module Fission.Web.User.Verify
 type API = Summary "Validate auth" :> Description "DEPRECATED \9940 Verify user auth -- prefer /user/whoami" :> Get '[JSON] Bool
@@ -7917,7 +8022,7 @@ type VerifyRoute = "verify" :> Auth :> API
 type UpdatePublicKeyRoute = "did" :> Auth :> API
 type ResetRoute = "reset_password" :> Auth :> API
 type WhoAmIRoute = "whoami" :> Auth :> API
-server :: (MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m, Creator t, Modifier t) => ServerT API m
+server :: (MonadDNSLink m, MonadLogger m, MonadTime m, Modifier m, Creator m) => ServerT API m
 
 
 -- | Top-level router type for the application
@@ -7930,7 +8035,8 @@ type IPFSPrefix = "ipfs"
 type IPFSRoute = IPFSPrefix :> API
 type PingRoute = "ping" :> API
 type DNSRoute = "dns" :> HigherOrder :> API
-type AppRoute = "app" :> HigherOrder :> API
+type AppRoute = AppPrefix :> HigherOrder :> API
+type AppPrefix = "app"
 
 module Fission.Web.Swagger
 type API = SwaggerSchemaUI "docs" "docs.json"
@@ -7948,10 +8054,18 @@ type CIDs = AuthedIPFS ("cids" :> API)
 module Fission.CLI.IPFS.Pin
 add :: (MonadUnliftIO m, MonadTime m, MonadLogger m, MonadWebClient m, ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey) => CID -> m (Either ClientError CID)
 
+module Fission.Web.Client.App
+type Create = AppPrefix :> HigherOrder :> API
+type Update = AppPrefix :> HigherOrder :> API
 
--- | Update DNS via the CLI
-module Fission.CLI.DNS
-update :: (MonadUnliftIO m, MonadLogger m, MonadWebClient m, MonadTime m, ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey) => CID -> m (Either ClientError DomainName)
+
+-- | Initialize a new Fission app in an existing directory
+module Fission.CLI.Command.App.Init
+cmd :: (MonadWebClient m, MonadIO m, MonadTime m, ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey, MonadLogger m) => Command m Options ()
+cmdTxt :: Text
+
+-- | Sync the current working directory to the server over IPFS
+appInit :: (MonadWebClient m, MonadIO m, MonadTime m, MonadLogger m, ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey) => Options -> m ()
 
 
 -- | Continuous file sync
@@ -7959,7 +8073,7 @@ module Fission.CLI.Command.Watch
 
 -- | The command to attach to the CLI tree
 cmd :: (MonadUnliftIO m, MonadLogger m, MonadLocalIPFS m, MonadEnvironment m, MonadWebClient m, MonadTime m, MonadWebAuth m Token, MonadWebAuth m SecretKey, ServerDID m) => (m () -> IO ()) -> Command m Options ()
-handleTreeChanges :: (MonadUnliftIO m, MonadLogger m, MonadTime m, MonadLocalIPFS m, MonadWebClient m, MonadWebAuth m Token, MonadWebAuth m SecretKey, ServerDID m) => (m () -> IO ()) -> MVar UTCTime -> MVar Text -> WatchManager -> FilePath -> IO StopListening
+handleTreeChanges :: (MonadUnliftIO m, MonadLogger m, MonadTime m, MonadLocalIPFS m, MonadWebClient m, MonadWebAuth m Token, MonadWebAuth m SecretKey, ServerDID m) => (m () -> IO ()) -> URL -> Bool -> MVar UTCTime -> MVar Text -> WatchManager -> FilePath -> IO StopListening
 
 -- | Continuously sync the current working directory to the server over
 --   IPFS
@@ -7974,6 +8088,11 @@ cmd :: (MonadUnliftIO m, MonadLogger m, MonadLocalIPFS m, MonadEnvironment m, Mo
 
 -- | Sync the current working directory to the server over IPFS
 up :: (MonadUnliftIO m, MonadLogger m, MonadLocalIPFS m, MonadEnvironment m, MonadWebClient m, MonadTime m, MonadWebAuth m Token, MonadWebAuth m SecretKey, ServerDID m) => Options -> m ()
+
+
+-- | Update DNS via the CLI
+module Fission.CLI.DNS
+update :: (MonadUnliftIO m, MonadLogger m, MonadWebClient m, MonadTime m, ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey) => CID -> m (Either ClientError DomainName)
 
 module Fission.Web.Client.User
 type Register = UserPrefix :> RegisterRoute
@@ -8019,8 +8138,8 @@ module Fission.Web
 
 -- | Top level web API type. Handled by <a>server</a>.
 type API = API :<|> API
-app :: (Initializer m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, CRUD t, CRUD t, Initializer t, Retriever t) => (forall a. m a -> Handler a) -> Context Checks -> Host -> Application
+app :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, CRUD m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, CRUD t, CRUD t, Retriever t) => (forall a. m a -> Handler a) -> Context Checks -> Host -> Application
 
 -- | Web handlers for the <a>API</a>
-server :: (Initializer m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, CRUD t, CRUD t, Initializer t, Retriever t) => Host -> ServerT API m
-bizServer :: (Initializer m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, CRUD t, CRUD t, Initializer t, Retriever t) => ServerT API m
+server :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, CRUD m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t, Destroyer t, CRUD t, Retriever t) => Host -> ServerT API m
+bizServer :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, CRUD m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t, Destroyer t, CRUD t, Retriever t) => ServerT API m

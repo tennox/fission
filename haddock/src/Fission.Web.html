@@ -42,38 +42,40 @@
 </span><span id="line-42"></span><span class="hs-comment">-- | Top level web API type. Handled by 'server'.</span><span>
 </span><span id="line-43"></span><span class="hs-keyword">type</span><span> </span><span id="API"><span class="annot"><a href="Fission.Web.html#API"><span class="hs-identifier hs-var">API</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Swagger.html#API"><span class="hs-identifier hs-type">Web.Swagger.API</span></a></span><span> </span><span class="annot"><span class="hs-operator hs-type">:&lt;|&gt;</span></span><span> </span><span class="annot"><a href="Fission.Web.Routes.html#API"><span class="hs-identifier hs-type">Web.API</span></a></span><span>
 </span><span id="line-44"></span><span>
-</span><span id="line-45"></span><span id="local-6989586621680208216"><span id="local-6989586621680208217"><span class="annot"><a href="Fission.Web.html#app"><span class="hs-identifier hs-type">app</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-46"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-47"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-48"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.Linked.Class.html#MonadLinkedIPFS"><span class="hs-identifier hs-type">MonadLinkedIPFS</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-49"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>           </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-50"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>            </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-51"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>              </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-52"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>               </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-53"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-54"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-55"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>             </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-56"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>              </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-57"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.html#CRUD"><span class="hs-identifier hs-type">Heroku.AddOn.CRUD</span></a></span><span>       </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.html#CRUD"><span class="hs-identifier hs-type">LoosePin.CRUD</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.html#CRUD"><span class="hs-identifier hs-type">User.CRUD</span></a></span><span>               </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-60"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-61"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-62"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">App.Domain.Retriever</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680208216"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-63"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-64"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680208325"><span class="annot"><a href="#local-6989586621680208325"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-operator">.</span><span> </span><span class="annot"><a href="#local-6989586621680208217"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208325"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span><span> </span><span class="annot"><a href="#local-6989586621680208325"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-65"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Context</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.html#Checks"><span class="hs-identifier hs-type">Auth.Checks</span></a></span><span>
-</span><span id="line-66"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span>
-</span><span id="line-67"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Application</span></span></span></span><span>
-</span><span id="line-68"></span><span id="app"><span class="annot"><span class="annottext">app :: (forall a. m a -&gt; Handler a)
+</span><span id="line-45"></span><span id="local-6989586621680257808"><span id="local-6989586621680257809"><span class="annot"><a href="Fission.Web.html#app"><span class="hs-identifier hs-type">app</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-46"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-47"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-48"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                  </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-49"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-50"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.Linked.Class.html#MonadLinkedIPFS"><span class="hs-identifier hs-type">MonadLinkedIPFS</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-51"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>           </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-52"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>            </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-53"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>              </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>               </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-55"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.html#CRUD"><span class="hs-identifier hs-type">User.CRUD</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>             </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>              </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.html#CRUD"><span class="hs-identifier hs-type">Heroku.AddOn.CRUD</span></a></span><span>       </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.html#CRUD"><span class="hs-identifier hs-type">LoosePin.CRUD</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-62"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.html#CRUD"><span class="hs-identifier hs-type">User.CRUD</span></a></span><span>               </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-63"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-64"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">App.Domain.Retriever</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680257808"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-65"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-66"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680257915"><span class="annot"><a href="#local-6989586621680257915"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-operator">.</span><span> </span><span class="annot"><a href="#local-6989586621680257809"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257915"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span><span> </span><span class="annot"><a href="#local-6989586621680257915"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-67"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Context</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.html#Checks"><span class="hs-identifier hs-type">Auth.Checks</span></a></span><span>
+</span><span id="line-68"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span>
+</span><span id="line-69"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Application</span></span></span></span><span>
+</span><span id="line-70"></span><span id="app"><span class="annot"><span class="annottext">app :: (forall a. m a -&gt; Handler a)
 -&gt; Context Checks -&gt; Host -&gt; Application
-</span><a href="Fission.Web.html#app"><span class="hs-identifier hs-var hs-var">app</span></a></span></span><span> </span><span id="local-6989586621680208215"><span class="annot"><span class="annottext">handlerNT :: forall a. m a -&gt; Handler a
-</span><a href="#local-6989586621680208215"><span class="hs-identifier hs-var">handlerNT</span></a></span></span><span> </span><span id="local-6989586621680208214"><span class="annot"><span class="annottext">authChecks :: Context Checks
-</span><a href="#local-6989586621680208214"><span class="hs-identifier hs-var">authChecks</span></a></span></span><span> </span><span id="local-6989586621680208213"><span class="annot"><span class="annottext">appHost :: Host
-</span><a href="#local-6989586621680208213"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-69"></span><span>  </span><span class="annot"><span class="annottext">Host
-</span><a href="#local-6989586621680208213"><span class="hs-identifier hs-var">appHost</span></a></span><span>
-</span><span id="line-70"></span><span>    </span><span class="annot"><span class="annottext">Host
+</span><a href="Fission.Web.html#app"><span class="hs-identifier hs-var hs-var">app</span></a></span></span><span> </span><span id="local-6989586621680257807"><span class="annot"><span class="annottext">handlerNT :: forall a. m a -&gt; Handler a
+</span><a href="#local-6989586621680257807"><span class="hs-identifier hs-var">handlerNT</span></a></span></span><span> </span><span id="local-6989586621680257806"><span class="annot"><span class="annottext">authChecks :: Context Checks
+</span><a href="#local-6989586621680257806"><span class="hs-identifier hs-var">authChecks</span></a></span></span><span> </span><span id="local-6989586621680257805"><span class="annot"><span class="annottext">appHost :: Host
+</span><a href="#local-6989586621680257805"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-71"></span><span>  </span><span class="annot"><span class="annottext">Host
+</span><a href="#local-6989586621680257805"><span class="hs-identifier hs-var">appHost</span></a></span><span>
+</span><span id="line-72"></span><span>    </span><span class="annot"><span class="annottext">Host
 -&gt; (Host
     -&gt; (m Swagger
         :&lt;|&gt; (m (SwaggerUiHtml &quot;docs&quot; (&quot;docs.json&quot; :&gt; Get '[JSON] Swagger))
@@ -88,8 +90,8 @@
                     :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
              :&lt;|&gt; ((Authorization
                     -&gt; m (Map AppId [URL])
-                       :&lt;|&gt; (m (Subdomain, DomainName)
-                             :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+                       :&lt;|&gt; (m URL
+                             :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                                    :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
                    :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                          :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -114,8 +116,8 @@
                 :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
          :&lt;|&gt; ((Authorization
                 -&gt; m (Map AppId [URL])
-                   :&lt;|&gt; (m (Subdomain, DomainName)
-                         :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+                   :&lt;|&gt; (m URL
+                         :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                                :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
                :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                      :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -142,8 +144,8 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
                 :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
          :&lt;|&gt; ((Authorization
                 -&gt; m (Map AppId [URL])
-                   :&lt;|&gt; (m (Subdomain, DomainName)
-                         :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+                   :&lt;|&gt; (m URL
+                         :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                                :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
                :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                      :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -156,13 +158,14 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
                                                                 -&gt; Reset -&gt; m Password)))))))
                            :&lt;|&gt; (m Pong :&lt;|&gt; (Authorization -&gt; CID -&gt; m DomainName))))))
 forall (m :: * -&gt; *) (t :: * -&gt; *).
-(Initializer m, MonadReflectiveServer m, MonadLinkedIPFS m,
- MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m,
- MonadTime m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t,
- CRUD t, CRUD t, CRUD t, Initializer t, Retriever t) =&gt;
+(Initializer m, Initializer m, CRUD m, MonadReflectiveServer m,
+ MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m,
+ MonadDNSLink m, MonadLogger m, MonadTime m, CRUD m, MonadDB t m,
+ MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t,
+ Destroyer t, CRUD t, Retriever t) =&gt;
 Host -&gt; ServerT API m
 </span><a href="Fission.Web.html#server"><span class="hs-identifier hs-var">server</span></a></span><span>
-</span><span id="line-71"></span><span>    </span><span class="annot"><span class="annottext">((m Swagger
+</span><span id="line-73"></span><span>    </span><span class="annot"><span class="annottext">((m Swagger
   :&lt;|&gt; (m (SwaggerUiHtml &quot;docs&quot; (&quot;docs.json&quot; :&gt; Get '[JSON] Swagger))
         :&lt;|&gt; (m (SwaggerUiHtml &quot;docs&quot; (&quot;docs.json&quot; :&gt; Get '[JSON] Swagger))
               :&lt;|&gt; Tagged m Application)))
@@ -175,8 +178,8 @@ Host -&gt; ServerT API m
               :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
        :&lt;|&gt; ((Authorization
               -&gt; m (Map AppId [URL])
-                 :&lt;|&gt; (m (Subdomain, DomainName)
-                       :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+                 :&lt;|&gt; (m URL
+                       :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                              :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
              :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                    :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -201,8 +204,8 @@ Host -&gt; ServerT API m
                   :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
            :&lt;|&gt; ((Authorization
                   -&gt; m (Map AppId [URL])
-                     :&lt;|&gt; (m (Subdomain, DomainName)
-                           :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+                     :&lt;|&gt; (m URL
+                           :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                                  :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
                  :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                        :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -230,8 +233,8 @@ Host -&gt; ServerT API m
                           :&lt;|&gt; (Maybe CID -&gt; Handler Serialized))))
              :&lt;|&gt; ((Authorization
                     -&gt; Handler (Map AppId [URL])
-                       :&lt;|&gt; (Handler (Subdomain, DomainName)
-                             :&lt;|&gt; ((AppId -&gt; CID -&gt; Handler NoContent)
+                       :&lt;|&gt; (Handler URL
+                             :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; Handler NoContent)
                                    :&lt;|&gt; ((URL -&gt; Handler NoContent)
                                          :&lt;|&gt; (AppId -&gt; Handler NoContent)))))
                    :&lt;|&gt; ((Auth
@@ -265,8 +268,8 @@ Host -&gt; ServerT API m
                       :&lt;|&gt; (Maybe CID -&gt; Handler Serialized))))
          :&lt;|&gt; ((Authorization
                 -&gt; Handler (Map AppId [URL])
-                   :&lt;|&gt; (Handler (Subdomain, DomainName)
-                         :&lt;|&gt; ((AppId -&gt; CID -&gt; Handler NoContent)
+                   :&lt;|&gt; (Handler URL
+                         :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; Handler NoContent)
                                :&lt;|&gt; ((URL -&gt; Handler NoContent)
                                      :&lt;|&gt; (AppId -&gt; Handler NoContent)))))
                :&lt;|&gt; ((Auth
@@ -294,9 +297,9 @@ Proxy api
 -&gt; ServerT api m
 -&gt; ServerT api Handler
 </span><a href="Fission.Web.Auth.html#authWithContext"><span class="hs-identifier hs-var">Auth.authWithContext</span></a></span><span> </span><span class="annot"><span class="annottext">Proxy API
-</span><a href="#local-6989586621680208210"><span class="hs-identifier hs-var">api</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. m a -&gt; Handler a
-</span><a href="#local-6989586621680208215"><span class="hs-identifier hs-var">handlerNT</span></a></span><span>
-</span><span id="line-72"></span><span>    </span><span class="annot"><span class="annottext">((Handler Swagger
+</span><a href="#local-6989586621680257802"><span class="hs-identifier hs-var">api</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. m a -&gt; Handler a
+</span><a href="#local-6989586621680257807"><span class="hs-identifier hs-var">handlerNT</span></a></span><span>
+</span><span id="line-74"></span><span>    </span><span class="annot"><span class="annottext">((Handler Swagger
   :&lt;|&gt; (Handler
           (SwaggerUiHtml &quot;docs&quot; (&quot;docs.json&quot; :&gt; Get '[JSON] Swagger))
         :&lt;|&gt; (Handler
@@ -312,8 +315,8 @@ Proxy api
                     :&lt;|&gt; (Maybe CID -&gt; Handler Serialized))))
        :&lt;|&gt; ((Authorization
               -&gt; Handler (Map AppId [URL])
-                 :&lt;|&gt; (Handler (Subdomain, DomainName)
-                       :&lt;|&gt; ((AppId -&gt; CID -&gt; Handler NoContent)
+                 :&lt;|&gt; (Handler URL
+                       :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; Handler NoContent)
                              :&lt;|&gt; ((URL -&gt; Handler NoContent)
                                    :&lt;|&gt; (AppId -&gt; Handler NoContent)))))
              :&lt;|&gt; ((Auth
@@ -344,8 +347,8 @@ Proxy api
                         :&lt;|&gt; (Maybe CID -&gt; Handler Serialized))))
            :&lt;|&gt; ((Authorization
                   -&gt; Handler (Map AppId [URL])
-                     :&lt;|&gt; (Handler (Subdomain, DomainName)
-                           :&lt;|&gt; ((AppId -&gt; CID -&gt; Handler NoContent)
+                     :&lt;|&gt; (Handler URL
+                           :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; Handler NoContent)
                                  :&lt;|&gt; ((URL -&gt; Handler NoContent)
                                        :&lt;|&gt; (AppId -&gt; Handler NoContent)))))
                  :&lt;|&gt; ((Auth
@@ -370,46 +373,49 @@ forall api (context :: [*]).
 HasServer api context =&gt;
 Proxy api -&gt; Context context -&gt; Server api -&gt; Application
 </span><span class="hs-identifier hs-var">serveWithContext</span></span><span>     </span><span class="annot"><span class="annottext">Proxy API
-</span><a href="#local-6989586621680208210"><span class="hs-identifier hs-var">api</span></a></span><span> </span><span class="annot"><span class="annottext">Context Checks
-</span><a href="#local-6989586621680208214"><span class="hs-identifier hs-var">authChecks</span></a></span><span>
-</span><span id="line-73"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-74"></span><span>    </span><span id="local-6989586621680208210"><span class="annot"><span class="annottext">api :: Proxy API
-</span><a href="#local-6989586621680208210"><span class="hs-identifier hs-var hs-var">api</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Proxy API
+</span><a href="#local-6989586621680257802"><span class="hs-identifier hs-var">api</span></a></span><span> </span><span class="annot"><span class="annottext">Context Checks
+</span><a href="#local-6989586621680257806"><span class="hs-identifier hs-var">authChecks</span></a></span><span>
+</span><span id="line-75"></span><span>  </span><span class="hs-keyword">where</span><span>
+</span><span id="line-76"></span><span>    </span><span id="local-6989586621680257802"><span class="annot"><span class="annottext">api :: Proxy API
+</span><a href="#local-6989586621680257802"><span class="hs-identifier hs-var hs-var">api</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Proxy API
 forall k (t :: k). Proxy t
 </span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.html#API"><span class="hs-identifier hs-type">API</span></a></span><span>
-</span><span id="line-75"></span><span>
-</span><span id="line-76"></span><span class="hs-comment">-- | Web handlers for the 'API'</span><span>
-</span><span id="line-77"></span><span id="local-6989586621680208279"><span id="local-6989586621680208288"><span class="annot"><a href="Fission.Web.html#server"><span class="hs-identifier hs-type">server</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-78"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-79"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-80"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.Linked.Class.html#MonadLinkedIPFS"><span class="hs-identifier hs-type">MonadLinkedIPFS</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-81"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>           </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-82"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>            </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-83"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>              </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-84"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>               </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-85"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-86"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-87"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>             </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-88"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>              </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-89"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.html#CRUD"><span class="hs-identifier hs-type">Heroku.AddOn.CRUD</span></a></span><span>       </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-90"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.html#CRUD"><span class="hs-identifier hs-type">LoosePin.CRUD</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-91"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.html#CRUD"><span class="hs-identifier hs-type">User.CRUD</span></a></span><span>               </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-92"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-93"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-94"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">App.Domain.Retriever</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680208279"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-95"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-96"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span>
-</span><span id="line-97"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208288"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
-</span><span id="line-98"></span><span id="server"><span class="annot"><span class="annottext">server :: Host -&gt; ServerT API m
-</span><a href="Fission.Web.html#server"><span class="hs-identifier hs-var hs-var">server</span></a></span></span><span> </span><span id="local-6989586621680208207"><span class="annot"><span class="annottext">appHost :: Host
-</span><a href="#local-6989586621680208207"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(forall a. Handler a -&gt; m a) -&gt; Host -&gt; ServerT API m
+</span><span id="line-77"></span><span>
+</span><span id="line-78"></span><span class="hs-comment">-- | Web handlers for the 'API'</span><span>
+</span><span id="line-79"></span><span id="local-6989586621680257867"><span id="local-6989586621680257879"><span class="annot"><a href="Fission.Web.html#server"><span class="hs-identifier hs-type">server</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-80"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-81"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-82"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                  </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-83"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-84"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.Linked.Class.html#MonadLinkedIPFS"><span class="hs-identifier hs-type">MonadLinkedIPFS</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-85"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>           </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-86"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>            </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-87"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>              </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-88"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>               </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-89"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-90"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.html#CRUD"><span class="hs-identifier hs-type">User.CRUD</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-91"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-92"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>             </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-93"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>              </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-94"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.html#CRUD"><span class="hs-identifier hs-type">Heroku.AddOn.CRUD</span></a></span><span>       </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-95"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.html#CRUD"><span class="hs-identifier hs-type">LoosePin.CRUD</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-96"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">User.Retriever</span></a></span><span>          </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-97"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">User.Destroyer</span></a></span><span>          </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-98"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-99"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">App.Domain.Retriever</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680257867"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-100"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-101"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span>
+</span><span id="line-102"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257879"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
+</span><span id="line-103"></span><span id="server"><span class="annot"><span class="annottext">server :: Host -&gt; ServerT API m
+</span><a href="Fission.Web.html#server"><span class="hs-identifier hs-var hs-var">server</span></a></span></span><span> </span><span id="local-6989586621680257799"><span class="annot"><span class="annottext">appHost :: Host
+</span><a href="#local-6989586621680257799"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(forall a. Handler a -&gt; m a) -&gt; Host -&gt; ServerT API m
 forall (m :: * -&gt; *).
 (forall a. Handler a -&gt; m a) -&gt; Host -&gt; ServerT API m
 </span><a href="Fission.Web.Swagger.html#server"><span class="hs-identifier hs-var">Web.Swagger.server</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Handler a -&gt; m a
 forall (m :: * -&gt; *) a. MonadIO m =&gt; Handler a -&gt; m a
 </span><a href="Fission.Web.Handler.html#fromHandler"><span class="hs-identifier hs-var">fromHandler</span></a></span><span> </span><span class="annot"><span class="annottext">Host
-</span><a href="#local-6989586621680208207"><span class="hs-identifier hs-var">appHost</span></a></span><span>
-</span><span id="line-99"></span><span>            </span><span class="annot"><span class="annottext">(m Swagger
+</span><a href="#local-6989586621680257799"><span class="hs-identifier hs-var">appHost</span></a></span><span>
+</span><span id="line-104"></span><span>            </span><span class="annot"><span class="annottext">(m Swagger
  :&lt;|&gt; (m (SwaggerUiHtml &quot;docs&quot; (&quot;docs.json&quot; :&gt; Get '[JSON] Swagger))
        :&lt;|&gt; (m (SwaggerUiHtml &quot;docs&quot; (&quot;docs.json&quot; :&gt; Get '[JSON] Swagger))
              :&lt;|&gt; Tagged m Application)))
@@ -422,8 +428,8 @@ forall (m :: * -&gt; *) a. MonadIO m =&gt; Handler a -&gt; m a
            :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
     :&lt;|&gt; ((Authorization
            -&gt; m (Map AppId [URL])
-              :&lt;|&gt; (m (Subdomain, DomainName)
-                    :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+              :&lt;|&gt; (m URL
+                    :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                           :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
           :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                 :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -448,8 +454,8 @@ forall (m :: * -&gt; *) a. MonadIO m =&gt; Handler a -&gt; m a
                 :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
          :&lt;|&gt; ((Authorization
                 -&gt; m (Map AppId [URL])
-                   :&lt;|&gt; (m (Subdomain, DomainName)
-                         :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+                   :&lt;|&gt; (m URL
+                         :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                                :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
                :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                      :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -471,8 +477,8 @@ forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
        :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
 :&lt;|&gt; ((Authorization
        -&gt; m (Map AppId [URL])
-          :&lt;|&gt; (m (Subdomain, DomainName)
-                :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+          :&lt;|&gt; (m URL
+                :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                       :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
       :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
             :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -484,34 +490,38 @@ forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
                                                  :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password)))))))
                   :&lt;|&gt; (m Pong :&lt;|&gt; (Authorization -&gt; CID -&gt; m DomainName)))))
 forall (m :: * -&gt; *) (t :: * -&gt; *).
-(Initializer m, MonadReflectiveServer m, MonadLinkedIPFS m,
- MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m,
- MonadTime m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t,
- CRUD t, CRUD t, CRUD t, Initializer t, Retriever t) =&gt;
+(Initializer m, Initializer m, CRUD m, MonadReflectiveServer m,
+ MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m,
+ MonadDNSLink m, MonadLogger m, MonadTime m, CRUD m, MonadDB t m,
+ MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t,
+ Destroyer t, CRUD t, Retriever t) =&gt;
 ServerT API m
 </span><a href="Fission.Web.html#bizServer"><span class="hs-identifier hs-var">bizServer</span></a></span><span>
-</span><span id="line-100"></span><span>
-</span><span id="line-101"></span><span id="local-6989586621680208248"><span id="local-6989586621680208249"><span class="annot"><a href="Fission.Web.html#bizServer"><span class="hs-identifier hs-type">bizServer</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-102"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-103"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-104"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.Linked.Class.html#MonadLinkedIPFS"><span class="hs-identifier hs-type">MonadLinkedIPFS</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-105"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>           </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-106"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>            </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-107"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>              </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-108"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>               </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-109"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-110"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-111"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>             </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-112"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>              </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-113"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.html#CRUD"><span class="hs-identifier hs-type">Heroku.AddOn.CRUD</span></a></span><span>       </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-114"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.html#CRUD"><span class="hs-identifier hs-type">LoosePin.CRUD</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-115"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.html#CRUD"><span class="hs-identifier hs-type">User.CRUD</span></a></span><span>               </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-116"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-117"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-118"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">App.Domain.Retriever</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680208248"><span class="hs-identifier hs-type">t</span></a></span><span>
-</span><span id="line-119"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-120"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.Routes.html#API"><span class="hs-identifier hs-type">Web.API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208249"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
-</span><span id="line-121"></span><span id="bizServer"><span class="annot"><span class="annottext">bizServer :: ServerT API m
+</span><span id="line-105"></span><span>
+</span><span id="line-106"></span><span id="local-6989586621680257837"><span id="local-6989586621680257838"><span class="annot"><a href="Fission.Web.html#bizServer"><span class="hs-identifier hs-type">bizServer</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-107"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-108"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-109"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                  </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-110"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-111"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.Linked.Class.html#MonadLinkedIPFS"><span class="hs-identifier hs-type">MonadLinkedIPFS</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-112"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadRemoteIPFS</span></span><span>           </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-113"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>            </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-114"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>              </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-115"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>               </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-116"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-117"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.html#CRUD"><span class="hs-identifier hs-type">User.CRUD</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-118"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>                 </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-119"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>             </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-120"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>              </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-121"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.html#CRUD"><span class="hs-identifier hs-type">Heroku.AddOn.CRUD</span></a></span><span>       </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-122"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.LoosePin.html#CRUD"><span class="hs-identifier hs-type">LoosePin.CRUD</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-123"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">User.Retriever</span></a></span><span>          </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-124"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">User.Destroyer</span></a></span><span>          </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-125"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.html#CRUD"><span class="hs-identifier hs-type">App.CRUD</span></a></span><span>                </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-126"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">App.Domain.Retriever</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680257837"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-127"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-128"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.Routes.html#API"><span class="hs-identifier hs-type">Web.API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257838"><span class="hs-identifier hs-type">m</span></a></span></span></span><span>
+</span><span id="line-129"></span><span id="bizServer"><span class="annot"><span class="annottext">bizServer :: ServerT API m
 </span><a href="Fission.Web.html#bizServer"><span class="hs-identifier hs-var hs-var">bizServer</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Authorization
  -&gt; m [CID]
     :&lt;|&gt; ((Serialized -&gt; m CID)
@@ -525,7 +535,7 @@ forall (m :: * -&gt; *) (t :: * -&gt; *).
  Retriever t, Destroyer t) =&gt;
 ServerT API m
 </span><a href="Fission.Web.IPFS.html#server"><span class="hs-identifier hs-var">IPFS.server</span></a></span><span>
-</span><span id="line-122"></span><span>       </span><span class="annot"><span class="annottext">((Authorization
+</span><span id="line-130"></span><span>       </span><span class="annot"><span class="annottext">((Authorization
   -&gt; m [CID]
      :&lt;|&gt; ((Serialized -&gt; m CID)
            :&lt;|&gt; (((CID -&gt; m NoContent) :&lt;|&gt; (CID -&gt; m NoContent))
@@ -534,8 +544,8 @@ ServerT API m
        :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
 -&gt; ((Authorization
      -&gt; m (Map AppId [URL])
-        :&lt;|&gt; (m (Subdomain, DomainName)
-              :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+        :&lt;|&gt; (m URL
+              :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                     :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
     :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
           :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -555,8 +565,8 @@ ServerT API m
           :&lt;|&gt; ((CID -&gt; m Serialized) :&lt;|&gt; (Maybe CID -&gt; m Serialized))))
    :&lt;|&gt; ((Authorization
           -&gt; m (Map AppId [URL])
-             :&lt;|&gt; (m (Subdomain, DomainName)
-                   :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+             :&lt;|&gt; (m URL
+                   :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                          :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
          :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
                :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -571,18 +581,18 @@ ServerT API m
 forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
 </span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Authorization
 -&gt; m (Map AppId [URL])
-   :&lt;|&gt; (m (Subdomain, DomainName)
-         :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+   :&lt;|&gt; (m URL
+         :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent))))
 forall (m :: * -&gt; *) (t :: * -&gt; *).
-(Initializer m, MonadTime m, MonadLogger m, MonadDNSLink m,
- MonadDB t m, CRUD t, Initializer t, Retriever t) =&gt;
+(Initializer m, CRUD m, Initializer m, MonadTime m, MonadLogger m,
+ MonadDNSLink m, MonadDB t m, CRUD t, Retriever t) =&gt;
 Authorization -&gt; ServerT API m
 </span><a href="Fission.Web.App.html#server"><span class="hs-identifier hs-var">App.server</span></a></span><span>
-</span><span id="line-123"></span><span>       </span><span class="annot"><span class="annottext">(Authorization
+</span><span id="line-131"></span><span>       </span><span class="annot"><span class="annottext">(Authorization
  -&gt; m (Map AppId [URL])
-    :&lt;|&gt; (m (Subdomain, DomainName)
-          :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+    :&lt;|&gt; (m URL
+          :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                 :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
 -&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
     :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -595,8 +605,8 @@ Authorization -&gt; ServerT API m
           :&lt;|&gt; (m Pong :&lt;|&gt; (Authorization -&gt; CID -&gt; m DomainName))))
 -&gt; (Authorization
     -&gt; m (Map AppId [URL])
-       :&lt;|&gt; (m (Subdomain, DomainName)
-             :&lt;|&gt; ((AppId -&gt; CID -&gt; m NoContent)
+       :&lt;|&gt; (m URL
+             :&lt;|&gt; ((URL -&gt; CID -&gt; Maybe Bool -&gt; m NoContent)
                    :&lt;|&gt; ((URL -&gt; m NoContent) :&lt;|&gt; (AppId -&gt; m NoContent)))))
    :&lt;|&gt; ((Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
          :&lt;|&gt; (((DID -&gt; Registration -&gt; m NoContent)
@@ -611,12 +621,12 @@ forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
 </span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerT API m
 forall (m :: * -&gt; *) (t :: * -&gt; *).
 (MonadReflectiveServer m, MonadRemoteIPFS m, MonadLocalIPFS m,
- MonadLogger m, MonadThrow m, MonadTime m, MonadDB t m,
- MonadLogger t, MonadThrow t, Creator t, Retriever t, Destroyer t,
- Retriever t, Destroyer t, Destroyer t, Retriever t) =&gt;
+ MonadLogger m, MonadThrow m, Creator m, MonadDB t m, MonadLogger t,
+ MonadThrow t, Retriever t, Destroyer t, Retriever t, Destroyer t,
+ Destroyer t, Retriever t) =&gt;
 ServerT API m
 </span><a href="Fission.Web.Heroku.html#server"><span class="hs-identifier hs-var">Heroku.server</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-124"></span><span>       </span><span class="annot"><span class="annottext">(Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
+</span><span id="line-132"></span><span>       </span><span class="annot"><span class="annottext">(Auth -&gt; (Request -&gt; m Provision) :&lt;|&gt; (UUID -&gt; m NoContent))
 -&gt; (((DID -&gt; Registration -&gt; m NoContent)
      :&lt;|&gt; ((Registration -&gt; m ())
            :&lt;|&gt; ((Authorization -&gt; m Username)
@@ -642,12 +652,12 @@ forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
                   :&lt;|&gt; ((Authorization -&gt; Public -&gt; m NoContent)
                         :&lt;|&gt; ((Authorization -&gt; CID -&gt; m NoContent)
                               :&lt;|&gt; (Authorization -&gt; Reset -&gt; m Password))))))
-forall (m :: * -&gt; *) (t :: * -&gt; *).
-(MonadDNSLink m, MonadLogger m, MonadTime m, MonadDB t m,
- Creator t, Modifier t) =&gt;
+forall (m :: * -&gt; *).
+(MonadDNSLink m, MonadLogger m, MonadTime m, Modifier m,
+ Creator m) =&gt;
 ServerT API m
 </span><a href="Fission.Web.User.html#server"><span class="hs-identifier hs-var">User.server</span></a></span><span>
-</span><span id="line-125"></span><span>       </span><span class="annot"><span class="annottext">((DID -&gt; Registration -&gt; m NoContent)
+</span><span id="line-133"></span><span>       </span><span class="annot"><span class="annottext">((DID -&gt; Registration -&gt; m NoContent)
  :&lt;|&gt; ((Registration -&gt; m ())
        :&lt;|&gt; ((Authorization -&gt; m Username)
              :&lt;|&gt; ((Authorization -&gt; m Bool)
@@ -668,13 +678,13 @@ forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">Pong
 </span><a href="Fission.Web.Ping.html#pong"><span class="hs-identifier hs-var">Ping.pong</span></a></span><span>
-</span><span id="line-126"></span><span>       </span><span class="annot"><span class="annottext">m Pong
+</span><span id="line-134"></span><span>       </span><span class="annot"><span class="annottext">m Pong
 -&gt; (Authorization -&gt; CID -&gt; m DomainName)
 -&gt; m Pong :&lt;|&gt; (Authorization -&gt; CID -&gt; m DomainName)
 forall a b. a -&gt; b -&gt; a :&lt;|&gt; b
 </span><span class="hs-operator hs-var">:&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Authorization -&gt; CID -&gt; m DomainName
 forall (m :: * -&gt; *).
-(MonadLogger m, MonadDNSLink m) =&gt;
+(MonadTime m, MonadThrow m, MonadLogger m, Modifier m) =&gt;
 Authorization -&gt; ServerT API m
 </span><a href="Fission.Web.DNS.html#server"><span class="hs-identifier hs-var">DNS.server</span></a></span><span>
-</span><span id="line-127"></span></pre></body></html>
+</span><span id="line-135"></span></pre></body></html>

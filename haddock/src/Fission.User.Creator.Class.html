@@ -12,83 +12,86 @@
 </span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
 </span><span id="line-13"></span><span>
 </span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
-</span><span id="line-15"></span><span>
-</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html"><span class="hs-identifier">Fission.Platform.Heroku.Region.Types</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Heroku</span></span><span>
-</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.html"><span class="hs-identifier">Fission.Platform.Heroku.AddOn.Creator</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Heroku.AddOn</span></span><span>
-</span><span id="line-18"></span><span>
-</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.Creator.Error.html"><span class="hs-identifier">Fission.User.Creator.Error</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
-</span><span id="line-20"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Modifier.html"><span class="hs-identifier">Fission.User.Modifier</span></a></span><span>      </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.URL.html"><span class="hs-identifier">Fission.URL</span></a></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html"><span class="hs-identifier">Fission.Platform.Heroku.Region.Types</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Heroku</span></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.html"><span class="hs-identifier">Fission.Platform.Heroku.AddOn.Creator</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Heroku.AddOn</span></span><span>
+</span><span id="line-19"></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.Creator.Error.html"><span class="hs-identifier">Fission.User.Creator.Error</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
 </span><span id="line-21"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Password.html"><span class="hs-identifier">Fission.User.Password</span></a></span><span>      </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Password</span></span><span>
 </span><span id="line-22"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Types.html"><span class="hs-identifier">Fission.User.Types</span></a></span><span>
 </span><span id="line-23"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.Username.html"><span class="hs-identifier">Fission.User.Username</span></a></span><span>      </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Username</span></span><span>
 </span><span id="line-24"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.Validation.html"><span class="hs-identifier">Fission.User.Validation</span></a></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
 </span><span id="line-25"></span><span>
-</span><span id="line-26"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Domain.html"><span class="hs-identifier">Fission.App.Domain</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">AppDomain</span></span><span>
-</span><span id="line-27"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Creator.html"><span class="hs-identifier">Fission.App.Creator</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App</span></span><span>
+</span><span id="line-26"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Domain.html"><span class="hs-identifier">Fission.App.Domain</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App.Domain</span></span><span>
+</span><span id="line-27"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Content.html"><span class="hs-identifier">Fission.App.Content</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App.Content</span></span><span>
 </span><span id="line-28"></span><span>
-</span><span id="line-29"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.IPFS.DNSLink.html"><span class="hs-identifier">Fission.IPFS.DNSLink</span></a></span><span>
-</span><span id="line-30"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html"><span class="hs-identifier">Fission.URL.Subdomain.Types</span></a></span><span>
+</span><span id="line-29"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.User.Modifier.html"><span class="hs-identifier">Fission.User.Modifier</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">User</span></span><span>
+</span><span id="line-30"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Creator.html"><span class="hs-identifier">Fission.App.Creator</span></a></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App</span></span><span>
 </span><span id="line-31"></span><span>
-</span><span id="line-32"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Content.html"><span class="hs-identifier">Fission.App.Content</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App.Content</span></span><span>
-</span><span id="line-33"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.App.Domain.html"><span class="hs-identifier">Fission.App.Domain</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App.Domain</span></span><span>
-</span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span class="hs-keyword">type</span><span> </span><span id="Errors"><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-var">Errors</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span>
-</span><span id="line-36"></span><span>  </span><span class="hs-special">'</span><span class="hs-special">[</span><span> </span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#App"><span class="hs-identifier hs-type">App</span></a></span><span>
-</span><span id="line-37"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span>            </span><span class="annot"><a href="Fission.Models.html#App"><span class="hs-identifier hs-type">App</span></a></span><span>
+</span><span id="line-32"></span><span class="hs-keyword">type</span><span> </span><span id="Errors"><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-var">Errors</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span>
+</span><span id="line-33"></span><span>  </span><span class="hs-special">'</span><span class="hs-special">[</span><span> </span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#App"><span class="hs-identifier hs-type">App</span></a></span><span>
+</span><span id="line-34"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span>            </span><span class="annot"><a href="Fission.Models.html#App"><span class="hs-identifier hs-type">App</span></a></span><span>
+</span><span id="line-35"></span><span>
+</span><span id="line-36"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
+</span><span id="line-37"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span>            </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
 </span><span id="line-38"></span><span>
 </span><span id="line-39"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.AlreadyExists.Types.html#AlreadyExists"><span class="hs-identifier hs-type">AlreadyExists</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#HerokuAddOn"><span class="hs-identifier hs-type">HerokuAddOn</span></a></span><span>
-</span><span id="line-40"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Error.html#AlreadyAssociated"><span class="hs-identifier hs-type">AppDomain.AlreadyAssociated</span></a></span><span>
-</span><span id="line-41"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Creator.Error.html#AlreadyExists"><span class="hs-identifier hs-type">User.AlreadyExists</span></a></span><span>
-</span><span id="line-42"></span><span>  </span><span>
-</span><span id="line-43"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-type">Username.Invalid</span></a></span><span>
-</span><span id="line-44"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Password.Error.html#FailedDigest"><span class="hs-identifier hs-type">Password.FailedDigest</span></a></span><span>
-</span><span id="line-45"></span><span>
-</span><span id="line-46"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerError</span></span><span>
-</span><span id="line-47"></span><span>   </span><span class="hs-special">]</span><span>
-</span><span id="line-48"></span><span>
-</span><span id="line-49"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Heroku.AddOn.Creator</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201850"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Creator"><span class="annot"><a href="Fission.User.Creator.Class.html#Creator"><span class="hs-identifier hs-var">Creator</span></a></span></span><span> </span><span id="local-6989586621680201850"><span class="annot"><a href="#local-6989586621680201850"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-50"></span><span>  </span><span class="hs-comment">-- | Create a new, timestamped entry</span><span>
-</span><span id="line-51"></span><span>  </span><span id="create"><span class="annot"><a href="Fission.User.Creator.Class.html#create"><span class="hs-identifier hs-type">create</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-52"></span><span>       </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
-</span><span id="line-53"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
-</span><span id="line-54"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Email.Types.html#Email"><span class="hs-identifier hs-type">Email</span></a></span><span>
-</span><span id="line-55"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-56"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680201850"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
-</span><span id="line-57"></span><span>
-</span><span id="line-58"></span><span>  </span><span id="createWithPassword"><span class="annot"><a href="Fission.User.Creator.Class.html#createWithPassword"><span class="hs-identifier hs-type">createWithPassword</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-59"></span><span>       </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
-</span><span id="line-60"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span>
-</span><span id="line-61"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Email.Types.html#Email"><span class="hs-identifier hs-type">Email</span></a></span><span>
-</span><span id="line-62"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-63"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680201850"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-64"></span><span>
-</span><span id="line-65"></span><span>  </span><span class="hs-comment">-- | Create a new, timestamped entry and heroku add-on</span><span>
-</span><span id="line-66"></span><span>  </span><span id="createWithHeroku"><span class="annot"><a href="Fission.User.Creator.Class.html#createWithHeroku"><span class="hs-identifier hs-type">createWithHeroku</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-67"></span><span>       </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span>
-</span><span id="line-68"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Heroku.Region</span></a></span><span>
-</span><span id="line-69"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
-</span><span id="line-70"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span>
-</span><span id="line-71"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-72"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680201850"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-73"></span><span>
-</span><span id="line-74"></span><span id="local-6989586621680201768"><span class="hs-keyword">instance</span><span>
-</span><span id="line-75"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680201768"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-76"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.IPFS.DNSLink.Class.html#MonadDNSLink"><span class="hs-identifier hs-type">MonadDNSLink</span></a></span><span>            </span><span class="annot"><a href="#local-6989586621680201768"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-77"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>  </span><span class="annot"><a href="#local-6989586621680201768"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-78"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201768"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-79"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-80"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201768"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-81"></span><span>  </span><span id="local-6989586621680201762"><span class="annot"><span class="annottext">create :: Username
+</span><span id="line-40"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Error.html#AlreadyAssociated"><span class="hs-identifier hs-type">App.Domain.AlreadyAssociated</span></a></span><span>
+</span><span id="line-41"></span><span>  </span><span>
+</span><span id="line-42"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Creator.Error.html#AlreadyExists"><span class="hs-identifier hs-type">User.AlreadyExists</span></a></span><span>
+</span><span id="line-43"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
+</span><span id="line-44"></span><span>  </span><span>
+</span><span id="line-45"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-type">Username.Invalid</span></a></span><span>
+</span><span id="line-46"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Password.Error.html#FailedDigest"><span class="hs-identifier hs-type">Password.FailedDigest</span></a></span><span>
+</span><span id="line-47"></span><span>
+</span><span id="line-48"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-type">InvalidURL</span></a></span><span>
+</span><span id="line-49"></span><span>
+</span><span id="line-50"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerError</span></span><span>
+</span><span id="line-51"></span><span>   </span><span class="hs-special">]</span><span>
+</span><span id="line-52"></span><span>
+</span><span id="line-53"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Heroku.AddOn.Creator</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680250756"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Creator"><span class="annot"><a href="Fission.User.Creator.Class.html#Creator"><span class="hs-identifier hs-var">Creator</span></a></span></span><span> </span><span id="local-6989586621680250756"><span class="annot"><a href="#local-6989586621680250756"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-comment">-- | Create a new, timestamped entry</span><span>
+</span><span id="line-55"></span><span>  </span><span id="create"><span class="annot"><a href="Fission.User.Creator.Class.html#create"><span class="hs-identifier hs-type">create</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-56"></span><span>       </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
+</span><span id="line-57"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
+</span><span id="line-58"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Email.Types.html#Email"><span class="hs-identifier hs-type">Email</span></a></span><span>
+</span><span id="line-59"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-60"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680250756"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-61"></span><span>
+</span><span id="line-62"></span><span>  </span><span id="createWithPassword"><span class="annot"><a href="Fission.User.Creator.Class.html#createWithPassword"><span class="hs-identifier hs-type">createWithPassword</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-63"></span><span>       </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
+</span><span id="line-64"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span>
+</span><span id="line-65"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Email.Types.html#Email"><span class="hs-identifier hs-type">Email</span></a></span><span>
+</span><span id="line-66"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-67"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680250756"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-68"></span><span>
+</span><span id="line-69"></span><span>  </span><span class="hs-comment">-- | Create a new, timestamped entry and heroku add-on</span><span>
+</span><span id="line-70"></span><span>  </span><span id="createWithHeroku"><span class="annot"><a href="Fission.User.Creator.Class.html#createWithHeroku"><span class="hs-identifier hs-type">createWithHeroku</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-71"></span><span>       </span><span class="annot"><span class="hs-identifier hs-type">UUID</span></span><span>
+</span><span id="line-72"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Heroku.Region</span></a></span><span>
+</span><span id="line-73"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
+</span><span id="line-74"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span>
+</span><span id="line-75"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-76"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680250756"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-77"></span><span>
+</span><span id="line-78"></span><span id="local-6989586621680250670"><span class="hs-keyword">instance</span><span>
+</span><span id="line-79"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span>                 </span><span class="annot"><a href="#local-6989586621680250670"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-80"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Domain.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Domain.Initializer</span></a></span><span>  </span><span class="annot"><a href="#local-6989586621680250670"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-81"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">App.Content.Initializer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680250670"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-82"></span><span>  </span><span class="hs-special">)</span><span>
+</span><span id="line-83"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680250670"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-84"></span><span>  </span><span id="local-6989586621680250664"><span class="annot"><span class="annottext">create :: Username
 -&gt; Public
 -&gt; Email
 -&gt; UTCTime
--&gt; Transaction m (Either Errors (UserId, Subdomain))
-</span><a href="#local-6989586621680201762"><span class="hs-identifier hs-var hs-var hs-var hs-var">create</span></a></span></span><span> </span><span id="local-6989586621680201761"><span class="annot"><span class="annottext">username :: Username
-</span><a href="#local-6989586621680201761"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680201760"><span class="annot"><span class="annottext">pk :: Public
-</span><a href="#local-6989586621680201760"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span id="local-6989586621680201759"><span class="annot"><span class="annottext">email :: Email
-</span><a href="#local-6989586621680201759"><span class="hs-identifier hs-var">email</span></a></span></span><span> </span><span id="local-6989586621680201758"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680201758"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-82"></span><span>    </span><span class="annot"><span class="annottext">$WUser :: Maybe Public
+-&gt; Transaction m (Either Errors UserId)
+</span><a href="#local-6989586621680250664"><span class="hs-identifier hs-var hs-var hs-var hs-var">create</span></a></span></span><span> </span><span id="local-6989586621680250663"><span class="annot"><span class="annottext">username :: Username
+</span><a href="#local-6989586621680250663"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680250662"><span class="annot"><span class="annottext">pk :: Public
+</span><a href="#local-6989586621680250662"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span id="local-6989586621680250661"><span class="annot"><span class="annottext">email :: Email
+</span><a href="#local-6989586621680250661"><span class="hs-identifier hs-var">email</span></a></span></span><span> </span><span id="local-6989586621680250660"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680250660"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-85"></span><span>    </span><span class="annot"><span class="annottext">$WUser :: Maybe Public
 -&gt; Maybe Email
 -&gt; Username
 -&gt; Role
@@ -100,184 +103,182 @@
 -&gt; UTCTime
 -&gt; User
 </span><a href="Fission.Models.html#%24WUser"><span class="hs-identifier hs-type hs-type">User</span></a></span><span>
-</span><span id="line-83"></span><span>      </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
-</span><a href="#local-6989586621680201755"><span class="hs-identifier hs-var">userPublicKey</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
+</span><span id="line-86"></span><span>      </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
+</span><a href="#local-6989586621680250657"><span class="hs-identifier hs-var">userPublicKey</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680201760"><span class="hs-identifier hs-var">pk</span></a></span><span>
-</span><span id="line-84"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userUsername:User :: Username
-</span><a href="#local-6989586621680201754"><span class="hs-identifier hs-var">userUsername</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201761"><span class="hs-identifier hs-var">username</span></a></span><span>
-</span><span id="line-85"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userEmail:User :: Maybe Email
-</span><a href="#local-6989586621680201753"><span class="hs-identifier hs-var">userEmail</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Email -&gt; Maybe Email
+</span><a href="#local-6989586621680250662"><span class="hs-identifier hs-var">pk</span></a></span><span>
+</span><span id="line-87"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userUsername:User :: Username
+</span><a href="#local-6989586621680250656"><span class="hs-identifier hs-var">userUsername</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680250663"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><span id="line-88"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userEmail:User :: Maybe Email
+</span><a href="#local-6989586621680250655"><span class="hs-identifier hs-var">userEmail</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Email -&gt; Maybe Email
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Email
-</span><a href="#local-6989586621680201759"><span class="hs-identifier hs-var">email</span></a></span><span>
-</span><span id="line-86"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userRole:User :: Role
-</span><a href="#local-6989586621680201752"><span class="hs-identifier hs-var">userRole</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Role
+</span><a href="#local-6989586621680250661"><span class="hs-identifier hs-var">email</span></a></span><span>
+</span><span id="line-89"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userRole:User :: Role
+</span><a href="#local-6989586621680250654"><span class="hs-identifier hs-var">userRole</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Role
 </span><a href="Fission.User.Role.Types.html#Regular"><span class="hs-identifier hs-var">Regular</span></a></span><span>
-</span><span id="line-87"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userActive:User :: Bool
-</span><a href="#local-6989586621680201750"><span class="hs-identifier hs-var">userActive</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span id="line-90"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userActive:User :: Bool
+</span><a href="#local-6989586621680250652"><span class="hs-identifier hs-var">userActive</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
-</span><span id="line-88"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
-</span><a href="#local-6989586621680201749"><span class="hs-identifier hs-var">userHerokuAddOnId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe (Key HerokuAddOn)
+</span><span id="line-91"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
+</span><a href="#local-6989586621680250651"><span class="hs-identifier hs-var">userHerokuAddOnId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe (Key HerokuAddOn)
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-89"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
-</span><a href="#local-6989586621680201748"><span class="hs-identifier hs-var">userSecretDigest</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe SecretDigest
+</span><span id="line-92"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
+</span><a href="#local-6989586621680250650"><span class="hs-identifier hs-var">userSecretDigest</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe SecretDigest
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-90"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
-</span><a href="#local-6989586621680201747"><span class="hs-identifier hs-var">userDataRoot</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
+</span><span id="line-93"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
+</span><a href="#local-6989586621680250649"><span class="hs-identifier hs-var">userDataRoot</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
 </span><a href="Fission.App.Content.html#empty"><span class="hs-identifier hs-var">App.Content.empty</span></a></span><span>
-</span><span id="line-91"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
-</span><a href="#local-6989586621680201745"><span class="hs-identifier hs-var">userInsertedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201758"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-92"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
-</span><a href="#local-6989586621680201744"><span class="hs-identifier hs-var">userModifiedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201758"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-93"></span><span>      </span><span class="hs-special">}</span><span>
-</span><span id="line-94"></span><span>      </span><span class="annot"><span class="annottext">User -&gt; (User -&gt; Either Invalid User) -&gt; Either Invalid User
+</span><span id="line-94"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
+</span><a href="#local-6989586621680250647"><span class="hs-identifier hs-var">userInsertedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250660"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-95"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
+</span><a href="#local-6989586621680250646"><span class="hs-identifier hs-var">userModifiedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250660"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-96"></span><span>      </span><span class="hs-special">}</span><span>
+</span><span id="line-97"></span><span>      </span><span class="annot"><span class="annottext">User -&gt; (User -&gt; Either Invalid User) -&gt; Either Invalid User
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">User -&gt; Either Invalid User
 </span><a href="Fission.User.Validation.html#check"><span class="hs-identifier hs-var">User.check</span></a></span><span>
-</span><span id="line-95"></span><span>      </span><span class="annot"><span class="annottext">Either Invalid User
--&gt; (Either Invalid User
-    -&gt; Transaction m (Either Errors (UserId, Subdomain)))
--&gt; Transaction m (Either Errors (UserId, Subdomain))
+</span><span id="line-98"></span><span>      </span><span class="annot"><span class="annottext">Either Invalid User
+-&gt; (Either Invalid User -&gt; Transaction m (Either Errors UserId))
+-&gt; Transaction m (Either Errors UserId)
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-96"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201741"><span class="annot"><span class="annottext">err :: Invalid
-</span><a href="#local-6989586621680201741"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-97"></span><span>          </span><span class="annot"><span class="annottext">Either Errors (UserId, Subdomain)
--&gt; Transaction m (Either Errors (UserId, Subdomain))
+</span><span id="line-99"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680250643"><span class="annot"><span class="annottext">err :: Invalid
+</span><a href="#local-6989586621680250643"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-100"></span><span>          </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
-</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Invalid -&gt; Either Errors (UserId, Subdomain)
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors UserId -&gt; Transaction m (Either Errors UserId))
+-&gt; Either Errors UserId -&gt; Transaction m (Either Errors UserId)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Invalid -&gt; Either Errors UserId
 forall err (errs :: [*]) a.
 IsMember err errs =&gt;
 err -&gt; Either (OpenUnion errs) a
 </span><a href="Fission.Error.html#openLeft"><span class="hs-identifier hs-var">Error.openLeft</span></a></span><span> </span><span class="annot"><span class="annottext">Invalid
-</span><a href="#local-6989586621680201741"><span class="hs-identifier hs-var">err</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-98"></span><span>
-</span><span id="line-99"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680201739"><span class="annot"><span class="annottext">user :: User
-</span><a href="#local-6989586621680201739"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-100"></span><span>          </span><span class="annot"><span class="annottext">User -&gt; ReaderT SqlBackend m (Maybe UserId)
+</span><a href="#local-6989586621680250643"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-101"></span><span>
+</span><span id="line-102"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680250641"><span class="annot"><span class="annottext">user :: User
+</span><a href="#local-6989586621680250641"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-103"></span><span>          </span><span class="annot"><span class="annottext">User -&gt; ReaderT SqlBackend m (Maybe UserId)
 forall backend (m :: * -&gt; *) record.
 (PersistUniqueWrite backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
 record -&gt; ReaderT backend m (Maybe (Key record))
 </span><span class="hs-identifier hs-var">insertUnique</span></span><span> </span><span class="annot"><span class="annottext">User
-</span><a href="#local-6989586621680201739"><span class="hs-identifier hs-var">user</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe UserId)
--&gt; (Maybe UserId
-    -&gt; Transaction m (Either Errors (UserId, Subdomain)))
--&gt; Transaction m (Either Errors (UserId, Subdomain))
+</span><a href="#local-6989586621680250641"><span class="hs-identifier hs-var">user</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe UserId)
+-&gt; (Maybe UserId -&gt; Transaction m (Either Errors UserId))
+-&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-101"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-102"></span><span>              </span><span class="annot"><span class="annottext">Username
--&gt; Maybe Public
--&gt; Transaction m (Either Errors (UserId, Subdomain))
+</span><span id="line-104"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-105"></span><span>              </span><span class="annot"><span class="annottext">Username -&gt; Maybe Public -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a.
 MonadIO m =&gt;
 Username -&gt; Maybe Public -&gt; Transaction m (Either Errors a)
 </span><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-var">determineConflict</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201761"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
+</span><a href="#local-6989586621680250663"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680201760"><span class="hs-identifier hs-var">pk</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-103"></span><span>
-</span><span id="line-104"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680201736"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680201736"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-105"></span><span>              </span><span class="annot"><span class="annottext">UserId
--&gt; CID -&gt; UTCTime -&gt; ReaderT SqlBackend m (Either ServerError ())
+</span><a href="#local-6989586621680250662"><span class="hs-identifier hs-var">pk</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-106"></span><span>
+</span><span id="line-107"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680250638"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680250638"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-108"></span><span>              </span><span class="annot"><span class="annottext">UserId -&gt; CID -&gt; UTCTime -&gt; ReaderT SqlBackend m (Either Errors ())
 forall (m :: * -&gt; *).
 Modifier m =&gt;
-UserId -&gt; CID -&gt; UTCTime -&gt; m (Either ServerError ())
+UserId -&gt; CID -&gt; UTCTime -&gt; m (Either Errors ())
 </span><a href="Fission.User.Modifier.Class.html#setData"><span class="hs-identifier hs-var">User.setData</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680201736"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680250638"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
 </span><a href="Fission.App.Content.html#empty"><span class="hs-identifier hs-var">App.Content.empty</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201758"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either ServerError ())
--&gt; (Either ServerError ()
-    -&gt; Transaction m (Either Errors (UserId, Subdomain)))
--&gt; Transaction m (Either Errors (UserId, Subdomain))
+</span><a href="#local-6989586621680250660"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either Errors ())
+-&gt; (Either Errors () -&gt; Transaction m (Either Errors UserId))
+-&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-106"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201734"><span class="annot"><span class="annottext">err :: ServerError
-</span><a href="#local-6989586621680201734"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-107"></span><span>                  </span><span class="annot"><span class="annottext">Either Errors (UserId, Subdomain)
--&gt; Transaction m (Either Errors (UserId, Subdomain))
+</span><span id="line-109"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680250636"><span class="annot"><span class="annottext">err :: Errors
+</span><a href="#local-6989586621680250636"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-110"></span><span>                  </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
-</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ServerError -&gt; Either Errors (UserId, Subdomain)
-forall err (errs :: [*]) a.
-IsMember err errs =&gt;
-err -&gt; Either (OpenUnion errs) a
-</span><a href="Fission.Error.html#openLeft"><span class="hs-identifier hs-var">Error.openLeft</span></a></span><span> </span><span class="annot"><span class="annottext">ServerError
-</span><a href="#local-6989586621680201734"><span class="hs-identifier hs-var">err</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-108"></span><span>
-</span><span id="line-109"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-110"></span><span>                  </span><span class="annot"><span class="annottext">UserId
--&gt; UTCTime
--&gt; ReaderT SqlBackend m (Either Errors (AppId, Subdomain))
-forall (m :: * -&gt; *).
-(Initializer m, Creator m) =&gt;
-UserId -&gt; UTCTime -&gt; m (Either Errors (AppId, Subdomain))
-</span><a href="Fission.App.Creator.html#createWithPlaceholder"><span class="hs-identifier hs-var">App.createWithPlaceholder</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680201736"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201758"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either Errors (AppId, Subdomain))
--&gt; (Either Errors (AppId, Subdomain)
-    -&gt; Either Errors (UserId, Subdomain))
--&gt; Transaction m (Either Errors (UserId, Subdomain))
-forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
-</span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-111"></span><span>                    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201731"><span class="annot"><span class="annottext">err :: Errors
-</span><a href="#local-6989586621680201731"><span class="hs-identifier hs-var">err</span></a></span></span><span>             </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Errors -&gt; Either Errors (UserId, Subdomain)
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors UserId -&gt; Transaction m (Either Errors UserId))
+-&gt; Either Errors UserId -&gt; Transaction m (Either Errors UserId)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Errors -&gt; Either Errors UserId
 forall (errsA :: [*]) (errsB :: [*]) a.
 Contains errsA errsB =&gt;
 OpenUnion errsA -&gt; Either (OpenUnion errsB) a
 </span><a href="Fission.Error.html#relaxedLeft"><span class="hs-identifier hs-var">Error.relaxedLeft</span></a></span><span> </span><span class="annot"><span class="annottext">Errors
-</span><a href="#local-6989586621680201731"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-112"></span><span>                    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680201729"><span class="annot"><span class="annottext">subdomain :: Subdomain
-</span><a href="#local-6989586621680201729"><span class="hs-identifier hs-var">subdomain</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">(UserId, Subdomain) -&gt; Either Errors (UserId, Subdomain)
+</span><a href="#local-6989586621680250636"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-111"></span><span>
+</span><span id="line-112"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-113"></span><span>                  </span><span class="annot"><span class="annottext">UserId
+-&gt; UTCTime
+-&gt; ReaderT SqlBackend m (Either Errors (AppId, Subdomain))
+forall (m :: * -&gt; *).
+(Creator m, Initializer m) =&gt;
+UserId -&gt; UTCTime -&gt; m (Either Errors (AppId, Subdomain))
+</span><a href="Fission.App.Creator.html#createWithPlaceholder"><span class="hs-identifier hs-var">App.createWithPlaceholder</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680250638"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250660"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either Errors (AppId, Subdomain))
+-&gt; (Either Errors (AppId, Subdomain) -&gt; Either Errors UserId)
+-&gt; Transaction m (Either Errors UserId)
+forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
+</span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-114"></span><span>                    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680250632"><span class="annot"><span class="annottext">err :: Errors
+</span><a href="#local-6989586621680250632"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Errors -&gt; Either Errors UserId
+forall (errsA :: [*]) (errsB :: [*]) a.
+Contains errsA errsB =&gt;
+OpenUnion errsA -&gt; Either (OpenUnion errsB) a
+</span><a href="Fission.Error.html#relaxedLeft"><span class="hs-identifier hs-var">Error.relaxedLeft</span></a></span><span> </span><span class="annot"><span class="annottext">Errors
+</span><a href="#local-6989586621680250632"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-115"></span><span>                    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">UserId -&gt; Either Errors UserId
 forall a b. b -&gt; Either a b
-</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680201736"><span class="hs-identifier hs-var">userId</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Subdomain
-</span><a href="#local-6989586621680201729"><span class="hs-identifier hs-var">subdomain</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-113"></span><span>
-</span><span id="line-114"></span><span>  </span><span id="local-6989586621680201728"><span class="annot"><span class="annottext">createWithPassword :: Username
+</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680250638"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><span id="line-116"></span><span>
+</span><span id="line-117"></span><span>  </span><span id="local-6989586621680250631"><span class="annot"><span class="annottext">createWithPassword :: Username
 -&gt; Password
 -&gt; Email
 -&gt; UTCTime
 -&gt; Transaction m (Either Errors UserId)
-</span><a href="#local-6989586621680201728"><span class="hs-identifier hs-var hs-var hs-var hs-var">createWithPassword</span></a></span></span><span> </span><span id="local-6989586621680201727"><span class="annot"><span class="annottext">username :: Username
-</span><a href="#local-6989586621680201727"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680201726"><span class="annot"><span class="annottext">password :: Password
-</span><a href="#local-6989586621680201726"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span id="local-6989586621680201725"><span class="annot"><span class="annottext">email :: Email
-</span><a href="#local-6989586621680201725"><span class="hs-identifier hs-var">email</span></a></span></span><span> </span><span id="local-6989586621680201724"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680201724"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-115"></span><span>    </span><span class="annot"><span class="annottext">Password -&gt; ReaderT SqlBackend m (Either FailedDigest SecretDigest)
+</span><a href="#local-6989586621680250631"><span class="hs-identifier hs-var hs-var hs-var hs-var">createWithPassword</span></a></span></span><span> </span><span id="local-6989586621680250630"><span class="annot"><span class="annottext">username :: Username
+</span><a href="#local-6989586621680250630"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680250629"><span class="annot"><span class="annottext">password :: Password
+</span><a href="#local-6989586621680250629"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span id="local-6989586621680250628"><span class="annot"><span class="annottext">email :: Email
+</span><a href="#local-6989586621680250628"><span class="hs-identifier hs-var">email</span></a></span></span><span> </span><span id="local-6989586621680250627"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680250627"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-118"></span><span>    </span><span class="annot"><span class="annottext">Password -&gt; ReaderT SqlBackend m (Either FailedDigest SecretDigest)
 forall (m :: * -&gt; *).
 MonadIO m =&gt;
 Password -&gt; m (Either FailedDigest SecretDigest)
 </span><a href="Fission.User.Password.html#hashPassword"><span class="hs-identifier hs-var">Password.hashPassword</span></a></span><span> </span><span class="annot"><span class="annottext">Password
-</span><a href="#local-6989586621680201726"><span class="hs-identifier hs-var">password</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either FailedDigest SecretDigest)
+</span><a href="#local-6989586621680250629"><span class="hs-identifier hs-var">password</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either FailedDigest SecretDigest)
 -&gt; (Either FailedDigest SecretDigest
     -&gt; Transaction m (Either Errors UserId))
 -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-116"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201722"><span class="annot"><span class="annottext">err :: FailedDigest
-</span><a href="#local-6989586621680201722"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-117"></span><span>        </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
+</span><span id="line-119"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680250625"><span class="annot"><span class="annottext">err :: FailedDigest
+</span><a href="#local-6989586621680250625"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-120"></span><span>        </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
-</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FailedDigest -&gt; Either Errors UserId
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors UserId -&gt; Transaction m (Either Errors UserId))
+-&gt; Either Errors UserId -&gt; Transaction m (Either Errors UserId)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">FailedDigest -&gt; Either Errors UserId
 forall err (errs :: [*]) a.
 IsMember err errs =&gt;
 err -&gt; Either (OpenUnion errs) a
 </span><a href="Fission.Error.html#openLeft"><span class="hs-identifier hs-var">Error.openLeft</span></a></span><span> </span><span class="annot"><span class="annottext">FailedDigest
-</span><a href="#local-6989586621680201722"><span class="hs-identifier hs-var">err</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-118"></span><span>
-</span><span id="line-119"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680201721"><span class="annot"><span class="annottext">secretDigest :: SecretDigest
-</span><a href="#local-6989586621680201721"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-120"></span><span>        </span><span class="annot"><span class="annottext">$WUser :: Maybe Public
+</span><a href="#local-6989586621680250625"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-121"></span><span>
+</span><span id="line-122"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680250624"><span class="annot"><span class="annottext">secretDigest :: SecretDigest
+</span><a href="#local-6989586621680250624"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-123"></span><span>        </span><span class="annot"><span class="annottext">$WUser :: Maybe Public
 -&gt; Maybe Email
 -&gt; Username
 -&gt; Role
@@ -289,44 +290,44 @@ err -&gt; Either (OpenUnion errs) a
 -&gt; UTCTime
 -&gt; User
 </span><a href="Fission.Models.html#%24WUser"><span class="hs-identifier hs-type hs-type">User</span></a></span><span>
-</span><span id="line-121"></span><span>          </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
-</span><a href="#local-6989586621680201755"><span class="hs-identifier hs-var">userPublicKey</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Public
+</span><span id="line-124"></span><span>          </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
+</span><a href="#local-6989586621680250657"><span class="hs-identifier hs-var">userPublicKey</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Public
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-122"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userUsername:User :: Username
-</span><a href="#local-6989586621680201754"><span class="hs-identifier hs-var">userUsername</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201727"><span class="hs-identifier hs-var">username</span></a></span><span>
-</span><span id="line-123"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userEmail:User :: Maybe Email
-</span><a href="#local-6989586621680201753"><span class="hs-identifier hs-var">userEmail</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Email -&gt; Maybe Email
+</span><span id="line-125"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userUsername:User :: Username
+</span><a href="#local-6989586621680250656"><span class="hs-identifier hs-var">userUsername</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680250630"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><span id="line-126"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userEmail:User :: Maybe Email
+</span><a href="#local-6989586621680250655"><span class="hs-identifier hs-var">userEmail</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Email -&gt; Maybe Email
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Email
-</span><a href="#local-6989586621680201725"><span class="hs-identifier hs-var">email</span></a></span><span>
-</span><span id="line-124"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userRole:User :: Role
-</span><a href="#local-6989586621680201752"><span class="hs-identifier hs-var">userRole</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Role
+</span><a href="#local-6989586621680250628"><span class="hs-identifier hs-var">email</span></a></span><span>
+</span><span id="line-127"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userRole:User :: Role
+</span><a href="#local-6989586621680250654"><span class="hs-identifier hs-var">userRole</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Role
 </span><a href="Fission.User.Role.Types.html#Regular"><span class="hs-identifier hs-var">Regular</span></a></span><span>
-</span><span id="line-125"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userActive:User :: Bool
-</span><a href="#local-6989586621680201750"><span class="hs-identifier hs-var">userActive</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span id="line-128"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userActive:User :: Bool
+</span><a href="#local-6989586621680250652"><span class="hs-identifier hs-var">userActive</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
-</span><span id="line-126"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
-</span><a href="#local-6989586621680201749"><span class="hs-identifier hs-var">userHerokuAddOnId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe (Key HerokuAddOn)
+</span><span id="line-129"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
+</span><a href="#local-6989586621680250651"><span class="hs-identifier hs-var">userHerokuAddOnId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe (Key HerokuAddOn)
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-127"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
-</span><a href="#local-6989586621680201748"><span class="hs-identifier hs-var">userSecretDigest</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SecretDigest -&gt; Maybe SecretDigest
+</span><span id="line-130"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
+</span><a href="#local-6989586621680250650"><span class="hs-identifier hs-var">userSecretDigest</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SecretDigest -&gt; Maybe SecretDigest
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">SecretDigest
-</span><a href="#local-6989586621680201721"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
-</span><span id="line-128"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
-</span><a href="#local-6989586621680201747"><span class="hs-identifier hs-var">userDataRoot</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680250624"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
+</span><span id="line-131"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
+</span><a href="#local-6989586621680250649"><span class="hs-identifier hs-var">userDataRoot</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
 </span><a href="Fission.App.Content.html#empty"><span class="hs-identifier hs-var">App.Content.empty</span></a></span><span>
-</span><span id="line-129"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
-</span><a href="#local-6989586621680201745"><span class="hs-identifier hs-var">userInsertedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201724"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-130"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
-</span><a href="#local-6989586621680201744"><span class="hs-identifier hs-var">userModifiedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201724"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-131"></span><span>          </span><span class="hs-special">}</span><span>
-</span><span id="line-132"></span><span>          </span><span class="annot"><span class="annottext">User
+</span><span id="line-132"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
+</span><a href="#local-6989586621680250647"><span class="hs-identifier hs-var">userInsertedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250627"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-133"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
+</span><a href="#local-6989586621680250646"><span class="hs-identifier hs-var">userModifiedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250627"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-134"></span><span>          </span><span class="hs-special">}</span><span>
+</span><span id="line-135"></span><span>          </span><span class="annot"><span class="annottext">User
 -&gt; (User -&gt; ReaderT SqlBackend m (Maybe UserId))
 -&gt; ReaderT SqlBackend m (Maybe UserId)
 forall a b. a -&gt; (a -&gt; b) -&gt; b
@@ -336,7 +337,7 @@ forall backend (m :: * -&gt; *) record.
  PersistRecordBackend record backend) =&gt;
 record -&gt; ReaderT backend m (Maybe (Key record))
 </span><span class="hs-identifier hs-var">insertUnique</span></span><span>
-</span><span id="line-133"></span><span>          </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe UserId)
+</span><span id="line-136"></span><span>          </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe UserId)
 -&gt; (ReaderT SqlBackend m (Maybe UserId)
     -&gt; Transaction m (Either Errors UserId))
 -&gt; Transaction m (Either Errors UserId)
@@ -346,56 +347,56 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
 </span><a href="Fission.Prelude.html#bind"><span class="hs-identifier hs-var">bind</span></a></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-134"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-135"></span><span>              </span><span class="annot"><span class="annottext">Username -&gt; Maybe Public -&gt; Transaction m (Either Errors UserId)
+</span><span id="line-137"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-138"></span><span>              </span><span class="annot"><span class="annottext">Username -&gt; Maybe Public -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a.
 MonadIO m =&gt;
 Username -&gt; Maybe Public -&gt; Transaction m (Either Errors a)
 </span><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-var">determineConflict</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201727"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Public
+</span><a href="#local-6989586621680250630"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Public
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-136"></span><span>
-</span><span id="line-137"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680201719"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680201719"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-138"></span><span>              </span><span class="annot"><span class="annottext">UserId
+</span><span id="line-139"></span><span>
+</span><span id="line-140"></span><span>            </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680250622"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680250622"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-141"></span><span>              </span><span class="annot"><span class="annottext">UserId
 -&gt; UTCTime
 -&gt; ReaderT SqlBackend m (Either Errors (AppId, Subdomain))
 forall (m :: * -&gt; *).
-(Initializer m, Creator m) =&gt;
+(Creator m, Initializer m) =&gt;
 UserId -&gt; UTCTime -&gt; m (Either Errors (AppId, Subdomain))
 </span><a href="Fission.App.Creator.html#createWithPlaceholder"><span class="hs-identifier hs-var">App.createWithPlaceholder</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680201719"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201724"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either Errors (AppId, Subdomain))
+</span><a href="#local-6989586621680250622"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250627"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either Errors (AppId, Subdomain))
 -&gt; (Either Errors (AppId, Subdomain) -&gt; Either Errors UserId)
 -&gt; Transaction m (Either Errors UserId)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-139"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201718"><span class="annot"><span class="annottext">err :: Errors
-</span><a href="#local-6989586621680201718"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Errors -&gt; Either Errors UserId
+</span><span id="line-142"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680250621"><span class="annot"><span class="annottext">err :: Errors
+</span><a href="#local-6989586621680250621"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Errors -&gt; Either Errors UserId
 forall (errsA :: [*]) (errsB :: [*]) a.
 Contains errsA errsB =&gt;
 OpenUnion errsA -&gt; Either (OpenUnion errsB) a
 </span><a href="Fission.Error.html#relaxedLeft"><span class="hs-identifier hs-var">Error.relaxedLeft</span></a></span><span> </span><span class="annot"><span class="annottext">Errors
-</span><a href="#local-6989586621680201718"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-140"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">UserId -&gt; Either Errors UserId
+</span><a href="#local-6989586621680250621"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-143"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">UserId -&gt; Either Errors UserId
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680201719"><span class="hs-identifier hs-var">userId</span></a></span><span>
-</span><span id="line-141"></span><span>
-</span><span id="line-142"></span><span>  </span><span id="local-6989586621680201717"><span class="annot"><span class="annottext">createWithHeroku :: UUID
+</span><a href="#local-6989586621680250622"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><span id="line-144"></span><span>
+</span><span id="line-145"></span><span>  </span><span id="local-6989586621680250620"><span class="annot"><span class="annottext">createWithHeroku :: UUID
 -&gt; Region
 -&gt; Username
 -&gt; Password
 -&gt; UTCTime
 -&gt; Transaction m (Either Errors UserId)
-</span><a href="#local-6989586621680201717"><span class="hs-identifier hs-var hs-var hs-var hs-var">createWithHeroku</span></a></span></span><span> </span><span id="local-6989586621680201716"><span class="annot"><span class="annottext">herokuUUID :: UUID
-</span><a href="#local-6989586621680201716"><span class="hs-identifier hs-var">herokuUUID</span></a></span></span><span> </span><span id="local-6989586621680201715"><span class="annot"><span class="annottext">herokuRegion :: Region
-</span><a href="#local-6989586621680201715"><span class="hs-identifier hs-var">herokuRegion</span></a></span></span><span> </span><span id="local-6989586621680201714"><span class="annot"><span class="annottext">username :: Username
-</span><a href="#local-6989586621680201714"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680201713"><span class="annot"><span class="annottext">password :: Password
-</span><a href="#local-6989586621680201713"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span id="local-6989586621680201712"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680201712"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-143"></span><span>    </span><span class="annot"><span class="annottext">UUID
+</span><a href="#local-6989586621680250620"><span class="hs-identifier hs-var hs-var hs-var hs-var">createWithHeroku</span></a></span></span><span> </span><span id="local-6989586621680250619"><span class="annot"><span class="annottext">herokuUUID :: UUID
+</span><a href="#local-6989586621680250619"><span class="hs-identifier hs-var">herokuUUID</span></a></span></span><span> </span><span id="local-6989586621680250618"><span class="annot"><span class="annottext">herokuRegion :: Region
+</span><a href="#local-6989586621680250618"><span class="hs-identifier hs-var">herokuRegion</span></a></span></span><span> </span><span id="local-6989586621680250617"><span class="annot"><span class="annottext">username :: Username
+</span><a href="#local-6989586621680250617"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680250616"><span class="annot"><span class="annottext">password :: Password
+</span><a href="#local-6989586621680250616"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span id="local-6989586621680250615"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680250615"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-146"></span><span>    </span><span class="annot"><span class="annottext">UUID
 -&gt; Region
 -&gt; UTCTime
 -&gt; ReaderT
@@ -407,18 +408,18 @@ UUID
 -&gt; UTCTime
 -&gt; m (Either (AlreadyExists HerokuAddOn) (Key HerokuAddOn))
 </span><a href="Fission.Platform.Heroku.AddOn.Creator.Class.html#create"><span class="hs-identifier hs-var">Heroku.AddOn.create</span></a></span><span> </span><span class="annot"><span class="annottext">UUID
-</span><a href="#local-6989586621680201716"><span class="hs-identifier hs-var">herokuUUID</span></a></span><span> </span><span class="annot"><span class="annottext">Region
-</span><a href="#local-6989586621680201715"><span class="hs-identifier hs-var">herokuRegion</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201712"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT
+</span><a href="#local-6989586621680250619"><span class="hs-identifier hs-var">herokuUUID</span></a></span><span> </span><span class="annot"><span class="annottext">Region
+</span><a href="#local-6989586621680250618"><span class="hs-identifier hs-var">herokuRegion</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250615"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT
   SqlBackend m (Either (AlreadyExists HerokuAddOn) (Key HerokuAddOn))
 -&gt; (Either (AlreadyExists HerokuAddOn) (Key HerokuAddOn)
     -&gt; Transaction m (Either Errors UserId))
 -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-144"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201710"><span class="annot"><span class="annottext">err :: AlreadyExists HerokuAddOn
-</span><a href="#local-6989586621680201710"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-145"></span><span>        </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
+</span><span id="line-147"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680250613"><span class="annot"><span class="annottext">err :: AlreadyExists HerokuAddOn
+</span><a href="#local-6989586621680250613"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-148"></span><span>        </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors UserId -&gt; Transaction m (Either Errors UserId))
 -&gt; Either Errors UserId -&gt; Transaction m (Either Errors UserId)
@@ -428,24 +429,24 @@ forall err (errs :: [*]) a.
 IsMember err errs =&gt;
 err -&gt; Either (OpenUnion errs) a
 </span><a href="Fission.Error.html#openLeft"><span class="hs-identifier hs-var">Error.openLeft</span></a></span><span> </span><span class="annot"><span class="annottext">AlreadyExists HerokuAddOn
-</span><a href="#local-6989586621680201710"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-146"></span><span>
-</span><span id="line-147"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680201709"><span class="annot"><span class="annottext">herokuAddOnId :: Key HerokuAddOn
-</span><a href="#local-6989586621680201709"><span class="hs-identifier hs-var">herokuAddOnId</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-148"></span><span>        </span><span class="annot"><span class="annottext">Password -&gt; ReaderT SqlBackend m (Either FailedDigest SecretDigest)
+</span><a href="#local-6989586621680250613"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-149"></span><span>
+</span><span id="line-150"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680250612"><span class="annot"><span class="annottext">herokuAddOnId :: Key HerokuAddOn
+</span><a href="#local-6989586621680250612"><span class="hs-identifier hs-var">herokuAddOnId</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-151"></span><span>        </span><span class="annot"><span class="annottext">Password -&gt; ReaderT SqlBackend m (Either FailedDigest SecretDigest)
 forall (m :: * -&gt; *).
 MonadIO m =&gt;
 Password -&gt; m (Either FailedDigest SecretDigest)
 </span><a href="Fission.User.Password.html#hashPassword"><span class="hs-identifier hs-var">Password.hashPassword</span></a></span><span> </span><span class="annot"><span class="annottext">Password
-</span><a href="#local-6989586621680201713"><span class="hs-identifier hs-var">password</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either FailedDigest SecretDigest)
+</span><a href="#local-6989586621680250616"><span class="hs-identifier hs-var">password</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either FailedDigest SecretDigest)
 -&gt; (Either FailedDigest SecretDigest
     -&gt; Transaction m (Either Errors UserId))
 -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-149"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680201708"><span class="annot"><span class="annottext">err :: FailedDigest
-</span><a href="#local-6989586621680201708"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-150"></span><span>            </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
+</span><span id="line-152"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680250611"><span class="annot"><span class="annottext">err :: FailedDigest
+</span><a href="#local-6989586621680250611"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-153"></span><span>            </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors UserId -&gt; Transaction m (Either Errors UserId))
 -&gt; Either Errors UserId -&gt; Transaction m (Either Errors UserId)
@@ -455,11 +456,11 @@ forall err (errs :: [*]) a.
 IsMember err errs =&gt;
 err -&gt; Either (OpenUnion errs) a
 </span><a href="Fission.Error.html#openLeft"><span class="hs-identifier hs-var">Error.openLeft</span></a></span><span> </span><span class="annot"><span class="annottext">FailedDigest
-</span><a href="#local-6989586621680201708"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-151"></span><span>
-</span><span id="line-152"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680201707"><span class="annot"><span class="annottext">secretDigest :: SecretDigest
-</span><a href="#local-6989586621680201707"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-153"></span><span>            </span><span class="annot"><span class="annottext">$WUser :: Maybe Public
+</span><a href="#local-6989586621680250611"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-154"></span><span>
+</span><span id="line-155"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680250610"><span class="annot"><span class="annottext">secretDigest :: SecretDigest
+</span><a href="#local-6989586621680250610"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-156"></span><span>            </span><span class="annot"><span class="annottext">$WUser :: Maybe Public
 -&gt; Maybe Email
 -&gt; Username
 -&gt; Role
@@ -471,44 +472,44 @@ err -&gt; Either (OpenUnion errs) a
 -&gt; UTCTime
 -&gt; User
 </span><a href="Fission.Models.html#%24WUser"><span class="hs-identifier hs-type hs-type">User</span></a></span><span>
-</span><span id="line-154"></span><span>              </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
-</span><a href="#local-6989586621680201755"><span class="hs-identifier hs-var">userPublicKey</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Public
+</span><span id="line-157"></span><span>              </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
+</span><a href="#local-6989586621680250657"><span class="hs-identifier hs-var">userPublicKey</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Public
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-155"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userUsername:User :: Username
-</span><a href="#local-6989586621680201754"><span class="hs-identifier hs-var">userUsername</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201714"><span class="hs-identifier hs-var">username</span></a></span><span>
-</span><span id="line-156"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userEmail:User :: Maybe Email
-</span><a href="#local-6989586621680201753"><span class="hs-identifier hs-var">userEmail</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Email
+</span><span id="line-158"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userUsername:User :: Username
+</span><a href="#local-6989586621680250656"><span class="hs-identifier hs-var">userUsername</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680250617"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><span id="line-159"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userEmail:User :: Maybe Email
+</span><a href="#local-6989586621680250655"><span class="hs-identifier hs-var">userEmail</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Email
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-157"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userRole:User :: Role
-</span><a href="#local-6989586621680201752"><span class="hs-identifier hs-var">userRole</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Role
+</span><span id="line-160"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userRole:User :: Role
+</span><a href="#local-6989586621680250654"><span class="hs-identifier hs-var">userRole</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Role
 </span><a href="Fission.User.Role.Types.html#Regular"><span class="hs-identifier hs-var">Regular</span></a></span><span>
-</span><span id="line-158"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userActive:User :: Bool
-</span><a href="#local-6989586621680201750"><span class="hs-identifier hs-var">userActive</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span id="line-161"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userActive:User :: Bool
+</span><a href="#local-6989586621680250652"><span class="hs-identifier hs-var">userActive</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
-</span><span id="line-159"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
-</span><a href="#local-6989586621680201749"><span class="hs-identifier hs-var">userHerokuAddOnId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Key HerokuAddOn -&gt; Maybe (Key HerokuAddOn)
+</span><span id="line-162"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
+</span><a href="#local-6989586621680250651"><span class="hs-identifier hs-var">userHerokuAddOnId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Key HerokuAddOn -&gt; Maybe (Key HerokuAddOn)
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Key HerokuAddOn
-</span><a href="#local-6989586621680201709"><span class="hs-identifier hs-var">herokuAddOnId</span></a></span><span>
-</span><span id="line-160"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
-</span><a href="#local-6989586621680201748"><span class="hs-identifier hs-var">userSecretDigest</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SecretDigest -&gt; Maybe SecretDigest
+</span><a href="#local-6989586621680250612"><span class="hs-identifier hs-var">herokuAddOnId</span></a></span><span>
+</span><span id="line-163"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
+</span><a href="#local-6989586621680250650"><span class="hs-identifier hs-var">userSecretDigest</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SecretDigest -&gt; Maybe SecretDigest
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">SecretDigest
-</span><a href="#local-6989586621680201707"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
-</span><span id="line-161"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
-</span><a href="#local-6989586621680201747"><span class="hs-identifier hs-var">userDataRoot</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680250610"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
+</span><span id="line-164"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
+</span><a href="#local-6989586621680250649"><span class="hs-identifier hs-var">userDataRoot</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
 </span><a href="Fission.App.Content.html#empty"><span class="hs-identifier hs-var">App.Content.empty</span></a></span><span>
-</span><span id="line-162"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
-</span><a href="#local-6989586621680201745"><span class="hs-identifier hs-var">userInsertedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201712"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-163"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
-</span><a href="#local-6989586621680201744"><span class="hs-identifier hs-var">userModifiedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680201712"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-164"></span><span>              </span><span class="hs-special">}</span><span>
-</span><span id="line-165"></span><span>              </span><span class="annot"><span class="annottext">User
+</span><span id="line-165"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
+</span><a href="#local-6989586621680250647"><span class="hs-identifier hs-var">userInsertedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250615"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-166"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
+</span><a href="#local-6989586621680250646"><span class="hs-identifier hs-var">userModifiedAt</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680250615"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-167"></span><span>              </span><span class="hs-special">}</span><span>
+</span><span id="line-168"></span><span>              </span><span class="annot"><span class="annottext">User
 -&gt; (User -&gt; ReaderT SqlBackend m (Maybe UserId))
 -&gt; ReaderT SqlBackend m (Maybe UserId)
 forall a b. a -&gt; (a -&gt; b) -&gt; b
@@ -518,7 +519,7 @@ forall backend (m :: * -&gt; *) record.
  PersistRecordBackend record backend) =&gt;
 record -&gt; ReaderT backend m (Maybe (Key record))
 </span><span class="hs-identifier hs-var">insertUnique</span></span><span>
-</span><span id="line-166"></span><span>              </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe UserId)
+</span><span id="line-169"></span><span>              </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe UserId)
 -&gt; (ReaderT SqlBackend m (Maybe UserId)
     -&gt; Transaction m (Either Errors UserId))
 -&gt; Transaction m (Either Errors UserId)
@@ -528,8 +529,8 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
 </span><a href="Fission.Prelude.html#bind"><span class="hs-identifier hs-var">bind</span></a></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-167"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680201706"><span class="annot"><span class="annottext">userID :: UserId
-</span><a href="#local-6989586621680201706"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
+</span><span id="line-170"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680250609"><span class="annot"><span class="annottext">userID :: UserId
+</span><a href="#local-6989586621680250609"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either Errors UserId -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors UserId -&gt; Transaction m (Either Errors UserId))
 -&gt; Either Errors UserId -&gt; Transaction m (Either Errors UserId)
@@ -537,26 +538,26 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; Either Errors UserId
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680201706"><span class="hs-identifier hs-var">userID</span></a></span><span>
-</span><span id="line-168"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Maybe Public -&gt; Transaction m (Either Errors UserId)
+</span><a href="#local-6989586621680250609"><span class="hs-identifier hs-var">userID</span></a></span><span>
+</span><span id="line-171"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Maybe Public -&gt; Transaction m (Either Errors UserId)
 forall (m :: * -&gt; *) a.
 MonadIO m =&gt;
 Username -&gt; Maybe Public -&gt; Transaction m (Either Errors a)
 </span><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-var">determineConflict</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201714"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Public
+</span><a href="#local-6989586621680250617"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Public
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span></span><span>
-</span><span id="line-169"></span><span>
-</span><span id="line-170"></span><span id="local-6989586621680201822"><span id="local-6989586621680201823"><span class="annot"><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-type">determineConflict</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-171"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680201823"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-172"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
-</span><span id="line-173"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
-</span><span id="line-174"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201823"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680201822"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span></span></span><span>
-</span><span id="line-175"></span><span> </span><span>
-</span><span id="line-176"></span><span id="determineConflict"><span class="annot"><span class="annottext">determineConflict :: Username -&gt; Maybe Public -&gt; Transaction m (Either Errors a)
-</span><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-var hs-var">determineConflict</span></a></span></span><span> </span><span id="local-6989586621680201705"><span class="annot"><span class="annottext">username :: Username
-</span><a href="#local-6989586621680201705"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-177"></span><span>  </span><span class="annot"><span class="annottext">Either Errors a -&gt; Transaction m (Either Errors a)
+</span><span id="line-172"></span><span>
+</span><span id="line-173"></span><span id="local-6989586621680250725"><span id="local-6989586621680250726"><span class="annot"><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-type">determineConflict</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-174"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680250726"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-175"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
+</span><span id="line-176"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
+</span><span id="line-177"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680250726"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680250725"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span></span></span><span>
+</span><span id="line-178"></span><span> </span><span>
+</span><span id="line-179"></span><span id="determineConflict"><span class="annot"><span class="annottext">determineConflict :: Username -&gt; Maybe Public -&gt; Transaction m (Either Errors a)
+</span><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-var hs-var">determineConflict</span></a></span></span><span> </span><span id="local-6989586621680250608"><span class="annot"><span class="annottext">username :: Username
+</span><a href="#local-6989586621680250608"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-180"></span><span>  </span><span class="annot"><span class="annottext">Either Errors a -&gt; Transaction m (Either Errors a)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors a -&gt; Transaction m (Either Errors a))
 -&gt; (AlreadyExists -&gt; Either Errors a)
@@ -572,23 +573,23 @@ err -&gt; Either (OpenUnion errs) a
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Username -&gt; AlreadyExists
 </span><a href="Fission.User.Creator.Error.html#ConflictingUsername"><span class="hs-identifier hs-var">User.ConflictingUsername</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201705"><span class="hs-identifier hs-var">username</span></a></span><span>
-</span><span id="line-178"></span><span> </span><span>
-</span><span id="line-179"></span><span class="annot"><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-var">determineConflict</span></a></span><span> </span><span id="local-6989586621680201702"><span class="annot"><span class="annottext">username :: Username
-</span><a href="#local-6989586621680201702"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680201701"><span class="annot"><span class="annottext">pk :: Public
-</span><a href="#local-6989586621680201701"><span class="hs-identifier hs-var">pk</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-180"></span><span>  </span><span class="hs-comment">-- NOTE needs to be updated anlong with DB constraints</span><span>
-</span><span id="line-181"></span><span>  </span><span class="hs-comment">--      because Postgres doesn't do this out of the box</span><span>
-</span><span id="line-182"></span><span>
-</span><span id="line-183"></span><span>  </span><span id="local-6989586621680201700"><span class="annot"><span class="annottext">Maybe AlreadyExists
-</span><a href="#local-6989586621680201700"><span class="hs-identifier hs-var">conflUN</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Unique User -&gt; ReaderT SqlBackend m (Maybe (Entity User))
+</span><a href="#local-6989586621680250608"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><span id="line-181"></span><span> </span><span>
+</span><span id="line-182"></span><span class="annot"><a href="Fission.User.Creator.Class.html#determineConflict"><span class="hs-identifier hs-var">determineConflict</span></a></span><span> </span><span id="local-6989586621680250605"><span class="annot"><span class="annottext">username :: Username
+</span><a href="#local-6989586621680250605"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680250604"><span class="annot"><span class="annottext">pk :: Public
+</span><a href="#local-6989586621680250604"><span class="hs-identifier hs-var">pk</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-183"></span><span>  </span><span class="hs-comment">-- NOTE needs to be updated anlong with DB constraints</span><span>
+</span><span id="line-184"></span><span>  </span><span class="hs-comment">--      because Postgres doesn't do this out of the box</span><span>
+</span><span id="line-185"></span><span>
+</span><span id="line-186"></span><span>  </span><span id="local-6989586621680250603"><span class="annot"><span class="annottext">Maybe AlreadyExists
+</span><a href="#local-6989586621680250603"><span class="hs-identifier hs-var">conflUN</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Unique User -&gt; ReaderT SqlBackend m (Maybe (Entity User))
 forall backend (m :: * -&gt; *) record.
 (PersistUniqueRead backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
 Unique record -&gt; ReaderT backend m (Maybe (Entity record))
 </span><span class="hs-identifier hs-var">getBy</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Username -&gt; Unique User
 </span><a href="Fission.Models.html#UniqueUsername"><span class="hs-identifier hs-var">UniqueUsername</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201702"><span class="hs-identifier hs-var">username</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe (Entity User))
+</span><a href="#local-6989586621680250605"><span class="hs-identifier hs-var">username</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe (Entity User))
 -&gt; (Maybe (Entity User) -&gt; Maybe AlreadyExists)
 -&gt; ReaderT SqlBackend m (Maybe AlreadyExists)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
@@ -596,12 +597,12 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 -&gt; Maybe (Entity User) -&gt; Maybe AlreadyExists
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-184"></span><span>    </span><span class="annot"><span class="annottext">Username -&gt; AlreadyExists
+</span><span id="line-187"></span><span>    </span><span class="annot"><span class="annottext">Username -&gt; AlreadyExists
 </span><a href="Fission.User.Creator.Error.html#ConflictingUsername"><span class="hs-identifier hs-var">User.ConflictingUsername</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680201702"><span class="hs-identifier hs-var">username</span></a></span><span>
-</span><span id="line-185"></span><span>
-</span><span id="line-186"></span><span>  </span><span id="local-6989586621680201697"><span class="annot"><span class="annottext">Maybe AlreadyExists
-</span><a href="#local-6989586621680201697"><span class="hs-identifier hs-var">conflPK</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Unique User -&gt; ReaderT SqlBackend m (Maybe (Entity User))
+</span><a href="#local-6989586621680250605"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><span id="line-188"></span><span>
+</span><span id="line-189"></span><span>  </span><span id="local-6989586621680250600"><span class="annot"><span class="annottext">Maybe AlreadyExists
+</span><a href="#local-6989586621680250600"><span class="hs-identifier hs-var">conflPK</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Unique User -&gt; ReaderT SqlBackend m (Maybe (Entity User))
 forall backend (m :: * -&gt; *) record.
 (PersistUniqueRead backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
@@ -612,7 +613,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680201701"><span class="hs-identifier hs-var">pk</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe (Entity User))
+</span><a href="#local-6989586621680250604"><span class="hs-identifier hs-var">pk</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe (Entity User))
 -&gt; (Maybe (Entity User) -&gt; Maybe AlreadyExists)
 -&gt; ReaderT SqlBackend m (Maybe AlreadyExists)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
@@ -620,29 +621,29 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 -&gt; Maybe (Entity User) -&gt; Maybe AlreadyExists
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-187"></span><span>    </span><span class="annot"><span class="annottext">Public -&gt; AlreadyExists
+</span><span id="line-190"></span><span>    </span><span class="annot"><span class="annottext">Public -&gt; AlreadyExists
 </span><a href="Fission.User.Creator.Error.html#ConflictingPublicKey"><span class="hs-identifier hs-var">User.ConflictingPublicKey</span></a></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680201701"><span class="hs-identifier hs-var">pk</span></a></span><span>
-</span><span id="line-188"></span><span>
-</span><span id="line-189"></span><span>  </span><span class="hs-comment">-- confEmail TODO</span><span>
-</span><span id="line-190"></span><span>
-</span><span id="line-191"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe AlreadyExists
-</span><a href="#local-6989586621680201700"><span class="hs-identifier hs-var">conflUN</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe AlreadyExists -&gt; Maybe AlreadyExists -&gt; Maybe AlreadyExists
+</span><a href="#local-6989586621680250604"><span class="hs-identifier hs-var">pk</span></a></span><span>
+</span><span id="line-191"></span><span>
+</span><span id="line-192"></span><span>  </span><span class="hs-comment">-- conflEmail TODO</span><span>
+</span><span id="line-193"></span><span>
+</span><span id="line-194"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe AlreadyExists
+</span><a href="#local-6989586621680250603"><span class="hs-identifier hs-var">conflUN</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe AlreadyExists -&gt; Maybe AlreadyExists -&gt; Maybe AlreadyExists
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe AlreadyExists
-</span><a href="#local-6989586621680201697"><span class="hs-identifier hs-var">conflPK</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-192"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680201693"><span class="annot"><span class="annottext">err :: AlreadyExists
-</span><a href="#local-6989586621680201693"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">AlreadyExists -&gt; Either Errors a
+</span><a href="#local-6989586621680250600"><span class="hs-identifier hs-var">conflPK</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-195"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680250596"><span class="annot"><span class="annottext">err :: AlreadyExists
+</span><a href="#local-6989586621680250596"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">AlreadyExists -&gt; Either Errors a
 forall err (errs :: [*]) a.
 IsMember err errs =&gt;
 err -&gt; Either (OpenUnion errs) a
 </span><a href="Fission.Error.html#openLeft"><span class="hs-identifier hs-var">Error.openLeft</span></a></span><span> </span><span class="annot"><span class="annottext">AlreadyExists
-</span><a href="#local-6989586621680201693"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-193"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError -&gt; Either Errors a
+</span><a href="#local-6989586621680250596"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-196"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError -&gt; Either Errors a
 forall err (errs :: [*]) a.
 IsMember err errs =&gt;
 err -&gt; Either (OpenUnion errs) a
 </span><a href="Fission.Error.html#openLeft"><span class="hs-identifier hs-var">Error.openLeft</span></a></span><span> </span><span class="annot"><span class="annottext">ServerError
 </span><span class="hs-identifier hs-var">err409</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
 </span><span class="hs-identifier hs-var">errBody</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;User already exists&quot;</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-194"></span></pre></body></html>
+</span><span id="line-197"></span></pre></body></html>

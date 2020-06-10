@@ -1,31 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.html#cli"><span class="hs-identifier">cli</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-2"></span><span>
 </span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Options.Applicative.Simple</span></span><span>
-</span><span id="line-4"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.Text</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Text</span></span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.Text</span></span><span>                     </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Text</span></span><span>
 </span><span id="line-5"></span><span>
-</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
-</span><span id="line-7"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Internal.CLI.Meta.html"><span class="hs-identifier">Fission.Internal.CLI.Meta</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Meta</span></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Internal.CLI.Meta.html"><span class="hs-identifier">Fission.Internal.CLI.Meta</span></a></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Meta</span></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-8"></span><span>
 </span><span id="line-9"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Config.Base.html"><span class="hs-identifier">Fission.CLI.Config.Base</span></a></span><span>
 </span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Config.Connected.html"><span class="hs-identifier">Fission.CLI.Config.Connected</span></a></span><span>
 </span><span id="line-11"></span><span>
-</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Command.html"><span class="hs-identifier">Fission.CLI.Command</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Command</span></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Command.html"><span class="hs-identifier">Fission.CLI.Command</span></a></span><span>          </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Command</span></span><span>
 </span><span id="line-13"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Display.Error.html"><span class="hs-identifier">Fission.CLI.Display.Error</span></a></span><span>
 </span><span id="line-14"></span><span>
-</span><span id="line-15"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Setup.html"><span class="hs-identifier">Fission.CLI.Command.Setup</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Setup</span></span><span>
-</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Up.html"><span class="hs-identifier">Fission.CLI.Command.Up</span></a></span><span>     </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Up</span></span><span>
-</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Down.html"><span class="hs-identifier">Fission.CLI.Command.Down</span></a></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Down</span></span><span>
-</span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Watch.html"><span class="hs-identifier">Fission.CLI.Command.Watch</span></a></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Watch</span></span><span>
-</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Whoami.html"><span class="hs-identifier">Fission.CLI.Command.Whoami</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Whoami</span></span><span>
-</span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span id="local-6989586621680208128"><span class="annot"><a href="Fission.CLI.html#cli"><span class="hs-identifier hs-type">cli</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680208128"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Config.Base.Types.html#BaseConfig"><span class="hs-identifier hs-type">BaseConfig</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680208128"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
-</span><span id="line-22"></span><span id="cli"><span class="annot"><span class="annottext">cli :: BaseConfig -&gt; m ()
-</span><a href="Fission.CLI.html#cli"><span class="hs-identifier hs-var hs-var">cli</span></a></span></span><span> </span><span id="local-6989586621680208127"><span class="annot"><span class="annottext">baseCfg :: BaseConfig
-</span><a href="#local-6989586621680208127"><span class="hs-identifier hs-var">baseCfg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO () -&gt; m ()
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.App.Init.html"><span class="hs-identifier">Fission.CLI.Command.App.Init</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">App.Init</span></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Down.html"><span class="hs-identifier">Fission.CLI.Command.Down</span></a></span><span>     </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Down</span></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Setup.html"><span class="hs-identifier">Fission.CLI.Command.Setup</span></a></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Setup</span></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Up.html"><span class="hs-identifier">Fission.CLI.Command.Up</span></a></span><span>       </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Up</span></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Watch.html"><span class="hs-identifier">Fission.CLI.Command.Watch</span></a></span><span>    </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Watch</span></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Whoami.html"><span class="hs-identifier">Fission.CLI.Command.Whoami</span></a></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Whoami</span></span><span>
+</span><span id="line-21"></span><span>
+</span><span id="line-22"></span><span id="local-6989586621680257717"><span class="annot"><a href="Fission.CLI.html#cli"><span class="hs-identifier hs-type">cli</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680257717"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Config.Base.Types.html#BaseConfig"><span class="hs-identifier hs-type">BaseConfig</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680257717"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-23"></span><span id="cli"><span class="annot"><span class="annottext">cli :: BaseConfig -&gt; m ()
+</span><a href="Fission.CLI.html#cli"><span class="hs-identifier hs-var hs-var">cli</span></a></span></span><span> </span><span id="local-6989586621680257716"><span class="annot"><span class="annottext">baseCfg :: BaseConfig
+</span><a href="#local-6989586621680257716"><span class="hs-identifier hs-var">baseCfg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO () -&gt; m ()
 forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
 </span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-23"></span><span>  </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680208125"><span class="annot"><span class="annottext">runCLI :: IO ()
-</span><a href="#local-6989586621680208125"><span class="hs-identifier hs-var">runCLI</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">String
+</span><span id="line-24"></span><span>  </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680257714"><span class="annot"><span class="annottext">runCLI :: IO ()
+</span><a href="#local-6989586621680257714"><span class="hs-identifier hs-var">runCLI</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">String
 -&gt; String
 -&gt; String
 -&gt; Parser ()
@@ -44,57 +45,68 @@ String
 </span><a href="Fission.CLI.html#detail"><span class="hs-identifier hs-var">detail</span></a></span><span> </span><span class="annot"><span class="annottext">Parser ()
 forall (f :: * -&gt; *). Applicative f =&gt; f ()
 </span><a href="Fission.Prelude.html#noop"><span class="hs-identifier hs-var">noop</span></a></span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-24"></span><span>    </span><span class="annot"><span class="annottext">Command FissionBase () ()
+</span><span id="line-25"></span><span>    </span><span class="annot"><span class="annottext">Command FissionBase () ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 forall input.
 Command FissionBase input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="#local-6989586621680208119"><span class="hs-identifier hs-var">runBase_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionBase () ()
+</span><a href="#local-6989586621680257708"><span class="hs-identifier hs-var">runBase_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionBase () ()
 forall (m :: * -&gt; *).
 (MonadIO m, MonadLogger m, MonadWebClient m, MonadTime m,
  ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey) =&gt;
 Command m () ()
 </span><a href="Fission.CLI.Command.Setup.html#cmd"><span class="hs-identifier hs-var">Setup.cmd</span></a></span><span>
-</span><span id="line-25"></span><span>
-</span><span id="line-26"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected () ()
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected () ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 forall input.
 Command FissionConnected input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="#local-6989586621680208117"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionConnected () ()
+</span><a href="#local-6989586621680257706"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionConnected () ()
 forall (m :: * -&gt; *).
 (MonadIO m, MonadTime m, MonadLogger m, MonadWebClient m,
  ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey) =&gt;
 Command m () ()
 </span><a href="Fission.CLI.Command.Whoami.html#cmd"><span class="hs-identifier hs-var">Whoami.cmd</span></a></span><span>
-</span><span id="line-27"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
+</span><span id="line-28"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 forall input.
 Command FissionConnected input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="#local-6989586621680208117"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
+</span><a href="#local-6989586621680257706"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
 forall (m :: * -&gt; *).
 (MonadUnliftIO m, MonadLogger m, MonadLocalIPFS m,
  MonadEnvironment m, MonadWebClient m, MonadTime m,
  MonadWebAuth m Token, MonadWebAuth m SecretKey, ServerDID m) =&gt;
 Command m Options ()
 </span><a href="Fission.CLI.Command.Up.html#cmd"><span class="hs-identifier hs-var">Up.cmd</span></a></span><span>
-</span><span id="line-28"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected CID ()
+</span><span id="line-29"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected CID ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 forall input.
 Command FissionConnected input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="#local-6989586621680208117"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionConnected CID ()
+</span><a href="#local-6989586621680257706"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionConnected CID ()
 forall (m :: * -&gt; *).
 (MonadUnliftIO m, MonadLocalIPFS m, MonadLogger m) =&gt;
 Command m CID ()
 </span><a href="Fission.CLI.Command.Down.html#cmd"><span class="hs-identifier hs-var">Down.cmd</span></a></span><span>
-</span><span id="line-29"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
+</span><span id="line-30"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 forall input.
 Command FissionConnected input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="#local-6989586621680208117"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">(FissionConnected () -&gt; IO ())
+</span><a href="#local-6989586621680257706"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
+forall (m :: * -&gt; *).
+(MonadWebClient m, MonadIO m, MonadTime m, ServerDID m,
+ MonadWebAuth m Token, MonadWebAuth m SecretKey, MonadLogger m) =&gt;
+Command m Options ()
+</span><a href="Fission.CLI.Command.App.Init.html#cmd"><span class="hs-identifier hs-var">App.Init.cmd</span></a></span><span>
+</span><span id="line-31"></span><span>    </span><span class="annot"><span class="annottext">Command FissionConnected Options ()
+-&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
+forall input.
+Command FissionConnected input ()
+-&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
+</span><a href="#local-6989586621680257706"><span class="hs-identifier hs-var">runConnected_</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">(FissionConnected () -&gt; IO ())
 -&gt; Command FissionConnected Options ()
 forall (m :: * -&gt; *).
 (MonadUnliftIO m, MonadLogger m, MonadLocalIPFS m,
@@ -113,16 +125,16 @@ forall (m :: * -&gt; *) a.
 MonadIO m =&gt;
 BaseConfig -&gt; FissionConnected a -&gt; m (Either Error a)
 </span><a href="Fission.CLI.Config.Connected.html#runConnected"><span class="hs-identifier hs-var">runConnected</span></a></span><span> </span><span class="annot"><span class="annottext">BaseConfig
-</span><a href="#local-6989586621680208127"><span class="hs-identifier hs-var">baseCfg</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
-</span><span id="line-30"></span><span>
-</span><span id="line-31"></span><span>  </span><span class="annot"><span class="annottext">IO ()
-</span><a href="#local-6989586621680208125"><span class="hs-identifier hs-var">runCLI</span></a></span><span>
-</span><span id="line-32"></span><span> </span><span>
-</span><span id="line-33"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-34"></span><span>    </span><span id="local-6989586621680208181"><span class="annot"><a href="#local-6989586621680208119"><span class="hs-identifier hs-type">runBase_</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Command"><span class="hs-identifier hs-type">Command</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Config.Base.Types.html#FissionBase"><span class="hs-identifier hs-type">FissionBase</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208181"><span class="hs-identifier hs-type">input</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Leaf"><span class="hs-identifier hs-type">Command.Leaf</span></a></span></span><span>
-</span><span id="line-35"></span><span>    </span><span id="local-6989586621680208119"><span class="annot"><span class="annottext">runBase_ :: Command FissionBase input ()
+</span><a href="#local-6989586621680257716"><span class="hs-identifier hs-var">baseCfg</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-32"></span><span>
+</span><span id="line-33"></span><span>  </span><span class="annot"><span class="annottext">IO ()
+</span><a href="#local-6989586621680257714"><span class="hs-identifier hs-var">runCLI</span></a></span><span>
+</span><span id="line-34"></span><span>
+</span><span id="line-35"></span><span>  </span><span class="hs-keyword">where</span><span>
+</span><span id="line-36"></span><span>    </span><span id="local-6989586621680257773"><span class="annot"><a href="#local-6989586621680257708"><span class="hs-identifier hs-type">runBase_</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Command"><span class="hs-identifier hs-type">Command</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Config.Base.Types.html#FissionBase"><span class="hs-identifier hs-type">FissionBase</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257773"><span class="hs-identifier hs-type">input</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Leaf"><span class="hs-identifier hs-type">Command.Leaf</span></a></span></span><span>
+</span><span id="line-37"></span><span>    </span><span id="local-6989586621680257708"><span class="annot"><span class="annottext">runBase_ :: Command FissionBase input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="#local-6989586621680208119"><span class="hs-identifier hs-var hs-var">runBase_</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(FissionBase () -&gt; IO ())
+</span><a href="#local-6989586621680257708"><span class="hs-identifier hs-var hs-var">runBase_</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(FissionBase () -&gt; IO ())
 -&gt; Command FissionBase input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 forall (m :: * -&gt; *) input.
@@ -134,34 +146,43 @@ forall (m :: * -&gt; *) a.
 MonadIO m =&gt;
 BaseConfig -&gt; FissionBase a -&gt; m a
 </span><a href="Fission.CLI.Config.Base.html#runBase"><span class="hs-identifier hs-var">runBase</span></a></span><span> </span><span class="annot"><span class="annottext">BaseConfig
-</span><a href="#local-6989586621680208127"><span class="hs-identifier hs-var">baseCfg</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-36"></span><span>
-</span><span id="line-37"></span><span>    </span><span id="local-6989586621680208171"><span class="annot"><a href="#local-6989586621680208117"><span class="hs-identifier hs-type">runConnected_</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Command"><span class="hs-identifier hs-type">Command</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Config.Connected.Types.html#FissionConnected"><span class="hs-identifier hs-type">FissionConnected</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680208171"><span class="hs-identifier hs-type">input</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Leaf"><span class="hs-identifier hs-type">Command.Leaf</span></a></span></span><span>
-</span><span id="line-38"></span><span>    </span><span id="local-6989586621680208117"><span class="annot"><span class="annottext">runConnected_ :: Command FissionConnected input ()
+</span><a href="#local-6989586621680257716"><span class="hs-identifier hs-var">baseCfg</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-38"></span><span>
+</span><span id="line-39"></span><span>    </span><span id="local-6989586621680257763"><span class="annot"><a href="#local-6989586621680257706"><span class="hs-identifier hs-type">runConnected_</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Command"><span class="hs-identifier hs-type">Command</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Config.Connected.Types.html#FissionConnected"><span class="hs-identifier hs-type">FissionConnected</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257763"><span class="hs-identifier hs-type">input</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Leaf"><span class="hs-identifier hs-type">Command.Leaf</span></a></span></span><span>
+</span><span id="line-40"></span><span>    </span><span id="local-6989586621680257706"><span class="annot"><span class="annottext">runConnected_ :: Command FissionConnected input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="#local-6989586621680208117"><span class="hs-identifier hs-var hs-var">runConnected_</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(FissionConnected () -&gt; IO ())
+</span><a href="#local-6989586621680257706"><span class="hs-identifier hs-var hs-var">runConnected_</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-41"></span><span>      </span><span class="annot"><span class="annottext">(FissionConnected () -&gt; IO ())
 -&gt; Command FissionConnected input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
 forall (m :: * -&gt; *) input.
 (m () -&gt; IO ())
 -&gt; Command m input ()
 -&gt; ExceptT (IO ()) (Writer (Mod CommandFields (IO ()))) ()
-</span><a href="Fission.CLI.Command.html#runWith"><span class="hs-identifier hs-var">runWith</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680208106"><span class="annot"><span class="annottext">actn :: FissionConnected ()
-</span><a href="#local-6989586621680208106"><span class="hs-identifier hs-var">actn</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-39"></span><span>      </span><span class="annot"><span class="annottext">BaseConfig -&gt; FissionConnected () -&gt; IO (Either Error ())
+</span><a href="Fission.CLI.Command.html#runWith"><span class="hs-identifier hs-var">runWith</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680257694"><span class="annot"><span class="annottext">actn :: FissionConnected ()
+</span><a href="#local-6989586621680257694"><span class="hs-identifier hs-var">actn</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-42"></span><span>        </span><span id="local-6989586621680257693"><span class="annot"><span class="annottext">Either Error ()
+</span><a href="#local-6989586621680257693"><span class="hs-identifier hs-var">result</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">BaseConfig -&gt; FissionConnected () -&gt; IO (Either Error ())
 forall (m :: * -&gt; *) a.
 MonadIO m =&gt;
 BaseConfig -&gt; FissionConnected a -&gt; m (Either Error a)
 </span><a href="Fission.CLI.Config.Connected.html#runConnected"><span class="hs-identifier hs-var">runConnected</span></a></span><span> </span><span class="annot"><span class="annottext">BaseConfig
-</span><a href="#local-6989586621680208127"><span class="hs-identifier hs-var">baseCfg</span></a></span><span> </span><span class="annot"><span class="annottext">FissionConnected ()
-</span><a href="#local-6989586621680208106"><span class="hs-identifier hs-var">actn</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Either Error ()) -&gt; (Either Error () -&gt; IO ()) -&gt; IO ()
-forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-40"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">() -&gt; IO ()
+</span><a href="#local-6989586621680257716"><span class="hs-identifier hs-var">baseCfg</span></a></span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-43"></span><span>          </span><span class="annot"><span class="annottext">Text -&gt; FissionConnected ()
+forall msg (m :: * -&gt; *).
+(ToLogStr msg, MonadLogger m) =&gt;
+msg -&gt; m ()
+</span><a href="Fission.Internal.Log.html#logDebug"><span class="hs-identifier hs-var">logDebug</span></a></span><span> </span><span class="hs-glyph">@</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Setting up connected&quot;</span></span><span>
+</span><span id="line-44"></span><span>          </span><span class="annot"><span class="annottext">FissionConnected ()
+</span><a href="#local-6989586621680257694"><span class="hs-identifier hs-var">actn</span></a></span><span>
+</span><span id="line-45"></span><span>
+</span><span id="line-46"></span><span>        </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Either Error ()
+</span><a href="#local-6989586621680257693"><span class="hs-identifier hs-var">result</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-47"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">() -&gt; IO ()
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
-</span><span id="line-41"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680208105"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680208105"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">IO (Either Error ()) -&gt; IO ()
+</span><span id="line-48"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680257691"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680257691"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">IO (Either Error ()) -&gt; IO ()
 forall (f :: * -&gt; *) a. Functor f =&gt; f a -&gt; f ()
 </span><span class="hs-identifier hs-var">void</span></span><span> </span><span class="annot"><span class="annottext">(IO (Either Error ()) -&gt; IO ())
 -&gt; (FissionConnected () -&gt; IO (Either Error ()))
@@ -173,25 +194,25 @@ forall (m :: * -&gt; *) a.
 MonadIO m =&gt;
 BaseConfig -&gt; FissionConnected a -&gt; m (Either Error a)
 </span><a href="Fission.CLI.Config.Connected.html#runConnected"><span class="hs-identifier hs-var">runConnected</span></a></span><span> </span><span class="annot"><span class="annottext">BaseConfig
-</span><a href="#local-6989586621680208127"><span class="hs-identifier hs-var">baseCfg</span></a></span><span> </span><span class="annot"><span class="annottext">(FissionConnected () -&gt; IO ()) -&gt; FissionConnected () -&gt; IO ()
+</span><a href="#local-6989586621680257716"><span class="hs-identifier hs-var">baseCfg</span></a></span><span> </span><span class="annot"><span class="annottext">(FissionConnected () -&gt; IO ()) -&gt; FissionConnected () -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; FissionConnected ()
 forall (m :: * -&gt; *) err.
 (MonadIO m, MonadLogger m, Show err) =&gt;
 err -&gt; m ()
 </span><a href="Fission.CLI.Display.Error.html#put%27"><span class="hs-identifier hs-var">put'</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680208105"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-42"></span><span>
-</span><span id="line-43"></span><span class="annot"><a href="Fission.CLI.html#summary"><span class="hs-identifier hs-type">summary</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
-</span><span id="line-44"></span><span id="summary"><span class="annot"><span class="annottext">summary :: String
+</span><a href="#local-6989586621680257691"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-49"></span><span>
+</span><span id="line-50"></span><span class="annot"><a href="Fission.CLI.html#summary"><span class="hs-identifier hs-type">summary</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-51"></span><span id="summary"><span class="annot"><span class="annottext">summary :: String
 </span><a href="Fission.CLI.html#summary"><span class="hs-identifier hs-var hs-var">summary</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;CLI to interact with Fission services&quot;</span></span><span>
-</span><span id="line-45"></span><span>
-</span><span id="line-46"></span><span class="annot"><a href="Fission.CLI.html#detail"><span class="hs-identifier hs-type">detail</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
-</span><span id="line-47"></span><span id="detail"><span class="annot"><span class="annottext">detail :: String
+</span><span id="line-52"></span><span>
+</span><span id="line-53"></span><span class="annot"><a href="Fission.CLI.html#detail"><span class="hs-identifier hs-type">detail</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-54"></span><span id="detail"><span class="annot"><span class="annottext">detail :: String
 </span><a href="Fission.CLI.html#detail"><span class="hs-identifier hs-var hs-var">detail</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Fission makes developing, deploying, updating, and iterating on web apps quick and easy.&quot;</span></span><span>
-</span><span id="line-48"></span><span>
-</span><span id="line-49"></span><span class="annot"><a href="Fission.CLI.html#version"><span class="hs-identifier hs-type">version</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
-</span><span id="line-50"></span><span id="version"><span class="annot"><span class="annottext">version :: String
+</span><span id="line-55"></span><span>
+</span><span id="line-56"></span><span class="annot"><a href="Fission.CLI.html#version"><span class="hs-identifier hs-type">version</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-57"></span><span id="version"><span class="annot"><span class="annottext">version :: String
 </span><a href="Fission.CLI.html#version"><span class="hs-identifier hs-var hs-var">version</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
 </span><span class="hs-identifier hs-var">Text.unpack</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; String) -&gt; Text -&gt; String
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -204,4 +225,4 @@ forall a. a -&gt; a
 forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
 </span><span class="hs-operator hs-var">=&lt;&lt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Package
 </span><a href="Fission.Internal.CLI.Meta.html#package"><span class="hs-identifier hs-var">Meta.package</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-51"></span></pre></body></html>
+</span><span id="line-58"></span></pre></body></html>

@@ -1,12 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.CLI.Command.Up.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Command.Up.Types.html#Options"><span class="hs-identifier">Options</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-2"></span><span>
-</span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">Options</span></span><span class="hs-special">)</span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">Options</span></span><span class="hs-special">)</span><span>
 </span><span id="line-4"></span><span>
 </span><span id="line-5"></span><span class="hs-comment">-- | Arguments, flags &amp; switches for the `up` command</span><span>
 </span><span id="line-6"></span><span class="hs-keyword">data</span><span> </span><span id="Options"><span class="annot"><a href="Fission.CLI.Command.Up.Types.html#Options"><span class="hs-identifier hs-var">Options</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Options"><span class="annot"><a href="Fission.CLI.Command.Up.Types.html#Options"><span class="hs-identifier hs-var">Options</span></a></span></span><span>
-</span><span id="line-7"></span><span>  </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AdnsOnly%3AOptions"><span class="annot"><span class="annottext">Options -&gt; Bool
+</span><span id="line-7"></span><span>    </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AdnsOnly%3AOptions"><span class="annot"><span class="annottext">Options -&gt; Bool
 </span><a href="Fission.CLI.Command.Up.Types.html#%24sel%3AdnsOnly%3AOptions"><span class="hs-identifier hs-var hs-var">dnsOnly</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
-</span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Apath%3AOptions"><span class="annot"><span class="annottext">Options -&gt; FilePath
+</span><span id="line-8"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Apath%3AOptions"><span class="annot"><span class="annottext">Options -&gt; FilePath
 </span><a href="Fission.CLI.Command.Up.Types.html#%24sel%3Apath%3AOptions"><span class="hs-identifier hs-var hs-var">path</span></a></span></span><span>    </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span>
-</span><span id="line-9"></span><span>  </span><span class="hs-special">}</span><span>
-</span><span id="line-10"></span></pre></body></html>
+</span><span id="line-9"></span><span>    </span><span class="hs-special">}</span><span>
+</span><span id="line-10"></span><span>    </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680239585"><span id="local-6989586621680239587"><span id="local-6989586621680239589"><span class="annot"><span class="annottext">Int -&gt; Options -&gt; ShowS
+[Options] -&gt; ShowS
+Options -&gt; FilePath
+(Int -&gt; Options -&gt; ShowS)
+-&gt; (Options -&gt; FilePath) -&gt; ([Options] -&gt; ShowS) -&gt; Show Options
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; FilePath) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Options] -&gt; ShowS
+$cshowList :: [Options] -&gt; ShowS
+show :: Options -&gt; FilePath
+$cshow :: Options -&gt; FilePath
+showsPrec :: Int -&gt; Options -&gt; ShowS
+$cshowsPrec :: Int -&gt; Options -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680239580"><span id="local-6989586621680239582"><span class="annot"><span class="annottext">Options -&gt; Options -&gt; Bool
+(Options -&gt; Options -&gt; Bool)
+-&gt; (Options -&gt; Options -&gt; Bool) -&gt; Eq Options
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Options -&gt; Options -&gt; Bool
+$c/= :: Options -&gt; Options -&gt; Bool
+== :: Options -&gt; Options -&gt; Bool
+$c== :: Options -&gt; Options -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-11"></span></pre></body></html>

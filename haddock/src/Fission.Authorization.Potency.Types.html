@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span id="%24con2tag_FXRwDgp16f659OjnZ8RXHS"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Authorization.Potency.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier">Potency</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span id="%24con2tag_AepbPwYu5oRJKO9KEWFgkg"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Authorization.Potency.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier">Potency</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-2"></span><span>
 </span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.Text</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Text</span></span><span>
 </span><span id="line-4"></span><span>
@@ -16,7 +16,7 @@ append-only rights, so
 </span><span id="line-16"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="AppendOnly"><span class="annot"><a href="Fission.Authorization.Potency.Types.html#AppendOnly"><span class="hs-identifier hs-var">AppendOnly</span></a></span></span><span>  </span><span class="hs-comment">-- ^ Append new files</span><span>
 </span><span id="line-17"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Destructive"><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Destructive"><span class="hs-identifier hs-var">Destructive</span></a></span></span><span> </span><span class="hs-comment">-- ^ Overwrite / destroy. &quot;Ownership is the right to destroy&quot;</span><span>
 </span><span id="line-18"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="SuperUser"><span class="annot"><a href="Fission.Authorization.Potency.Types.html#SuperUser"><span class="hs-identifier hs-var">SuperUser</span></a></span></span><span>   </span><span class="hs-comment">-- ^ i.e. SuperUser -- Financial, major account settings, &amp;c</span><span>
-</span><span id="line-19"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680191900"><span id="local-6989586621680191902"><span id="local-6989586621680191904"><span class="annot"><span class="annottext">Int -&gt; Potency -&gt; ShowS
+</span><span id="line-19"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680239745"><span id="local-6989586621680239747"><span id="local-6989586621680239749"><span class="annot"><span class="annottext">Int -&gt; Potency -&gt; ShowS
 [Potency] -&gt; ShowS
 Potency -&gt; String
 (Int -&gt; Potency -&gt; ShowS)
@@ -29,7 +29,7 @@ show :: Potency -&gt; String
 $cshow :: Potency -&gt; String
 showsPrec :: Int -&gt; Potency -&gt; ShowS
 $cshowsPrec :: Int -&gt; Potency -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191895"><span id="local-6989586621680191897"><span class="annot"><span class="annottext">Potency -&gt; Potency -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680239740"><span id="local-6989586621680239742"><span class="annot"><span class="annottext">Potency -&gt; Potency -&gt; Bool
 (Potency -&gt; Potency -&gt; Bool)
 -&gt; (Potency -&gt; Potency -&gt; Bool) -&gt; Eq Potency
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -37,7 +37,7 @@ forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c/= :: Potency -&gt; Potency -&gt; Bool
 == :: Potency -&gt; Potency -&gt; Bool
 $c== :: Potency -&gt; Potency -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680191879"><span id="local-6989586621680191881"><span id="local-6989586621680191883"><span id="local-6989586621680191885"><span id="local-6989586621680191887"><span id="local-6989586621680191889"><span id="local-6989586621680191891"><span class="annot"><span class="annottext">Eq Potency
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680239724"><span id="local-6989586621680239726"><span id="local-6989586621680239728"><span id="local-6989586621680239730"><span id="local-6989586621680239732"><span id="local-6989586621680239734"><span id="local-6989586621680239736"><span class="annot"><span class="annottext">Eq Potency
 Eq Potency =&gt;
 (Potency -&gt; Potency -&gt; Ordering)
 -&gt; (Potency -&gt; Potency -&gt; Bool)
@@ -77,8 +77,8 @@ $ccompare :: Potency -&gt; Potency -&gt; Ordering
 $cp1Ord :: Eq Potency
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Ord</span></span></span></span></span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680191876"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-22"></span><span>  </span><span id="local-6989586621680191873"><span class="annot"><span class="annottext">textDisplay :: Potency -&gt; Text
+</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680239721"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-22"></span><span>  </span><span id="local-6989586621680239718"><span class="annot"><span class="annottext">textDisplay :: Potency -&gt; Text
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Text
 </span><span class="hs-identifier hs-var">Text.pack</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Text) -&gt; (Potency -&gt; String) -&gt; Potency -&gt; Text
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -86,8 +86,8 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span>
 </span><span id="line-23"></span><span>
-</span><span id="line-24"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680191866"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-25"></span><span>  </span><span id="local-6989586621680191864"><span class="annot"><span class="annottext">arbitrary :: Gen Potency
+</span><span id="line-24"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680239711"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-25"></span><span>  </span><span id="local-6989586621680239709"><span class="annot"><span class="annottext">arbitrary :: Gen Potency
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Potency] -&gt; Gen Potency
 forall a. [a] -&gt; Gen a
 </span><span class="hs-identifier hs-var">elements</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Item [Potency]
@@ -100,8 +100,8 @@ Potency
 Potency
 </span><a href="Fission.Authorization.Potency.Types.html#SuperUser"><span class="hs-identifier hs-var">SuperUser</span></a></span><span class="hs-special">]</span><span>
 </span><span id="line-26"></span><span>
-</span><span id="line-27"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680191855"><span id="local-6989586621680191857"><span id="local-6989586621680191859"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-28"></span><span>  </span><span id="local-6989586621680191853"><span class="annot"><span class="annottext">toJSON :: Potency -&gt; Value
+</span><span id="line-27"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680239700"><span id="local-6989586621680239702"><span id="local-6989586621680239704"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-28"></span><span>  </span><span id="local-6989586621680239698"><span class="annot"><span class="annottext">toJSON :: Potency -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
 </span><span id="line-29"></span><span>    </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#AuthNOnly"><span class="hs-identifier hs-type">AuthNOnly</span></a></span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Value
 </span><span class="hs-identifier hs-var">Null</span></span><span>
@@ -112,23 +112,23 @@ Potency
 </span><span id="line-32"></span><span>    </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#SuperUser"><span class="hs-identifier hs-type">SuperUser</span></a></span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="hs-string">&quot;SUPER_USER&quot;</span></span><span>
 </span><span id="line-33"></span><span>
-</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680191847"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-35"></span><span>  </span><span id="local-6989586621680191845"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Potency
+</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680239692"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Authorization.Potency.Types.html#Potency"><span class="hs-identifier hs-type">Potency</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680239690"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Potency
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Null</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Potency -&gt; Parser Potency
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">Potency
 </span><a href="Fission.Authorization.Potency.Types.html#AuthNOnly"><span class="hs-identifier hs-var">AuthNOnly</span></a></span><span>
-</span><span id="line-36"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">parseJSON</span></span><span> </span><span id="local-6989586621680191843"><span class="annot"><span class="annottext">str :: Value
-</span><a href="#local-6989586621680191843"><span class="hs-identifier hs-var">str</span></a></span></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Value
-</span><a href="#local-6989586621680191843"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">Value -&gt; (Value -&gt; Parser Potency) -&gt; Parser Potency
+</span><span id="line-36"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">parseJSON</span></span><span> </span><span id="local-6989586621680239688"><span class="annot"><span class="annottext">str :: Value
+</span><a href="#local-6989586621680239688"><span class="hs-identifier hs-var">str</span></a></span></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Value
+</span><a href="#local-6989586621680239688"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">Value -&gt; (Value -&gt; Parser Potency) -&gt; Parser Potency
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Potency) -&gt; Value -&gt; Parser Potency
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AuthZ.Potency&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680191840"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680191840"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AuthZ.Potency&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680239685"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680239685"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-37"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text
 </span><span class="hs-identifier hs-var">Text.toUpper</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680191840"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680239685"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-38"></span><span>      </span><span class="hs-string">&quot;APPEND&quot;</span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Potency -&gt; Parser Potency
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">Potency
@@ -141,15 +141,15 @@ forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">Potency
 </span><a href="Fission.Authorization.Potency.Types.html#SuperUser"><span class="hs-identifier hs-var">SuperUser</span></a></span><span>
-</span><span id="line-41"></span><span>      </span><span id="local-6989586621680191838"><span class="annot"><span class="annottext">nope :: Text
-</span><a href="#local-6989586621680191838"><span class="hs-identifier hs-var">nope</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Potency
+</span><span id="line-41"></span><span>      </span><span id="local-6989586621680239683"><span class="annot"><span class="annottext">nope :: Text
+</span><a href="#local-6989586621680239683"><span class="hs-identifier hs-var">nope</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Potency
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Parser Potency) -&gt; String -&gt; Parser Potency
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680191838"><span class="hs-identifier hs-var">nope</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680239683"><span class="hs-identifier hs-var">nope</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; is not a valid authorization potency&quot;</span></span><span>
 </span><span id="line-42"></span></pre></body></html>
