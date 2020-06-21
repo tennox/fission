@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.4.0
+@version 2.4.2
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -5689,7 +5689,6 @@ instance Data.Aeson.Types.ToJSON.ToJSON Fission.SemVer.Types.SemVer
 instance Data.Aeson.Types.FromJSON.FromJSON Fission.SemVer.Types.SemVer
 
 module Fission.SemVer
-current :: SemVer
 
 module Fission.Time
 
@@ -5712,6 +5711,7 @@ instance GHC.Read.Read Fission.URL.DomainName.Types.DomainName
 instance GHC.Show.Show Fission.URL.DomainName.Types.DomainName
 instance GHC.Generics.Generic Fission.URL.DomainName.Types.DomainName
 instance GHC.Classes.Eq Fission.URL.DomainName.Types.DomainName
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.URL.DomainName.Types.DomainName
 instance RIO.Prelude.Display.Display Fission.URL.DomainName.Types.DomainName
 instance Database.Persist.Class.PersistField.PersistField Fission.URL.DomainName.Types.DomainName
 instance Database.Persist.Sql.Class.PersistFieldSql Fission.URL.DomainName.Types.DomainName
@@ -5776,6 +5776,7 @@ URL :: DomainName -> Maybe Subdomain -> URL
 [$sel:domainName:URL] :: URL -> DomainName
 [$sel:subdomain:URL] :: URL -> Maybe Subdomain
 instance GHC.Classes.Eq Fission.URL.Types.URL
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.URL.Types.URL
 instance RIO.Prelude.Display.Display Fission.URL.Types.URL
 instance GHC.Show.Show Fission.URL.Types.URL
 instance Web.Internal.HttpApiData.ToHttpApiData Fission.URL.Types.URL
@@ -6127,103 +6128,15 @@ instance Data.ByteArray.Types.ByteArrayAccess Fission.Web.Auth.Token.JWT.Signatu
 module Fission.Web.Auth.Token.JWT.Signature
 parse :: Algorithm -> Value -> Parser Signature
 
-module Fission.Web.Auth.Token.JWT
-
--- | An RFC 7519 extended with support for Ed25519 keys, and some specifics
---   (claims, etc) for Fission's use case
-data JWT
-JWT :: !Header -> !Claims -> !Signature -> JWT
-[$sel:header:JWT] :: JWT -> !Header
-[$sel:claims:JWT] :: JWT -> !Claims
-[$sel:sig:JWT] :: JWT -> !Signature
-data Claims
-Claims :: !DID -> !DID -> !Text -> !Potency -> !Proof -> !UTCTime -> !UTCTime -> Claims
-[$sel:sender:Claims] :: Claims -> !DID
-[$sel:receiver:Claims] :: Claims -> !DID
-[$sel:scope:Claims] :: Claims -> !Text
-[$sel:potency:Claims] :: Claims -> !Potency
-[$sel:proof:Claims] :: Claims -> !Proof
-[$sel:exp:Claims] :: Claims -> !UTCTime
-[$sel:nbf:Claims] :: Claims -> !UTCTime
-data Proof
-RootCredential :: Proof
-Nested :: RawContent -> JWT -> Proof
-Reference :: CID -> Proof
-signEd25519 :: Header -> Claims -> SecretKey -> Signature
-signRS256 :: MonadRandom m => Header -> Claims -> PrivateKey -> m (Either Error Signature)
-data Header
-Header :: !Typ -> !Algorithm -> !Maybe Cty -> !SemVer -> Header
-
--- | Standard JWT '"typ"' field
-[$sel:typ:Header] :: Header -> !Typ
-
--- | Standard JWT '"alg"' field
-[$sel:alg:Header] :: Header -> !Algorithm
-
--- | Standard JWT '"cty"' field. Set to '<a>JWT</a>' if there's a recursive
---   JWT in the claims
-[$sel:cty:Header] :: Header -> !Maybe Cty
-
--- | UCAN Version, mainly to state assumptions
-[$sel:uav:Header] :: Header -> !SemVer
-instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Claims
-instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.JWT
-instance GHC.Show.Show Fission.Web.Auth.Token.JWT.JWT
-instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Proof
-instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Proof
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.JWT.JWT
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.JWT
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.JWT
-instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Claims
-instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Claims
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.JWT.Claims
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.Claims
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.Claims
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.JWT.Proof
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.Proof
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.Proof
-
-
--- | Authorization types; primarily more semantic aliases
-module Fission.Web.Auth.Token.Bearer.Types
-data Token
-Token :: !JWT -> !RawContent -> Token
-
--- | The actual token
-[$sel:jwt:Token] :: Token -> !JWT
-
--- | Primarily to pass in to the verifier
-[$sel:rawContent:Token] :: Token -> !RawContent
-instance GHC.Classes.Eq Fission.Web.Auth.Token.Bearer.Types.Token
-instance GHC.Show.Show Fission.Web.Auth.Token.Bearer.Types.Token
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.Bearer.Types.Token
-instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.Bearer.Types.Token
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.Bearer.Types.Token
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.Bearer.Types.Token
-instance Web.Internal.HttpApiData.ToHttpApiData Fission.Web.Auth.Token.Bearer.Types.Token
-instance Web.Internal.HttpApiData.FromHttpApiData Fission.Web.Auth.Token.Bearer.Types.Token
-
-module Fission.Web.Auth.Token.Bearer
-
-module Fission.Internal.Fixture.Bearer
-jsonRSA2048 :: Text
-tokenRSA2048 :: Token
-jwtRSA2048 :: JWT
-rawContent :: RawContent
-validTime :: UTCTime
-
-module Fission.Web.Auth.Token.Types
-data Token
-Basic :: Token -> Token
-Bearer :: Token -> Token
-instance GHC.Classes.Eq Fission.Web.Auth.Token.Types.Token
-instance GHC.Show.Show Fission.Web.Auth.Token.Types.Token
-instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.Types.Token
-instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.Types.Token
-instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.Types.Token
-instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.Types.Token
-instance Web.Internal.HttpApiData.ToHttpApiData Fission.Web.Auth.Token.Types.Token
-instance Web.Internal.HttpApiData.FromHttpApiData Fission.Web.Auth.Token.Types.Token
+module Fission.Web.Auth.Token.UCAN.Resource.Scope.Types
+data Scope subset
+Complete :: Scope subset
+Subset :: subset -> Scope subset
+instance GHC.Show.Show subset => GHC.Show.Show (Fission.Web.Auth.Token.UCAN.Resource.Scope.Types.Scope subset)
+instance GHC.Classes.Eq subset => GHC.Classes.Eq (Fission.Web.Auth.Token.UCAN.Resource.Scope.Types.Scope subset)
+instance Test.QuickCheck.Arbitrary.Arbitrary subset => Test.QuickCheck.Arbitrary.Arbitrary (Fission.Web.Auth.Token.UCAN.Resource.Scope.Types.Scope subset)
+instance Data.Aeson.Types.ToJSON.ToJSON sub => Data.Aeson.Types.ToJSON.ToJSON (Fission.Web.Auth.Token.UCAN.Resource.Scope.Types.Scope sub)
+instance Data.Aeson.Types.FromJSON.FromJSON sub => Data.Aeson.Types.FromJSON.FromJSON (Fission.Web.Auth.Token.UCAN.Resource.Scope.Types.Scope sub)
 
 module Fission.Web.Client.Auth.Class
 class Monad m => MonadWebAuth m auth
@@ -6411,31 +6324,106 @@ instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Resolver.Error.Error
 instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Resolver.Error.Error
 instance Fission.Web.Error.Class.ToServerError Fission.Web.Auth.Token.JWT.Resolver.Error.Error
 
+module Fission.Web.Auth.Token.JWT.Header.Error
+data Error
+UnsupportedVersion :: Error
+UnsupportedAlgorithm :: Error
+instance GHC.Exception.Type.Exception Fission.Web.Auth.Token.JWT.Header.Error.Error
+instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Header.Error.Error
+instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Header.Error.Error
+instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Header.Error.Error
+instance Fission.Web.Error.Class.ToServerError Fission.Web.Auth.Token.JWT.Header.Error.Error
+
+module Fission.URL.Errors
+data InvalidURL
+InvalidURL :: InvalidURL
+instance GHC.Show.Show Fission.URL.Errors.InvalidURL
+instance GHC.Classes.Eq Fission.URL.Errors.InvalidURL
+instance RIO.Prelude.Display.Display Fission.URL.Errors.InvalidURL
+instance Fission.Web.Error.Class.ToServerError Fission.URL.Errors.InvalidURL
+
+module Fission.URL
+prefix' :: Subdomain -> URL -> URL
+zeroOrOneSubdomain :: URL -> Either InvalidURL URL
+
+module Fission.Web.Auth.Token.UCAN.Resource.Types
+data Resource
+
+-- | Fission FileSystem path
+FissionFileSystem :: FilePath -> Resource
+
+-- | Primary URL for an App
+FissionApp :: Scope URL -> Resource
+
+-- | Any domain name to which we have DNS access
+RegisteredDomain :: Scope DomainName -> Resource
+instance GHC.Show.Show Fission.Web.Auth.Token.UCAN.Resource.Types.Resource
+instance GHC.Classes.Eq Fission.Web.Auth.Token.UCAN.Resource.Types.Resource
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.UCAN.Resource.Types.Resource
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.UCAN.Resource.Types.Resource
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.UCAN.Resource.Types.Resource
+
+module Fission.Web.Auth.Token.JWT
+
+-- | An RFC 7519 extended with support for Ed25519 keys, and some specifics
+--   (claims, etc) for Fission's use case
+data JWT
+JWT :: !Header -> !Claims -> !Signature -> JWT
+[$sel:header:JWT] :: JWT -> !Header
+[$sel:claims:JWT] :: JWT -> !Claims
+[$sel:sig:JWT] :: JWT -> !Signature
+data Claims
+Claims :: !DID -> !DID -> !Scope Resource -> !Potency -> !Proof -> !UTCTime -> !UTCTime -> Claims
+[$sel:sender:Claims] :: Claims -> !DID
+[$sel:receiver:Claims] :: Claims -> !DID
+[$sel:resource:Claims] :: Claims -> !Scope Resource
+[$sel:potency:Claims] :: Claims -> !Potency
+[$sel:proof:Claims] :: Claims -> !Proof
+[$sel:exp:Claims] :: Claims -> !UTCTime
+[$sel:nbf:Claims] :: Claims -> !UTCTime
+data Proof
+RootCredential :: Proof
+Nested :: RawContent -> JWT -> Proof
+Reference :: CID -> Proof
+signEd25519 :: Header -> Claims -> SecretKey -> Signature
+signRS256 :: MonadRandom m => Header -> Claims -> PrivateKey -> m (Either Error Signature)
+data Header
+Header :: !Typ -> !Algorithm -> !Maybe Cty -> !SemVer -> Header
+
+-- | Standard JWT '"typ"' field
+[$sel:typ:Header] :: Header -> !Typ
+
+-- | Standard JWT '"alg"' field
+[$sel:alg:Header] :: Header -> !Algorithm
+
+-- | Standard JWT '"cty"' field. Set to '<a>JWT</a>' if there's a recursive
+--   JWT in the claims
+[$sel:cty:Header] :: Header -> !Maybe Cty
+
+-- | UCAN Version, mainly to state assumptions
+[$sel:uav:Header] :: Header -> !SemVer
+instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Claims
+instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.JWT
+instance GHC.Show.Show Fission.Web.Auth.Token.JWT.JWT
+instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Proof
+instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Proof
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.JWT.JWT
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.JWT
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.JWT
+instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Claims
+instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Claims
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.JWT.Claims
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.Claims
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.Claims
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.JWT.Proof
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.Proof
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.JWT.Proof
+
 module Fission.Web.Auth.Token.JWT.Resolver.Class
 class Monad m => Resolver m
 resolve :: Resolver m => CID -> m (Either Error (RawContent, JWT))
 
 module Fission.Web.Auth.Token.JWT.Resolver
-
-
--- | A real world example with a nested proof
-module Fission.Internal.Fixture.Bearer.Nested
-jsonRSA2048 :: Text
-tokenRSA2048 :: Token
-jwtRSA2048 :: JWT
-rawContent :: RawContent
-validTime :: UTCTime
-newtype InTimeBounds a
-InTimeBounds :: Identity a -> InTimeBounds a
-[$sel:unwrap:InTimeBounds] :: InTimeBounds a -> Identity a
-instance GHC.Show.Show a => GHC.Show.Show (Fission.Internal.Fixture.Bearer.Nested.InTimeBounds a)
-instance GHC.Classes.Eq a => GHC.Classes.Eq (Fission.Internal.Fixture.Bearer.Nested.InTimeBounds a)
-instance GHC.Base.Monad Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
-instance GHC.Base.Applicative Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
-instance GHC.Base.Functor Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
-instance Fission.Web.Auth.Token.JWT.Resolver.Class.Resolver Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
-instance Fission.Authorization.ServerDID.Class.ServerDID Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
-instance Control.Monad.Time.MonadTime Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
 
 module Fission.Web.Auth.Token.JWT.Proof.Error
 data Error
@@ -6449,22 +6437,6 @@ instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Proof.Error.Error
 instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Proof.Error.Error
 instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Proof.Error.Error
 instance Fission.Web.Error.Class.ToServerError Fission.Web.Auth.Token.JWT.Proof.Error.Error
-
-module Fission.Web.Auth.Token.JWT.Proof
-delegatedInBounds :: JWT -> JWT -> Either Error JWT
-signaturesMatch :: JWT -> JWT -> Either Error JWT
-scopeInSubset :: JWT -> JWT -> Either Error JWT
-potencyInSubset :: JWT -> JWT -> Either Error JWT
-
-module Fission.Web.Auth.Token.JWT.Header.Error
-data Error
-UnsupportedVersion :: Error
-UnsupportedAlgorithm :: Error
-instance GHC.Exception.Type.Exception Fission.Web.Auth.Token.JWT.Header.Error.Error
-instance GHC.Classes.Eq Fission.Web.Auth.Token.JWT.Header.Error.Error
-instance GHC.Show.Show Fission.Web.Auth.Token.JWT.Header.Error.Error
-instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Header.Error.Error
-instance Fission.Web.Error.Class.ToServerError Fission.Web.Auth.Token.JWT.Header.Error.Error
 
 module Fission.Web.Auth.Token.JWT.Claims.Error
 data Error
@@ -6491,17 +6463,73 @@ instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.JWT.Error.Error
 instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.JWT.Error.Error
 instance Fission.Web.Error.Class.ToServerError Fission.Web.Auth.Token.JWT.Error.Error
 
-module Fission.URL.Errors
-data InvalidURL
-InvalidURL :: InvalidURL
-instance GHC.Show.Show Fission.URL.Errors.InvalidURL
-instance GHC.Classes.Eq Fission.URL.Errors.InvalidURL
-instance RIO.Prelude.Display.Display Fission.URL.Errors.InvalidURL
-instance Fission.Web.Error.Class.ToServerError Fission.URL.Errors.InvalidURL
+module Fission.Web.Auth.Token.JWT.Proof
+delegatedInBounds :: JWT -> JWT -> Either Error JWT
+signaturesMatch :: JWT -> JWT -> Either Error JWT
+resourceInSubset :: JWT -> JWT -> Either Error JWT
+potencyInSubset :: JWT -> JWT -> Either Error JWT
 
-module Fission.URL
-prefix' :: Subdomain -> URL -> URL
-zeroOrOneSubdomain :: URL -> Either InvalidURL URL
+
+-- | Authorization types; primarily more semantic aliases
+module Fission.Web.Auth.Token.Bearer.Types
+data Token
+Token :: !JWT -> !RawContent -> Token
+
+-- | The actual token
+[$sel:jwt:Token] :: Token -> !JWT
+
+-- | Primarily to pass in to the verifier
+[$sel:rawContent:Token] :: Token -> !RawContent
+instance GHC.Classes.Eq Fission.Web.Auth.Token.Bearer.Types.Token
+instance GHC.Show.Show Fission.Web.Auth.Token.Bearer.Types.Token
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.Bearer.Types.Token
+instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.Bearer.Types.Token
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.Bearer.Types.Token
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.Bearer.Types.Token
+instance Web.Internal.HttpApiData.ToHttpApiData Fission.Web.Auth.Token.Bearer.Types.Token
+instance Web.Internal.HttpApiData.FromHttpApiData Fission.Web.Auth.Token.Bearer.Types.Token
+
+module Fission.Web.Auth.Token.Types
+data Token
+Basic :: Token -> Token
+Bearer :: Token -> Token
+instance GHC.Classes.Eq Fission.Web.Auth.Token.Types.Token
+instance GHC.Show.Show Fission.Web.Auth.Token.Types.Token
+instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Web.Auth.Token.Types.Token
+instance RIO.Prelude.Display.Display Fission.Web.Auth.Token.Types.Token
+instance Data.Aeson.Types.FromJSON.FromJSON Fission.Web.Auth.Token.Types.Token
+instance Data.Aeson.Types.ToJSON.ToJSON Fission.Web.Auth.Token.Types.Token
+instance Web.Internal.HttpApiData.ToHttpApiData Fission.Web.Auth.Token.Types.Token
+instance Web.Internal.HttpApiData.FromHttpApiData Fission.Web.Auth.Token.Types.Token
+
+module Fission.Web.Auth.Token.Bearer
+
+
+-- | A real world example with a nested proof
+module Fission.Internal.Fixture.Bearer.Nested
+jsonRSA2048 :: Text
+tokenRSA2048 :: Token
+jwtRSA2048 :: JWT
+rawContent :: RawContent
+validTime :: UTCTime
+newtype InTimeBounds a
+InTimeBounds :: Identity a -> InTimeBounds a
+[$sel:unwrap:InTimeBounds] :: InTimeBounds a -> Identity a
+instance GHC.Show.Show a => GHC.Show.Show (Fission.Internal.Fixture.Bearer.Nested.InTimeBounds a)
+instance GHC.Classes.Eq a => GHC.Classes.Eq (Fission.Internal.Fixture.Bearer.Nested.InTimeBounds a)
+instance GHC.Base.Monad Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance GHC.Base.Applicative Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance GHC.Base.Functor Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance Fission.Web.Auth.Token.JWT.Resolver.Class.Resolver Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance Fission.Authorization.ServerDID.Class.ServerDID Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+instance Control.Monad.Time.MonadTime Fission.Internal.Fixture.Bearer.Nested.InTimeBounds
+
+module Fission.Internal.Fixture.Bearer
+jsonRSA2048 :: Text
+tokenRSA2048 :: Token
+jwtRSA2048 :: JWT
+rawContent :: RawContent
+validTime :: UTCTime
 
 module Fission.Models
 data HerokuAddOn
@@ -7111,11 +7139,11 @@ module Fission.Authorization.Types
 
 -- | The final high-level authorization -- internal use only
 data Authorization
-Authorization :: !Either Heroku DID -> !Entity User -> !Potency -> !Text -> Authorization
+Authorization :: !Either Heroku DID -> !Entity User -> !Potency -> !Scope Resource -> Authorization
 [$sel:sender:Authorization] :: Authorization -> !Either Heroku DID
 [$sel:about:Authorization] :: Authorization -> !Entity User
 [$sel:potency:Authorization] :: Authorization -> !Potency
-[$sel:scope:Authorization] :: Authorization -> !Text
+[$sel:resource:Authorization] :: Authorization -> !Scope Resource
 data Heroku
 Heroku :: Heroku
 instance GHC.Classes.Eq Fission.Authorization.Types.Authorization
@@ -7899,7 +7927,7 @@ module Fission.Config.Types
 
 -- | The top level <tt>Fission</tt> application <a>RIO</a> configuration
 data Config
-Config :: !ProcessContext -> !LogFunc -> !Manager -> !Pool SqlBackend -> !BinPath -> !URL -> !Peer -> !Timeout -> !Gateway -> !ID -> !Password -> !AccessKey -> !SecretKey -> !MockRoute53 -> !DomainName -> !ZoneID -> !CID -> !DomainName -> !ZoneID -> !CID -> !Host -> !DID -> !ZoneID -> !URL -> Config
+Config :: !ProcessContext -> !LogFunc -> !Manager -> !Pool SqlBackend -> !BinPath -> !URL -> !Peer -> !Timeout -> !ID -> !Password -> !AccessKey -> !SecretKey -> !MockRoute53 -> !DomainName -> !ZoneID -> !CID -> !DomainName -> !ZoneID -> !CID -> !Host -> !DID -> !ZoneID -> !URL -> Config
 [$sel:processCtx:Config] :: Config -> !ProcessContext
 [$sel:logFunc:Config] :: Config -> !LogFunc
 [$sel:httpManager:Config] :: Config -> !Manager
@@ -7908,7 +7936,6 @@ Config :: !ProcessContext -> !LogFunc -> !Manager -> !Pool SqlBackend -> !BinPat
 [$sel:ipfsURL:Config] :: Config -> !URL
 [$sel:ipfsRemotePeer:Config] :: Config -> !Peer
 [$sel:ipfsTimeout:Config] :: Config -> !Timeout
-[$sel:ipfsGateway:Config] :: Config -> !Gateway
 [$sel:herokuID:Config] :: Config -> !ID
 [$sel:herokuPassword:Config] :: Config -> !Password
 [$sel:awsAccessKey:Config] :: Config -> !AccessKey

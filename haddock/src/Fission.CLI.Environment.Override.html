@@ -26,7 +26,7 @@
 </span><span id="line-26"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html"><span class="hs-identifier">Fission.CLI.Environment.Override.Types</span></a></span><span>
 </span><span id="line-27"></span><span>
 </span><span id="line-28"></span><span class="hs-comment">-- | Gets hierarchical environment by recursed through file system</span><span>
-</span><span id="line-29"></span><span id="local-6989586621680248323"><span class="annot"><a href="Fission.CLI.Environment.Override.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248323"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248323"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span>
+</span><span id="line-29"></span><span id="local-6989586621680255111"><span class="annot"><a href="Fission.CLI.Environment.Override.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255111"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255111"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span>
 </span><span id="line-30"></span><span id="get"><span class="annot"><span class="annottext">get :: m Override
 </span><a href="Fission.CLI.Environment.Override.html#get"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
@@ -36,15 +36,15 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><span class="hs-identifier hs-var">getCurrentDirectory</span></span><span>
 </span><span id="line-31"></span><span>
-</span><span id="line-32"></span><span id="local-6989586621680248389"><span class="annot"><a href="Fission.CLI.Environment.Override.html#getRecurse"><span class="hs-identifier hs-type">getRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248389"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248389"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span>
+</span><span id="line-32"></span><span id="local-6989586621680255177"><span class="annot"><a href="Fission.CLI.Environment.Override.html#getRecurse"><span class="hs-identifier hs-type">getRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255177"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255177"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span>
 </span><span id="line-33"></span><span id="getRecurse"><span class="annot"><span class="annottext">getRecurse :: FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#getRecurse"><span class="hs-identifier hs-var hs-var">getRecurse</span></a></span></span><span> </span><span class="hs-string">&quot;/&quot;</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-34"></span><span>  </span><span id="local-6989586621680248319"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248319"><span class="hs-identifier hs-var">root</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><span id="line-34"></span><span>  </span><span id="local-6989586621680255107"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255107"><span class="hs-identifier hs-var">root</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;/.fission.yaml&quot;</span></span><span>
-</span><span id="line-35"></span><span>  </span><span id="local-6989586621680248318"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248318"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680255106"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255106"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m Override) -&gt; m FilePath -&gt; m Override
 forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
@@ -52,39 +52,39 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
 </span><span id="line-36"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248318"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Override -&gt; Override
+</span><a href="#local-6989586621680255106"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Override -&gt; Override
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248319"><span class="hs-identifier hs-var">root</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680255107"><span class="hs-identifier hs-var">root</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-37"></span><span>
-</span><span id="line-38"></span><span class="annot"><a href="Fission.CLI.Environment.Override.html#getRecurse"><span class="hs-identifier hs-var">getRecurse</span></a></span><span> </span><span id="local-6989586621680248317"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680248317"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-39"></span><span>  </span><span id="local-6989586621680248316"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248316"><span class="hs-identifier hs-var">parent</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><span id="line-38"></span><span class="annot"><a href="Fission.CLI.Environment.Override.html#getRecurse"><span class="hs-identifier hs-var">getRecurse</span></a></span><span> </span><span id="local-6989586621680255105"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680255105"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-39"></span><span>  </span><span id="local-6989586621680255104"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255104"><span class="hs-identifier hs-var">parent</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#getRecurse"><span class="hs-identifier hs-var">getRecurse</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m Override) -&gt; FilePath -&gt; m Override
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath
 </span><span class="hs-identifier hs-var">takeDirectory</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248317"><span class="hs-identifier hs-var">path</span></a></span><span>
-</span><span id="line-40"></span><span>  </span><span id="local-6989586621680248314"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248314"><span class="hs-identifier hs-var">curr</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><a href="#local-6989586621680255105"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><span id="line-40"></span><span>  </span><span id="local-6989586621680255102"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255102"><span class="hs-identifier hs-var">curr</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248317"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><a href="#local-6989586621680255105"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
 </span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span class="hs-special">)</span><span>
 </span><span id="line-41"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248316"><span class="hs-identifier hs-var">parent</span></a></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Override -&gt; Override
+</span><a href="#local-6989586621680255104"><span class="hs-identifier hs-var">parent</span></a></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Override -&gt; Override
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248314"><span class="hs-identifier hs-var">curr</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680255102"><span class="hs-identifier hs-var">curr</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-42"></span><span>
 </span><span id="line-43"></span><span class="hs-comment">-- | Recurses up to user root to find an env with basic auth data</span><span>
-</span><span id="line-44"></span><span id="local-6989586621680248312"><span class="annot"><a href="Fission.CLI.Environment.Override.html#findBasicAuth"><span class="hs-identifier hs-type">findBasicAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248312"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248312"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span class="hs-special">)</span></span><span>
+</span><span id="line-44"></span><span id="local-6989586621680255100"><span class="annot"><a href="Fission.CLI.Environment.Override.html#findBasicAuth"><span class="hs-identifier hs-type">findBasicAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255100"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255100"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span class="hs-special">)</span></span><span>
 </span><span id="line-45"></span><span id="findBasicAuth"><span class="annot"><span class="annottext">findBasicAuth :: m (Maybe BasicAuthData)
 </span><a href="Fission.CLI.Environment.Override.html#findBasicAuth"><span class="hs-identifier hs-var hs-var">findBasicAuth</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-46"></span><span>  </span><span id="local-6989586621680248311"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248311"><span class="hs-identifier hs-var">currDir</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-46"></span><span>  </span><span id="local-6989586621680255099"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680255099"><span class="hs-identifier hs-var">currDir</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><span class="hs-identifier hs-var">getCurrentDirectory</span></span><span>
 </span><span id="line-47"></span><span>  </span><span class="annot"><span class="annottext">(Override -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Override))
@@ -98,42 +98,42 @@ forall a. Maybe a -&gt; Bool
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeUserAuth%3AOverride"><span class="hs-identifier hs-var hs-var">maybeUserAuth</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248311"><span class="hs-identifier hs-var">currDir</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe (FilePath, Override))
+</span><a href="#local-6989586621680255099"><span class="hs-identifier hs-var">currDir</span></a></span><span> </span><span class="annot"><span class="annottext">m (Maybe (FilePath, Override))
 -&gt; (Maybe (FilePath, Override) -&gt; Maybe BasicAuthData)
 -&gt; m (Maybe BasicAuthData)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f a -&gt; (a -&gt; b) -&gt; f b
 </span><span class="hs-operator hs-var">&lt;&amp;&gt;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-48"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680248306"><span class="annot"><span class="annottext">env :: Override
-</span><a href="#local-6989586621680248306"><span class="hs-identifier hs-var">env</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe BasicAuthData
+</span><span id="line-48"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="hs-identifier">_</span><span class="hs-special">,</span><span> </span><span id="local-6989586621680255094"><span class="annot"><span class="annottext">env :: Override
+</span><a href="#local-6989586621680255094"><span class="hs-identifier hs-var">env</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeUserAuth%3AOverride"><span class="hs-identifier hs-var hs-var">maybeUserAuth</span></a></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248306"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680255094"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-49"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>       </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-50"></span><span>
 </span><span id="line-51"></span><span class="hs-comment">-- | Recurses up to user root to find a env that satisfies the 'finder' predicate</span><span>
-</span><span id="line-52"></span><span id="local-6989586621680248376"><span class="annot"><a href="Fission.CLI.Environment.Override.html#findRecurse"><span class="hs-identifier hs-type">findRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-53"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248376"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-52"></span><span id="local-6989586621680255164"><span class="annot"><a href="Fission.CLI.Environment.Override.html#findRecurse"><span class="hs-identifier hs-type">findRecurse</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-53"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255164"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-54"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">)</span><span>
 </span><span id="line-55"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span>
-</span><span id="line-56"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248376"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255164"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
 </span><span id="line-57"></span><span id="findRecurse"><span class="annot"><span class="annottext">findRecurse :: (Override -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Override))
-</span><a href="Fission.CLI.Environment.Override.html#findRecurse"><span class="hs-identifier hs-var hs-var">findRecurse</span></a></span></span><span> </span><span id="local-6989586621680248305"><span class="annot"><span class="annottext">pred :: Override -&gt; Bool
-</span><a href="#local-6989586621680248305"><span class="hs-identifier hs-var">pred</span></a></span></span><span> </span><span id="local-6989586621680248304"><span class="annot"><span class="annottext">currentPath :: FilePath
-</span><a href="#local-6989586621680248304"><span class="hs-identifier hs-var">currentPath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680248303"><span class="annot"><span class="annottext">filepath :: FilePath
-</span><a href="#local-6989586621680248303"><span class="hs-identifier hs-var hs-var">filepath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248304"><span class="hs-identifier hs-var">currentPath</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><a href="Fission.CLI.Environment.Override.html#findRecurse"><span class="hs-identifier hs-var hs-var">findRecurse</span></a></span></span><span> </span><span id="local-6989586621680255093"><span class="annot"><span class="annottext">pred :: Override -&gt; Bool
+</span><a href="#local-6989586621680255093"><span class="hs-identifier hs-var">pred</span></a></span></span><span> </span><span id="local-6989586621680255092"><span class="annot"><span class="annottext">currentPath :: FilePath
+</span><a href="#local-6989586621680255092"><span class="hs-identifier hs-var">currentPath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680255091"><span class="annot"><span class="annottext">filepath :: FilePath
+</span><a href="#local-6989586621680255091"><span class="hs-identifier hs-var hs-var">filepath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680255092"><span class="hs-identifier hs-var">currentPath</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
 </span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span>
-</span><span id="line-59"></span><span>  </span><span id="local-6989586621680248302"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248302"><span class="hs-identifier hs-var">overrideEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><span id="line-59"></span><span>  </span><span id="local-6989586621680255090"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255090"><span class="hs-identifier hs-var">overrideEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248303"><span class="hs-identifier hs-var">filepath</span></a></span><span>
+</span><a href="#local-6989586621680255091"><span class="hs-identifier hs-var">filepath</span></a></span><span>
 </span><span id="line-60"></span><span> </span><span>
 </span><span id="line-61"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Bool
-</span><a href="#local-6989586621680248305"><span class="hs-identifier hs-var">pred</span></a></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248302"><span class="hs-identifier hs-var">overrideEnv</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><a href="#local-6989586621680255093"><span class="hs-identifier hs-var">pred</span></a></span><span> </span><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255090"><span class="hs-identifier hs-var">overrideEnv</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-62"></span><span>         </span><span class="annot"><span class="annottext">Maybe (FilePath, Override) -&gt; m (Maybe (FilePath, Override))
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (FilePath, Override) -&gt; m (Maybe (FilePath, Override)))
@@ -142,30 +142,30 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">(FilePath, Override) -&gt; Maybe (FilePath, Override)
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248303"><span class="hs-identifier hs-var">filepath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248302"><span class="hs-identifier hs-var">overrideEnv</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680255091"><span class="hs-identifier hs-var">filepath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255090"><span class="hs-identifier hs-var">overrideEnv</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-63"></span><span>        </span><span>
 </span><span id="line-64"></span><span>     </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248304"><span class="hs-identifier hs-var">currentPath</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; Bool
+</span><a href="#local-6989586621680255092"><span class="hs-identifier hs-var">currentPath</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="hs-string">&quot;/&quot;</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-65"></span><span>         </span><span id="local-6989586621680248301"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248301"><span class="hs-identifier hs-var">globalPath</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-65"></span><span>         </span><span id="local-6989586621680255089"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680255089"><span class="hs-identifier hs-var">globalPath</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
-</span><span id="line-66"></span><span>         </span><span id="local-6989586621680248300"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248300"><span class="hs-identifier hs-var">globalEnv'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><span id="line-66"></span><span>         </span><span id="local-6989586621680255088"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255088"><span class="hs-identifier hs-var">globalEnv'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248301"><span class="hs-identifier hs-var">globalPath</span></a></span><span>
+</span><a href="#local-6989586621680255089"><span class="hs-identifier hs-var">globalPath</span></a></span><span>
 </span><span id="line-67"></span><span>         </span><span class="hs-identifier">return</span><span> </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Bool
-</span><a href="#local-6989586621680248305"><span class="hs-identifier hs-var">pred</span></a></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248300"><span class="hs-identifier hs-var">globalEnv'</span></a></span><span>
+</span><a href="#local-6989586621680255093"><span class="hs-identifier hs-var">pred</span></a></span><span> </span><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255088"><span class="hs-identifier hs-var">globalEnv'</span></a></span><span>
 </span><span id="line-68"></span><span>                  </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">(FilePath, Override) -&gt; Maybe (FilePath, Override)
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248301"><span class="hs-identifier hs-var">globalPath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248300"><span class="hs-identifier hs-var">globalEnv'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680255089"><span class="hs-identifier hs-var">globalPath</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255088"><span class="hs-identifier hs-var">globalEnv'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-69"></span><span>                  </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Maybe (FilePath, Override)
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
@@ -177,18 +177,18 @@ forall (m :: * -&gt; *).
 MonadIO m =&gt;
 (Override -&gt; Bool) -&gt; FilePath -&gt; m (Maybe (FilePath, Override))
 </span><a href="Fission.CLI.Environment.Override.html#findRecurse"><span class="hs-identifier hs-var">findRecurse</span></a></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Bool
-</span><a href="#local-6989586621680248305"><span class="hs-identifier hs-var">pred</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m (Maybe (FilePath, Override)))
+</span><a href="#local-6989586621680255093"><span class="hs-identifier hs-var">pred</span></a></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m (Maybe (FilePath, Override)))
 -&gt; FilePath -&gt; m (Maybe (FilePath, Override))
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath
 </span><span class="hs-identifier hs-var">takeDirectory</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248304"><span class="hs-identifier hs-var">currentPath</span></a></span><span>
+</span><a href="#local-6989586621680255092"><span class="hs-identifier hs-var">currentPath</span></a></span><span>
 </span><span id="line-73"></span><span>
 </span><span id="line-74"></span><span class="hs-comment">-- | Decodes file to partial environment</span><span>
-</span><span id="line-75"></span><span id="local-6989586621680248299"><span class="annot"><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-type">decode</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248299"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248299"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span>
+</span><span id="line-75"></span><span id="local-6989586621680255087"><span class="annot"><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-type">decode</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255087"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255087"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span>
 </span><span id="line-76"></span><span id="decode"><span class="annot"><span class="annottext">decode :: FilePath -&gt; m Override
-</span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var hs-var">decode</span></a></span></span><span> </span><span id="local-6989586621680248298"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680248298"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO Override -&gt; m Override
+</span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var hs-var">decode</span></a></span></span><span> </span><span id="local-6989586621680255086"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680255086"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO Override -&gt; m Override
 forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
 </span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">(ParseException -&gt; Override)
 -&gt; (Override -&gt; Override)
@@ -205,62 +205,62 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; IO (Either ParseException Override)
 forall a. FromJSON a =&gt; FilePath -&gt; IO (Either ParseException a)
 </span><span class="hs-identifier hs-var">YAML.decodeFileEither</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248298"><span class="hs-identifier hs-var">path</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680255086"><span class="hs-identifier hs-var">path</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-77"></span><span>
 </span><span id="line-78"></span><span class="hs-comment">-- | Writes partial environment to path</span><span>
-</span><span id="line-79"></span><span id="local-6989586621680248335"><span class="annot"><a href="Fission.CLI.Environment.Override.html#write"><span class="hs-identifier hs-type">write</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248335"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248335"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-79"></span><span id="local-6989586621680255123"><span class="annot"><a href="Fission.CLI.Environment.Override.html#write"><span class="hs-identifier hs-type">write</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255123"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255123"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-80"></span><span id="write"><span class="annot"><span class="annottext">write :: FilePath -&gt; Override -&gt; m ()
-</span><a href="Fission.CLI.Environment.Override.html#write"><span class="hs-identifier hs-var hs-var">write</span></a></span></span><span> </span><span id="local-6989586621680248292"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680248292"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680248291"><span class="annot"><span class="annottext">env :: Override
-</span><a href="#local-6989586621680248291"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; ByteString -&gt; m ()
+</span><a href="Fission.CLI.Environment.Override.html#write"><span class="hs-identifier hs-var hs-var">write</span></a></span></span><span> </span><span id="local-6989586621680255080"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680255080"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680255079"><span class="annot"><span class="annottext">env :: Override
+</span><a href="#local-6989586621680255079"><span class="hs-identifier hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; ByteString -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; ByteString -&gt; m ()
 </span><span class="hs-identifier hs-var">writeBinaryFileDurable</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248292"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
+</span><a href="#local-6989586621680255080"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">YAML.encode</span></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248291"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680255079"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-81"></span><span>
 </span><span id="line-82"></span><span class="hs-comment">-- | Merge a partial env with an existing env at the path</span><span>
-</span><span id="line-83"></span><span id="local-6989586621680248288"><span class="annot"><a href="Fission.CLI.Environment.Override.html#writeMerge"><span class="hs-identifier hs-type">writeMerge</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248288"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248288"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-83"></span><span id="local-6989586621680255076"><span class="annot"><a href="Fission.CLI.Environment.Override.html#writeMerge"><span class="hs-identifier hs-type">writeMerge</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255076"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255076"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-84"></span><span id="writeMerge"><span class="annot"><span class="annottext">writeMerge :: FilePath -&gt; Override -&gt; m ()
-</span><a href="Fission.CLI.Environment.Override.html#writeMerge"><span class="hs-identifier hs-var hs-var">writeMerge</span></a></span></span><span> </span><span id="local-6989586621680248287"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680248287"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680248286"><span class="annot"><span class="annottext">newEnv :: Override
-</span><a href="#local-6989586621680248286"><span class="hs-identifier hs-var">newEnv</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-85"></span><span>  </span><span id="local-6989586621680248285"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248285"><span class="hs-identifier hs-var">currentEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><a href="Fission.CLI.Environment.Override.html#writeMerge"><span class="hs-identifier hs-var hs-var">writeMerge</span></a></span></span><span> </span><span id="local-6989586621680255075"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680255075"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span id="local-6989586621680255074"><span class="annot"><span class="annottext">newEnv :: Override
+</span><a href="#local-6989586621680255074"><span class="hs-identifier hs-var">newEnv</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-85"></span><span>  </span><span id="local-6989586621680255073"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255073"><span class="hs-identifier hs-var">currentEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248287"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><a href="#local-6989586621680255075"><span class="hs-identifier hs-var">path</span></a></span><span>
 </span><span id="line-86"></span><span>  </span><span class="annot"><span class="annottext">FilePath -&gt; ByteString -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; ByteString -&gt; m ()
 </span><span class="hs-identifier hs-var">writeBinaryFileDurable</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248287"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
+</span><a href="#local-6989586621680255075"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; m ()) -&gt; ByteString -&gt; m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">YAML.encode</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248285"><span class="hs-identifier hs-var">currentEnv</span></a></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Override -&gt; Override
+</span><a href="#local-6989586621680255073"><span class="hs-identifier hs-var">currentEnv</span></a></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Override -&gt; Override
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248286"><span class="hs-identifier hs-var">newEnv</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680255074"><span class="hs-identifier hs-var">newEnv</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-87"></span><span>
 </span><span id="line-88"></span><span class="hs-comment">-- | globalEnv environment in users home</span><span>
-</span><span id="line-89"></span><span id="local-6989586621680248284"><span class="annot"><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-type">globalEnv</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248284"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248284"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span></span><span>
+</span><span id="line-89"></span><span id="local-6989586621680255072"><span class="annot"><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-type">globalEnv</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255072"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255072"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span></span><span>
 </span><span id="line-90"></span><span id="globalEnv"><span class="annot"><span class="annottext">globalEnv :: m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var hs-var">globalEnv</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-91"></span><span>  </span><span id="local-6989586621680248283"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248283"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-91"></span><span>  </span><span id="local-6989586621680255071"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680255071"><span class="hs-identifier hs-var">home</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><span class="hs-identifier hs-var">getHomeDirectory</span></span><span>
 </span><span id="line-92"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248283"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><a href="#local-6989586621680255071"><span class="hs-identifier hs-var">home</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
 </span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span>
 </span><span id="line-93"></span><span>
 </span><span id="line-94"></span><span class="annot"><a href="Fission.CLI.Environment.Override.html#toFull"><span class="hs-identifier hs-type">toFull</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span>
 </span><span id="line-95"></span><span id="toFull"><span class="annot"><span class="annottext">toFull :: Override -&gt; Environment
-</span><a href="Fission.CLI.Environment.Override.html#toFull"><span class="hs-identifier hs-var hs-var">toFull</span></a></span></span><span> </span><span id="local-6989586621680248276"><span id="local-6989586621680248277"><span id="local-6989586621680248278"><span id="local-6989586621680248279"><span id="local-6989586621680248280"><span id="local-6989586621680248281"><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="Fission.CLI.Environment.Override.html#toFull"><span class="hs-identifier hs-var hs-var">toFull</span></a></span></span><span> </span><span id="local-6989586621680255064"><span id="local-6989586621680255065"><span id="local-6989586621680255066"><span id="local-6989586621680255067"><span id="local-6989586621680255068"><span id="local-6989586621680255069"><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-96"></span><span>  </span><span class="annot"><span class="annottext">$WEnvironment :: [Peer]
 -&gt; Ignored
 -&gt; Maybe URL
@@ -270,28 +270,28 @@ forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Types.html#%24WEnvironment"><span class="hs-identifier hs-type hs-type">Environment</span></a></span><span>
 </span><span id="line-97"></span><span>    </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:peers:Environment :: [Peer]
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3Apeers%3AEnvironment"><span class="hs-identifier hs-var">peers</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680248281"><span class="hs-identifier hs-var">peers</span></a></span><span>
+</span><a href="#local-6989586621680255069"><span class="hs-identifier hs-var">peers</span></a></span><span>
 </span><span id="line-98"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appURL:Environment :: Maybe URL
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AappURL%3AEnvironment"><span class="hs-identifier hs-var">appURL</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe URL
-</span><a href="#local-6989586621680248280"><span class="hs-identifier hs-var">maybeAppURL</span></a></span><span>
+</span><a href="#local-6989586621680255068"><span class="hs-identifier hs-var">maybeAppURL</span></a></span><span>
 </span><span id="line-99"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:ignored:Environment :: Ignored
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3Aignored%3AEnvironment"><span class="hs-identifier hs-var">ignored</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Ignored -&gt; Maybe Ignored -&gt; Ignored
 forall a. a -&gt; Maybe a -&gt; a
 </span><span class="hs-identifier hs-var">fromMaybe</span></span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span> </span><span class="annot"><span class="annottext">(Maybe Ignored -&gt; Ignored) -&gt; Maybe Ignored -&gt; Ignored
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Maybe Ignored
-</span><a href="#local-6989586621680248278"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>
+</span><a href="#local-6989586621680255066"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>
 </span><span id="line-100"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:buildDir:Environment :: Maybe FilePath
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AbuildDir%3AEnvironment"><span class="hs-identifier hs-var">buildDir</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680248277"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>
+</span><a href="#local-6989586621680255065"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>
 </span><span id="line-101"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:serverDID:Environment :: Maybe DID
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AserverDID%3AEnvironment"><span class="hs-identifier hs-var">serverDID</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe DID
-</span><a href="#local-6989586621680248276"><span class="hs-identifier hs-var">maybeServerDID</span></a></span><span>
+</span><a href="#local-6989586621680255064"><span class="hs-identifier hs-var">maybeServerDID</span></a></span><span>
 </span><span id="line-102"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-103"></span><span>
 </span><span id="line-104"></span><span class="annot"><a href="Fission.CLI.Environment.Override.html#fromFull"><span class="hs-identifier hs-type">fromFull</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span>
 </span><span id="line-105"></span><span id="fromFull"><span class="annot"><span class="annottext">fromFull :: Environment -&gt; Override
-</span><a href="Fission.CLI.Environment.Override.html#fromFull"><span class="hs-identifier hs-var hs-var">fromFull</span></a></span></span><span> </span><span id="local-6989586621680248257"><span id="local-6989586621680248258"><span id="local-6989586621680248259"><span id="local-6989586621680248260"><span id="local-6989586621680248261"><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WOverride :: [Peer]
+</span><a href="Fission.CLI.Environment.Override.html#fromFull"><span class="hs-identifier hs-var hs-var">fromFull</span></a></span></span><span> </span><span id="local-6989586621680255045"><span id="local-6989586621680255046"><span id="local-6989586621680255047"><span id="local-6989586621680255048"><span id="local-6989586621680255049"><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WOverride :: [Peer]
 -&gt; Maybe URL
 -&gt; Maybe BasicAuthData
 -&gt; Maybe Ignored
@@ -305,43 +305,43 @@ forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-107"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeAppURL:Override :: Maybe URL
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeAppURL%3AOverride"><span class="hs-identifier hs-var">maybeAppURL</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe URL
-</span><a href="#local-6989586621680248259"><span class="hs-identifier hs-var">appURL</span></a></span><span>
+</span><a href="#local-6989586621680255047"><span class="hs-identifier hs-var">appURL</span></a></span><span>
 </span><span id="line-108"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:peers:Override :: [Peer]
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3Apeers%3AOverride"><span class="hs-identifier hs-var">peers</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680248261"><span class="hs-identifier hs-var">peers</span></a></span><span>
+</span><a href="#local-6989586621680255049"><span class="hs-identifier hs-var">peers</span></a></span><span>
 </span><span id="line-109"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeBuildDir:Override :: Maybe FilePath
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeBuildDir%3AOverride"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680248258"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
+</span><a href="#local-6989586621680255046"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
 </span><span id="line-110"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeServerDID:Override :: Maybe DID
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeServerDID%3AOverride"><span class="hs-identifier hs-var">maybeServerDID</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe DID
-</span><a href="#local-6989586621680248257"><span class="hs-identifier hs-var">serverDID</span></a></span><span>
+</span><a href="#local-6989586621680255045"><span class="hs-identifier hs-var">serverDID</span></a></span><span>
 </span><span id="line-111"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeIgnored:Override :: Maybe Ignored
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeIgnored%3AOverride"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Ignored -&gt; Maybe Ignored
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Ignored
-</span><a href="#local-6989586621680248260"><span class="hs-identifier hs-var">ignored</span></a></span><span>
+</span><a href="#local-6989586621680255048"><span class="hs-identifier hs-var">ignored</span></a></span><span>
 </span><span id="line-112"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-113"></span><span>
 </span><span id="line-114"></span><span class="hs-comment">-- | Deletes user_auth from env at ~/.fission.yaml</span><span>
-</span><span id="line-115"></span><span id="local-6989586621680248255"><span class="annot"><a href="Fission.CLI.Environment.Override.html#deleteHomeAuth"><span class="hs-identifier hs-type">deleteHomeAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680248255"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680248255"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-115"></span><span id="local-6989586621680255043"><span class="annot"><a href="Fission.CLI.Environment.Override.html#deleteHomeAuth"><span class="hs-identifier hs-type">deleteHomeAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680255043"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680255043"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-116"></span><span id="deleteHomeAuth"><span class="annot"><span class="annottext">deleteHomeAuth :: m ()
 </span><a href="Fission.CLI.Environment.Override.html#deleteHomeAuth"><span class="hs-identifier hs-var hs-var">deleteHomeAuth</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-117"></span><span>  </span><span id="local-6989586621680248254"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248254"><span class="hs-identifier hs-var">path</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-117"></span><span>  </span><span id="local-6989586621680255042"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680255042"><span class="hs-identifier hs-var">path</span></a></span></span><span>       </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
-</span><span id="line-118"></span><span>  </span><span id="local-6989586621680248253"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248253"><span class="hs-identifier hs-var">currentEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
+</span><span id="line-118"></span><span>  </span><span id="local-6989586621680255041"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680255041"><span class="hs-identifier hs-var">currentEnv</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#decode"><span class="hs-identifier hs-var">decode</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248254"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><a href="#local-6989586621680255042"><span class="hs-identifier hs-var">path</span></a></span><span>
 </span><span id="line-119"></span><span>  </span><span class="annot"><span class="annottext">FilePath -&gt; Override -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; Override -&gt; m ()
 </span><a href="Fission.CLI.Environment.Override.html#write"><span class="hs-identifier hs-var">write</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680248254"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(Override -&gt; m ()) -&gt; Override -&gt; m ()
+</span><a href="#local-6989586621680255042"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(Override -&gt; m ()) -&gt; Override -&gt; m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680248253"><span class="hs-identifier hs-var">currentEnv</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:maybeUserAuth:Override :: Maybe BasicAuthData
+</span><a href="#local-6989586621680255041"><span class="hs-identifier hs-var">currentEnv</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:maybeUserAuth:Override :: Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeUserAuth%3AOverride"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-special">}</span><span>

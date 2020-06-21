@@ -16,7 +16,7 @@
 </span><span id="line-14"></span><span class="hs-keyword">newtype</span><span> </span><span id="OptionalFilePath"><span class="annot"><a href="Fission.CLI.Command.App.Init.Types.html#OptionalFilePath"><span class="hs-identifier hs-var">OptionalFilePath</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="OptionalFilePath"><span class="annot"><a href="Fission.CLI.Command.App.Init.Types.html#OptionalFilePath"><span class="hs-identifier hs-var">OptionalFilePath</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">)</span><span>
 </span><span id="line-15"></span><span>
 </span><span id="line-16"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IsString</span></span><span> </span><span class="annot"><a href="Fission.CLI.Command.App.Init.Types.html#OptionalFilePath"><span class="hs-identifier hs-type">OptionalFilePath</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-17"></span><span>  </span><span id="local-6989586621680239631"><span class="annot"><span class="annottext">fromString :: FilePath -&gt; OptionalFilePath
+</span><span id="line-17"></span><span>  </span><span id="local-6989586621680246207"><span class="annot"><span class="annottext">fromString :: FilePath -&gt; OptionalFilePath
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromString</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe FilePath -&gt; OptionalFilePath
 </span><a href="Fission.CLI.Command.App.Init.Types.html#OptionalFilePath"><span class="hs-identifier hs-var">OptionalFilePath</span></a></span><span> </span><span class="annot"><span class="annottext">(Maybe FilePath -&gt; OptionalFilePath)
 -&gt; (FilePath -&gt; Maybe FilePath) -&gt; FilePath -&gt; OptionalFilePath
@@ -25,9 +25,9 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span id="line-18"></span><span>    </span><span class="hs-string">&quot;&quot;</span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-19"></span><span>    </span><span id="local-6989586621680239629"><span class="annot"><span class="annottext">path :: FilePath
-</span><a href="#local-6989586621680239629"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Maybe FilePath
+</span><span id="line-19"></span><span>    </span><span id="local-6989586621680246205"><span class="annot"><span class="annottext">path :: FilePath
+</span><a href="#local-6989586621680246205"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Maybe FilePath
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680239629"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><a href="#local-6989586621680246205"><span class="hs-identifier hs-var">path</span></a></span><span>
 </span><span id="line-20"></span></pre></body></html>

@@ -9,19 +9,19 @@
 </span><span id="line-9"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
 </span><span id="line-10"></span><span>
 </span><span id="line-11"></span><span class="hs-comment">-- | Actions for creating new @LoosePin@s</span><span>
-</span><span id="line-12"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680247382"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Creator"><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#Creator"><span class="hs-identifier hs-var">Creator</span></a></span></span><span> </span><span id="local-6989586621680247382"><span class="annot"><a href="#local-6989586621680247382"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680254162"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Creator"><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#Creator"><span class="hs-identifier hs-var">Creator</span></a></span></span><span> </span><span id="local-6989586621680254162"><span class="annot"><a href="#local-6989586621680254162"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-13"></span><span>  </span><span class="hs-comment">-- | Create a new, timestamped entry</span><span>
-</span><span id="line-14"></span><span>  </span><span id="create"><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#create"><span class="hs-identifier hs-type">create</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680247382"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.Models.html#LoosePinId"><span class="hs-identifier hs-type">LoosePinId</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-14"></span><span>  </span><span id="create"><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#create"><span class="hs-identifier hs-type">create</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680254162"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.Models.html#LoosePinId"><span class="hs-identifier hs-type">LoosePinId</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-15"></span><span>
 </span><span id="line-16"></span><span>  </span><span class="hs-comment">-- | Create new 'LoosePin's, ignoring existing values (set-like)</span><span>
-</span><span id="line-17"></span><span>  </span><span id="createMany"><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#createMany"><span class="hs-identifier hs-type">createMany</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680247382"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span class="hs-special">]</span><span>
+</span><span id="line-17"></span><span>  </span><span id="createMany"><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#createMany"><span class="hs-identifier hs-type">createMany</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680254162"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span class="hs-special">]</span><span>
 </span><span id="line-18"></span><span>
-</span><span id="line-19"></span><span id="local-6989586621680247336"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680247336"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680247336"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-20"></span><span>  </span><span id="local-6989586621680247331"><span class="annot"><span class="annottext">create :: UserId -&gt; CID -&gt; UTCTime -&gt; Transaction m (Maybe LoosePinId)
-</span><a href="#local-6989586621680247331"><span class="hs-identifier hs-var hs-var hs-var hs-var">create</span></a></span></span><span> </span><span id="local-6989586621680247330"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680247330"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680247329"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680247329"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span id="local-6989586621680247328"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680247328"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-19"></span><span id="local-6989586621680254116"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680254116"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.LoosePin.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680254116"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680254111"><span class="annot"><span class="annottext">create :: UserId -&gt; CID -&gt; UTCTime -&gt; Transaction m (Maybe LoosePinId)
+</span><a href="#local-6989586621680254111"><span class="hs-identifier hs-var hs-var hs-var hs-var">create</span></a></span></span><span> </span><span id="local-6989586621680254110"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680254110"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680254109"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680254109"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span id="local-6989586621680254108"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680254108"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-21"></span><span>    </span><span class="annot"><span class="annottext">LoosePin -&gt; Transaction m (Maybe LoosePinId)
 forall backend (m :: * -&gt; *) record.
 (PersistUniqueWrite backend, MonadIO m,
@@ -30,23 +30,23 @@ record -&gt; ReaderT backend m (Maybe (Key record))
 </span><span class="hs-identifier hs-var">insertUnique</span></span><span> </span><span class="annot"><span class="annottext">$WLoosePin :: UserId -&gt; CID -&gt; UTCTime -&gt; LoosePin
 </span><a href="Fission.Models.html#%24WLoosePin"><span class="hs-identifier hs-type hs-type">LoosePin</span></a></span><span>
 </span><span id="line-22"></span><span>      </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:loosePinOwnerId:LoosePin :: UserId
-</span><a href="#local-6989586621680247324"><span class="hs-identifier hs-var">loosePinOwnerId</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680247330"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><a href="#local-6989586621680254104"><span class="hs-identifier hs-var">loosePinOwnerId</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680254110"><span class="hs-identifier hs-var">userId</span></a></span><span>
 </span><span id="line-23"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:loosePinCid:LoosePin :: CID
-</span><a href="#local-6989586621680247323"><span class="hs-identifier hs-var">loosePinCid</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680247329"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><a href="#local-6989586621680254103"><span class="hs-identifier hs-var">loosePinCid</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680254109"><span class="hs-identifier hs-var">cid</span></a></span><span>
 </span><span id="line-24"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:loosePinInsertedAt:LoosePin :: UTCTime
-</span><a href="#local-6989586621680247322"><span class="hs-identifier hs-var">loosePinInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680247328"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680254102"><span class="hs-identifier hs-var">loosePinInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680254108"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-25"></span><span>      </span><span class="hs-special">}</span><span>
 </span><span id="line-26"></span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680247321"><span class="annot"><span class="annottext">createMany :: UserId -&gt; [CID] -&gt; UTCTime -&gt; Transaction m [CID]
-</span><a href="#local-6989586621680247321"><span class="hs-identifier hs-var hs-var hs-var hs-var">createMany</span></a></span></span><span> </span><span id="local-6989586621680247320"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680247320"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680247319"><span class="annot"><span class="annottext">hashes :: [CID]
-</span><a href="#local-6989586621680247319"><span class="hs-identifier hs-var">hashes</span></a></span></span><span> </span><span id="local-6989586621680247318"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680247318"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-28"></span><span>    </span><span id="local-6989586621680247317"><span class="annot"><span class="annottext">[Value CID]
-</span><a href="#local-6989586621680247317"><span class="hs-identifier hs-var">existingCIDs</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">SqlQuery (SqlExpr (Value CID)) -&gt; ReaderT SqlBackend m [Value CID]
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680254101"><span class="annot"><span class="annottext">createMany :: UserId -&gt; [CID] -&gt; UTCTime -&gt; Transaction m [CID]
+</span><a href="#local-6989586621680254101"><span class="hs-identifier hs-var hs-var hs-var hs-var">createMany</span></a></span></span><span> </span><span id="local-6989586621680254100"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680254100"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680254099"><span class="annot"><span class="annottext">hashes :: [CID]
+</span><a href="#local-6989586621680254099"><span class="hs-identifier hs-var">hashes</span></a></span></span><span> </span><span id="local-6989586621680254098"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680254098"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-28"></span><span>    </span><span id="local-6989586621680254097"><span class="annot"><span class="annottext">[Value CID]
+</span><a href="#local-6989586621680254097"><span class="hs-identifier hs-var">existingCIDs</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">SqlQuery (SqlExpr (Value CID)) -&gt; ReaderT SqlBackend m [Value CID]
 forall a r (m :: * -&gt; *).
 (SqlSelect a r, MonadIO m) =&gt;
 SqlQuery a -&gt; SqlReadT m [r]
@@ -58,11 +58,11 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Entity LoosePin) -&gt; SqlQuery (SqlExpr (Value CID)))
 -&gt; SqlQuery (SqlExpr (Value CID))
 forall a b. From a =&gt; (a -&gt; SqlQuery b) -&gt; SqlQuery b
-</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680247313"><span class="annot"><span class="annottext">loosePin :: SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680247313"><span class="hs-identifier hs-var">loosePin</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680254093"><span class="annot"><span class="annottext">loosePin :: SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254093"><span class="hs-identifier hs-var">loosePin</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-29"></span><span>      </span><span class="annot"><span class="annottext">SqlExpr (Value Bool) -&gt; SqlQuery ()
 </span><span class="hs-identifier hs-var">where_</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680247313"><span class="hs-identifier hs-var">loosePin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254093"><span class="hs-identifier hs-var">loosePin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
 -&gt; EntityField LoosePin CID -&gt; SqlExpr (Value CID)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -78,9 +78,9 @@ SqlExpr (Value typ)
 </span><span class="hs-operator hs-var">`in_`</span></span><span> </span><span class="annot"><span class="annottext">[CID] -&gt; SqlExpr (ValueList CID)
 forall typ. PersistField typ =&gt; [typ] -&gt; SqlExpr (ValueList typ)
 </span><span class="hs-identifier hs-var">valList</span></span><span> </span><span class="annot"><span class="annottext">[CID]
-</span><a href="#local-6989586621680247319"><span class="hs-identifier hs-var">hashes</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680254099"><span class="hs-identifier hs-var">hashes</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-30"></span><span>      </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680247313"><span class="hs-identifier hs-var">loosePin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254093"><span class="hs-identifier hs-var">loosePin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
 -&gt; EntityField LoosePin CID -&gt; SqlExpr (Value CID)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -90,41 +90,41 @@ forall typ. (typ ~ CID) =&gt; EntityField LoosePin typ
 </span><a href="Fission.Models.html#LoosePinCid"><span class="hs-identifier hs-var">LoosePinCid</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-31"></span><span>
 </span><span id="line-32"></span><span>    </span><span class="hs-keyword">let</span><span>
-</span><span id="line-33"></span><span>      </span><span class="annot"><a href="#local-6989586621680247307"><span class="hs-identifier hs-type">mkFresh</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#LoosePin"><span class="hs-identifier hs-type">LoosePin</span></a></span><span>
-</span><span id="line-34"></span><span>      </span><span id="local-6989586621680247307"><span class="annot"><span class="annottext">mkFresh :: CID -&gt; LoosePin
-</span><a href="#local-6989586621680247307"><span class="hs-identifier hs-var hs-var">mkFresh</span></a></span></span><span> </span><span id="local-6989586621680247306"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680247306"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WLoosePin :: UserId -&gt; CID -&gt; UTCTime -&gt; LoosePin
+</span><span id="line-33"></span><span>      </span><span class="annot"><a href="#local-6989586621680254087"><span class="hs-identifier hs-type">mkFresh</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#LoosePin"><span class="hs-identifier hs-type">LoosePin</span></a></span><span>
+</span><span id="line-34"></span><span>      </span><span id="local-6989586621680254087"><span class="annot"><span class="annottext">mkFresh :: CID -&gt; LoosePin
+</span><a href="#local-6989586621680254087"><span class="hs-identifier hs-var hs-var">mkFresh</span></a></span></span><span> </span><span id="local-6989586621680254086"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680254086"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WLoosePin :: UserId -&gt; CID -&gt; UTCTime -&gt; LoosePin
 </span><a href="Fission.Models.html#%24WLoosePin"><span class="hs-identifier hs-type hs-type">LoosePin</span></a></span><span>
 </span><span id="line-35"></span><span>        </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:loosePinOwnerId:LoosePin :: UserId
-</span><a href="#local-6989586621680247324"><span class="hs-identifier hs-var">loosePinOwnerId</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680247320"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><a href="#local-6989586621680254104"><span class="hs-identifier hs-var">loosePinOwnerId</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680254100"><span class="hs-identifier hs-var">userId</span></a></span><span>
 </span><span id="line-36"></span><span>        </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:loosePinCid:LoosePin :: CID
-</span><a href="#local-6989586621680247323"><span class="hs-identifier hs-var">loosePinCid</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680247306"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><a href="#local-6989586621680254103"><span class="hs-identifier hs-var">loosePinCid</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680254086"><span class="hs-identifier hs-var">cid</span></a></span><span>
 </span><span id="line-37"></span><span>        </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:loosePinInsertedAt:LoosePin :: UTCTime
-</span><a href="#local-6989586621680247322"><span class="hs-identifier hs-var">loosePinInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680247318"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680254102"><span class="hs-identifier hs-var">loosePinInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680254098"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-38"></span><span>        </span><span class="hs-special">}</span><span>
 </span><span id="line-39"></span><span>
-</span><span id="line-40"></span><span>      </span><span id="local-6989586621680247305"><span class="annot"><span class="annottext">existingRawCIDs :: [CID]
-</span><a href="#local-6989586621680247305"><span class="hs-identifier hs-var hs-var">existingRawCIDs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Value CID -&gt; CID
+</span><span id="line-40"></span><span>      </span><span id="local-6989586621680254085"><span class="annot"><span class="annottext">existingRawCIDs :: [CID]
+</span><a href="#local-6989586621680254085"><span class="hs-identifier hs-var hs-var">existingRawCIDs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Value CID -&gt; CID
 forall a. Value a -&gt; a
 </span><span class="hs-identifier hs-var hs-var">unValue</span></span><span> </span><span class="annot"><span class="annottext">(Value CID -&gt; CID) -&gt; [Value CID] -&gt; [CID]
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">[Value CID]
-</span><a href="#local-6989586621680247317"><span class="hs-identifier hs-var">existingCIDs</span></a></span><span>
-</span><span id="line-41"></span><span>      </span><span id="local-6989586621680247302"><span class="annot"><span class="annottext">newHashes :: [CID]
-</span><a href="#local-6989586621680247302"><span class="hs-identifier hs-var hs-var">newHashes</span></a></span></span><span>       </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[CID]
-</span><a href="#local-6989586621680247319"><span class="hs-identifier hs-var">hashes</span></a></span><span> </span><span class="annot"><span class="annottext">[CID] -&gt; [CID] -&gt; [CID]
+</span><a href="#local-6989586621680254097"><span class="hs-identifier hs-var">existingCIDs</span></a></span><span>
+</span><span id="line-41"></span><span>      </span><span id="local-6989586621680254082"><span class="annot"><span class="annottext">newHashes :: [CID]
+</span><a href="#local-6989586621680254082"><span class="hs-identifier hs-var hs-var">newHashes</span></a></span></span><span>       </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[CID]
+</span><a href="#local-6989586621680254099"><span class="hs-identifier hs-var">hashes</span></a></span><span> </span><span class="annot"><span class="annottext">[CID] -&gt; [CID] -&gt; [CID]
 forall a. Eq a =&gt; [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">\\</span></span><span> </span><span class="annot"><span class="annottext">[CID]
-</span><a href="#local-6989586621680247305"><span class="hs-identifier hs-var">existingRawCIDs</span></a></span><span>
-</span><span id="line-42"></span><span>      </span><span id="local-6989586621680247301"><span class="annot"><span class="annottext">toInsert :: [LoosePin]
-</span><a href="#local-6989586621680247301"><span class="hs-identifier hs-var hs-var">toInsert</span></a></span></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID -&gt; LoosePin
-</span><a href="#local-6989586621680247307"><span class="hs-identifier hs-var">mkFresh</span></a></span><span> </span><span class="annot"><span class="annottext">(CID -&gt; LoosePin) -&gt; [CID] -&gt; [LoosePin]
+</span><a href="#local-6989586621680254085"><span class="hs-identifier hs-var">existingRawCIDs</span></a></span><span>
+</span><span id="line-42"></span><span>      </span><span id="local-6989586621680254081"><span class="annot"><span class="annottext">toInsert :: [LoosePin]
+</span><a href="#local-6989586621680254081"><span class="hs-identifier hs-var hs-var">toInsert</span></a></span></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID -&gt; LoosePin
+</span><a href="#local-6989586621680254087"><span class="hs-identifier hs-var">mkFresh</span></a></span><span> </span><span class="annot"><span class="annottext">(CID -&gt; LoosePin) -&gt; [CID] -&gt; [LoosePin]
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">[CID]
-</span><a href="#local-6989586621680247302"><span class="hs-identifier hs-var">newHashes</span></a></span><span>
+</span><a href="#local-6989586621680254082"><span class="hs-identifier hs-var">newHashes</span></a></span><span>
 </span><span id="line-43"></span><span>
 </span><span id="line-44"></span><span>    </span><span class="annot"><span class="annottext">[LoosePin] -&gt; ReaderT SqlBackend m ()
 forall backend (m :: * -&gt; *) record.
@@ -132,7 +132,7 @@ forall backend (m :: * -&gt; *) record.
  PersistRecordBackend record backend) =&gt;
 [record] -&gt; ReaderT backend m ()
 </span><span class="hs-identifier hs-var">insertMany_</span></span><span> </span><span class="annot"><span class="annottext">[LoosePin]
-</span><a href="#local-6989586621680247301"><span class="hs-identifier hs-var">toInsert</span></a></span><span>
+</span><a href="#local-6989586621680254081"><span class="hs-identifier hs-var">toInsert</span></a></span><span>
 </span><span id="line-45"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">[CID]
-</span><a href="#local-6989586621680247302"><span class="hs-identifier hs-var">newHashes</span></a></span></span><span>
+</span><a href="#local-6989586621680254082"><span class="hs-identifier hs-var">newHashes</span></a></span></span><span>
 </span><span id="line-46"></span></pre></body></html>

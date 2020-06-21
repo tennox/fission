@@ -49,30 +49,30 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-identifier hs-var">Strict.map</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
 </span><span id="line-38"></span><span>    </span><span class="hs-number">43</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-number">45</span></span><span> </span><span class="hs-comment">-- '+' -&gt; '-'</span><span>
 </span><span id="line-39"></span><span>    </span><span class="hs-number">47</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-number">95</span></span><span> </span><span class="hs-comment">-- '/' -&gt; '_'</span><span>
-</span><span id="line-40"></span><span>    </span><span id="local-6989586621680239033"><span class="annot"><span class="annottext">chr :: Word8
-</span><a href="#local-6989586621680239033"><span class="hs-identifier hs-var">chr</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680239033"><span class="hs-identifier hs-var">chr</span></a></span><span>
+</span><span id="line-40"></span><span>    </span><span id="local-6989586621680245609"><span class="annot"><span class="annottext">chr :: Word8
+</span><a href="#local-6989586621680245609"><span class="hs-identifier hs-var">chr</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Word8
+</span><a href="#local-6989586621680245609"><span class="hs-identifier hs-var">chr</span></a></span><span>
 </span><span id="line-41"></span><span>
-</span><span id="line-42"></span><span id="local-6989586621680239031"><span id="local-6989586621680239032"><span class="annot"><a href="Fission.Internal.Base64.URL.html#encodeJWT"><span class="hs-identifier hs-type">encodeJWT</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="#local-6989586621680239032"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="#local-6989586621680239031"><span class="hs-identifier hs-type">b</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680239032"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680239031"><span class="hs-identifier hs-type">b</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span></span><span>
+</span><span id="line-42"></span><span id="local-6989586621680245607"><span id="local-6989586621680245608"><span class="annot"><a href="Fission.Internal.Base64.URL.html#encodeJWT"><span class="hs-identifier hs-type">encodeJWT</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="#local-6989586621680245608"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="#local-6989586621680245607"><span class="hs-identifier hs-type">b</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245608"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245607"><span class="hs-identifier hs-type">b</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span></span><span>
 </span><span id="line-43"></span><span id="encodeJWT"><span class="annot"><span class="annottext">encodeJWT :: a -&gt; b -&gt; Text
-</span><a href="Fission.Internal.Base64.URL.html#encodeJWT"><span class="hs-identifier hs-var hs-var">encodeJWT</span></a></span></span><span> </span><span id="local-6989586621680239030"><span class="annot"><span class="annottext">a :: a
-</span><a href="#local-6989586621680239030"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680239029"><span class="annot"><span class="annottext">b :: b
-</span><a href="#local-6989586621680239029"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
+</span><a href="Fission.Internal.Base64.URL.html#encodeJWT"><span class="hs-identifier hs-var hs-var">encodeJWT</span></a></span></span><span> </span><span id="local-6989586621680245606"><span class="annot"><span class="annottext">a :: a
+</span><a href="#local-6989586621680245606"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680245605"><span class="annot"><span class="annottext">b :: b
+</span><a href="#local-6989586621680245605"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
 </span><span class="hs-identifier hs-var">decodeUtf8Lenient</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Text) -&gt; ByteString -&gt; Text
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">a -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.Base64.URL.html#encodeJWTPart"><span class="hs-identifier hs-var">encodeJWTPart</span></a></span><span> </span><span class="annot"><span class="annottext">a
-</span><a href="#local-6989586621680239030"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
+</span><a href="#local-6989586621680245606"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">b -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.Base64.URL.html#encodeJWTPart"><span class="hs-identifier hs-var">encodeJWTPart</span></a></span><span> </span><span class="annot"><span class="annottext">b
-</span><a href="#local-6989586621680239029"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680245605"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-44"></span><span>
-</span><span id="line-45"></span><span id="local-6989586621680239060"><span class="annot"><a href="Fission.Internal.Base64.URL.html#encodeJWTPart"><span class="hs-identifier hs-type">encodeJWTPart</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="#local-6989586621680239060"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680239060"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span>
+</span><span id="line-45"></span><span id="local-6989586621680245636"><span class="annot"><a href="Fission.Internal.Base64.URL.html#encodeJWTPart"><span class="hs-identifier hs-type">encodeJWTPart</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="#local-6989586621680245636"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245636"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span>
 </span><span id="line-46"></span><span id="encodeJWTPart"><span class="annot"><span class="annottext">encodeJWTPart :: a -&gt; ByteString
 </span><a href="Fission.Internal.Base64.URL.html#encodeJWTPart"><span class="hs-identifier hs-var hs-var">encodeJWTPart</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#stripPadding"><span class="hs-identifier hs-var">UTF8.stripPadding</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; ByteString) -&gt; (a -&gt; ByteString) -&gt; a -&gt; ByteString
@@ -88,79 +88,79 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-identifier hs-var">Lazy.toStrict</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; ByteString) -&gt; (a -&gt; ByteString) -&gt; a -&gt; ByteString
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
-</span><a href="#local-6989586621680239024"><span class="hs-identifier hs-var">dropWrapper</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; ByteString) -&gt; (a -&gt; ByteString) -&gt; a -&gt; ByteString
+</span><a href="#local-6989586621680245600"><span class="hs-identifier hs-var">dropWrapper</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; ByteString) -&gt; (a -&gt; ByteString) -&gt; a -&gt; ByteString
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">a -&gt; ByteString
 forall a. ToJSON a =&gt; a -&gt; ByteString
 </span><span class="hs-identifier hs-var">JSON.encode</span></span><span>
 </span><span id="line-47"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-48"></span><span>    </span><span id="local-6989586621680239024"><span class="annot"><span class="annottext">dropWrapper :: ByteString -&gt; ByteString -&gt; ByteString
-</span><a href="#local-6989586621680239024"><span class="hs-identifier hs-var hs-var">dropWrapper</span></a></span></span><span> </span><span id="local-6989586621680239023"><span class="annot"><span class="annottext">wrapper :: ByteString
-</span><a href="#local-6989586621680239023"><span class="hs-identifier hs-var">wrapper</span></a></span></span><span> </span><span id="local-6989586621680239022"><span class="annot"><span class="annottext">bs :: ByteString
-</span><a href="#local-6989586621680239022"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
-</span><a href="#local-6989586621680239021"><span class="hs-identifier hs-var">dropSuffix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239023"><span class="hs-identifier hs-var">wrapper</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; ByteString) -&gt; ByteString -&gt; ByteString
+</span><span id="line-48"></span><span>    </span><span id="local-6989586621680245600"><span class="annot"><span class="annottext">dropWrapper :: ByteString -&gt; ByteString -&gt; ByteString
+</span><a href="#local-6989586621680245600"><span class="hs-identifier hs-var hs-var">dropWrapper</span></a></span></span><span> </span><span id="local-6989586621680245599"><span class="annot"><span class="annottext">wrapper :: ByteString
+</span><a href="#local-6989586621680245599"><span class="hs-identifier hs-var">wrapper</span></a></span></span><span> </span><span id="local-6989586621680245598"><span class="annot"><span class="annottext">bs :: ByteString
+</span><a href="#local-6989586621680245598"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
+</span><a href="#local-6989586621680245597"><span class="hs-identifier hs-var">dropSuffix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680245599"><span class="hs-identifier hs-var">wrapper</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; ByteString) -&gt; ByteString -&gt; ByteString
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; ByteString
-</span><a href="#local-6989586621680239020"><span class="hs-identifier hs-var">dropPrefix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239023"><span class="hs-identifier hs-var">wrapper</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239022"><span class="hs-identifier hs-var">bs</span></a></span><span>
-</span><span id="line-49"></span><span>    </span><span id="local-6989586621680239020"><span class="annot"><span class="annottext">dropPrefix :: ByteString -&gt; ByteString -&gt; ByteString
-</span><a href="#local-6989586621680239020"><span class="hs-identifier hs-var hs-var">dropPrefix</span></a></span></span><span>  </span><span id="local-6989586621680239019"><span class="annot"><span class="annottext">prefix :: ByteString
-</span><a href="#local-6989586621680239019"><span class="hs-identifier hs-var">prefix</span></a></span></span><span>  </span><span id="local-6989586621680239018"><span class="annot"><span class="annottext">bs :: ByteString
-</span><a href="#local-6989586621680239018"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680245596"><span class="hs-identifier hs-var">dropPrefix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680245599"><span class="hs-identifier hs-var">wrapper</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680245598"><span class="hs-identifier hs-var">bs</span></a></span><span>
+</span><span id="line-49"></span><span>    </span><span id="local-6989586621680245596"><span class="annot"><span class="annottext">dropPrefix :: ByteString -&gt; ByteString -&gt; ByteString
+</span><a href="#local-6989586621680245596"><span class="hs-identifier hs-var hs-var">dropPrefix</span></a></span></span><span>  </span><span id="local-6989586621680245595"><span class="annot"><span class="annottext">prefix :: ByteString
+</span><a href="#local-6989586621680245595"><span class="hs-identifier hs-var">prefix</span></a></span></span><span>  </span><span id="local-6989586621680245594"><span class="annot"><span class="annottext">bs :: ByteString
+</span><a href="#local-6989586621680245594"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString
 -&gt; (ByteString -&gt; ByteString) -&gt; Maybe ByteString -&gt; ByteString
 forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
 </span><span class="hs-identifier hs-var">maybe</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239018"><span class="hs-identifier hs-var">bs</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
+</span><a href="#local-6989586621680245594"><span class="hs-identifier hs-var">bs</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
 forall a. a -&gt; a
 </span><a href="Fission.Prelude.html#identity"><span class="hs-identifier hs-var">identity</span></a></span><span> </span><span class="annot"><span class="annottext">(Maybe ByteString -&gt; ByteString) -&gt; Maybe ByteString -&gt; ByteString
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; Maybe ByteString
 </span><span class="hs-identifier hs-var">Lazy.stripPrefix</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239019"><span class="hs-identifier hs-var">prefix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239018"><span class="hs-identifier hs-var">bs</span></a></span><span>
-</span><span id="line-50"></span><span>    </span><span id="local-6989586621680239021"><span class="annot"><span class="annottext">dropSuffix :: ByteString -&gt; ByteString -&gt; ByteString
-</span><a href="#local-6989586621680239021"><span class="hs-identifier hs-var hs-var">dropSuffix</span></a></span></span><span>  </span><span id="local-6989586621680239014"><span class="annot"><span class="annottext">suffix :: ByteString
-</span><a href="#local-6989586621680239014"><span class="hs-identifier hs-var">suffix</span></a></span></span><span>  </span><span id="local-6989586621680239013"><span class="annot"><span class="annottext">bs :: ByteString
-</span><a href="#local-6989586621680239013"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680245595"><span class="hs-identifier hs-var">prefix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680245594"><span class="hs-identifier hs-var">bs</span></a></span><span>
+</span><span id="line-50"></span><span>    </span><span id="local-6989586621680245597"><span class="annot"><span class="annottext">dropSuffix :: ByteString -&gt; ByteString -&gt; ByteString
+</span><a href="#local-6989586621680245597"><span class="hs-identifier hs-var hs-var">dropSuffix</span></a></span></span><span>  </span><span id="local-6989586621680245590"><span class="annot"><span class="annottext">suffix :: ByteString
+</span><a href="#local-6989586621680245590"><span class="hs-identifier hs-var">suffix</span></a></span></span><span>  </span><span id="local-6989586621680245589"><span class="annot"><span class="annottext">bs :: ByteString
+</span><a href="#local-6989586621680245589"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString
 -&gt; (ByteString -&gt; ByteString) -&gt; Maybe ByteString -&gt; ByteString
 forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
 </span><span class="hs-identifier hs-var">maybe</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239013"><span class="hs-identifier hs-var">bs</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
+</span><a href="#local-6989586621680245589"><span class="hs-identifier hs-var">bs</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
 forall a. a -&gt; a
 </span><a href="Fission.Prelude.html#identity"><span class="hs-identifier hs-var">identity</span></a></span><span> </span><span class="annot"><span class="annottext">(Maybe ByteString -&gt; ByteString) -&gt; Maybe ByteString -&gt; ByteString
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; Maybe ByteString
 </span><span class="hs-identifier hs-var">Lazy.stripSuffix</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239014"><span class="hs-identifier hs-var">suffix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239013"><span class="hs-identifier hs-var">bs</span></a></span><span>
+</span><a href="#local-6989586621680245590"><span class="hs-identifier hs-var">suffix</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680245589"><span class="hs-identifier hs-var">bs</span></a></span><span>
 </span><span id="line-51"></span><span>
 </span><span id="line-52"></span><span class="annot"><a href="Fission.Internal.Base64.URL.html#addPadding"><span class="hs-identifier hs-type">addPadding</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span>
 </span><span id="line-53"></span><span id="addPadding"><span class="annot"><span class="annottext">addPadding :: ByteString -&gt; ByteString
-</span><a href="Fission.Internal.Base64.URL.html#addPadding"><span class="hs-identifier hs-var hs-var">addPadding</span></a></span></span><span> </span><span id="local-6989586621680239011"><span class="annot"><span class="annottext">bs :: ByteString
-</span><a href="#local-6989586621680239011"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Word8] -&gt; ByteString
+</span><a href="Fission.Internal.Base64.URL.html#addPadding"><span class="hs-identifier hs-var hs-var">addPadding</span></a></span></span><span> </span><span id="local-6989586621680245587"><span class="annot"><span class="annottext">bs :: ByteString
+</span><a href="#local-6989586621680245587"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Word8] -&gt; ByteString
 </span><span class="hs-identifier hs-var">BS.pack</span></span><span> </span><span class="annot"><span class="annottext">[Word8]
-</span><a href="#local-6989586621680239009"><span class="hs-identifier hs-var">padded</span></a></span><span>
+</span><a href="#local-6989586621680245585"><span class="hs-identifier hs-var">padded</span></a></span><span>
 </span><span id="line-54"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-55"></span><span>    </span><span class="annot"><a href="#local-6989586621680239008"><span class="hs-identifier hs-type">n</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
-</span><span id="line-56"></span><span>    </span><span id="local-6989586621680239008"><span class="annot"><span class="annottext">n :: Int
-</span><a href="#local-6989586621680239008"><span class="hs-identifier hs-var hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
+</span><span id="line-55"></span><span>    </span><span class="annot"><a href="#local-6989586621680245584"><span class="hs-identifier hs-type">n</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
+</span><span id="line-56"></span><span>    </span><span id="local-6989586621680245584"><span class="annot"><span class="annottext">n :: Int
+</span><a href="#local-6989586621680245584"><span class="hs-identifier hs-var hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
 forall a. Integral a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-identifier hs-var">rem</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString -&gt; Int
 </span><span class="hs-identifier hs-var">BS.length</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239011"><span class="hs-identifier hs-var">bs</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-number">4</span></span><span>
+</span><a href="#local-6989586621680245587"><span class="hs-identifier hs-var">bs</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-number">4</span></span><span>
 </span><span id="line-57"></span><span>
-</span><span id="line-58"></span><span>    </span><span class="annot"><a href="#local-6989586621680239009"><span class="hs-identifier hs-type">padded</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span class="hs-special">]</span><span>
-</span><span id="line-59"></span><span>    </span><span id="local-6989586621680239009"><span class="annot"><span class="annottext">padded :: [Word8]
-</span><a href="#local-6989586621680239009"><span class="hs-identifier hs-var hs-var">padded</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; [Word8]
+</span><span id="line-58"></span><span>    </span><span class="annot"><a href="#local-6989586621680245585"><span class="hs-identifier hs-type">padded</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span class="hs-special">]</span><span>
+</span><span id="line-59"></span><span>    </span><span id="local-6989586621680245585"><span class="annot"><span class="annottext">padded :: [Word8]
+</span><a href="#local-6989586621680245585"><span class="hs-identifier hs-var hs-var">padded</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; [Word8]
 </span><span class="hs-identifier hs-var">BS.unpack</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680239011"><span class="hs-identifier hs-var">bs</span></a></span><span> </span><span class="annot"><span class="annottext">[Word8] -&gt; [Word8] -&gt; [Word8]
+</span><a href="#local-6989586621680245587"><span class="hs-identifier hs-var">bs</span></a></span><span> </span><span class="annot"><span class="annottext">[Word8] -&gt; [Word8] -&gt; [Word8]
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Word8] -&gt; [Word8]
 forall a. Int -&gt; [a] -&gt; [a]
 </span><span class="hs-identifier hs-var">take</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680239008"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Word8 -&gt; [Word8]
+</span><a href="#local-6989586621680245584"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Word8 -&gt; [Word8]
 forall a. a -&gt; [a]
 </span><span class="hs-identifier hs-var">List.repeat</span></span><span> </span><span class="annot"><span class="annottext">(Word8 -&gt; [Word8]) -&gt; (Int -&gt; Word8) -&gt; Int -&gt; [Word8]
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c

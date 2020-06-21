@@ -38,12 +38,12 @@
 </span><span id="line-38"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Internal.UTF8.html"><span class="hs-identifier">Fission.Internal.UTF8</span></a></span><span>            </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UTF8</span></span><span>
 </span><span id="line-39"></span><span>
 </span><span id="line-40"></span><span class="hs-comment">-- | Initialize the Environment file</span><span>
-</span><span id="line-41"></span><span id="local-6989586621680252953"><span class="annot"><a href="Fission.CLI.Environment.html#init"><span class="hs-identifier hs-type">init</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-42"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680252953"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680252953"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-44"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680252953"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-41"></span><span id="local-6989586621680259752"><span class="annot"><a href="Fission.CLI.Environment.html#init"><span class="hs-identifier hs-type">init</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680259752"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680259752"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-44"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680259752"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-45"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-46"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680252953"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-46"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680259752"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-47"></span><span id="init"><span class="annot"><span class="annottext">init :: m ()
 </span><a href="Fission.CLI.Environment.html#init"><span class="hs-identifier hs-var hs-var">init</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-48"></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; m ()
@@ -60,27 +60,27 @@ m (Either ClientError (NonEmpty Peer))
 -&gt; (Either ClientError (NonEmpty Peer) -&gt; m ()) -&gt; m ()
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-51"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680252950"><span class="annot"><span class="annottext">err :: ClientError
-</span><a href="#local-6989586621680252950"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-51"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680259749"><span class="annot"><span class="annottext">err :: ClientError
+</span><a href="#local-6989586621680259749"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-52"></span><span>      </span><span class="annot"><span class="annottext">ClientError -&gt; Text -&gt; m ()
 forall (m :: * -&gt; *) err.
 (MonadIO m, MonadLogger m, Show err) =&gt;
 err -&gt; Text -&gt; m ()
 </span><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-var">CLI.Error.put</span></a></span><span> </span><span class="annot"><span class="annottext">ClientError
-</span><a href="#local-6989586621680252950"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Peer retrieval failed&quot;</span></span><span>
+</span><a href="#local-6989586621680259749"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Peer retrieval failed&quot;</span></span><span>
 </span><span id="line-53"></span><span>
-</span><span id="line-54"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680252948"><span class="annot"><span class="annottext">nonEmptyPeers :: NonEmpty Peer
-</span><a href="#local-6989586621680252948"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-54"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680259747"><span class="annot"><span class="annottext">nonEmptyPeers :: NonEmpty Peer
+</span><a href="#local-6989586621680259747"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-55"></span><span>      </span><span class="hs-keyword">let</span><span>
-</span><span id="line-56"></span><span>        </span><span id="local-6989586621680252947"><span class="annot"><span class="annottext">env :: Override
-</span><a href="#local-6989586621680252947"><span class="hs-identifier hs-var hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override
+</span><span id="line-56"></span><span>        </span><span id="local-6989586621680259746"><span class="annot"><span class="annottext">env :: Override
+</span><a href="#local-6989586621680259746"><span class="hs-identifier hs-var hs-var">env</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override
 forall a. Monoid a =&gt; a
 </span><span class="hs-identifier hs-var">mempty</span></span><span>
 </span><span id="line-57"></span><span>          </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:peers:Override :: [Peer]
-</span><a href="#local-6989586621680252946"><span class="hs-identifier hs-var">peers</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer -&gt; [Peer]
+</span><a href="#local-6989586621680259745"><span class="hs-identifier hs-var">peers</span></a></span><span>         </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer -&gt; [Peer]
 forall a. NonEmpty a -&gt; [a]
 </span><span class="hs-identifier hs-var">NonEmpty.toList</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer
-</span><a href="#local-6989586621680252948"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span><span>
+</span><a href="#local-6989586621680259747"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span><span>
 </span><span id="line-58"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeIgnored:Override :: Maybe Ignored
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeIgnored%3AOverride"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Ignored -&gt; Maybe Ignored
 forall a. a -&gt; Maybe a
@@ -88,8 +88,8 @@ forall a. a -&gt; Maybe a
 </span><a href="Fission.CLI.Environment.html#ignoreDefault"><span class="hs-identifier hs-var">ignoreDefault</span></a></span><span>
 </span><span id="line-59"></span><span>          </span><span class="hs-special">}</span><span>
 </span><span id="line-60"></span><span>
-</span><span id="line-61"></span><span>      </span><span id="local-6989586621680252942"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680252942"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-61"></span><span>      </span><span id="local-6989586621680259741"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680259741"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
 </span><span id="line-62"></span><span>      </span><span class="annot"><span class="annottext">IO () -&gt; m ()
@@ -99,49 +99,49 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Override -&gt; IO ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; Override -&gt; m ()
 </span><a href="Fission.CLI.Environment.Override.html#write"><span class="hs-identifier hs-var">Override.write</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680252942"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680252947"><span class="hs-identifier hs-var">env</span></a></span><span>
+</span><a href="#local-6989586621680259741"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680259746"><span class="hs-identifier hs-var">env</span></a></span><span>
 </span><span id="line-63"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
 </span><a href="Fission.CLI.Display.Success.html#putOk"><span class="hs-identifier hs-var">CLI.Success.putOk</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Logged in&quot;</span></span><span>
 </span><span id="line-64"></span><span>
 </span><span id="line-65"></span><span class="hs-comment">-- | Gets hierarchical environment by recursing through file system</span><span>
-</span><span id="line-66"></span><span id="local-6989586621680252937"><span class="annot"><a href="Fission.CLI.Environment.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680252937"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680252937"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span><span>
+</span><span id="line-66"></span><span id="local-6989586621680259736"><span class="annot"><a href="Fission.CLI.Environment.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680259736"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680259736"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span><span>
 </span><span id="line-67"></span><span id="get"><span class="annot"><span class="annottext">get :: m Environment
 </span><a href="Fission.CLI.Environment.html#get"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-68"></span><span>  </span><span id="local-6989586621680252936"><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680252936"><span class="hs-identifier hs-var">override</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Override
+</span><span id="line-68"></span><span>  </span><span id="local-6989586621680259735"><span class="annot"><span class="annottext">Override
+</span><a href="#local-6989586621680259735"><span class="hs-identifier hs-var">override</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Override
 forall (m :: * -&gt; *). MonadIO m =&gt; m Override
 </span><a href="Fission.CLI.Environment.Override.html#get"><span class="hs-identifier hs-var">Override.get</span></a></span><span>
 </span><span id="line-69"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Environment
 </span><a href="Fission.CLI.Environment.Override.html#toFull"><span class="hs-identifier hs-var">Override.toFull</span></a></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680252936"><span class="hs-identifier hs-var">override</span></a></span><span>
+</span><a href="#local-6989586621680259735"><span class="hs-identifier hs-var">override</span></a></span><span>
 </span><span id="line-70"></span><span>
 </span><span id="line-71"></span><span class="hs-comment">-- | Get the path to the Environment file, local or global</span><span>
-</span><span id="line-72"></span><span id="local-6989586621680252934"><span class="annot"><a href="Fission.CLI.Environment.html#getPath"><span class="hs-identifier hs-type">getPath</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680252934"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680252934"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span></span><span>
+</span><span id="line-72"></span><span id="local-6989586621680259733"><span class="annot"><a href="Fission.CLI.Environment.html#getPath"><span class="hs-identifier hs-type">getPath</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680259733"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680259733"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span></span><span>
 </span><span id="line-73"></span><span id="getPath"><span class="annot"><span class="annottext">getPath :: Bool -&gt; m FilePath
-</span><a href="Fission.CLI.Environment.html#getPath"><span class="hs-identifier hs-var hs-var">getPath</span></a></span></span><span> </span><span id="local-6989586621680252933"><span class="annot"><span class="annottext">ofLocal :: Bool
-</span><a href="#local-6989586621680252933"><span class="hs-identifier hs-var">ofLocal</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.CLI.Environment.html#getPath"><span class="hs-identifier hs-var hs-var">getPath</span></a></span></span><span> </span><span id="local-6989586621680259732"><span class="annot"><span class="annottext">ofLocal :: Bool
+</span><a href="#local-6989586621680259732"><span class="hs-identifier hs-var">ofLocal</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-74"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680252933"><span class="hs-identifier hs-var">ofLocal</span></a></span><span>
+</span><a href="#local-6989586621680259732"><span class="hs-identifier hs-var">ofLocal</span></a></span><span>
 </span><span id="line-75"></span><span>    </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><span class="hs-identifier hs-var">getCurrentDirectory</span></span><span> </span><span class="annot"><span class="annottext">m FilePath -&gt; (FilePath -&gt; m FilePath) -&gt; m FilePath
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680252931"><span class="annot"><span class="annottext">dir :: FilePath
-</span><a href="#local-6989586621680252931"><span class="hs-identifier hs-var">dir</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680259730"><span class="annot"><span class="annottext">dir :: FilePath
+</span><a href="#local-6989586621680259730"><span class="hs-identifier hs-var">dir</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; m FilePath) -&gt; FilePath -&gt; m FilePath
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680252931"><span class="hs-identifier hs-var">dir</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
+</span><a href="#local-6989586621680259730"><span class="hs-identifier hs-var">dir</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath
 </span><span class="hs-operator hs-var">&lt;/&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.fission.yaml&quot;</span></span><span>
 </span><span id="line-76"></span><span>    </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
 </span><span id="line-77"></span><span>
 </span><span id="line-78"></span><span class="hs-comment">-- | Create a could not read message for the terminal</span><span>
-</span><span id="line-79"></span><span id="local-6989586621680252929"><span class="annot"><a href="Fission.CLI.Environment.html#couldNotRead"><span class="hs-identifier hs-type">couldNotRead</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680252929"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680252929"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-79"></span><span id="local-6989586621680259728"><span class="annot"><a href="Fission.CLI.Environment.html#couldNotRead"><span class="hs-identifier hs-type">couldNotRead</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680259728"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680259728"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-80"></span><span id="couldNotRead"><span class="annot"><span class="annottext">couldNotRead :: m ()
 </span><a href="Fission.CLI.Environment.html#couldNotRead"><span class="hs-identifier hs-var hs-var">couldNotRead</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-81"></span><span>  </span><span class="annot"><span class="annottext">IO () -&gt; m ()
@@ -182,11 +182,11 @@ SGR
 </span><span class="hs-identifier hs-var">ANSI.Reset</span></span><span class="hs-special">]</span><span>
 </span><span id="line-88"></span><span>
 </span><span id="line-89"></span><span class="hs-comment">-- | Removes the user's global config file</span><span>
-</span><span id="line-90"></span><span id="local-6989586621680252920"><span class="annot"><a href="Fission.CLI.Environment.html#removeConfigFile"><span class="hs-identifier hs-type">removeConfigFile</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680252920"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680252920"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IOException</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-90"></span><span id="local-6989586621680259719"><span class="annot"><a href="Fission.CLI.Environment.html#removeConfigFile"><span class="hs-identifier hs-type">removeConfigFile</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680259719"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680259719"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IOException</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
 </span><span id="line-91"></span><span id="removeConfigFile"><span class="annot"><span class="annottext">removeConfigFile :: m (Either IOException ())
 </span><a href="Fission.CLI.Environment.html#removeConfigFile"><span class="hs-identifier hs-var hs-var">removeConfigFile</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-92"></span><span>  </span><span id="local-6989586621680252919"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680252919"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-92"></span><span>  </span><span id="local-6989586621680259718"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680259718"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
 </span><span id="line-93"></span><span>  </span><span class="annot"><span class="annottext">m () -&gt; m (Either IOException ())
@@ -199,21 +199,21 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m ()
 </span><span class="hs-identifier hs-var">removeFile</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680252919"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><a href="#local-6989586621680259718"><span class="hs-identifier hs-var">path</span></a></span><span>
 </span><span id="line-94"></span><span>
 </span><span id="line-95"></span><span class="hs-comment">-- | Retrieves a Fission Peer from local config</span><span>
 </span><span id="line-96"></span><span class="hs-comment">--   If not found we retrive from the network and store</span><span>
-</span><span id="line-97"></span><span id="local-6989586621680252916"><span class="annot"><a href="Fission.CLI.Environment.html#getOrRetrievePeer"><span class="hs-identifier hs-type">getOrRetrievePeer</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-98"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680252916"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-99"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680252916"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-100"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680252916"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-97"></span><span id="local-6989586621680259715"><span class="annot"><a href="Fission.CLI.Environment.html#getOrRetrievePeer"><span class="hs-identifier hs-type">getOrRetrievePeer</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-98"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680259715"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-99"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680259715"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-100"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680259715"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-101"></span><span>  </span><span class="hs-special">)</span><span>
 </span><span id="line-102"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span>
-</span><span id="line-103"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680252916"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span><span class="hs-special">)</span></span><span>
+</span><span id="line-103"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680259715"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span><span class="hs-special">)</span></span><span>
 </span><span id="line-104"></span><span id="getOrRetrievePeer"><span class="annot"><span class="annottext">getOrRetrievePeer :: Environment -&gt; m (Maybe Peer)
 </span><a href="Fission.CLI.Environment.html#getOrRetrievePeer"><span class="hs-identifier hs-var hs-var">getOrRetrievePeer</span></a></span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:peers:Environment :: Environment -&gt; [Peer]
-</span><a href="Fission.CLI.Environment.Types.html#%24sel%3Apeers%3AEnvironment"><span class="hs-identifier hs-var">peers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680252913"><span class="annot"><span class="annottext">peer :: Peer
-</span><a href="#local-6989586621680252913"><span class="hs-identifier hs-var">peer</span></a></span></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="Fission.CLI.Environment.Types.html#%24sel%3Apeers%3AEnvironment"><span class="hs-identifier hs-var">peers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680259712"><span class="annot"><span class="annottext">peer :: Peer
+</span><a href="#local-6989586621680259712"><span class="hs-identifier hs-var">peer</span></a></span></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-105"></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -222,7 +222,7 @@ msg -&gt; m ()
 </span><span id="line-106"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">Peer -&gt; Maybe Peer
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Peer
-</span><a href="#local-6989586621680252913"><span class="hs-identifier hs-var">peer</span></a></span><span>
+</span><a href="#local-6989586621680259712"><span class="hs-identifier hs-var">peer</span></a></span><span>
 </span><span id="line-107"></span><span>
 </span><span id="line-108"></span><span class="annot"><a href="Fission.CLI.Environment.html#getOrRetrievePeer"><span class="hs-identifier hs-var">getOrRetrievePeer</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:peers:Environment :: Environment -&gt; [Peer]
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3Apeers%3AEnvironment"><span class="hs-identifier hs-var">peers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
@@ -235,8 +235,8 @@ m (Either ClientError (NonEmpty Peer))
 -&gt; m (Maybe Peer)
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-110"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680252912"><span class="annot"><span class="annottext">err :: ClientError
-</span><a href="#local-6989586621680252912"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-110"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680259711"><span class="annot"><span class="annottext">err :: ClientError
+</span><a href="#local-6989586621680259711"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-111"></span><span>      </span><span class="annot"><span class="annottext">Utf8Builder -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -246,7 +246,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ClientError -&gt; Utf8Builder
 forall a. Show a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">displayShow</span></span><span> </span><span class="annot"><span class="annottext">ClientError
-</span><a href="#local-6989586621680252912"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680259711"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-112"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -256,29 +256,29 @@ msg -&gt; m ()
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-114"></span><span>
-</span><span id="line-115"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680252909"><span class="annot"><span class="annottext">nonEmptyPeers :: NonEmpty Peer
-</span><a href="#local-6989586621680252909"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-115"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680259708"><span class="annot"><span class="annottext">nonEmptyPeers :: NonEmpty Peer
+</span><a href="#local-6989586621680259708"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-116"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
 msg -&gt; m ()
 </span><a href="Fission.Internal.Log.html#logDebug"><span class="hs-identifier hs-var">logDebug</span></a></span><span> </span><span class="hs-glyph">@</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Retrieved Peer from API&quot;</span></span><span>
-</span><span id="line-117"></span><span>      </span><span id="local-6989586621680252908"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680252908"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
+</span><span id="line-117"></span><span>      </span><span id="local-6989586621680259707"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680259707"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; m FilePath
 </span><a href="Fission.CLI.Environment.Override.html#globalEnv"><span class="hs-identifier hs-var">globalEnv</span></a></span><span>
 </span><span id="line-118"></span><span>      </span><span class="annot"><span class="annottext">FilePath -&gt; Override -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; Override -&gt; m ()
 </span><a href="Fission.CLI.Environment.Override.html#writeMerge"><span class="hs-identifier hs-var">Override.writeMerge</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680252908"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(Override -&gt; m ()) -&gt; Override -&gt; m ()
+</span><a href="#local-6989586621680259707"><span class="hs-identifier hs-var">path</span></a></span><span> </span><span class="annot"><span class="annottext">(Override -&gt; m ()) -&gt; Override -&gt; m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Override
 forall a. Monoid a =&gt; a
 </span><span class="hs-identifier hs-var">mempty</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:peers:Override :: [Peer]
-</span><a href="#local-6989586621680252946"><span class="hs-identifier hs-var">peers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer -&gt; [Peer]
+</span><a href="#local-6989586621680259745"><span class="hs-identifier hs-var">peers</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer -&gt; [Peer]
 forall a. NonEmpty a -&gt; [a]
 </span><span class="hs-identifier hs-var">NonEmpty.toList</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer
-</span><a href="#local-6989586621680252909"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><a href="#local-6989586621680259708"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span><span> </span><span class="hs-special">}</span><span>
 </span><span id="line-119"></span><span>      </span><span class="annot"><span class="annottext">Maybe Peer -&gt; m (Maybe Peer)
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Maybe Peer -&gt; m (Maybe Peer))
@@ -291,7 +291,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer -&gt; Peer
 forall a. NonEmpty a -&gt; a
 </span><span class="hs-identifier hs-var">NonEmpty.head</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty Peer
-</span><a href="#local-6989586621680252909"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span><span>
+</span><a href="#local-6989586621680259708"><span class="hs-identifier hs-var">nonEmptyPeers</span></a></span><span>
 </span><span id="line-120"></span><span>
 </span><span id="line-121"></span><span class="annot"><a href="Fission.CLI.Environment.html#ignoreDefault"><span class="hs-identifier hs-type">ignoreDefault</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Ignored</span></span><span>
 </span><span id="line-122"></span><span id="ignoreDefault"><span class="annot"><span class="annottext">ignoreDefault :: Ignored

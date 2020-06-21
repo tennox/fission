@@ -2,10 +2,10 @@
 </span><span id="line-2"></span><span>
 </span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-4"></span><span>
-</span><span id="line-5"></span><span id="local-6989586621680239370"><span id="local-6989586621680239371"></span></span><span class="hs-keyword">data</span><span> </span><span id="Env"><span class="annot"><a href="Fission.CLI.Environment.Error.html#Env"><span class="hs-identifier hs-var">Env</span></a></span></span><span>
+</span><span id="line-5"></span><span id="local-6989586621680245946"><span id="local-6989586621680245947"></span></span><span class="hs-keyword">data</span><span> </span><span id="Env"><span class="annot"><a href="Fission.CLI.Environment.Error.html#Env"><span class="hs-identifier hs-var">Env</span></a></span></span><span>
 </span><span id="line-6"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="EnvNotFound"><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvNotFound"><span class="hs-identifier hs-var">EnvNotFound</span></a></span></span><span>
 </span><span id="line-7"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="EnvIncomplete"><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvIncomplete"><span class="hs-identifier hs-var">EnvIncomplete</span></a></span></span><span>
-</span><span id="line-8"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680239360"><span id="local-6989586621680239362"><span id="local-6989586621680239364"><span class="annot"><span class="annottext">Show Env
+</span><span id="line-8"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680245936"><span id="local-6989586621680245938"><span id="local-6989586621680245940"><span class="annot"><span class="annottext">Show Env
 Typeable Env
 (Typeable Env, Show Env) =&gt;
 (Env -&gt; SomeException)
@@ -26,7 +26,7 @@ $ctoException :: Env -&gt; SomeException
 $cp2Exception :: Show Env
 $cp1Exception :: Typeable Env
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span>
-</span><span id="line-9"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680239355"><span id="local-6989586621680239357"><span class="annot"><span class="annottext">Env -&gt; Env -&gt; Bool
+</span><span id="line-9"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245931"><span id="local-6989586621680245933"><span class="annot"><span class="annottext">Env -&gt; Env -&gt; Bool
 (Env -&gt; Env -&gt; Bool) -&gt; (Env -&gt; Env -&gt; Bool) -&gt; Eq Env
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Env -&gt; Env -&gt; Bool
@@ -45,8 +45,8 @@ $cfrom :: forall x. Env -&gt; Rep Env x
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span>
 </span><span id="line-11"></span><span>           </span><span class="hs-special">)</span><span>
 </span><span id="line-12"></span><span>
-</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680239346"><span id="local-6989586621680239349"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Error.html#Env"><span class="hs-identifier hs-type">Env</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-14"></span><span>  </span><span id="local-6989586621680239344"><span class="annot"><span class="annottext">show :: Env -&gt; String
+</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680245922"><span id="local-6989586621680245925"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Error.html#Env"><span class="hs-identifier hs-type">Env</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680245920"><span class="annot"><span class="annottext">show :: Env -&gt; String
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">show</span></span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvNotFound"><span class="hs-identifier hs-type">EnvNotFound</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Could not find .fission.yaml&quot;</span></span><span>
 </span><span id="line-15"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Error.html#EnvIncomplete"><span class="hs-identifier hs-type">EnvIncomplete</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Could not construct a full .fission.yaml&quot;</span></span><span>
 </span><span id="line-16"></span></pre></body></html>

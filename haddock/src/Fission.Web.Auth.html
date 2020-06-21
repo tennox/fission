@@ -36,66 +36,66 @@
 </span><span id="line-36"></span><span>     </span><span class="hs-special">]</span><span>
 </span><span id="line-37"></span><span>
 </span><span id="line-38"></span><span class="hs-comment">-- | Construct an authorization context</span><span>
-</span><span id="line-39"></span><span id="local-6989586621680251333"><span class="annot"><a href="Fission.Web.Auth.html#mkAuth"><span class="hs-identifier hs-type">mkAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-40"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Class.html#MonadAuth"><span class="hs-identifier hs-type">MonadAuth</span></a></span><span>      </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680251333"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Class.html#MonadAuth"><span class="hs-identifier hs-type">MonadAuth</span></a></span><span>      </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680251333"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Class.html#MonadBasicAuth"><span class="hs-identifier hs-type">MonadBasicAuth</span></a></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Auth.Types.html#Auth"><span class="hs-identifier hs-type">Heroku.Auth</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680251333"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-39"></span><span id="local-6989586621680258132"><span class="annot"><a href="Fission.Web.Auth.html#mkAuth"><span class="hs-identifier hs-type">mkAuth</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Class.html#MonadAuth"><span class="hs-identifier hs-type">MonadAuth</span></a></span><span>      </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span><span>           </span><span class="annot"><a href="#local-6989586621680258132"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Class.html#MonadAuth"><span class="hs-identifier hs-type">MonadAuth</span></a></span><span>      </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680258132"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Class.html#MonadBasicAuth"><span class="hs-identifier hs-type">MonadBasicAuth</span></a></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Auth.Types.html#Auth"><span class="hs-identifier hs-type">Heroku.Auth</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680258132"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-43"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-44"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680251333"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Context</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.html#Checks"><span class="hs-identifier hs-type">Checks</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-44"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680258132"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Context</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.html#Checks"><span class="hs-identifier hs-type">Checks</span></a></span><span class="hs-special">)</span></span><span>
 </span><span id="line-45"></span><span id="mkAuth"><span class="annot"><span class="annottext">mkAuth :: m (Context Checks)
 </span><a href="Fission.Web.Auth.html#mkAuth"><span class="hs-identifier hs-var hs-var">mkAuth</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-46"></span><span>  </span><span id="local-6989586621680251332"><span class="annot"><span class="annottext">AuthHandler Request DID
-</span><a href="#local-6989586621680251332"><span class="hs-identifier hs-var">didAuth</span></a></span></span><span>         </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (AuthHandler Request DID)
+</span><span id="line-46"></span><span>  </span><span id="local-6989586621680258131"><span class="annot"><span class="annottext">AuthHandler Request DID
+</span><a href="#local-6989586621680258131"><span class="hs-identifier hs-var">didAuth</span></a></span></span><span>         </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (AuthHandler Request DID)
 forall who (m :: * -&gt; *).
 MonadAuth who m =&gt;
 m (AuthHandler Request who)
 </span><a href="Fission.Web.Auth.Class.html#getVerifier"><span class="hs-identifier hs-var">Auth.getVerifier</span></a></span><span>
-</span><span id="line-47"></span><span>  </span><span id="local-6989586621680251330"><span class="annot"><span class="annottext">AuthHandler Request Authorization
-</span><a href="#local-6989586621680251330"><span class="hs-identifier hs-var">higherOrderAuth</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (AuthHandler Request Authorization)
+</span><span id="line-47"></span><span>  </span><span id="local-6989586621680258129"><span class="annot"><span class="annottext">AuthHandler Request Authorization
+</span><a href="#local-6989586621680258129"><span class="hs-identifier hs-var">higherOrderAuth</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (AuthHandler Request Authorization)
 forall who (m :: * -&gt; *).
 MonadAuth who m =&gt;
 m (AuthHandler Request who)
 </span><a href="Fission.Web.Auth.Class.html#getVerifier"><span class="hs-identifier hs-var">Auth.getVerifier</span></a></span><span>
-</span><span id="line-48"></span><span>  </span><span id="local-6989586621680251329"><span class="annot"><span class="annottext">BasicAuthCheck Auth
-</span><a href="#local-6989586621680251329"><span class="hs-identifier hs-var">herokuAuth</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (BasicAuthCheck Auth)
+</span><span id="line-48"></span><span>  </span><span id="local-6989586621680258128"><span class="annot"><span class="annottext">BasicAuthCheck Auth
+</span><a href="#local-6989586621680258128"><span class="hs-identifier hs-var">herokuAuth</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (BasicAuthCheck Auth)
 forall who (m :: * -&gt; *).
 MonadBasicAuth who m =&gt;
 m (BasicAuthCheck who)
 </span><a href="Fission.Web.Auth.Token.Basic.Class.html#getVerifier"><span class="hs-identifier hs-var">BasicAuth.getVerifier</span></a></span><span>
 </span><span id="line-49"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">AuthHandler Request DID
-</span><a href="#local-6989586621680251332"><span class="hs-identifier hs-var">didAuth</span></a></span><span>
+</span><a href="#local-6989586621680258131"><span class="hs-identifier hs-var">didAuth</span></a></span><span>
 </span><span id="line-50"></span><span>        </span><span class="annot"><span class="annottext">AuthHandler Request DID
 -&gt; Context
      '[AuthHandler Request Authorization, BasicAuthCheck Auth]
 -&gt; Context Checks
 forall x (xs :: [*]). x -&gt; Context xs -&gt; Context (x : xs)
 </span><span class="hs-operator hs-var">:.</span></span><span> </span><span class="annot"><span class="annottext">AuthHandler Request Authorization
-</span><a href="#local-6989586621680251330"><span class="hs-identifier hs-var">higherOrderAuth</span></a></span><span>
+</span><a href="#local-6989586621680258129"><span class="hs-identifier hs-var">higherOrderAuth</span></a></span><span>
 </span><span id="line-51"></span><span>        </span><span class="annot"><span class="annottext">AuthHandler Request Authorization
 -&gt; Context '[BasicAuthCheck Auth]
 -&gt; Context
      '[AuthHandler Request Authorization, BasicAuthCheck Auth]
 forall x (xs :: [*]). x -&gt; Context xs -&gt; Context (x : xs)
 </span><span class="hs-operator hs-var">:.</span></span><span> </span><span class="annot"><span class="annottext">BasicAuthCheck Auth
-</span><a href="#local-6989586621680251329"><span class="hs-identifier hs-var">herokuAuth</span></a></span><span>
+</span><a href="#local-6989586621680258128"><span class="hs-identifier hs-var">herokuAuth</span></a></span><span>
 </span><span id="line-52"></span><span>        </span><span class="annot"><span class="annottext">BasicAuthCheck Auth
 -&gt; Context '[] -&gt; Context '[BasicAuthCheck Auth]
 forall x (xs :: [*]). x -&gt; Context xs -&gt; Context (x : xs)
 </span><span class="hs-operator hs-var">:.</span></span><span> </span><span class="annot"><span class="annottext">Context '[]
 </span><span class="hs-identifier hs-var">EmptyContext</span></span><span>
 </span><span id="line-53"></span><span>
-</span><span id="line-54"></span><span id="local-6989586621680251324"><span id="local-6989586621680251325"><span class="annot"><a href="Fission.Web.Auth.html#authWithContext"><span class="hs-identifier hs-type">authWithContext</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-55"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">HasServer</span></span><span> </span><span class="annot"><a href="#local-6989586621680251325"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.html#Checks"><span class="hs-identifier hs-type">Checks</span></a></span><span>
-</span><span id="line-56"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680251325"><span class="hs-identifier hs-type">api</span></a></span><span>
-</span><span id="line-57"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680251359"><span class="annot"><a href="#local-6989586621680251359"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-operator">.</span><span> </span><span class="annot"><a href="#local-6989586621680251324"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680251359"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span><span> </span><span class="annot"><a href="#local-6989586621680251359"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="#local-6989586621680251325"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680251324"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="#local-6989586621680251325"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span></span></span><span>
+</span><span id="line-54"></span><span id="local-6989586621680258123"><span id="local-6989586621680258124"><span class="annot"><a href="Fission.Web.Auth.html#authWithContext"><span class="hs-identifier hs-type">authWithContext</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-55"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">HasServer</span></span><span> </span><span class="annot"><a href="#local-6989586621680258124"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.html#Checks"><span class="hs-identifier hs-type">Checks</span></a></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680258124"><span class="hs-identifier hs-type">api</span></a></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680258158"><span class="annot"><a href="#local-6989586621680258158"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-operator">.</span><span> </span><span class="annot"><a href="#local-6989586621680258123"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680258158"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span><span> </span><span class="annot"><a href="#local-6989586621680258158"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="#local-6989586621680258124"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680258123"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="#local-6989586621680258124"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span></span></span><span>
 </span><span id="line-60"></span><span id="authWithContext"><span class="annot"><span class="annottext">authWithContext :: Proxy api
 -&gt; (forall a. m a -&gt; Handler a)
 -&gt; ServerT api m
 -&gt; ServerT api Handler
-</span><a href="Fission.Web.Auth.html#authWithContext"><span class="hs-identifier hs-var hs-var">authWithContext</span></a></span></span><span> </span><span id="local-6989586621680251323"><span class="annot"><span class="annottext">api :: Proxy api
-</span><a href="#local-6989586621680251323"><span class="hs-identifier hs-var">api</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Proxy api
+</span><a href="Fission.Web.Auth.html#authWithContext"><span class="hs-identifier hs-var hs-var">authWithContext</span></a></span></span><span> </span><span id="local-6989586621680258122"><span class="annot"><span class="annottext">api :: Proxy api
+</span><a href="#local-6989586621680258122"><span class="hs-identifier hs-var">api</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Proxy api
 -&gt; Proxy Checks
 -&gt; (forall a. m a -&gt; Handler a)
 -&gt; ServerT api m
@@ -108,16 +108,16 @@ Proxy api
 -&gt; ServerT api m
 -&gt; ServerT api n
 </span><span class="hs-identifier hs-var">hoistServerWithContext</span></span><span> </span><span class="annot"><span class="annottext">Proxy api
-</span><a href="#local-6989586621680251323"><span class="hs-identifier hs-var">api</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Proxy Checks
+</span><a href="#local-6989586621680258122"><span class="hs-identifier hs-var">api</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Proxy Checks
 forall k (t :: k). Proxy t
 </span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Auth.html#Checks"><span class="hs-identifier hs-type">Checks</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-61"></span><span>
 </span><span id="line-62"></span><span class="hs-comment">-- | Basic auth. Used for Heroku auth check</span><span>
 </span><span id="line-63"></span><span class="annot"><a href="Fission.Web.Auth.html#basic"><span class="hs-identifier hs-type">basic</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthCheck</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span>
 </span><span id="line-64"></span><span id="basic"><span class="annot"><span class="annottext">basic :: ByteString -&gt; ByteString -&gt; BasicAuthCheck ByteString
-</span><a href="Fission.Web.Auth.html#basic"><span class="hs-identifier hs-var hs-var">basic</span></a></span></span><span> </span><span id="local-6989586621680251320"><span class="annot"><span class="annottext">unOK :: ByteString
-</span><a href="#local-6989586621680251320"><span class="hs-identifier hs-var">unOK</span></a></span></span><span> </span><span id="local-6989586621680251319"><span class="annot"><span class="annottext">pwOK :: ByteString
-</span><a href="#local-6989586621680251319"><span class="hs-identifier hs-var">pwOK</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(BasicAuthData -&gt; IO (BasicAuthResult ByteString))
+</span><a href="Fission.Web.Auth.html#basic"><span class="hs-identifier hs-var hs-var">basic</span></a></span></span><span> </span><span id="local-6989586621680258119"><span class="annot"><span class="annottext">unOK :: ByteString
+</span><a href="#local-6989586621680258119"><span class="hs-identifier hs-var">unOK</span></a></span></span><span> </span><span id="local-6989586621680258118"><span class="annot"><span class="annottext">pwOK :: ByteString
+</span><a href="#local-6989586621680258118"><span class="hs-identifier hs-var">pwOK</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(BasicAuthData -&gt; IO (BasicAuthResult ByteString))
 -&gt; BasicAuthCheck ByteString
 forall usr.
 (BasicAuthData -&gt; IO (BasicAuthResult usr)) -&gt; BasicAuthCheck usr
@@ -129,27 +129,27 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 -&gt; IO (BasicAuthResult ByteString)
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">BasicAuthData -&gt; BasicAuthResult ByteString
-</span><a href="#local-6989586621680251316"><span class="hs-identifier hs-var">check</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680258115"><span class="hs-identifier hs-var">check</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-65"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-66"></span><span>    </span><span class="annot"><a href="#local-6989586621680251316"><span class="hs-identifier hs-type">check</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthResult</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span>
-</span><span id="line-67"></span><span>    </span><span id="local-6989586621680251316"><span class="annot"><span class="annottext">check :: BasicAuthData -&gt; BasicAuthResult ByteString
-</span><a href="#local-6989586621680251316"><span class="hs-identifier hs-var hs-var">check</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span> </span><span id="local-6989586621680251314"><span class="annot"><span class="annottext">username :: ByteString
-</span><a href="#local-6989586621680251314"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680251313"><span class="annot"><span class="annottext">password :: ByteString
-</span><a href="#local-6989586621680251313"><span class="hs-identifier hs-var">password</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-66"></span><span>    </span><span class="annot"><a href="#local-6989586621680258115"><span class="hs-identifier hs-type">check</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthResult</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span>
+</span><span id="line-67"></span><span>    </span><span id="local-6989586621680258115"><span class="annot"><span class="annottext">check :: BasicAuthData -&gt; BasicAuthResult ByteString
+</span><a href="#local-6989586621680258115"><span class="hs-identifier hs-var hs-var">check</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span> </span><span id="local-6989586621680258113"><span class="annot"><span class="annottext">username :: ByteString
+</span><a href="#local-6989586621680258113"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680258112"><span class="annot"><span class="annottext">password :: ByteString
+</span><a href="#local-6989586621680258112"><span class="hs-identifier hs-var">password</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-68"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680251314"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; Bool
+</span><a href="#local-6989586621680258113"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680251320"><span class="hs-identifier hs-var">unOK</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
+</span><a href="#local-6989586621680258119"><span class="hs-identifier hs-var">unOK</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">&amp;&amp;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680251319"><span class="hs-identifier hs-var">pwOK</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; Bool
+</span><a href="#local-6989586621680258118"><span class="hs-identifier hs-var">pwOK</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680251313"><span class="hs-identifier hs-var">password</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680258112"><span class="hs-identifier hs-var">password</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-69"></span><span>         </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; BasicAuthResult ByteString
 forall usr. usr -&gt; BasicAuthResult usr
 </span><span class="hs-identifier hs-var">Authorized</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680251314"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><a href="#local-6989586621680258113"><span class="hs-identifier hs-var">username</span></a></span><span>
 </span><span id="line-70"></span><span>         </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">BasicAuthResult ByteString
 forall usr. BasicAuthResult usr
 </span><span class="hs-identifier hs-var">Unauthorized</span></span><span>

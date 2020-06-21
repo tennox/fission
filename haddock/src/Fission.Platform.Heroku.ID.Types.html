@@ -5,14 +5,14 @@
 </span><span id="line-5"></span><span class="hs-comment">-- | Heroku add-on ID (from @addon-manifest.json@)</span><span>
 </span><span id="line-6"></span><span class="hs-keyword">newtype</span><span> </span><span id="ID"><span class="annot"><a href="Fission.Platform.Heroku.ID.Types.html#ID"><span class="hs-identifier hs-var">ID</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="ID"><span class="annot"><a href="Fission.Platform.Heroku.ID.Types.html#ID"><span class="hs-identifier hs-var">ID</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AgetID%3AID"><span class="annot"><span class="annottext">ID -&gt; ByteString
 </span><a href="Fission.Platform.Heroku.ID.Types.html#%24sel%3AgetID%3AID"><span class="hs-identifier hs-var hs-var">getID</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-7"></span><span>  </span><span class="hs-keyword">deriving</span><span>         </span><span class="hs-special">(</span><span id="local-6989586621680237060"><span id="local-6989586621680237062"><span class="annot"><span class="annottext">ID -&gt; ID -&gt; Bool
+</span><span id="line-7"></span><span>  </span><span class="hs-keyword">deriving</span><span>         </span><span class="hs-special">(</span><span id="local-6989586621680243636"><span id="local-6989586621680243638"><span class="annot"><span class="annottext">ID -&gt; ID -&gt; Bool
 (ID -&gt; ID -&gt; Bool) -&gt; (ID -&gt; ID -&gt; Bool) -&gt; Eq ID
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: ID -&gt; ID -&gt; Bool
 $c/= :: ID -&gt; ID -&gt; Bool
 == :: ID -&gt; ID -&gt; Bool
 $c== :: ID -&gt; ID -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680237053"><span id="local-6989586621680237055"><span id="local-6989586621680237057"><span class="annot"><span class="annottext">Int -&gt; ID -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680243629"><span id="local-6989586621680243631"><span id="local-6989586621680243633"><span class="annot"><span class="annottext">Int -&gt; ID -&gt; ShowS
 [ID] -&gt; ShowS
 ID -&gt; String
 (Int -&gt; ID -&gt; ShowS)
@@ -26,7 +26,7 @@ $cshow :: ID -&gt; String
 showsPrec :: Int -&gt; ID -&gt; ShowS
 $cshowsPrec :: Int -&gt; ID -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
-</span><span id="line-8"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span id="local-6989586621680237050"><span class="annot"><span class="annottext">String -&gt; ID
+</span><span id="line-8"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span id="local-6989586621680243626"><span class="annot"><span class="annottext">String -&gt; ID
 (String -&gt; ID) -&gt; IsString ID
 forall a. (String -&gt; a) -&gt; IsString a
 fromString :: String -&gt; ID

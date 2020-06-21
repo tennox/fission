@@ -25,25 +25,25 @@
 -}</span><span>
 </span><span id="line-26"></span><span class="annot"><a href="Fission.Internal.URL.html#isURLCharacter"><span class="hs-identifier hs-type">isURLCharacter</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
 </span><span id="line-27"></span><span id="isURLCharacter"><span class="annot"><span class="annottext">isURLCharacter :: Word8 -&gt; Bool
-</span><a href="Fission.Internal.URL.html#isURLCharacter"><span class="hs-identifier hs-var hs-var">isURLCharacter</span></a></span></span><span> </span><span id="local-6989586621680238497"><span class="annot"><span class="annottext">w :: Word8
-</span><a href="#local-6989586621680238497"><span class="hs-identifier hs-var">w</span></a></span></span><span>
+</span><a href="Fission.Internal.URL.html#isURLCharacter"><span class="hs-identifier hs-var hs-var">isURLCharacter</span></a></span></span><span> </span><span id="local-6989586621680245073"><span class="annot"><span class="annottext">w :: Word8
+</span><a href="#local-6989586621680245073"><span class="hs-identifier hs-var">w</span></a></span></span><span>
 </span><span id="line-28"></span><span>  </span><span class="hs-glyph">=</span><span>  </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><span class="hs-identifier hs-var">isAsciiUpper</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680238497"><span class="hs-identifier hs-var">w</span></a></span><span>
+</span><a href="#local-6989586621680245073"><span class="hs-identifier hs-var">w</span></a></span><span>
 </span><span id="line-29"></span><span>  </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">||</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><span class="hs-identifier hs-var">isAsciiLower</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680238497"><span class="hs-identifier hs-var">w</span></a></span><span>
+</span><a href="#local-6989586621680245073"><span class="hs-identifier hs-var">w</span></a></span><span>
 </span><span id="line-30"></span><span>  </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">||</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><span class="hs-identifier hs-var">isDigit</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680238497"><span class="hs-identifier hs-var">w</span></a></span><span>
+</span><a href="#local-6989586621680245073"><span class="hs-identifier hs-var">w</span></a></span><span>
 </span><span id="line-31"></span><span>  </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">||</span></span><span> </span><span class="annot"><span class="annottext">[Word8 -&gt; Bool] -&gt; Word8 -&gt; Bool
 forall a. [a -&gt; Bool] -&gt; a -&gt; Bool
 </span><a href="Fission.Internal.Bool.html#anyX"><span class="hs-identifier hs-var">anyX</span></a></span><span> </span><span class="annot"><span class="annottext">[Word8 -&gt; Bool]
 </span><a href="Fission.Internal.URL.html#urlSpecials"><span class="hs-identifier hs-var">urlSpecials</span></a></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680238497"><span class="hs-identifier hs-var">w</span></a></span><span>
+</span><a href="#local-6989586621680245073"><span class="hs-identifier hs-var">w</span></a></span><span>
 </span><span id="line-32"></span><span>
 </span><span id="line-33"></span><span class="hs-comment">-- | List of URL special character checks</span><span>
 </span><span id="line-34"></span><span class="annot"><a href="Fission.Internal.URL.html#urlSpecials"><span class="hs-identifier hs-type">urlSpecials</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">]</span><span>
