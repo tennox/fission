@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.4.2
+@version 2.4.3
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -7761,15 +7761,6 @@ removeConfigFile :: MonadUnliftIO m => m (Either IOException ())
 -- | Retrieves a Fission Peer from local config If not found we retrive
 --   from the network and store
 getOrRetrievePeer :: (MonadUnliftIO m, MonadLogger m, MonadWebClient m) => Environment -> m (Maybe Peer)
-
-
--- | Login command
-module Fission.CLI.Command.Logout
-cmd :: (MonadUnliftIO m, MonadLogger m) => Command m () ()
-
--- | Login (i.e. save credentials to disk). Validates credentials agianst
---   the server.
-logout :: (MonadUnliftIO m, MonadLogger m) => m ()
 
 module Fission.Web.IPFS.Pin
 type API = PinAPI :<|> UnpinAPI

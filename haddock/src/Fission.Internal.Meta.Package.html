@@ -17,19 +17,19 @@
 </span><span id="line-15"></span><span>
 </span><span id="line-16"></span><span class="annot"><a href="Fission.Internal.Meta.Package.html#fromContents"><span class="hs-identifier hs-type">fromContents</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.Internal.Meta.Package.Types.html#Package"><span class="hs-identifier hs-type">Package</span></a></span><span>
 </span><span id="line-17"></span><span id="fromContents"><span class="annot"><span class="annottext">fromContents :: ByteString -&gt; Maybe Package
-</span><a href="Fission.Internal.Meta.Package.html#fromContents"><span class="hs-identifier hs-var hs-var">fromContents</span></a></span></span><span> </span><span id="local-6989586621680244980"><span class="annot"><span class="annottext">contents :: ByteString
-</span><a href="#local-6989586621680244980"><span class="hs-identifier hs-var">contents</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Internal.Meta.Package.html#fromContents"><span class="hs-identifier hs-var hs-var">fromContents</span></a></span></span><span> </span><span id="local-6989586621680244216"><span class="annot"><span class="annottext">contents :: ByteString
+</span><a href="#local-6989586621680244216"><span class="hs-identifier hs-var">contents</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-18"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either ParseException Package
 forall a. FromJSON a =&gt; ByteString -&gt; Either ParseException a
 </span><span class="hs-identifier hs-var">Yaml.decodeEither'</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680244980"><span class="hs-identifier hs-var">contents</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-19"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680244978"><span class="annot"><span class="annottext">_err :: ParseException
-</span><a href="#local-6989586621680244978"><span class="hs-identifier hs-var">_err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe Package
+</span><a href="#local-6989586621680244216"><span class="hs-identifier hs-var">contents</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-19"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680244214"><span class="annot"><span class="annottext">_err :: ParseException
+</span><a href="#local-6989586621680244214"><span class="hs-identifier hs-var">_err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe Package
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-20"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680244977"><span class="annot"><span class="annottext">val :: Package
-</span><a href="#local-6989586621680244977"><span class="hs-identifier hs-var">val</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Package -&gt; Maybe Package
+</span><span id="line-20"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680244213"><span class="annot"><span class="annottext">val :: Package
+</span><a href="#local-6989586621680244213"><span class="hs-identifier hs-var">val</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Package -&gt; Maybe Package
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Package
-</span><a href="#local-6989586621680244977"><span class="hs-identifier hs-var">val</span></a></span><span>
+</span><a href="#local-6989586621680244213"><span class="hs-identifier hs-var">val</span></a></span><span>
 </span><span id="line-21"></span></pre></body></html>

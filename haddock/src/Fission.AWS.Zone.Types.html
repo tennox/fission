@@ -9,7 +9,7 @@
 </span><span id="line-9"></span><span class="hs-comment">-- | Type safety wrapper for a Route53 zone ID</span><span>
 </span><span id="line-10"></span><span class="hs-keyword">newtype</span><span> </span><span id="ZoneID"><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-var">ZoneID</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="ZoneID"><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-var">ZoneID</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AgetZoneID%3AZoneID"><span class="annot"><span class="annottext">ZoneID -&gt; Text
 </span><a href="Fission.AWS.Zone.Types.html#%24sel%3AgetZoneID%3AZoneID"><span class="hs-identifier hs-var hs-var">getZoneID</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680246447"><span id="local-6989586621680246449"><span class="annot"><span class="annottext">ZoneID -&gt; ZoneID -&gt; Bool
+</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680245683"><span id="local-6989586621680245685"><span class="annot"><span class="annottext">ZoneID -&gt; ZoneID -&gt; Bool
 (ZoneID -&gt; ZoneID -&gt; Bool)
 -&gt; (ZoneID -&gt; ZoneID -&gt; Bool) -&gt; Eq ZoneID
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -17,7 +17,7 @@ forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c/= :: ZoneID -&gt; ZoneID -&gt; Bool
 == :: ZoneID -&gt; ZoneID -&gt; Bool
 $c== :: ZoneID -&gt; ZoneID -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680246440"><span id="local-6989586621680246442"><span id="local-6989586621680246444"><span class="annot"><span class="annottext">Int -&gt; ZoneID -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245676"><span id="local-6989586621680245678"><span id="local-6989586621680245680"><span class="annot"><span class="annottext">Int -&gt; ZoneID -&gt; ShowS
 [ZoneID] -&gt; ShowS
 ZoneID -&gt; String
 (Int -&gt; ZoneID -&gt; ShowS)
@@ -32,8 +32,8 @@ showsPrec :: Int -&gt; ZoneID -&gt; ShowS
 $cshowsPrec :: Int -&gt; ZoneID -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-12"></span><span>
-</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680246436"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-14"></span><span>  </span><span id="local-6989586621680246434"><span class="annot"><span class="annottext">arbitrary :: Gen ZoneID
+</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680245672"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680245670"><span class="annot"><span class="annottext">arbitrary :: Gen ZoneID
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ZoneID
 </span><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-var">ZoneID</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ZoneID) -&gt; Gen Text -&gt; Gen ZoneID
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
@@ -41,30 +41,30 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-15"></span><span>
-</span><span id="line-16"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680246430"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-17"></span><span>  </span><span id="local-6989586621680246427"><span class="annot"><span class="annottext">textDisplay :: ZoneID -&gt; Text
+</span><span id="line-16"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680245666"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-17"></span><span>  </span><span id="local-6989586621680245663"><span class="annot"><span class="annottext">textDisplay :: ZoneID -&gt; Text
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; Text
 </span><a href="Fission.AWS.Zone.Types.html#%24sel%3AgetZoneID%3AZoneID"><span class="hs-identifier hs-var hs-var">getZoneID</span></a></span><span>
 </span><span id="line-18"></span><span>
 </span><span id="line-19"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-20"></span><span>  </span><span id="local-6989586621680246422"><span class="annot"><span class="annottext">toPersistValue :: ZoneID -&gt; PersistValue
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span><span> </span><span id="local-6989586621680246420"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680246420"><span class="hs-identifier hs-var">txt</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680245658"><span class="annot"><span class="annottext">toPersistValue :: ZoneID -&gt; PersistValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span><span> </span><span id="local-6989586621680245656"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680245656"><span class="hs-identifier hs-var">txt</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
 </span><span class="hs-identifier hs-var">PersistText</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680246420"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><a href="#local-6989586621680245656"><span class="hs-identifier hs-var">txt</span></a></span><span>
 </span><span id="line-21"></span><span>
-</span><span id="line-22"></span><span>  </span><span id="local-6989586621680246418"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text ZoneID
+</span><span id="line-22"></span><span>  </span><span id="local-6989586621680245654"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text ZoneID
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-23"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680246416"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680246416"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; Either Text ZoneID
+</span><span id="line-23"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680245652"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680245652"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; Either Text ZoneID
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(ZoneID -&gt; Either Text ZoneID) -&gt; ZoneID -&gt; Either Text ZoneID
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; ZoneID
 </span><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-var">ZoneID</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680246416"><span class="hs-identifier hs-var">txt</span></a></span><span>
-</span><span id="line-24"></span><span>    </span><span id="local-6989586621680246415"><span class="annot"><span class="annottext">bad :: PersistValue
-</span><a href="#local-6989586621680246415"><span class="hs-identifier hs-var">bad</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text ZoneID
+</span><a href="#local-6989586621680245652"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><span id="line-24"></span><span>    </span><span id="local-6989586621680245651"><span class="annot"><span class="annottext">bad :: PersistValue
+</span><a href="#local-6989586621680245651"><span class="hs-identifier hs-var">bad</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text ZoneID
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Either Text ZoneID) -&gt; Text -&gt; Either Text ZoneID
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -73,15 +73,15 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">PersistValue -&gt; Text
 forall a. ToHttpApiData a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">toUrlPiece</span></span><span> </span><span class="annot"><span class="annottext">PersistValue
-</span><a href="#local-6989586621680246415"><span class="hs-identifier hs-var">bad</span></a></span><span>
+</span><a href="#local-6989586621680245651"><span class="hs-identifier hs-var">bad</span></a></span><span>
 </span><span id="line-25"></span><span>
 </span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680246410"><span class="annot"><span class="annottext">sqlType :: Proxy ZoneID -&gt; SqlType
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680245646"><span class="annot"><span class="annottext">sqlType :: Proxy ZoneID -&gt; SqlType
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
 </span><span class="hs-identifier hs-var">SqlString</span></span><span>
 </span><span id="line-28"></span><span>
 </span><span id="line-29"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger.ToSchema</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-30"></span><span>  </span><span id="local-6989586621680246405"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy ZoneID -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-30"></span><span>  </span><span id="local-6989586621680245641"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy ZoneID -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-31"></span><span>    </span><span class="annot"><span class="annottext">Schema
 forall a. Monoid a =&gt; a
@@ -114,12 +114,12 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span>
 </span><span id="line-35"></span><span>
-</span><span id="line-36"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680246396"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-37"></span><span>  </span><span id="local-6989586621680246394"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ZoneID
+</span><span id="line-36"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680245632"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">ZoneID</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-37"></span><span>  </span><span id="local-6989586621680245630"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ZoneID
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser ZoneID) -&gt; Value -&gt; Parser ZoneID
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AWS.ZoneID&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680246391"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680246391"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AWS.ZoneID&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680245627"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680245627"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-38"></span><span>    </span><span class="annot"><span class="annottext">Text -&gt; ZoneID
 </span><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-var">ZoneID</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ZoneID) -&gt; Parser Text -&gt; Parser ZoneID
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
@@ -127,5 +127,5 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 forall a. FromJSON a =&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">parseJSON</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680246391"><span class="hs-identifier hs-var">txt</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680245627"><span class="hs-identifier hs-var">txt</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-39"></span></pre></body></html>

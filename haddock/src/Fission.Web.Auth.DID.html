@@ -19,36 +19,36 @@
 </span><span id="line-19"></span><span>
 </span><span id="line-20"></span><span class="hs-comment">-- | Auth handler for registering DIDs</span><span>
 </span><span id="line-21"></span><span class="hs-comment">-- Ensures properly formatted token but *does not check against DB*</span><span>
-</span><span id="line-22"></span><span id="local-6989586621680258200"><span class="annot"><a href="Fission.Web.Auth.DID.html#handler"><span class="hs-identifier hs-type">handler</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-23"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">JWT.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680258200"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-24"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680258200"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-25"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>  </span><span class="annot"><a href="#local-6989586621680258200"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-26"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>   </span><span class="annot"><a href="#local-6989586621680258200"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>    </span><span class="annot"><a href="#local-6989586621680258200"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-22"></span><span id="local-6989586621680257436"><span class="annot"><a href="Fission.Web.Auth.DID.html#handler"><span class="hs-identifier hs-type">handler</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-23"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">JWT.Resolver</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680257436"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-24"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680257436"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-25"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>  </span><span class="annot"><a href="#local-6989586621680257436"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>   </span><span class="annot"><a href="#local-6989586621680257436"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>    </span><span class="annot"><a href="#local-6989586621680257436"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-28"></span><span>  </span><span class="hs-special">)</span><span>
 </span><span id="line-29"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Request</span></span><span>
-</span><span id="line-30"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680258200"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span></span><span>
+</span><span id="line-30"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680257436"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span></span><span>
 </span><span id="line-31"></span><span id="handler"><span class="annot"><span class="annottext">handler :: Request -&gt; m DID
-</span><a href="Fission.Web.Auth.DID.html#handler"><span class="hs-identifier hs-var hs-var">handler</span></a></span></span><span> </span><span id="local-6989586621680258199"><span class="annot"><span class="annottext">req :: Request
-</span><a href="#local-6989586621680258199"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Web.Auth.DID.html#handler"><span class="hs-identifier hs-var hs-var">handler</span></a></span></span><span> </span><span id="local-6989586621680257435"><span class="annot"><span class="annottext">req :: Request
+</span><a href="#local-6989586621680257435"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-32"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Request -&gt; Either Error Token
 </span><a href="Fission.Web.Auth.Token.html#get"><span class="hs-identifier hs-var">Token.get</span></a></span><span> </span><span class="annot"><span class="annottext">Request
-</span><a href="#local-6989586621680258199"><span class="hs-identifier hs-var">req</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-33"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Bearer"><span class="hs-identifier hs-type">Token.Bearer</span></a></span><span> </span><span id="local-6989586621680258196"><span class="annot"><span class="annottext">token :: Token
-</span><a href="#local-6989586621680258196"><span class="hs-identifier hs-var">token</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Bearer.Types.html#Token"><span class="hs-identifier hs-type">Bearer.Token</span></a></span><span> </span><span id="local-6989586621680258194"><span class="annot"><span class="annottext">jwt :: JWT
-</span><a href="#local-6989586621680258194"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span id="local-6989586621680258193"><span class="annot"><span class="annottext">rawContent :: RawContent
-</span><a href="#local-6989586621680258193"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><a href="#local-6989586621680257435"><span class="hs-identifier hs-var">req</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-33"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Bearer"><span class="hs-identifier hs-type">Token.Bearer</span></a></span><span> </span><span id="local-6989586621680257432"><span class="annot"><span class="annottext">token :: Token
+</span><a href="#local-6989586621680257432"><span class="hs-identifier hs-var">token</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Bearer.Types.html#Token"><span class="hs-identifier hs-type">Bearer.Token</span></a></span><span> </span><span id="local-6989586621680257430"><span class="annot"><span class="annottext">jwt :: JWT
+</span><a href="#local-6989586621680257430"><span class="hs-identifier hs-var">jwt</span></a></span></span><span> </span><span id="local-6989586621680257429"><span class="annot"><span class="annottext">rawContent :: RawContent
+</span><a href="#local-6989586621680257429"><span class="hs-identifier hs-var">rawContent</span></a></span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-34"></span><span>      </span><span class="annot"><span class="annottext">RawContent -&gt; JWT -&gt; m (Either Error JWT)
 forall (m :: * -&gt; *).
 (Resolver m, ServerDID m, MonadTime m) =&gt;
 RawContent -&gt; JWT -&gt; m (Either Error JWT)
 </span><a href="Fission.Web.Auth.Token.JWT.Validation.html#check"><span class="hs-identifier hs-var">JWT.check</span></a></span><span> </span><span class="annot"><span class="annottext">RawContent
-</span><a href="#local-6989586621680258193"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
-</span><a href="#local-6989586621680258194"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error JWT) -&gt; (Either Error JWT -&gt; m DID) -&gt; m DID
+</span><a href="#local-6989586621680257429"><span class="hs-identifier hs-var">rawContent</span></a></span><span> </span><span class="annot"><span class="annottext">JWT
+</span><a href="#local-6989586621680257430"><span class="hs-identifier hs-var">jwt</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error JWT) -&gt; (Either Error JWT -&gt; m DID) -&gt; m DID
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-35"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680258191"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680258191"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-35"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680257427"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680257427"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-36"></span><span>          </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -60,26 +60,26 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Token -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">Token
-</span><a href="#local-6989586621680258196"><span class="hs-identifier hs-var">token</span></a></span><span>
+</span><a href="#local-6989586621680257432"><span class="hs-identifier hs-var">token</span></a></span><span>
 </span><span id="line-37"></span><span>          </span><span class="annot"><span class="annottext">Error -&gt; m DID
 forall (m :: * -&gt; *) err a.
 (MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
 err -&gt; m a
 </span><a href="Fission.Web.Error.html#throw"><span class="hs-identifier hs-var">Web.Error.throw</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680258191"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680257427"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-38"></span><span>
 </span><span id="line-39"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#JWT"><span class="hs-identifier hs-type">JWT.JWT</span></a></span><span> </span><span class="hs-special">{</span><span class="annot"><span class="annottext">$sel:claims:JWT :: JWT -&gt; Claims
-</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">JWT.Claims</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680258184"><span class="annot"><span class="annottext">DID
+</span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Aclaims%3AJWT"><span class="hs-identifier hs-var">claims</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.html#Claims"><span class="hs-identifier hs-type">JWT.Claims</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680257420"><span class="annot"><span class="annottext">DID
 $sel:sender:Claims :: Claims -&gt; DID
 sender :: DID
 </span><a href="Fission.Web.Auth.Token.JWT.html#%24sel%3Asender%3AClaims"><span class="hs-identifier hs-var hs-var">sender</span></a></span></span><span class="hs-special">}</span><span class="hs-special">}</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-40"></span><span>          </span><span class="annot"><span class="annottext">DID -&gt; m DID
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680258184"><span class="hs-identifier hs-var">sender</span></a></span><span>
+</span><a href="#local-6989586621680257420"><span class="hs-identifier hs-var">sender</span></a></span><span>
 </span><span id="line-41"></span><span>
-</span><span id="line-42"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680258182"><span class="annot"><span class="annottext">token :: Token
-</span><a href="#local-6989586621680258182"><span class="hs-identifier hs-var">token</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Basic"><span class="hs-identifier hs-type">Token.Basic</span></a></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-42"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680257418"><span class="annot"><span class="annottext">token :: Token
+</span><a href="#local-6989586621680257418"><span class="hs-identifier hs-var">token</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Basic"><span class="hs-identifier hs-type">Token.Basic</span></a></span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-43"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -91,7 +91,7 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Token -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">Token
-</span><a href="#local-6989586621680258182"><span class="hs-identifier hs-var">token</span></a></span><span>
+</span><a href="#local-6989586621680257418"><span class="hs-identifier hs-var">token</span></a></span><span>
 </span><span id="line-44"></span><span>      </span><span class="annot"><span class="annottext">Error -&gt; m DID
 forall (m :: * -&gt; *) err a.
 (MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
@@ -99,13 +99,13 @@ err -&gt; m a
 </span><a href="Fission.Web.Error.html#throw"><span class="hs-identifier hs-var">Web.Error.throw</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Error.html#Unauthorized"><span class="hs-identifier hs-var">Auth.Unauthorized</span></a></span><span>
 </span><span id="line-45"></span><span>
-</span><span id="line-46"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680258179"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680258179"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-46"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680257415"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680257415"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-47"></span><span>      </span><span class="annot"><span class="annottext">Error -&gt; m DID
 forall (m :: * -&gt; *) err a.
 (MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
 err -&gt; m a
 </span><a href="Fission.Web.Error.html#throw"><span class="hs-identifier hs-var">Web.Error.throw</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680258179"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680257415"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-48"></span><span>     </span><span>
 </span><span id="line-49"></span></pre></body></html>

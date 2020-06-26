@@ -12,7 +12,7 @@
 </span><span id="line-12"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="ConflictingUsername"><span class="annot"><a href="Fission.User.Creator.Error.html#ConflictingUsername"><span class="hs-identifier hs-var">ConflictingUsername</span></a></span></span><span>  </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
 </span><span id="line-13"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="ConflictingPublicKey"><span class="annot"><a href="Fission.User.Creator.Error.html#ConflictingPublicKey"><span class="hs-identifier hs-var">ConflictingPublicKey</span></a></span></span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
 </span><span id="line-14"></span><span>  </span><span class="hs-comment">-- TODO | ConflictingEmail Email</span><span>
-</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680250051"><span id="local-6989586621680250053"><span id="local-6989586621680250055"><span class="annot"><span class="annottext">Int -&gt; AlreadyExists -&gt; ShowS
+</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680249287"><span id="local-6989586621680249289"><span id="local-6989586621680249291"><span class="annot"><span class="annottext">Int -&gt; AlreadyExists -&gt; ShowS
 [AlreadyExists] -&gt; ShowS
 AlreadyExists -&gt; String
 (Int -&gt; AlreadyExists -&gt; ShowS)
@@ -28,7 +28,7 @@ $cshow :: AlreadyExists -&gt; String
 showsPrec :: Int -&gt; AlreadyExists -&gt; ShowS
 $cshowsPrec :: Int -&gt; AlreadyExists -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-16"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250046"><span id="local-6989586621680250048"><span class="annot"><span class="annottext">AlreadyExists -&gt; AlreadyExists -&gt; Bool
+</span><span id="line-16"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249282"><span id="local-6989586621680249284"><span class="annot"><span class="annottext">AlreadyExists -&gt; AlreadyExists -&gt; Bool
 (AlreadyExists -&gt; AlreadyExists -&gt; Bool)
 -&gt; (AlreadyExists -&gt; AlreadyExists -&gt; Bool) -&gt; Eq AlreadyExists
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -37,7 +37,7 @@ $c/= :: AlreadyExists -&gt; AlreadyExists -&gt; Bool
 == :: AlreadyExists -&gt; AlreadyExists -&gt; Bool
 $c== :: AlreadyExists -&gt; AlreadyExists -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
-</span><span id="line-17"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250037"><span id="local-6989586621680250039"><span id="local-6989586621680250041"><span class="annot"><span class="annottext">Show AlreadyExists
+</span><span id="line-17"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249273"><span id="local-6989586621680249275"><span id="local-6989586621680249277"><span class="annot"><span class="annottext">Show AlreadyExists
 Typeable AlreadyExists
 (Typeable AlreadyExists, Show AlreadyExists) =&gt;
 (AlreadyExists -&gt; SomeException)
@@ -62,39 +62,39 @@ $cp1Exception :: Typeable AlreadyExists
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span>
 </span><span id="line-18"></span><span>           </span><span class="hs-special">)</span><span>
 </span><span id="line-19"></span><span>
-</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680250033"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Error.html#AlreadyExists"><span class="hs-identifier hs-type">AlreadyExists</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-21"></span><span>  </span><span id="local-6989586621680250031"><span class="annot"><span class="annottext">display :: AlreadyExists -&gt; Utf8Builder
+</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249269"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.User.Creator.Error.html#AlreadyExists"><span class="hs-identifier hs-type">AlreadyExists</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-21"></span><span>  </span><span id="local-6989586621680249267"><span class="annot"><span class="annottext">display :: AlreadyExists -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-22"></span><span>    </span><span class="annot"><a href="Fission.User.Creator.Error.html#ConflictingUsername"><span class="hs-identifier hs-type">ConflictingUsername</span></a></span><span> </span><span id="local-6989586621680250029"><span class="annot"><span class="annottext">un :: Username
-</span><a href="#local-6989586621680250029"><span class="hs-identifier hs-var">un</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-22"></span><span>    </span><span class="annot"><a href="Fission.User.Creator.Error.html#ConflictingUsername"><span class="hs-identifier hs-type">ConflictingUsername</span></a></span><span> </span><span id="local-6989586621680249265"><span class="annot"><span class="annottext">un :: Username
+</span><a href="#local-6989586621680249265"><span class="hs-identifier hs-var">un</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-23"></span><span>      </span><span class="annot"><span class="hs-string">&quot;Username &quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Username -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680250029"><span class="hs-identifier hs-var">un</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+</span><a href="#local-6989586621680249265"><span class="hs-identifier hs-var">un</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; already exists&quot;</span></span><span>
 </span><span id="line-24"></span><span>     </span><span>
-</span><span id="line-25"></span><span>    </span><span class="annot"><a href="Fission.User.Creator.Error.html#ConflictingPublicKey"><span class="hs-identifier hs-type">ConflictingPublicKey</span></a></span><span> </span><span id="local-6989586621680250028"><span class="annot"><span class="annottext">pk :: Public
-</span><a href="#local-6989586621680250028"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-25"></span><span>    </span><span class="annot"><a href="Fission.User.Creator.Error.html#ConflictingPublicKey"><span class="hs-identifier hs-type">ConflictingPublicKey</span></a></span><span> </span><span id="local-6989586621680249264"><span class="annot"><span class="annottext">pk :: Public
+</span><a href="#local-6989586621680249264"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-26"></span><span>      </span><span class="annot"><span class="hs-string">&quot;Public key &quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Public -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680250028"><span class="hs-identifier hs-var">pk</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+</span><a href="#local-6989586621680249264"><span class="hs-identifier hs-var">pk</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; already exists&quot;</span></span><span>
 </span><span id="line-27"></span><span>
 </span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Error.Class.html#ToServerError"><span class="hs-identifier hs-type">ToServerError</span></a></span><span> </span><span class="annot"><a href="Fission.User.Creator.Error.html#AlreadyExists"><span class="hs-identifier hs-type">AlreadyExists</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-29"></span><span>  </span><span id="local-6989586621680250025"><span class="annot"><span class="annottext">toServerError :: AlreadyExists -&gt; ServerError
-</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span id="local-6989586621680250023"><span class="annot"><span class="annottext">err :: AlreadyExists
-</span><a href="#local-6989586621680250023"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-29"></span><span>  </span><span id="local-6989586621680249261"><span class="annot"><span class="annottext">toServerError :: AlreadyExists -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span id="local-6989586621680249259"><span class="annot"><span class="annottext">err :: AlreadyExists
+</span><a href="#local-6989586621680249259"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-30"></span><span>    </span><span class="annot"><span class="annottext">ServerError
 </span><span class="hs-identifier hs-var">err409</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
-</span><a href="#local-6989586621680250021"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">AlreadyExists -&gt; ByteString
+</span><a href="#local-6989586621680249257"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">AlreadyExists -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">AlreadyExists
-</span><a href="#local-6989586621680250023"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><a href="#local-6989586621680249259"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="hs-special">}</span><span>
 </span><span id="line-31"></span></pre></body></html>

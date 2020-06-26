@@ -48,22 +48,22 @@
 </span><span id="line-48"></span><span>
 </span><span id="line-49"></span><span>
 </span><span id="line-50"></span><span class="hs-comment">-- | The command to attach to the CLI tree</span><span>
-</span><span id="line-51"></span><span id="local-6989586621680263713"><span class="annot"><a href="Fission.CLI.Command.Watch.html#cmd"><span class="hs-identifier hs-type">cmd</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-52"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>    </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-53"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>      </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-54"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>   </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-55"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Class.html#MonadEnvironment"><span class="hs-identifier hs-type">MonadEnvironment</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-56"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-57"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>        </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
-</span><span id="line-60"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-51"></span><span id="local-6989586621680262912"><span class="annot"><a href="Fission.CLI.Command.Watch.html#cmd"><span class="hs-identifier hs-type">cmd</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-52"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>    </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-53"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>      </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>   </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-55"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Class.html#MonadEnvironment"><span class="hs-identifier hs-type">MonadEnvironment</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>        </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-61"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-62"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
-</span><span id="line-63"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Command"><span class="hs-identifier hs-type">Command</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680263713"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Command.Watch.Types.html#Options"><span class="hs-identifier hs-type">Watch.Options</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-62"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-63"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Types.html#Command"><span class="hs-identifier hs-type">Command</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680262912"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.CLI.Command.Watch.Types.html#Options"><span class="hs-identifier hs-type">Watch.Options</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-64"></span><span id="cmd"><span class="annot"><span class="annottext">cmd :: (m () -&gt; IO ()) -&gt; Command m Options ()
-</span><a href="Fission.CLI.Command.Watch.html#cmd"><span class="hs-identifier hs-var hs-var">cmd</span></a></span></span><span> </span><span id="local-6989586621680263712"><span class="annot"><span class="annottext">runner :: m () -&gt; IO ()
-</span><a href="#local-6989586621680263712"><span class="hs-identifier hs-var">runner</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WCommand :: forall (m :: * -&gt; *) input output.
+</span><a href="Fission.CLI.Command.Watch.html#cmd"><span class="hs-identifier hs-var hs-var">cmd</span></a></span></span><span> </span><span id="local-6989586621680262911"><span class="annot"><span class="annottext">runner :: m () -&gt; IO ()
+</span><a href="#local-6989586621680262911"><span class="hs-identifier hs-var">runner</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WCommand :: forall (m :: * -&gt; *) input output.
 Text
 -&gt; Text
 -&gt; Parser input
@@ -71,68 +71,68 @@ Text
 -&gt; Command m input output
 </span><a href="Fission.CLI.Command.Types.html#%24WCommand"><span class="hs-identifier hs-type hs-type">Command</span></a></span><span>
 </span><span id="line-65"></span><span>  </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:command:Command :: Text
-</span><a href="#local-6989586621680263709"><span class="hs-identifier hs-var">command</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;watch&quot;</span></span><span>
+</span><a href="#local-6989586621680262908"><span class="hs-identifier hs-var">command</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;watch&quot;</span></span><span>
 </span><span id="line-66"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:description:Command :: Text
-</span><a href="#local-6989586621680263708"><span class="hs-identifier hs-var">description</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Keep your working directory in sync with the IPFS network&quot;</span></span><span>
+</span><a href="#local-6989586621680262907"><span class="hs-identifier hs-var">description</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Keep your working directory in sync with the IPFS network&quot;</span></span><span>
 </span><span id="line-67"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:argParser:Command :: Parser Options
-</span><a href="#local-6989586621680263707"><span class="hs-identifier hs-var">argParser</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Parser Options
+</span><a href="#local-6989586621680262906"><span class="hs-identifier hs-var">argParser</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Parser Options
 </span><a href="Fission.CLI.Command.Watch.html#parseOptions"><span class="hs-identifier hs-var">parseOptions</span></a></span><span>
 </span><span id="line-68"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:handler:Command :: Options -&gt; m ()
-</span><a href="#local-6989586621680263705"><span class="hs-identifier hs-var">handler</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(m () -&gt; IO ()) -&gt; Options -&gt; m ()
+</span><a href="#local-6989586621680262904"><span class="hs-identifier hs-var">handler</span></a></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(m () -&gt; IO ()) -&gt; Options -&gt; m ()
 forall (m :: * -&gt; *).
 (MonadUnliftIO m, MonadLogger m, MonadLocalIPFS m,
  MonadEnvironment m, MonadWebClient m, MonadTime m,
  MonadWebAuth m Token, MonadWebAuth m SecretKey, ServerDID m) =&gt;
 (m () -&gt; IO ()) -&gt; Options -&gt; m ()
 </span><a href="Fission.CLI.Command.Watch.html#watcher"><span class="hs-identifier hs-var">watcher</span></a></span><span> </span><span class="annot"><span class="annottext">m () -&gt; IO ()
-</span><a href="#local-6989586621680263712"><span class="hs-identifier hs-var">runner</span></a></span><span>
+</span><a href="#local-6989586621680262911"><span class="hs-identifier hs-var">runner</span></a></span><span>
 </span><span id="line-69"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-70"></span><span>
 </span><span id="line-71"></span><span class="hs-comment">-- | Continuously sync the current working directory to the server over IPFS</span><span>
-</span><span id="line-72"></span><span id="local-6989586621680263845"><span class="annot"><a href="Fission.CLI.Command.Watch.html#watcher"><span class="hs-identifier hs-type">watcher</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-73"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>    </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-74"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>      </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-75"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>   </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-76"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Class.html#MonadEnvironment"><span class="hs-identifier hs-type">MonadEnvironment</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-77"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-78"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>        </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-79"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
-</span><span id="line-80"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
-</span><span id="line-81"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-72"></span><span id="local-6989586621680263044"><span class="annot"><a href="Fission.CLI.Command.Watch.html#watcher"><span class="hs-identifier hs-type">watcher</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-73"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>    </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-74"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>      </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-75"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>   </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-76"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Class.html#MonadEnvironment"><span class="hs-identifier hs-type">MonadEnvironment</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-77"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-78"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>        </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-79"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
+</span><span id="line-80"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
+</span><span id="line-81"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-82"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-83"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-83"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-84"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.CLI.Command.Watch.Types.html#Options"><span class="hs-identifier hs-type">Watch.Options</span></a></span><span>
-</span><span id="line-85"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680263845"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-85"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680263044"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-86"></span><span id="watcher"><span class="annot"><span class="annottext">watcher :: (m () -&gt; IO ()) -&gt; Options -&gt; m ()
-</span><a href="Fission.CLI.Command.Watch.html#watcher"><span class="hs-identifier hs-var hs-var">watcher</span></a></span></span><span> </span><span id="local-6989586621680263704"><span class="annot"><span class="annottext">runner :: m () -&gt; IO ()
-</span><a href="#local-6989586621680263704"><span class="hs-identifier hs-var">runner</span></a></span></span><span> </span><span id="local-6989586621680263702"><span id="local-6989586621680263703"><span class="annot"><a href="Fission.CLI.Command.Watch.Types.html#Options"><span class="hs-identifier hs-type">Watch.Options</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-87"></span><span>  </span><span id="local-6989586621680263698"><span class="annot"><span class="annottext">Ignored
-</span><a href="#local-6989586621680263698"><span class="hs-identifier hs-var">ignoredFiles</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Ignored
+</span><a href="Fission.CLI.Command.Watch.html#watcher"><span class="hs-identifier hs-var hs-var">watcher</span></a></span></span><span> </span><span id="local-6989586621680262903"><span class="annot"><span class="annottext">runner :: m () -&gt; IO ()
+</span><a href="#local-6989586621680262903"><span class="hs-identifier hs-var">runner</span></a></span></span><span> </span><span id="local-6989586621680262901"><span id="local-6989586621680262902"><span class="annot"><a href="Fission.CLI.Command.Watch.Types.html#Options"><span class="hs-identifier hs-type">Watch.Options</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-87"></span><span>  </span><span id="local-6989586621680262897"><span class="annot"><span class="annottext">Ignored
+</span><a href="#local-6989586621680262897"><span class="hs-identifier hs-var">ignoredFiles</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Ignored
 forall (m :: * -&gt; *). MonadEnvironment m =&gt; m Ignored
 </span><a href="Fission.CLI.Environment.Class.html#getIgnoredFiles"><span class="hs-identifier hs-var">getIgnoredFiles</span></a></span><span>
-</span><span id="line-88"></span><span>  </span><span id="local-6989586621680263696"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263696"><span class="hs-identifier hs-var">toAdd</span></a></span></span><span>        </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
+</span><span id="line-88"></span><span>  </span><span id="local-6989586621680262895"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680262895"><span class="hs-identifier hs-var">toAdd</span></a></span></span><span>        </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; m FilePath
 forall (m :: * -&gt; *).
 (MonadIO m, MonadLogger m) =&gt;
 FilePath -&gt; m FilePath
 </span><a href="Fission.CLI.Prompt.BuildDir.html#checkBuildDir"><span class="hs-identifier hs-var">Prompt.checkBuildDir</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263702"><span class="hs-identifier hs-var">path</span></a></span><span>
-</span><span id="line-89"></span><span>  </span><span id="local-6989586621680263694"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263694"><span class="hs-identifier hs-var">absPath</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">IO FilePath -&gt; m FilePath
+</span><a href="#local-6989586621680262901"><span class="hs-identifier hs-var">path</span></a></span><span>
+</span><span id="line-89"></span><span>  </span><span id="local-6989586621680262893"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680262893"><span class="hs-identifier hs-var">absPath</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">IO FilePath -&gt; m FilePath
 forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
 </span><span class="hs-identifier hs-var">liftIO</span></span><span> </span><span class="annot"><span class="annottext">(IO FilePath -&gt; m FilePath) -&gt; IO FilePath -&gt; m FilePath
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; IO FilePath
 forall (m :: * -&gt; *). MonadIO m =&gt; FilePath -&gt; m FilePath
 </span><span class="hs-identifier hs-var">makeAbsolute</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263696"><span class="hs-identifier hs-var">toAdd</span></a></span><span>
+</span><a href="#local-6989586621680262895"><span class="hs-identifier hs-var">toAdd</span></a></span><span>
 </span><span id="line-90"></span><span>
-</span><span id="line-91"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680263691"><span class="annot"><span class="annottext">copyFiles :: Bool
-</span><a href="#local-6989586621680263691"><span class="hs-identifier hs-var hs-var">copyFiles</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool
+</span><span id="line-91"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680262890"><span class="annot"><span class="annottext">copyFiles :: Bool
+</span><a href="#local-6989586621680262890"><span class="hs-identifier hs-var hs-var">copyFiles</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool
 </span><span class="hs-identifier hs-var">not</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680263703"><span class="hs-identifier hs-var">dnsOnly</span></a></span><span>
+</span><a href="#local-6989586621680262902"><span class="hs-identifier hs-var">dnsOnly</span></a></span><span>
 </span><span id="line-92"></span><span> </span><span>
-</span><span id="line-93"></span><span>  </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680263688"><span class="annot"><span class="annottext">Maybe URL
+</span><span id="line-93"></span><span>  </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680262887"><span class="annot"><span class="annottext">Maybe URL
 $sel:appURL:Environment :: Environment -&gt; Maybe URL
 appURL :: Maybe URL
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AappURL%3AEnvironment"><span class="hs-identifier hs-var hs-var">appURL</span></a></span></span><span class="hs-special">}</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Environment
@@ -140,7 +140,7 @@ forall (m :: * -&gt; *). MonadIO m =&gt; m Environment
 </span><a href="Fission.CLI.Environment.html#get"><span class="hs-identifier hs-var">Environment.get</span></a></span><span>
 </span><span id="line-94"></span><span>
 </span><span id="line-95"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe URL
-</span><a href="#local-6989586621680263688"><span class="hs-identifier hs-var">appURL</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680262887"><span class="hs-identifier hs-var">appURL</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-96"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-97"></span><span>      </span><span class="annot"><span class="annottext">NotFound App -&gt; Text -&gt; m ()
 forall (m :: * -&gt; *) err.
@@ -156,8 +156,8 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text
 </span><a href="Fission.CLI.Command.App.Init.html#cmdTxt"><span class="hs-identifier hs-var">App.Init.cmdTxt</span></a></span><span>
 </span><span id="line-99"></span><span>
-</span><span id="line-100"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680263682"><span class="annot"><span class="annottext">url :: URL
-</span><a href="#local-6989586621680263682"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-100"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680262881"><span class="annot"><span class="annottext">url :: URL
+</span><a href="#local-6989586621680262881"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-101"></span><span>      </span><span class="annot"><span class="annottext">Utf8Builder -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -169,23 +169,23 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Utf8Builder
 forall a. Show a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">displayShow</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263694"><span class="hs-identifier hs-var">absPath</span></a></span><span>
+</span><a href="#local-6989586621680262893"><span class="hs-identifier hs-var">absPath</span></a></span><span>
 </span><span id="line-102"></span><span>
 </span><span id="line-103"></span><span>      </span><span class="annot"><span class="annottext">Ignored -&gt; FilePath -&gt; m (Either Error CID)
 forall (m :: * -&gt; *).
 (MonadIO m, MonadLocalIPFS m) =&gt;
 Ignored -&gt; FilePath -&gt; m (Either Error CID)
 </span><span class="hs-identifier hs-var">IPFS.addDir</span></span><span> </span><span class="annot"><span class="annottext">Ignored
-</span><a href="#local-6989586621680263698"><span class="hs-identifier hs-var">ignoredFiles</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263694"><span class="hs-identifier hs-var">absPath</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error CID) -&gt; (Either Error CID -&gt; m ()) -&gt; m ()
+</span><a href="#local-6989586621680262897"><span class="hs-identifier hs-var">ignoredFiles</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680262893"><span class="hs-identifier hs-var">absPath</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error CID) -&gt; (Either Error CID -&gt; m ()) -&gt; m ()
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="annot"><span class="annottext">(CID -&gt; m ()) -&gt; Either Error CID -&gt; m ()
 forall (m :: * -&gt; *) err t.
 (MonadIO m, MonadLogger m, Show err) =&gt;
 (t -&gt; m ()) -&gt; Either err t -&gt; m ()
-</span><a href="Fission.CLI.Display.Error.html#putErrOr"><span class="hs-identifier hs-var">putErrOr</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680263677"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680263677"><span class="hs-identifier hs-var">cid</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680263675"><span class="annot"><span class="annottext">hash :: Text
-</span><a href="#local-6989586621680263675"><span class="hs-identifier hs-var">hash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="Fission.CLI.Display.Error.html#putErrOr"><span class="hs-identifier hs-var">putErrOr</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680262876"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680262876"><span class="hs-identifier hs-var">cid</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680262874"><span class="annot"><span class="annottext">hash :: Text
+</span><a href="#local-6989586621680262874"><span class="hs-identifier hs-var">hash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-104"></span><span>        </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
 </span><a href="Fission.Internal.UTF8.html#putText"><span class="hs-identifier hs-var">UTF8.putText</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; m ()) -&gt; Text -&gt; m ()
@@ -194,7 +194,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; Text
 </span><span class="hs-identifier hs-var">Text.pack</span></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263694"><span class="hs-identifier hs-var">absPath</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680262893"><span class="hs-identifier hs-var">absPath</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; for changes...\n&quot;</span></span><span>
 </span><span id="line-105"></span><span>
@@ -208,9 +208,9 @@ forall (m :: * -&gt; *).
  MonadWebAuth m Token, MonadWebAuth m SecretKey) =&gt;
 URL -&gt; CID -&gt; Bool -&gt; m (ClientM NoContent)
 </span><a href="Fission.CLI.Command.Watch.html#updateApp"><span class="hs-identifier hs-var">updateApp</span></a></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680263682"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680263677"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680263691"><span class="hs-identifier hs-var">copyFiles</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">m (Either ClientError NoContent)
+</span><a href="#local-6989586621680262881"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680262876"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680262890"><span class="hs-identifier hs-var">copyFiles</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">m (Either ClientError NoContent)
 -&gt; (Either ClientError NoContent -&gt; m ()) -&gt; m ()
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="annot"><span class="annottext">(NoContent -&gt; m ()) -&gt; Either ClientError NoContent -&gt; m ()
@@ -224,15 +224,15 @@ forall (m :: * -&gt; *) a. MonadIO m =&gt; IO a -&gt; m a
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">(WatchManager -&gt; IO ()) -&gt; IO ()
 forall a. (WatchManager -&gt; IO a) -&gt; IO a
-</span><span class="hs-identifier hs-var">FS.withManager</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680263669"><span class="annot"><span class="annottext">watchMgr :: WatchManager
-</span><a href="#local-6989586621680263669"><span class="hs-identifier hs-var">watchMgr</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-108"></span><span>            </span><span id="local-6989586621680263668"><span class="annot"><span class="annottext">MVar Text
-</span><a href="#local-6989586621680263668"><span class="hs-identifier hs-var">hashCache</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Text -&gt; IO (MVar Text)
+</span><span class="hs-identifier hs-var">FS.withManager</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680262868"><span class="annot"><span class="annottext">watchMgr :: WatchManager
+</span><a href="#local-6989586621680262868"><span class="hs-identifier hs-var">watchMgr</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-108"></span><span>            </span><span id="local-6989586621680262867"><span class="annot"><span class="annottext">MVar Text
+</span><a href="#local-6989586621680262867"><span class="hs-identifier hs-var">hashCache</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Text -&gt; IO (MVar Text)
 forall (m :: * -&gt; *) a. MonadIO m =&gt; a -&gt; m (MVar a)
 </span><span class="hs-identifier hs-var">newMVar</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680263675"><span class="hs-identifier hs-var">hash</span></a></span><span>
-</span><span id="line-109"></span><span>            </span><span id="local-6989586621680263666"><span class="annot"><span class="annottext">MVar UTCTime
-</span><a href="#local-6989586621680263666"><span class="hs-identifier hs-var">timeCache</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; IO (MVar UTCTime)
+</span><a href="#local-6989586621680262874"><span class="hs-identifier hs-var">hash</span></a></span><span>
+</span><span id="line-109"></span><span>            </span><span id="local-6989586621680262865"><span class="annot"><span class="annottext">MVar UTCTime
+</span><a href="#local-6989586621680262865"><span class="hs-identifier hs-var">timeCache</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; IO (MVar UTCTime)
 forall (m :: * -&gt; *) a. MonadIO m =&gt; a -&gt; m (MVar a)
 </span><span class="hs-identifier hs-var">newMVar</span></span><span> </span><span class="annot"><span class="annottext">(UTCTime -&gt; IO (MVar UTCTime)) -&gt; IO UTCTime -&gt; IO (MVar UTCTime)
 forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
@@ -264,13 +264,13 @@ forall (m :: * -&gt; *).
 -&gt; FilePath
 -&gt; IO (IO ())
 </span><a href="Fission.CLI.Command.Watch.html#handleTreeChanges"><span class="hs-identifier hs-var">handleTreeChanges</span></a></span><span> </span><span class="annot"><span class="annottext">m () -&gt; IO ()
-</span><a href="#local-6989586621680263704"><span class="hs-identifier hs-var">runner</span></a></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680263682"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680263691"><span class="hs-identifier hs-var">copyFiles</span></a></span><span> </span><span class="annot"><span class="annottext">MVar UTCTime
-</span><a href="#local-6989586621680263666"><span class="hs-identifier hs-var">timeCache</span></a></span><span> </span><span class="annot"><span class="annottext">MVar Text
-</span><a href="#local-6989586621680263668"><span class="hs-identifier hs-var">hashCache</span></a></span><span> </span><span class="annot"><span class="annottext">WatchManager
-</span><a href="#local-6989586621680263669"><span class="hs-identifier hs-var">watchMgr</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263694"><span class="hs-identifier hs-var">absPath</span></a></span><span>
+</span><a href="#local-6989586621680262903"><span class="hs-identifier hs-var">runner</span></a></span><span> </span><span class="annot"><span class="annottext">URL
+</span><a href="#local-6989586621680262881"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680262890"><span class="hs-identifier hs-var">copyFiles</span></a></span><span> </span><span class="annot"><span class="annottext">MVar UTCTime
+</span><a href="#local-6989586621680262865"><span class="hs-identifier hs-var">timeCache</span></a></span><span> </span><span class="annot"><span class="annottext">MVar Text
+</span><a href="#local-6989586621680262867"><span class="hs-identifier hs-var">hashCache</span></a></span><span> </span><span class="annot"><span class="annottext">WatchManager
+</span><a href="#local-6989586621680262868"><span class="hs-identifier hs-var">watchMgr</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680262893"><span class="hs-identifier hs-var">absPath</span></a></span><span>
 </span><span id="line-111"></span><span>            </span><span class="annot"><span class="annottext">IO () -&gt; IO ()
 forall (f :: * -&gt; *) a b. Applicative f =&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">forever</span></span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; IO ()) -&gt; (IO () -&gt; IO ()) -&gt; IO () -&gt; IO ()
@@ -283,23 +283,23 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall (m :: * -&gt; *). MonadIO m =&gt; Int -&gt; m ()
 </span><span class="hs-identifier hs-var">threadDelay</span></span><span> </span><span class="annot"><span class="hs-number">1000000</span></span><span> </span><span class="hs-comment">-- Sleep main thread</span><span>
 </span><span id="line-112"></span><span>
-</span><span id="line-113"></span><span id="local-6989586621680263793"><span class="annot"><a href="Fission.CLI.Command.Watch.html#updateApp"><span class="hs-identifier hs-type">updateApp</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-114"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span>      </span><span class="annot"><a href="#local-6989586621680263793"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-115"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>    </span><span class="annot"><a href="#local-6989586621680263793"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-116"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>  </span><span class="annot"><a href="#local-6989586621680263793"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-117"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680263793"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-118"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680263793"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
-</span><span id="line-119"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680263793"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
+</span><span id="line-113"></span><span id="local-6989586621680262992"><span class="annot"><a href="Fission.CLI.Command.Watch.html#updateApp"><span class="hs-identifier hs-type">updateApp</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-114"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span>      </span><span class="annot"><a href="#local-6989586621680262992"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-115"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>    </span><span class="annot"><a href="#local-6989586621680262992"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-116"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>  </span><span class="annot"><a href="#local-6989586621680262992"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-117"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>    </span><span class="annot"><a href="#local-6989586621680262992"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-118"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680262992"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
+</span><span id="line-119"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680262992"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
 </span><span id="line-120"></span><span>  </span><span class="hs-special">)</span><span>
 </span><span id="line-121"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
 </span><span id="line-122"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
 </span><span id="line-123"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
-</span><span id="line-124"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680263793"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ClientM</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">NoContent</span></span><span class="hs-special">)</span></span><span>
+</span><span id="line-124"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680262992"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ClientM</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">NoContent</span></span><span class="hs-special">)</span></span><span>
 </span><span id="line-125"></span><span id="updateApp"><span class="annot"><span class="annottext">updateApp :: URL -&gt; CID -&gt; Bool -&gt; m (ClientM NoContent)
-</span><a href="Fission.CLI.Command.Watch.html#updateApp"><span class="hs-identifier hs-var hs-var">updateApp</span></a></span></span><span> </span><span id="local-6989586621680263659"><span class="annot"><span class="annottext">url :: URL
-</span><a href="#local-6989586621680263659"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621680263658"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680263658"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span id="local-6989586621680263657"><span class="annot"><span class="annottext">copyFiles :: Bool
-</span><a href="#local-6989586621680263657"><span class="hs-identifier hs-var">copyFiles</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.CLI.Command.Watch.html#updateApp"><span class="hs-identifier hs-var hs-var">updateApp</span></a></span></span><span> </span><span id="local-6989586621680262858"><span class="annot"><span class="annottext">url :: URL
+</span><a href="#local-6989586621680262858"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621680262857"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680262857"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span id="local-6989586621680262856"><span class="annot"><span class="annottext">copyFiles :: Bool
+</span><a href="#local-6989586621680262856"><span class="hs-identifier hs-var">copyFiles</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-126"></span><span>  </span><span class="annot"><span class="annottext">Proxy Update -&gt; m (URL -&gt; CID -&gt; Maybe Bool -&gt; ClientM NoContent)
 forall (m :: * -&gt; *) a api (f :: * -&gt; *) b.
 (MonadIO m, MonadTime m, MonadLogger m, ServerDID m,
@@ -314,31 +314,31 @@ forall k (t :: k). Proxy t
 -&gt; URL -&gt; m (CID -&gt; Maybe Bool -&gt; ClientM NoContent)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f (a -&gt; b) -&gt; a -&gt; f b
 </span><a href="Fission.Web.Client.html#withPayload"><span class="hs-operator hs-var">`withPayload`</span></a></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680263659"><span class="hs-identifier hs-var">url</span></a></span><span>
+</span><a href="#local-6989586621680262858"><span class="hs-identifier hs-var">url</span></a></span><span>
 </span><span id="line-128"></span><span>    </span><span class="annot"><span class="annottext">m (CID -&gt; Maybe Bool -&gt; ClientM NoContent)
 -&gt; CID -&gt; m (Maybe Bool -&gt; ClientM NoContent)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f (a -&gt; b) -&gt; a -&gt; f b
 </span><a href="Fission.Web.Client.html#withPayload"><span class="hs-operator hs-var">`withPayload`</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680263658"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><a href="#local-6989586621680262857"><span class="hs-identifier hs-var">cid</span></a></span><span>
 </span><span id="line-129"></span><span>    </span><span class="annot"><span class="annottext">m (Maybe Bool -&gt; ClientM NoContent)
 -&gt; Maybe Bool -&gt; m (ClientM NoContent)
 forall (f :: * -&gt; *) a b. Functor f =&gt; f (a -&gt; b) -&gt; a -&gt; f b
 </span><a href="Fission.Web.Client.html#withPayload"><span class="hs-operator hs-var">`withPayload`</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Bool -&gt; Maybe Bool
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680263657"><span class="hs-identifier hs-var">copyFiles</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680262856"><span class="hs-identifier hs-var">copyFiles</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-130"></span><span>
-</span><span id="line-131"></span><span id="local-6989586621680263780"><span class="annot"><a href="Fission.CLI.Command.Watch.html#handleTreeChanges"><span class="hs-identifier hs-type">handleTreeChanges</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-132"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-133"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-134"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>      </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-135"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-136"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-137"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
-</span><span id="line-138"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
-</span><span id="line-139"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-131"></span><span id="local-6989586621680262979"><span class="annot"><a href="Fission.CLI.Command.Watch.html#handleTreeChanges"><span class="hs-identifier hs-type">handleTreeChanges</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-132"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadUnliftIO</span></span><span>  </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-133"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>    </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-134"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>      </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-135"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-136"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-137"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
+</span><span id="line-138"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Client.Auth.Class.html#MonadWebAuth"><span class="hs-identifier hs-type">MonadWebAuth</span></a></span><span>   </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.SecretKey</span></span><span>
+</span><span id="line-139"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>      </span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-140"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-141"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680263780"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-141"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680262979"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-142"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
 </span><span id="line-143"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
 </span><span id="line-144"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MVar</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
@@ -354,38 +354,38 @@ forall a. a -&gt; Maybe a
 -&gt; WatchManager
 -&gt; FilePath
 -&gt; IO (IO ())
-</span><a href="Fission.CLI.Command.Watch.html#handleTreeChanges"><span class="hs-identifier hs-var hs-var">handleTreeChanges</span></a></span></span><span> </span><span id="local-6989586621680263652"><span class="annot"><span class="annottext">runner :: m () -&gt; IO ()
-</span><a href="#local-6989586621680263652"><span class="hs-identifier hs-var">runner</span></a></span></span><span> </span><span id="local-6989586621680263651"><span class="annot"><span class="annottext">appURL :: URL
-</span><a href="#local-6989586621680263651"><span class="hs-identifier hs-var">appURL</span></a></span></span><span> </span><span id="local-6989586621680263650"><span class="annot"><span class="annottext">copyFilesFlag :: Bool
-</span><a href="#local-6989586621680263650"><span class="hs-identifier hs-var">copyFilesFlag</span></a></span></span><span> </span><span id="local-6989586621680263649"><span class="annot"><span class="annottext">timeCache :: MVar UTCTime
-</span><a href="#local-6989586621680263649"><span class="hs-identifier hs-var">timeCache</span></a></span></span><span> </span><span id="local-6989586621680263648"><span class="annot"><span class="annottext">hashCache :: MVar Text
-</span><a href="#local-6989586621680263648"><span class="hs-identifier hs-var">hashCache</span></a></span></span><span> </span><span id="local-6989586621680263647"><span class="annot"><span class="annottext">watchMgr :: WatchManager
-</span><a href="#local-6989586621680263647"><span class="hs-identifier hs-var">watchMgr</span></a></span></span><span> </span><span id="local-6989586621680263646"><span class="annot"><span class="annottext">dir :: FilePath
-</span><a href="#local-6989586621680263646"><span class="hs-identifier hs-var">dir</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.CLI.Command.Watch.html#handleTreeChanges"><span class="hs-identifier hs-var hs-var">handleTreeChanges</span></a></span></span><span> </span><span id="local-6989586621680262851"><span class="annot"><span class="annottext">runner :: m () -&gt; IO ()
+</span><a href="#local-6989586621680262851"><span class="hs-identifier hs-var">runner</span></a></span></span><span> </span><span id="local-6989586621680262850"><span class="annot"><span class="annottext">appURL :: URL
+</span><a href="#local-6989586621680262850"><span class="hs-identifier hs-var">appURL</span></a></span></span><span> </span><span id="local-6989586621680262849"><span class="annot"><span class="annottext">copyFilesFlag :: Bool
+</span><a href="#local-6989586621680262849"><span class="hs-identifier hs-var">copyFilesFlag</span></a></span></span><span> </span><span id="local-6989586621680262848"><span class="annot"><span class="annottext">timeCache :: MVar UTCTime
+</span><a href="#local-6989586621680262848"><span class="hs-identifier hs-var">timeCache</span></a></span></span><span> </span><span id="local-6989586621680262847"><span class="annot"><span class="annottext">hashCache :: MVar Text
+</span><a href="#local-6989586621680262847"><span class="hs-identifier hs-var">hashCache</span></a></span></span><span> </span><span id="local-6989586621680262846"><span class="annot"><span class="annottext">watchMgr :: WatchManager
+</span><a href="#local-6989586621680262846"><span class="hs-identifier hs-var">watchMgr</span></a></span></span><span> </span><span id="local-6989586621680262845"><span class="annot"><span class="annottext">dir :: FilePath
+</span><a href="#local-6989586621680262845"><span class="hs-identifier hs-var">dir</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-150"></span><span>  </span><span class="annot"><span class="annottext">WatchManager -&gt; FilePath -&gt; ActionPredicate -&gt; Action -&gt; IO (IO ())
 </span><span class="hs-identifier hs-var">FS.watchTree</span></span><span> </span><span class="annot"><span class="annottext">WatchManager
-</span><a href="#local-6989586621680263647"><span class="hs-identifier hs-var">watchMgr</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263646"><span class="hs-identifier hs-var">dir</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Bool -&gt; ActionPredicate
+</span><a href="#local-6989586621680262846"><span class="hs-identifier hs-var">watchMgr</span></a></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680262845"><span class="hs-identifier hs-var">dir</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Bool -&gt; ActionPredicate
 forall a b. a -&gt; b -&gt; a
 </span><span class="hs-identifier hs-var">const</span></span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">m () -&gt; IO ()
-</span><a href="#local-6989586621680263652"><span class="hs-identifier hs-var">runner</span></a></span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-151"></span><span>    </span><span id="local-6989586621680263643"><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680263643"><span class="hs-identifier hs-var">now</span></a></span></span><span>     </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m UTCTime
+</span><a href="#local-6989586621680262851"><span class="hs-identifier hs-var">runner</span></a></span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-151"></span><span>    </span><span id="local-6989586621680262842"><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680262842"><span class="hs-identifier hs-var">now</span></a></span></span><span>     </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m UTCTime
 forall (m :: * -&gt; *). MonadIO m =&gt; m UTCTime
 </span><span class="hs-identifier hs-var">getCurrentTime</span></span><span>
-</span><span id="line-152"></span><span>    </span><span id="local-6989586621680263642"><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680263642"><span class="hs-identifier hs-var">oldTime</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">MVar UTCTime -&gt; m UTCTime
+</span><span id="line-152"></span><span>    </span><span id="local-6989586621680262841"><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680262841"><span class="hs-identifier hs-var">oldTime</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">MVar UTCTime -&gt; m UTCTime
 forall (m :: * -&gt; *) a. MonadIO m =&gt; MVar a -&gt; m a
 </span><span class="hs-identifier hs-var">readMVar</span></span><span> </span><span class="annot"><span class="annottext">MVar UTCTime
-</span><a href="#local-6989586621680263649"><span class="hs-identifier hs-var">timeCache</span></a></span><span>
+</span><a href="#local-6989586621680262848"><span class="hs-identifier hs-var">timeCache</span></a></span><span>
 </span><span id="line-153"></span><span>
 </span><span id="line-154"></span><span>    </span><span class="annot"><span class="annottext">Bool -&gt; m () -&gt; m ()
 forall (f :: * -&gt; *). Applicative f =&gt; Bool -&gt; f () -&gt; f ()
 </span><span class="hs-identifier hs-var">unless</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">UTCTime -&gt; UTCTime -&gt; NominalDiffTime
 </span><span class="hs-identifier hs-var">diffUTCTime</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680263643"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680263642"><span class="hs-identifier hs-var">oldTime</span></a></span><span> </span><span class="annot"><span class="annottext">NominalDiffTime -&gt; NominalDiffTime -&gt; Bool
+</span><a href="#local-6989586621680262842"><span class="hs-identifier hs-var">now</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680262841"><span class="hs-identifier hs-var">oldTime</span></a></span><span> </span><span class="annot"><span class="annottext">NominalDiffTime -&gt; NominalDiffTime -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;</span></span><span> </span><span class="annot"><span class="annottext">NominalDiffTime
 </span><a href="Fission.Time.html#doherty"><span class="hs-identifier hs-var">Time.doherty</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">do</span><span>
@@ -396,8 +396,8 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">MVar UTCTime -&gt; UTCTime -&gt; m UTCTime
 forall (m :: * -&gt; *) a. MonadIO m =&gt; MVar a -&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">swapMVar</span></span><span> </span><span class="annot"><span class="annottext">MVar UTCTime
-</span><a href="#local-6989586621680263649"><span class="hs-identifier hs-var">timeCache</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680263643"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680262848"><span class="hs-identifier hs-var">timeCache</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680262842"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-156"></span><span>      </span><span class="annot"><span class="annottext">Int -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; Int -&gt; m ()
 </span><span class="hs-identifier hs-var">threadDelay</span></span><span> </span><span class="annot"><span class="annottext">Int
@@ -408,27 +408,27 @@ forall (m :: * -&gt; *).
 (MonadIO m, MonadLocalIPFS m) =&gt;
 Ignored -&gt; FilePath -&gt; m (Either Error CID)
 </span><span class="hs-identifier hs-var">IPFS.addDir</span></span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span> </span><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263646"><span class="hs-identifier hs-var">dir</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error CID) -&gt; (Either Error CID -&gt; m ()) -&gt; m ()
+</span><a href="#local-6989586621680262845"><span class="hs-identifier hs-var">dir</span></a></span><span> </span><span class="annot"><span class="annottext">m (Either Error CID) -&gt; (Either Error CID -&gt; m ()) -&gt; m ()
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-159"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680263634"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680263634"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-159"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680262833"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680262833"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-160"></span><span>          </span><span class="annot"><span class="annottext">Error -&gt; m ()
 forall (m :: * -&gt; *) err.
 (MonadIO m, MonadLogger m, Show err) =&gt;
 err -&gt; m ()
 </span><a href="Fission.CLI.Display.Error.html#put%27"><span class="hs-identifier hs-var">CLI.Error.put'</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680263634"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680262833"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-161"></span><span>
-</span><span id="line-162"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680263632"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680263632"><span class="hs-identifier hs-var">cid</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680263631"><span class="annot"><span class="annottext">newHash :: Text
-</span><a href="#local-6989586621680263631"><span class="hs-identifier hs-var">newHash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-163"></span><span>          </span><span id="local-6989586621680263630"><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680263630"><span class="hs-identifier hs-var">oldHash</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">MVar Text -&gt; Text -&gt; m Text
+</span><span id="line-162"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680262831"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680262831"><span class="hs-identifier hs-var">cid</span></a></span></span><span class="hs-glyph">@</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span id="local-6989586621680262830"><span class="annot"><span class="annottext">newHash :: Text
+</span><a href="#local-6989586621680262830"><span class="hs-identifier hs-var">newHash</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-163"></span><span>          </span><span id="local-6989586621680262829"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680262829"><span class="hs-identifier hs-var">oldHash</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">MVar Text -&gt; Text -&gt; m Text
 forall (m :: * -&gt; *) a. MonadIO m =&gt; MVar a -&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">swapMVar</span></span><span> </span><span class="annot"><span class="annottext">MVar Text
-</span><a href="#local-6989586621680263648"><span class="hs-identifier hs-var">hashCache</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680263631"><span class="hs-identifier hs-var">newHash</span></a></span><span>
+</span><a href="#local-6989586621680262847"><span class="hs-identifier hs-var">hashCache</span></a></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680262830"><span class="hs-identifier hs-var">newHash</span></a></span><span>
 </span><span id="line-164"></span><span>          </span><span class="annot"><span class="annottext">Utf8Builder -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -440,22 +440,22 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680263630"><span class="hs-identifier hs-var">oldHash</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+</span><a href="#local-6989586621680262829"><span class="hs-identifier hs-var">oldHash</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; -&gt; &quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680263631"><span class="hs-identifier hs-var">newHash</span></a></span><span>
+</span><a href="#local-6989586621680262830"><span class="hs-identifier hs-var">newHash</span></a></span><span>
 </span><span id="line-165"></span><span>
 </span><span id="line-166"></span><span>          </span><span class="annot"><span class="annottext">Bool -&gt; m () -&gt; m ()
 forall (f :: * -&gt; *). Applicative f =&gt; Bool -&gt; f () -&gt; f ()
 </span><span class="hs-identifier hs-var">unless</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680263630"><span class="hs-identifier hs-var">oldHash</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Bool
+</span><a href="#local-6989586621680262829"><span class="hs-identifier hs-var">oldHash</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680263631"><span class="hs-identifier hs-var">newHash</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="#local-6989586621680262830"><span class="hs-identifier hs-var">newHash</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-167"></span><span>            </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m ()
 </span><a href="Fission.Internal.UTF8.html#putText"><span class="hs-identifier hs-var">UTF8.putText</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;\n&quot;</span></span><span>
@@ -469,36 +469,36 @@ forall (m :: * -&gt; *).
  MonadWebAuth m Token, MonadWebAuth m SecretKey) =&gt;
 URL -&gt; CID -&gt; Bool -&gt; m (ClientM NoContent)
 </span><a href="Fission.CLI.Command.Watch.html#updateApp"><span class="hs-identifier hs-var">updateApp</span></a></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680263651"><span class="hs-identifier hs-var">appURL</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680263632"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680263650"><span class="hs-identifier hs-var">copyFilesFlag</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">m (Either ClientError NoContent)
+</span><a href="#local-6989586621680262850"><span class="hs-identifier hs-var">appURL</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680262831"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680262849"><span class="hs-identifier hs-var">copyFilesFlag</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">m (Either ClientError NoContent)
 -&gt; (Either ClientError NoContent -&gt; m ()) -&gt; m ()
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-169"></span><span>              </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680263628"><span class="annot"><span class="annottext">err :: ClientError
-</span><a href="#local-6989586621680263628"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-169"></span><span>              </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680262827"><span class="annot"><span class="annottext">err :: ClientError
+</span><a href="#local-6989586621680262827"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-170"></span><span>                </span><span class="annot"><span class="annottext">ClientError -&gt; Text -&gt; m ()
 forall (m :: * -&gt; *) err.
 (MonadIO m, MonadLogger m, Show err) =&gt;
 err -&gt; Text -&gt; m ()
 </span><a href="Fission.CLI.Display.Error.html#put"><span class="hs-identifier hs-var">CLI.Error.put</span></a></span><span> </span><span class="annot"><span class="annottext">ClientError
-</span><a href="#local-6989586621680263628"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Server unable to sync data&quot;</span></span><span>
+</span><a href="#local-6989586621680262827"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;Server unable to sync data&quot;</span></span><span>
 </span><span id="line-171"></span><span>
 </span><span id="line-172"></span><span>              </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-173"></span><span>                </span><span class="annot"><span class="annottext">CID -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; CID -&gt; m ()
 </span><a href="Fission.CLI.Display.Success.html#live"><span class="hs-identifier hs-var">CLI.Success.live</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680263632"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><a href="#local-6989586621680262831"><span class="hs-identifier hs-var">cid</span></a></span><span>
 </span><span id="line-174"></span><span>                </span><span class="annot"><span class="annottext">URL -&gt; m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; URL -&gt; m ()
 </span><a href="Fission.CLI.Display.Success.html#dnsUpdated"><span class="hs-identifier hs-var">CLI.Success.dnsUpdated</span></a></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680263651"><span class="hs-identifier hs-var">appURL</span></a></span><span>
+</span><a href="#local-6989586621680262850"><span class="hs-identifier hs-var">appURL</span></a></span><span>
 </span><span id="line-175"></span><span>
 </span><span id="line-176"></span><span class="annot"><a href="Fission.CLI.Command.Watch.html#parseOptions"><span class="hs-identifier hs-type">parseOptions</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Fission.CLI.Command.Watch.Types.html#Options"><span class="hs-identifier hs-type">Watch.Options</span></a></span><span>
 </span><span id="line-177"></span><span id="parseOptions"><span class="annot"><span class="annottext">parseOptions :: Parser Options
 </span><a href="Fission.CLI.Command.Watch.html#parseOptions"><span class="hs-identifier hs-var hs-var">parseOptions</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-178"></span><span>  </span><span id="local-6989586621680263625"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680263625"><span class="hs-identifier hs-var">dnsOnly</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Mod FlagFields Bool -&gt; Parser Bool
+</span><span id="line-178"></span><span>  </span><span id="local-6989586621680262824"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680262824"><span class="hs-identifier hs-var">dnsOnly</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Mod FlagFields Bool -&gt; Parser Bool
 </span><span class="hs-identifier hs-var">switch</span></span><span> </span><span class="annot"><span class="annottext">(Mod FlagFields Bool -&gt; Parser Bool)
 -&gt; Mod FlagFields Bool -&gt; Parser Bool
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -513,8 +513,8 @@ forall (f :: * -&gt; *) a. FilePath -&gt; Mod f a
 </span><span class="hs-identifier hs-var">help</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Only update DNS (i.e. don't actively sync files to the server)&quot;</span></span><span>
 </span><span id="line-181"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-182"></span><span>
-</span><span id="line-183"></span><span>  </span><span id="local-6989586621680263621"><span class="annot"><span class="annottext">FilePath
-</span><a href="#local-6989586621680263621"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Mod ArgumentFields FilePath -&gt; Parser FilePath
+</span><span id="line-183"></span><span>  </span><span id="local-6989586621680262820"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621680262820"><span class="hs-identifier hs-var">path</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Mod ArgumentFields FilePath -&gt; Parser FilePath
 forall s. IsString s =&gt; Mod ArgumentFields s -&gt; Parser s
 </span><span class="hs-identifier hs-var">strArgument</span></span><span> </span><span class="annot"><span class="annottext">(Mod ArgumentFields FilePath -&gt; Parser FilePath)
 -&gt; Mod ArgumentFields FilePath -&gt; Parser FilePath
