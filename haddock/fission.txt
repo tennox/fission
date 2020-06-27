@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.4.3
+@version 2.4.4
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -7267,7 +7267,7 @@ module Fission.AWS.Route53.Class
 
 -- | Low-level Route53 interface / no auth checks do not use directly
 class MonadAWS m => MonadRoute53 m
-set :: MonadRoute53 m => RecordType -> URL -> ZoneID -> NonEmpty Text -> m (Either ServerError ChangeResourceRecordSetsResponse)
+set :: MonadRoute53 m => RecordType -> URL -> ZoneID -> NonEmpty Text -> Natural -> m (Either ServerError ChangeResourceRecordSetsResponse)
 clear :: MonadRoute53 m => RecordType -> URL -> ZoneID -> m (Either ServerError ChangeResourceRecordSetsResponse)
 
 module Fission.AWS.Route53
@@ -7321,11 +7321,11 @@ type Errors = OpenUnion '[ServerError, InvalidURL, NotFound URL, ActionNotAuthor
 
 module Fission.Internal.Mock.Config.Types
 data Config
-Config :: (DomainName -> Maybe Subdomain -> CID -> Either Errors URL) -> (URL -> Path URL -> Either Errors ()) -> DomainName -> (RecordType -> URL -> ZoneID -> NonEmpty Text -> Either ServerError ChangeResourceRecordSetsResponse) -> (RecordType -> URL -> Either ServerError ChangeResourceRecordSetsResponse) -> UTCTime -> NonEmpty Peer -> AuthHandler Request (Entity User) -> AuthHandler Request DID -> AuthHandler Request Authorization -> BasicAuthCheck Auth -> Bool -> Either Error RawMessage -> Either ClientError CID -> Either ClientError Serialized -> Either ClientError Response -> Either ClientError Response -> Config
+Config :: (DomainName -> Maybe Subdomain -> CID -> Either Errors URL) -> (URL -> Path URL -> Either Errors ()) -> DomainName -> (RecordType -> URL -> ZoneID -> NonEmpty Text -> Natural -> Either ServerError ChangeResourceRecordSetsResponse) -> (RecordType -> URL -> Either ServerError ChangeResourceRecordSetsResponse) -> UTCTime -> NonEmpty Peer -> AuthHandler Request (Entity User) -> AuthHandler Request DID -> AuthHandler Request Authorization -> BasicAuthCheck Auth -> Bool -> Either Error RawMessage -> Either ClientError CID -> Either ClientError Serialized -> Either ClientError Response -> Either ClientError Response -> Config
 [$sel:setDNSLink:Config] :: Config -> DomainName -> Maybe Subdomain -> CID -> Either Errors URL
 [$sel:followDNSLink:Config] :: Config -> URL -> Path URL -> Either Errors ()
 [$sel:getBaseDomain:Config] :: Config -> DomainName
-[$sel:updateRoute53:Config] :: Config -> RecordType -> URL -> ZoneID -> NonEmpty Text -> Either ServerError ChangeResourceRecordSetsResponse
+[$sel:updateRoute53:Config] :: Config -> RecordType -> URL -> ZoneID -> NonEmpty Text -> Natural -> Either ServerError ChangeResourceRecordSetsResponse
 [$sel:clearRoute53:Config] :: Config -> RecordType -> URL -> Either ServerError ChangeResourceRecordSetsResponse
 [$sel:now:Config] :: Config -> UTCTime
 [$sel:linkedPeers:Config] :: Config -> NonEmpty Peer

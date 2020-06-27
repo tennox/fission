@@ -9,7 +9,7 @@
 </span><span id="line-9"></span><span>
 </span><span id="line-10"></span><span class="hs-keyword">newtype</span><span> </span><span id="MockRoute53"><span class="annot"><a href="Fission.AWS.Types.html#MockRoute53"><span class="hs-identifier hs-var">MockRoute53</span></a></span></span><span>
 </span><span id="line-11"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="MockRoute53"><span class="annot"><a href="Fission.AWS.Types.html#MockRoute53"><span class="hs-identifier hs-var">MockRoute53</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
-</span><span id="line-12"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680245768"><span id="local-6989586621680245770"><span id="local-6989586621680245772"><span class="annot"><span class="annottext">Int -&gt; MockRoute53 -&gt; ShowS
+</span><span id="line-12"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680245989"><span id="local-6989586621680245991"><span id="local-6989586621680245993"><span class="annot"><span class="annottext">Int -&gt; MockRoute53 -&gt; ShowS
 [MockRoute53] -&gt; ShowS
 MockRoute53 -&gt; String
 (Int -&gt; MockRoute53 -&gt; ShowS)
@@ -24,7 +24,7 @@ show :: MockRoute53 -&gt; String
 $cshow :: MockRoute53 -&gt; String
 showsPrec :: Int -&gt; MockRoute53 -&gt; ShowS
 $cshowsPrec :: Int -&gt; MockRoute53 -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245763"><span id="local-6989586621680245765"><span class="annot"><span class="annottext">MockRoute53 -&gt; MockRoute53 -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245984"><span id="local-6989586621680245986"><span class="annot"><span class="annottext">MockRoute53 -&gt; MockRoute53 -&gt; Bool
 (MockRoute53 -&gt; MockRoute53 -&gt; Bool)
 -&gt; (MockRoute53 -&gt; MockRoute53 -&gt; Bool) -&gt; Eq MockRoute53
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -34,13 +34,13 @@ $c/= :: MockRoute53 -&gt; MockRoute53 -&gt; Bool
 $c== :: MockRoute53 -&gt; MockRoute53 -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680245759"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.AWS.Types.html#MockRoute53"><span class="hs-identifier hs-type">MockRoute53</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-15"></span><span>  </span><span id="local-6989586621680245757"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser MockRoute53
+</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680245980"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.AWS.Types.html#MockRoute53"><span class="hs-identifier hs-type">MockRoute53</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680245978"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser MockRoute53
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
 -&gt; (Bool -&gt; Parser MockRoute53) -&gt; Value -&gt; Parser MockRoute53
 forall a. String -&gt; (Bool -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withBool</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AWS.MockRoute53&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680245754"><span class="annot"><span class="annottext">val :: Bool
-</span><a href="#local-6989586621680245754"><span class="hs-identifier hs-var">val</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">withBool</span></span><span> </span><span class="annot"><span class="hs-string">&quot;AWS.MockRoute53&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680245975"><span class="annot"><span class="annottext">val :: Bool
+</span><a href="#local-6989586621680245975"><span class="hs-identifier hs-var">val</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-16"></span><span>    </span><span class="annot"><span class="annottext">Bool -&gt; MockRoute53
 </span><a href="Fission.AWS.Types.html#MockRoute53"><span class="hs-identifier hs-var">MockRoute53</span></a></span><span> </span><span class="annot"><span class="annottext">(Bool -&gt; MockRoute53) -&gt; Parser Bool -&gt; Parser MockRoute53
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
@@ -48,5 +48,5 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 forall a. FromJSON a =&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">parseJSON</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Bool -&gt; Value
 </span><span class="hs-identifier hs-var">Bool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680245754"><span class="hs-identifier hs-var">val</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680245975"><span class="hs-identifier hs-var">val</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-17"></span></pre></body></html>

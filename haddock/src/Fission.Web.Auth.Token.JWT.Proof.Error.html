@@ -13,7 +13,7 @@
 </span><span id="line-13"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="PotencyEscelation"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#PotencyEscelation"><span class="hs-identifier hs-var">PotencyEscelation</span></a></span></span><span>
 </span><span id="line-14"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="TimeNotSubset"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#TimeNotSubset"><span class="hs-identifier hs-var">TimeNotSubset</span></a></span></span><span>
 </span><span id="line-15"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="ResolverError"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ResolverError"><span class="hs-identifier hs-var">ResolverError</span></a></span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Error.html#Error"><span class="hs-identifier hs-type">JWT.Resolver.Error</span></a></span><span>
-</span><span id="line-16"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680250049"><span id="local-6989586621680250051"><span id="local-6989586621680250053"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
+</span><span id="line-16"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680250270"><span id="local-6989586621680250272"><span id="local-6989586621680250274"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
 [Error] -&gt; ShowS
 Error -&gt; String
 (Int -&gt; Error -&gt; ShowS)
@@ -26,14 +26,14 @@ show :: Error -&gt; String
 $cshow :: Error -&gt; String
 showsPrec :: Int -&gt; Error -&gt; ShowS
 $cshowsPrec :: Int -&gt; Error -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250044"><span id="local-6989586621680250046"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250265"><span id="local-6989586621680250267"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
 (Error -&gt; Error -&gt; Bool) -&gt; (Error -&gt; Error -&gt; Bool) -&gt; Eq Error
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Error -&gt; Error -&gt; Bool
 $c/= :: Error -&gt; Error -&gt; Bool
 == :: Error -&gt; Error -&gt; Bool
 $c== :: Error -&gt; Error -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250035"><span id="local-6989586621680250037"><span id="local-6989586621680250039"><span class="annot"><span class="annottext">Show Error
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250256"><span id="local-6989586621680250258"><span id="local-6989586621680250260"><span class="annot"><span class="annottext">Show Error
 Typeable Error
 (Typeable Error, Show Error) =&gt;
 (Error -&gt; SomeException)
@@ -57,50 +57,50 @@ $cp2Exception :: Show Error
 $cp1Exception :: Typeable Error
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Exception</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-17"></span><span>
-</span><span id="line-18"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680250031"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#Error"><span class="hs-identifier hs-type">Error</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-19"></span><span>  </span><span id="local-6989586621680250029"><span class="annot"><span class="annottext">display :: Error -&gt; Utf8Builder
+</span><span id="line-18"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680250252"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#Error"><span class="hs-identifier hs-type">Error</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-19"></span><span>  </span><span id="local-6989586621680250250"><span class="annot"><span class="annottext">display :: Error -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
 </span><span id="line-20"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#InvalidSignatureChain"><span class="hs-identifier hs-type">InvalidSignatureChain</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;Invalid signature chain&quot;</span></span><span>
 </span><span id="line-21"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ScopeOutOfBounds"><span class="hs-identifier hs-type">ScopeOutOfBounds</span></a></span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;Path scope not in delegated rights&quot;</span></span><span>
 </span><span id="line-22"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#PotencyEscelation"><span class="hs-identifier hs-type">PotencyEscelation</span></a></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;Potency escelation&quot;</span></span><span>
 </span><span id="line-23"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#TimeNotSubset"><span class="hs-identifier hs-type">TimeNotSubset</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;Time bounds are not a subset&quot;</span></span><span>
-</span><span id="line-24"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ResolverError"><span class="hs-identifier hs-type">ResolverError</span></a></span><span> </span><span id="local-6989586621680250027"><span class="annot"><span class="annottext">resErr :: Error
-</span><a href="#local-6989586621680250027"><span class="hs-identifier hs-var">resErr</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;Unable to resolve CID proof: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+</span><span id="line-24"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ResolverError"><span class="hs-identifier hs-type">ResolverError</span></a></span><span> </span><span id="local-6989586621680250248"><span class="annot"><span class="annottext">resErr :: Error
+</span><a href="#local-6989586621680250248"><span class="hs-identifier hs-var">resErr</span></a></span></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;Unable to resolve CID proof: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680250027"><span class="hs-identifier hs-var">resErr</span></a></span><span>
+</span><a href="#local-6989586621680250248"><span class="hs-identifier hs-var">resErr</span></a></span><span>
 </span><span id="line-25"></span><span>
 </span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Error.Class.html#ToServerError"><span class="hs-identifier hs-type">ToServerError</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#Error"><span class="hs-identifier hs-type">Error</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680250024"><span class="annot"><span class="annottext">toServerError :: Error -&gt; ServerError
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680250245"><span class="annot"><span class="annottext">toServerError :: Error -&gt; ServerError
 </span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-28"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ResolverError"><span class="hs-identifier hs-type">ResolverError</span></a></span><span> </span><span id="local-6989586621680250022"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680250022"><span class="hs-identifier hs-var">err</span></a></span></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ServerError
+</span><span id="line-28"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ResolverError"><span class="hs-identifier hs-type">ResolverError</span></a></span><span> </span><span id="local-6989586621680250243"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680250243"><span class="hs-identifier hs-var">err</span></a></span></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ServerError
 forall err. ToServerError err =&gt; err -&gt; ServerError
 </span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var">toServerError</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680250022"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680250243"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-29"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ScopeOutOfBounds"><span class="hs-identifier hs-type">ScopeOutOfBounds</span></a></span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError
 </span><span class="hs-identifier hs-var">err401</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
-</span><a href="#local-6989586621680250020"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
+</span><a href="#local-6989586621680250241"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#ScopeOutOfBounds"><span class="hs-identifier hs-var">ScopeOutOfBounds</span></a></span><span>      </span><span class="hs-special">}</span><span>
 </span><span id="line-30"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#PotencyEscelation"><span class="hs-identifier hs-type">PotencyEscelation</span></a></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError
 </span><span class="hs-identifier hs-var">err401</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
-</span><a href="#local-6989586621680250020"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
+</span><a href="#local-6989586621680250241"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#PotencyEscelation"><span class="hs-identifier hs-var">PotencyEscelation</span></a></span><span>     </span><span class="hs-special">}</span><span>
 </span><span id="line-31"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#TimeNotSubset"><span class="hs-identifier hs-type">TimeNotSubset</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError
 </span><span class="hs-identifier hs-var">err422</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
-</span><a href="#local-6989586621680250020"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
+</span><a href="#local-6989586621680250241"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#TimeNotSubset"><span class="hs-identifier hs-var">TimeNotSubset</span></a></span><span>         </span><span class="hs-special">}</span><span>
 </span><span id="line-32"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#InvalidSignatureChain"><span class="hs-identifier hs-type">InvalidSignatureChain</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ServerError
 </span><span class="hs-identifier hs-var">err422</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
-</span><a href="#local-6989586621680250020"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
+</span><a href="#local-6989586621680250241"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Error -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Token.JWT.Proof.Error.html#InvalidSignatureChain"><span class="hs-identifier hs-var">InvalidSignatureChain</span></a></span><span> </span><span class="hs-special">}</span><span>

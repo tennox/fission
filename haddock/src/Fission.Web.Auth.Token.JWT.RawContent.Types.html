@@ -5,7 +5,7 @@
 </span><span id="line-5"></span><span class="hs-comment">-- | Newtype wrapper for raw content (i.e. the part that gets signed &amp; verified)</span><span>
 </span><span id="line-6"></span><span class="hs-keyword">newtype</span><span> </span><span id="RawContent"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-var">RawContent</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="RawContent"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-var">RawContent</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunRawContent%3ARawContent"><span class="annot"><span class="annottext">RawContent -&gt; Text
 </span><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#%24sel%3AunRawContent%3ARawContent"><span class="hs-identifier hs-var hs-var">unRawContent</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-7"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680248472"><span id="local-6989586621680248474"><span class="annot"><span class="annottext">RawContent -&gt; RawContent -&gt; Bool
+</span><span id="line-7"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680248693"><span id="local-6989586621680248695"><span class="annot"><span class="annottext">RawContent -&gt; RawContent -&gt; Bool
 (RawContent -&gt; RawContent -&gt; Bool)
 -&gt; (RawContent -&gt; RawContent -&gt; Bool) -&gt; Eq RawContent
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -13,7 +13,7 @@ forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c/= :: RawContent -&gt; RawContent -&gt; Bool
 == :: RawContent -&gt; RawContent -&gt; Bool
 $c== :: RawContent -&gt; RawContent -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680248465"><span id="local-6989586621680248467"><span id="local-6989586621680248469"><span class="annot"><span class="annottext">Int -&gt; RawContent -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680248686"><span id="local-6989586621680248688"><span id="local-6989586621680248690"><span class="annot"><span class="annottext">Int -&gt; RawContent -&gt; ShowS
 [RawContent] -&gt; ShowS
 RawContent -&gt; String
 (Int -&gt; RawContent -&gt; ShowS)
@@ -30,8 +30,8 @@ showsPrec :: Int -&gt; RawContent -&gt; ShowS
 $cshowsPrec :: Int -&gt; RawContent -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-8"></span><span>
-</span><span id="line-9"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680248462"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">RawContent</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-10"></span><span>  </span><span id="local-6989586621680248459"><span class="annot"><span class="annottext">textDisplay :: RawContent -&gt; Text
+</span><span id="line-9"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680248683"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#RawContent"><span class="hs-identifier hs-type">RawContent</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-10"></span><span>  </span><span id="local-6989586621680248680"><span class="annot"><span class="annottext">textDisplay :: RawContent -&gt; Text
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RawContent -&gt; Text
 </span><a href="Fission.Web.Auth.Token.JWT.RawContent.Types.html#%24sel%3AunRawContent%3ARawContent"><span class="hs-identifier hs-var hs-var">unRawContent</span></a></span><span>
 </span><span id="line-11"></span></pre></body></html>

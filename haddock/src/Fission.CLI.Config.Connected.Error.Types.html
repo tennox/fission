@@ -8,14 +8,14 @@
 </span><span id="line-8"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="CannotConnect"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#CannotConnect"><span class="hs-identifier hs-var">CannotConnect</span></a></span></span><span>
 </span><span id="line-9"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="PeersNotFound"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#PeersNotFound"><span class="hs-identifier hs-var">PeersNotFound</span></a></span></span><span>
 </span><span id="line-10"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="NoApp"><span class="annot"><a href="Fission.CLI.Config.Connected.Error.Types.html#NoApp"><span class="hs-identifier hs-var">NoApp</span></a></span></span><span>
-</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680245368"><span id="local-6989586621680245370"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
+</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680245589"><span id="local-6989586621680245591"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
 (Error -&gt; Error -&gt; Bool) -&gt; (Error -&gt; Error -&gt; Bool) -&gt; Eq Error
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Error -&gt; Error -&gt; Bool
 $c/= :: Error -&gt; Error -&gt; Bool
 == :: Error -&gt; Error -&gt; Bool
 $c== :: Error -&gt; Error -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245361"><span id="local-6989586621680245363"><span id="local-6989586621680245365"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245582"><span id="local-6989586621680245584"><span id="local-6989586621680245586"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
 [Error] -&gt; ShowS
 Error -&gt; String
 (Int -&gt; Error -&gt; ShowS)
@@ -28,7 +28,7 @@ show :: Error -&gt; String
 $cshow :: Error -&gt; String
 showsPrec :: Int -&gt; Error -&gt; ShowS
 $cshowsPrec :: Int -&gt; Error -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245352"><span id="local-6989586621680245354"><span id="local-6989586621680245356"><span class="annot"><span class="annottext">Show Error
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680245573"><span id="local-6989586621680245575"><span id="local-6989586621680245577"><span class="annot"><span class="annottext">Show Error
 Typeable Error
 (Typeable Error, Show Error) =&gt;
 (Error -&gt; SomeException)

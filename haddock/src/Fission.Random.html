@@ -15,36 +15,36 @@
 </span><span id="line-15"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-16"></span><span>
 </span><span id="line-17"></span><span class="hs-comment">-- | Generate random alphanumeric @Text@ with a given length</span><span>
-</span><span id="line-18"></span><span id="local-6989586621680245819"><span class="annot"><a href="Fission.Random.html#alphaNum"><span class="hs-identifier hs-type">alphaNum</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680245819"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245819"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
+</span><span id="line-18"></span><span id="local-6989586621680246040"><span class="annot"><a href="Fission.Random.html#alphaNum"><span class="hs-identifier hs-type">alphaNum</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680246040"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680246040"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
 </span><span id="line-19"></span><span id="alphaNum"><span class="annot"><span class="annottext">alphaNum :: Natural -&gt; m Text
-</span><a href="Fission.Random.html#alphaNum"><span class="hs-identifier hs-var hs-var">alphaNum</span></a></span></span><span> </span><span id="local-6989586621680245818"><span class="annot"><span class="annottext">len :: Natural
-</span><a href="#local-6989586621680245818"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word8 -&gt; Bool) -&gt; Natural -&gt; m Text
+</span><a href="Fission.Random.html#alphaNum"><span class="hs-identifier hs-var hs-var">alphaNum</span></a></span></span><span> </span><span id="local-6989586621680246039"><span class="annot"><span class="annottext">len :: Natural
+</span><a href="#local-6989586621680246039"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word8 -&gt; Bool) -&gt; Natural -&gt; m Text
 forall (m :: * -&gt; *).
 MonadIO m =&gt;
 (Word8 -&gt; Bool) -&gt; Natural -&gt; m Text
 </span><a href="Fission.Random.html#randomTextBy"><span class="hs-identifier hs-var">randomTextBy</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><a href="Fission.Random.html#isAsciiAlphaNum"><span class="hs-identifier hs-var">isAsciiAlphaNum</span></a></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680245818"><span class="hs-identifier hs-var">len</span></a></span><span>
+</span><a href="#local-6989586621680246039"><span class="hs-identifier hs-var">len</span></a></span><span>
 </span><span id="line-20"></span><span>
 </span><span id="line-21"></span><span class="hs-comment">-- | Generate random alphanumeric symbol @Text@ with a given length</span><span>
-</span><span id="line-22"></span><span id="local-6989586621680245815"><span class="annot"><a href="Fission.Random.html#alphaNumSymbol"><span class="hs-identifier hs-type">alphaNumSymbol</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680245815"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245815"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
+</span><span id="line-22"></span><span id="local-6989586621680246036"><span class="annot"><a href="Fission.Random.html#alphaNumSymbol"><span class="hs-identifier hs-type">alphaNumSymbol</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680246036"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680246036"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
 </span><span id="line-23"></span><span id="alphaNumSymbol"><span class="annot"><span class="annottext">alphaNumSymbol :: Natural -&gt; m Text
-</span><a href="Fission.Random.html#alphaNumSymbol"><span class="hs-identifier hs-var hs-var">alphaNumSymbol</span></a></span></span><span> </span><span id="local-6989586621680245814"><span class="annot"><span class="annottext">len :: Natural
-</span><a href="#local-6989586621680245814"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word8 -&gt; Bool) -&gt; Natural -&gt; m Text
+</span><a href="Fission.Random.html#alphaNumSymbol"><span class="hs-identifier hs-var hs-var">alphaNumSymbol</span></a></span></span><span> </span><span id="local-6989586621680246035"><span class="annot"><span class="annottext">len :: Natural
+</span><a href="#local-6989586621680246035"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word8 -&gt; Bool) -&gt; Natural -&gt; m Text
 forall (m :: * -&gt; *).
 MonadIO m =&gt;
 (Word8 -&gt; Bool) -&gt; Natural -&gt; m Text
 </span><a href="Fission.Random.html#randomTextBy"><span class="hs-identifier hs-var">randomTextBy</span></a></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><a href="Fission.Internal.URL.html#isURLCharacter"><span class="hs-identifier hs-var">isURLCharacter</span></a></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680245814"><span class="hs-identifier hs-var">len</span></a></span><span>
+</span><a href="#local-6989586621680246035"><span class="hs-identifier hs-var">len</span></a></span><span>
 </span><span id="line-24"></span><span>
 </span><span id="line-25"></span><span class="hs-comment">-- | Generate random 'ByteString' with a given length</span><span>
-</span><span id="line-26"></span><span id="local-6989586621680245826"><span class="annot"><a href="Fission.Random.html#bsRandomLength"><span class="hs-identifier hs-type">bsRandomLength</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680245826"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245826"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span>
+</span><span id="line-26"></span><span id="local-6989586621680246047"><span class="annot"><a href="Fission.Random.html#bsRandomLength"><span class="hs-identifier hs-type">bsRandomLength</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680246047"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680246047"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span>
 </span><span id="line-27"></span><span id="bsRandomLength"><span class="annot"><span class="annottext">bsRandomLength :: Natural -&gt; m ByteString
-</span><a href="Fission.Random.html#bsRandomLength"><span class="hs-identifier hs-var hs-var">bsRandomLength</span></a></span></span><span> </span><span id="local-6989586621680245812"><span class="annot"><span class="annottext">len :: Natural
-</span><a href="#local-6989586621680245812"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Random.html#bsRandomLength"><span class="hs-identifier hs-var hs-var">bsRandomLength</span></a></span></span><span> </span><span id="local-6989586621680246033"><span class="annot"><span class="annottext">len :: Natural
+</span><a href="#local-6989586621680246033"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-28"></span><span>  </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680245812"><span class="hs-identifier hs-var">len</span></a></span><span>
+</span><a href="#local-6989586621680246033"><span class="hs-identifier hs-var">len</span></a></span><span>
 </span><span id="line-29"></span><span>    </span><span class="annot"><span class="annottext">Natural -&gt; (Natural -&gt; Natural) -&gt; Natural
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Natural -&gt; Natural -&gt; Natural
@@ -65,61 +65,61 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; ByteString -&gt; ByteString
 </span><span class="hs-identifier hs-var">BS.take</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680245806"><span class="hs-identifier hs-var">toTake</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680246027"><span class="hs-identifier hs-var">toTake</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-33"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-34"></span><span>    </span><span id="local-6989586621680245806"><span class="annot"><span class="annottext">toTake :: Int
-</span><a href="#local-6989586621680245806"><span class="hs-identifier hs-var hs-var">toTake</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Natural -&gt; Int
+</span><span id="line-34"></span><span>    </span><span id="local-6989586621680246027"><span class="annot"><span class="annottext">toTake :: Int
+</span><a href="#local-6989586621680246027"><span class="hs-identifier hs-var hs-var">toTake</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Natural -&gt; Int
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680245812"><span class="hs-identifier hs-var">len</span></a></span><span>
+</span><a href="#local-6989586621680246033"><span class="hs-identifier hs-var">len</span></a></span><span>
 </span><span id="line-35"></span><span>
 </span><span id="line-36"></span><span class="hs-comment">-- | Check if a given character is alphanumeric</span><span>
 </span><span id="line-37"></span><span class="annot"><a href="Fission.Random.html#isAsciiAlphaNum"><span class="hs-identifier hs-type">isAsciiAlphaNum</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
 </span><span id="line-38"></span><span id="isAsciiAlphaNum"><span class="annot"><span class="annottext">isAsciiAlphaNum :: Word8 -&gt; Bool
-</span><a href="Fission.Random.html#isAsciiAlphaNum"><span class="hs-identifier hs-var hs-var">isAsciiAlphaNum</span></a></span></span><span> </span><span id="local-6989586621680245805"><span class="annot"><span class="annottext">w :: Word8
-</span><a href="#local-6989586621680245805"><span class="hs-identifier hs-var">w</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
+</span><a href="Fission.Random.html#isAsciiAlphaNum"><span class="hs-identifier hs-var hs-var">isAsciiAlphaNum</span></a></span></span><span> </span><span id="local-6989586621680246026"><span class="annot"><span class="annottext">w :: Word8
+</span><a href="#local-6989586621680246026"><span class="hs-identifier hs-var">w</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><span class="hs-identifier hs-var">isAsciiUpper</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680245805"><span class="hs-identifier hs-var">w</span></a></span><span>
+</span><a href="#local-6989586621680246026"><span class="hs-identifier hs-var">w</span></a></span><span>
 </span><span id="line-39"></span><span>                 </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">||</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><span class="hs-identifier hs-var">isAsciiLower</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680245805"><span class="hs-identifier hs-var">w</span></a></span><span>
+</span><a href="#local-6989586621680246026"><span class="hs-identifier hs-var">w</span></a></span><span>
 </span><span id="line-40"></span><span>                 </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">||</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
 </span><span class="hs-identifier hs-var">isDigit</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680245805"><span class="hs-identifier hs-var">w</span></a></span><span>
+</span><a href="#local-6989586621680246026"><span class="hs-identifier hs-var">w</span></a></span><span>
 </span><span id="line-41"></span><span>
-</span><span id="line-42"></span><span id="local-6989586621680245844"><span class="annot"><a href="Fission.Random.html#randomTextBy"><span class="hs-identifier hs-type">randomTextBy</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680245844"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245844"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
+</span><span id="line-42"></span><span id="local-6989586621680246065"><span class="annot"><a href="Fission.Random.html#randomTextBy"><span class="hs-identifier hs-type">randomTextBy</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680246065"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680246065"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
 </span><span id="line-43"></span><span id="randomTextBy"><span class="annot"><span class="annottext">randomTextBy :: (Word8 -&gt; Bool) -&gt; Natural -&gt; m Text
-</span><a href="Fission.Random.html#randomTextBy"><span class="hs-identifier hs-var hs-var">randomTextBy</span></a></span></span><span> </span><span id="local-6989586621680245800"><span class="annot"><span class="annottext">predicate :: Word8 -&gt; Bool
-</span><a href="#local-6989586621680245800"><span class="hs-identifier hs-var">predicate</span></a></span></span><span> </span><span id="local-6989586621680245799"><span class="annot"><span class="annottext">len :: Natural
-</span><a href="#local-6989586621680245799"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; m Text
+</span><a href="Fission.Random.html#randomTextBy"><span class="hs-identifier hs-var hs-var">randomTextBy</span></a></span></span><span> </span><span id="local-6989586621680246021"><span class="annot"><span class="annottext">predicate :: Word8 -&gt; Bool
+</span><a href="#local-6989586621680246021"><span class="hs-identifier hs-var">predicate</span></a></span></span><span> </span><span id="local-6989586621680246020"><span class="annot"><span class="annottext">len :: Natural
+</span><a href="#local-6989586621680246020"><span class="hs-identifier hs-var">len</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; m Text
 forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m Text
-</span><a href="#local-6989586621680245798"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;&quot;</span></span><span>
+</span><a href="#local-6989586621680246019"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;&quot;</span></span><span>
 </span><span id="line-44"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-45"></span><span>    </span><span id="local-6989586621680245828"><span class="annot"><a href="#local-6989586621680245798"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680245828"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680245828"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
-</span><span id="line-46"></span><span>    </span><span id="local-6989586621680245798"><span class="annot"><span class="annottext">go :: Text -&gt; m Text
-</span><a href="#local-6989586621680245798"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span id="local-6989586621680245797"><span class="annot"><span class="annottext">memo :: Text
-</span><a href="#local-6989586621680245797"><span class="hs-identifier hs-var">memo</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-47"></span><span>      </span><span id="local-6989586621680245796"><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680245796"><span class="hs-identifier hs-var">byteString</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Natural -&gt; m ByteString
+</span><span id="line-45"></span><span>    </span><span id="local-6989586621680246049"><span class="annot"><a href="#local-6989586621680246019"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680246049"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680246049"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span></span><span>
+</span><span id="line-46"></span><span>    </span><span id="local-6989586621680246019"><span class="annot"><span class="annottext">go :: Text -&gt; m Text
+</span><a href="#local-6989586621680246019"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span id="local-6989586621680246018"><span class="annot"><span class="annottext">memo :: Text
+</span><a href="#local-6989586621680246018"><span class="hs-identifier hs-var">memo</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-47"></span><span>      </span><span id="local-6989586621680246017"><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680246017"><span class="hs-identifier hs-var">byteString</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Natural -&gt; m ByteString
 forall (m :: * -&gt; *). MonadIO m =&gt; Natural -&gt; m ByteString
 </span><a href="Fission.Random.html#bsRandomLength"><span class="hs-identifier hs-var">bsRandomLength</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680245799"><span class="hs-identifier hs-var">len</span></a></span><span> </span><span class="annot"><span class="annottext">Natural -&gt; Natural -&gt; Natural
+</span><a href="#local-6989586621680246020"><span class="hs-identifier hs-var">len</span></a></span><span> </span><span class="annot"><span class="annottext">Natural -&gt; Natural -&gt; Natural
 forall a. Num a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">*</span></span><span> </span><span class="annot"><span class="hs-number">2</span></span><span class="hs-special">)</span><span>
 </span><span id="line-48"></span><span>
 </span><span id="line-49"></span><span>      </span><span class="hs-keyword">let</span><span>
-</span><span id="line-50"></span><span>        </span><span class="annot"><a href="#local-6989586621680245795"><span class="hs-identifier hs-type">txt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-51"></span><span>        </span><span id="local-6989586621680245795"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680245795"><span class="hs-identifier hs-var hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-50"></span><span>        </span><span class="annot"><a href="#local-6989586621680246016"><span class="hs-identifier hs-type">txt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
+</span><span id="line-51"></span><span>        </span><span id="local-6989586621680246016"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680246016"><span class="hs-identifier hs-var hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-52"></span><span>          </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680245796"><span class="hs-identifier hs-var">byteString</span></a></span><span>
+</span><a href="#local-6989586621680246017"><span class="hs-identifier hs-var">byteString</span></a></span><span>
 </span><span id="line-53"></span><span>            </span><span class="annot"><span class="annottext">ByteString -&gt; (ByteString -&gt; ByteString) -&gt; ByteString
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Word8 -&gt; Bool) -&gt; ByteString -&gt; ByteString
 </span><span class="hs-identifier hs-var">BS.filter</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Bool
-</span><a href="#local-6989586621680245800"><span class="hs-identifier hs-var">predicate</span></a></span><span>
+</span><a href="#local-6989586621680246021"><span class="hs-identifier hs-var">predicate</span></a></span><span>
 </span><span id="line-54"></span><span>            </span><span class="annot"><span class="annottext">ByteString -&gt; (ByteString -&gt; Text) -&gt; Text
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
@@ -128,31 +128,31 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 </span><span class="hs-identifier hs-var">Text.append</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680245797"><span class="hs-identifier hs-var">memo</span></a></span><span>
+</span><a href="#local-6989586621680246018"><span class="hs-identifier hs-var">memo</span></a></span><span>
 </span><span id="line-56"></span><span>
 </span><span id="line-57"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Int
 </span><span class="hs-identifier hs-var">Text.length</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680245795"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680246016"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;</span></span><span> </span><span class="annot"><span class="annottext">Natural -&gt; Int
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680245799"><span class="hs-identifier hs-var">len</span></a></span><span>
+</span><a href="#local-6989586621680246020"><span class="hs-identifier hs-var">len</span></a></span><span>
 </span><span id="line-58"></span><span>        </span><span class="hs-keyword">then</span><span>
 </span><span id="line-59"></span><span>          </span><span class="annot"><span class="annottext">Text -&gt; m Text
 forall (m :: * -&gt; *). MonadIO m =&gt; Text -&gt; m Text
-</span><a href="#local-6989586621680245798"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680245795"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><a href="#local-6989586621680246019"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680246016"><span class="hs-identifier hs-var">txt</span></a></span><span>
 </span><span id="line-60"></span><span>        </span><span class="hs-keyword">else</span><span>
 </span><span id="line-61"></span><span>          </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680245795"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><a href="#local-6989586621680246016"><span class="hs-identifier hs-var">txt</span></a></span><span>
 </span><span id="line-62"></span><span>            </span><span class="annot"><span class="annottext">Text -&gt; (Text -&gt; Text) -&gt; Text
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Text -&gt; Text
 </span><span class="hs-identifier hs-var">Text.take</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Natural -&gt; Int
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680245799"><span class="hs-identifier hs-var">len</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680246020"><span class="hs-identifier hs-var">len</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-63"></span><span>            </span><span class="annot"><span class="annottext">Text -&gt; (Text -&gt; m Text) -&gt; m Text
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; m Text
