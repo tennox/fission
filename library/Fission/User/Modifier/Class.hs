@@ -4,8 +4,10 @@ module Fission.User.Modifier.Class
   ) where
 
 import           Database.Persist as Persist
-import           Network.IPFS.CID.Types
 import           Servant.Server
+
+import qualified Network.IPFS.Add.Error as IPFS.Pin
+import           Network.IPFS.CID.Types
 
 import           Fission.Error
 import           Fission.Models
@@ -20,6 +22,8 @@ type Errors = OpenUnion
   
    , NotFound            URL
    , ActionNotAuthorized URL
+
+   , IPFS.Pin.Error
 
    , ServerError
    , InvalidURL

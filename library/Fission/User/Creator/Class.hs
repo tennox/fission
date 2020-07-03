@@ -23,6 +23,8 @@ import           Fission.User.Types
 import qualified Fission.User.Username      as Username
 import qualified Fission.User.Validation    as User
 
+import qualified Network.IPFS.Add.Error as IPFS.Pin
+
 import qualified Fission.App.Domain  as App.Domain
 import qualified Fission.App.Content as App.Content
 
@@ -45,6 +47,7 @@ type Errors = OpenUnion
    , Username.Invalid
    , Password.FailedDigest
 
+   , IPFS.Pin.Error
    , InvalidURL
 
    , ServerError

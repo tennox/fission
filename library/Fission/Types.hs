@@ -447,8 +447,13 @@ instance User.Modifier Fission where
                 }
 
             DNSLink.set userId url zoneID newCID <&> \case
-              Left err -> Error.relaxedLeft err
-              Right _  -> ok
+              Left err -> 
+                Error.relaxedLeft err
+
+              Right _  -> 
+                IPFS.Pin.add newCID <&> \case
+                  Right _  -> ok
+                  Left err -> Error.openLeft err
 
 instance User.Destroyer Fission where
   deactivate requestorId userId = runDB $ User.deactivate requestorId userId
