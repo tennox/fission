@@ -20,22 +20,22 @@
 </span><span id="line-20"></span><span>
 </span><span id="line-21"></span><span class="annot"><a href="Fission.URL.html#prefix%27"><span class="hs-identifier hs-type">prefix'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
 </span><span id="line-22"></span><span id="prefix%27"><span class="annot"><span class="annottext">prefix' :: Subdomain -&gt; URL -&gt; URL
-</span><a href="Fission.URL.html#prefix%27"><span class="hs-identifier hs-var hs-var">prefix'</span></a></span></span><span> </span><span id="local-6989586621680249773"><span class="annot"><span class="annottext">moreSub :: Subdomain
-</span><a href="#local-6989586621680249773"><span class="hs-identifier hs-var">moreSub</span></a></span></span><span> </span><span id="local-6989586621680249772"><span class="annot"><span class="annottext">url :: URL
-</span><a href="#local-6989586621680249772"><span class="hs-identifier hs-var">url</span></a></span></span><span class="hs-glyph">@</span><span id="local-6989586621680249770"><span id="local-6989586621680249771"><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680249772"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:subdomain:URL :: Maybe Subdomain
+</span><a href="Fission.URL.html#prefix%27"><span class="hs-identifier hs-var hs-var">prefix'</span></a></span></span><span> </span><span id="local-6989586621680250819"><span class="annot"><span class="annottext">moreSub :: Subdomain
+</span><a href="#local-6989586621680250819"><span class="hs-identifier hs-var">moreSub</span></a></span></span><span> </span><span id="local-6989586621680250818"><span class="annot"><span class="annottext">url :: URL
+</span><a href="#local-6989586621680250818"><span class="hs-identifier hs-var">url</span></a></span></span><span class="hs-glyph">@</span><span id="local-6989586621680250816"><span id="local-6989586621680250817"><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">URL
+</span><a href="#local-6989586621680250818"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:subdomain:URL :: Maybe Subdomain
 </span><a href="Fission.URL.Types.html#%24sel%3Asubdomain%3AURL"><span class="hs-identifier hs-var">subdomain</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Subdomain -&gt; Maybe Subdomain
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Subdomain
-</span><a href="#local-6989586621680249773"><span class="hs-identifier hs-var">moreSub</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain -&gt; Maybe Subdomain -&gt; Maybe Subdomain
+</span><a href="#local-6989586621680250819"><span class="hs-identifier hs-var">moreSub</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain -&gt; Maybe Subdomain -&gt; Maybe Subdomain
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680249770"><span class="hs-identifier hs-var">subdomain</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><a href="#local-6989586621680250816"><span class="hs-identifier hs-var">subdomain</span></a></span><span> </span><span class="hs-special">}</span><span>
 </span><span id="line-23"></span><span>
 </span><span id="line-24"></span><span class="annot"><a href="Fission.URL.html#zeroOrOneSubdomain"><span class="hs-identifier hs-type">zeroOrOneSubdomain</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-type">InvalidURL</span></a></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
 </span><span id="line-25"></span><span id="zeroOrOneSubdomain"><span class="annot"><span class="annottext">zeroOrOneSubdomain :: URL -&gt; Either InvalidURL URL
-</span><a href="Fission.URL.html#zeroOrOneSubdomain"><span class="hs-identifier hs-var hs-var">zeroOrOneSubdomain</span></a></span></span><span> </span><span id="local-6989586621680249766"><span class="annot"><span class="annottext">url :: URL
-</span><a href="#local-6989586621680249766"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.URL.html#zeroOrOneSubdomain"><span class="hs-identifier hs-var hs-var">zeroOrOneSubdomain</span></a></span></span><span> </span><span id="local-6989586621680250812"><span class="annot"><span class="annottext">url :: URL
+</span><a href="#local-6989586621680250812"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-26"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Text] -&gt; [Text]
 forall a. Int -&gt; [a] -&gt; [a]
 </span><span class="hs-identifier hs-var">take</span></span><span> </span><span class="annot"><span class="hs-number">3</span></span><span> </span><span class="annot"><span class="annottext">([Text] -&gt; [Text]) -&gt; (Text -&gt; [Text]) -&gt; Text -&gt; [Text]
@@ -48,11 +48,11 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">URL -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680249766"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-27"></span><span>    </span><span class="hs-special">[</span><span id="local-6989586621680249761"><span class="annot"><span class="annottext">sub :: Item [Text]
-</span><a href="#local-6989586621680249761"><span class="hs-identifier hs-var">sub</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249760"><span class="annot"><span class="annottext">domain :: Item [Text]
-</span><a href="#local-6989586621680249760"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249759"><span class="annot"><span class="annottext">tld :: Item [Text]
-</span><a href="#local-6989586621680249759"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Either InvalidURL URL
+</span><a href="#local-6989586621680250812"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-27"></span><span>    </span><span class="hs-special">[</span><span id="local-6989586621680250807"><span class="annot"><span class="annottext">sub :: Item [Text]
+</span><a href="#local-6989586621680250807"><span class="hs-identifier hs-var">sub</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250806"><span class="annot"><span class="annottext">domain :: Item [Text]
+</span><a href="#local-6989586621680250806"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250805"><span class="annot"><span class="annottext">tld :: Item [Text]
+</span><a href="#local-6989586621680250805"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Either InvalidURL URL
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(URL -&gt; Either InvalidURL URL) -&gt; URL -&gt; Either InvalidURL URL
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -62,23 +62,23 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680249760"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680250806"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680249759"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Subdomain -&gt; Maybe Subdomain
+</span><a href="#local-6989586621680250805"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Subdomain -&gt; Maybe Subdomain
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">(Subdomain -&gt; Maybe Subdomain) -&gt; Subdomain -&gt; Maybe Subdomain
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Subdomain
 </span><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-var">Subdomain</span></a></span><span> </span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680249761"><span class="hs-identifier hs-var">sub</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-28"></span><span>    </span><span class="hs-special">[</span><span id="local-6989586621680249756"><span class="annot"><span class="annottext">domain :: Item [Text]
-</span><a href="#local-6989586621680249756"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249755"><span class="annot"><span class="annottext">tld :: Item [Text]
-</span><a href="#local-6989586621680249755"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Either InvalidURL URL
+</span><a href="#local-6989586621680250807"><span class="hs-identifier hs-var">sub</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-28"></span><span>    </span><span class="hs-special">[</span><span id="local-6989586621680250802"><span class="annot"><span class="annottext">domain :: Item [Text]
+</span><a href="#local-6989586621680250802"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250801"><span class="annot"><span class="annottext">tld :: Item [Text]
+</span><a href="#local-6989586621680250801"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Either InvalidURL URL
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(URL -&gt; Either InvalidURL URL) -&gt; URL -&gt; Either InvalidURL URL
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -88,13 +88,13 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680249756"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680250802"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680249755"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
+</span><a href="#local-6989586621680250801"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-29"></span><span>    </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">InvalidURL -&gt; Either InvalidURL URL

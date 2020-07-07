@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Internal.Fixture.Web</span><span> </span><span>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#fissionURL"><span class="hs-identifier">fissionURL</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier">failureResp</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#failure502"><span class="hs-identifier">failure502</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#failure504"><span class="hs-identifier">failure504</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.Client</span></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.Client.Core.Request</span></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.Client.Internal.HttpClient</span></span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.HTTP.Types.Status</span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.HTTP.Types.Version</span></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.Seq</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Seq</span></span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#fissionURL"><span class="hs-identifier hs-type">fissionURL</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">BaseUrl</span></span><span>
+</span><span id="line-19"></span><span id="fissionURL"><span class="annot"><span class="annottext">fissionURL :: BaseUrl
+</span><a href="Fission.Internal.Fixture.Web.html#fissionURL"><span class="hs-identifier hs-var hs-var">fissionURL</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Scheme -&gt; String -&gt; Int -&gt; String -&gt; BaseUrl
+</span><span class="hs-identifier hs-var">BaseUrl</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Scheme
+</span><span class="hs-identifier hs-var">Https</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-string">&quot;example.com&quot;</span></span><span> </span><span class="annot"><span class="hs-number">443</span></span><span> </span><span class="annot"><span class="hs-string">&quot;/&quot;</span></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier hs-type">failureResp</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Status</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span>
+</span><span id="line-22"></span><span id="failureResp"><span class="annot"><span class="annottext">failureResp :: Status -&gt; ClientError
+</span><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier hs-var hs-var">failureResp</span></a></span></span><span> </span><span id="local-6989586621680245504"><span class="annot"><span class="annottext">status :: Status
+</span><a href="#local-6989586621680245504"><span class="hs-identifier hs-var">status</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BaseUrl -&gt; Request -&gt; ResponseF ByteString -&gt; ClientError
+</span><span class="hs-identifier hs-var">mkFailureResponse</span></span><span> </span><span class="annot"><span class="annottext">BaseUrl
+</span><a href="Fission.Internal.Fixture.Web.html#fissionURL"><span class="hs-identifier hs-var">fissionURL</span></a></span><span> </span><span class="annot"><span class="annottext">Request
+</span><span class="hs-identifier hs-var">defaultRequest</span></span><span> </span><span class="annot"><span class="annottext">(ResponseF ByteString -&gt; ClientError)
+-&gt; ResponseF ByteString -&gt; ClientError
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span>
+</span><span id="line-23"></span><span>  </span><span class="annot"><span class="annottext">Response :: forall a. Status -&gt; Seq Header -&gt; HttpVersion -&gt; a -&gt; ResponseF a
+</span><span class="hs-identifier hs-type hs-type">Response</span></span><span> </span><span>
+</span><span id="line-24"></span><span>    </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">responseStatusCode :: Status
+</span><span class="hs-identifier hs-var">responseStatusCode</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Status
+</span><a href="#local-6989586621680245504"><span class="hs-identifier hs-var">status</span></a></span><span>
+</span><span id="line-25"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">responseHeaders :: Seq Header
+</span><span class="hs-identifier hs-var">responseHeaders</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Seq Header
+forall a. Seq a
+</span><span class="hs-identifier hs-var">Seq.empty</span></span><span>
+</span><span id="line-26"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">responseHttpVersion :: HttpVersion
+</span><span class="hs-identifier hs-var">responseHttpVersion</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">HttpVersion
+</span><span class="hs-identifier hs-var">http11</span></span><span>
+</span><span id="line-27"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">responseBody :: ByteString
+</span><span class="hs-identifier hs-var">responseBody</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;&quot;</span></span><span>
+</span><span id="line-28"></span><span>    </span><span class="hs-special">}</span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span>
+</span><span id="line-31"></span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#failure502"><span class="hs-identifier hs-type">failure502</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span>
+</span><span id="line-32"></span><span id="failure502"><span class="annot"><span class="annottext">failure502 :: ClientError
+</span><a href="Fission.Internal.Fixture.Web.html#failure502"><span class="hs-identifier hs-var hs-var">failure502</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Status -&gt; ClientError
+</span><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier hs-var">failureResp</span></a></span><span> </span><span class="annot"><span class="annottext">Status
+</span><span class="hs-identifier hs-var">status502</span></span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#failure504"><span class="hs-identifier hs-type">failure504</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span>
+</span><span id="line-35"></span><span id="failure504"><span class="annot"><span class="annottext">failure504 :: ClientError
+</span><a href="Fission.Internal.Fixture.Web.html#failure504"><span class="hs-identifier hs-var hs-var">failure504</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Status -&gt; ClientError
+</span><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier hs-var">failureResp</span></a></span><span> </span><span class="annot"><span class="annottext">Status
+</span><span class="hs-identifier hs-var">status504</span></span><span>
+</span><span id="line-36"></span><span>
+</span><span id="line-37"></span></pre></body></html>

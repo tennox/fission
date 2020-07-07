@@ -7,7 +7,7 @@
 </span><span id="line-7"></span><span>
 </span><span id="line-8"></span><span class="hs-keyword">newtype</span><span> </span><span id="Signature"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-var">Signature</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Signature"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-var">Signature</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunSignature%3ASignature"><span class="annot"><span class="annottext">Signature -&gt; ByteString
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#%24sel%3AunSignature%3ASignature"><span class="hs-identifier hs-var hs-var">unSignature</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-9"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680248778"><span id="local-6989586621680248780"><span class="annot"><span class="annottext">Signature -&gt; Signature -&gt; Bool
+</span><span id="line-9"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680249824"><span id="local-6989586621680249826"><span class="annot"><span class="annottext">Signature -&gt; Signature -&gt; Bool
 (Signature -&gt; Signature -&gt; Bool)
 -&gt; (Signature -&gt; Signature -&gt; Bool) -&gt; Eq Signature
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -15,7 +15,7 @@ forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c/= :: Signature -&gt; Signature -&gt; Bool
 == :: Signature -&gt; Signature -&gt; Bool
 $c== :: Signature -&gt; Signature -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680248771"><span id="local-6989586621680248773"><span id="local-6989586621680248775"><span class="annot"><span class="annottext">Int -&gt; Signature -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249817"><span id="local-6989586621680249819"><span id="local-6989586621680249821"><span class="annot"><span class="annottext">Int -&gt; Signature -&gt; ShowS
 [Signature] -&gt; ShowS
 Signature -&gt; String
 (Int -&gt; Signature -&gt; ShowS)
@@ -32,8 +32,8 @@ showsPrec :: Int -&gt; Signature -&gt; ShowS
 $cshowsPrec :: Int -&gt; Signature -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-10"></span><span>
-</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680248767"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-12"></span><span>  </span><span id="local-6989586621680248765"><span class="annot"><span class="annottext">arbitrary :: Gen Signature
+</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249813"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680249811"><span class="annot"><span class="annottext">arbitrary :: Gen Signature
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Signature
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-var">Signature</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Signature) -&gt; Gen ByteString -&gt; Gen Signature
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
@@ -41,39 +41,39 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680248760"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-15"></span><span>  </span><span id="local-6989586621680248758"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Signature
+</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249806"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680249804"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Signature
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Signature) -&gt; Value -&gt; Parser Signature
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;RS256.Signature&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680248755"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680248755"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;RS256.Signature&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680249801"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680249801"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-16"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either String ByteString
 </span><span class="hs-identifier hs-var">B64.URL.decodeUnpadded</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Either String ByteString)
 -&gt; ByteString -&gt; Either String ByteString
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
 </span><span class="hs-identifier hs-var">encodeUtf8</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680248755"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-17"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680248752"><span class="annot"><span class="annottext">sig :: ByteString
-</span><a href="#local-6989586621680248752"><span class="hs-identifier hs-var">sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Parser Signature
+</span><a href="#local-6989586621680249801"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-17"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680249798"><span class="annot"><span class="annottext">sig :: ByteString
+</span><a href="#local-6989586621680249798"><span class="hs-identifier hs-var">sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Parser Signature
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Signature -&gt; Parser Signature) -&gt; Signature -&gt; Parser Signature
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Signature
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-var">Signature</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680248752"><span class="hs-identifier hs-var">sig</span></a></span><span>
-</span><span id="line-18"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680248751"><span class="annot"><span class="annottext">err :: String
-</span><a href="#local-6989586621680248751"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Signature
+</span><a href="#local-6989586621680249798"><span class="hs-identifier hs-var">sig</span></a></span><span>
+</span><span id="line-18"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680249797"><span class="annot"><span class="annottext">err :: String
+</span><a href="#local-6989586621680249797"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Signature
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Parser Signature) -&gt; String -&gt; Parser Signature
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Unable to parse RS256 Signature: &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680248751"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680249797"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-19"></span><span>
-</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680248744"><span id="local-6989586621680248746"><span id="local-6989586621680248748"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-21"></span><span>  </span><span id="local-6989586621680248742"><span class="annot"><span class="annottext">toJSON :: Signature -&gt; Value
+</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249790"><span id="local-6989586621680249792"><span id="local-6989586621680249794"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-21"></span><span>  </span><span id="local-6989586621680249788"><span class="annot"><span class="annottext">toJSON :: Signature -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; (Signature -&gt; Text) -&gt; Signature -&gt; Value
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -81,18 +81,18 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span>
 </span><span id="line-22"></span><span>
-</span><span id="line-23"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680248736"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-24"></span><span>  </span><span id="local-6989586621680248733"><span class="annot"><span class="annottext">textDisplay :: Signature -&gt; Text
-</span><a href="#local-6989586621680248733"><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span><span> </span><span id="local-6989586621680248732"><span class="annot"><span class="annottext">raw :: ByteString
-</span><a href="#local-6989586621680248732"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
+</span><span id="line-23"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249782"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-24"></span><span>  </span><span id="local-6989586621680249779"><span class="annot"><span class="annottext">textDisplay :: Signature -&gt; Text
+</span><a href="#local-6989586621680249779"><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span><span> </span><span id="local-6989586621680249778"><span class="annot"><span class="annottext">raw :: ByteString
+</span><a href="#local-6989586621680249778"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
 </span><span class="hs-identifier hs-var">decodeUtf8Lenient</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Text) -&gt; ByteString -&gt; Text
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
 </span><span class="hs-identifier hs-var">B64.URL.encodeUnpadded</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680248732"><span class="hs-identifier hs-var">raw</span></a></span><span>
+</span><a href="#local-6989586621680249778"><span class="hs-identifier hs-var">raw</span></a></span><span>
 </span><span id="line-25"></span><span>
-</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680248726"><span class="annot"><span class="hs-identifier hs-type">ByteArrayAccess</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680248724"><span class="annot"><span class="annottext">length :: Signature -&gt; Int
+</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249772"><span class="annot"><span class="hs-identifier hs-type">ByteArrayAccess</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680249770"><span class="annot"><span class="annottext">length :: Signature -&gt; Int
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">length</span></span></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Int
 forall ba. ByteArrayAccess ba =&gt; ba -&gt; Int
 </span><span class="hs-identifier hs-var">length</span></span><span>        </span><span class="annot"><span class="annottext">(ByteString -&gt; Int)
@@ -100,7 +100,7 @@ forall ba. ByteArrayAccess ba =&gt; ba -&gt; Int
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Signature -&gt; ByteString
 </span><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#%24sel%3AunSignature%3ASignature"><span class="hs-identifier hs-var hs-var">unSignature</span></a></span><span>
-</span><span id="line-28"></span><span>  </span><span id="local-6989586621680248722"><span class="annot"><span class="annottext">withByteArray :: Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
+</span><span id="line-28"></span><span>  </span><span id="local-6989586621680249768"><span class="annot"><span class="annottext">withByteArray :: Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">withByteArray</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 forall ba p a. ByteArrayAccess ba =&gt; ba -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 </span><span class="hs-identifier hs-var">withByteArray</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; (Ptr p -&gt; IO a) -&gt; IO a)

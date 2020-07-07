@@ -11,7 +11,7 @@
 </span><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#%24sel%3Apassword%3AAPI"><span class="hs-identifier hs-var hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
 </span><span id="line-11"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AssoSalt%3AAPI"><span class="annot"><span class="annottext">API -&gt; Text
 </span><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#%24sel%3AssoSalt%3AAPI"><span class="hs-identifier hs-var hs-var">ssoSalt</span></a></span></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-12"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680243167"><span id="local-6989586621680243169"><span id="local-6989586621680243171"><span class="annot"><span class="annottext">Int -&gt; API -&gt; ShowS
+</span><span id="line-12"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680244177"><span id="local-6989586621680244179"><span id="local-6989586621680244181"><span class="annot"><span class="annottext">Int -&gt; API -&gt; ShowS
 [API] -&gt; ShowS
 API -&gt; String
 (Int -&gt; API -&gt; ShowS)
@@ -25,7 +25,7 @@ $cshow :: API -&gt; String
 showsPrec :: Int -&gt; API -&gt; ShowS
 $cshowsPrec :: Int -&gt; API -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-13"></span><span>             </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680243162"><span id="local-6989586621680243164"><span class="annot"><span class="annottext">API -&gt; API -&gt; Bool
+</span><span id="line-13"></span><span>             </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680244172"><span id="local-6989586621680244174"><span class="annot"><span class="annottext">API -&gt; API -&gt; Bool
 (API -&gt; API -&gt; Bool) -&gt; (API -&gt; API -&gt; Bool) -&gt; Eq API
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: API -&gt; API -&gt; Bool
@@ -35,20 +35,20 @@ $c== :: API -&gt; API -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
 </span><span id="line-14"></span><span>             </span><span class="hs-special">)</span><span>
 </span><span id="line-15"></span><span>
-</span><span id="line-16"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680243158"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#API"><span class="hs-identifier hs-type">API</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-17"></span><span>  </span><span id="local-6989586621680243156"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser API
+</span><span id="line-16"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680244168"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#API"><span class="hs-identifier hs-type">API</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-17"></span><span>  </span><span id="local-6989586621680244166"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser API
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser API) -&gt; Value -&gt; Parser API
 forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Heroku.API&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680243153"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680243153"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-18"></span><span>    </span><span id="local-6989586621680243152"><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680243152"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680243153"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Heroku.API&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680244163"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680244163"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-18"></span><span>    </span><span id="local-6989586621680244162"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680244162"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680244163"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;password&quot;</span></span><span>
-</span><span id="line-19"></span><span>    </span><span id="local-6989586621680243150"><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680243150"><span class="hs-identifier hs-var">ssoSalt</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680243153"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
+</span><span id="line-19"></span><span>    </span><span id="local-6989586621680244160"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680244160"><span class="hs-identifier hs-var">ssoSalt</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680244163"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;sso_salt&quot;</span></span><span>
 </span><span id="line-20"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">API :: Text -&gt; Text -&gt; API
@@ -61,7 +61,7 @@ forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#%24sel%3Aname%3AManifest"><span class="hs-identifier hs-var hs-var">name</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
 </span><span id="line-25"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Aapi%3AManifest"><span class="annot"><span class="annottext">Manifest -&gt; API
 </span><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#%24sel%3Aapi%3AManifest"><span class="hs-identifier hs-var hs-var">api</span></a></span></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#API"><span class="hs-identifier hs-type">API</span></a></span><span>
-</span><span id="line-26"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680243139"><span id="local-6989586621680243141"><span id="local-6989586621680243143"><span class="annot"><span class="annottext">Int -&gt; Manifest -&gt; ShowS
+</span><span id="line-26"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680244149"><span id="local-6989586621680244151"><span id="local-6989586621680244153"><span class="annot"><span class="annottext">Int -&gt; Manifest -&gt; ShowS
 [Manifest] -&gt; ShowS
 Manifest -&gt; String
 (Int -&gt; Manifest -&gt; ShowS)
@@ -75,7 +75,7 @@ $cshow :: Manifest -&gt; String
 showsPrec :: Int -&gt; Manifest -&gt; ShowS
 $cshowsPrec :: Int -&gt; Manifest -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-27"></span><span>             </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680243135"><span id="local-6989586621680243137"><span class="annot"><span class="annottext">Manifest -&gt; Manifest -&gt; Bool
+</span><span id="line-27"></span><span>             </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680244145"><span id="local-6989586621680244147"><span class="annot"><span class="annottext">Manifest -&gt; Manifest -&gt; Bool
 (Manifest -&gt; Manifest -&gt; Bool)
 -&gt; (Manifest -&gt; Manifest -&gt; Bool) -&gt; Eq Manifest
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -86,25 +86,25 @@ $c== :: Manifest -&gt; Manifest -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
 </span><span id="line-28"></span><span>             </span><span class="hs-special">)</span><span>
 </span><span id="line-29"></span><span>
-</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680243132"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#Manifest"><span class="hs-identifier hs-type">Manifest</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-31"></span><span>  </span><span id="local-6989586621680243131"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Manifest
-</span><a href="#local-6989586621680243131"><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser Manifest) -&gt; Value -&gt; Parser Manifest
+</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680244142"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.AddOn.Manifest.Types.html#Manifest"><span class="hs-identifier hs-type">Manifest</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-31"></span><span>  </span><span id="local-6989586621680244141"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Manifest
+</span><a href="#local-6989586621680244141"><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser Manifest) -&gt; Value -&gt; Parser Manifest
 forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Heroku.Manifest&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680243130"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680243130"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-32"></span><span>    </span><span id="local-6989586621680243129"><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680243129"><span class="hs-identifier hs-var">id</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680243130"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Heroku.Manifest&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680244140"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680244140"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-32"></span><span>    </span><span id="local-6989586621680244139"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680244139"><span class="hs-identifier hs-var">id</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680244140"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;id&quot;</span></span><span>
-</span><span id="line-33"></span><span>    </span><span id="local-6989586621680243128"><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680243128"><span class="hs-identifier hs-var">name</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680243130"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
+</span><span id="line-33"></span><span>    </span><span id="local-6989586621680244138"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680244138"><span class="hs-identifier hs-var">name</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680244140"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;name&quot;</span></span><span>
-</span><span id="line-34"></span><span>    </span><span id="local-6989586621680243127"><span class="annot"><span class="annottext">API
-</span><a href="#local-6989586621680243127"><span class="hs-identifier hs-var">api</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680243130"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser API
+</span><span id="line-34"></span><span>    </span><span id="local-6989586621680244137"><span class="annot"><span class="annottext">API
+</span><a href="#local-6989586621680244137"><span class="hs-identifier hs-var">api</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680244140"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser API
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;api&quot;</span></span><span>
 </span><span id="line-35"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Manifest :: Text -&gt; Text -&gt; API -&gt; Manifest

@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.4.4
+@version 2.4.5
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -5212,6 +5212,12 @@ mimeExt :: Map MimeType Extension
 lookupExt :: MimeType -> Extension
 defaultMimeLookup :: FileName -> MimeType
 
+module Fission.Internal.Fixture.Web
+fissionURL :: BaseUrl
+failureResp :: Status -> ClientError
+failure502 :: ClientError
+failure504 :: ClientError
+
 module Fission.Internal.CLI.Meta
 data Package
 Package :: !Maybe Text -> !Maybe Text -> Package
@@ -7350,6 +7356,11 @@ openLeft :: IsMember err errs => err -> Either (OpenUnion errs) a
 relaxedLeft :: Contains errsA errsB => OpenUnion errsA -> Either (OpenUnion errsB) a
 fromMaybe :: IsMember err errs => err -> (a -> b) -> Maybe a -> Either (OpenUnion errs) b
 fromMaybe' :: IsMember err errs => err -> Maybe a -> Either (OpenUnion errs) a
+retryOnErr :: Monad m => (a -> m Bool) -> Natural -> m a -> m a
+
+module Fission.Web.Client.Error
+retryOnStatus :: (MonadWebClient m, MonadLogger m) => [Status] -> Natural -> ClientM a -> m (Either ClientError a)
+checkStatus :: MonadLogger m => [Status] -> Either ClientError a -> m Bool
 
 module Fission.User.Modifier.Class
 class Monad m => Modifier m
@@ -8075,6 +8086,7 @@ add :: (MonadUnliftIO m, MonadTime m, MonadLogger m, MonadWebClient m, ServerDID
 module Fission.Web.Client.App
 type Create = AppPrefix :> HigherOrder :> API
 type Update = AppPrefix :> HigherOrder :> API
+mkUpdateReq :: (MonadIO m, MonadTime m, MonadLogger m, ServerDID m, MonadWebAuth m Token, MonadWebAuth m SecretKey) => URL -> CID -> Bool -> m (ClientM NoContent)
 
 
 -- | Initialize a new Fission app in an existing directory
