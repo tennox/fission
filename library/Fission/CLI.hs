@@ -12,18 +12,20 @@ import           Fission.CLI.Config.Connected
 import           Fission.CLI.Command          as Command
 import           Fission.CLI.Display.Error
 
-import qualified Fission.CLI.Command.App.Init as App.Init
-import qualified Fission.CLI.Command.Down     as Down
-import qualified Fission.CLI.Command.Setup    as Setup
-import qualified Fission.CLI.Command.Up       as Up
-import qualified Fission.CLI.Command.Watch    as Watch
-import qualified Fission.CLI.Command.Whoami   as Whoami
+import qualified Fission.CLI.Command.Account.Link as Account.Link
+import qualified Fission.CLI.Command.App.Init     as App.Init
+import qualified Fission.CLI.Command.Down         as Down
+import qualified Fission.CLI.Command.Setup        as Setup
+import qualified Fission.CLI.Command.Up           as Up
+import qualified Fission.CLI.Command.Watch        as Watch
+import qualified Fission.CLI.Command.Whoami       as Whoami
 
 cli :: MonadIO m => BaseConfig -> m ()
 cli baseCfg = liftIO do
   (_, runCLI) <- simpleOptions version summary detail noop do
     runBase_ Setup.cmd
 
+    runConnected_ Account.Link.cmd
     runConnected_ Whoami.cmd
     runConnected_ Up.cmd
     runConnected_ Down.cmd

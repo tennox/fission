@@ -121,6 +121,7 @@ dependencies:
   - monad-time
   - mtl
   - network-uri
+  - open-browser
   - optparse-applicative
   - optparse-simple
   - path-pieces
