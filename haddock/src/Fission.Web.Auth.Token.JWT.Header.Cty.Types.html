@@ -28,14 +28,14 @@ https://tools.ietf.org/html/rfc7519
 -}</span><span>
 </span><span id="line-29"></span><span class="hs-keyword">data</span><span> </span><span id="Cty"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-var">Cty</span></a></span></span><span>
 </span><span id="line-30"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="JWT"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#JWT"><span class="hs-identifier hs-var">JWT</span></a></span></span><span>
-</span><span id="line-31"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680249520"><span id="local-6989586621680249522"><span class="annot"><span class="annottext">Cty -&gt; Cty -&gt; Bool
+</span><span id="line-31"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680249919"><span id="local-6989586621680249921"><span class="annot"><span class="annottext">Cty -&gt; Cty -&gt; Bool
 (Cty -&gt; Cty -&gt; Bool) -&gt; (Cty -&gt; Cty -&gt; Bool) -&gt; Eq Cty
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Cty -&gt; Cty -&gt; Bool
 $c/= :: Cty -&gt; Cty -&gt; Bool
 == :: Cty -&gt; Cty -&gt; Bool
 $c== :: Cty -&gt; Cty -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249513"><span id="local-6989586621680249515"><span id="local-6989586621680249517"><span class="annot"><span class="annottext">Int -&gt; Cty -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249912"><span id="local-6989586621680249914"><span id="local-6989586621680249916"><span class="annot"><span class="annottext">Int -&gt; Cty -&gt; ShowS
 [Cty] -&gt; ShowS
 Cty -&gt; String
 (Int -&gt; Cty -&gt; ShowS)
@@ -48,7 +48,7 @@ show :: Cty -&gt; String
 $cshow :: Cty -&gt; String
 showsPrec :: Int -&gt; Cty -&gt; ShowS
 $cshowsPrec :: Int -&gt; Cty -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249504"><span id="local-6989586621680249506"><span id="local-6989586621680249508"><span id="local-6989586621680249510"><span class="annot"><span class="annottext">ReadPrec [Cty]
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249903"><span id="local-6989586621680249905"><span id="local-6989586621680249907"><span id="local-6989586621680249909"><span class="annot"><span class="annottext">ReadPrec [Cty]
 ReadPrec Cty
 Int -&gt; ReadS Cty
 ReadS [Cty]
@@ -67,20 +67,20 @@ readsPrec :: Int -&gt; ReadS Cty
 $creadsPrec :: Int -&gt; ReadS Cty
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Read</span></span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-32"></span><span>
-</span><span id="line-33"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249500"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-type">Cty</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-34"></span><span>  </span><span id="local-6989586621680249498"><span class="annot"><span class="annottext">arbitrary :: Gen Cty
+</span><span id="line-33"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249899"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-type">Cty</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-34"></span><span>  </span><span id="local-6989586621680249897"><span class="annot"><span class="annottext">arbitrary :: Gen Cty
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Cty -&gt; Gen Cty
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Cty
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#JWT"><span class="hs-identifier hs-var">JWT</span></a></span><span>
 </span><span id="line-35"></span><span>
-</span><span id="line-36"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249490"><span id="local-6989586621680249492"><span id="local-6989586621680249494"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-type">Cty</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-37"></span><span>  </span><span id="local-6989586621680249488"><span class="annot"><span class="annottext">toJSON :: Cty -&gt; Value
+</span><span id="line-36"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249889"><span id="local-6989586621680249891"><span id="local-6989586621680249893"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-type">Cty</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-37"></span><span>  </span><span id="local-6989586621680249887"><span class="annot"><span class="annottext">toJSON :: Cty -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#JWT"><span class="hs-identifier hs-type">JWT</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="hs-string">&quot;JWT&quot;</span></span><span>
 </span><span id="line-38"></span><span>
-</span><span id="line-39"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249483"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-type">Cty</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-40"></span><span>  </span><span id="local-6989586621680249481"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Cty
+</span><span id="line-39"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249882"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-type">Cty</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-40"></span><span>  </span><span id="local-6989586621680249880"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Cty
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Cty) -&gt; Value -&gt; Parser Cty
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;JWT.Header.Cty&quot;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
@@ -92,15 +92,15 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Cty
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#JWT"><span class="hs-identifier hs-var">JWT</span></a></span><span>
-</span><span id="line-43"></span><span>    </span><span id="local-6989586621680249478"><span class="annot"><span class="annottext">other :: Text
-</span><a href="#local-6989586621680249478"><span class="hs-identifier hs-var">other</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Cty
+</span><span id="line-43"></span><span>    </span><span id="local-6989586621680249877"><span class="annot"><span class="annottext">other :: Text
+</span><a href="#local-6989586621680249877"><span class="hs-identifier hs-var">other</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Cty
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Parser Cty) -&gt; String -&gt; Parser Cty
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680249478"><span class="hs-identifier hs-var">other</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680249877"><span class="hs-identifier hs-var">other</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;is not a valid JWT 'cty' value for Fission&quot;</span></span><span>
 </span><span id="line-44"></span></pre></body></html>

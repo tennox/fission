@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.4.5
+@version 2.5.0
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -5442,6 +5442,9 @@ isDebugEnabled :: IO Bool
 --   unsetting <tt>RIO_VERBOSE</tt> is the only way for it to be
 --   interpretted as False
 setRioVerbose :: Bool -> IO ()
+
+module Fission.DNS
+splitRecord :: Text -> NonEmpty Text
 
 module Fission.CLI.Prompt.Error.Types
 data Err

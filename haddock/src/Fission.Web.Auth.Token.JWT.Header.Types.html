@@ -25,7 +25,7 @@
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#%24sel%3Acty%3AHeader"><span class="hs-identifier hs-var hs-var">cty</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Cty.Types.html#Cty"><span class="hs-identifier hs-type">Cty</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-comment">-- ^ Standard JWT '&quot;cty&quot;' field. Set to '&quot;JWT&quot;' if there's a recursive JWT in the claims</span><span>
 </span><span id="line-23"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Auav%3AHeader"><span class="annot"><span class="annottext">Header -&gt; SemVer
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#%24sel%3Auav%3AHeader"><span class="hs-identifier hs-var hs-var">uav</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span><span>      </span><span class="hs-comment">-- ^ UCAN Version, mainly to state assumptions</span><span>
-</span><span id="line-24"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680249678"><span id="local-6989586621680249680"><span id="local-6989586621680249682"><span class="annot"><span class="annottext">Int -&gt; Header -&gt; ShowS
+</span><span id="line-24"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680250077"><span id="local-6989586621680250079"><span id="local-6989586621680250081"><span class="annot"><span class="annottext">Int -&gt; Header -&gt; ShowS
 [Header] -&gt; ShowS
 Header -&gt; String
 (Int -&gt; Header -&gt; ShowS)
@@ -38,7 +38,7 @@ show :: Header -&gt; String
 $cshow :: Header -&gt; String
 showsPrec :: Int -&gt; Header -&gt; ShowS
 $cshowsPrec :: Int -&gt; Header -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680249673"><span id="local-6989586621680249675"><span class="annot"><span class="annottext">Header -&gt; Header -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680250072"><span id="local-6989586621680250074"><span class="annot"><span class="annottext">Header -&gt; Header -&gt; Bool
 (Header -&gt; Header -&gt; Bool)
 -&gt; (Header -&gt; Header -&gt; Bool) -&gt; Eq Header
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -48,23 +48,23 @@ $c/= :: Header -&gt; Header -&gt; Bool
 $c== :: Header -&gt; Header -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-25"></span><span>
-</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249669"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680249667"><span class="annot"><span class="annottext">arbitrary :: Gen Header
+</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680250068"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680250066"><span class="annot"><span class="annottext">arbitrary :: Gen Header
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-28"></span><span>    </span><span id="local-6989586621680249665"><span class="annot"><span class="annottext">Typ
-</span><a href="#local-6989586621680249665"><span class="hs-identifier hs-var">typ</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Typ
+</span><span id="line-28"></span><span>    </span><span id="local-6989586621680250064"><span class="annot"><span class="annottext">Typ
+</span><a href="#local-6989586621680250064"><span class="hs-identifier hs-var">typ</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Typ
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-29"></span><span>    </span><span id="local-6989586621680249664"><span class="annot"><span class="annottext">Algorithm
-</span><a href="#local-6989586621680249664"><span class="hs-identifier hs-var">alg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Algorithm
+</span><span id="line-29"></span><span>    </span><span id="local-6989586621680250063"><span class="annot"><span class="annottext">Algorithm
+</span><a href="#local-6989586621680250063"><span class="hs-identifier hs-var">alg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Algorithm
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-30"></span><span>    </span><span id="local-6989586621680249663"><span class="annot"><span class="annottext">Maybe Cty
-</span><a href="#local-6989586621680249663"><span class="hs-identifier hs-var">cty</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen (Maybe Cty)
+</span><span id="line-30"></span><span>    </span><span id="local-6989586621680250062"><span class="annot"><span class="annottext">Maybe Cty
+</span><a href="#local-6989586621680250062"><span class="hs-identifier hs-var">cty</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen (Maybe Cty)
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-31"></span><span>    </span><span id="local-6989586621680249662"><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680249662"><span class="hs-identifier hs-var">uav</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Word8 -&gt; SemVer
+</span><span id="line-31"></span><span>    </span><span id="local-6989586621680250061"><span class="annot"><span class="annottext">SemVer
+</span><a href="#local-6989586621680250061"><span class="hs-identifier hs-var">uav</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Word8 -&gt; SemVer
 </span><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-var">SemVer</span></a></span><span> </span><span class="annot"><span class="hs-number">0</span></span><span> </span><span class="annot"><span class="annottext">(Word8 -&gt; Word8 -&gt; SemVer) -&gt; Gen Word8 -&gt; Gen (Word8 -&gt; SemVer)
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Word8
@@ -81,52 +81,52 @@ forall a. Arbitrary a =&gt; Gen a
 </span><span id="line-32"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">$WHeader :: Typ -&gt; Algorithm -&gt; Maybe Cty -&gt; SemVer -&gt; Header
 </span><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#%24WHeader"><span class="hs-identifier hs-type hs-type">Header</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
 </span><span id="line-33"></span><span>
-</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249651"><span id="local-6989586621680249653"><span id="local-6989586621680249655"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-35"></span><span>  </span><span id="local-6989586621680249649"><span class="annot"><span class="annottext">toJSON :: Header -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680249644"><span id="local-6989586621680249645"><span id="local-6989586621680249646"><span id="local-6989586621680249647"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680250050"><span id="local-6989586621680250052"><span id="local-6989586621680250054"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680250048"><span class="annot"><span class="annottext">toJSON :: Header -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680250043"><span id="local-6989586621680250044"><span id="local-6989586621680250045"><span id="local-6989586621680250046"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span>
 </span><span id="line-36"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;typ&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Typ -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Typ
-</span><a href="#local-6989586621680249647"><span class="hs-identifier hs-var">typ</span></a></span><span>
+</span><a href="#local-6989586621680250046"><span class="hs-identifier hs-var">typ</span></a></span><span>
 </span><span id="line-37"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;alg&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Algorithm -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Algorithm
-</span><a href="#local-6989586621680249646"><span class="hs-identifier hs-var">alg</span></a></span><span>
+</span><a href="#local-6989586621680250045"><span class="hs-identifier hs-var">alg</span></a></span><span>
 </span><span id="line-38"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;cty&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Maybe Cty -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Maybe Cty
-</span><a href="#local-6989586621680249645"><span class="hs-identifier hs-var">cty</span></a></span><span>
+</span><a href="#local-6989586621680250044"><span class="hs-identifier hs-var">cty</span></a></span><span>
 </span><span id="line-39"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;uav&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; SemVer -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680249644"><span class="hs-identifier hs-var">uav</span></a></span><span>
+</span><a href="#local-6989586621680250043"><span class="hs-identifier hs-var">uav</span></a></span><span>
 </span><span id="line-40"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-41"></span><span>
-</span><span id="line-42"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680249639"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-43"></span><span>  </span><span id="local-6989586621680249637"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Header
+</span><span id="line-42"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680250038"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Header.Types.html#Header"><span class="hs-identifier hs-type">Header</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-43"></span><span>  </span><span id="local-6989586621680250036"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Header
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser Header) -&gt; Value -&gt; Parser Header
 forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;JWT.Header&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680249634"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680249634"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-44"></span><span>    </span><span id="local-6989586621680249633"><span class="annot"><span class="annottext">Typ
-</span><a href="#local-6989586621680249633"><span class="hs-identifier hs-var">typ</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680249634"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Typ
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;JWT.Header&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680250033"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680250033"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-44"></span><span>    </span><span id="local-6989586621680250032"><span class="annot"><span class="annottext">Typ
+</span><a href="#local-6989586621680250032"><span class="hs-identifier hs-var">typ</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680250033"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Typ
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;typ&quot;</span></span><span>
-</span><span id="line-45"></span><span>    </span><span id="local-6989586621680249631"><span class="annot"><span class="annottext">Algorithm
-</span><a href="#local-6989586621680249631"><span class="hs-identifier hs-var">alg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680249634"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Algorithm
+</span><span id="line-45"></span><span>    </span><span id="local-6989586621680250030"><span class="annot"><span class="annottext">Algorithm
+</span><a href="#local-6989586621680250030"><span class="hs-identifier hs-var">alg</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680250033"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Algorithm
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;alg&quot;</span></span><span>
-</span><span id="line-46"></span><span>    </span><span id="local-6989586621680249630"><span class="annot"><span class="annottext">Maybe Cty
-</span><a href="#local-6989586621680249630"><span class="hs-identifier hs-var">cty</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680249634"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Cty)
+</span><span id="line-46"></span><span>    </span><span id="local-6989586621680250029"><span class="annot"><span class="annottext">Maybe Cty
+</span><a href="#local-6989586621680250029"><span class="hs-identifier hs-var">cty</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680250033"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Cty)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;cty&quot;</span></span><span>
-</span><span id="line-47"></span><span>    </span><span id="local-6989586621680249628"><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680249628"><span class="hs-identifier hs-var">uav</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680249634"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser SemVer
+</span><span id="line-47"></span><span>    </span><span id="local-6989586621680250027"><span class="annot"><span class="annottext">SemVer
+</span><a href="#local-6989586621680250027"><span class="hs-identifier hs-var">uav</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680250033"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser SemVer
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;uav&quot;</span></span><span>
 </span><span id="line-48"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">$WHeader :: Typ -&gt; Algorithm -&gt; Maybe Cty -&gt; SemVer -&gt; Header

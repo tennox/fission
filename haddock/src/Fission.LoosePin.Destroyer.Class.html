@@ -8,18 +8,18 @@
 </span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
 </span><span id="line-9"></span><span>
 </span><span id="line-10"></span><span class="hs-comment">-- | Actions for destroying @LoosePin@s</span><span>
-</span><span id="line-11"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680254576"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Destroyer"><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-var">Destroyer</span></a></span></span><span> </span><span id="local-6989586621680254576"><span class="annot"><a href="#local-6989586621680254576"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680254975"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Destroyer"><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-var">Destroyer</span></a></span></span><span> </span><span id="local-6989586621680254975"><span class="annot"><a href="#local-6989586621680254975"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-12"></span><span>  </span><span class="hs-comment">-- | Destroy a specific @LoosePin@</span><span>
-</span><span id="line-13"></span><span>  </span><span id="destroy"><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#destroy"><span class="hs-identifier hs-type">destroy</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680254576"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
+</span><span id="line-13"></span><span>  </span><span id="destroy"><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#destroy"><span class="hs-identifier hs-type">destroy</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680254975"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-14"></span><span>
 </span><span id="line-15"></span><span>  </span><span class="hs-comment">-- | Destroy several @LoosePin@s by they primary keys</span><span>
-</span><span id="line-16"></span><span>  </span><span id="destroyMany"><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#destroyMany"><span class="hs-identifier hs-type">destroyMany</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Fission.Models.html#LoosePinId"><span class="hs-identifier hs-type">LoosePinId</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680254576"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
+</span><span id="line-16"></span><span>  </span><span id="destroyMany"><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#destroyMany"><span class="hs-identifier hs-type">destroyMany</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Fission.Models.html#LoosePinId"><span class="hs-identifier hs-type">LoosePinId</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680254975"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-17"></span><span>
-</span><span id="line-18"></span><span id="local-6989586621680254549"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680254549"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">Destroyer</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680254549"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-19"></span><span>  </span><span id="local-6989586621680254544"><span class="annot"><span class="annottext">destroyMany :: UserId -&gt; [LoosePinId] -&gt; Transaction m ()
-</span><a href="#local-6989586621680254544"><span class="hs-identifier hs-var hs-var hs-var hs-var">destroyMany</span></a></span></span><span> </span><span id="local-6989586621680254543"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680254543"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680254542"><span class="annot"><span class="annottext">userCidIds :: [LoosePinId]
-</span><a href="#local-6989586621680254542"><span class="hs-identifier hs-var">userCidIds</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-18"></span><span id="local-6989586621680254948"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680254948"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.LoosePin.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">Destroyer</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680254948"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-19"></span><span>  </span><span id="local-6989586621680254943"><span class="annot"><span class="annottext">destroyMany :: UserId -&gt; [LoosePinId] -&gt; Transaction m ()
+</span><a href="#local-6989586621680254943"><span class="hs-identifier hs-var hs-var hs-var hs-var">destroyMany</span></a></span></span><span> </span><span id="local-6989586621680254942"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680254942"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680254941"><span class="annot"><span class="annottext">userCidIds :: [LoosePinId]
+</span><a href="#local-6989586621680254941"><span class="hs-identifier hs-var">userCidIds</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-20"></span><span>    </span><span class="annot"><span class="annottext">SqlQuery () -&gt; Transaction m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; SqlQuery () -&gt; SqlWriteT m ()
 </span><span class="hs-identifier hs-var">delete</span></span><span> </span><span class="annot"><span class="annottext">(SqlQuery () -&gt; Transaction m ())
@@ -27,14 +27,14 @@ forall (m :: * -&gt; *). MonadIO m =&gt; SqlQuery () -&gt; SqlWriteT m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Entity LoosePin) -&gt; SqlQuery ()) -&gt; SqlQuery ()
 forall a b. From a =&gt; (a -&gt; SqlQuery b) -&gt; SqlQuery b
-</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680254538"><span class="annot"><span class="annottext">pin :: SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680254538"><span class="hs-identifier hs-var">pin</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680254937"><span class="annot"><span class="annottext">pin :: SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254937"><span class="hs-identifier hs-var">pin</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-21"></span><span>      </span><span class="annot"><span class="annottext">SqlExpr (Value Bool) -&gt; SqlQuery ()
 </span><span class="hs-identifier hs-var">where_</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Value Bool) -&gt; SqlQuery ())
 -&gt; SqlExpr (Value Bool) -&gt; SqlQuery ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680254538"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254937"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
 -&gt; EntityField LoosePin LoosePinId -&gt; SqlExpr (Value LoosePinId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -50,11 +50,11 @@ SqlExpr (Value typ)
 </span><span class="hs-operator hs-var">`in_`</span></span><span> </span><span class="annot"><span class="annottext">[LoosePinId] -&gt; SqlExpr (ValueList LoosePinId)
 forall typ. PersistField typ =&gt; [typ] -&gt; SqlExpr (ValueList typ)
 </span><span class="hs-identifier hs-var">valList</span></span><span> </span><span class="annot"><span class="annottext">[LoosePinId]
-</span><a href="#local-6989586621680254542"><span class="hs-identifier hs-var">userCidIds</span></a></span><span>
+</span><a href="#local-6989586621680254941"><span class="hs-identifier hs-var">userCidIds</span></a></span><span>
 </span><span id="line-22"></span><span>            </span><span class="annot"><span class="annottext">SqlExpr (Value Bool)
 -&gt; SqlExpr (Value Bool) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">&amp;&amp;.</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680254538"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254937"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
 -&gt; EntityField LoosePin UserId -&gt; SqlExpr (Value UserId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -69,12 +69,12 @@ SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; SqlExpr (Value UserId)
 forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
 </span><span class="hs-identifier hs-var">val</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680254543"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><a href="#local-6989586621680254942"><span class="hs-identifier hs-var">userId</span></a></span><span>
 </span><span id="line-23"></span><span>
-</span><span id="line-24"></span><span>  </span><span id="local-6989586621680254528"><span class="annot"><span class="annottext">destroy :: UserId -&gt; CID -&gt; Transaction m ()
-</span><a href="#local-6989586621680254528"><span class="hs-identifier hs-var hs-var hs-var hs-var">destroy</span></a></span></span><span> </span><span id="local-6989586621680254527"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680254527"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680254526"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680254526"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-24"></span><span>  </span><span id="local-6989586621680254927"><span class="annot"><span class="annottext">destroy :: UserId -&gt; CID -&gt; Transaction m ()
+</span><a href="#local-6989586621680254927"><span class="hs-identifier hs-var hs-var hs-var hs-var">destroy</span></a></span></span><span> </span><span id="local-6989586621680254926"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680254926"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680254925"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680254925"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-25"></span><span>    </span><span class="annot"><span class="annottext">SqlQuery () -&gt; Transaction m ()
 forall (m :: * -&gt; *). MonadIO m =&gt; SqlQuery () -&gt; SqlWriteT m ()
 </span><span class="hs-identifier hs-var">delete</span></span><span> </span><span class="annot"><span class="annottext">(SqlQuery () -&gt; Transaction m ())
@@ -82,14 +82,14 @@ forall (m :: * -&gt; *). MonadIO m =&gt; SqlQuery () -&gt; SqlWriteT m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Entity LoosePin) -&gt; SqlQuery ()) -&gt; SqlQuery ()
 forall a b. From a =&gt; (a -&gt; SqlQuery b) -&gt; SqlQuery b
-</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680254525"><span class="annot"><span class="annottext">pin :: SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680254525"><span class="hs-identifier hs-var">pin</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680254924"><span class="annot"><span class="annottext">pin :: SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254924"><span class="hs-identifier hs-var">pin</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-26"></span><span>      </span><span class="annot"><span class="annottext">SqlExpr (Value Bool) -&gt; SqlQuery ()
 </span><span class="hs-identifier hs-var">where_</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Value Bool) -&gt; SqlQuery ())
 -&gt; SqlExpr (Value Bool) -&gt; SqlQuery ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680254525"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254924"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
 -&gt; EntityField LoosePin CID -&gt; SqlExpr (Value CID)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -103,11 +103,11 @@ SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">CID -&gt; SqlExpr (Value CID)
 forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
 </span><span class="hs-identifier hs-var">val</span></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680254526"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><a href="#local-6989586621680254925"><span class="hs-identifier hs-var">cid</span></a></span><span>
 </span><span id="line-27"></span><span>            </span><span class="annot"><span class="annottext">SqlExpr (Value Bool)
 -&gt; SqlExpr (Value Bool) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">&amp;&amp;.</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
-</span><a href="#local-6989586621680254525"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
+</span><a href="#local-6989586621680254924"><span class="hs-identifier hs-var">pin</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity LoosePin)
 -&gt; EntityField LoosePin UserId -&gt; SqlExpr (Value UserId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -122,5 +122,5 @@ SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; SqlExpr (Value UserId)
 forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
 </span><span class="hs-identifier hs-var">val</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680254527"><span class="hs-identifier hs-var">userId</span></a></span></span><span>
+</span><a href="#local-6989586621680254926"><span class="hs-identifier hs-var">userId</span></a></span></span><span>
 </span><span id="line-28"></span></pre></body></html>
