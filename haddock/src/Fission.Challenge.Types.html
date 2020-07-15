@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Challenge.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier">Challenge</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>  </span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist.Class</span></span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist.Types</span></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist.Sql</span></span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.ByteString.Lazy</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Lazy</span></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.Text</span></span><span>            </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Text</span></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Internal.UTF8</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">UTF8</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Swagger</span></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant</span></span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">newtype</span><span> </span><span id="Challenge"><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Challenge"><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunChallenge%3AChallenge"><span class="annot"><span class="annottext">Challenge -&gt; Text
+</span><a href="Fission.Challenge.Types.html#%24sel%3AunChallenge%3AChallenge"><span class="hs-identifier hs-var hs-var">unChallenge</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-19"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>  </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680283333"><span id="local-6989586621680283335"><span class="annot"><span class="annottext">Challenge -&gt; Challenge -&gt; Bool
+(Challenge -&gt; Challenge -&gt; Bool)
+-&gt; (Challenge -&gt; Challenge -&gt; Bool) -&gt; Eq Challenge
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Challenge -&gt; Challenge -&gt; Bool
+$c/= :: Challenge -&gt; Challenge -&gt; Bool
+== :: Challenge -&gt; Challenge -&gt; Bool
+$c== :: Challenge -&gt; Challenge -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-20"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283326"><span id="local-6989586621680283328"><span id="local-6989586621680283330"><span class="annot"><span class="annottext">Int -&gt; Challenge -&gt; ShowS
+[Challenge] -&gt; ShowS
+Challenge -&gt; String
+(Int -&gt; Challenge -&gt; ShowS)
+-&gt; (Challenge -&gt; String)
+-&gt; ([Challenge] -&gt; ShowS)
+-&gt; Show Challenge
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Challenge] -&gt; ShowS
+$cshowList :: [Challenge] -&gt; ShowS
+show :: Challenge -&gt; String
+$cshow :: Challenge -&gt; String
+showsPrec :: Int -&gt; Challenge -&gt; ShowS
+$cshowsPrec :: Int -&gt; Challenge -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-21"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283323"><span class="annot"><span class="annottext">String -&gt; Challenge
+(String -&gt; Challenge) -&gt; IsString Challenge
+forall a. (String -&gt; a) -&gt; IsString a
+fromString :: String -&gt; Challenge
+$cfromString :: String -&gt; Challenge
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
+</span><span id="line-22"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283314"><span id="local-6989586621680283316"><span id="local-6989586621680283318"><span id="local-6989586621680283320"><span class="annot"><span class="annottext">Challenge -&gt; ByteString
+Challenge -&gt; Builder
+Challenge -&gt; Text
+(Challenge -&gt; Text)
+-&gt; (Challenge -&gt; Builder)
+-&gt; (Challenge -&gt; ByteString)
+-&gt; (Challenge -&gt; Text)
+-&gt; ToHttpApiData Challenge
+forall a.
+(a -&gt; Text)
+-&gt; (a -&gt; Builder)
+-&gt; (a -&gt; ByteString)
+-&gt; (a -&gt; Text)
+-&gt; ToHttpApiData a
+toQueryParam :: Challenge -&gt; Text
+$ctoQueryParam :: Challenge -&gt; Text
+toHeader :: Challenge -&gt; ByteString
+$ctoHeader :: Challenge -&gt; ByteString
+toEncodedUrlPiece :: Challenge -&gt; Builder
+$ctoEncodedUrlPiece :: Challenge -&gt; Builder
+toUrlPiece :: Challenge -&gt; Text
+$ctoUrlPiece :: Challenge -&gt; Text
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">ToHttpApiData</span></span></span></span></span></span><span>
+</span><span id="line-23"></span><span>                    </span><span class="hs-special">)</span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283310"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-26"></span><span>  </span><span id="local-6989586621680283308"><span class="annot"><span class="annottext">arbitrary :: Gen Challenge
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Challenge
+</span><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Challenge) -&gt; Gen Text -&gt; Gen Challenge
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Gen Text
+forall a. Arbitrary a =&gt; Gen a
+</span><span class="hs-identifier hs-var">arbitrary</span></span><span>
+</span><span id="line-27"></span><span>
+</span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283299"><span id="local-6989586621680283301"><span id="local-6989586621680283303"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-29"></span><span>  </span><span id="local-6989586621680283297"><span class="annot"><span class="annottext">toJSON :: Challenge -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span> </span><span id="local-6989586621680283295"><span class="annot"><span class="annottext">challenge' :: Text
+</span><a href="#local-6989586621680283295"><span class="hs-identifier hs-var">challenge'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680283295"><span class="hs-identifier hs-var">challenge'</span></a></span><span>
+</span><span id="line-30"></span><span>
+</span><span id="line-31"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283291"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-32"></span><span>  </span><span id="local-6989586621680283289"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Challenge
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Challenge) -&gt; Value -&gt; Parser Challenge
+forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Challenge&quot;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Challenge -&gt; Parser Challenge
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">(Challenge -&gt; Parser Challenge)
+-&gt; (Text -&gt; Challenge) -&gt; Text -&gt; Parser Challenge
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Challenge
+</span><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283281"><span id="local-6989586621680283283"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680283279"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text Challenge
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseUrlPiece</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Challenge -&gt; Either Text Challenge
+forall a b. b -&gt; Either a b
+</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(Challenge -&gt; Either Text Challenge)
+-&gt; (Text -&gt; Challenge) -&gt; Text -&gt; Either Text Challenge
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Challenge
+</span><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span><span>
+</span><span id="line-36"></span><span>
+</span><span id="line-37"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-38"></span><span>  </span><span id="local-6989586621680283274"><span class="annot"><span class="annottext">toPersistValue :: Challenge -&gt; PersistValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span> </span><span id="local-6989586621680283272"><span class="annot"><span class="annottext">challenge' :: Text
+</span><a href="#local-6989586621680283272"><span class="hs-identifier hs-var">challenge'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
+</span><span class="hs-identifier hs-var">PersistText</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680283272"><span class="hs-identifier hs-var">challenge'</span></a></span><span>
+</span><span id="line-39"></span><span>  </span><span id="local-6989586621680283270"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text Challenge
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-40"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680283268"><span class="annot"><span class="annottext">challenge' :: Text
+</span><a href="#local-6989586621680283268"><span class="hs-identifier hs-var">challenge'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Challenge -&gt; Either Text Challenge
+forall a b. b -&gt; Either a b
+</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Challenge
+</span><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680283268"><span class="hs-identifier hs-var">challenge'</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-41"></span><span>    </span><span id="local-6989586621680283267"><span class="annot"><span class="annottext">other :: PersistValue
+</span><a href="#local-6989586621680283267"><span class="hs-identifier hs-var">other</span></a></span></span><span>                  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text Challenge
+forall a b. a -&gt; Either a b
+</span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;Invalid Persistent Challenge: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Text
+</span><span class="hs-identifier hs-var">Text.pack</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">PersistValue -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">PersistValue
+</span><a href="#local-6989586621680283267"><span class="hs-identifier hs-var">other</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-42"></span><span>
+</span><span id="line-43"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-44"></span><span>  </span><span id="local-6989586621680283261"><span class="annot"><span class="annottext">sqlType :: Proxy Challenge -&gt; SqlType
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span id="local-6989586621680283259"><span class="annot"><span class="annottext">_pxy :: Proxy Challenge
+</span><a href="#local-6989586621680283259"><span class="hs-identifier hs-var">_pxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
+</span><span class="hs-identifier hs-var">SqlString</span></span><span>
+</span><span id="line-45"></span><span>
+</span><span id="line-46"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-47"></span><span>  </span><span id="local-6989586621680283254"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; Challenge -&gt; ByteString
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
+</span><span class="hs-identifier hs-var">UTF8.textToLazyBS</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ByteString)
+-&gt; (Challenge -&gt; Text) -&gt; Challenge -&gt; ByteString
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Challenge -&gt; Text
+</span><a href="Fission.Challenge.Types.html#%24sel%3AunChallenge%3AChallenge"><span class="hs-identifier hs-var hs-var">unChallenge</span></a></span><span>
+</span><span id="line-48"></span><span>
+</span><span id="line-49"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283248"><span class="annot"><span class="hs-identifier hs-type">MimeUnrender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-50"></span><span>  </span><span id="local-6989586621680283246"><span class="annot"><span class="annottext">mimeUnrender :: Proxy PlainText -&gt; ByteString -&gt; Either String Challenge
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeUnrender</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(UnicodeException -&gt; String)
+-&gt; (Text -&gt; Challenge)
+-&gt; Either UnicodeException Text
+-&gt; Either String Challenge
+forall (p :: * -&gt; * -&gt; *) a b c d.
+Bifunctor p =&gt;
+(a -&gt; b) -&gt; (c -&gt; d) -&gt; p a c -&gt; p b d
+</span><span class="hs-identifier hs-var">bimap</span></span><span> </span><span class="annot"><span class="annottext">UnicodeException -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Challenge
+</span><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span><span> </span><span class="annot"><span class="annottext">(Either UnicodeException Text -&gt; Either String Challenge)
+-&gt; (ByteString -&gt; Either UnicodeException Text)
+-&gt; ByteString
+-&gt; Either String Challenge
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either UnicodeException Text
+</span><span class="hs-identifier hs-var">decodeUtf8'</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Either UnicodeException Text)
+-&gt; (ByteString -&gt; ByteString)
+-&gt; ByteString
+-&gt; Either UnicodeException Text
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
+</span><span class="hs-identifier hs-var">Lazy.toStrict</span></span><span>
+</span><span id="line-51"></span><span>
+</span><span id="line-52"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToParamSchema</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-53"></span><span>  </span><span id="local-6989586621680283239"><span class="annot"><span class="annottext">toParamSchema :: Proxy Challenge -&gt; ParamSchema t
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toParamSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ParamSchema t
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span> </span><span class="annot"><span class="annottext">ParamSchema t -&gt; (ParamSchema t -&gt; ParamSchema t) -&gt; ParamSchema t
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (SwaggerType t) -&gt; Identity (Maybe (SwaggerType t)))
+-&gt; ParamSchema t -&gt; Identity (ParamSchema t)
+forall s a. HasType s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">type_</span></span><span> </span><span class="annot"><span class="annottext">((Maybe (SwaggerType t) -&gt; Identity (Maybe (SwaggerType t)))
+ -&gt; ParamSchema t -&gt; Identity (ParamSchema t))
+-&gt; SwaggerType t -&gt; ParamSchema t -&gt; ParamSchema t
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">SwaggerType t
+forall (t :: SwaggerKind *). SwaggerType t
+</span><span class="hs-identifier hs-var">SwaggerString</span></span><span>
+</span><span id="line-54"></span><span>
+</span><span id="line-55"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-56"></span><span>  </span><span id="local-6989586621680283231"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Challenge -&gt; Declare (Definitions Schema) NamedSchema
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-57"></span><span>    </span><span class="annot"><span class="annottext">Schema
+forall a. Monoid a =&gt; a
+</span><span class="hs-identifier hs-var">mempty</span></span><span>
+</span><span id="line-58"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (SwaggerType 'SwaggerKindSchema)
+ -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasType s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">type_</span></span><span>       </span><span class="annot"><span class="annottext">((Maybe (SwaggerType 'SwaggerKindSchema)
+  -&gt; Identity (Maybe (SwaggerType 'SwaggerKindSchema)))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; SwaggerType 'SwaggerKindSchema -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">SwaggerType 'SwaggerKindSchema
+forall (t :: SwaggerKind *). SwaggerType t
+</span><span class="hs-identifier hs-var">SwaggerString</span></span><span>
+</span><span id="line-59"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe Text -&gt; Identity (Maybe Text)) -&gt; Schema -&gt; Identity Schema
+forall s a. HasDescription s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">description</span></span><span> </span><span class="annot"><span class="annottext">((Maybe Text -&gt; Identity (Maybe Text))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; Text -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="hs-string">&quot;A hash representing a user challenge. Sent in a verification email&quot;</span></span><span>
+</span><span id="line-60"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe Value -&gt; Identity (Maybe Value))
+-&gt; Schema -&gt; Identity Schema
+forall s a. HasExample s a =&gt; Lens' s a
+</span><span class="hs-identifier hs-var">example</span></span><span>     </span><span class="annot"><span class="annottext">((Maybe Value -&gt; Identity (Maybe Value))
+ -&gt; Schema -&gt; Identity Schema)
+-&gt; Value -&gt; Schema -&gt; Schema
+forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
+</span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">Challenge -&gt; Value
+forall a. ToJSON a =&gt; a -&gt; Value
+</span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Challenge
+</span><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;KyGig3J8lx3K07gZMK1lJV9M6Pr8w2RB&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-61"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; NamedSchema) -&gt; NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Schema -&gt; NamedSchema
+</span><span class="hs-identifier hs-var">NamedSchema</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Challenge&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-62"></span><span>      </span><span class="annot"><span class="annottext">NamedSchema
+-&gt; (NamedSchema -&gt; Declare (Definitions Schema) NamedSchema)
+-&gt; Declare (Definitions Schema) NamedSchema
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">NamedSchema -&gt; Declare (Definitions Schema) NamedSchema
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span>
+</span><span id="line-63"></span><span>
+</span><span id="line-64"></span></pre></body></html>

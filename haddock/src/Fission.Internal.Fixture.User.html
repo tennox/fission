@@ -17,6 +17,7 @@
 -&gt; Username
 -&gt; Role
 -&gt; Bool
+-&gt; Bool
 -&gt; CID
 -&gt; Maybe (Key HerokuAddOn)
 -&gt; Maybe SecretDigest
@@ -25,7 +26,7 @@
 -&gt; User
 </span><a href="Fission.Models.html#%24WUser"><span class="hs-identifier hs-type hs-type">User</span></a></span><span>
 </span><span id="line-15"></span><span>  </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userUsername:User :: Username
-</span><a href="#local-6989586621680255428"><span class="hs-identifier hs-var">userUsername</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;testUser&quot;</span></span><span>
+</span><a href="Fission.Models.html#%24sel%3AuserUsername%3AUser"><span class="hs-identifier hs-var">userUsername</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;testUser&quot;</span></span><span>
 </span><span id="line-16"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userEmail:User :: Maybe Email
 </span><a href="Fission.Models.html#%24sel%3AuserEmail%3AUser"><span class="hs-identifier hs-var">userEmail</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Email -&gt; Maybe Email
 forall a. a -&gt; Maybe a
@@ -39,37 +40,40 @@ forall a. a -&gt; Maybe a
 </span><span id="line-21"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userActive:User :: Bool
 </span><a href="Fission.Models.html#%24sel%3AuserActive%3AUser"><span class="hs-identifier hs-var">userActive</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
-</span><span id="line-22"></span><span>
-</span><span id="line-23"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-24"></span><span>
-</span><span id="line-25"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
+</span><span id="line-22"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userVerified:User :: Bool
+</span><a href="Fission.Models.html#%24sel%3AuserVerified%3AUser"><span class="hs-identifier hs-var">userVerified</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-25"></span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userPublicKey:User :: Maybe Public
 </span><a href="Fission.Models.html#%24sel%3AuserPublicKey%3AUser"><span class="hs-identifier hs-var">userPublicKey</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Public
 </span><a href="Fission.Internal.Fixture.Key.Ed25519.html#pk"><span class="hs-identifier hs-var">Ed25519.pk</span></a></span><span>
-</span><span id="line-26"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
+</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userDataRoot:User :: CID
 </span><a href="Fission.Models.html#%24sel%3AuserDataRoot%3AUser"><span class="hs-identifier hs-var">userDataRoot</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SecretDigest -&gt; CID
 </span><span class="hs-identifier hs-var">CID</span></span><span> </span><span class="annot"><span class="hs-string">&quot;QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ&quot;</span></span><span>
-</span><span id="line-27"></span><span>
-</span><span id="line-28"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-29"></span><span>
-</span><span id="line-30"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
+</span><span id="line-28"></span><span>
+</span><span id="line-29"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-30"></span><span>
+</span><span id="line-31"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userHerokuAddOnId:User :: Maybe (Key HerokuAddOn)
 </span><a href="Fission.Models.html#%24sel%3AuserHerokuAddOnId%3AUser"><span class="hs-identifier hs-var">userHerokuAddOnId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe (Key HerokuAddOn)
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-31"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
+</span><span id="line-32"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userSecretDigest:User :: Maybe SecretDigest
 </span><a href="Fission.Models.html#%24sel%3AuserSecretDigest%3AUser"><span class="hs-identifier hs-var">userSecretDigest</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe SecretDigest
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
-</span><span id="line-32"></span><span>
-</span><span id="line-33"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-35"></span><span>
+</span><span id="line-36"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userInsertedAt:User :: UTCTime
 </span><a href="Fission.Models.html#%24sel%3AuserInsertedAt%3AUser"><span class="hs-identifier hs-var">userInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
 </span><a href="Fission.Internal.Fixture.Time.html#agesAgo"><span class="hs-identifier hs-var">agesAgo</span></a></span><span>
-</span><span id="line-36"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
+</span><span id="line-37"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userModifiedAt:User :: UTCTime
 </span><a href="Fission.Models.html#%24sel%3AuserModifiedAt%3AUser"><span class="hs-identifier hs-var">userModifiedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
 </span><a href="Fission.Internal.Fixture.Time.html#agesAgo"><span class="hs-identifier hs-var">agesAgo</span></a></span><span>
-</span><span id="line-37"></span><span>  </span><span class="hs-special">}</span><span>
-</span><span id="line-38"></span><span>
-</span><span id="line-39"></span></pre></body></html>
+</span><span id="line-38"></span><span>  </span><span class="hs-special">}</span><span>
+</span><span id="line-39"></span><span>
+</span><span id="line-40"></span></pre></body></html>

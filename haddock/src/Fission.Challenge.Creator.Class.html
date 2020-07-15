@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Challenge.Creator.Class</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Challenge.Creator.Class.html#Creator"><span class="hs-identifier">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Error.Types.html"><span class="hs-identifier">Fission.Error.Types</span></a></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Random.html"><span class="hs-identifier">Fission.Random</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Random</span></span><span>
+</span><span id="line-6"></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Models</span></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Esqueleto</span></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Challenge.Types.html"><span class="hs-identifier">Fission.Challenge.Types</span></a></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680295017"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Creator"><span class="annot"><a href="Fission.Challenge.Creator.Class.html#Creator"><span class="hs-identifier hs-var">Creator</span></a></span></span><span> </span><span id="local-6989586621680295017"><span class="annot"><a href="#local-6989586621680295017"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="create"><span class="annot"><a href="Fission.Challenge.Creator.Class.html#create"><span class="hs-identifier hs-type">create</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295017"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.AlreadyExists.Types.html#AlreadyExists"><span class="hs-identifier hs-type">AlreadyExists</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#UserChallenge"><span class="hs-identifier hs-type">UserChallenge</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span id="local-6989586621680294986"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680294986"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Challenge.Creator.Class.html#Creator"><span class="hs-identifier hs-type">Creator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680294986"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-17"></span><span>  </span><span id="local-6989586621680294982"><span class="annot"><span class="annottext">create :: UserId
+-&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge)
+</span><a href="#local-6989586621680294982"><span class="hs-identifier hs-var hs-var hs-var hs-var">create</span></a></span></span><span> </span><span id="local-6989586621680294981"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680294981"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-18"></span><span>    </span><span id="local-6989586621680294980"><span class="annot"><span class="annottext">Challenge
+</span><a href="#local-6989586621680294980"><span class="hs-identifier hs-var">challenge</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m Challenge
+forall (m :: * -&gt; *). MonadIO m =&gt; m Challenge
+</span><a href="Fission.Challenge.Creator.Class.html#mkChallenge"><span class="hs-identifier hs-var">mkChallenge</span></a></span><span>
+</span><span id="line-19"></span><span>    </span><span class="annot"><span class="annottext">$WUserChallenge :: UserId -&gt; Challenge -&gt; UserChallenge
+</span><a href="Fission.Models.html#%24WUserChallenge"><span class="hs-identifier hs-type hs-type">UserChallenge</span></a></span><span>
+</span><span id="line-20"></span><span>      </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:userChallengeUserId:UserChallenge :: UserId
+</span><a href="#local-6989586621680294976"><span class="hs-identifier hs-var">userChallengeUserId</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680294981"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><span id="line-21"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:userChallengeHash:UserChallenge :: Challenge
+</span><a href="#local-6989586621680294975"><span class="hs-identifier hs-var">userChallengeHash</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Challenge
+</span><a href="#local-6989586621680294980"><span class="hs-identifier hs-var">challenge</span></a></span><span>
+</span><span id="line-22"></span><span>      </span><span class="hs-special">}</span><span>
+</span><span id="line-23"></span><span>      </span><span class="annot"><span class="annottext">UserChallenge
+-&gt; (UserChallenge
+    -&gt; ReaderT SqlBackend m (Maybe (Key UserChallenge)))
+-&gt; ReaderT SqlBackend m (Maybe (Key UserChallenge))
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">UserChallenge -&gt; ReaderT SqlBackend m (Maybe (Key UserChallenge))
+forall backend (m :: * -&gt; *) record.
+(PersistUniqueWrite backend, MonadIO m,
+ PersistRecordBackend record backend) =&gt;
+record -&gt; ReaderT backend m (Maybe (Key record))
+</span><span class="hs-identifier hs-var">insertUnique</span></span><span>
+</span><span id="line-24"></span><span>      </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe (Key UserChallenge))
+-&gt; (ReaderT SqlBackend m (Maybe (Key UserChallenge))
+    -&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge))
+-&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge)
+forall a b. a -&gt; (a -&gt; b) -&gt; b
+</span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe (Key UserChallenge)
+ -&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge))
+-&gt; ReaderT SqlBackend m (Maybe (Key UserChallenge))
+-&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge)
+forall (m :: * -&gt; *) a b. Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b
+</span><a href="Fission.Prelude.html#bind"><span class="hs-identifier hs-var">bind</span></a></span><span>  </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><span id="line-25"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either (AlreadyExists UserChallenge) Challenge
+-&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge)
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either (AlreadyExists UserChallenge) Challenge
+ -&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge))
+-&gt; Either (AlreadyExists UserChallenge) Challenge
+-&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">AlreadyExists UserChallenge
+-&gt; Either (AlreadyExists UserChallenge) Challenge
+forall a b. a -&gt; Either a b
+</span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">AlreadyExists UserChallenge
+forall entity. AlreadyExists entity
+</span><a href="Fission.Error.AlreadyExists.Types.html#AlreadyExists"><span class="hs-identifier hs-var">AlreadyExists</span></a></span><span>
+</span><span id="line-26"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either (AlreadyExists UserChallenge) Challenge
+-&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge)
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either (AlreadyExists UserChallenge) Challenge
+ -&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge))
+-&gt; Either (AlreadyExists UserChallenge) Challenge
+-&gt; Transaction m (Either (AlreadyExists UserChallenge) Challenge)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Challenge -&gt; Either (AlreadyExists UserChallenge) Challenge
+forall a b. b -&gt; Either a b
+</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">Challenge
+</span><a href="#local-6989586621680294980"><span class="hs-identifier hs-var">challenge</span></a></span></span><span>
+</span><span id="line-27"></span><span>
+</span><span id="line-28"></span><span id="local-6989586621680295013"><span class="annot"><a href="Fission.Challenge.Creator.Class.html#mkChallenge"><span class="hs-identifier hs-type">mkChallenge</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680295013"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295013"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-type">Challenge</span></a></span></span><span>
+</span><span id="line-29"></span><span id="mkChallenge"><span class="annot"><span class="annottext">mkChallenge :: m Challenge
+</span><a href="Fission.Challenge.Creator.Class.html#mkChallenge"><span class="hs-identifier hs-var hs-var">mkChallenge</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Challenge
+</span><a href="Fission.Challenge.Types.html#Challenge"><span class="hs-identifier hs-var">Challenge</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Challenge) -&gt; m Text -&gt; m Challenge
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Natural -&gt; m Text
+forall (m :: * -&gt; *). MonadIO m =&gt; Natural -&gt; m Text
+</span><a href="Fission.Random.html#alphaNum"><span class="hs-identifier hs-var">Random.alphaNum</span></a></span><span> </span><span class="annot"><span class="hs-number">32</span></span><span>
+</span><span id="line-30"></span></pre></body></html>

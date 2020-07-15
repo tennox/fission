@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Email.SendInBlue.Request.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Email.SendInBlue.Request.Types.html#Request"><span class="hs-identifier">Request</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">to</span></span><span class="hs-special">)</span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Email.Recipient.Types.html"><span class="hs-identifier">Fission.Email.Recipient.Types</span></a></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateOptions.Types.html"><span class="hs-identifier">Fission.Email.SendInBlue.TemplateOptions.Types</span></a></span><span>
+</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateId.Types.html"><span class="hs-identifier">Fission.Email.SendInBlue.TemplateId.Types</span></a></span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.NonEmpty</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">NonEmpty</span></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Data.Vector</span></span><span>  </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Vector</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">data</span><span> </span><span id="Request"><span class="annot"><a href="Fission.Email.SendInBlue.Request.Types.html#Request"><span class="hs-identifier hs-var">Request</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Request"><span class="annot"><a href="Fission.Email.SendInBlue.Request.Types.html#Request"><span class="hs-identifier hs-var">Request</span></a></span></span><span>
+</span><span id="line-14"></span><span>  </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AtemplateId%3ARequest"><span class="annot"><span class="annottext">Request -&gt; TemplateId
+</span><a href="Fission.Email.SendInBlue.Request.Types.html#%24sel%3AtemplateId%3ARequest"><span class="hs-identifier hs-var hs-var">templateId</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateId.Types.html#TemplateId"><span class="hs-identifier hs-type">TemplateId</span></a></span><span>
+</span><span id="line-15"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Ato%3ARequest"><span class="annot"><span class="annottext">Request -&gt; NonEmpty Recipient
+</span><a href="Fission.Email.SendInBlue.Request.Types.html#%24sel%3Ato%3ARequest"><span class="hs-identifier hs-var hs-var">to</span></a></span></span><span>         </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">NonEmpty</span></span><span> </span><span class="annot"><a href="Fission.Email.Recipient.Types.html#Recipient"><span class="hs-identifier hs-type">Recipient</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-16"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Aparams%3ARequest"><span class="annot"><span class="annottext">Request -&gt; TemplateOptions
+</span><a href="Fission.Email.SendInBlue.Request.Types.html#%24sel%3Aparams%3ARequest"><span class="hs-identifier hs-var hs-var">params</span></a></span></span><span>     </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateOptions.Types.html#TemplateOptions"><span class="hs-identifier hs-type">TemplateOptions</span></a></span><span>
+</span><span id="line-17"></span><span>  </span><span class="hs-special">}</span><span> </span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680286531"><span id="local-6989586621680286533"><span id="local-6989586621680286535"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.Request.Types.html#Request"><span class="hs-identifier hs-type">Request</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680286529"><span class="annot"><span class="annottext">toJSON :: Request -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.Request.Types.html#Request"><span class="hs-identifier hs-type">Request</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span id="local-6989586621680286527"><span class="annot"><span class="annottext">TemplateId
+templateId :: TemplateId
+$sel:templateId:Request :: Request -&gt; TemplateId
+</span><a href="#local-6989586621680286527"><span class="hs-identifier hs-var hs-var">templateId</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680286526"><span class="annot"><span class="annottext">NonEmpty Recipient
+to :: NonEmpty Recipient
+$sel:to:Request :: Request -&gt; NonEmpty Recipient
+</span><a href="#local-6989586621680286526"><span class="hs-identifier hs-var hs-var">to</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680286525"><span class="annot"><span class="annottext">TemplateOptions
+params :: TemplateOptions
+$sel:params:Request :: Request -&gt; TemplateOptions
+</span><a href="#local-6989586621680286525"><span class="hs-identifier hs-var hs-var">params</span></a></span></span><span> </span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-21"></span><span>    </span><span class="annot"><span class="annottext">Object -&gt; Value
+</span><span class="hs-identifier hs-var">Object</span></span><span> </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;templateId&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Scientific -&gt; Value
+</span><span class="hs-identifier hs-var">Number</span></span><span> </span><span class="annot"><span class="annottext">(Scientific -&gt; Value) -&gt; Scientific -&gt; Value
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; Scientific
+forall a b. (Integral a, Num b) =&gt; a -&gt; b
+</span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">TemplateId -&gt; Int64
+</span><a href="Fission.Email.SendInBlue.TemplateId.Types.html#%24sel%3AunTemplateId%3ATemplateId"><span class="hs-identifier hs-var hs-var">unTemplateId</span></a></span><span> </span><span class="annot"><span class="annottext">TemplateId
+</span><a href="#local-6989586621680286527"><span class="hs-identifier hs-var">templateId</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-22"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;to&quot;</span></span><span class="hs-special">,</span><span>         </span><span class="annot"><span class="annottext">Array -&gt; Value
+</span><span class="hs-identifier hs-var">Array</span></span><span> </span><span class="annot"><span class="annottext">(Array -&gt; Value) -&gt; ([Value] -&gt; Array) -&gt; [Value] -&gt; Value
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">[Value] -&gt; Array
+forall a. [a] -&gt; Vector a
+</span><span class="hs-identifier hs-var">Vector.fromList</span></span><span> </span><span class="annot"><span class="annottext">([Value] -&gt; Value) -&gt; [Value] -&gt; Value
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty Value -&gt; [Value]
+forall a. NonEmpty a -&gt; [a]
+</span><span class="hs-identifier hs-var">NonEmpty.toList</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Recipient -&gt; Value
+forall a. ToJSON a =&gt; a -&gt; Value
+</span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">(Recipient -&gt; Value) -&gt; NonEmpty Recipient -&gt; NonEmpty Value
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">NonEmpty Recipient
+</span><a href="#local-6989586621680286526"><span class="hs-identifier hs-var">to</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-23"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;params&quot;</span></span><span class="hs-special">,</span><span>     </span><span class="annot"><span class="annottext">TemplateOptions -&gt; Value
+forall a. ToJSON a =&gt; a -&gt; Value
+</span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">TemplateOptions
+</span><a href="#local-6989586621680286525"><span class="hs-identifier hs-var">params</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-24"></span><span>           </span><span class="hs-special">]</span><span>
+</span><span id="line-25"></span></pre></body></html>

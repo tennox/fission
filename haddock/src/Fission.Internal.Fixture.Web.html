@@ -23,8 +23,8 @@
 </span><span id="line-20"></span><span>
 </span><span id="line-21"></span><span class="annot"><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier hs-type">failureResp</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Status</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span>
 </span><span id="line-22"></span><span id="failureResp"><span class="annot"><span class="annottext">failureResp :: Status -&gt; ClientError
-</span><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier hs-var hs-var">failureResp</span></a></span></span><span> </span><span id="local-6989586621680245868"><span class="annot"><span class="annottext">status :: Status
-</span><a href="#local-6989586621680245868"><span class="hs-identifier hs-var">status</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BaseUrl -&gt; Request -&gt; ResponseF ByteString -&gt; ClientError
+</span><a href="Fission.Internal.Fixture.Web.html#failureResp"><span class="hs-identifier hs-var hs-var">failureResp</span></a></span></span><span> </span><span id="local-6989586621680282264"><span class="annot"><span class="annottext">status :: Status
+</span><a href="#local-6989586621680282264"><span class="hs-identifier hs-var">status</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BaseUrl -&gt; Request -&gt; ResponseF ByteString -&gt; ClientError
 </span><span class="hs-identifier hs-var">mkFailureResponse</span></span><span> </span><span class="annot"><span class="annottext">BaseUrl
 </span><a href="Fission.Internal.Fixture.Web.html#fissionURL"><span class="hs-identifier hs-var">fissionURL</span></a></span><span> </span><span class="annot"><span class="annottext">Request
 </span><span class="hs-identifier hs-var">defaultRequest</span></span><span> </span><span class="annot"><span class="annottext">(ResponseF ByteString -&gt; ClientError)
@@ -35,7 +35,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-identifier hs-type hs-type">Response</span></span><span> </span><span>
 </span><span id="line-24"></span><span>    </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">responseStatusCode :: Status
 </span><span class="hs-identifier hs-var">responseStatusCode</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Status
-</span><a href="#local-6989586621680245868"><span class="hs-identifier hs-var">status</span></a></span><span>
+</span><a href="#local-6989586621680282264"><span class="hs-identifier hs-var">status</span></a></span><span>
 </span><span id="line-25"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">responseHeaders :: Seq Header
 </span><span class="hs-identifier hs-var">responseHeaders</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Seq Header
 forall a. Seq a

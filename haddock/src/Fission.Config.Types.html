@@ -20,223 +20,254 @@
 </span><span id="line-20"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.URL.Types.html"><span class="hs-identifier">Fission.URL.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">URL</span></span><span>
 </span><span id="line-21"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Types.html"><span class="hs-identifier">Fission.Web.Types</span></a></span><span>
 </span><span id="line-22"></span><span>
-</span><span id="line-23"></span><span class="hs-comment">-- | The top level 'Fission' application 'RIO' configuration</span><span>
-</span><span id="line-24"></span><span class="hs-keyword">data</span><span> </span><span id="Config"><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-var">Config</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Config"><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-var">Config</span></a></span></span><span>
-</span><span id="line-25"></span><span>  </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AprocessCtx%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ProcessContext
+</span><span id="line-23"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.Types.html"><span class="hs-identifier">Fission.Email.SendInBlue.Types</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">SIB</span></span><span>
+</span><span id="line-24"></span><span>
+</span><span id="line-25"></span><span class="hs-comment">-- | The top level 'Fission' application 'RIO' configuration</span><span>
+</span><span id="line-26"></span><span class="hs-keyword">data</span><span> </span><span id="Config"><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-var">Config</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Config"><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-var">Config</span></a></span></span><span>
+</span><span id="line-27"></span><span>  </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AprocessCtx%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ProcessContext
 </span><a href="Fission.Config.Types.html#%24sel%3AprocessCtx%3AConfig"><span class="hs-identifier hs-var hs-var">processCtx</span></a></span></span><span>     </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">ProcessContext</span></span><span>
-</span><span id="line-26"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AlogFunc%3AConfig"><span class="annot"><span class="annottext">Config -&gt; LogFunc
+</span><span id="line-28"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AlogFunc%3AConfig"><span class="annot"><span class="annottext">Config -&gt; LogFunc
 </span><a href="Fission.Config.Types.html#%24sel%3AlogFunc%3AConfig"><span class="hs-identifier hs-var hs-var">logFunc</span></a></span></span><span>        </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">LogFunc</span></span><span>
-</span><span id="line-27"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-28"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AhttpManager%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Manager
+</span><span id="line-29"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-30"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AhttpManager%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Manager
 </span><a href="Fission.Config.Types.html#%24sel%3AhttpManager%3AConfig"><span class="hs-identifier hs-var hs-var">httpManager</span></a></span></span><span>    </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">HTTP.Manager</span></span><span>
-</span><span id="line-29"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AdbPool%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Pool SqlBackend
+</span><span id="line-31"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AtlsManager%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Manager
+</span><a href="Fission.Config.Types.html#%24sel%3AtlsManager%3AConfig"><span class="hs-identifier hs-var hs-var">tlsManager</span></a></span></span><span>     </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">HTTP.Manager</span></span><span>
+</span><span id="line-32"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AdbPool%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Pool SqlBackend
 </span><a href="Fission.Config.Types.html#%24sel%3AdbPool%3AConfig"><span class="hs-identifier hs-var hs-var">dbPool</span></a></span></span><span>         </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Pool</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">SqlBackend</span></span><span class="hs-special">)</span><span>
-</span><span id="line-30"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-31"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsPath%3AConfig"><span class="annot"><span class="annottext">Config -&gt; BinPath
+</span><span id="line-33"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-34"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsPath%3AConfig"><span class="annot"><span class="annottext">Config -&gt; BinPath
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsPath%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsPath</span></a></span></span><span>       </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">IPFS.BinPath</span></span><span>
-</span><span id="line-32"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsURL%3AConfig"><span class="annot"><span class="annottext">Config -&gt; URL
+</span><span id="line-35"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsURL%3AConfig"><span class="annot"><span class="annottext">Config -&gt; URL
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsURL%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsURL</span></a></span></span><span>        </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">IPFS.URL</span></span><span>
-</span><span id="line-33"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsRemotePeer%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Peer
+</span><span id="line-36"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsRemotePeer%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Peer
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsRemotePeer%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsRemotePeer</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span><span>
-</span><span id="line-34"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsTimeout%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Timeout
+</span><span id="line-37"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AipfsTimeout%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Timeout
 </span><a href="Fission.Config.Types.html#%24sel%3AipfsTimeout%3AConfig"><span class="hs-identifier hs-var hs-var">ipfsTimeout</span></a></span></span><span>    </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">IPFS.Timeout</span></span><span>
-</span><span id="line-35"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-36"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AherokuID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ID
-</span><a href="Fission.Config.Types.html#%24sel%3AherokuID%3AConfig"><span class="hs-identifier hs-var hs-var">herokuID</span></a></span></span><span>       </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Platform.Heroku.ID.Types.html#ID"><span class="hs-identifier hs-type">Heroku.ID</span></a></span><span>
-</span><span id="line-37"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AherokuPassword%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Password
-</span><a href="Fission.Config.Types.html#%24sel%3AherokuPassword%3AConfig"><span class="hs-identifier hs-var hs-var">herokuPassword</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Platform.Heroku.Password.Types.html#Password"><span class="hs-identifier hs-type">Heroku.Password</span></a></span><span>
 </span><span id="line-38"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-39"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AawsAccessKey%3AConfig"><span class="annot"><span class="annottext">Config -&gt; AccessKey
+</span><span id="line-39"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AherokuID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ID
+</span><a href="Fission.Config.Types.html#%24sel%3AherokuID%3AConfig"><span class="hs-identifier hs-var hs-var">herokuID</span></a></span></span><span>       </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Platform.Heroku.ID.Types.html#ID"><span class="hs-identifier hs-type">Heroku.ID</span></a></span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AherokuPassword%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Password
+</span><a href="Fission.Config.Types.html#%24sel%3AherokuPassword%3AConfig"><span class="hs-identifier hs-var hs-var">herokuPassword</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Platform.Heroku.Password.Types.html#Password"><span class="hs-identifier hs-type">Heroku.Password</span></a></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AawsAccessKey%3AConfig"><span class="annot"><span class="annottext">Config -&gt; AccessKey
 </span><a href="Fission.Config.Types.html#%24sel%3AawsAccessKey%3AConfig"><span class="hs-identifier hs-var hs-var">awsAccessKey</span></a></span></span><span>   </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">AWS.AccessKey</span></span><span>
-</span><span id="line-40"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AawsSecretKey%3AConfig"><span class="annot"><span class="annottext">Config -&gt; SecretKey
+</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AawsSecretKey%3AConfig"><span class="annot"><span class="annottext">Config -&gt; SecretKey
 </span><a href="Fission.Config.Types.html#%24sel%3AawsSecretKey%3AConfig"><span class="hs-identifier hs-var hs-var">awsSecretKey</span></a></span></span><span>   </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">AWS.SecretKey</span></span><span>
-</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AawsMockRoute53%3AConfig"><span class="annot"><span class="annottext">Config -&gt; MockRoute53
+</span><span id="line-44"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AawsMockRoute53%3AConfig"><span class="annot"><span class="annottext">Config -&gt; MockRoute53
 </span><a href="Fission.Config.Types.html#%24sel%3AawsMockRoute53%3AConfig"><span class="hs-identifier hs-var hs-var">awsMockRoute53</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.AWS.Types.html#MockRoute53"><span class="hs-identifier hs-type">AWS.MockRoute53</span></a></span><span>
-</span><span id="line-42"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AbaseAppDomain%3AConfig"><span class="annot"><span class="annottext">Config -&gt; DomainName
+</span><span id="line-45"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-46"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AbaseAppDomain%3AConfig"><span class="annot"><span class="annottext">Config -&gt; DomainName
 </span><a href="Fission.Config.Types.html#%24sel%3AbaseAppDomain%3AConfig"><span class="hs-identifier hs-var hs-var">baseAppDomain</span></a></span></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">URL.DomainName</span></a></span><span>
-</span><span id="line-44"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AbaseAppZoneID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ZoneID
+</span><span id="line-47"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AbaseAppZoneID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ZoneID
 </span><a href="Fission.Config.Types.html#%24sel%3AbaseAppZoneID%3AConfig"><span class="hs-identifier hs-var hs-var">baseAppZoneID</span></a></span></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">AWS.ZoneID</span></a></span><span>
-</span><span id="line-45"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AappPlaceholder%3AConfig"><span class="annot"><span class="annottext">Config -&gt; CID
+</span><span id="line-48"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AappPlaceholder%3AConfig"><span class="annot"><span class="annottext">Config -&gt; CID
 </span><a href="Fission.Config.Types.html#%24sel%3AappPlaceholder%3AConfig"><span class="hs-identifier hs-var hs-var">appPlaceholder</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
-</span><span id="line-46"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-47"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AuserRootDomain%3AConfig"><span class="annot"><span class="annottext">Config -&gt; DomainName
+</span><span id="line-49"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-50"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AuserRootDomain%3AConfig"><span class="annot"><span class="annottext">Config -&gt; DomainName
 </span><a href="Fission.Config.Types.html#%24sel%3AuserRootDomain%3AConfig"><span class="hs-identifier hs-var hs-var">userRootDomain</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">URL.DomainName</span></a></span><span>
-</span><span id="line-48"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AuserZoneID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ZoneID
+</span><span id="line-51"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AuserZoneID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ZoneID
 </span><a href="Fission.Config.Types.html#%24sel%3AuserZoneID%3AConfig"><span class="hs-identifier hs-var hs-var">userZoneID</span></a></span></span><span>     </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">AWS.ZoneID</span></a></span><span>
-</span><span id="line-49"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AdefaultDataCID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; CID
+</span><span id="line-52"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AdefaultDataCID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; CID
 </span><a href="Fission.Config.Types.html#%24sel%3AdefaultDataCID%3AConfig"><span class="hs-identifier hs-var hs-var">defaultDataCID</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
-</span><span id="line-50"></span><span>  </span><span class="hs-comment">--</span><span>
-</span><span id="line-51"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Ahost%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Host
+</span><span id="line-53"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AsibApiKey%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ApiKey
+</span><a href="Fission.Config.Types.html#%24sel%3AsibApiKey%3AConfig"><span class="hs-identifier hs-var hs-var">sibApiKey</span></a></span></span><span>      </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-type">SIB.ApiKey</span></a></span><span>
+</span><span id="line-55"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AsibUrl%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Host
+</span><a href="Fission.Config.Types.html#%24sel%3AsibUrl%3AConfig"><span class="hs-identifier hs-var hs-var">sibUrl</span></a></span></span><span>         </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Host</span></a></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AsibTemplateId%3AConfig"><span class="annot"><span class="annottext">Config -&gt; TemplateId
+</span><a href="Fission.Config.Types.html#%24sel%3AsibTemplateId%3AConfig"><span class="hs-identifier hs-var hs-var">sibTemplateId</span></a></span></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateId.Types.html#TemplateId"><span class="hs-identifier hs-type">SIB.TemplateId</span></a></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-comment">--</span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Ahost%3AConfig"><span class="annot"><span class="annottext">Config -&gt; Host
 </span><a href="Fission.Config.Types.html#%24sel%3Ahost%3AConfig"><span class="hs-identifier hs-var hs-var">host</span></a></span></span><span>           </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Host</span></a></span><span>
-</span><span id="line-52"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AfissionDID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; DID
+</span><span id="line-59"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AfissionDID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; DID
 </span><a href="Fission.Config.Types.html#%24sel%3AfissionDID%3AConfig"><span class="hs-identifier hs-var hs-var">fissionDID</span></a></span></span><span>     </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span><span>
-</span><span id="line-53"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AserverZoneID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ZoneID
+</span><span id="line-60"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AserverZoneID%3AConfig"><span class="annot"><span class="annottext">Config -&gt; ZoneID
 </span><a href="Fission.Config.Types.html#%24sel%3AserverZoneID%3AConfig"><span class="hs-identifier hs-var hs-var">serverZoneID</span></a></span></span><span>   </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.AWS.Zone.Types.html#ZoneID"><span class="hs-identifier hs-type">AWS.ZoneID</span></a></span><span>
-</span><span id="line-54"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AliveDriveURL%3AConfig"><span class="annot"><span class="annottext">Config -&gt; URL
+</span><span id="line-61"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3AliveDriveURL%3AConfig"><span class="annot"><span class="annottext">Config -&gt; URL
 </span><a href="Fission.Config.Types.html#%24sel%3AliveDriveURL%3AConfig"><span class="hs-identifier hs-var hs-var">liveDriveURL</span></a></span></span><span>   </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
-</span><span id="line-55"></span><span>  </span><span class="hs-special">}</span><span>
-</span><span id="line-56"></span><span>
-</span><span id="line-57"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680262514"><span id="local-6989586621680262517"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-58"></span><span>  </span><span id="local-6989586621680262512"><span class="annot"><span class="annottext">show :: Config -&gt; String
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">show</span></span></span><span> </span><span id="local-6989586621680262488"><span id="local-6989586621680262489"><span id="local-6989586621680262490"><span id="local-6989586621680262491"><span id="local-6989586621680262492"><span id="local-6989586621680262493"><span id="local-6989586621680262494"><span id="local-6989586621680262495"><span id="local-6989586621680262496"><span id="local-6989586621680262497"><span id="local-6989586621680262498"><span id="local-6989586621680262499"><span id="local-6989586621680262500"><span id="local-6989586621680262501"><span id="local-6989586621680262502"><span id="local-6989586621680262503"><span id="local-6989586621680262504"><span id="local-6989586621680262505"><span id="local-6989586621680262506"><span id="local-6989586621680262507"><span id="local-6989586621680262508"><span id="local-6989586621680262509"><span id="local-6989586621680262510"><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; [String] -&gt; String
+</span><span id="line-62"></span><span>  </span><span class="hs-special">}</span><span>
+</span><span id="line-63"></span><span>
+</span><span id="line-64"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680299695"><span id="local-6989586621680299698"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-65"></span><span>  </span><span id="local-6989586621680299693"><span class="annot"><span class="annottext">show :: Config -&gt; String
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">show</span></span></span><span> </span><span id="local-6989586621680299665"><span id="local-6989586621680299666"><span id="local-6989586621680299667"><span id="local-6989586621680299668"><span id="local-6989586621680299669"><span id="local-6989586621680299670"><span id="local-6989586621680299671"><span id="local-6989586621680299672"><span id="local-6989586621680299673"><span id="local-6989586621680299674"><span id="local-6989586621680299675"><span id="local-6989586621680299676"><span id="local-6989586621680299677"><span id="local-6989586621680299678"><span id="local-6989586621680299679"><span id="local-6989586621680299680"><span id="local-6989586621680299681"><span id="local-6989586621680299682"><span id="local-6989586621680299683"><span id="local-6989586621680299684"><span id="local-6989586621680299685"><span id="local-6989586621680299686"><span id="local-6989586621680299687"><span id="local-6989586621680299688"><span id="local-6989586621680299689"><span id="local-6989586621680299690"><span id="local-6989586621680299691"><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; [String] -&gt; String
 forall a. [a] -&gt; [[a]] -&gt; [a]
 </span><span class="hs-identifier hs-var">intercalate</span></span><span> </span><span class="annot"><span class="hs-string">&quot;\n&quot;</span></span><span>
-</span><span id="line-59"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;Config {&quot;</span></span><span>
-</span><span id="line-60"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  processCtx        = **SOME PROC CONTEXT**&quot;</span></span><span>
-</span><span id="line-61"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  logFunc           = **SOME LOG FUNCTION**&quot;</span></span><span>
-</span><span id="line-62"></span><span>    </span><span class="hs-comment">--</span><span>
-</span><span id="line-63"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  httpManager       = **SOME HTTP MANAGER**&quot;</span></span><span>
-</span><span id="line-64"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  dbPool            = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><span id="line-66"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;Config {&quot;</span></span><span>
+</span><span id="line-67"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  processCtx        = **SOME PROC CONTEXT**&quot;</span></span><span>
+</span><span id="line-68"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  logFunc           = **SOME LOG FUNCTION**&quot;</span></span><span>
+</span><span id="line-69"></span><span>    </span><span class="hs-comment">--</span><span>
+</span><span id="line-70"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  httpManager       = **SOME HTTP MANAGER**&quot;</span></span><span>
+</span><span id="line-71"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  tlsManager        = **SOME HTTP/TLS MANAGER**&quot;</span></span><span>
+</span><span id="line-72"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  dbPool            = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Pool SqlBackend -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Pool SqlBackend
-</span><a href="#local-6989586621680262507"><span class="hs-identifier hs-var">dbPool</span></a></span><span>
-</span><span id="line-65"></span><span>    </span><span class="hs-comment">--</span><span>
-</span><span id="line-66"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsPath          = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299687"><span class="hs-identifier hs-var">dbPool</span></a></span><span>
+</span><span id="line-73"></span><span>    </span><span class="hs-comment">--</span><span>
+</span><span id="line-74"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsPath          = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">BinPath -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">BinPath
-</span><a href="#local-6989586621680262506"><span class="hs-identifier hs-var">ipfsPath</span></a></span><span>
-</span><span id="line-67"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsURL           = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299686"><span class="hs-identifier hs-var">ipfsPath</span></a></span><span>
+</span><span id="line-75"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsURL           = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">URL -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680262505"><span class="hs-identifier hs-var">ipfsURL</span></a></span><span>
-</span><span id="line-68"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsRemotePeer    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299685"><span class="hs-identifier hs-var">ipfsURL</span></a></span><span>
+</span><span id="line-76"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsRemotePeer    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Peer -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Peer
-</span><a href="#local-6989586621680262504"><span class="hs-identifier hs-var">ipfsRemotePeer</span></a></span><span>
-</span><span id="line-69"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsTimeout       = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299684"><span class="hs-identifier hs-var">ipfsRemotePeer</span></a></span><span>
+</span><span id="line-77"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  ipfsTimeout       = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Timeout -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Timeout
-</span><a href="#local-6989586621680262503"><span class="hs-identifier hs-var">ipfsTimeout</span></a></span><span>
-</span><span id="line-70"></span><span>    </span><span class="hs-comment">--</span><span>
-</span><span id="line-71"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  herokuID          = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299683"><span class="hs-identifier hs-var">ipfsTimeout</span></a></span><span>
+</span><span id="line-78"></span><span>    </span><span class="hs-comment">--</span><span>
+</span><span id="line-79"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  herokuID          = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ID -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">ID
-</span><a href="#local-6989586621680262502"><span class="hs-identifier hs-var">herokuID</span></a></span><span>
-</span><span id="line-72"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  herokuPassword    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299682"><span class="hs-identifier hs-var">herokuID</span></a></span><span>
+</span><span id="line-80"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  herokuPassword    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Password -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Password
-</span><a href="#local-6989586621680262501"><span class="hs-identifier hs-var">herokuPassword</span></a></span><span>
-</span><span id="line-73"></span><span>    </span><span class="hs-comment">--</span><span>
-</span><span id="line-74"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  awsAccessKey      = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299681"><span class="hs-identifier hs-var">herokuPassword</span></a></span><span>
+</span><span id="line-81"></span><span>    </span><span class="hs-comment">--</span><span>
+</span><span id="line-82"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  awsAccessKey      = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">AccessKey -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">AccessKey
-</span><a href="#local-6989586621680262500"><span class="hs-identifier hs-var">awsAccessKey</span></a></span><span>
-</span><span id="line-75"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  awsSecretKey      = HIDDEN&quot;</span></span><span>
-</span><span id="line-76"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  awsMockRoute53    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299680"><span class="hs-identifier hs-var">awsAccessKey</span></a></span><span>
+</span><span id="line-83"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  awsSecretKey      = HIDDEN&quot;</span></span><span>
+</span><span id="line-84"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  awsMockRoute53    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">MockRoute53 -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">MockRoute53
-</span><a href="#local-6989586621680262498"><span class="hs-identifier hs-var">awsMockRoute53</span></a></span><span>
-</span><span id="line-77"></span><span>    </span><span class="hs-comment">--</span><span>
-</span><span id="line-78"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  baseAppZoneID     = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
-forall a. Semigroup a =&gt; a -&gt; a -&gt; a
-</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; String
-forall a. Show a =&gt; a -&gt; String
-</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">ZoneID
-</span><a href="#local-6989586621680262496"><span class="hs-identifier hs-var">baseAppZoneID</span></a></span><span>
-</span><span id="line-79"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  baseAppDomainName = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
-forall a. Semigroup a =&gt; a -&gt; a -&gt; a
-</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; String
-forall a. Show a =&gt; a -&gt; String
-</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680262497"><span class="hs-identifier hs-var">baseAppDomain</span></a></span><span>
-</span><span id="line-80"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  appPlaceholder    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
-forall a. Semigroup a =&gt; a -&gt; a -&gt; a
-</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">CID -&gt; String
-forall a. Show a =&gt; a -&gt; String
-</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680262495"><span class="hs-identifier hs-var">appPlaceholder</span></a></span><span>
-</span><span id="line-81"></span><span>    </span><span class="hs-comment">--</span><span>
-</span><span id="line-82"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  userRootDomain    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
-forall a. Semigroup a =&gt; a -&gt; a -&gt; a
-</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; String
-forall a. Show a =&gt; a -&gt; String
-</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680262494"><span class="hs-identifier hs-var">userRootDomain</span></a></span><span>
-</span><span id="line-83"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  userZoneID        = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
-forall a. Semigroup a =&gt; a -&gt; a -&gt; a
-</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; String
-forall a. Show a =&gt; a -&gt; String
-</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">ZoneID
-</span><a href="#local-6989586621680262493"><span class="hs-identifier hs-var">userZoneID</span></a></span><span>
-</span><span id="line-84"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  defaultDataCID    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
-forall a. Semigroup a =&gt; a -&gt; a -&gt; a
-</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">CID -&gt; String
-forall a. Show a =&gt; a -&gt; String
-</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680262492"><span class="hs-identifier hs-var">defaultDataCID</span></a></span><span>
+</span><a href="#local-6989586621680299678"><span class="hs-identifier hs-var">awsMockRoute53</span></a></span><span>
 </span><span id="line-85"></span><span>    </span><span class="hs-comment">--</span><span>
-</span><span id="line-86"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  host              = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><span id="line-86"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  baseAppZoneID     = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">ZoneID
+</span><a href="#local-6989586621680299676"><span class="hs-identifier hs-var">baseAppZoneID</span></a></span><span>
+</span><span id="line-87"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  baseAppDomainName = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680299677"><span class="hs-identifier hs-var">baseAppDomain</span></a></span><span>
+</span><span id="line-88"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  appPlaceholder    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">CID -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680299675"><span class="hs-identifier hs-var">appPlaceholder</span></a></span><span>
+</span><span id="line-89"></span><span>    </span><span class="hs-comment">--</span><span>
+</span><span id="line-90"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  userRootDomain    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680299674"><span class="hs-identifier hs-var">userRootDomain</span></a></span><span>
+</span><span id="line-91"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  userZoneID        = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">ZoneID
+</span><a href="#local-6989586621680299673"><span class="hs-identifier hs-var">userZoneID</span></a></span><span>
+</span><span id="line-92"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  defaultDataCID    = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">CID -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680299672"><span class="hs-identifier hs-var">defaultDataCID</span></a></span><span>
+</span><span id="line-93"></span><span>    </span><span class="hs-comment">--</span><span>
+</span><span id="line-94"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  sibApiKey         = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ApiKey -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">ApiKey
+</span><a href="#local-6989586621680299671"><span class="hs-identifier hs-var">sibApiKey</span></a></span><span>
+</span><span id="line-95"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  sibUrl            = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Host -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Host
-</span><a href="#local-6989586621680262491"><span class="hs-identifier hs-var">host</span></a></span><span>
-</span><span id="line-87"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  fissionDID        = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299670"><span class="hs-identifier hs-var">sibUrl</span></a></span><span>
+</span><span id="line-96"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  sibTemplateId     = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">TemplateId -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">TemplateId
+</span><a href="#local-6989586621680299669"><span class="hs-identifier hs-var">sibTemplateId</span></a></span><span>
+</span><span id="line-97"></span><span>    </span><span class="hs-comment">--</span><span>
+</span><span id="line-98"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  host              = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Host -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Host
+</span><a href="#local-6989586621680299668"><span class="hs-identifier hs-var">host</span></a></span><span>
+</span><span id="line-99"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  fissionDID        = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">DID -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680262490"><span class="hs-identifier hs-var">fissionDID</span></a></span><span>
-</span><span id="line-88"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  serverZoneID      = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299667"><span class="hs-identifier hs-var">fissionDID</span></a></span><span>
+</span><span id="line-100"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  serverZoneID      = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ZoneID -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">ZoneID
-</span><a href="#local-6989586621680262489"><span class="hs-identifier hs-var">serverZoneID</span></a></span><span>
-</span><span id="line-89"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  liveDriveURL      = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680299666"><span class="hs-identifier hs-var">serverZoneID</span></a></span><span>
+</span><span id="line-101"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;  liveDriveURL      = &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">URL -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680262488"><span class="hs-identifier hs-var">liveDriveURL</span></a></span><span>
-</span><span id="line-90"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;}&quot;</span></span><span>
-</span><span id="line-91"></span><span>    </span><span class="hs-special">]</span><span>
-</span><span id="line-92"></span><span>
-</span><span id="line-93"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasProcessContext</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-94"></span><span>  </span><span id="local-6989586621680262484"><span class="annot"><span class="annottext">processContextL :: (ProcessContext -&gt; f ProcessContext) -&gt; Config -&gt; f Config
+</span><a href="#local-6989586621680299665"><span class="hs-identifier hs-var">liveDriveURL</span></a></span><span>
+</span><span id="line-102"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-103"></span><span>    </span><span class="hs-special">]</span><span>
+</span><span id="line-104"></span><span>
+</span><span id="line-105"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasProcessContext</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-106"></span><span>  </span><span id="local-6989586621680299661"><span class="annot"><span class="annottext">processContextL :: (ProcessContext -&gt; f ProcessContext) -&gt; Config -&gt; f Config
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">processContextL</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; ProcessContext)
 -&gt; (Config -&gt; ProcessContext -&gt; Config)
 -&gt; Lens' Config ProcessContext
 forall s a b t. (s -&gt; a) -&gt; (s -&gt; b -&gt; t) -&gt; Lens s t a b
 </span><span class="hs-identifier hs-var">lens</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; ProcessContext
-</span><a href="Fission.Config.Types.html#%24sel%3AprocessCtx%3AConfig"><span class="hs-identifier hs-var hs-var">processCtx</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680262481"><span class="annot"><span class="annottext">cfg :: Config
-</span><a href="#local-6989586621680262481"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span id="local-6989586621680262480"><span class="annot"><span class="annottext">newProcessCtx :: ProcessContext
-</span><a href="#local-6989586621680262480"><span class="hs-identifier hs-var">newProcessCtx</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-95"></span><span>    </span><span class="annot"><span class="annottext">Config
-</span><a href="#local-6989586621680262481"><span class="hs-identifier hs-var">cfg</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:processCtx:Config :: ProcessContext
+</span><a href="Fission.Config.Types.html#%24sel%3AprocessCtx%3AConfig"><span class="hs-identifier hs-var hs-var">processCtx</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680299658"><span class="annot"><span class="annottext">cfg :: Config
+</span><a href="#local-6989586621680299658"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span id="local-6989586621680299657"><span class="annot"><span class="annottext">newProcessCtx :: ProcessContext
+</span><a href="#local-6989586621680299657"><span class="hs-identifier hs-var">newProcessCtx</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-107"></span><span>    </span><span class="annot"><span class="annottext">Config
+</span><a href="#local-6989586621680299658"><span class="hs-identifier hs-var">cfg</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:processCtx:Config :: ProcessContext
 </span><a href="Fission.Config.Types.html#%24sel%3AprocessCtx%3AConfig"><span class="hs-identifier hs-var">processCtx</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ProcessContext
-</span><a href="#local-6989586621680262480"><span class="hs-identifier hs-var">newProcessCtx</span></a></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-96"></span><span>
-</span><span id="line-97"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasLogFunc</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-98"></span><span>  </span><span id="local-6989586621680262477"><span class="annot"><span class="annottext">logFuncL :: (LogFunc -&gt; f LogFunc) -&gt; Config -&gt; f Config
+</span><a href="#local-6989586621680299657"><span class="hs-identifier hs-var">newProcessCtx</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-108"></span><span>
+</span><span id="line-109"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasLogFunc</span></span><span> </span><span class="annot"><a href="Fission.Config.Types.html#Config"><span class="hs-identifier hs-type">Config</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-110"></span><span>  </span><span id="local-6989586621680299654"><span class="annot"><span class="annottext">logFuncL :: (LogFunc -&gt; f LogFunc) -&gt; Config -&gt; f Config
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">logFuncL</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Config -&gt; LogFunc)
 -&gt; (Config -&gt; LogFunc -&gt; Config) -&gt; Lens' Config LogFunc
 forall s a b t. (s -&gt; a) -&gt; (s -&gt; b -&gt; t) -&gt; Lens s t a b
 </span><span class="hs-identifier hs-var">lens</span></span><span> </span><span class="annot"><span class="annottext">Config -&gt; LogFunc
-</span><a href="Fission.Config.Types.html#%24sel%3AlogFunc%3AConfig"><span class="hs-identifier hs-var hs-var">logFunc</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680262475"><span class="annot"><span class="annottext">cfg :: Config
-</span><a href="#local-6989586621680262475"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span id="local-6989586621680262474"><span class="annot"><span class="annottext">newLogFunc' :: LogFunc
-</span><a href="#local-6989586621680262474"><span class="hs-identifier hs-var">newLogFunc'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-99"></span><span>    </span><span class="annot"><span class="annottext">Config
-</span><a href="#local-6989586621680262475"><span class="hs-identifier hs-var">cfg</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:logFunc:Config :: LogFunc
+</span><a href="Fission.Config.Types.html#%24sel%3AlogFunc%3AConfig"><span class="hs-identifier hs-var hs-var">logFunc</span></a></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680299652"><span class="annot"><span class="annottext">cfg :: Config
+</span><a href="#local-6989586621680299652"><span class="hs-identifier hs-var">cfg</span></a></span></span><span> </span><span id="local-6989586621680299651"><span class="annot"><span class="annottext">newLogFunc' :: LogFunc
+</span><a href="#local-6989586621680299651"><span class="hs-identifier hs-var">newLogFunc'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-111"></span><span>    </span><span class="annot"><span class="annottext">Config
+</span><a href="#local-6989586621680299652"><span class="hs-identifier hs-var">cfg</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:logFunc:Config :: LogFunc
 </span><a href="Fission.Config.Types.html#%24sel%3AlogFunc%3AConfig"><span class="hs-identifier hs-var">logFunc</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">LogFunc
-</span><a href="#local-6989586621680262474"><span class="hs-identifier hs-var">newLogFunc'</span></a></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-100"></span></pre></body></html>
+</span><a href="#local-6989586621680299651"><span class="hs-identifier hs-var">newLogFunc'</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-112"></span></pre></body></html>

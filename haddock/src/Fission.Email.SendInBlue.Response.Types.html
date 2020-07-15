@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Email.SendInBlue.Response.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Email.SendInBlue.Response.Types.html#Response"><span class="hs-identifier">Response</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span>
+</span><span id="line-6"></span><span class="hs-keyword">newtype</span><span> </span><span id="Response"><span class="annot"><a href="Fission.Email.SendInBlue.Response.Types.html#Response"><span class="hs-identifier hs-var">Response</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Response"><span class="annot"><a href="Fission.Email.SendInBlue.Response.Types.html#Response"><span class="hs-identifier hs-var">Response</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AmessageId%3AResponse"><span class="annot"><span class="annottext">Response -&gt; Text
+</span><a href="Fission.Email.SendInBlue.Response.Types.html#%24sel%3AmessageId%3AResponse"><span class="hs-identifier hs-var hs-var">messageId</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>  </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680283127"><span id="local-6989586621680283129"><span class="annot"><span class="annottext">Response -&gt; Response -&gt; Bool
+(Response -&gt; Response -&gt; Bool)
+-&gt; (Response -&gt; Response -&gt; Bool) -&gt; Eq Response
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Response -&gt; Response -&gt; Bool
+$c/= :: Response -&gt; Response -&gt; Bool
+== :: Response -&gt; Response -&gt; Bool
+$c== :: Response -&gt; Response -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-8"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283120"><span id="local-6989586621680283122"><span id="local-6989586621680283124"><span class="annot"><span class="annottext">Int -&gt; Response -&gt; ShowS
+[Response] -&gt; ShowS
+Response -&gt; String
+(Int -&gt; Response -&gt; ShowS)
+-&gt; (Response -&gt; String) -&gt; ([Response] -&gt; ShowS) -&gt; Show Response
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Response] -&gt; ShowS
+$cshowList :: [Response] -&gt; ShowS
+show :: Response -&gt; String
+$cshow :: Response -&gt; String
+showsPrec :: Int -&gt; Response -&gt; ShowS
+$cshowsPrec :: Int -&gt; Response -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-9"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283117"><span class="annot"><span class="annottext">String -&gt; Response
+(String -&gt; Response) -&gt; IsString Response
+forall a. (String -&gt; a) -&gt; IsString a
+fromString :: String -&gt; Response
+$cfromString :: String -&gt; Response
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
+</span><span id="line-10"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283112"><span id="local-6989586621680283114"><span class="annot"><span class="annottext">Response -&gt; Text
+Response -&gt; Utf8Builder
+(Response -&gt; Utf8Builder) -&gt; (Response -&gt; Text) -&gt; Display Response
+forall a. (a -&gt; Utf8Builder) -&gt; (a -&gt; Text) -&gt; Display a
+textDisplay :: Response -&gt; Text
+$ctextDisplay :: Response -&gt; Text
+display :: Response -&gt; Utf8Builder
+$cdisplay :: Response -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Display</span></span></span></span><span>
+</span><span id="line-11"></span><span>                    </span><span class="hs-special">)</span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283108"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.Response.Types.html#Response"><span class="hs-identifier hs-type">Response</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680283106"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Response
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser Response) -&gt; Value -&gt; Parser Response
+forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Response&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680283103"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680283103"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-15"></span><span>    </span><span id="local-6989586621680283102"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680283102"><span class="hs-identifier hs-var">messageId</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680283103"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Text
+forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
+</span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;messageId&quot;</span></span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Response :: Text -&gt; Response
+</span><a href="Fission.Email.SendInBlue.Response.Types.html#Response"><span class="hs-identifier hs-type hs-type">Response</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span></pre></body></html>

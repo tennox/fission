@@ -8,14 +8,14 @@
 </span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-9"></span><span>
 </span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Lazy.ByteString</span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-11"></span><span>  </span><span id="local-6989586621680245493"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; ByteString -&gt; ByteString
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680245491"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
-</span><a href="#local-6989586621680245491"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
+</span><span id="line-11"></span><span>  </span><span id="local-6989586621680281889"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; ByteString -&gt; ByteString
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680281887"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
+</span><a href="#local-6989586621680281887"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; ByteString
 forall a. a -&gt; a
 </span><a href="Fission.Prelude.html#identity"><span class="hs-identifier hs-var">identity</span></a></span><span>
 </span><span id="line-12"></span><span>
-</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680245487"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-14"></span><span>  </span><span id="local-6989586621680245485"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ByteString
+</span><span id="line-13"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680281883"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680281881"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ByteString
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser ByteString) -&gt; Value -&gt; Parser ByteString
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ByteString&quot;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ByteString -&gt; Parser ByteString

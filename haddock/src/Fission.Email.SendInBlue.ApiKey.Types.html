@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.Email.SendInBlue.ApiKey.Types</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier">ApiKey</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-2"></span><span>
+</span><span id="line-3"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-keyword">newtype</span><span> </span><span id="ApiKey"><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-var">ApiKey</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="ApiKey"><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-var">ApiKey</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunApiKey%3AApiKey"><span class="annot"><span class="annottext">ApiKey -&gt; Text
+</span><a href="Fission.Email.SendInBlue.ApiKey.Types.html#%24sel%3AunApiKey%3AApiKey"><span class="hs-identifier hs-var hs-var">unApiKey</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>  </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680283169"><span id="local-6989586621680283171"><span class="annot"><span class="annottext">ApiKey -&gt; ApiKey -&gt; Bool
+(ApiKey -&gt; ApiKey -&gt; Bool)
+-&gt; (ApiKey -&gt; ApiKey -&gt; Bool) -&gt; Eq ApiKey
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: ApiKey -&gt; ApiKey -&gt; Bool
+$c/= :: ApiKey -&gt; ApiKey -&gt; Bool
+== :: ApiKey -&gt; ApiKey -&gt; Bool
+$c== :: ApiKey -&gt; ApiKey -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
+</span><span id="line-7"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283162"><span id="local-6989586621680283164"><span id="local-6989586621680283166"><span class="annot"><span class="annottext">Int -&gt; ApiKey -&gt; ShowS
+[ApiKey] -&gt; ShowS
+ApiKey -&gt; String
+(Int -&gt; ApiKey -&gt; ShowS)
+-&gt; (ApiKey -&gt; String) -&gt; ([ApiKey] -&gt; ShowS) -&gt; Show ApiKey
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [ApiKey] -&gt; ShowS
+$cshowList :: [ApiKey] -&gt; ShowS
+show :: ApiKey -&gt; String
+$cshow :: ApiKey -&gt; String
+showsPrec :: Int -&gt; ApiKey -&gt; ShowS
+$cshowsPrec :: Int -&gt; ApiKey -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
+</span><span id="line-8"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283159"><span class="annot"><span class="annottext">String -&gt; ApiKey
+(String -&gt; ApiKey) -&gt; IsString ApiKey
+forall a. (String -&gt; a) -&gt; IsString a
+fromString :: String -&gt; ApiKey
+$cfromString :: String -&gt; ApiKey
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
+</span><span id="line-9"></span><span>                    </span><span class="hs-special">)</span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283155"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-type">ApiKey</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680283153"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ApiKey
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser ApiKey) -&gt; Value -&gt; Parser ApiKey
+forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ApiKey&quot;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ApiKey -&gt; Parser ApiKey
+forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
+</span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">(ApiKey -&gt; Parser ApiKey)
+-&gt; (Text -&gt; ApiKey) -&gt; Text -&gt; Parser ApiKey
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; ApiKey
+</span><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-var">ApiKey</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span></pre></body></html>
