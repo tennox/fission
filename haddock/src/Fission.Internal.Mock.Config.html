@@ -234,7 +234,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><a href="Fission.Internal.Fixture.Time.html#agesAgo"><span class="hs-identifier hs-var">agesAgo</span></a></span><span>
 </span><span id="line-63"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-64"></span><span>
-</span><span id="line-65"></span><span id="local-6989586621680293864"><span class="annot"><a href="Fission.Internal.Mock.Config.html#authZ"><span class="hs-identifier hs-type">authZ</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680293864"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680293864"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span></span><span>
+</span><span id="line-65"></span><span id="local-6989586621680294142"><span class="annot"><a href="Fission.Internal.Mock.Config.html#authZ"><span class="hs-identifier hs-type">authZ</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680294142"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680294142"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span></span><span>
 </span><span id="line-66"></span><span id="authZ"><span class="annot"><span class="annottext">authZ :: m Authorization
 </span><a href="Fission.Internal.Mock.Config.html#authZ"><span class="hs-identifier hs-var hs-var">authZ</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Authorization -&gt; m Authorization
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
@@ -245,7 +245,7 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><a href="Fission.Authorization.Types.html#%24sel%3Asender%3AAuthorization"><span class="hs-identifier hs-var">sender</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DID -&gt; Either Heroku DID
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">DID
-</span><a href="#local-6989586621680293794"><span class="hs-identifier hs-var">did</span></a></span><span>
+</span><a href="#local-6989586621680294072"><span class="hs-identifier hs-var">did</span></a></span><span>
 </span><span id="line-68"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:about:Authorization :: Entity User
 </span><a href="Fission.Authorization.Types.html#%24sel%3Aabout%3AAuthorization"><span class="hs-identifier hs-var">about</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">User -&gt; Entity User
 forall model.
@@ -265,8 +265,8 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#FissionFileSystem"><span class="hs-identifier hs-var">FissionFileSystem</span></a></span><span> </span><span class="annot"><span class="hs-string">&quot;/test/&quot;</span></span><span>
 </span><span id="line-71"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-72"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-73"></span><span>      </span><span id="local-6989586621680293794"><span class="annot"><span class="annottext">did :: DID
-</span><a href="#local-6989586621680293794"><span class="hs-identifier hs-var hs-var">did</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WDID :: Public -&gt; Method -&gt; DID
+</span><span id="line-73"></span><span>      </span><span id="local-6989586621680294072"><span class="annot"><span class="annottext">did :: DID
+</span><a href="#local-6989586621680294072"><span class="hs-identifier hs-var hs-var">did</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WDID :: Public -&gt; Method -&gt; DID
 </span><a href="Fission.User.DID.Types.html#%24WDID"><span class="hs-identifier hs-type hs-type">DID</span></a></span><span>
 </span><span id="line-74"></span><span>        </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:publicKey:DID :: Public
 </span><a href="Fission.User.DID.Types.html#%24sel%3ApublicKey%3ADID"><span class="hs-identifier hs-var">publicKey</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Public

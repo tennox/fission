@@ -22,7 +22,7 @@
 </span><span id="line-22"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span>            </span><span class="annot"><a href="Fission.Models.html#App"><span class="hs-identifier hs-type">App</span></a></span><span>
 </span><span id="line-23"></span><span>   </span><span class="hs-special">]</span><span>
 </span><span id="line-24"></span><span>
-</span><span id="line-25"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680295310"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Associator"><span class="annot"><a href="Fission.App.Domain.Associator.Class.html#Associator"><span class="hs-identifier hs-var">Associator</span></a></span></span><span> </span><span id="local-6989586621680295310"><span class="annot"><a href="#local-6989586621680295310"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-25"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680295588"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Associator"><span class="annot"><a href="Fission.App.Domain.Associator.Class.html#Associator"><span class="hs-identifier hs-var">Associator</span></a></span></span><span> </span><span id="local-6989586621680295588"><span class="annot"><a href="#local-6989586621680295588"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-26"></span><span>  </span><span id="associate"><span class="annot"><a href="Fission.App.Domain.Associator.Class.html#associate"><span class="hs-identifier hs-type">associate</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
 </span><span id="line-27"></span><span>       </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
 </span><span id="line-28"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span><span>
@@ -30,37 +30,37 @@
 </span><span id="line-30"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span>
 </span><span id="line-31"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span>
 </span><span id="line-32"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-33"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295310"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.App.Domain.Associator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-33"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295588"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.App.Domain.Associator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span id="local-6989586621680295255"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680295255"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.App.Domain.Associator.Class.html#Associator"><span class="hs-identifier hs-type">Associator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680295255"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-36"></span><span>  </span><span id="local-6989586621680295251"><span class="annot"><span class="annottext">associate :: UserId
+</span><span id="line-35"></span><span id="local-6989586621680295533"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680295533"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.App.Domain.Associator.Class.html#Associator"><span class="hs-identifier hs-type">Associator</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680295533"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-36"></span><span>  </span><span id="local-6989586621680295529"><span class="annot"><span class="annottext">associate :: UserId
 -&gt; AppId
 -&gt; Checkmark
 -&gt; DomainName
 -&gt; Maybe Subdomain
 -&gt; UTCTime
 -&gt; Transaction m (Either Errors ())
-</span><a href="#local-6989586621680295251"><span class="hs-identifier hs-var hs-var hs-var hs-var">associate</span></a></span></span><span> </span><span id="local-6989586621680295250"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680295250"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680295249"><span class="annot"><span class="annottext">appId :: AppId
-</span><a href="#local-6989586621680295249"><span class="hs-identifier hs-var">appId</span></a></span></span><span> </span><span id="local-6989586621680295248"><span class="annot"><span class="annottext">isPrimary :: Checkmark
-</span><a href="#local-6989586621680295248"><span class="hs-identifier hs-var">isPrimary</span></a></span></span><span> </span><span id="local-6989586621680295247"><span class="annot"><span class="annottext">domainName :: DomainName
-</span><a href="#local-6989586621680295247"><span class="hs-identifier hs-var">domainName</span></a></span></span><span> </span><span id="local-6989586621680295246"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
-</span><a href="#local-6989586621680295246"><span class="hs-identifier hs-var">maySubdomain</span></a></span></span><span> </span><span id="local-6989586621680295245"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680295245"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="#local-6989586621680295529"><span class="hs-identifier hs-var hs-var hs-var hs-var">associate</span></a></span></span><span> </span><span id="local-6989586621680295528"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680295528"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680295527"><span class="annot"><span class="annottext">appId :: AppId
+</span><a href="#local-6989586621680295527"><span class="hs-identifier hs-var">appId</span></a></span></span><span> </span><span id="local-6989586621680295526"><span class="annot"><span class="annottext">isPrimary :: Checkmark
+</span><a href="#local-6989586621680295526"><span class="hs-identifier hs-var">isPrimary</span></a></span></span><span> </span><span id="local-6989586621680295525"><span class="annot"><span class="annottext">domainName :: DomainName
+</span><a href="#local-6989586621680295525"><span class="hs-identifier hs-var">domainName</span></a></span></span><span> </span><span id="local-6989586621680295524"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
+</span><a href="#local-6989586621680295524"><span class="hs-identifier hs-var">maySubdomain</span></a></span></span><span> </span><span id="local-6989586621680295523"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680295523"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-37"></span><span>    </span><span class="annot"><span class="annottext">UserId
 -&gt; AppId -&gt; ReaderT SqlBackend m (Either Errors (Entity App))
 forall (m :: * -&gt; *).
 Retriever m =&gt;
 UserId -&gt; AppId -&gt; m (Either Errors (Entity App))
 </span><a href="Fission.App.Retriever.Class.html#byId"><span class="hs-identifier hs-var">App.byId</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680295250"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680295249"><span class="hs-identifier hs-var">appId</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either Errors (Entity App))
+</span><a href="#local-6989586621680295528"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">AppId
+</span><a href="#local-6989586621680295527"><span class="hs-identifier hs-var">appId</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either Errors (Entity App))
 -&gt; (Either Errors (Entity App) -&gt; Transaction m (Either Errors ()))
 -&gt; Transaction m (Either Errors ())
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-38"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680295243"><span class="annot"><span class="annottext">err :: Errors
-</span><a href="#local-6989586621680295243"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-38"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680295521"><span class="annot"><span class="annottext">err :: Errors
+</span><a href="#local-6989586621680295521"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-39"></span><span>        </span><span class="annot"><span class="annottext">Either Errors () -&gt; Transaction m (Either Errors ())
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either Errors () -&gt; Transaction m (Either Errors ()))
@@ -71,15 +71,15 @@ forall (errsA :: [*]) (errsB :: [*]) a.
 Contains errsA errsB =&gt;
 OpenUnion errsA -&gt; Either (OpenUnion errsB) a
 </span><a href="Fission.Error.html#relaxedLeft"><span class="hs-identifier hs-var">relaxedLeft</span></a></span><span> </span><span class="annot"><span class="annottext">Errors
-</span><a href="#local-6989586621680295243"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680295521"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-40"></span><span>
-</span><span id="line-41"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="hs-identifier">_</span><span> </span><span id="local-6989586621680295240"><span class="annot"><span class="annottext">app :: App
-</span><a href="#local-6989586621680295240"><span class="hs-identifier hs-var">app</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-41"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Entity</span></span><span> </span><span class="hs-identifier">_</span><span> </span><span id="local-6989586621680295518"><span class="annot"><span class="annottext">app :: App
+</span><a href="#local-6989586621680295518"><span class="hs-identifier hs-var">app</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-42"></span><span>        </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">UserId -&gt; App -&gt; Bool
 forall item. Owned item =&gt; UserId -&gt; item -&gt; Bool
 </span><a href="Fission.Ownership.html#isOwnedBy"><span class="hs-identifier hs-var">isOwnedBy</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680295250"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">App
-</span><a href="#local-6989586621680295240"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680295528"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">App
+</span><a href="#local-6989586621680295518"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-43"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">False</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-44"></span><span>            </span><span class="annot"><span class="annottext">Either Errors () -&gt; Transaction m (Either Errors ())
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
@@ -98,7 +98,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; ActionNotAuthorized App
 forall entity. UserId -&gt; ActionNotAuthorized entity
 </span><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-var">ActionNotAuthorized</span></a></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Models.html#App"><span class="hs-identifier hs-type">App</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680295250"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><a href="#local-6989586621680295528"><span class="hs-identifier hs-var">userId</span></a></span><span>
 </span><span id="line-45"></span><span>
 </span><span id="line-46"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">True</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-47"></span><span>            </span><span class="annot"><span class="annottext">AssociateAppDomainEvent -&gt; ReaderT SqlBackend m ()
@@ -113,17 +113,17 @@ record -&gt; ReaderT backend m ()
 -&gt; AssociateAppDomainEvent
 </span><a href="Fission.Models.html#%24WAssociateAppDomainEvent"><span class="hs-identifier hs-type hs-type">AssociateAppDomainEvent</span></a></span><span>
 </span><span id="line-48"></span><span>              </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:associateAppDomainEventAppId:AssociateAppDomainEvent :: AppId
-</span><a href="#local-6989586621680295233"><span class="hs-identifier hs-var">associateAppDomainEventAppId</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680295249"><span class="hs-identifier hs-var">appId</span></a></span><span>
+</span><a href="#local-6989586621680295511"><span class="hs-identifier hs-var">associateAppDomainEventAppId</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">AppId
+</span><a href="#local-6989586621680295527"><span class="hs-identifier hs-var">appId</span></a></span><span>
 </span><span id="line-49"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:associateAppDomainEventDomainName:AssociateAppDomainEvent :: DomainName
-</span><a href="#local-6989586621680295232"><span class="hs-identifier hs-var">associateAppDomainEventDomainName</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680295247"><span class="hs-identifier hs-var">domainName</span></a></span><span>
+</span><a href="#local-6989586621680295510"><span class="hs-identifier hs-var">associateAppDomainEventDomainName</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680295525"><span class="hs-identifier hs-var">domainName</span></a></span><span>
 </span><span id="line-50"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:associateAppDomainEventSubdomain:AssociateAppDomainEvent :: Maybe Subdomain
-</span><a href="#local-6989586621680295231"><span class="hs-identifier hs-var">associateAppDomainEventSubdomain</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680295246"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
+</span><a href="#local-6989586621680295509"><span class="hs-identifier hs-var">associateAppDomainEventSubdomain</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
+</span><a href="#local-6989586621680295524"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
 </span><span id="line-51"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:associateAppDomainEventInsertedAt:AssociateAppDomainEvent :: UTCTime
-</span><a href="#local-6989586621680295230"><span class="hs-identifier hs-var">associateAppDomainEventInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680295245"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680295508"><span class="hs-identifier hs-var">associateAppDomainEventInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680295523"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-52"></span><span>              </span><span class="hs-special">}</span><span>
 </span><span id="line-53"></span><span>
 </span><span id="line-54"></span><span>            </span><span class="annot"><span class="annottext">$WAppDomain :: AppId
@@ -134,20 +134,20 @@ record -&gt; ReaderT backend m ()
 -&gt; AppDomain
 </span><a href="Fission.Models.html#%24WAppDomain"><span class="hs-identifier hs-type hs-type">AppDomain</span></a></span><span>
 </span><span id="line-55"></span><span>              </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:appDomainAppId:AppDomain :: AppId
-</span><a href="#local-6989586621680295227"><span class="hs-identifier hs-var">appDomainAppId</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680295249"><span class="hs-identifier hs-var">appId</span></a></span><span>
+</span><a href="#local-6989586621680295505"><span class="hs-identifier hs-var">appDomainAppId</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">AppId
+</span><a href="#local-6989586621680295527"><span class="hs-identifier hs-var">appId</span></a></span><span>
 </span><span id="line-56"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appDomainDomainName:AppDomain :: DomainName
-</span><a href="#local-6989586621680295226"><span class="hs-identifier hs-var">appDomainDomainName</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680295247"><span class="hs-identifier hs-var">domainName</span></a></span><span>
+</span><a href="#local-6989586621680295504"><span class="hs-identifier hs-var">appDomainDomainName</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680295525"><span class="hs-identifier hs-var">domainName</span></a></span><span>
 </span><span id="line-57"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appDomainSubdomain:AppDomain :: Maybe Subdomain
-</span><a href="#local-6989586621680295225"><span class="hs-identifier hs-var">appDomainSubdomain</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680295246"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
+</span><a href="#local-6989586621680295503"><span class="hs-identifier hs-var">appDomainSubdomain</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
+</span><a href="#local-6989586621680295524"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
 </span><span id="line-58"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appDomainIsPrimary:AppDomain :: Checkmark
-</span><a href="#local-6989586621680295224"><span class="hs-identifier hs-var">appDomainIsPrimary</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Checkmark
-</span><a href="#local-6989586621680295248"><span class="hs-identifier hs-var">isPrimary</span></a></span><span>
+</span><a href="#local-6989586621680295502"><span class="hs-identifier hs-var">appDomainIsPrimary</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Checkmark
+</span><a href="#local-6989586621680295526"><span class="hs-identifier hs-var">isPrimary</span></a></span><span>
 </span><span id="line-59"></span><span>              </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appDomainInsertedAt:AppDomain :: UTCTime
-</span><a href="#local-6989586621680295223"><span class="hs-identifier hs-var">appDomainInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680295245"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680295501"><span class="hs-identifier hs-var">appDomainInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680295523"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-60"></span><span>              </span><span class="hs-special">}</span><span>
 </span><span id="line-61"></span><span>              </span><span class="annot"><span class="annottext">AppDomain
 -&gt; (AppDomain -&gt; ReaderT SqlBackend m (Maybe (Key AppDomain)))
@@ -178,9 +178,9 @@ err -&gt; Either (OpenUnion errs) a
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">AppId -&gt; DomainName -&gt; Maybe Subdomain -&gt; AlreadyAssociated
 </span><a href="Fission.App.Domain.Error.html#AlreadyAssociated"><span class="hs-identifier hs-var">AppDomain.AlreadyAssociated</span></a></span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680295249"><span class="hs-identifier hs-var">appId</span></a></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680295247"><span class="hs-identifier hs-var">domainName</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680295246"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
+</span><a href="#local-6989586621680295527"><span class="hs-identifier hs-var">appId</span></a></span><span> </span><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680295525"><span class="hs-identifier hs-var">domainName</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
+</span><a href="#local-6989586621680295524"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
 </span><span id="line-64"></span><span>                </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-identifier">_</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Either Errors ()
 forall err. Either err ()
 </span><a href="Fission.Prelude.html#ok"><span class="hs-identifier hs-var">ok</span></a></span></span><span>

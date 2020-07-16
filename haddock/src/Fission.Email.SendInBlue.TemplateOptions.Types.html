@@ -13,23 +13,23 @@
 </span><a href="Fission.Email.SendInBlue.TemplateOptions.Types.html#%24sel%3Ausername%3ATemplateOptions"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span>   </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span> </span><span>
 </span><span id="line-12"></span><span>  </span><span class="hs-special">}</span><span> </span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680286473"><span id="local-6989586621680286475"><span id="local-6989586621680286477"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateOptions.Types.html#TemplateOptions"><span class="hs-identifier hs-type">TemplateOptions</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-15"></span><span>  </span><span id="local-6989586621680286471"><span class="annot"><span class="annottext">toJSON :: TemplateOptions -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateOptions.Types.html#TemplateOptions"><span class="hs-identifier hs-type">TemplateOptions</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span id="local-6989586621680286469"><span class="annot"><span class="annottext">BaseUrl
+</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680286751"><span id="local-6989586621680286753"><span id="local-6989586621680286755"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateOptions.Types.html#TemplateOptions"><span class="hs-identifier hs-type">TemplateOptions</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680286749"><span class="annot"><span class="annottext">toJSON :: TemplateOptions -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.TemplateOptions.Types.html#TemplateOptions"><span class="hs-identifier hs-type">TemplateOptions</span></a></span><span> </span><span class="hs-special">{</span><span> </span><span id="local-6989586621680286747"><span class="annot"><span class="annottext">BaseUrl
 verifyLink :: BaseUrl
 $sel:verifyLink:TemplateOptions :: TemplateOptions -&gt; BaseUrl
-</span><a href="#local-6989586621680286469"><span class="hs-identifier hs-var hs-var">verifyLink</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680286468"><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680286747"><span class="hs-identifier hs-var hs-var">verifyLink</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680286746"><span class="annot"><span class="annottext">Username
 username :: Username
 $sel:username:TemplateOptions :: TemplateOptions -&gt; Username
-</span><a href="#local-6989586621680286468"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span> </span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="#local-6989586621680286746"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span> </span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-16"></span><span>    </span><span class="annot"><span class="annottext">Object -&gt; Value
 </span><span class="hs-identifier hs-var">Object</span></span><span> </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;VERIFY_LINK&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">BaseUrl -&gt; Value
 forall a. ToJSON a =&gt; a -&gt; Value
 </span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">BaseUrl
-</span><a href="#local-6989586621680286469"><span class="hs-identifier hs-var">verifyLink</span></a></span><span> </span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680286747"><span class="hs-identifier hs-var">verifyLink</span></a></span><span> </span><span class="hs-special">)</span><span>
 </span><span id="line-17"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;USERNAME&quot;</span></span><span class="hs-special">,</span><span>    </span><span class="annot"><span class="annottext">Username -&gt; Value
 forall a. ToJSON a =&gt; a -&gt; Value
 </span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680286468"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680286746"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-special">)</span><span>
 </span><span id="line-18"></span><span>           </span><span class="hs-special">]</span><span>
 </span><span id="line-19"></span></pre></body></html>
