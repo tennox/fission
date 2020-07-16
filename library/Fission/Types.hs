@@ -424,6 +424,8 @@ instance User.Modifier Fission where
               did       = textDisplay (DID pk Key)
               didSegments = DNS.splitRecord did
 
+            logInfo $ ">>>>>>>>>>>>>>>>>>" <> displayShow didSegments
+
             Route53.set Txt url zoneID didSegments 10 <&> \case
               Left serverErr -> Error.openLeft serverErr
               Right _        -> Right pk

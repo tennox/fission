@@ -41,8 +41,8 @@ withDID ::
   => DID
   -> ServerT API m
 withDID DID {..} User.Registration {username, email} = do
-  now <- currentTime
-  userId <- Web.Err.ensureM $ User.create username publicKey email now
+  now       <- currentTime
+  userId    <- Web.Err.ensureM $ User.create username publicKey email now
   challenge <- Web.Err.ensureM $ Challenge.create userId
 
   sendVerificationEmail (Recipient email username) challenge >>= \case
