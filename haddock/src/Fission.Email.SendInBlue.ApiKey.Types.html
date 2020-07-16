@@ -4,7 +4,7 @@
 </span><span id="line-4"></span><span>
 </span><span id="line-5"></span><span class="hs-keyword">newtype</span><span> </span><span id="ApiKey"><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-var">ApiKey</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="ApiKey"><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-var">ApiKey</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunApiKey%3AApiKey"><span class="annot"><span class="annottext">ApiKey -&gt; Text
 </span><a href="Fission.Email.SendInBlue.ApiKey.Types.html#%24sel%3AunApiKey%3AApiKey"><span class="hs-identifier hs-var hs-var">unApiKey</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-6"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>  </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680283447"><span id="local-6989586621680283449"><span class="annot"><span class="annottext">ApiKey -&gt; ApiKey -&gt; Bool
+</span><span id="line-6"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>  </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680283482"><span id="local-6989586621680283484"><span class="annot"><span class="annottext">ApiKey -&gt; ApiKey -&gt; Bool
 (ApiKey -&gt; ApiKey -&gt; Bool)
 -&gt; (ApiKey -&gt; ApiKey -&gt; Bool) -&gt; Eq ApiKey
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -13,7 +13,7 @@ $c/= :: ApiKey -&gt; ApiKey -&gt; Bool
 == :: ApiKey -&gt; ApiKey -&gt; Bool
 $c== :: ApiKey -&gt; ApiKey -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
-</span><span id="line-7"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283440"><span id="local-6989586621680283442"><span id="local-6989586621680283444"><span class="annot"><span class="annottext">Int -&gt; ApiKey -&gt; ShowS
+</span><span id="line-7"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283475"><span id="local-6989586621680283477"><span id="local-6989586621680283479"><span class="annot"><span class="annottext">Int -&gt; ApiKey -&gt; ShowS
 [ApiKey] -&gt; ShowS
 ApiKey -&gt; String
 (Int -&gt; ApiKey -&gt; ShowS)
@@ -27,7 +27,7 @@ $cshow :: ApiKey -&gt; String
 showsPrec :: Int -&gt; ApiKey -&gt; ShowS
 $cshowsPrec :: Int -&gt; ApiKey -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-8"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283437"><span class="annot"><span class="annottext">String -&gt; ApiKey
+</span><span id="line-8"></span><span>                    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680283472"><span class="annot"><span class="annottext">String -&gt; ApiKey
 (String -&gt; ApiKey) -&gt; IsString ApiKey
 forall a. (String -&gt; a) -&gt; IsString a
 fromString :: String -&gt; ApiKey
@@ -35,8 +35,8 @@ $cfromString :: String -&gt; ApiKey
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
 </span><span id="line-9"></span><span>                    </span><span class="hs-special">)</span><span>
 </span><span id="line-10"></span><span>
-</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283433"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-type">ApiKey</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-12"></span><span>  </span><span id="local-6989586621680283431"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ApiKey
+</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680283468"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Email.SendInBlue.ApiKey.Types.html#ApiKey"><span class="hs-identifier hs-type">ApiKey</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680283466"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser ApiKey
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser ApiKey) -&gt; Value -&gt; Parser ApiKey
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ApiKey&quot;</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ApiKey -&gt; Parser ApiKey

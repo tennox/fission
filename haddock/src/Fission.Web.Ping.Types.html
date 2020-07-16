@@ -9,7 +9,7 @@
 </span><span id="line-9"></span><span class="hs-comment">--   Primarily exists for customized instances.</span><span>
 </span><span id="line-10"></span><span class="hs-keyword">newtype</span><span> </span><span id="Pong"><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-var">Pong</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Pong"><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-var">Pong</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunPong%3APong"><span class="annot"><span class="annottext">Pong -&gt; Text
 </span><a href="Fission.Web.Ping.Types.html#%24sel%3AunPong%3APong"><span class="hs-identifier hs-var hs-var">unPong</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span>         </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680298623"><span id="local-6989586621680298625"><span class="annot"><span class="annottext">Pong -&gt; Pong -&gt; Bool
+</span><span id="line-11"></span><span>  </span><span class="hs-keyword">deriving</span><span>         </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680298660"><span id="local-6989586621680298662"><span class="annot"><span class="annottext">Pong -&gt; Pong -&gt; Bool
 (Pong -&gt; Pong -&gt; Bool) -&gt; (Pong -&gt; Pong -&gt; Bool) -&gt; Eq Pong
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Pong -&gt; Pong -&gt; Bool
@@ -17,7 +17,7 @@ $c/= :: Pong -&gt; Pong -&gt; Bool
 == :: Pong -&gt; Pong -&gt; Bool
 $c== :: Pong -&gt; Pong -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
-</span><span id="line-12"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298616"><span id="local-6989586621680298618"><span id="local-6989586621680298620"><span class="annot"><span class="annottext">Int -&gt; Pong -&gt; ShowS
+</span><span id="line-12"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298653"><span id="local-6989586621680298655"><span id="local-6989586621680298657"><span class="annot"><span class="annottext">Int -&gt; Pong -&gt; ShowS
 [Pong] -&gt; ShowS
 Pong -&gt; String
 (Int -&gt; Pong -&gt; ShowS)
@@ -32,13 +32,13 @@ showsPrec :: Int -&gt; Pong -&gt; ShowS
 $cshowsPrec :: Int -&gt; Pong -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
 </span><span id="line-13"></span><span>                   </span><span class="hs-special">)</span><span>
-</span><span id="line-14"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680298613"><span class="annot"><span class="annottext">String -&gt; Pong
+</span><span id="line-14"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680298650"><span class="annot"><span class="annottext">String -&gt; Pong
 (String -&gt; Pong) -&gt; IsString Pong
 forall a. (String -&gt; a) -&gt; IsString a
 fromString :: String -&gt; Pong
 $cfromString :: String -&gt; Pong
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">IsString</span></span></span><span>
-</span><span id="line-15"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298608"><span id="local-6989586621680298610"><span class="annot"><span class="annottext">Value -&gt; Parser [Pong]
+</span><span id="line-15"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298645"><span id="local-6989586621680298647"><span class="annot"><span class="annottext">Value -&gt; Parser [Pong]
 Value -&gt; Parser Pong
 (Value -&gt; Parser Pong) -&gt; (Value -&gt; Parser [Pong]) -&gt; FromJSON Pong
 forall a.
@@ -48,7 +48,7 @@ $cparseJSONList :: Value -&gt; Parser [Pong]
 parseJSON :: Value -&gt; Parser Pong
 $cparseJSON :: Value -&gt; Parser Pong
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">FromJSON</span></span></span></span><span>
-</span><span id="line-16"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298599"><span id="local-6989586621680298601"><span id="local-6989586621680298603"><span id="local-6989586621680298605"><span class="annot"><span class="annottext">[Pong] -&gt; Value
+</span><span id="line-16"></span><span>                   </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298636"><span id="local-6989586621680298638"><span id="local-6989586621680298640"><span id="local-6989586621680298642"><span class="annot"><span class="annottext">[Pong] -&gt; Value
 [Pong] -&gt; Encoding
 Pong -&gt; Value
 Pong -&gt; Encoding
@@ -75,7 +75,7 @@ $ctoJSON :: Pong -&gt; Value
 </span><span id="line-17"></span><span>                   </span><span class="hs-special">)</span><span>
 </span><span id="line-18"></span><span>
 </span><span id="line-19"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-type">Pong</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-20"></span><span>  </span><span id="local-6989586621680298595"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Pong -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-20"></span><span>  </span><span id="local-6989586621680298632"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Pong -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-21"></span><span>    </span><span class="annot"><span class="annottext">Schema
 forall a. Monoid a =&gt; a
@@ -131,9 +131,9 @@ forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span>
 </span><span id="line-27"></span><span>
 </span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MimeRender</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">PlainText</span></span><span> </span><span class="annot"><a href="Fission.Web.Ping.Types.html#Pong"><span class="hs-identifier hs-type">Pong</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-29"></span><span>  </span><span id="local-6989586621680298582"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; Pong -&gt; ByteString
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680298580"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
-</span><a href="#local-6989586621680298580"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
+</span><span id="line-29"></span><span>  </span><span id="local-6989586621680298619"><span class="annot"><span class="annottext">mimeRender :: Proxy PlainText -&gt; Pong -&gt; ByteString
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">mimeRender</span></span></span><span> </span><span id="local-6989586621680298617"><span class="annot"><span class="annottext">_proxy :: Proxy PlainText
+</span><a href="#local-6989586621680298617"><span class="hs-identifier hs-var">_proxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; ByteString) -&gt; (Pong -&gt; Text) -&gt; Pong -&gt; ByteString
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
