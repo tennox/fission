@@ -8,14 +8,14 @@
 </span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Username.Types.html"><span class="hs-identifier">Fission.User.Username.Types</span></a></span><span>
 </span><span id="line-9"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Internal.Orphanage.BaseUrl.html"><span class="hs-identifier">Fission.Internal.Orphanage.BaseUrl</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-10"></span><span>
-</span><span id="line-11"></span><span id="local-6989586621680286701"><span id="local-6989586621680286702"></span></span><span class="hs-keyword">data</span><span> </span><span id="Provision"><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-var">Provision</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Provision"><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-var">Provision</span></a></span></span><span>
+</span><span id="line-11"></span><span id="local-6989586621680287305"><span id="local-6989586621680287306"></span></span><span class="hs-keyword">data</span><span> </span><span id="Provision"><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-var">Provision</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Provision"><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-var">Provision</span></a></span></span><span>
 </span><span id="line-12"></span><span>  </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Aurl%3AProvision"><span class="annot"><span class="annottext">Provision -&gt; BaseUrl
 </span><a href="Fission.User.Provision.Types.html#%24sel%3Aurl%3AProvision"><span class="hs-identifier hs-var hs-var">url</span></a></span></span><span>      </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Client.BaseUrl</span></span><span>
 </span><span id="line-13"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Ausername%3AProvision"><span class="annot"><span class="annottext">Provision -&gt; Username
 </span><a href="Fission.User.Provision.Types.html#%24sel%3Ausername%3AProvision"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-type">Username</span></a></span><span>
 </span><span id="line-14"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Apassword%3AProvision"><span class="annot"><span class="annottext">Provision -&gt; Secret
 </span><a href="Fission.User.Provision.Types.html#%24sel%3Apassword%3AProvision"><span class="hs-identifier hs-var hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Security.Types.html#Secret"><span class="hs-identifier hs-type">Secret</span></a></span><span>
-</span><span id="line-15"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680286693"><span id="local-6989586621680286695"><span class="annot"><span class="annottext">Provision -&gt; Provision -&gt; Bool
+</span><span id="line-15"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680287297"><span id="local-6989586621680287299"><span class="annot"><span class="annottext">Provision -&gt; Provision -&gt; Bool
 (Provision -&gt; Provision -&gt; Bool)
 -&gt; (Provision -&gt; Provision -&gt; Bool) -&gt; Eq Provision
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -24,7 +24,7 @@ $c/= :: Provision -&gt; Provision -&gt; Bool
 == :: Provision -&gt; Provision -&gt; Bool
 $c== :: Provision -&gt; Provision -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
-</span><span id="line-16"></span><span>             </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680286686"><span id="local-6989586621680286688"><span id="local-6989586621680286690"><span class="annot"><span class="annottext">Int -&gt; Provision -&gt; ShowS
+</span><span id="line-16"></span><span>             </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680287290"><span id="local-6989586621680287292"><span id="local-6989586621680287294"><span class="annot"><span class="annottext">Int -&gt; Provision -&gt; ShowS
 [Provision] -&gt; ShowS
 Provision -&gt; String
 (Int -&gt; Provision -&gt; ShowS)
@@ -51,71 +51,71 @@ $cfrom :: forall x. Provision -&gt; Rep Provision x
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span>
 </span><span id="line-18"></span><span>             </span><span class="hs-special">)</span><span>
 </span><span id="line-19"></span><span>
-</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680286679"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-21"></span><span>  </span><span id="local-6989586621680286677"><span class="annot"><span class="annottext">arbitrary :: Gen Provision
+</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680287283"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-21"></span><span>  </span><span id="local-6989586621680287281"><span class="annot"><span class="annottext">arbitrary :: Gen Provision
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-22"></span><span>    </span><span id="local-6989586621680286675"><span class="annot"><span class="annottext">BaseUrl
-</span><a href="#local-6989586621680286675"><span class="hs-identifier hs-var">url</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen BaseUrl
+</span><span id="line-22"></span><span>    </span><span id="local-6989586621680287279"><span class="annot"><span class="annottext">BaseUrl
+</span><a href="#local-6989586621680287279"><span class="hs-identifier hs-var">url</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen BaseUrl
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-23"></span><span>    </span><span id="local-6989586621680286674"><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680286674"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Username
+</span><span id="line-23"></span><span>    </span><span id="local-6989586621680287278"><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680287278"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Username
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-24"></span><span>    </span><span id="local-6989586621680286673"><span class="annot"><span class="annottext">Secret
-</span><a href="#local-6989586621680286673"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Secret
+</span><span id="line-24"></span><span>    </span><span id="local-6989586621680287277"><span class="annot"><span class="annottext">Secret
+</span><a href="#local-6989586621680287277"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Secret
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-25"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Provision :: BaseUrl -&gt; Username -&gt; Secret -&gt; Provision
 </span><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type hs-type">Provision</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
 </span><span id="line-26"></span><span>
-</span><span id="line-27"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680286669"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-28"></span><span>  </span><span id="local-6989586621680286667"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Provision
+</span><span id="line-27"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680287273"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-28"></span><span>  </span><span id="local-6989586621680287271"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Provision
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser Provision) -&gt; Value -&gt; Parser Provision
 forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;User.Provision&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680286664"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680286664"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-29"></span><span>    </span><span id="local-6989586621680286663"><span class="annot"><span class="annottext">BaseUrl
-</span><a href="#local-6989586621680286663"><span class="hs-identifier hs-var">url</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680286664"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser BaseUrl
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;User.Provision&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680287268"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680287268"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-29"></span><span>    </span><span id="local-6989586621680287267"><span class="annot"><span class="annottext">BaseUrl
+</span><a href="#local-6989586621680287267"><span class="hs-identifier hs-var">url</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680287268"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser BaseUrl
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_URL&quot;</span></span><span>
-</span><span id="line-30"></span><span>    </span><span id="local-6989586621680286661"><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680286661"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680286664"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Username
+</span><span id="line-30"></span><span>    </span><span id="local-6989586621680287265"><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680287265"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680287268"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Username
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_USERNAME&quot;</span></span><span>
-</span><span id="line-31"></span><span>    </span><span id="local-6989586621680286660"><span class="annot"><span class="annottext">Secret
-</span><a href="#local-6989586621680286660"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680286664"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Secret
+</span><span id="line-31"></span><span>    </span><span id="local-6989586621680287264"><span class="annot"><span class="annottext">Secret
+</span><a href="#local-6989586621680287264"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680287268"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Secret
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_PASSWORD&quot;</span></span><span>
 </span><span id="line-32"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Provision :: BaseUrl -&gt; Username -&gt; Secret -&gt; Provision
 </span><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type hs-type">Provision</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
 </span><span id="line-33"></span><span>
-</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680286653"><span id="local-6989586621680286655"><span id="local-6989586621680286657"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-35"></span><span>  </span><span id="local-6989586621680286651"><span class="annot"><span class="annottext">toJSON :: Provision -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680286647"><span id="local-6989586621680286648"><span id="local-6989586621680286649"><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680287257"><span id="local-6989586621680287259"><span id="local-6989586621680287261"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680287255"><span class="annot"><span class="annottext">toJSON :: Provision -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680287251"><span id="local-6989586621680287252"><span id="local-6989586621680287253"><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span>
 </span><span id="line-36"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_URL&quot;</span></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; BaseUrl -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">BaseUrl
-</span><a href="#local-6989586621680286649"><span class="hs-identifier hs-var">url</span></a></span><span>
+</span><a href="#local-6989586621680287253"><span class="hs-identifier hs-var">url</span></a></span><span>
 </span><span id="line-37"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_USERNAME&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Username -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680286648"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><a href="#local-6989586621680287252"><span class="hs-identifier hs-var">username</span></a></span><span>
 </span><span id="line-38"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_PASSWORD&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Secret -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Secret
-</span><a href="#local-6989586621680286647"><span class="hs-identifier hs-var">password</span></a></span><span>
+</span><a href="#local-6989586621680287251"><span class="hs-identifier hs-var">password</span></a></span><span>
 </span><span id="line-39"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-40"></span><span>
 </span><span id="line-41"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-42"></span><span>  </span><span id="local-6989586621680286642"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Provision -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-42"></span><span>  </span><span id="local-6989586621680287246"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Provision -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-43"></span><span>    </span><span id="local-6989586621680286640"><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680286640"><span class="hs-identifier hs-var">url'</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy BaseUrl -&gt; Declare (Definitions Schema) (Referenced Schema)
+</span><span id="line-43"></span><span>    </span><span id="local-6989586621680287244"><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680287244"><span class="hs-identifier hs-var">url'</span></a></span></span><span>      </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy BaseUrl -&gt; Declare (Definitions Schema) (Referenced Schema)
 forall a.
 ToSchema a =&gt;
 Proxy a -&gt; Declare (Definitions Schema) (Referenced Schema)
@@ -126,8 +126,8 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Proxy BaseUrl
 forall k (t :: k). Proxy t
 </span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><span class="hs-identifier hs-type">Client.BaseUrl</span></span><span>
-</span><span id="line-44"></span><span>    </span><span id="local-6989586621680286636"><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680286636"><span class="hs-identifier hs-var">username'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
+</span><span id="line-44"></span><span>    </span><span id="local-6989586621680287240"><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680287240"><span class="hs-identifier hs-var">username'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
 forall a.
 ToSchema a =&gt;
 Proxy a -&gt; Declare (Definitions Schema) (Referenced Schema)
@@ -137,8 +137,8 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Proxy Text
 forall k (t :: k). Proxy t
 </span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-45"></span><span>    </span><span id="local-6989586621680286635"><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680286635"><span class="hs-identifier hs-var">password'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Secret -&gt; Declare (Definitions Schema) (Referenced Schema)
+</span><span id="line-45"></span><span>    </span><span id="local-6989586621680287239"><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680287239"><span class="hs-identifier hs-var">password'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Secret -&gt; Declare (Definitions Schema) (Referenced Schema)
 forall a.
 ToSchema a =&gt;
 Proxy a -&gt; Declare (Definitions Schema) (Referenced Schema)
@@ -178,11 +178,11 @@ forall s a. HasProperties s a =&gt; Lens' s a
 forall s t a b. ASetter s t a b -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">.~</span></span><span>
 </span><span id="line-50"></span><span>          </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_URL&quot;</span></span><span class="hs-special">,</span><span>      </span><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680286640"><span class="hs-identifier hs-var">url'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680287244"><span class="hs-identifier hs-var">url'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-51"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_USERNAME&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680286636"><span class="hs-identifier hs-var">username'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680287240"><span class="hs-identifier hs-var">username'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-52"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;INTERPLANETARY_FISSION_PASSWORD&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680286635"><span class="hs-identifier hs-var">password'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680287239"><span class="hs-identifier hs-var">password'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-53"></span><span>          </span><span class="hs-special">]</span><span>
 </span><span id="line-54"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
 forall a b. a -&gt; (a -&gt; b) -&gt; b

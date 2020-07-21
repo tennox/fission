@@ -24,13 +24,13 @@
 </span><span id="line-24"></span><span>
 </span><span id="line-25"></span><span class="hs-keyword">type</span><span> </span><span id="API"><span class="annot"><a href="Fission.Web.Swagger.html#API"><span class="hs-identifier hs-var">API</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">SwaggerSchemaUI</span></span><span> </span><span class="annot"><span class="hs-string">&quot;docs&quot;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;docs.json&quot;</span></span><span>
 </span><span id="line-26"></span><span>
-</span><span id="line-27"></span><span id="local-6989586621680300658"><span class="annot"><a href="Fission.Web.Swagger.html#server"><span class="hs-identifier hs-type">server</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680300787"><span class="annot"><a href="#local-6989586621680300787"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-operator">.</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span><span> </span><span class="annot"><a href="#local-6989586621680300787"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680300658"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680300787"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.Swagger.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680300658"><span class="hs-identifier hs-type">m</span></a></span></span><span>
+</span><span id="line-27"></span><span id="local-6989586621680301269"><span class="annot"><a href="Fission.Web.Swagger.html#server"><span class="hs-identifier hs-type">server</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680301398"><span class="annot"><a href="#local-6989586621680301398"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-operator">.</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Handler</span></span><span> </span><span class="annot"><a href="#local-6989586621680301398"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680301269"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680301398"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.Swagger.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680301269"><span class="hs-identifier hs-type">m</span></a></span></span><span>
 </span><span id="line-28"></span><span id="server"><span class="annot"><span class="annottext">server :: (forall a. Handler a -&gt; m a) -&gt; Host -&gt; ServerT API m
-</span><a href="Fission.Web.Swagger.html#server"><span class="hs-identifier hs-var hs-var">server</span></a></span></span><span> </span><span id="local-6989586621680300657"><span class="annot"><span class="annottext">fromHandler :: forall a. Handler a -&gt; m a
-</span><a href="#local-6989586621680300657"><span class="hs-identifier hs-var">fromHandler</span></a></span></span><span> </span><span id="local-6989586621680300656"><span class="annot"><span class="annottext">appHost :: Host
-</span><a href="#local-6989586621680300656"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Web.Swagger.html#server"><span class="hs-identifier hs-var hs-var">server</span></a></span></span><span> </span><span id="local-6989586621680301268"><span class="annot"><span class="annottext">fromHandler :: forall a. Handler a -&gt; m a
+</span><a href="#local-6989586621680301268"><span class="hs-identifier hs-var">fromHandler</span></a></span></span><span> </span><span id="local-6989586621680301267"><span class="annot"><span class="annottext">appHost :: Host
+</span><a href="#local-6989586621680301267"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-29"></span><span>  </span><span class="annot"><span class="annottext">Host
-</span><a href="#local-6989586621680300656"><span class="hs-identifier hs-var">appHost</span></a></span><span>
+</span><a href="#local-6989586621680301267"><span class="hs-identifier hs-var">appHost</span></a></span><span>
 </span><span id="line-30"></span><span>    </span><span class="annot"><span class="annottext">Host -&gt; (Host -&gt; Swagger) -&gt; Swagger
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Host -&gt; Swagger
@@ -93,14 +93,14 @@ Proxy api
 </span><span class="hs-identifier hs-var">hoistServer</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Proxy API
 forall k (t :: k). Proxy t
 </span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Web.Swagger.html#API"><span class="hs-identifier hs-type">API</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. Handler a -&gt; m a
-</span><a href="#local-6989586621680300657"><span class="hs-identifier hs-var">fromHandler</span></a></span><span>
+</span><a href="#local-6989586621680301268"><span class="hs-identifier hs-var">fromHandler</span></a></span><span>
 </span><span id="line-33"></span><span>
 </span><span id="line-34"></span><span class="annot"><a href="Fission.Web.Swagger.html#docs"><span class="hs-identifier hs-type">docs</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span><span>
 </span><span id="line-35"></span><span id="docs"><span class="annot"><span class="annottext">docs :: Host -&gt; Swagger
-</span><a href="Fission.Web.Swagger.html#docs"><span class="hs-identifier hs-var hs-var">docs</span></a></span></span><span> </span><span id="local-6989586621680300650"><span class="annot"><span class="annottext">host' :: Host
-</span><a href="#local-6989586621680300650"><span class="hs-identifier hs-var">host'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Web.Swagger.html#docs"><span class="hs-identifier hs-var hs-var">docs</span></a></span></span><span> </span><span id="local-6989586621680301261"><span class="annot"><span class="annottext">host' :: Host
+</span><a href="#local-6989586621680301261"><span class="hs-identifier hs-var">host'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-36"></span><span>  </span><span class="annot"><span class="annottext">Host
-</span><a href="#local-6989586621680300650"><span class="hs-identifier hs-var">host'</span></a></span><span>
+</span><a href="#local-6989586621680301261"><span class="hs-identifier hs-var">host'</span></a></span><span>
 </span><span id="line-37"></span><span>    </span><span class="annot"><span class="annottext">Host -&gt; (Host -&gt; Swagger) -&gt; Swagger
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Proxy API -&gt; Host -&gt; Swagger
@@ -133,13 +133,13 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Swagger -&gt; Swagger
 </span><a href="Fission.Web.Swagger.html#user"><span class="hs-identifier hs-var">user</span></a></span><span>
 </span><span id="line-44"></span><span>
-</span><span id="line-45"></span><span id="local-6989586621680300758"><span class="annot"><a href="Fission.Web.Swagger.html#fission"><span class="hs-identifier hs-type">fission</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="annot"><a href="#local-6989586621680300758"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680300758"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span></span><span>
+</span><span id="line-45"></span><span id="local-6989586621680301369"><span class="annot"><a href="Fission.Web.Swagger.html#fission"><span class="hs-identifier hs-type">fission</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="annot"><a href="#local-6989586621680301369"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680301369"><span class="hs-identifier hs-type">api</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span></span><span>
 </span><span id="line-46"></span><span id="fission"><span class="annot"><span class="annottext">fission :: Proxy api -&gt; Host -&gt; Swagger
-</span><a href="Fission.Web.Swagger.html#fission"><span class="hs-identifier hs-var hs-var">fission</span></a></span></span><span> </span><span id="local-6989586621680300642"><span class="annot"><span class="annottext">proxy :: Proxy api
-</span><a href="#local-6989586621680300642"><span class="hs-identifier hs-var">proxy</span></a></span></span><span> </span><span id="local-6989586621680300641"><span class="annot"><span class="annottext">appHost :: Host
-</span><a href="#local-6989586621680300641"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Web.Swagger.html#fission"><span class="hs-identifier hs-var hs-var">fission</span></a></span></span><span> </span><span id="local-6989586621680301253"><span class="annot"><span class="annottext">proxy :: Proxy api
+</span><a href="#local-6989586621680301253"><span class="hs-identifier hs-var">proxy</span></a></span></span><span> </span><span id="local-6989586621680301252"><span class="annot"><span class="annottext">appHost :: Host
+</span><a href="#local-6989586621680301252"><span class="hs-identifier hs-var">appHost</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-47"></span><span>  </span><span class="annot"><span class="annottext">Proxy api
-</span><a href="#local-6989586621680300642"><span class="hs-identifier hs-var">proxy</span></a></span><span>
+</span><a href="#local-6989586621680301253"><span class="hs-identifier hs-var">proxy</span></a></span><span>
 </span><span id="line-48"></span><span>    </span><span class="annot"><span class="annottext">Proxy api -&gt; (Proxy api -&gt; Swagger) -&gt; Swagger
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Proxy api -&gt; Swagger
@@ -157,7 +157,7 @@ forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">HostName -&gt; Maybe PortNumber -&gt; Host
 </span><span class="hs-identifier hs-var">Host</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Host -&gt; HostName
 </span><a href="Fission.Web.Types.html#getRawHost"><span class="hs-identifier hs-var">Web.getRawHost</span></a></span><span> </span><span class="annot"><span class="annottext">Host
-</span><a href="#local-6989586621680300641"><span class="hs-identifier hs-var">appHost</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe PortNumber
+</span><a href="#local-6989586621680301252"><span class="hs-identifier hs-var">appHost</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe PortNumber
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-50"></span><span>    </span><span class="annot"><span class="annottext">Swagger -&gt; (Swagger -&gt; Swagger) -&gt; Swagger
@@ -204,7 +204,7 @@ forall s a. HasVersion s a =&gt; Lens' s a
 -&gt; Text -&gt; Swagger -&gt; Swagger
 forall s t a b. ASetter s t a b -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">.~</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680300628"><span class="hs-identifier hs-var">version'</span></a></span><span>
+</span><a href="#local-6989586621680301239"><span class="hs-identifier hs-var">version'</span></a></span><span>
 </span><span id="line-53"></span><span>    </span><span class="annot"><span class="annottext">Swagger -&gt; (Swagger -&gt; Swagger) -&gt; Swagger
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Info -&gt; Identity Info) -&gt; Swagger -&gt; Identity Swagger
@@ -223,7 +223,7 @@ forall s a. HasDescription s a =&gt; Lens' s a
 forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">Text
 forall p. IsString p =&gt; p
-</span><a href="#local-6989586621680300626"><span class="hs-identifier hs-var">blurb</span></a></span><span>
+</span><a href="#local-6989586621680301237"><span class="hs-identifier hs-var">blurb</span></a></span><span>
 </span><span id="line-54"></span><span>    </span><span class="annot"><span class="annottext">Swagger -&gt; (Swagger -&gt; Swagger) -&gt; Swagger
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Info -&gt; Identity Info) -&gt; Swagger -&gt; Identity Swagger
@@ -247,7 +247,7 @@ forall b b b.
 (Monoid b, HasName b (Maybe b), HasUrl b (Maybe URL),
  HasEmail b (Maybe b), IsString b, IsString b) =&gt;
 b
-</span><a href="#local-6989586621680300624"><span class="hs-identifier hs-var">fissionContact</span></a></span><span>
+</span><a href="#local-6989586621680301235"><span class="hs-identifier hs-var">fissionContact</span></a></span><span>
 </span><span id="line-55"></span><span>    </span><span class="annot"><span class="annottext">Swagger -&gt; (Swagger -&gt; Swagger) -&gt; Swagger
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Info -&gt; Identity Info) -&gt; Swagger -&gt; Identity Swagger
@@ -268,10 +268,10 @@ forall s a. HasLicense s a =&gt; Lens' s a
 forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">License
 forall b. (IsString b, HasUrl b (Maybe URL)) =&gt; b
-</span><a href="#local-6989586621680300622"><span class="hs-identifier hs-var">projectLicense</span></a></span><span>
+</span><a href="#local-6989586621680301233"><span class="hs-identifier hs-var">projectLicense</span></a></span><span>
 </span><span id="line-56"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-57"></span><span>    </span><span id="local-6989586621680300628"><span class="annot"><span class="annottext">version' :: Text
-</span><a href="#local-6989586621680300628"><span class="hs-identifier hs-var hs-var">version'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-57"></span><span>    </span><span id="local-6989586621680301239"><span class="annot"><span class="annottext">version' :: Text
+</span><a href="#local-6989586621680301239"><span class="hs-identifier hs-var hs-var">version'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-58"></span><span>      </span><span class="annot"><span class="annottext">Maybe Package
 </span><a href="Fission.Internal.Meta.Package.html#package"><span class="hs-identifier hs-var">Meta.package</span></a></span><span>
 </span><span id="line-59"></span><span>        </span><span class="annot"><span class="annottext">Maybe Package -&gt; (Maybe Package -&gt; Maybe Text) -&gt; Maybe Text
@@ -288,8 +288,8 @@ forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
 forall a. a -&gt; a
 </span><a href="Fission.Prelude.html#identity"><span class="hs-identifier hs-var">identity</span></a></span><span>
 </span><span id="line-61"></span><span>
-</span><span id="line-62"></span><span>    </span><span id="local-6989586621680300624"><span class="annot"><span class="annottext">fissionContact :: b
-</span><a href="#local-6989586621680300624"><span class="hs-identifier hs-var hs-var">fissionContact</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-62"></span><span>    </span><span id="local-6989586621680301235"><span class="annot"><span class="annottext">fissionContact :: b
+</span><a href="#local-6989586621680301235"><span class="hs-identifier hs-var hs-var">fissionContact</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-63"></span><span>      </span><span class="annot"><span class="annottext">b
 forall a. Monoid a =&gt; a
 </span><span class="hs-identifier hs-var">mempty</span></span><span>
@@ -317,8 +317,8 @@ forall s a. HasEmail s a =&gt; Lens' s a
 forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="hs-string">&quot;support@fission.codes&quot;</span></span><span>
 </span><span id="line-67"></span><span>
-</span><span id="line-68"></span><span>    </span><span id="local-6989586621680300622"><span class="annot"><span class="annottext">projectLicense :: b
-</span><a href="#local-6989586621680300622"><span class="hs-identifier hs-var hs-var">projectLicense</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-68"></span><span>    </span><span id="local-6989586621680301233"><span class="annot"><span class="annottext">projectLicense :: b
+</span><a href="#local-6989586621680301233"><span class="hs-identifier hs-var hs-var">projectLicense</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-69"></span><span>      </span><span class="annot"><span class="hs-string">&quot;AGPL 3.0&quot;</span></span><span> </span><span class="annot"><span class="annottext">b -&gt; (b -&gt; b) -&gt; b
 forall a b. a -&gt; (a -&gt; b) -&gt; b
 </span><span class="hs-operator hs-var">|&gt;</span></span><span> </span><span class="annot"><span class="annottext">(Maybe URL -&gt; Identity (Maybe URL)) -&gt; b -&gt; Identity b
@@ -329,8 +329,8 @@ forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; URL
 </span><span class="hs-identifier hs-var">URL</span></span><span> </span><span class="annot"><span class="hs-string">&quot;https://www.gnu.org/licenses/agpl-3.0.en.html&quot;</span></span><span>
 </span><span id="line-70"></span><span>
-</span><span id="line-71"></span><span>    </span><span id="local-6989586621680300626"><span class="annot"><span class="annottext">blurb :: p
-</span><a href="#local-6989586621680300626"><span class="hs-identifier hs-var hs-var">blurb</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-71"></span><span>    </span><span id="local-6989586621680301237"><span class="annot"><span class="annottext">blurb :: p
+</span><a href="#local-6989586621680301237"><span class="hs-identifier hs-var hs-var">blurb</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-72"></span><span>      </span><span class="annot"><span class="hs-string">&quot;Bootstrapped &amp; distributed backend-as-a-service with user-controlled data&quot;</span></span><span>
 </span><span id="line-73"></span><span>
 </span><span id="line-74"></span><span class="annot"><a href="Fission.Web.Swagger.html#app"><span class="hs-identifier hs-type">app</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span><span>
@@ -441,17 +441,17 @@ forall s a. HasDescription s a =&gt; Lens' s a
 forall s t a b. ASetter s t a (Maybe b) -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">?~</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Check for liveness&quot;</span></span><span class="hs-special">]</span><span>
 </span><span id="line-97"></span><span>
-</span><span id="line-98"></span><span id="local-6989586621680300680"><span class="annot"><a href="Fission.Web.Swagger.html#makeDocs"><span class="hs-identifier hs-type">makeDocs</span></a></span><span>
-</span><span id="line-99"></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Servant.API.IsSubAPI</span></span><span> </span><span class="annot"><a href="#local-6989586621680300680"><span class="hs-identifier hs-type">subRoute</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Routes.html#API"><span class="hs-identifier hs-type">Web.API</span></a></span><span>
-</span><span id="line-100"></span><span>     </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="annot"><a href="#local-6989586621680300680"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
+</span><span id="line-98"></span><span id="local-6989586621680301291"><span class="annot"><a href="Fission.Web.Swagger.html#makeDocs"><span class="hs-identifier hs-type">makeDocs</span></a></span><span>
+</span><span id="line-99"></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Servant.API.IsSubAPI</span></span><span> </span><span class="annot"><a href="#local-6989586621680301291"><span class="hs-identifier hs-type">subRoute</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Routes.html#API"><span class="hs-identifier hs-type">Web.API</span></a></span><span>
+</span><span id="line-100"></span><span>     </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="annot"><a href="#local-6989586621680301291"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
 </span><span id="line-101"></span><span>     </span><span class="hs-special">)</span><span>
-</span><span id="line-102"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680300680"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
+</span><span id="line-102"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680301291"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
 </span><span id="line-103"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Tag</span></span><span class="hs-special">]</span><span>
 </span><span id="line-104"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span><span>
 </span><span id="line-105"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span></span><span>
 </span><span id="line-106"></span><span id="makeDocs"><span class="annot"><span class="annottext">makeDocs :: Proxy subRoute -&gt; [Tag] -&gt; Swagger -&gt; Swagger
-</span><a href="Fission.Web.Swagger.html#makeDocs"><span class="hs-identifier hs-var hs-var">makeDocs</span></a></span></span><span> </span><span id="local-6989586621680300611"><span class="annot"><span class="annottext">routeProxy :: Proxy subRoute
-</span><a href="#local-6989586621680300611"><span class="hs-identifier hs-var">routeProxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Traversal' Swagger Operation -&gt; [Tag] -&gt; Swagger -&gt; Swagger
+</span><a href="Fission.Web.Swagger.html#makeDocs"><span class="hs-identifier hs-var hs-var">makeDocs</span></a></span></span><span> </span><span id="local-6989586621680301222"><span class="annot"><span class="annottext">routeProxy :: Proxy subRoute
+</span><a href="#local-6989586621680301222"><span class="hs-identifier hs-var">routeProxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Traversal' Swagger Operation -&gt; [Tag] -&gt; Swagger -&gt; Swagger
 </span><span class="hs-identifier hs-var">applyTagsFor</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Proxy subRoute
 -&gt; (Operation -&gt; f Operation) -&gt; Swagger -&gt; f Swagger
 forall (f :: * -&gt; *) subRoute.
@@ -459,26 +459,26 @@ forall (f :: * -&gt; *) subRoute.
 Proxy subRoute
 -&gt; (Operation -&gt; f Operation) -&gt; Swagger -&gt; f Swagger
 </span><a href="Fission.Web.Swagger.html#subOps"><span class="hs-identifier hs-var">subOps</span></a></span><span> </span><span class="annot"><span class="annottext">Proxy subRoute
-</span><a href="#local-6989586621680300611"><span class="hs-identifier hs-var">routeProxy</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680301222"><span class="hs-identifier hs-var">routeProxy</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-107"></span><span>
-</span><span id="line-108"></span><span id="local-6989586621680300668"><span id="local-6989586621680300669"><span class="annot"><a href="Fission.Web.Swagger.html#subOps"><span class="hs-identifier hs-type">subOps</span></a></span><span>
-</span><span id="line-109"></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Applicative</span></span><span> </span><span class="annot"><a href="#local-6989586621680300669"><span class="hs-identifier hs-type">f</span></a></span><span>
-</span><span id="line-110"></span><span>     </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Servant.API.IsSubAPI</span></span><span> </span><span class="annot"><a href="#local-6989586621680300668"><span class="hs-identifier hs-type">subRoute</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Routes.html#API"><span class="hs-identifier hs-type">Web.API</span></a></span><span>
-</span><span id="line-111"></span><span>     </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="annot"><a href="#local-6989586621680300668"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
+</span><span id="line-108"></span><span id="local-6989586621680301279"><span id="local-6989586621680301280"><span class="annot"><a href="Fission.Web.Swagger.html#subOps"><span class="hs-identifier hs-type">subOps</span></a></span><span>
+</span><span id="line-109"></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Applicative</span></span><span> </span><span class="annot"><a href="#local-6989586621680301280"><span class="hs-identifier hs-type">f</span></a></span><span>
+</span><span id="line-110"></span><span>     </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Servant.API.IsSubAPI</span></span><span> </span><span class="annot"><a href="#local-6989586621680301279"><span class="hs-identifier hs-type">subRoute</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Routes.html#API"><span class="hs-identifier hs-type">Web.API</span></a></span><span>
+</span><span id="line-111"></span><span>     </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">HasSwagger</span></span><span> </span><span class="annot"><a href="#local-6989586621680301279"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
 </span><span id="line-112"></span><span>     </span><span class="hs-special">)</span><span>
-</span><span id="line-113"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680300668"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
-</span><span id="line-114"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Operation</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680300669"><span class="hs-identifier hs-type">f</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Operation</span></span><span class="hs-special">)</span><span>
+</span><span id="line-113"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Proxy</span></span><span> </span><span class="annot"><a href="#local-6989586621680301279"><span class="hs-identifier hs-type">subRoute</span></a></span><span>
+</span><span id="line-114"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Operation</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680301280"><span class="hs-identifier hs-type">f</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Operation</span></span><span class="hs-special">)</span><span>
 </span><span id="line-115"></span><span>  </span><span class="hs-glyph">-&gt;</span><span>   </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span><span>
-</span><span id="line-116"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680300669"><span class="hs-identifier hs-type">f</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span></span></span><span>
+</span><span id="line-116"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680301280"><span class="hs-identifier hs-type">f</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Swagger</span></span></span></span><span>
 </span><span id="line-117"></span><span id="subOps"><span class="annot"><span class="annottext">subOps :: Proxy subRoute
 -&gt; (Operation -&gt; f Operation) -&gt; Swagger -&gt; f Swagger
-</span><a href="Fission.Web.Swagger.html#subOps"><span class="hs-identifier hs-var hs-var">subOps</span></a></span></span><span> </span><span id="local-6989586621680300608"><span class="annot"><span class="annottext">routeProxy :: Proxy subRoute
-</span><a href="#local-6989586621680300608"><span class="hs-identifier hs-var">routeProxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Proxy subRoute -&gt; Proxy API -&gt; Traversal' Swagger Operation
+</span><a href="Fission.Web.Swagger.html#subOps"><span class="hs-identifier hs-var hs-var">subOps</span></a></span></span><span> </span><span id="local-6989586621680301219"><span class="annot"><span class="annottext">routeProxy :: Proxy subRoute
+</span><a href="#local-6989586621680301219"><span class="hs-identifier hs-var">routeProxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Proxy subRoute -&gt; Proxy API -&gt; Traversal' Swagger Operation
 forall sub api.
 (IsSubAPI sub api, HasSwagger sub) =&gt;
 Proxy sub -&gt; Proxy api -&gt; Traversal' Swagger Operation
 </span><span class="hs-identifier hs-var">subOperations</span></span><span> </span><span class="annot"><span class="annottext">Proxy subRoute
-</span><a href="#local-6989586621680300608"><span class="hs-identifier hs-var">routeProxy</span></a></span><span> </span><span class="annot"><span class="annottext">(Proxy API -&gt; (Operation -&gt; f Operation) -&gt; Swagger -&gt; f Swagger)
+</span><a href="#local-6989586621680301219"><span class="hs-identifier hs-var">routeProxy</span></a></span><span> </span><span class="annot"><span class="annottext">(Proxy API -&gt; (Operation -&gt; f Operation) -&gt; Swagger -&gt; f Swagger)
 -&gt; Proxy API -&gt; (Operation -&gt; f Operation) -&gt; Swagger -&gt; f Swagger
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Proxy API

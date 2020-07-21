@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.6.1
+@version 2.6.2
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -7372,7 +7372,8 @@ module Fission.CLI.Display.Success
 live :: MonadIO m => CID -> m ()
 putOk :: MonadIO m => Text -> m ()
 dnsUpdated :: MonadIO m => URL -> m ()
-loggedInAs :: MonadIO m => Text -> m ()
+currentlyLoggedInAs :: MonadIO m => Text -> m ()
+alreadyLoggedInAs :: MonadIO m => Text -> m ()
 
 
 -- | Grab files directly from IPFS

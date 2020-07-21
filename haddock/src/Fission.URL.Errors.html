@@ -6,7 +6,7 @@
 </span><span id="line-6"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Web.Error.Class.html"><span class="hs-identifier">Fission.Web.Error.Class</span></a></span><span>
 </span><span id="line-7"></span><span>
 </span><span id="line-8"></span><span class="hs-keyword">data</span><span> </span><span id="InvalidURL"><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-var">InvalidURL</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="InvalidURL"><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-var">InvalidURL</span></a></span></span><span>
-</span><span id="line-9"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680288351"><span id="local-6989586621680288353"><span class="annot"><span class="annottext">InvalidURL -&gt; InvalidURL -&gt; Bool
+</span><span id="line-9"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680288955"><span id="local-6989586621680288957"><span class="annot"><span class="annottext">InvalidURL -&gt; InvalidURL -&gt; Bool
 (InvalidURL -&gt; InvalidURL -&gt; Bool)
 -&gt; (InvalidURL -&gt; InvalidURL -&gt; Bool) -&gt; Eq InvalidURL
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -14,7 +14,7 @@ forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c/= :: InvalidURL -&gt; InvalidURL -&gt; Bool
 == :: InvalidURL -&gt; InvalidURL -&gt; Bool
 $c== :: InvalidURL -&gt; InvalidURL -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680288344"><span id="local-6989586621680288346"><span id="local-6989586621680288348"><span class="annot"><span class="annottext">Int -&gt; InvalidURL -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680288948"><span id="local-6989586621680288950"><span id="local-6989586621680288952"><span class="annot"><span class="annottext">Int -&gt; InvalidURL -&gt; ShowS
 [InvalidURL] -&gt; ShowS
 InvalidURL -&gt; String
 (Int -&gt; InvalidURL -&gt; ShowS)
@@ -31,17 +31,17 @@ showsPrec :: Int -&gt; InvalidURL -&gt; ShowS
 $cshowsPrec :: Int -&gt; InvalidURL -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-10"></span><span>
-</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680288341"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-type">InvalidURL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-12"></span><span>  </span><span id="local-6989586621680288338"><span class="annot"><span class="annottext">textDisplay :: InvalidURL -&gt; Text
+</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680288945"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-type">InvalidURL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680288942"><span class="annot"><span class="annottext">textDisplay :: InvalidURL -&gt; Text
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Invalid URL&quot;</span></span><span>
 </span><span id="line-13"></span><span>
 </span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Error.Class.html#ToServerError"><span class="hs-identifier hs-type">ToServerError</span></a></span><span> </span><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-type">InvalidURL</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-15"></span><span>  </span><span id="local-6989586621680288334"><span class="annot"><span class="annottext">toServerError :: InvalidURL -&gt; ServerError
-</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span id="local-6989586621680288332"><span class="annot"><span class="annottext">err :: InvalidURL
-</span><a href="#local-6989586621680288332"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ServerError
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680288938"><span class="annot"><span class="annottext">toServerError :: InvalidURL -&gt; ServerError
+</span><a href="Fission.Web.Error.Class.html#toServerError"><span class="hs-identifier hs-var hs-var hs-var hs-var">toServerError</span></a></span></span><span> </span><span id="local-6989586621680288936"><span class="annot"><span class="annottext">err :: InvalidURL
+</span><a href="#local-6989586621680288936"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ServerError
 </span><span class="hs-identifier hs-var">err422</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">errBody :: ByteString
-</span><a href="#local-6989586621680288330"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">InvalidURL -&gt; ByteString
+</span><a href="#local-6989586621680288934"><span class="hs-identifier hs-var">errBody</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">InvalidURL -&gt; ByteString
 forall a. Display a =&gt; a -&gt; ByteString
 </span><a href="Fission.Internal.UTF8.html#displayLazyBS"><span class="hs-identifier hs-var">displayLazyBS</span></a></span><span> </span><span class="annot"><span class="annottext">InvalidURL
-</span><a href="#local-6989586621680288332"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><a href="#local-6989586621680288936"><span class="hs-identifier hs-var">err</span></a></span><span> </span><span class="hs-special">}</span><span>
 </span><span id="line-16"></span></pre></body></html>
