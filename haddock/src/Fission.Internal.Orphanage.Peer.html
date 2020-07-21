@@ -6,8 +6,8 @@
 </span><span id="line-6"></span><span>
 </span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-8"></span><span>
-</span><span id="line-9"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680298796"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-10"></span><span>  </span><span id="local-6989586621680298794"><span class="annot"><span class="annottext">arbitrary :: Gen Peer
+</span><span id="line-9"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680298450"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-10"></span><span>  </span><span id="local-6989586621680298448"><span class="annot"><span class="annottext">arbitrary :: Gen Peer
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Peer
 </span><span class="hs-identifier hs-var">IPFS.Peer</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Peer) -&gt; Gen Text -&gt; Gen Peer
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b

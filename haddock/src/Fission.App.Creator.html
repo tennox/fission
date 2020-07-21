@@ -19,19 +19,19 @@
 </span><span id="line-19"></span><span>
 </span><span id="line-20"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Esqueleto</span></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-operator">(&lt;&amp;&gt;)</span></span><span class="hs-special">)</span><span>
 </span><span id="line-21"></span><span>
-</span><span id="line-22"></span><span id="local-6989586621680314143"><span class="annot"><a href="Fission.App.Creator.html#createWithPlaceholder"><span class="hs-identifier hs-type">createWithPlaceholder</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-23"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Creator.Class.html#Creator"><span class="hs-identifier hs-type">App.Creator</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680314143"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-24"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">AppCID.Initializer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680314143"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-22"></span><span id="local-6989586621680313866"><span class="annot"><a href="Fission.App.Creator.html#createWithPlaceholder"><span class="hs-identifier hs-type">createWithPlaceholder</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-23"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.App.Creator.Class.html#Creator"><span class="hs-identifier hs-type">App.Creator</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680313866"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-24"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.App.Content.Initializer.Class.html#Initializer"><span class="hs-identifier hs-type">AppCID.Initializer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680313866"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-25"></span><span>  </span><span class="hs-special">)</span><span>
 </span><span id="line-26"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
 </span><span id="line-27"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-28"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680314143"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.App.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-28"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680313866"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.App.Creator.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
 </span><span id="line-29"></span><span id="createWithPlaceholder"><span class="annot"><span class="annottext">createWithPlaceholder :: UserId -&gt; UTCTime -&gt; m (Either Errors (AppId, Subdomain))
-</span><a href="Fission.App.Creator.html#createWithPlaceholder"><span class="hs-identifier hs-var hs-var">createWithPlaceholder</span></a></span></span><span> </span><span id="local-6989586621680314142"><span class="annot"><span class="annottext">ownerId :: UserId
-</span><a href="#local-6989586621680314142"><span class="hs-identifier hs-var">ownerId</span></a></span></span><span> </span><span id="local-6989586621680314141"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680314141"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-30"></span><span>  </span><span id="local-6989586621680314140"><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680314140"><span class="hs-identifier hs-var">defaultCID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m CID
+</span><a href="Fission.App.Creator.html#createWithPlaceholder"><span class="hs-identifier hs-var hs-var">createWithPlaceholder</span></a></span></span><span> </span><span id="local-6989586621680313865"><span class="annot"><span class="annottext">ownerId :: UserId
+</span><a href="#local-6989586621680313865"><span class="hs-identifier hs-var">ownerId</span></a></span></span><span> </span><span id="local-6989586621680313864"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680313864"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-30"></span><span>  </span><span id="local-6989586621680313863"><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680313863"><span class="hs-identifier hs-var">defaultCID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m CID
 forall (m :: * -&gt; *). Initializer m =&gt; m CID
 </span><a href="Fission.App.Content.Initializer.Class.html#placeholder"><span class="hs-identifier hs-var">AppCID.placeholder</span></a></span><span>
 </span><span id="line-31"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; CID -&gt; UTCTime -&gt; m (Either Errors (AppId, Subdomain))
@@ -39,25 +39,25 @@ forall (m :: * -&gt; *).
 Creator m =&gt;
 UserId -&gt; CID -&gt; UTCTime -&gt; m (Either Errors (AppId, Subdomain))
 </span><a href="Fission.App.Creator.Class.html#create"><span class="hs-identifier hs-var">create</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680314142"><span class="hs-identifier hs-var">ownerId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680314140"><span class="hs-identifier hs-var">defaultCID</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680314141"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680313865"><span class="hs-identifier hs-var">ownerId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680313863"><span class="hs-identifier hs-var">defaultCID</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680313864"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-32"></span><span>
-</span><span id="line-33"></span><span id="local-6989586621680314137"><span class="annot"><a href="Fission.App.Creator.html#createDB"><span class="hs-identifier hs-type">createDB</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span>
-</span><span id="line-34"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680314137"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-33"></span><span id="local-6989586621680313860"><span class="annot"><a href="Fission.App.Creator.html#createDB"><span class="hs-identifier hs-type">createDB</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span>
+</span><span id="line-34"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680313860"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-35"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span>
 </span><span id="line-36"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span> </span><span>
 </span><span id="line-37"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bytes</span></span><span> </span><span>
 </span><span id="line-38"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span> </span><span>
-</span><span id="line-39"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680314137"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span></span><span>
+</span><span id="line-39"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680313860"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#AppId"><span class="hs-identifier hs-type">AppId</span></a></span></span><span>
 </span><span id="line-40"></span><span id="createDB"><span class="annot"><span class="annottext">createDB :: UserId -&gt; CID -&gt; Bytes -&gt; UTCTime -&gt; Transaction m AppId
-</span><a href="Fission.App.Creator.html#createDB"><span class="hs-identifier hs-var hs-var">createDB</span></a></span></span><span> </span><span id="local-6989586621680314136"><span class="annot"><span class="annottext">ownerId :: UserId
-</span><a href="#local-6989586621680314136"><span class="hs-identifier hs-var">ownerId</span></a></span></span><span> </span><span id="local-6989586621680314135"><span class="annot"><span class="annottext">cid :: CID
-</span><a href="#local-6989586621680314135"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span id="local-6989586621680314134"><span class="annot"><span class="annottext">size :: Bytes
-</span><a href="#local-6989586621680314134"><span class="hs-identifier hs-var">size</span></a></span></span><span> </span><span id="local-6989586621680314133"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680314133"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-41"></span><span>  </span><span id="local-6989586621680314132"><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680314132"><span class="hs-identifier hs-var">appId</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">App -&gt; Transaction m AppId
+</span><a href="Fission.App.Creator.html#createDB"><span class="hs-identifier hs-var hs-var">createDB</span></a></span></span><span> </span><span id="local-6989586621680313859"><span class="annot"><span class="annottext">ownerId :: UserId
+</span><a href="#local-6989586621680313859"><span class="hs-identifier hs-var">ownerId</span></a></span></span><span> </span><span id="local-6989586621680313858"><span class="annot"><span class="annottext">cid :: CID
+</span><a href="#local-6989586621680313858"><span class="hs-identifier hs-var">cid</span></a></span></span><span> </span><span id="local-6989586621680313857"><span class="annot"><span class="annottext">size :: Bytes
+</span><a href="#local-6989586621680313857"><span class="hs-identifier hs-var">size</span></a></span></span><span> </span><span id="local-6989586621680313856"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680313856"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-41"></span><span>  </span><span id="local-6989586621680313855"><span class="annot"><span class="annottext">AppId
+</span><a href="#local-6989586621680313855"><span class="hs-identifier hs-var">appId</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">App -&gt; Transaction m AppId
 forall backend (m :: * -&gt; *) record.
 (PersistStoreWrite backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
@@ -66,19 +66,19 @@ record -&gt; ReaderT backend m (Key record)
 </span><a href="Fission.Models.html#%24WApp"><span class="hs-identifier hs-type hs-type">App</span></a></span><span>
 </span><span id="line-42"></span><span>    </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:appOwnerId:App :: UserId
 </span><a href="Fission.Models.html#%24sel%3AappOwnerId%3AApp"><span class="hs-identifier hs-var">appOwnerId</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680314136"><span class="hs-identifier hs-var">ownerId</span></a></span><span>
+</span><a href="#local-6989586621680313859"><span class="hs-identifier hs-var">ownerId</span></a></span><span>
 </span><span id="line-43"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appCid:App :: CID
 </span><a href="Fission.Models.html#%24sel%3AappCid%3AApp"><span class="hs-identifier hs-var">appCid</span></a></span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680314135"><span class="hs-identifier hs-var">cid</span></a></span><span>
+</span><a href="#local-6989586621680313858"><span class="hs-identifier hs-var">cid</span></a></span><span>
 </span><span id="line-44"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appSize:App :: Bytes
 </span><a href="Fission.Models.html#%24sel%3AappSize%3AApp"><span class="hs-identifier hs-var">appSize</span></a></span><span>       </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bytes
-</span><a href="#local-6989586621680314134"><span class="hs-identifier hs-var">size</span></a></span><span>
+</span><a href="#local-6989586621680313857"><span class="hs-identifier hs-var">size</span></a></span><span>
 </span><span id="line-45"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appInsertedAt:App :: UTCTime
-</span><a href="#local-6989586621680314125"><span class="hs-identifier hs-var">appInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680314133"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680313848"><span class="hs-identifier hs-var">appInsertedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680313856"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-46"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:appModifiedAt:App :: UTCTime
-</span><a href="#local-6989586621680314124"><span class="hs-identifier hs-var">appModifiedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680314133"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680313847"><span class="hs-identifier hs-var">appModifiedAt</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680313856"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-47"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-48"></span><span>
 </span><span id="line-49"></span><span>  </span><span class="annot"><span class="annottext">Key CreateAppEvent
@@ -92,11 +92,11 @@ record -&gt; ReaderT backend m (Key record)
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">AppId -&gt; UserId -&gt; CID -&gt; Bytes -&gt; UTCTime -&gt; CreateAppEvent
 </span><a href="Fission.Models.html#CreateAppEvent"><span class="hs-identifier hs-var">CreateAppEvent</span></a></span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680314132"><span class="hs-identifier hs-var">appId</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680314136"><span class="hs-identifier hs-var">ownerId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680314135"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Bytes
-</span><a href="#local-6989586621680314134"><span class="hs-identifier hs-var">size</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680314133"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680313855"><span class="hs-identifier hs-var">appId</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680313859"><span class="hs-identifier hs-var">ownerId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680313858"><span class="hs-identifier hs-var">cid</span></a></span><span> </span><span class="annot"><span class="annottext">Bytes
+</span><a href="#local-6989586621680313857"><span class="hs-identifier hs-var">size</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680313856"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-50"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">AppId
-</span><a href="#local-6989586621680314132"><span class="hs-identifier hs-var">appId</span></a></span><span>
+</span><a href="#local-6989586621680313855"><span class="hs-identifier hs-var">appId</span></a></span><span>
 </span><span id="line-51"></span></pre></body></html>

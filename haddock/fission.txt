@@ -5118,6 +5118,13 @@ data Pair
 Pair :: PublicKey -> PrivateKey -> Pair
 [$sel:pk:Pair] :: Pair -> PublicKey
 [$sel:sk:Pair] :: Pair -> PrivateKey
+pregenerated :: [Pair]
+pk1 :: PublicKey
+sk1 :: PrivateKey
+pk2 :: PublicKey
+sk2 :: PrivateKey
+pk3 :: PublicKey
+sk3 :: PrivateKey
 instance GHC.Show.Show Fission.Internal.RSA2048.Pair.Types.Pair
 instance GHC.Classes.Eq Fission.Internal.RSA2048.Pair.Types.Pair
 instance Test.QuickCheck.Arbitrary.Arbitrary Fission.Internal.RSA2048.Pair.Types.Pair
@@ -5136,6 +5143,9 @@ instance Web.Internal.HttpApiData.ToHttpApiData Crypto.PubKey.RSA.Types.PublicKe
 instance Web.Internal.HttpApiData.FromHttpApiData Crypto.PubKey.RSA.Types.PublicKey
 instance Data.Aeson.Types.FromJSON.FromJSON Crypto.PubKey.RSA.Types.PublicKey
 instance Data.Aeson.Types.ToJSON.ToJSON Crypto.PubKey.RSA.Types.PublicKey
+instance Database.Persist.Class.PersistField.PersistField Crypto.PubKey.RSA.Types.PublicKey
+instance Data.Swagger.Internal.ParamSchema.ToParamSchema Crypto.PubKey.RSA.Types.PublicKey
+instance Data.Swagger.Internal.Schema.ToSchema Crypto.PubKey.RSA.Types.PublicKey
 
 module Fission.Internal.Orphanage.RSA2048.Private
 instance Test.QuickCheck.Arbitrary.Arbitrary Crypto.PubKey.RSA.Types.PrivateKey
@@ -5910,20 +5920,19 @@ module Fission.User.DID.Types
 --   
 --   <pre>
 --   &gt;&gt;&gt; eitherDecode "\"did:key:zStEZpzSMtTt9k2vszgvCwF4fLQQSyA15W5AQ4z3AR6Bx4eFJ5crJFbuGxKmbma4\"" :: Either String DID
---   Right (DID {publicKey = Hv+AVRD2WUjUFOsSNbsmrp9fokuwrUnjBcr92f0kxw4=, method = Key})
+--   Right (DID {method = Key, publicKey = Hv+AVRD2WUjUFOsSNbsmrp9fokuwrUnjBcr92f0kxw4=})
 --   </pre>
 --   
 --   RSA
 --   
 --   eitherDecode
 --   ""did:key:z1LBnwEktwYLrpPhuwFowdVwAFX5zpRo9rrVzwiRRBBiaBoCR7hNqgstW7VM3T9auNbqTmQW4vdHb61RhTMVgCp1BTxuaKU3anWoERFXpuZvfE39g8u7HS9BeD1QJN1fX6S8vvskaPhxFkwLtGr4ZffkUE57WZpNWM6U6BqdktZxmKzxC85zN4FC9Ws5LHuGfxaCuBLiUfA7qEYVSz1Qu1rZDpD6NyfUNrHJ1ErZduJun976nbFHrmDnU47RcSMFESbNKDi1467tRfubsMrDzebdCFKQ2m1AYysto2i6Wmcnucjt3tnwTqe7Bo8L1g8h8UGA946DF3WeGbPUGqznsUdLq6XLCmJzJkJmrNyeZkswdyPX2Vu6J9E4J12Sb3h9ds7atByamftitEZsf6hPJkLUXGThYpCnmRAArRRfPY2H6cKDc7AcnFPyNHGkab5ZFo4qvgBZytbK1K5oD3HfQ6E2ybLhyC2b8i5wo6DLtm9ufixSJNNTH7Uikk88CmertKR7s12CK1WLEM3Zu5YBZNphnjj7cp8QTodAehRPV9NG1CLEAMJVN79DvYe6SfiafJobcvfD8npfS6jcejcyouQbEpKDG7QAnKS48P4AvgBqDvfNUe54jMkk6r6CoX4LcYGHukZDEnea9kwkEoXkUYS4j1AfbKh44FzSuXbQqZnjjVpThxCNmmNn1E4qHmsFkvGoF3FN55CPkoGfDCvyQJgqmsFmpeTJSy9wzv4MvbqpuATxr7eyxsGeCWQkcDwub32inGpR3reTfzRJECCFZarnXdcC5Pidakb1Wu8L""
---   Right (DID {publicKey =
---   MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnzyis1ZjfNB0bBgKFMSvvkTtwlvBsaJq7S5wA+kzeVOVpVWwkWdVha4s38XM<i>pa</i>yr47av7+z3VTmvDRyAHcaT92whREFpLv9cj5lTeJSibyr<i>Mrm</i>YtjCZVWgaOYIhwrXwKLqPr<i>11inWsAkfIytvHWTxZYEcXLgAXFuUuaS3uF9gEiNQwzGTU1v0FqkqTBr4B8nW3HCN47XUu0t8Y0e+lf4s4OxQawWD79J9</i>5d3Ry0vbV3Am1FtGJiJvOwRsIfVChDpYStTcHTCMqtvWbV6L11BWkpzGXSW4Hv43qa+GSYOD2QU68Mb59oSk2OB+BtOLpJofmbGEGgvmwyCI9MwIDAQAB,
---   method = Key})
+--   Right (DID {method = Key, publicKey =
+--   MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnzyis1ZjfNB0bBgKFMSvvkTtwlvBsaJq7S5wA+kzeVOVpVWwkWdVha4s38XM<i>pa</i>yr47av7+z3VTmvDRyAHcaT92whREFpLv9cj5lTeJSibyr<i>Mrm</i>YtjCZVWgaOYIhwrXwKLqPr<i>11inWsAkfIytvHWTxZYEcXLgAXFuUuaS3uF9gEiNQwzGTU1v0FqkqTBr4B8nW3HCN47XUu0t8Y0e+lf4s4OxQawWD79J9</i>5d3Ry0vbV3Am1FtGJiJvOwRsIfVChDpYStTcHTCMqtvWbV6L11BWkpzGXSW4Hv43qa+GSYOD2QU68Mb59oSk2OB+BtOLpJofmbGEGgvmwyCI9MwIDAQAB})
 data DID
-DID :: !Public -> !Method -> DID
-[$sel:publicKey:DID] :: DID -> !Public
+DID :: !Method -> !Public -> DID
 [$sel:method:DID] :: DID -> !Method
+[$sel:publicKey:DID] :: DID -> !Public
 instance GHC.Classes.Eq Fission.User.DID.Types.DID
 instance GHC.Show.Show Fission.User.DID.Types.DID
 instance Test.QuickCheck.Arbitrary.Arbitrary Fission.User.DID.Types.DID
@@ -6635,8 +6644,9 @@ HerokuAddOn :: !UUID -> !Maybe Region -> !UTCTime -> !UTCTime -> HerokuAddOn
 [$sel:herokuAddOnModifiedAt:HerokuAddOn] :: HerokuAddOn -> !UTCTime
 type HerokuAddOnId = Key HerokuAddOn
 data User
-User :: !Maybe Public -> !Maybe Email -> !Username -> !Role -> !Bool -> !Bool -> !CID -> !Bytes -> !Maybe (Key HerokuAddOn) -> !Maybe SecretDigest -> !UTCTime -> !UTCTime -> User
+User :: !Maybe Public -> ![PublicKey] -> !Maybe Email -> !Username -> !Role -> !Bool -> !Bool -> !CID -> !Bytes -> !Maybe (Key HerokuAddOn) -> !Maybe SecretDigest -> !UTCTime -> !UTCTime -> User
 [$sel:userPublicKey:User] :: User -> !Maybe Public
+[$sel:userExchangeKeys:User] :: User -> ![PublicKey]
 [$sel:userEmail:User] :: User -> !Maybe Email
 [$sel:userUsername:User] :: User -> !Username
 [$sel:userRole:User] :: User -> !Role
@@ -7491,12 +7501,16 @@ module Fission.User.Modifier.Class
 class Monad m => Modifier m
 updatePassword :: Modifier m => UserId -> Password -> UTCTime -> m (Either FailedDigest Password)
 updatePublicKey :: Modifier m => UserId -> Public -> UTCTime -> m (Either Errors Public)
+addExchangeKey :: Modifier m => UserId -> PublicKey -> UTCTime -> m (Either Errors [PublicKey])
+removeExchangeKey :: Modifier m => UserId -> PublicKey -> UTCTime -> m (Either Errors [PublicKey])
 setData :: Modifier m => UserId -> CID -> UTCTime -> m (Either Errors ())
 type Errors = OpenUnion '[NotFound User, NotFound URL, ActionNotAuthorized URL, Error, Error, ServerError, InvalidURL]
 
 module Fission.User.Modifier
 updatePasswordDB :: MonadIO m => UserId -> SecretDigest -> UTCTime -> Transaction m ()
-updatePublicKeyDB :: MonadIO m => UserId -> Public -> UTCTime -> Transaction m ()
+updatePublicKeyDB :: MonadIO m => UserId -> Public -> UTCTime -> Transaction m (Either Errors Public)
+addExchangeKeyDB :: MonadIO m => UserId -> PublicKey -> UTCTime -> Transaction m (Either Errors [PublicKey])
+removeExchangeKeyDB :: MonadIO m => UserId -> PublicKey -> UTCTime -> Transaction m (Either Errors [PublicKey])
 setDataDB :: MonadIO m => UserId -> CID -> Bytes -> UTCTime -> Transaction m ()
 
 module Fission.Web.DNS
@@ -7653,9 +7667,13 @@ createWithHerokuDB :: MonadIO m => UUID -> Region -> Username -> Password -> UTC
 class Monad m => Modifier m
 updatePassword :: Modifier m => UserId -> Password -> UTCTime -> m (Either FailedDigest Password)
 updatePublicKey :: Modifier m => UserId -> Public -> UTCTime -> m (Either Errors Public)
+addExchangeKey :: Modifier m => UserId -> PublicKey -> UTCTime -> m (Either Errors [PublicKey])
+removeExchangeKey :: Modifier m => UserId -> PublicKey -> UTCTime -> m (Either Errors [PublicKey])
 setData :: Modifier m => UserId -> CID -> UTCTime -> m (Either Errors ())
 updatePasswordDB :: MonadIO m => UserId -> SecretDigest -> UTCTime -> Transaction m ()
-updatePublicKeyDB :: MonadIO m => UserId -> Public -> UTCTime -> Transaction m ()
+updatePublicKeyDB :: MonadIO m => UserId -> Public -> UTCTime -> Transaction m (Either Errors Public)
+addExchangeKeyDB :: MonadIO m => UserId -> PublicKey -> UTCTime -> Transaction m (Either Errors [PublicKey])
+removeExchangeKeyDB :: MonadIO m => UserId -> PublicKey -> UTCTime -> Transaction m (Either Errors [PublicKey])
 setDataDB :: MonadIO m => UserId -> CID -> Bytes -> UTCTime -> Transaction m ()
 type CRUD m = (Retriever m, Creator m, Modifier m, Destroyer m)
 
@@ -8132,6 +8150,14 @@ module Fission.Web.User.UpdateData
 type API = Summary "Update data root" :> Description "Set/update currently authenticated user's file system content" :> Capture "newCID" CID :> PatchNoContent '[PlainText, OctetStream, JSON] NoContent
 server :: (MonadLogger m, MonadThrow m, MonadTime m, Modifier m) => Authorization -> ServerT API m
 
+module Fission.Web.User.UpdateExchangeKeys
+type API = AddAPI :<|> RemoveAPI
+type AddAPI = Summary "Add Public Exchange Key" :> Description "Add a key to the currently authenticated user's root list of public exchange keys" :> Capture "did" PublicKey :> Put '[JSON] [PublicKey]
+type RemoveAPI = Summary "Remove Public Exchange Key" :> Description "Remove a key from the currently authenticated user's root list of public exchange keys" :> Capture "did" PublicKey :> Delete '[JSON] [PublicKey]
+server :: (MonadTime m, MonadLogger m, MonadThrow m, Modifier m) => Authorization -> ServerT API m
+addKey :: (MonadTime m, MonadLogger m, MonadThrow m, Modifier m) => UserId -> ServerT AddAPI m
+removeKey :: (MonadTime m, MonadLogger m, MonadThrow m, Modifier m) => UserId -> ServerT RemoveAPI m
+
 module Fission.Web.User.UpdatePublicKey
 type API = Summary "Update Public Key" :> Description "Set currently authenticated user's root public key to another one" :> ReqBody '[JSON] Public :> Patch '[PlainText, OctetStream, JSON] NoContent
 server :: (MonadTime m, MonadLogger m, MonadThrow m, Modifier m) => Authorization -> ServerT API m
@@ -8149,7 +8175,7 @@ type API = Summary "Get username" :> Description "Get username registered to cur
 server :: Monad m => Authorization -> ServerT API m
 
 module Fission.Web.User
-type API = RegisterRoute :<|> PasswordAPI :<|> WhoAmIRoute :<|> VerifyRoute :<|> VerifyEmailRoute :<|> UpdatePublicKeyRoute :<|> UpdateDataRoute :<|> ResetRoute
+type API = RegisterRoute :<|> PasswordAPI :<|> WhoAmIRoute :<|> VerifyRoute :<|> VerifyEmailRoute :<|> UpdatePublicKeyRoute :<|> UpdateExchangeKeysRoute :<|> UpdateDataRoute :<|> ResetRoute
 type Auth = HigherOrder
 type RegisterRoute = RegisterDID :> API
 type VerifyRoute = "verify" :> Auth :> API

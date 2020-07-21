@@ -24,22 +24,22 @@
 </span><a href="Fission.URL.Types.html#%24sel%3Asubdomain%3AURL"><span class="hs-identifier hs-var hs-var">subdomain</span></a></span></span><span>  </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span>
 </span><span id="line-23"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-24"></span><span>
-</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302333"><span class="annot"><span class="hs-identifier hs-type">Eq</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-26"></span><span>  </span><span id="local-6989586621680302331"><span class="annot"><span class="annottext">urlA :: URL
-</span><a href="#local-6989586621680302331"><span class="hs-identifier hs-var">urlA</span></a></span></span><span> </span><span id="local-6989586621680302330"><span class="annot"><span class="annottext">== :: URL -&gt; URL -&gt; Bool
-</span><span class="hs-operator hs-var hs-var hs-var hs-var">==</span></span></span><span> </span><span id="local-6989586621680302329"><span class="annot"><span class="annottext">urlB :: URL
-</span><a href="#local-6989586621680302329"><span class="hs-identifier hs-var">urlB</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Text
+</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301987"><span class="annot"><span class="hs-identifier hs-type">Eq</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-26"></span><span>  </span><span id="local-6989586621680301985"><span class="annot"><span class="annottext">urlA :: URL
+</span><a href="#local-6989586621680301985"><span class="hs-identifier hs-var">urlA</span></a></span></span><span> </span><span id="local-6989586621680301984"><span class="annot"><span class="annottext">== :: URL -&gt; URL -&gt; Bool
+</span><span class="hs-operator hs-var hs-var hs-var hs-var">==</span></span></span><span> </span><span id="local-6989586621680301983"><span class="annot"><span class="annottext">urlB :: URL
+</span><a href="#local-6989586621680301983"><span class="hs-identifier hs-var">urlB</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680302331"><span class="hs-identifier hs-var">urlA</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Bool
+</span><a href="#local-6989586621680301985"><span class="hs-identifier hs-var">urlA</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">URL -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">URL
-</span><a href="#local-6989586621680302329"><span class="hs-identifier hs-var">urlB</span></a></span><span>
+</span><a href="#local-6989586621680301983"><span class="hs-identifier hs-var">urlB</span></a></span><span>
 </span><span id="line-27"></span><span>
-</span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302325"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-29"></span><span>  </span><span id="local-6989586621680302323"><span class="annot"><span class="annottext">arbitrary :: Gen URL
+</span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301979"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-29"></span><span>  </span><span id="local-6989586621680301977"><span class="annot"><span class="annottext">arbitrary :: Gen URL
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Maybe Subdomain -&gt; URL
 </span><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-var">URL</span></a></span><span> </span><span class="annot"><span class="annottext">(DomainName -&gt; Maybe Subdomain -&gt; URL)
 -&gt; Gen DomainName -&gt; Gen (Maybe Subdomain -&gt; URL)
@@ -52,29 +52,29 @@ forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-30"></span><span>
-</span><span id="line-31"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302318"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-32"></span><span>  </span><span id="local-6989586621680302316"><span class="annot"><span class="annottext">display :: URL -&gt; Utf8Builder
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span id="local-6989586621680302314"><span class="annot"><span class="annottext">domain :: DomainName
-</span><a href="#local-6989586621680302314"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span class="hs-special">)</span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Utf8Builder
+</span><span id="line-31"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301972"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-32"></span><span>  </span><span id="local-6989586621680301970"><span class="annot"><span class="annottext">display :: URL -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span id="local-6989586621680301968"><span class="annot"><span class="annottext">domain :: DomainName
+</span><a href="#local-6989586621680301968"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span class="hs-special">)</span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680302314"><span class="hs-identifier hs-var">domain</span></a></span><span>
-</span><span id="line-33"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">display</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span id="local-6989586621680302313"><span class="annot"><span class="annottext">domain :: DomainName
-</span><a href="#local-6989586621680302313"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680302312"><span class="annot"><span class="annottext">sub :: Subdomain
-</span><a href="#local-6989586621680302312"><span class="hs-identifier hs-var">sub</span></a></span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Subdomain -&gt; Utf8Builder
+</span><a href="#local-6989586621680301968"><span class="hs-identifier hs-var">domain</span></a></span><span>
+</span><span id="line-33"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">display</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span id="local-6989586621680301967"><span class="annot"><span class="annottext">domain :: DomainName
+</span><a href="#local-6989586621680301967"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680301966"><span class="annot"><span class="annottext">sub :: Subdomain
+</span><a href="#local-6989586621680301966"><span class="hs-identifier hs-var">sub</span></a></span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Subdomain -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Subdomain
-</span><a href="#local-6989586621680302312"><span class="hs-identifier hs-var">sub</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+</span><a href="#local-6989586621680301966"><span class="hs-identifier hs-var">sub</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">DomainName -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680302313"><span class="hs-identifier hs-var">domain</span></a></span><span>
+</span><a href="#local-6989586621680301967"><span class="hs-identifier hs-var">domain</span></a></span><span>
 </span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302307"><span id="local-6989586621680302310"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-36"></span><span>  </span><span id="local-6989586621680302305"><span class="annot"><span class="annottext">show :: URL -&gt; String
+</span><span id="line-35"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301961"><span id="local-6989586621680301964"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-36"></span><span>  </span><span id="local-6989586621680301959"><span class="annot"><span class="annottext">show :: URL -&gt; String
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">show</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
 </span><span class="hs-identifier hs-var">Text.unpack</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; String) -&gt; (URL -&gt; Text) -&gt; URL -&gt; String
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -82,48 +82,48 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span>
 </span><span id="line-37"></span><span>
-</span><span id="line-38"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302295"><span id="local-6989586621680302297"><span id="local-6989586621680302299"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-39"></span><span>  </span><span id="local-6989586621680302293"><span class="annot"><span class="annottext">toUrlPiece :: URL -&gt; Text
+</span><span id="line-38"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301949"><span id="local-6989586621680301951"><span id="local-6989586621680301953"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-39"></span><span>  </span><span id="local-6989586621680301947"><span class="annot"><span class="annottext">toUrlPiece :: URL -&gt; Text
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toUrlPiece</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span>
 </span><span id="line-40"></span><span>
-</span><span id="line-41"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302287"><span id="local-6989586621680302289"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-42"></span><span>  </span><span id="local-6989586621680302285"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text URL
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseUrlPiece</span></span></span><span> </span><span id="local-6989586621680302283"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680302283"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-41"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301941"><span id="local-6989586621680301943"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-42"></span><span>  </span><span id="local-6989586621680301939"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text URL
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseUrlPiece</span></span></span><span> </span><span id="local-6989586621680301937"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680301937"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-43"></span><span>    </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Bool) -&gt; [Text] -&gt; Bool
 forall (t :: * -&gt; *) a. Foldable t =&gt; (a -&gt; Bool) -&gt; t a -&gt; Bool
 </span><span class="hs-identifier hs-var">any</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Bool
 </span><span class="hs-identifier hs-var">Text.null</span></span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302280"><span class="hs-identifier hs-var">tokens</span></a></span><span>
+</span><a href="#local-6989586621680301934"><span class="hs-identifier hs-var">tokens</span></a></span><span>
 </span><span id="line-44"></span><span>      </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">Either Text URL
-</span><a href="#local-6989586621680302279"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680301933"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-45"></span><span>      </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; [Text] -&gt; Either Text URL
-</span><a href="#local-6989586621680302278"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Text
+</span><a href="#local-6989586621680301932"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Text
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302280"><span class="hs-identifier hs-var">tokens</span></a></span><span>
+</span><a href="#local-6989586621680301934"><span class="hs-identifier hs-var">tokens</span></a></span><span>
 </span><span id="line-46"></span><span>
 </span><span id="line-47"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-48"></span><span>      </span><span class="annot"><a href="#local-6989586621680302280"><span class="hs-identifier hs-type">tokens</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span class="hs-special">]</span><span>
-</span><span id="line-49"></span><span>      </span><span id="local-6989586621680302280"><span class="annot"><span class="annottext">tokens :: [Text]
-</span><a href="#local-6989586621680302280"><span class="hs-identifier hs-var hs-var">tokens</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Char -&gt; Bool) -&gt; Text -&gt; [Text]
+</span><span id="line-48"></span><span>      </span><span class="annot"><a href="#local-6989586621680301934"><span class="hs-identifier hs-type">tokens</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span class="hs-special">]</span><span>
+</span><span id="line-49"></span><span>      </span><span id="local-6989586621680301934"><span class="annot"><span class="annottext">tokens :: [Text]
+</span><a href="#local-6989586621680301934"><span class="hs-identifier hs-var hs-var">tokens</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Char -&gt; Bool) -&gt; Text -&gt; [Text]
 </span><span class="hs-identifier hs-var">Text.split</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Char -&gt; Char -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="hs-char">'.'</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302283"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><a href="#local-6989586621680301937"><span class="hs-identifier hs-var">txt</span></a></span><span>
 </span><span id="line-50"></span><span>
-</span><span id="line-51"></span><span>      </span><span class="annot"><a href="#local-6989586621680302278"><span class="hs-identifier hs-type">parse</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
-</span><span id="line-52"></span><span>      </span><span id="local-6989586621680302278"><span class="annot"><span class="annottext">parse :: Maybe Text -&gt; [Text] -&gt; Either Text URL
-</span><a href="#local-6989586621680302278"><span class="hs-identifier hs-var hs-var">parse</span></a></span></span><span> </span><span class="hs-identifier">_</span><span>       </span><span class="hs-special">[</span><span class="hs-special">]</span><span>           </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Either Text URL
-</span><a href="#local-6989586621680302279"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-53"></span><span>      </span><span class="annot"><a href="#local-6989586621680302278"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="hs-identifier">_</span><span>       </span><span class="hs-special">[</span><span class="hs-identifier">_</span><span class="hs-special">]</span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Either Text URL
-</span><a href="#local-6989586621680302279"><span class="hs-identifier hs-var">err</span></a></span><span>
-</span><span id="line-54"></span><span>      </span><span class="annot"><a href="#local-6989586621680302278"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span id="local-6989586621680302276"><span class="annot"><span class="annottext">acc :: Maybe Text
-</span><a href="#local-6989586621680302276"><span class="hs-identifier hs-var">acc</span></a></span></span><span>     </span><span class="hs-special">[</span><span id="local-6989586621680302275"><span class="annot"><span class="annottext">dom :: Item [Text]
-</span><a href="#local-6989586621680302275"><span class="hs-identifier hs-var">dom</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680302274"><span class="annot"><span class="annottext">tld :: Item [Text]
-</span><a href="#local-6989586621680302274"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Either Text URL
+</span><span id="line-51"></span><span>      </span><span class="annot"><a href="#local-6989586621680301932"><span class="hs-identifier hs-type">parse</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
+</span><span id="line-52"></span><span>      </span><span id="local-6989586621680301932"><span class="annot"><span class="annottext">parse :: Maybe Text -&gt; [Text] -&gt; Either Text URL
+</span><a href="#local-6989586621680301932"><span class="hs-identifier hs-var hs-var">parse</span></a></span></span><span> </span><span class="hs-identifier">_</span><span>       </span><span class="hs-special">[</span><span class="hs-special">]</span><span>           </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Either Text URL
+</span><a href="#local-6989586621680301933"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-53"></span><span>      </span><span class="annot"><a href="#local-6989586621680301932"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="hs-identifier">_</span><span>       </span><span class="hs-special">[</span><span class="hs-identifier">_</span><span class="hs-special">]</span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Either Text URL
+</span><a href="#local-6989586621680301933"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><span id="line-54"></span><span>      </span><span class="annot"><a href="#local-6989586621680301932"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span id="local-6989586621680301930"><span class="annot"><span class="annottext">acc :: Maybe Text
+</span><a href="#local-6989586621680301930"><span class="hs-identifier hs-var">acc</span></a></span></span><span>     </span><span class="hs-special">[</span><span id="local-6989586621680301929"><span class="annot"><span class="annottext">dom :: Item [Text]
+</span><a href="#local-6989586621680301929"><span class="hs-identifier hs-var">dom</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680301928"><span class="annot"><span class="annottext">tld :: Item [Text]
+</span><a href="#local-6989586621680301928"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">URL -&gt; Either Text URL
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(URL -&gt; Either Text URL) -&gt; URL -&gt; Either Text URL
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -131,48 +131,48 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-var">URL</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; DomainName
 </span><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680302275"><span class="hs-identifier hs-var">dom</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680301929"><span class="hs-identifier hs-var">dom</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680302274"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Subdomain
+</span><a href="#local-6989586621680301928"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Subdomain
 </span><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-var">Subdomain</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Subdomain) -&gt; Maybe Text -&gt; Maybe Subdomain
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Text
-</span><a href="#local-6989586621680302276"><span class="hs-identifier hs-var">acc</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-55"></span><span>      </span><span class="annot"><a href="#local-6989586621680302278"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680302271"><span class="annot"><span class="annottext">sub :: Text
-</span><a href="#local-6989586621680302271"><span class="hs-identifier hs-var">sub</span></a></span></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span id="local-6989586621680302270"><span class="annot"><span class="annottext">more :: [Text]
-</span><a href="#local-6989586621680302270"><span class="hs-identifier hs-var">more</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; [Text] -&gt; Either Text URL
-</span><a href="#local-6989586621680302278"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
+</span><a href="#local-6989586621680301930"><span class="hs-identifier hs-var">acc</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-55"></span><span>      </span><span class="annot"><a href="#local-6989586621680301932"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680301925"><span class="annot"><span class="annottext">sub :: Text
+</span><a href="#local-6989586621680301925"><span class="hs-identifier hs-var">sub</span></a></span></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span id="local-6989586621680301924"><span class="annot"><span class="annottext">more :: [Text]
+</span><a href="#local-6989586621680301924"><span class="hs-identifier hs-var">more</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; [Text] -&gt; Either Text URL
+</span><a href="#local-6989586621680301932"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302271"><span class="hs-identifier hs-var">sub</span></a></span><span class="hs-special">)</span><span>        </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302270"><span class="hs-identifier hs-var">more</span></a></span><span>
-</span><span id="line-56"></span><span>      </span><span class="annot"><a href="#local-6989586621680302278"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span id="local-6989586621680302269"><span class="annot"><span class="annottext">acc :: Maybe Text
-</span><a href="#local-6989586621680302269"><span class="hs-identifier hs-var">acc</span></a></span></span><span>     </span><span class="hs-special">(</span><span id="local-6989586621680302268"><span class="annot"><span class="annottext">sub :: Text
-</span><a href="#local-6989586621680302268"><span class="hs-identifier hs-var">sub</span></a></span></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span id="local-6989586621680302267"><span class="annot"><span class="annottext">more :: [Text]
-</span><a href="#local-6989586621680302267"><span class="hs-identifier hs-var">more</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; [Text] -&gt; Either Text URL
-</span><a href="#local-6989586621680302278"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe Text
-</span><a href="#local-6989586621680302269"><span class="hs-identifier hs-var">acc</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Maybe Text -&gt; Maybe Text
+</span><a href="#local-6989586621680301925"><span class="hs-identifier hs-var">sub</span></a></span><span class="hs-special">)</span><span>        </span><span class="annot"><span class="annottext">[Text]
+</span><a href="#local-6989586621680301924"><span class="hs-identifier hs-var">more</span></a></span><span>
+</span><span id="line-56"></span><span>      </span><span class="annot"><a href="#local-6989586621680301932"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span id="local-6989586621680301923"><span class="annot"><span class="annottext">acc :: Maybe Text
+</span><a href="#local-6989586621680301923"><span class="hs-identifier hs-var">acc</span></a></span></span><span>     </span><span class="hs-special">(</span><span id="local-6989586621680301922"><span class="annot"><span class="annottext">sub :: Text
+</span><a href="#local-6989586621680301922"><span class="hs-identifier hs-var">sub</span></a></span></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span id="local-6989586621680301921"><span class="annot"><span class="annottext">more :: [Text]
+</span><a href="#local-6989586621680301921"><span class="hs-identifier hs-var">more</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; [Text] -&gt; Either Text URL
+</span><a href="#local-6989586621680301932"><span class="hs-identifier hs-var">parse</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe Text
+</span><a href="#local-6989586621680301923"><span class="hs-identifier hs-var">acc</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Maybe Text -&gt; Maybe Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302268"><span class="hs-identifier hs-var">sub</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302267"><span class="hs-identifier hs-var">more</span></a></span><span>
+</span><a href="#local-6989586621680301922"><span class="hs-identifier hs-var">sub</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Text]
+</span><a href="#local-6989586621680301921"><span class="hs-identifier hs-var">more</span></a></span><span>
 </span><span id="line-57"></span><span>
-</span><span id="line-58"></span><span>      </span><span class="annot"><a href="#local-6989586621680302279"><span class="hs-identifier hs-type">err</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
-</span><span id="line-59"></span><span>      </span><span id="local-6989586621680302279"><span class="annot"><span class="annottext">err :: Either Text URL
-</span><a href="#local-6989586621680302279"><span class="hs-identifier hs-var hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text URL
+</span><span id="line-58"></span><span>      </span><span class="annot"><a href="#local-6989586621680301933"><span class="hs-identifier hs-type">err</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
+</span><span id="line-59"></span><span>      </span><span id="local-6989586621680301933"><span class="annot"><span class="annottext">err :: Either Text URL
+</span><a href="#local-6989586621680301933"><span class="hs-identifier hs-var hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text URL
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Improperly formatted URL&quot;</span></span><span>
 </span><span id="line-60"></span><span>
 </span><span id="line-61"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToParamSchema</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-62"></span><span>  </span><span id="local-6989586621680302264"><span class="annot"><span class="annottext">toParamSchema :: Proxy URL -&gt; ParamSchema t
+</span><span id="line-62"></span><span>  </span><span id="local-6989586621680301918"><span class="annot"><span class="annottext">toParamSchema :: Proxy URL -&gt; ParamSchema t
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toParamSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ParamSchema t
 forall a. Monoid a =&gt; a
 </span><span class="hs-identifier hs-var">mempty</span></span><span> </span><span class="annot"><span class="annottext">ParamSchema t -&gt; (ParamSchema t -&gt; ParamSchema t) -&gt; ParamSchema t
@@ -189,7 +189,7 @@ forall (t :: SwaggerKind *). SwaggerType t
 </span><span class="hs-identifier hs-var">SwaggerString</span></span><span>
 </span><span id="line-63"></span><span>
 </span><span id="line-64"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-65"></span><span>  </span><span id="local-6989586621680302256"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy URL -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-65"></span><span>  </span><span id="local-6989586621680301910"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy URL -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-66"></span><span>    </span><span class="annot"><span class="annottext">Schema
 forall a. Monoid a =&gt; a
@@ -248,66 +248,66 @@ forall a b. a -&gt; (a -&gt; b) -&gt; b
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span>
 </span><span id="line-72"></span><span>
-</span><span id="line-73"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302244"><span id="local-6989586621680302246"><span id="local-6989586621680302248"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-74"></span><span>  </span><span id="local-6989586621680302242"><span class="annot"><span class="annottext">toJSON :: URL -&gt; Value
-</span><a href="#local-6989586621680302242"><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></a></span></span><span> </span><span id="local-6989586621680302240"><span id="local-6989586621680302241"><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span id="line-73"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301898"><span id="local-6989586621680301900"><span id="local-6989586621680301902"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-74"></span><span>  </span><span id="local-6989586621680301896"><span class="annot"><span class="annottext">toJSON :: URL -&gt; Value
+</span><a href="#local-6989586621680301896"><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></a></span></span><span> </span><span id="local-6989586621680301894"><span id="local-6989586621680301895"><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; Text -&gt; Value
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302238"><span class="hs-identifier hs-var">normalizedSubdomain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680301892"><span class="hs-identifier hs-var">normalizedSubdomain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302237"><span class="hs-identifier hs-var">domain</span></a></span><span>
+</span><a href="#local-6989586621680301891"><span class="hs-identifier hs-var">domain</span></a></span><span>
 </span><span id="line-75"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-76"></span><span>      </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680302237"><span class="annot"><span class="annottext">domain :: Text
-</span><a href="#local-6989586621680302237"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName
-</span><a href="#local-6989586621680302241"><span class="hs-identifier hs-var">domainName</span></a></span><span>
+</span><span id="line-76"></span><span>      </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span> </span><span id="local-6989586621680301891"><span class="annot"><span class="annottext">domain :: Text
+</span><a href="#local-6989586621680301891"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DomainName
+</span><a href="#local-6989586621680301895"><span class="hs-identifier hs-var">domainName</span></a></span><span>
 </span><span id="line-77"></span><span>
-</span><span id="line-78"></span><span>      </span><span id="local-6989586621680302238"><span class="annot"><span class="annottext">normalizedSubdomain :: Text
-</span><a href="#local-6989586621680302238"><span class="hs-identifier hs-var hs-var">normalizedSubdomain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680302240"><span class="hs-identifier hs-var">subdomain</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-78"></span><span>      </span><span id="local-6989586621680301892"><span class="annot"><span class="annottext">normalizedSubdomain :: Text
+</span><a href="#local-6989586621680301892"><span class="hs-identifier hs-var hs-var">normalizedSubdomain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
+</span><a href="#local-6989586621680301894"><span class="hs-identifier hs-var">subdomain</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-79"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;&quot;</span></span><span>
-</span><span id="line-80"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span> </span><span id="local-6989586621680302236"><span class="annot"><span class="annottext">sub :: Text
-</span><a href="#local-6989586621680302236"><span class="hs-identifier hs-var">sub</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302236"><span class="hs-identifier hs-var">sub</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><span id="line-80"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.URL.Subdomain.Types.html#Subdomain"><span class="hs-identifier hs-type">Subdomain</span></a></span><span> </span><span id="local-6989586621680301890"><span class="annot"><span class="annottext">sub :: Text
+</span><a href="#local-6989586621680301890"><span class="hs-identifier hs-var">sub</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680301890"><span class="hs-identifier hs-var">sub</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span>
 </span><span id="line-81"></span><span>
-</span><span id="line-82"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302233"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-83"></span><span>  </span><span id="local-6989586621680302231"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser URL
+</span><span id="line-82"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301887"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-83"></span><span>  </span><span id="local-6989586621680301885"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser URL
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser URL) -&gt; Value -&gt; Parser URL
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;URL&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680302228"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680302228"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;URL&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680301882"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680301882"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-84"></span><span>    </span><span class="hs-keyword">let</span><span>
-</span><span id="line-85"></span><span>      </span><span id="local-6989586621680302227"><span class="annot"><span class="annottext">noProtocol :: Text
-</span><a href="#local-6989586621680302227"><span class="hs-identifier hs-var hs-var">noProtocol</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><span id="line-85"></span><span>      </span><span id="local-6989586621680301881"><span class="annot"><span class="annottext">noProtocol :: Text
+</span><a href="#local-6989586621680301881"><span class="hs-identifier hs-var hs-var">noProtocol</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 </span><span class="hs-identifier hs-var">Text.dropPrefix</span></span><span> </span><span class="annot"><span class="hs-string">&quot;https://&quot;</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Text) -&gt; Text -&gt; Text
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 </span><span class="hs-identifier hs-var">Text.dropPrefix</span></span><span> </span><span class="annot"><span class="hs-string">&quot;http://&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302228"><span class="hs-identifier hs-var">txt</span></a></span><span>
-</span><span id="line-86"></span><span>      </span><span id="local-6989586621680302225"><span class="annot"><span class="annottext">sections :: [Text]
-</span><a href="#local-6989586621680302225"><span class="hs-identifier hs-var hs-var">sections</span></a></span></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Char -&gt; Bool) -&gt; Text -&gt; [Text]
+</span><a href="#local-6989586621680301882"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><span id="line-86"></span><span>      </span><span id="local-6989586621680301879"><span class="annot"><span class="annottext">sections :: [Text]
+</span><a href="#local-6989586621680301879"><span class="hs-identifier hs-var hs-var">sections</span></a></span></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Char -&gt; Bool) -&gt; Text -&gt; [Text]
 </span><span class="hs-identifier hs-var">Text.split</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Char -&gt; Char -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="hs-char">'.'</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680302227"><span class="hs-identifier hs-var">noProtocol</span></a></span><span>
-</span><span id="line-87"></span><span>      </span><span class="hs-special">(</span><span id="local-6989586621680302224"><span class="annot"><span class="annottext">subdomainSecs :: [Text]
-</span><a href="#local-6989586621680302224"><span class="hs-identifier hs-var">subdomainSecs</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680302223"><span class="annot"><span class="annottext">domainSecs :: [Text]
-</span><a href="#local-6989586621680302223"><span class="hs-identifier hs-var">domainSecs</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Text] -&gt; ([Text], [Text])
+</span><a href="#local-6989586621680301881"><span class="hs-identifier hs-var">noProtocol</span></a></span><span>
+</span><span id="line-87"></span><span>      </span><span class="hs-special">(</span><span id="local-6989586621680301878"><span class="annot"><span class="annottext">subdomainSecs :: [Text]
+</span><a href="#local-6989586621680301878"><span class="hs-identifier hs-var">subdomainSecs</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680301877"><span class="annot"><span class="annottext">domainSecs :: [Text]
+</span><a href="#local-6989586621680301877"><span class="hs-identifier hs-var">domainSecs</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Text] -&gt; ([Text], [Text])
 forall a. Int -&gt; [a] -&gt; ([a], [a])
 </span><span class="hs-identifier hs-var">List.splitAt</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[Text] -&gt; Int
 forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Int
 </span><span class="hs-identifier hs-var">length</span></span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302225"><span class="hs-identifier hs-var">sections</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
+</span><a href="#local-6989586621680301879"><span class="hs-identifier hs-var">sections</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
 forall a. Num a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-glyph hs-var">-</span></span><span> </span><span class="annot"><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302225"><span class="hs-identifier hs-var">sections</span></a></span><span>
+</span><a href="#local-6989586621680301879"><span class="hs-identifier hs-var">sections</span></a></span><span>
 </span><span id="line-88"></span><span>
-</span><span id="line-89"></span><span>      </span><span id="local-6989586621680302220"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
-</span><a href="#local-6989586621680302220"><span class="hs-identifier hs-var hs-var">maySubdomain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302224"><span class="hs-identifier hs-var">subdomainSecs</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-89"></span><span>      </span><span id="local-6989586621680301874"><span class="annot"><span class="annottext">maySubdomain :: Maybe Subdomain
+</span><a href="#local-6989586621680301874"><span class="hs-identifier hs-var hs-var">maySubdomain</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">[Text]
+</span><a href="#local-6989586621680301878"><span class="hs-identifier hs-var">subdomainSecs</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-90"></span><span>        </span><span class="hs-special">[</span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
@@ -321,13 +321,13 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; [Text] -&gt; Text
 </span><span class="hs-identifier hs-var">Text.intercalate</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302224"><span class="hs-identifier hs-var">subdomainSecs</span></a></span><span>
+</span><a href="#local-6989586621680301878"><span class="hs-identifier hs-var">subdomainSecs</span></a></span><span>
 </span><span id="line-92"></span><span>
 </span><span id="line-93"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">[Text]
-</span><a href="#local-6989586621680302223"><span class="hs-identifier hs-var">domainSecs</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-94"></span><span>      </span><span class="hs-special">[</span><span id="local-6989586621680302218"><span class="annot"><span class="annottext">domain :: Item [Text]
-</span><a href="#local-6989586621680302218"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680302217"><span class="annot"><span class="annottext">tld :: Item [Text]
-</span><a href="#local-6989586621680302217"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><a href="#local-6989586621680301877"><span class="hs-identifier hs-var">domainSecs</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-94"></span><span>      </span><span class="hs-special">[</span><span id="local-6989586621680301872"><span class="annot"><span class="annottext">domain :: Item [Text]
+</span><a href="#local-6989586621680301872"><span class="hs-identifier hs-var">domain</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680301871"><span class="annot"><span class="annottext">tld :: Item [Text]
+</span><a href="#local-6989586621680301871"><span class="hs-identifier hs-var">tld</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-95"></span><span>        </span><span class="annot"><span class="annottext">URL -&gt; Parser URL
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">URL :: DomainName -&gt; Maybe Subdomain -&gt; URL
@@ -336,16 +336,16 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><a href="Fission.URL.Types.html#%24sel%3AdomainName%3AURL"><span class="hs-identifier hs-var">domainName</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; DomainName
 </span><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-var">DomainName</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680302218"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680301872"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Item [Text]
 Text
-</span><a href="#local-6989586621680302217"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680301871"><span class="hs-identifier hs-var">tld</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-97"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:subdomain:URL :: Maybe Subdomain
 </span><a href="Fission.URL.Types.html#%24sel%3Asubdomain%3AURL"><span class="hs-identifier hs-var">subdomain</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Subdomain
-</span><a href="#local-6989586621680302220"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
+</span><a href="#local-6989586621680301874"><span class="hs-identifier hs-var">maySubdomain</span></a></span><span>
 </span><span id="line-98"></span><span>          </span><span class="hs-special">}</span><span>
 </span><span id="line-99"></span><span>
 </span><span id="line-100"></span><span>      </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span>

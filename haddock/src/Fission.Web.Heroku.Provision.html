@@ -35,25 +35,25 @@
 </span><span id="line-35"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ReqBody</span></span><span> </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">JSON</span></span><span class="hs-special">]</span><span>                </span><span class="annot"><a href="Fission.Platform.Heroku.Provision.Request.Types.html#Request"><span class="hs-identifier hs-type">Request</span></a></span><span>
 </span><span id="line-36"></span><span>  </span><span class="annot"><span class="hs-operator hs-type">:&gt;</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Post</span></span><span>    </span><span class="hs-special">'</span><span class="hs-special">[</span><span class="annot"><a href="Fission.Web.Heroku.MIME.VendorJSONv3.Types.html#VendorJSONv3"><span class="hs-identifier hs-type">Heroku.VendorJSONv3</span></a></span><span class="hs-special">]</span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Provision.Types.html#Provision"><span class="hs-identifier hs-type">Provision</span></a></span><span>
 </span><span id="line-37"></span><span>
-</span><span id="line-38"></span><span id="local-6989586621680315815"><span class="annot"><a href="Fission.Web.Heroku.Provision.html#create"><span class="hs-identifier hs-type">create</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-39"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span>               </span><span class="annot"><a href="#local-6989586621680315815"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-40"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>            </span><span class="annot"><a href="#local-6989586621680315815"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>           </span><span class="annot"><a href="#local-6989586621680315815"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>        </span><span class="annot"><a href="#local-6989586621680315815"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680315815"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-44"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Creator"><span class="hs-identifier hs-type">User.Creator</span></a></span><span>          </span><span class="annot"><a href="#local-6989586621680315815"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-38"></span><span id="local-6989586621680315538"><span class="annot"><a href="Fission.Web.Heroku.Provision.html#create"><span class="hs-identifier hs-type">create</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-39"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span>               </span><span class="annot"><a href="#local-6989586621680315538"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>            </span><span class="annot"><a href="#local-6989586621680315538"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>           </span><span class="annot"><a href="#local-6989586621680315538"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span>        </span><span class="annot"><a href="#local-6989586621680315538"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-43"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Web.Server.Reflective.Class.html#MonadReflectiveServer"><span class="hs-identifier hs-type">MonadReflectiveServer</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680315538"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-44"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Creator.Class.html#Creator"><span class="hs-identifier hs-type">User.Creator</span></a></span><span>          </span><span class="annot"><a href="#local-6989586621680315538"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-45"></span><span>  </span><span class="hs-special">)</span><span>
-</span><span id="line-46"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.Heroku.Provision.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680315815"><span class="hs-identifier hs-type">m</span></a></span></span><span>
+</span><span id="line-46"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerT</span></span><span> </span><span class="annot"><a href="Fission.Web.Heroku.Provision.html#API"><span class="hs-identifier hs-type">API</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680315538"><span class="hs-identifier hs-type">m</span></a></span></span><span>
 </span><span id="line-47"></span><span id="create"><span class="annot"><span class="annottext">create :: ServerT API m
-</span><a href="Fission.Web.Heroku.Provision.html#create"><span class="hs-identifier hs-var hs-var">create</span></a></span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Provision.Request.Types.html#Request"><span class="hs-identifier hs-type">Request</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680315813"><span class="annot"><span class="annottext">UUID
+</span><a href="Fission.Web.Heroku.Provision.html#create"><span class="hs-identifier hs-var hs-var">create</span></a></span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Provision.Request.Types.html#Request"><span class="hs-identifier hs-type">Request</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680315536"><span class="annot"><span class="annottext">UUID
 $sel:uuid:Request :: Request -&gt; UUID
 uuid :: UUID
-</span><a href="Fission.Platform.Heroku.Provision.Request.Types.html#%24sel%3Auuid%3ARequest"><span class="hs-identifier hs-var hs-var">uuid</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680315811"><span class="annot"><span class="annottext">Region
+</span><a href="Fission.Platform.Heroku.Provision.Request.Types.html#%24sel%3Auuid%3ARequest"><span class="hs-identifier hs-var hs-var">uuid</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680315534"><span class="annot"><span class="annottext">Region
 $sel:region:Request :: Request -&gt; Region
 region :: Region
 </span><a href="Fission.Platform.Heroku.Provision.Request.Types.html#%24sel%3Aregion%3ARequest"><span class="hs-identifier hs-var hs-var">region</span></a></span></span><span class="hs-special">}</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-48"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680315809"><span class="annot"><span class="annottext">username :: Username
-</span><a href="#local-6989586621680315809"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Username
+</span><span id="line-48"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680315532"><span class="annot"><span class="annottext">username :: Username
+</span><a href="#local-6989586621680315532"><span class="hs-identifier hs-var hs-var">username</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Username
 </span><a href="Fission.User.Username.Types.html#Username"><span class="hs-identifier hs-var">Username</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Username) -&gt; (String -&gt; Text) -&gt; String -&gt; Username
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Text
@@ -61,17 +61,17 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">UUID -&gt; String
 </span><span class="hs-identifier hs-var">UUID.toString</span></span><span> </span><span class="annot"><span class="annottext">UUID
-</span><a href="#local-6989586621680315813"><span class="hs-identifier hs-var">uuid</span></a></span><span>
-</span><span id="line-49"></span><span>  </span><span id="local-6989586621680315804"><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680315804"><span class="hs-identifier hs-var">now</span></a></span></span><span>           </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m UTCTime
+</span><a href="#local-6989586621680315536"><span class="hs-identifier hs-var">uuid</span></a></span><span>
+</span><span id="line-49"></span><span>  </span><span id="local-6989586621680315527"><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680315527"><span class="hs-identifier hs-var">now</span></a></span></span><span>           </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m UTCTime
 forall (m :: * -&gt; *). MonadIO m =&gt; m UTCTime
 </span><span class="hs-identifier hs-var">getCurrentTime</span></span><span>
-</span><span id="line-50"></span><span>  </span><span id="local-6989586621680315802"><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680315802"><span class="hs-identifier hs-var">secret</span></a></span></span><span>        </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Natural -&gt; m Text
+</span><span id="line-50"></span><span>  </span><span id="local-6989586621680315525"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621680315525"><span class="hs-identifier hs-var">secret</span></a></span></span><span>        </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Natural -&gt; m Text
 forall (m :: * -&gt; *). MonadIO m =&gt; Natural -&gt; m Text
 </span><a href="Fission.Random.html#alphaNum"><span class="hs-identifier hs-var">Random.alphaNum</span></a></span><span> </span><span class="annot"><span class="hs-number">50</span></span><span>
-</span><span id="line-51"></span><span>  </span><span id="local-6989586621680315800"><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680315800"><span class="hs-identifier hs-var">userID</span></a></span></span><span>        </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (Either Errors UserId) -&gt; m UserId
+</span><span id="line-51"></span><span>  </span><span id="local-6989586621680315523"><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680315523"><span class="hs-identifier hs-var">userID</span></a></span></span><span>        </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m (Either Errors UserId) -&gt; m UserId
 forall (m :: * -&gt; *) err a.
 (MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
 m (Either err a) -&gt; m a
@@ -93,18 +93,18 @@ UUID
 -&gt; UTCTime
 -&gt; m (Either Errors UserId)
 </span><a href="Fission.User.Creator.Class.html#createWithHeroku"><span class="hs-identifier hs-var">User.createWithHeroku</span></a></span><span> </span><span class="annot"><span class="annottext">UUID
-</span><a href="#local-6989586621680315813"><span class="hs-identifier hs-var">uuid</span></a></span><span> </span><span class="annot"><span class="annottext">Region
-</span><a href="#local-6989586621680315811"><span class="hs-identifier hs-var">region</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680315809"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Password
+</span><a href="#local-6989586621680315536"><span class="hs-identifier hs-var">uuid</span></a></span><span> </span><span class="annot"><span class="annottext">Region
+</span><a href="#local-6989586621680315534"><span class="hs-identifier hs-var">region</span></a></span><span> </span><span class="annot"><span class="annottext">Username
+</span><a href="#local-6989586621680315532"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; Password
 </span><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-var">Password</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680315802"><span class="hs-identifier hs-var">secret</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680315804"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-52"></span><span>  </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span> </span><span id="local-6989586621680315795"><span class="annot"><span class="annottext">url' :: BaseUrl
-</span><a href="#local-6989586621680315795"><span class="hs-identifier hs-var">url'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Host
+</span><a href="#local-6989586621680315525"><span class="hs-identifier hs-var">secret</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680315527"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-52"></span><span>  </span><span class="annot"><a href="Fission.Web.Types.html#Host"><span class="hs-identifier hs-type">Web.Host</span></a></span><span> </span><span id="local-6989586621680315518"><span class="annot"><span class="annottext">url' :: BaseUrl
+</span><a href="#local-6989586621680315518"><span class="hs-identifier hs-var">url'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Host
 forall (m :: * -&gt; *). MonadReflectiveServer m =&gt; m Host
 </span><a href="Fission.Web.Server.Reflective.Class.html#getHost"><span class="hs-identifier hs-var">getHost</span></a></span><span>
-</span><span id="line-53"></span><span>  </span><span id="local-6989586621680315793"><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680315793"><span class="hs-identifier hs-var">ipfsPeers</span></a></span></span><span>     </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m [Peer]
+</span><span id="line-53"></span><span>  </span><span id="local-6989586621680315516"><span class="annot"><span class="annottext">[Peer]
+</span><a href="#local-6989586621680315516"><span class="hs-identifier hs-var">ipfsPeers</span></a></span></span><span>     </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m [Peer]
 forall (m :: * -&gt; *). (MonadLocalIPFS m, MonadLogger m) =&gt; m [Peer]
 </span><a href="Fission.Web.Heroku.Provision.html#getIPFSPeers"><span class="hs-identifier hs-var">getIPFSPeers</span></a></span><span>
 </span><span id="line-54"></span><span>
@@ -112,10 +112,10 @@ forall (m :: * -&gt; *). (MonadLocalIPFS m, MonadLogger m) =&gt; m [Peer]
 </span><a href="Fission.Platform.Heroku.Provision.Types.html#Provision"><span class="hs-identifier hs-type hs-type">Provision</span></a></span><span>
 </span><span id="line-56"></span><span>    </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:id:Provision :: UserId
 </span><a href="Fission.Platform.Heroku.Provision.Types.html#%24sel%3Aid%3AProvision"><span class="hs-identifier hs-var">id</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680315800"><span class="hs-identifier hs-var">userID</span></a></span><span>
+</span><a href="#local-6989586621680315523"><span class="hs-identifier hs-var">userID</span></a></span><span>
 </span><span id="line-57"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:peers:Provision :: [Peer]
 </span><a href="Fission.Platform.Heroku.Provision.Types.html#%24sel%3Apeers%3AProvision"><span class="hs-identifier hs-var">peers</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680315793"><span class="hs-identifier hs-var">ipfsPeers</span></a></span><span>
+</span><a href="#local-6989586621680315516"><span class="hs-identifier hs-var">ipfsPeers</span></a></span><span>
 </span><span id="line-58"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:message:Provision :: Text
 </span><a href="Fission.Platform.Heroku.Provision.Types.html#%24sel%3Amessage%3AProvision"><span class="hs-identifier hs-var">message</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Successfully provisioned Interplanetary Fission!&quot;</span></span><span>
 </span><span id="line-59"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:config:Provision :: Provision
@@ -123,18 +123,18 @@ forall (m :: * -&gt; *). (MonadLocalIPFS m, MonadLogger m) =&gt; m [Peer]
 </span><a href="Fission.User.Provision.Types.html#Provision"><span class="hs-identifier hs-type hs-type">User.Provision</span></a></span><span>
 </span><span id="line-60"></span><span>      </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:username:Provision :: Username
 </span><a href="Fission.User.Provision.Types.html#%24sel%3Ausername%3AProvision"><span class="hs-identifier hs-var">username</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680315809"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><a href="#local-6989586621680315532"><span class="hs-identifier hs-var">username</span></a></span><span>
 </span><span id="line-61"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:password:Provision :: Secret
 </span><a href="Fission.User.Provision.Types.html#%24sel%3Apassword%3AProvision"><span class="hs-identifier hs-var">password</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Secret
 </span><a href="Fission.Security.Types.html#Secret"><span class="hs-identifier hs-var">Secret</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680315802"><span class="hs-identifier hs-var">secret</span></a></span><span>
+</span><a href="#local-6989586621680315525"><span class="hs-identifier hs-var">secret</span></a></span><span>
 </span><span id="line-62"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:url:Provision :: BaseUrl
 </span><a href="Fission.User.Provision.Types.html#%24sel%3Aurl%3AProvision"><span class="hs-identifier hs-var">url</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BaseUrl
-</span><a href="#local-6989586621680315795"><span class="hs-identifier hs-var">url'</span></a></span><span>
+</span><a href="#local-6989586621680315518"><span class="hs-identifier hs-var">url'</span></a></span><span>
 </span><span id="line-63"></span><span>      </span><span class="hs-special">}</span><span>
 </span><span id="line-64"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-65"></span><span>
-</span><span id="line-66"></span><span id="local-6989586621680315843"><span class="annot"><a href="Fission.Web.Heroku.Provision.html#getIPFSPeers"><span class="hs-identifier hs-type">getIPFSPeers</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680315843"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680315843"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680315843"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span><span class="hs-special">]</span></span><span>
+</span><span id="line-66"></span><span id="local-6989586621680315566"><span class="annot"><a href="Fission.Web.Heroku.Provision.html#getIPFSPeers"><span class="hs-identifier hs-type">getIPFSPeers</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">MonadLocalIPFS</span></span><span> </span><span class="annot"><a href="#local-6989586621680315566"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680315566"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680315566"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">IPFS.Peer</span></span><span class="hs-special">]</span></span><span>
 </span><span id="line-67"></span><span id="getIPFSPeers"><span class="annot"><span class="annottext">getIPFSPeers :: m [Peer]
 </span><a href="Fission.Web.Heroku.Provision.html#getIPFSPeers"><span class="hs-identifier hs-var hs-var">getIPFSPeers</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-68"></span><span>  </span><span class="annot"><span class="annottext">m (Either Error [Peer])
@@ -143,15 +143,15 @@ forall (m :: * -&gt; *). MonadLocalIPFS m =&gt; m (Either Error [Peer])
 -&gt; (Either Error [Peer] -&gt; m [Peer]) -&gt; m [Peer]
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-69"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680315779"><span class="annot"><span class="annottext">peers' :: [Peer]
-</span><a href="#local-6989586621680315779"><span class="hs-identifier hs-var">peers'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-69"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680315502"><span class="annot"><span class="annottext">peers' :: [Peer]
+</span><a href="#local-6989586621680315502"><span class="hs-identifier hs-var">peers'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-70"></span><span>      </span><span class="annot"><span class="annottext">[Peer] -&gt; m [Peer]
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680315779"><span class="hs-identifier hs-var">peers'</span></a></span><span>
+</span><a href="#local-6989586621680315502"><span class="hs-identifier hs-var">peers'</span></a></span><span>
 </span><span id="line-71"></span><span>
-</span><span id="line-72"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680315778"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680315778"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-72"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680315501"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680315501"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-73"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall msg (m :: * -&gt; *).
 (ToLogStr msg, MonadLogger m) =&gt;
@@ -161,6 +161,6 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Error -&gt; Text
 forall a. Show a =&gt; a -&gt; Text
 </span><a href="Fission.Internal.UTF8.html#textShow"><span class="hs-identifier hs-var">textShow</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680315778"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680315501"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-74"></span><span>      </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
 </span><span id="line-75"></span></pre></body></html>

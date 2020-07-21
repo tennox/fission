@@ -7,20 +7,20 @@
 </span><span id="line-7"></span><span>
 </span><span id="line-8"></span><span class="hs-comment">-- | Run the given simple app.</span><span>
 </span><span id="line-9"></span><span class="hs-comment">--   Set `DEBUG` to `True` to enable verbose app logging</span><span>
-</span><span id="line-10"></span><span id="local-6989586621680300147"><span class="annot"><a href="Fission.Internal.App.html#runApp"><span class="hs-identifier hs-type">runApp</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">RIO</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">SimpleApp</span></span><span> </span><span class="annot"><a href="#local-6989586621680300147"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680300147"><span class="hs-identifier hs-type">a</span></a></span></span><span>
+</span><span id="line-10"></span><span id="local-6989586621680299801"><span class="annot"><a href="Fission.Internal.App.html#runApp"><span class="hs-identifier hs-type">runApp</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">RIO</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">SimpleApp</span></span><span> </span><span class="annot"><a href="#local-6989586621680299801"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680299801"><span class="hs-identifier hs-type">a</span></a></span></span><span>
 </span><span id="line-11"></span><span id="runApp"><span class="annot"><span class="annottext">runApp :: RIO SimpleApp a -&gt; IO a
-</span><a href="Fission.Internal.App.html#runApp"><span class="hs-identifier hs-var hs-var">runApp</span></a></span></span><span> </span><span id="local-6989586621680300146"><span class="annot"><span class="annottext">simpleApp :: RIO SimpleApp a
-</span><a href="#local-6989586621680300146"><span class="hs-identifier hs-var">simpleApp</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-12"></span><span>  </span><span id="local-6989586621680300145"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680300145"><span class="hs-identifier hs-var">isVerbose</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">IO Bool
+</span><a href="Fission.Internal.App.html#runApp"><span class="hs-identifier hs-var hs-var">runApp</span></a></span></span><span> </span><span id="local-6989586621680299800"><span class="annot"><span class="annottext">simpleApp :: RIO SimpleApp a
+</span><a href="#local-6989586621680299800"><span class="hs-identifier hs-var">simpleApp</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680299799"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680299799"><span class="hs-identifier hs-var">isVerbose</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">IO Bool
 </span><a href="Fission.Internal.App.html#isDebugEnabled"><span class="hs-identifier hs-var">isDebugEnabled</span></a></span><span>
 </span><span id="line-13"></span><span>  </span><span class="annot"><span class="annottext">Bool -&gt; IO ()
 </span><a href="Fission.Internal.App.html#setRioVerbose"><span class="hs-identifier hs-var">setRioVerbose</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680300145"><span class="hs-identifier hs-var">isVerbose</span></a></span><span>
+</span><a href="#local-6989586621680299799"><span class="hs-identifier hs-var">isVerbose</span></a></span><span>
 </span><span id="line-14"></span><span>  </span><span class="annot"><span class="annottext">RIO SimpleApp a -&gt; IO a
 forall (m :: * -&gt; *) a. MonadIO m =&gt; RIO SimpleApp a -&gt; m a
 </span><span class="hs-identifier hs-var">runSimpleApp</span></span><span> </span><span class="annot"><span class="annottext">RIO SimpleApp a
-</span><a href="#local-6989586621680300146"><span class="hs-identifier hs-var">simpleApp</span></a></span><span>
+</span><a href="#local-6989586621680299800"><span class="hs-identifier hs-var">simpleApp</span></a></span><span>
 </span><span id="line-15"></span><span>
 </span><span id="line-16"></span><span class="hs-comment">-- | Check if `DEBUG` is set to `True`</span><span>
 </span><span id="line-17"></span><span class="annot"><a href="Fission.Internal.App.html#isDebugEnabled"><span class="hs-identifier hs-type">isDebugEnabled</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>

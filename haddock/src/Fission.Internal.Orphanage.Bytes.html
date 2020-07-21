@@ -12,21 +12,21 @@
 </span><span id="line-12"></span><span>
 </span><span id="line-13"></span><span>
 </span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bytes</span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-15"></span><span>  </span><span id="local-6989586621680298940"><span class="annot"><span class="annottext">toPersistValue :: Bytes -&gt; PersistValue
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Bytes</span></span><span> </span><span id="local-6989586621680298937"><span class="annot"><span class="annottext">bytes' :: Natural
-</span><a href="#local-6989586621680298937"><span class="hs-identifier hs-var">bytes'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; PersistValue
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680298594"><span class="annot"><span class="annottext">toPersistValue :: Bytes -&gt; PersistValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Bytes</span></span><span> </span><span id="local-6989586621680298591"><span class="annot"><span class="annottext">bytes' :: Natural
+</span><a href="#local-6989586621680298591"><span class="hs-identifier hs-var">bytes'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; PersistValue
 </span><span class="hs-identifier hs-var">PersistInt64</span></span><span> </span><span class="annot"><span class="annottext">(Int64 -&gt; PersistValue) -&gt; Int64 -&gt; PersistValue
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Natural -&gt; Int64
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680298937"><span class="hs-identifier hs-var">bytes'</span></a></span><span>
-</span><span id="line-16"></span><span>  </span><span id="local-6989586621680298935"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text Bytes
+</span><a href="#local-6989586621680298591"><span class="hs-identifier hs-var">bytes'</span></a></span><span>
+</span><span id="line-16"></span><span>  </span><span id="local-6989586621680298589"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text Bytes
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-17"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistInt64</span></span><span> </span><span id="local-6989586621680298933"><span class="annot"><span class="annottext">bytes' :: Int64
-</span><a href="#local-6989586621680298933"><span class="hs-identifier hs-var">bytes'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-17"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">PersistInt64</span></span><span> </span><span id="local-6989586621680298587"><span class="annot"><span class="annottext">bytes' :: Int64
+</span><a href="#local-6989586621680298587"><span class="hs-identifier hs-var">bytes'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-18"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Int64
-</span><a href="#local-6989586621680298933"><span class="hs-identifier hs-var">bytes'</span></a></span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; Int64 -&gt; Bool
+</span><a href="#local-6989586621680298587"><span class="hs-identifier hs-var">bytes'</span></a></span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; Int64 -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&gt;=</span></span><span> </span><span class="annot"><span class="hs-number">0</span></span><span>
 </span><span id="line-19"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">Bytes -&gt; Either Text Bytes
@@ -40,7 +40,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; Natural
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Int64
-</span><a href="#local-6989586621680298933"><span class="hs-identifier hs-var">bytes'</span></a></span><span>
+</span><a href="#local-6989586621680298587"><span class="hs-identifier hs-var">bytes'</span></a></span><span>
 </span><span id="line-20"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text Bytes
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;Invalid Persistent Bytes: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
@@ -48,10 +48,10 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Int64 -&gt; Text
 forall a. Show a =&gt; a -&gt; Text
 </span><a href="Fission.Internal.UTF8.html#textShow"><span class="hs-identifier hs-var">textShow</span></a></span><span> </span><span class="annot"><span class="annottext">Int64
-</span><a href="#local-6989586621680298933"><span class="hs-identifier hs-var">bytes'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680298587"><span class="hs-identifier hs-var">bytes'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-21"></span><span>
-</span><span id="line-22"></span><span>    </span><span id="local-6989586621680298930"><span class="annot"><span class="annottext">other :: PersistValue
-</span><a href="#local-6989586621680298930"><span class="hs-identifier hs-var">other</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-22"></span><span>    </span><span id="local-6989586621680298584"><span class="annot"><span class="annottext">other :: PersistValue
+</span><a href="#local-6989586621680298584"><span class="hs-identifier hs-var">other</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-23"></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; Either Text Bytes
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;Invalid Persistent Bytes: &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
@@ -59,11 +59,11 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">PersistValue -&gt; Text
 forall a. Show a =&gt; a -&gt; Text
 </span><a href="Fission.Internal.UTF8.html#textShow"><span class="hs-identifier hs-var">textShow</span></a></span><span> </span><span class="annot"><span class="annottext">PersistValue
-</span><a href="#local-6989586621680298930"><span class="hs-identifier hs-var">other</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680298584"><span class="hs-identifier hs-var">other</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-24"></span><span>
 </span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bytes</span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-26"></span><span>  </span><span id="local-6989586621680298926"><span class="annot"><span class="annottext">sqlType :: Proxy Bytes -&gt; SqlType
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span id="local-6989586621680298924"><span class="annot"><span class="annottext">_pxy :: Proxy Bytes
-</span><a href="#local-6989586621680298924"><span class="hs-identifier hs-var">_pxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
+</span><span id="line-26"></span><span>  </span><span id="local-6989586621680298580"><span class="annot"><span class="annottext">sqlType :: Proxy Bytes -&gt; SqlType
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span id="local-6989586621680298578"><span class="annot"><span class="annottext">_pxy :: Proxy Bytes
+</span><a href="#local-6989586621680298578"><span class="hs-identifier hs-var">_pxy</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
 </span><span class="hs-identifier hs-var">SqlInt64</span></span><span>
 </span><span id="line-27"></span></pre></body></html>

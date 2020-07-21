@@ -22,89 +22,89 @@
 </span><span id="line-22"></span><span class="hs-comment">-- | Higher order auth handler</span><span>
 </span><span id="line-23"></span><span class="hs-comment">--   Uses basic auth for &quot;Basic&quot; tokens</span><span>
 </span><span id="line-24"></span><span class="hs-comment">--   Uses our custom JWT auth for &quot;Bearer&quot; tokens</span><span>
-</span><span id="line-25"></span><span id="local-6989586621680313180"><span id="local-6989586621680313181"><span class="annot"><a href="Fission.Web.Auth.Token.html#handler"><span class="hs-identifier hs-type">handler</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-26"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">JWT.Resolver</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680313181"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680313181"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-28"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>      </span><span class="annot"><a href="#local-6989586621680313181"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-29"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>       </span><span class="annot"><a href="#local-6989586621680313181"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-30"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>        </span><span class="annot"><a href="#local-6989586621680313181"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-31"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680313180"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680313181"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-32"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">User.Retriever</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680313180"><span class="hs-identifier hs-type">t</span></a></span><span>
+</span><span id="line-25"></span><span id="local-6989586621680312903"><span id="local-6989586621680312904"><span class="annot"><a href="Fission.Web.Auth.Token.html#handler"><span class="hs-identifier hs-type">handler</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">JWT.Resolver</span></a></span><span>     </span><span class="annot"><a href="#local-6989586621680312904"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-27"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680312904"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-28"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span>      </span><span class="annot"><a href="#local-6989586621680312904"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-29"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadThrow</span></span><span>       </span><span class="annot"><a href="#local-6989586621680312904"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-30"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span>        </span><span class="annot"><a href="#local-6989586621680312904"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-31"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Class.html#MonadDB"><span class="hs-identifier hs-type">MonadDB</span></a></span><span>        </span><span class="annot"><a href="#local-6989586621680312903"><span class="hs-identifier hs-type">t</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680312904"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-32"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Retriever.Class.html#Retriever"><span class="hs-identifier hs-type">User.Retriever</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680312903"><span class="hs-identifier hs-type">t</span></a></span><span>
 </span><span id="line-33"></span><span>  </span><span class="hs-special">)</span><span>
 </span><span id="line-34"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Request</span></span><span>
-</span><span id="line-35"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680313181"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span></span></span><span>
+</span><span id="line-35"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680312904"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="Fission.Authorization.Types.html#Authorization"><span class="hs-identifier hs-type">Authorization</span></a></span></span></span><span>
 </span><span id="line-36"></span><span id="handler"><span class="annot"><span class="annottext">handler :: Request -&gt; m Authorization
-</span><a href="Fission.Web.Auth.Token.html#handler"><span class="hs-identifier hs-var hs-var">handler</span></a></span></span><span> </span><span id="local-6989586621680313179"><span class="annot"><span class="annottext">req :: Request
-</span><a href="#local-6989586621680313179"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Web.Auth.Token.html#handler"><span class="hs-identifier hs-var hs-var">handler</span></a></span></span><span> </span><span id="local-6989586621680312902"><span class="annot"><span class="annottext">req :: Request
+</span><a href="#local-6989586621680312902"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-37"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Request -&gt; Either Error Token
 </span><a href="Fission.Web.Auth.Token.html#get"><span class="hs-identifier hs-var">get</span></a></span><span> </span><span class="annot"><span class="annottext">Request
-</span><a href="#local-6989586621680313179"><span class="hs-identifier hs-var">req</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-38"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Bearer"><span class="hs-identifier hs-type">Bearer</span></a></span><span> </span><span id="local-6989586621680313177"><span class="annot"><span class="annottext">bearer :: Token
-</span><a href="#local-6989586621680313177"><span class="hs-identifier hs-var">bearer</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; m Authorization
+</span><a href="#local-6989586621680312902"><span class="hs-identifier hs-var">req</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-38"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Bearer"><span class="hs-identifier hs-type">Bearer</span></a></span><span> </span><span id="local-6989586621680312900"><span class="annot"><span class="annottext">bearer :: Token
+</span><a href="#local-6989586621680312900"><span class="hs-identifier hs-var">bearer</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; m Authorization
 forall (m :: * -&gt; *) (t :: * -&gt; *).
 (MonadLogger m, MonadThrow m, Resolver m, ServerDID m, MonadTime m,
  MonadDB t m, Retriever t) =&gt;
 Token -&gt; m Authorization
 </span><a href="Fission.Web.Auth.Token.UCAN.html#handler"><span class="hs-identifier hs-var">UCAN.handler</span></a></span><span> </span><span class="annot"><span class="annottext">Token
-</span><a href="#local-6989586621680313177"><span class="hs-identifier hs-var">bearer</span></a></span><span>
-</span><span id="line-39"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Basic"><span class="hs-identifier hs-type">Basic</span></a></span><span>  </span><span id="local-6989586621680313174"><span class="annot"><span class="annottext">basic' :: Token
-</span><a href="#local-6989586621680313174"><span class="hs-identifier hs-var">basic'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; m Authorization
+</span><a href="#local-6989586621680312900"><span class="hs-identifier hs-var">bearer</span></a></span><span>
+</span><span id="line-39"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Basic"><span class="hs-identifier hs-type">Basic</span></a></span><span>  </span><span id="local-6989586621680312897"><span class="annot"><span class="annottext">basic' :: Token
+</span><a href="#local-6989586621680312897"><span class="hs-identifier hs-var">basic'</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; m Authorization
 forall (m :: * -&gt; *) (t :: * -&gt; *).
 (MonadIO m, MonadLogger m, MonadThrow m, MonadDB t m,
  Retriever t) =&gt;
 Token -&gt; m Authorization
 </span><a href="Fission.Web.Auth.Token.Basic.html#handler"><span class="hs-identifier hs-var">Basic.handler</span></a></span><span> </span><span class="annot"><span class="annottext">Token
-</span><a href="#local-6989586621680313174"><span class="hs-identifier hs-var">basic'</span></a></span><span>
-</span><span id="line-40"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680313172"><span class="annot"><span class="annottext">err :: Error
-</span><a href="#local-6989586621680313172"><span class="hs-identifier hs-var">err</span></a></span></span><span>             </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; m Authorization
+</span><a href="#local-6989586621680312897"><span class="hs-identifier hs-var">basic'</span></a></span><span>
+</span><span id="line-40"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span>  </span><span id="local-6989586621680312895"><span class="annot"><span class="annottext">err :: Error
+</span><a href="#local-6989586621680312895"><span class="hs-identifier hs-var">err</span></a></span></span><span>             </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; m Authorization
 forall (m :: * -&gt; *) err a.
 (MonadLogger m, MonadThrow m, Display err, ToServerError err) =&gt;
 err -&gt; m a
 </span><a href="Fission.Web.Error.html#throw"><span class="hs-identifier hs-var">Web.Error.throw</span></a></span><span> </span><span class="annot"><span class="annottext">Error
-</span><a href="#local-6989586621680313172"><span class="hs-identifier hs-var">err</span></a></span><span>
+</span><a href="#local-6989586621680312895"><span class="hs-identifier hs-var">err</span></a></span><span>
 </span><span id="line-41"></span><span>
 </span><span id="line-42"></span><span class="annot"><a href="Fission.Web.Auth.Token.html#get"><span class="hs-identifier hs-type">get</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Request</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Error.html#Error"><span class="hs-identifier hs-type">Auth.Error</span></a></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span>
 </span><span id="line-43"></span><span id="get"><span class="annot"><span class="annottext">get :: Request -&gt; Either Error Token
-</span><a href="Fission.Web.Auth.Token.html#get"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span> </span><span id="local-6989586621680313170"><span class="annot"><span class="annottext">req :: Request
-</span><a href="#local-6989586621680313170"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Web.Auth.Token.html#get"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span> </span><span id="local-6989586621680312893"><span class="annot"><span class="annottext">req :: Request
+</span><a href="#local-6989586621680312893"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-44"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">HeaderName -&gt; [(HeaderName, ByteString)] -&gt; Maybe ByteString
 forall a b. Eq a =&gt; a -&gt; [(a, b)] -&gt; Maybe b
 </span><span class="hs-identifier hs-var">lookup</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Authorization&quot;</span></span><span> </span><span class="annot"><span class="annottext">[(HeaderName, ByteString)]
-</span><a href="#local-6989586621680313168"><span class="hs-identifier hs-var">headers</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe ByteString -&gt; Maybe ByteString -&gt; Maybe ByteString
+</span><a href="#local-6989586621680312891"><span class="hs-identifier hs-var">headers</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe ByteString -&gt; Maybe ByteString -&gt; Maybe ByteString
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">HeaderName -&gt; [(HeaderName, ByteString)] -&gt; Maybe ByteString
 forall a b. Eq a =&gt; a -&gt; [(a, b)] -&gt; Maybe b
 </span><span class="hs-identifier hs-var">lookup</span></span><span> </span><span class="annot"><span class="hs-string">&quot;authorization&quot;</span></span><span> </span><span class="annot"><span class="annottext">[(HeaderName, ByteString)]
-</span><a href="#local-6989586621680313168"><span class="hs-identifier hs-var">headers</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680312891"><span class="hs-identifier hs-var">headers</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-45"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-46"></span><span>      </span><span class="annot"><span class="annottext">Error -&gt; Either Error Token
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">Error
 </span><a href="Fission.Web.Auth.Error.html#NoToken"><span class="hs-identifier hs-var">Auth.NoToken</span></a></span><span>
 </span><span id="line-47"></span><span>
-</span><span id="line-48"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680313165"><span class="annot"><span class="annottext">auth :: ByteString
-</span><a href="#local-6989586621680313165"><span class="hs-identifier hs-var">auth</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-48"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680312888"><span class="annot"><span class="annottext">auth :: ByteString
+</span><a href="#local-6989586621680312888"><span class="hs-identifier hs-var">auth</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-49"></span><span>      </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either Text Token
 forall a. FromHttpApiData a =&gt; ByteString -&gt; Either Text a
 </span><span class="hs-identifier hs-var">parseHeader</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680313165"><span class="hs-identifier hs-var">auth</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-50"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680313163"><span class="annot"><span class="annottext">errMsg :: Text
-</span><a href="#local-6989586621680313163"><span class="hs-identifier hs-var">errMsg</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error Token
+</span><a href="#local-6989586621680312888"><span class="hs-identifier hs-var">auth</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-50"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680312886"><span class="annot"><span class="annottext">errMsg :: Text
+</span><a href="#local-6989586621680312886"><span class="hs-identifier hs-var">errMsg</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Error -&gt; Either Error Token
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Error -&gt; Either Error Token) -&gt; Error -&gt; Either Error Token
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Error
 </span><a href="Fission.Web.Auth.Error.html#CannotParse"><span class="hs-identifier hs-var">Auth.CannotParse</span></a></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680313163"><span class="hs-identifier hs-var">errMsg</span></a></span><span>
-</span><span id="line-51"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680313161"><span class="annot"><span class="annottext">token :: Token
-</span><a href="#local-6989586621680313161"><span class="hs-identifier hs-var">token</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; Either Error Token
+</span><a href="#local-6989586621680312886"><span class="hs-identifier hs-var">errMsg</span></a></span><span>
+</span><span id="line-51"></span><span>        </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680312884"><span class="annot"><span class="annottext">token :: Token
+</span><a href="#local-6989586621680312884"><span class="hs-identifier hs-var">token</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; Either Error Token
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">Token
-</span><a href="#local-6989586621680313161"><span class="hs-identifier hs-var">token</span></a></span><span>
+</span><a href="#local-6989586621680312884"><span class="hs-identifier hs-var">token</span></a></span><span>
 </span><span id="line-52"></span><span>   </span><span>
 </span><span id="line-53"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-54"></span><span>    </span><span id="local-6989586621680313168"><span class="annot"><span class="annottext">headers :: [(HeaderName, ByteString)]
-</span><a href="#local-6989586621680313168"><span class="hs-identifier hs-var hs-var">headers</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Request -&gt; [(HeaderName, ByteString)]
+</span><span id="line-54"></span><span>    </span><span id="local-6989586621680312891"><span class="annot"><span class="annottext">headers :: [(HeaderName, ByteString)]
+</span><a href="#local-6989586621680312891"><span class="hs-identifier hs-var hs-var">headers</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Request -&gt; [(HeaderName, ByteString)]
 </span><span class="hs-identifier hs-var hs-var">requestHeaders</span></span><span> </span><span class="annot"><span class="annottext">Request
-</span><a href="#local-6989586621680313170"><span class="hs-identifier hs-var">req</span></a></span><span>
+</span><a href="#local-6989586621680312893"><span class="hs-identifier hs-var">req</span></a></span><span>
 </span><span id="line-55"></span></pre></body></html>

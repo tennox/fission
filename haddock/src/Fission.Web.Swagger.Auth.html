@@ -8,18 +8,18 @@
 </span><a href="Fission.Web.Swagger.Auth.html#fissionSecurity"><span class="hs-identifier hs-var hs-var">fissionSecurity</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SecuritySchemeType -&gt; Maybe Text -&gt; SecurityScheme
 </span><span class="hs-identifier hs-var">SecurityScheme</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ApiKeyParams -&gt; SecuritySchemeType
 </span><span class="hs-identifier hs-var">SecuritySchemeApiKey</span></span><span> </span><span class="annot"><span class="annottext">ApiKeyParams
-</span><a href="#local-6989586621680315578"><span class="hs-identifier hs-var">keyParams</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe Text
-</span><a href="#local-6989586621680315577"><span class="hs-identifier hs-var">describe</span></a></span><span>
+</span><a href="#local-6989586621680315301"><span class="hs-identifier hs-var">keyParams</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe Text
+</span><a href="#local-6989586621680315300"><span class="hs-identifier hs-var">describe</span></a></span><span>
 </span><span id="line-8"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-9"></span><span>    </span><span class="annot"><a href="#local-6989586621680315578"><span class="hs-identifier hs-type">keyParams</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ApiKeyParams</span></span><span>
-</span><span id="line-10"></span><span>    </span><span id="local-6989586621680315578"><span class="annot"><span class="annottext">keyParams :: ApiKeyParams
-</span><a href="#local-6989586621680315578"><span class="hs-identifier hs-var hs-var">keyParams</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ApiKeyLocation -&gt; ApiKeyParams
+</span><span id="line-9"></span><span>    </span><span class="annot"><a href="#local-6989586621680315301"><span class="hs-identifier hs-type">keyParams</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ApiKeyParams</span></span><span>
+</span><span id="line-10"></span><span>    </span><span id="local-6989586621680315301"><span class="annot"><span class="annottext">keyParams :: ApiKeyParams
+</span><a href="#local-6989586621680315301"><span class="hs-identifier hs-var hs-var">keyParams</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; ApiKeyLocation -&gt; ApiKeyParams
 </span><span class="hs-identifier hs-var">ApiKeyParams</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Authorization&quot;</span></span><span> </span><span class="annot"><span class="annottext">ApiKeyLocation
 </span><span class="hs-identifier hs-var">ApiKeyHeader</span></span><span>
 </span><span id="line-11"></span><span>
-</span><span id="line-12"></span><span>    </span><span class="annot"><a href="#local-6989586621680315577"><span class="hs-identifier hs-type">describe</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-13"></span><span>    </span><span id="local-6989586621680315577"><span class="annot"><span class="annottext">describe :: Maybe Text
-</span><a href="#local-6989586621680315577"><span class="hs-identifier hs-var hs-var">describe</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
+</span><span id="line-12"></span><span>    </span><span class="annot"><a href="#local-6989586621680315300"><span class="hs-identifier hs-type">describe</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
+</span><span id="line-13"></span><span>    </span><span id="local-6989586621680315300"><span class="annot"><span class="annottext">describe :: Maybe Text
+</span><a href="#local-6989586621680315300"><span class="hs-identifier hs-var hs-var">describe</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="hs-string">&quot;A higher-order auth type that accepts both Basic Auth and Fission-formatted JWTs as described here: https://whitepaper.fission.codes/identity/authentication&quot;</span></span><span>
 </span><span id="line-14"></span></pre></body></html>
