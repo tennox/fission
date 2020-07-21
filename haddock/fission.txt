@@ -3,7 +3,7 @@
 
 
 @package fission
-@version 2.6.2
+@version 2.6.3
 
 module Fission.Internal.Fixture.Entity
 entity :: ToBackendKey SqlBackend model => model -> Entity model
@@ -5164,6 +5164,10 @@ instance Test.QuickCheck.Arbitrary.Arbitrary Crypto.PubKey.Ed25519.SecretKey
 module Fission.Internal.Orphanage.ClientM
 instance Control.Monad.Time.MonadTime Servant.Client.Internal.HttpClient.ClientM
 
+module Fission.Internal.Orphanage.Bytes
+instance Database.Persist.Class.PersistField.PersistField Network.IPFS.Bytes.Types.Bytes
+instance Database.Persist.Sql.Class.PersistFieldSql Network.IPFS.Bytes.Types.Bytes
+
 module Fission.Internal.Orphanage.ByteString.Lazy
 instance Servant.API.ContentTypes.MimeRender Servant.API.ContentTypes.PlainText Data.ByteString.Lazy.Internal.ByteString
 instance Data.Aeson.Types.FromJSON.FromJSON Data.ByteString.Internal.ByteString
@@ -6631,7 +6635,7 @@ HerokuAddOn :: !UUID -> !Maybe Region -> !UTCTime -> !UTCTime -> HerokuAddOn
 [$sel:herokuAddOnModifiedAt:HerokuAddOn] :: HerokuAddOn -> !UTCTime
 type HerokuAddOnId = Key HerokuAddOn
 data User
-User :: !Maybe Public -> !Maybe Email -> !Username -> !Role -> !Bool -> !Bool -> !CID -> !Maybe (Key HerokuAddOn) -> !Maybe SecretDigest -> !UTCTime -> !UTCTime -> User
+User :: !Maybe Public -> !Maybe Email -> !Username -> !Role -> !Bool -> !Bool -> !CID -> !Bytes -> !Maybe (Key HerokuAddOn) -> !Maybe SecretDigest -> !UTCTime -> !UTCTime -> User
 [$sel:userPublicKey:User] :: User -> !Maybe Public
 [$sel:userEmail:User] :: User -> !Maybe Email
 [$sel:userUsername:User] :: User -> !Username
@@ -6639,6 +6643,7 @@ User :: !Maybe Public -> !Maybe Email -> !Username -> !Role -> !Bool -> !Bool ->
 [$sel:userActive:User] :: User -> !Bool
 [$sel:userVerified:User] :: User -> !Bool
 [$sel:userDataRoot:User] :: User -> !CID
+[$sel:userDataRootSize:User] :: User -> !Bytes
 [$sel:userHerokuAddOnId:User] :: User -> !Maybe (Key HerokuAddOn)
 [$sel:userSecretDigest:User] :: User -> !Maybe SecretDigest
 [$sel:userInsertedAt:User] :: User -> !UTCTime
@@ -6650,9 +6655,10 @@ UserChallenge :: !Key User -> !Challenge -> UserChallenge
 [$sel:userChallengeHash:UserChallenge] :: UserChallenge -> !Challenge
 type UserChallengeId = Key UserChallenge
 data UpdateUserDataRootEvent
-UpdateUserDataRootEvent :: !Key User -> !CID -> !UTCTime -> UpdateUserDataRootEvent
+UpdateUserDataRootEvent :: !Key User -> !CID -> !Bytes -> !UTCTime -> UpdateUserDataRootEvent
 [$sel:updateUserDataRootEventUserId:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !Key User
 [$sel:updateUserDataRootEventNewDataRoot:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !CID
+[$sel:updateUserDataRootEventNewDataRootSize:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !Bytes
 [$sel:updateUserDataRootEventInsertedAt:UpdateUserDataRootEvent] :: UpdateUserDataRootEvent -> !UTCTime
 type UpdateUserDataRootEventId = Key UpdateUserDataRootEvent
 data LoosePin
@@ -6670,16 +6676,19 @@ Domain :: !DomainName -> !Key User -> !ZoneID -> !UTCTime -> !UTCTime -> Domain
 [$sel:domainModifiedAt:Domain] :: Domain -> !UTCTime
 type DomainId = Key Domain
 data App
-App :: !Key User -> !CID -> !UTCTime -> !UTCTime -> App
+App :: !Key User -> !CID -> !Bytes -> !UTCTime -> !UTCTime -> App
 [$sel:appOwnerId:App] :: App -> !Key User
 [$sel:appCid:App] :: App -> !CID
+[$sel:appSize:App] :: App -> !Bytes
 [$sel:appInsertedAt:App] :: App -> !UTCTime
 [$sel:appModifiedAt:App] :: App -> !UTCTime
 type AppId = Key App
 data CreateAppEvent
-CreateAppEvent :: !Key User -> !CID -> !UTCTime -> CreateAppEvent
+CreateAppEvent :: !Key App -> !Key User -> !CID -> !Bytes -> !UTCTime -> CreateAppEvent
+[$sel:createAppEventAppId:CreateAppEvent] :: CreateAppEvent -> !Key App
 [$sel:createAppEventOwnerId:CreateAppEvent] :: CreateAppEvent -> !Key User
 [$sel:createAppEventCid:CreateAppEvent] :: CreateAppEvent -> !CID
+[$sel:createAppEventSize:CreateAppEvent] :: CreateAppEvent -> !Bytes
 [$sel:createAppEventInsertedAt:CreateAppEvent] :: CreateAppEvent -> !UTCTime
 type CreateAppEventId = Key CreateAppEvent
 data DestroyAppEvent
@@ -6688,9 +6697,10 @@ DestroyAppEvent :: !Key App -> !UTCTime -> DestroyAppEvent
 [$sel:destroyAppEventInsertedAt:DestroyAppEvent] :: DestroyAppEvent -> !UTCTime
 type DestroyAppEventId = Key DestroyAppEvent
 data SetAppCIDEvent
-SetAppCIDEvent :: !Key App -> !CID -> !UTCTime -> SetAppCIDEvent
+SetAppCIDEvent :: !Key App -> !CID -> !Bytes -> !UTCTime -> SetAppCIDEvent
 [$sel:setAppCIDEventAppId:SetAppCIDEvent] :: SetAppCIDEvent -> !Key App
 [$sel:setAppCIDEventNewCID:SetAppCIDEvent] :: SetAppCIDEvent -> !CID
+[$sel:setAppCIDEventNewCIDSize:SetAppCIDEvent] :: SetAppCIDEvent -> !Bytes
 [$sel:setAppCIDEventInsertedAt:SetAppCIDEvent] :: SetAppCIDEvent -> !UTCTime
 type SetAppCIDEventId = Key SetAppCIDEvent
 data AppDomain
@@ -7482,10 +7492,12 @@ class Monad m => Modifier m
 updatePassword :: Modifier m => UserId -> Password -> UTCTime -> m (Either FailedDigest Password)
 updatePublicKey :: Modifier m => UserId -> Public -> UTCTime -> m (Either Errors Public)
 setData :: Modifier m => UserId -> CID -> UTCTime -> m (Either Errors ())
-type Errors = OpenUnion '[NotFound User, NotFound URL, ActionNotAuthorized URL, ServerError, InvalidURL]
-instance Control.Monad.IO.Class.MonadIO m => Fission.User.Modifier.Class.Modifier (Fission.Internal.MonadDB.Types.Transaction m)
+type Errors = OpenUnion '[NotFound User, NotFound URL, ActionNotAuthorized URL, Error, Error, ServerError, InvalidURL]
 
 module Fission.User.Modifier
+updatePasswordDB :: MonadIO m => UserId -> SecretDigest -> UTCTime -> Transaction m ()
+updatePublicKeyDB :: MonadIO m => UserId -> Public -> UTCTime -> Transaction m ()
+setDataDB :: MonadIO m => UserId -> CID -> Bytes -> UTCTime -> Transaction m ()
 
 module Fission.Web.DNS
 type API = Summary "Set account's DNSLink" :> Description "DEPRECATED \9940 Set account's DNSLink to a CID" :> Capture "cid" CID :> PutAccepted '[PlainText, OctetStream] DomainName
@@ -7526,10 +7538,10 @@ module Fission.App.Retriever
 module Fission.App.Modifier.Class
 class Monad m => Modifier m
 setCID :: Modifier m => UserId -> URL -> CID -> Bool -> UTCTime -> m (Either Errors AppId)
-type Errors = OpenUnion '[NotFound App, NotFound AppDomain, NotFound Domain, NotFound URL, ActionNotAuthorized App, ActionNotAuthorized AppDomain, ActionNotAuthorized URL, Error, ServerError, InvalidURL]
-instance Control.Monad.IO.Class.MonadIO m => Fission.App.Modifier.Class.Modifier (Fission.Internal.MonadDB.Types.Transaction m)
+type Errors = OpenUnion '[NotFound App, NotFound AppDomain, NotFound Domain, NotFound URL, ActionNotAuthorized App, ActionNotAuthorized AppDomain, ActionNotAuthorized URL, Error, Error, ServerError, InvalidURL]
 
 module Fission.App.Modifier
+setCidDB :: MonadIO m => UserId -> URL -> CID -> Bytes -> Bool -> UTCTime -> Transaction m (Either Errors AppId)
 
 module Fission.App.Domain.Retriever.Class
 class Monad m => Retriever m
@@ -7607,19 +7619,6 @@ allSiblingsByDomain :: Retriever m => DomainName -> Maybe Subdomain -> m (Either
 primarySibling :: Retriever m => UserId -> URL -> m (Either Errors (Entity AppDomain))
 type Actions m = (Initializer m, Associator m, Dissociator m, Retriever m)
 
-module Fission.App.Creator.Class
-class Monad m => Creator m
-create :: Creator m => UserId -> CID -> UTCTime -> m (Either Errors (AppId, Subdomain))
-type Errors = OpenUnion '[ServerError, AlreadyAssociated, ActionNotAuthorized App, NotFound App, ActionNotAuthorized URL, NotFound URL, InvalidURL]
-instance (Control.Monad.IO.Class.MonadIO m, Fission.App.Domain.Initializer.Class.Initializer m) => Fission.App.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
-
-module Fission.App.Creator
-createWithPlaceholder :: (Creator m, Initializer m) => UserId -> UTCTime -> m (Either Errors (AppId, Subdomain))
-
-module Fission.Web.App.Create
-type API = Summary "Create app" :> Description "Creates a new app, assigns an initial subdomain, and sets an asset placeholder" :> PostAccepted '[JSON] URL
-create :: (Initializer m, Initializer m, Creator m, MonadTime m, MonadLogger m, MonadDNSLink m) => Authorization -> ServerT API m
-
 module Fission.User.Creator.Class
 class Creator m => Creator m
 
@@ -7629,10 +7628,12 @@ createWithPassword :: Creator m => Username -> Password -> Email -> UTCTime -> m
 
 -- | Create a new, timestamped entry and heroku add-on
 createWithHeroku :: Creator m => UUID -> Region -> Username -> Password -> UTCTime -> m (Either Errors UserId)
-type Errors = OpenUnion '[ActionNotAuthorized App, NotFound App, ActionNotAuthorized URL, NotFound URL, AlreadyExists HerokuAddOn, AlreadyAssociated, AlreadyExists, NotFound User, Invalid, FailedDigest, InvalidURL, ServerError]
-instance (Control.Monad.IO.Class.MonadIO m, Fission.App.Domain.Initializer.Class.Initializer m, Fission.App.Content.Initializer.Class.Initializer m) => Fission.User.Creator.Class.Creator (Fission.Internal.MonadDB.Types.Transaction m)
+type Errors = OpenUnion '[ActionNotAuthorized App, NotFound App, ActionNotAuthorized URL, NotFound URL, AlreadyExists HerokuAddOn, AlreadyAssociated, AlreadyExists, NotFound User, Invalid, FailedDigest, Error, Error, InvalidURL, ServerError]
 
 module Fission.User.Creator
+createDB :: MonadIO m => Username -> Public -> Email -> UTCTime -> Transaction m (Either Errors UserId)
+createWithPasswordDB :: MonadIO m => Username -> Password -> Email -> UTCTime -> Transaction m (Either Errors UserId)
+createWithHerokuDB :: MonadIO m => UUID -> Region -> Username -> Password -> UTCTime -> Transaction m (Either Errors UserId)
 
 module Fission.User
 data AlreadyExists
@@ -7646,10 +7647,16 @@ createWithPassword :: Creator m => Username -> Password -> Email -> UTCTime -> m
 
 -- | Create a new, timestamped entry and heroku add-on
 createWithHeroku :: Creator m => UUID -> Region -> Username -> Password -> UTCTime -> m (Either Errors UserId)
+createDB :: MonadIO m => Username -> Public -> Email -> UTCTime -> Transaction m (Either Errors UserId)
+createWithPasswordDB :: MonadIO m => Username -> Password -> Email -> UTCTime -> Transaction m (Either Errors UserId)
+createWithHerokuDB :: MonadIO m => UUID -> Region -> Username -> Password -> UTCTime -> Transaction m (Either Errors UserId)
 class Monad m => Modifier m
 updatePassword :: Modifier m => UserId -> Password -> UTCTime -> m (Either FailedDigest Password)
 updatePublicKey :: Modifier m => UserId -> Public -> UTCTime -> m (Either Errors Public)
 setData :: Modifier m => UserId -> CID -> UTCTime -> m (Either Errors ())
+updatePasswordDB :: MonadIO m => UserId -> SecretDigest -> UTCTime -> Transaction m ()
+updatePublicKeyDB :: MonadIO m => UserId -> Public -> UTCTime -> Transaction m ()
+setDataDB :: MonadIO m => UserId -> CID -> Bytes -> UTCTime -> Transaction m ()
 type CRUD m = (Retriever m, Creator m, Modifier m, Destroyer m)
 
 module Fission.Web.Auth.Token.JWT.Validation
@@ -7788,15 +7795,27 @@ instance RIO.Prelude.Logger.HasLogFunc Fission.CLI.Config.Base.Types.BaseConfig
 module Fission.CLI.Config.Base
 runBase :: MonadIO m => BaseConfig -> FissionBase a -> m a
 
-module Fission.App
-class Monad m => Retriever m
-byId :: Retriever m => UserId -> AppId -> m (Either Errors (Entity App))
-byURL :: Retriever m => UserId -> URL -> m (Either Errors (Entity App))
-ownedBy :: Retriever m => UserId -> m [Entity App]
+module Fission.App.Creator.Class
 class Monad m => Creator m
 create :: Creator m => UserId -> CID -> UTCTime -> m (Either Errors (AppId, Subdomain))
+type Errors = OpenUnion '[ServerError, AlreadyAssociated, ActionNotAuthorized App, NotFound App, ActionNotAuthorized URL, NotFound URL, Error, InvalidURL]
+
+module Fission.App.Creator
+createWithPlaceholder :: (Creator m, Initializer m) => UserId -> UTCTime -> m (Either Errors (AppId, Subdomain))
+createDB :: MonadIO m => UserId -> CID -> Bytes -> UTCTime -> Transaction m AppId
+
+module Fission.Web.App.Create
+type API = Summary "Create app" :> Description "Creates a new app, assigns an initial subdomain, and sets an asset placeholder" :> PostAccepted '[JSON] URL
+create :: (Initializer m, Initializer m, Creator m, MonadTime m, MonadLogger m, MonadDNSLink m) => Authorization -> ServerT API m
+
+module Fission.App
+class Monad m => Creator m
+create :: Creator m => UserId -> CID -> UTCTime -> m (Either Errors (AppId, Subdomain))
+createWithPlaceholder :: (Creator m, Initializer m) => UserId -> UTCTime -> m (Either Errors (AppId, Subdomain))
+createDB :: MonadIO m => UserId -> CID -> Bytes -> UTCTime -> Transaction m AppId
 class Monad m => Modifier m
 setCID :: Modifier m => UserId -> URL -> CID -> Bool -> UTCTime -> m (Either Errors AppId)
+setCidDB :: MonadIO m => UserId -> URL -> CID -> Bytes -> Bool -> UTCTime -> Transaction m (Either Errors AppId)
 class Monad m => Destroyer m
 destroy :: Destroyer m => UserId -> AppId -> UTCTime -> m (Either Errors [URL])
 destroyByURL :: Destroyer m => UserId -> DomainName -> Maybe Subdomain -> UTCTime -> m (Either Errors [URL])
@@ -7812,7 +7831,7 @@ index :: (MonadDB t m, Retriever t, Retriever t) => Authorization -> ServerT API
 
 module Fission.Web.App
 type API = API :<|> API :<|> API :<|> API
-server :: (Initializer m, CRUD m, Initializer m, MonadTime m, MonadLogger m, MonadDNSLink m, MonadDB t m, CRUD t, Retriever t) => Authorization -> ServerT API m
+server :: (Initializer m, CRUD m, Initializer m, MonadTime m, MonadLogger m, MonadDNSLink m, MonadDB t m, Retriever t, Retriever t) => Authorization -> ServerT API m
 
 module Fission.Web.Handler
 
@@ -8261,11 +8280,11 @@ module Fission.Web
 
 -- | Top level web API type. Handled by <a>server</a>.
 type API = API :<|> API
-app :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadEmail m, CRUD m, Creator m, Verifier m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, CRUD t, CRUD t, Retriever t) => (forall a. m a -> Handler a) -> Context Checks -> Host -> Application
+app :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadEmail m, CRUD m, Creator m, Verifier m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t, Destroyer t, Retriever t, Retriever t) => (forall a. m a -> Handler a) -> Context Checks -> Host -> Application
 
 -- | Web handlers for the <a>API</a>
-server :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadEmail m, CRUD m, Creator m, Verifier m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t, Destroyer t, CRUD t, Retriever t) => Host -> ServerT API m
-bizServer :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadEmail m, CRUD m, Creator m, Verifier m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t, Destroyer t, CRUD t, Retriever t) => ServerT API m
+server :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadEmail m, CRUD m, Creator m, Verifier m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t, Destroyer t, Retriever t, Retriever t) => Host -> ServerT API m
+bizServer :: (Initializer m, Initializer m, CRUD m, MonadReflectiveServer m, MonadLinkedIPFS m, MonadRemoteIPFS m, MonadLocalIPFS m, MonadDNSLink m, MonadLogger m, MonadTime m, MonadEmail m, CRUD m, Creator m, Verifier m, MonadDB t m, MonadLogger t, MonadThrow t, CRUD t, CRUD t, Retriever t, Destroyer t, Retriever t, Retriever t) => ServerT API m
 
 module Fission.Types
 

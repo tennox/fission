@@ -1,5 +1,159 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Fission.User.Modifier</span><span>
-</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span class="hs-keyword">module</span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html"><span class="hs-identifier">Fission.User.Modifier.Class</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-3"></span><span>
-</span><span id="line-4"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html"><span class="hs-identifier">Fission.User.Modifier.Class</span></a></span><span>
-</span><span id="line-5"></span></pre></body></html>
+</span><span id="line-2"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.User.Modifier.html#updatePasswordDB"><span class="hs-identifier">updatePasswordDB</span></a></span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Modifier.html#updatePublicKeyDB"><span class="hs-identifier">updatePublicKeyDB</span></a></span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Modifier.html#setDataDB"><span class="hs-identifier">setDataDB</span></a></span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="hs-keyword">module</span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html"><span class="hs-identifier">Fission.User.Modifier.Class</span></a></span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Modifier.Class.html"><span class="hs-identifier">Fission.User.Modifier.Class</span></a></span><span>
+</span><span id="line-9"></span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span>           </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Security.Types.html"><span class="hs-identifier">Fission.Security.Types</span></a></span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Persist</span></span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.CID.Types</span></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.Bytes.Types</span></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span>
+</span><span id="line-22"></span><span id="local-6989586621680311198"><span class="annot"><a href="Fission.User.Modifier.html#updatePasswordDB"><span class="hs-identifier hs-type">updatePasswordDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-23"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311198"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-24"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-25"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Security.Types.html#SecretDigest"><span class="hs-identifier hs-type">SecretDigest</span></a></span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-27"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311198"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-28"></span><span id="updatePasswordDB"><span class="annot"><span class="annottext">updatePasswordDB :: UserId -&gt; SecretDigest -&gt; UTCTime -&gt; Transaction m ()
+</span><a href="Fission.User.Modifier.html#updatePasswordDB"><span class="hs-identifier hs-var hs-var">updatePasswordDB</span></a></span></span><span> </span><span id="local-6989586621680311197"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680311197"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680311196"><span class="annot"><span class="annottext">secretDigest :: SecretDigest
+</span><a href="#local-6989586621680311196"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span id="local-6989586621680311195"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680311195"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-29"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; Transaction m ()
+forall backend (m :: * -&gt; *) record.
+(PersistStoreWrite backend, MonadIO m,
+ PersistRecordBackend record backend) =&gt;
+Key record -&gt; [Update record] -&gt; ReaderT backend m ()
+</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680311197"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><span id="line-30"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe SecretDigest)
+forall typ. (typ ~ Maybe SecretDigest) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserSecretDigest"><span class="hs-identifier hs-var">UserSecretDigest</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe SecretDigest)
+-&gt; Maybe SecretDigest -&gt; Update User
+forall v typ.
+PersistField typ =&gt;
+EntityField v typ -&gt; typ -&gt; Update v
+</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">SecretDigest -&gt; Maybe SecretDigest
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">SecretDigest
+</span><a href="#local-6989586621680311196"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
+</span><span id="line-31"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
+forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
+forall v typ.
+PersistField typ =&gt;
+EntityField v typ -&gt; typ -&gt; Update v
+</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680311195"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-32"></span><span>    </span><span class="hs-special">]</span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span id="local-6989586621680311190"><span class="annot"><a href="Fission.User.Modifier.html#updatePublicKeyDB"><span class="hs-identifier hs-type">updatePublicKeyDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-35"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311190"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-36"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-37"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
+</span><span id="line-38"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-39"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311190"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-40"></span><span id="updatePublicKeyDB"><span class="annot"><span class="annottext">updatePublicKeyDB :: UserId -&gt; Public -&gt; UTCTime -&gt; Transaction m ()
+</span><a href="Fission.User.Modifier.html#updatePublicKeyDB"><span class="hs-identifier hs-var hs-var">updatePublicKeyDB</span></a></span></span><span> </span><span id="local-6989586621680311189"><span class="annot"><span class="annottext">userID :: UserId
+</span><a href="#local-6989586621680311189"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680311188"><span class="annot"><span class="annottext">pk :: Public
+</span><a href="#local-6989586621680311188"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span id="local-6989586621680311187"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680311187"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-41"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; Transaction m ()
+forall backend (m :: * -&gt; *) record.
+(PersistStoreWrite backend, MonadIO m,
+ PersistRecordBackend record backend) =&gt;
+Key record -&gt; [Update record] -&gt; ReaderT backend m ()
+</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680311189"><span class="hs-identifier hs-var">userID</span></a></span><span>
+</span><span id="line-42"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe Public)
+forall typ. (typ ~ Maybe Public) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserPublicKey"><span class="hs-identifier hs-var">UserPublicKey</span></a></span><span>  </span><span class="annot"><span class="annottext">EntityField User (Maybe Public) -&gt; Maybe Public -&gt; Update User
+forall v typ.
+PersistField typ =&gt;
+EntityField v typ -&gt; typ -&gt; Update v
+</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Public
+</span><a href="#local-6989586621680311188"><span class="hs-identifier hs-var">pk</span></a></span><span>
+</span><span id="line-43"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
+forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
+forall v typ.
+PersistField typ =&gt;
+EntityField v typ -&gt; typ -&gt; Update v
+</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680311187"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-44"></span><span>    </span><span class="hs-special">]</span><span>
+</span><span id="line-45"></span><span>  </span><span>
+</span><span id="line-46"></span><span id="local-6989586621680311185"><span class="annot"><a href="Fission.User.Modifier.html#setDataDB"><span class="hs-identifier hs-type">setDataDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-47"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311185"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-48"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-49"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
+</span><span id="line-50"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bytes</span></span><span>
+</span><span id="line-51"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-52"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311185"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-53"></span><span id="setDataDB"><span class="annot"><span class="annottext">setDataDB :: UserId -&gt; CID -&gt; Bytes -&gt; UTCTime -&gt; Transaction m ()
+</span><a href="Fission.User.Modifier.html#setDataDB"><span class="hs-identifier hs-var hs-var">setDataDB</span></a></span></span><span> </span><span id="local-6989586621680311184"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680311184"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680311183"><span class="annot"><span class="annottext">newCID :: CID
+</span><a href="#local-6989586621680311183"><span class="hs-identifier hs-var">newCID</span></a></span></span><span> </span><span id="local-6989586621680311182"><span class="annot"><span class="annottext">size :: Bytes
+</span><a href="#local-6989586621680311182"><span class="hs-identifier hs-var">size</span></a></span></span><span> </span><span id="local-6989586621680311181"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680311181"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-54"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; Transaction m ()
+forall backend (m :: * -&gt; *) record.
+(PersistStoreWrite backend, MonadIO m,
+ PersistRecordBackend record backend) =&gt;
+Key record -&gt; [Update record] -&gt; ReaderT backend m ()
+</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680311184"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><span id="line-55"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User CID
+forall typ. (typ ~ CID) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserDataRoot"><span class="hs-identifier hs-var">UserDataRoot</span></a></span><span>     </span><span class="annot"><span class="annottext">EntityField User CID -&gt; CID -&gt; Update User
+forall v typ.
+PersistField typ =&gt;
+EntityField v typ -&gt; typ -&gt; Update v
+</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680311183"><span class="hs-identifier hs-var">newCID</span></a></span><span>
+</span><span id="line-56"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User Bytes
+forall typ. (typ ~ Bytes) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserDataRootSize"><span class="hs-identifier hs-var">UserDataRootSize</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User Bytes -&gt; Bytes -&gt; Update User
+forall v typ.
+PersistField typ =&gt;
+EntityField v typ -&gt; typ -&gt; Update v
+</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">Bytes
+</span><a href="#local-6989586621680311182"><span class="hs-identifier hs-var">size</span></a></span><span>
+</span><span id="line-57"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
+forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
+</span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
+forall v typ.
+PersistField typ =&gt;
+EntityField v typ -&gt; typ -&gt; Update v
+</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680311181"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-58"></span><span>    </span><span class="hs-special">]</span><span>
+</span><span id="line-59"></span><span>
+</span><span id="line-60"></span><span>  </span><span class="annot"><span class="annottext">UpdateUserDataRootEvent -&gt; Transaction m ()
+forall backend (m :: * -&gt; *) record.
+(PersistStoreWrite backend, MonadIO m,
+ PersistRecordBackend record backend) =&gt;
+record -&gt; ReaderT backend m ()
+</span><span class="hs-identifier hs-var">insert_</span></span><span> </span><span class="annot"><span class="annottext">(UpdateUserDataRootEvent -&gt; Transaction m ())
+-&gt; UpdateUserDataRootEvent -&gt; Transaction m ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; CID -&gt; Bytes -&gt; UTCTime -&gt; UpdateUserDataRootEvent
+</span><a href="Fission.Models.html#UpdateUserDataRootEvent"><span class="hs-identifier hs-var">UpdateUserDataRootEvent</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
+</span><a href="#local-6989586621680311184"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680311183"><span class="hs-identifier hs-var">newCID</span></a></span><span> </span><span class="annot"><span class="annottext">Bytes
+</span><a href="#local-6989586621680311182"><span class="hs-identifier hs-var">size</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680311181"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-61"></span></pre></body></html>

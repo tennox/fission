@@ -3,197 +3,50 @@
 </span><span id="line-3"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier">Errors</span></a></span><span>
 </span><span id="line-4"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-5"></span><span>
-</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Database.Persist</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Persist</span></span><span>
-</span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.CID.Types</span></span><span>
-</span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.Server</span></span><span>
-</span><span id="line-9"></span><span>
-</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Error.html"><span class="hs-identifier">Fission.Error</span></a></span><span>
-</span><span id="line-11"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
-</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
-</span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span>           </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
-</span><span id="line-15"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.URL.html"><span class="hs-identifier">Fission.URL</span></a></span><span>
-</span><span id="line-16"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Password.html"><span class="hs-identifier">Fission.User.Password</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Password</span></span><span>
-</span><span id="line-17"></span><span>
-</span><span id="line-18"></span><span class="hs-keyword">type</span><span> </span><span id="Errors"><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-var">Errors</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span>
-</span><span id="line-19"></span><span>  </span><span class="hs-special">'</span><span class="hs-special">[</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
-</span><span id="line-20"></span><span>  </span><span>
-</span><span id="line-21"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span>            </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
-</span><span id="line-22"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
-</span><span id="line-23"></span><span>
-</span><span id="line-24"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerError</span></span><span>
-</span><span id="line-25"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-type">InvalidURL</span></a></span><span>
-</span><span id="line-26"></span><span>   </span><span class="hs-special">]</span><span>
-</span><span id="line-27"></span><span>
-</span><span id="line-28"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680295036"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Modifier"><span class="annot"><a href="Fission.User.Modifier.Class.html#Modifier"><span class="hs-identifier hs-var">Modifier</span></a></span></span><span> </span><span id="local-6989586621680295036"><span class="annot"><a href="#local-6989586621680295036"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-29"></span><span>  </span><span id="updatePassword"><span class="annot"><a href="Fission.User.Modifier.Class.html#updatePassword"><span class="hs-identifier hs-type">updatePassword</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-30"></span><span>       </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
-</span><span id="line-31"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span>
-</span><span id="line-32"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-33"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295036"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Password.Error.html#FailedDigest"><span class="hs-identifier hs-type">Password.FailedDigest</span></a></span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span>  </span><span id="updatePublicKey"><span class="annot"><a href="Fission.User.Modifier.Class.html#updatePublicKey"><span class="hs-identifier hs-type">updatePublicKey</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-6"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Servant.Server</span></span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Add.Error</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS.Pin</span></span><span> </span><span class="hs-comment">-- Pin uses Add errors</span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Network.IPFS.Get.Error</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">IPFS.Stat</span></span><span> </span><span class="hs-comment">-- Stat uses Get errors</span><span>
+</span><span id="line-10"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.IPFS.CID.Types</span></span><span>
+</span><span id="line-11"></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Error.html"><span class="hs-identifier">Fission.Error</span></a></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Models.html"><span class="hs-identifier">Fission.Models</span></a></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Key.html"><span class="hs-identifier">Fission.Key</span></a></span><span>           </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Key</span></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.URL.html"><span class="hs-identifier">Fission.URL</span></a></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.User.Password.html"><span class="hs-identifier">Fission.User.Password</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Password</span></span><span>
+</span><span id="line-19"></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span class="hs-keyword">type</span><span> </span><span id="Errors"><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-var">Errors</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">OpenUnion</span></span><span>
+</span><span id="line-22"></span><span>  </span><span class="hs-special">'</span><span class="hs-special">[</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
+</span><span id="line-23"></span><span>  </span><span>
+</span><span id="line-24"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-type">NotFound</span></a></span><span>            </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
+</span><span id="line-25"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="Fission.URL.Types.html#URL"><span class="hs-identifier hs-type">URL</span></a></span><span>
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Pin.Error</span></span><span>
+</span><span id="line-28"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IPFS.Stat.Error</span></span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ServerError</span></span><span>
+</span><span id="line-31"></span><span>   </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Fission.URL.Errors.html#InvalidURL"><span class="hs-identifier hs-type">InvalidURL</span></a></span><span>
+</span><span id="line-32"></span><span>   </span><span class="hs-special">]</span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680311160"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Modifier"><span class="annot"><a href="Fission.User.Modifier.Class.html#Modifier"><span class="hs-identifier hs-var">Modifier</span></a></span></span><span> </span><span id="local-6989586621680311160"><span class="annot"><a href="#local-6989586621680311160"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-35"></span><span>  </span><span id="updatePassword"><span class="annot"><a href="Fission.User.Modifier.Class.html#updatePassword"><span class="hs-identifier hs-type">updatePassword</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
 </span><span id="line-36"></span><span>       </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
-</span><span id="line-37"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
+</span><span id="line-37"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span>
 </span><span id="line-38"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-39"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295036"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-40"></span><span>   </span><span>
-</span><span id="line-41"></span><span>  </span><span id="setData"><span class="annot"><a href="Fission.User.Modifier.Class.html#setData"><span class="hs-identifier hs-type">setData</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-39"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680311160"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Password.Error.html#FailedDigest"><span class="hs-identifier hs-type">Password.FailedDigest</span></a></span><span> </span><span class="annot"><a href="Fission.User.Password.Types.html#Password"><span class="hs-identifier hs-type">Password</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-40"></span><span>
+</span><span id="line-41"></span><span>  </span><span id="updatePublicKey"><span class="annot"><a href="Fission.User.Modifier.Class.html#updatePublicKey"><span class="hs-identifier hs-type">updatePublicKey</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
 </span><span id="line-42"></span><span>       </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
-</span><span id="line-43"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
+</span><span id="line-43"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
 </span><span id="line-44"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-45"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295036"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
-</span><span id="line-46"></span><span>
-</span><span id="line-47"></span><span id="local-6989586621680294996"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680294996"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Modifier"><span class="hs-identifier hs-type">Modifier</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680294996"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-48"></span><span>  </span><span id="local-6989586621680294990"><span class="annot"><span class="annottext">updatePassword :: UserId
--&gt; Password
--&gt; UTCTime
--&gt; Transaction m (Either FailedDigest Password)
-</span><a href="#local-6989586621680294990"><span class="hs-identifier hs-var hs-var hs-var hs-var">updatePassword</span></a></span></span><span> </span><span id="local-6989586621680294989"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680294989"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680294988"><span class="annot"><span class="annottext">password :: Password
-</span><a href="#local-6989586621680294988"><span class="hs-identifier hs-var">password</span></a></span></span><span> </span><span id="local-6989586621680294987"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680294987"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-49"></span><span>    </span><span class="annot"><span class="annottext">Password -&gt; ReaderT SqlBackend m (Either FailedDigest Text)
-forall (m :: * -&gt; *).
-MonadIO m =&gt;
-Password -&gt; m (Either FailedDigest Text)
-</span><a href="Fission.User.Password.html#hashPassword"><span class="hs-identifier hs-var">Password.hashPassword</span></a></span><span> </span><span class="annot"><span class="annottext">Password
-</span><a href="#local-6989586621680294988"><span class="hs-identifier hs-var">password</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Either FailedDigest Text)
--&gt; (Either FailedDigest Text
-    -&gt; Transaction m (Either FailedDigest Password))
--&gt; Transaction m (Either FailedDigest Password)
-forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-50"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span id="local-6989586621680294985"><span class="annot"><span class="annottext">err :: FailedDigest
-</span><a href="#local-6989586621680294985"><span class="hs-identifier hs-var">err</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-51"></span><span>        </span><span class="annot"><span class="annottext">Either FailedDigest Password
--&gt; Transaction m (Either FailedDigest Password)
-forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
-</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FailedDigest -&gt; Either FailedDigest Password
-forall a b. a -&gt; Either a b
-</span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">FailedDigest
-</span><a href="#local-6989586621680294985"><span class="hs-identifier hs-var">err</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-52"></span><span>
-</span><span id="line-53"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680294984"><span class="annot"><span class="annottext">secretDigest :: Text
-</span><a href="#local-6989586621680294984"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-54"></span><span>        </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; ReaderT SqlBackend m ()
-forall backend (m :: * -&gt; *) record.
-(PersistStoreWrite backend, MonadIO m,
- PersistRecordBackend record backend) =&gt;
-Key record -&gt; [Update record] -&gt; ReaderT backend m ()
-</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680294989"><span class="hs-identifier hs-var">userId</span></a></span><span>
-</span><span id="line-55"></span><span>          </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe Text)
-forall typ. (typ ~ Maybe Text) =&gt; EntityField User typ
-</span><a href="Fission.Models.html#UserSecretDigest"><span class="hs-identifier hs-var">UserSecretDigest</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe Text) -&gt; Maybe Text -&gt; Update User
-forall v typ.
-PersistField typ =&gt;
-EntityField v typ -&gt; typ -&gt; Update v
-</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Maybe Text
-forall a. a -&gt; Maybe a
-</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680294984"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
-</span><span id="line-56"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
-forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
-</span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
-forall v typ.
-PersistField typ =&gt;
-EntityField v typ -&gt; typ -&gt; Update v
-</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680294987"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-57"></span><span>          </span><span class="hs-special">]</span><span>
-</span><span id="line-58"></span><span>
-</span><span id="line-59"></span><span>        </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Password -&gt; Either FailedDigest Password
-forall a b. b -&gt; Either a b
-</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">Password
-</span><a href="#local-6989586621680294988"><span class="hs-identifier hs-var">password</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-60"></span><span>
-</span><span id="line-61"></span><span>  </span><span id="local-6989586621680294979"><span class="annot"><span class="annottext">updatePublicKey :: UserId -&gt; Public -&gt; UTCTime -&gt; Transaction m (Either Errors Public)
-</span><a href="#local-6989586621680294979"><span class="hs-identifier hs-var hs-var hs-var hs-var">updatePublicKey</span></a></span></span><span> </span><span id="local-6989586621680294978"><span class="annot"><span class="annottext">userID :: UserId
-</span><a href="#local-6989586621680294978"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680294977"><span class="annot"><span class="annottext">pk :: Public
-</span><a href="#local-6989586621680294977"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span id="local-6989586621680294976"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680294976"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-62"></span><span>    </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; ReaderT SqlBackend m ()
-forall backend (m :: * -&gt; *) record.
-(PersistStoreWrite backend, MonadIO m,
- PersistRecordBackend record backend) =&gt;
-Key record -&gt; [Update record] -&gt; ReaderT backend m ()
-</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680294978"><span class="hs-identifier hs-var">userID</span></a></span><span>
-</span><span id="line-63"></span><span>      </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe Public)
-forall typ. (typ ~ Maybe Public) =&gt; EntityField User typ
-</span><a href="Fission.Models.html#UserPublicKey"><span class="hs-identifier hs-var">UserPublicKey</span></a></span><span>  </span><span class="annot"><span class="annottext">EntityField User (Maybe Public) -&gt; Maybe Public -&gt; Update User
-forall v typ.
-PersistField typ =&gt;
-EntityField v typ -&gt; typ -&gt; Update v
-</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
-forall a. a -&gt; Maybe a
-</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680294977"><span class="hs-identifier hs-var">pk</span></a></span><span>
-</span><span id="line-64"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
-forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
-</span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
-forall v typ.
-PersistField typ =&gt;
-EntityField v typ -&gt; typ -&gt; Update v
-</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680294976"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-65"></span><span>      </span><span class="hs-special">]</span><span>
-</span><span id="line-66"></span><span>
-</span><span id="line-67"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">Public -&gt; Either Errors Public
-forall a b. b -&gt; Either a b
-</span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680294977"><span class="hs-identifier hs-var">pk</span></a></span><span>
-</span><span id="line-68"></span><span>
-</span><span id="line-69"></span><span>  </span><span id="local-6989586621680294974"><span class="annot"><span class="annottext">setData :: UserId -&gt; CID -&gt; UTCTime -&gt; Transaction m (Either Errors ())
-</span><a href="#local-6989586621680294974"><span class="hs-identifier hs-var hs-var hs-var hs-var">setData</span></a></span></span><span> </span><span id="local-6989586621680294973"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680294973"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680294972"><span class="annot"><span class="annottext">newCID :: CID
-</span><a href="#local-6989586621680294972"><span class="hs-identifier hs-var">newCID</span></a></span></span><span> </span><span id="local-6989586621680294971"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680294971"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-70"></span><span>    </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; ReaderT SqlBackend m ()
-forall backend (m :: * -&gt; *) record.
-(PersistStoreWrite backend, MonadIO m,
- PersistRecordBackend record backend) =&gt;
-Key record -&gt; [Update record] -&gt; ReaderT backend m ()
-</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680294973"><span class="hs-identifier hs-var">userId</span></a></span><span>
-</span><span id="line-71"></span><span>      </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User CID
-forall typ. (typ ~ CID) =&gt; EntityField User typ
-</span><a href="Fission.Models.html#UserDataRoot"><span class="hs-identifier hs-var">UserDataRoot</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User CID -&gt; CID -&gt; Update User
-forall v typ.
-PersistField typ =&gt;
-EntityField v typ -&gt; typ -&gt; Update v
-</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680294972"><span class="hs-identifier hs-var">newCID</span></a></span><span>
-</span><span id="line-72"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
-forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
-</span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
-forall v typ.
-PersistField typ =&gt;
-EntityField v typ -&gt; typ -&gt; Update v
-</span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680294971"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-73"></span><span>      </span><span class="hs-special">]</span><span>
-</span><span id="line-74"></span><span>
-</span><span id="line-75"></span><span>    </span><span class="annot"><span class="annottext">UpdateUserDataRootEvent -&gt; ReaderT SqlBackend m ()
-forall backend (m :: * -&gt; *) record.
-(PersistStoreWrite backend, MonadIO m,
- PersistRecordBackend record backend) =&gt;
-record -&gt; ReaderT backend m ()
-</span><span class="hs-identifier hs-var">insert_</span></span><span> </span><span class="annot"><span class="annottext">$WUpdateUserDataRootEvent :: UserId -&gt; CID -&gt; UTCTime -&gt; UpdateUserDataRootEvent
-</span><a href="Fission.Models.html#%24WUpdateUserDataRootEvent"><span class="hs-identifier hs-type hs-type">UpdateUserDataRootEvent</span></a></span><span>
-</span><span id="line-76"></span><span>      </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:updateUserDataRootEventUserId:UpdateUserDataRootEvent :: UserId
-</span><a href="#local-6989586621680294966"><span class="hs-identifier hs-var">updateUserDataRootEventUserId</span></a></span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680294973"><span class="hs-identifier hs-var">userId</span></a></span><span>
-</span><span id="line-77"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:updateUserDataRootEventNewDataRoot:UpdateUserDataRootEvent :: CID
-</span><a href="#local-6989586621680294965"><span class="hs-identifier hs-var">updateUserDataRootEventNewDataRoot</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680294972"><span class="hs-identifier hs-var">newCID</span></a></span><span>
-</span><span id="line-78"></span><span>      </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:updateUserDataRootEventInsertedAt:UpdateUserDataRootEvent :: UTCTime
-</span><a href="#local-6989586621680294964"><span class="hs-identifier hs-var">updateUserDataRootEventInsertedAt</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680294971"><span class="hs-identifier hs-var">now</span></a></span><span>
-</span><span id="line-79"></span><span>      </span><span class="hs-special">}</span><span>
-</span><span id="line-80"></span><span>
-</span><span id="line-81"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Either Errors ()
-forall err. Either err ()
-</span><a href="Fission.Prelude.html#ok"><span class="hs-identifier hs-var">ok</span></a></span></span><span>
-</span><span id="line-82"></span></pre></body></html>
+</span><span id="line-45"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680311160"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-46"></span><span>   </span><span>
+</span><span id="line-47"></span><span>  </span><span id="setData"><span class="annot"><a href="Fission.User.Modifier.Class.html#setData"><span class="hs-identifier hs-type">setData</span></a></span></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-48"></span><span>       </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
+</span><span id="line-49"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
+</span><span id="line-50"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-51"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680311160"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-52"></span></pre></body></html>

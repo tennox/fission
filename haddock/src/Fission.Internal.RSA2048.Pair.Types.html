@@ -9,14 +9,14 @@
 </span><a href="Fission.Internal.RSA2048.Pair.Types.html#%24sel%3Apk%3APair"><span class="hs-identifier hs-var hs-var">pk</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PublicKey</span></span><span>
 </span><span id="line-9"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Ask%3APair"><span class="annot"><span class="annottext">Pair -&gt; PrivateKey
 </span><a href="Fission.Internal.RSA2048.Pair.Types.html#%24sel%3Ask%3APair"><span class="hs-identifier hs-var hs-var">sk</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PrivateKey</span></span><span>
-</span><span id="line-10"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680282367"><span id="local-6989586621680282369"><span class="annot"><span class="annottext">Pair -&gt; Pair -&gt; Bool
+</span><span id="line-10"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680298496"><span id="local-6989586621680298498"><span class="annot"><span class="annottext">Pair -&gt; Pair -&gt; Bool
 (Pair -&gt; Pair -&gt; Bool) -&gt; (Pair -&gt; Pair -&gt; Bool) -&gt; Eq Pair
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Pair -&gt; Pair -&gt; Bool
 $c/= :: Pair -&gt; Pair -&gt; Bool
 == :: Pair -&gt; Pair -&gt; Bool
 $c== :: Pair -&gt; Pair -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680282360"><span id="local-6989586621680282362"><span id="local-6989586621680282364"><span class="annot"><span class="annottext">Int -&gt; Pair -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298489"><span id="local-6989586621680298491"><span id="local-6989586621680298493"><span class="annot"><span class="annottext">Int -&gt; Pair -&gt; ShowS
 [Pair] -&gt; ShowS
 Pair -&gt; String
 (Int -&gt; Pair -&gt; ShowS)
@@ -31,8 +31,8 @@ showsPrec :: Int -&gt; Pair -&gt; ShowS
 $cshowsPrec :: Int -&gt; Pair -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-11"></span><span>
-</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680282356"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Internal.RSA2048.Pair.Types.html#Pair"><span class="hs-identifier hs-type">Pair</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-13"></span><span>  </span><span id="local-6989586621680282354"><span class="annot"><span class="annottext">arbitrary :: Gen Pair
+</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680298485"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Internal.RSA2048.Pair.Types.html#Pair"><span class="hs-identifier hs-type">Pair</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680298483"><span class="annot"><span class="annottext">arbitrary :: Gen Pair
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Gen Pair
 forall a. [a] -&gt; Gen a
 </span><span class="hs-identifier hs-var">elements</span></span><span> </span><span class="annot"><span class="annottext">[Pair]
