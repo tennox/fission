@@ -7,7 +7,7 @@
 </span><a href="Fission.Internal.Meta.Package.Types.html#%24sel%3Aname%3APackage"><span class="hs-identifier hs-var hs-var">name</span></a></span></span><span>    </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span class="hs-special">)</span><span>
 </span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Aversion%3APackage"><span class="annot"><span class="annottext">Package -&gt; Maybe Text
 </span><a href="Fission.Internal.Meta.Package.Types.html#%24sel%3Aversion%3APackage"><span class="hs-identifier hs-var hs-var">version</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span class="hs-special">)</span><span>
-</span><span id="line-8"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680298922"><span id="local-6989586621680298924"><span id="local-6989586621680298926"><span class="annot"><span class="annottext">Int -&gt; Package -&gt; ShowS
+</span><span id="line-8"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680299367"><span id="local-6989586621680299369"><span id="local-6989586621680299371"><span class="annot"><span class="annottext">Int -&gt; Package -&gt; ShowS
 [Package] -&gt; ShowS
 Package -&gt; String
 (Int -&gt; Package -&gt; ShowS)
@@ -20,7 +20,7 @@ show :: Package -&gt; String
 $cshow :: Package -&gt; String
 showsPrec :: Int -&gt; Package -&gt; ShowS
 $cshowsPrec :: Int -&gt; Package -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680298917"><span id="local-6989586621680298919"><span class="annot"><span class="annottext">Package -&gt; Package -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680299362"><span id="local-6989586621680299364"><span class="annot"><span class="annottext">Package -&gt; Package -&gt; Bool
 (Package -&gt; Package -&gt; Bool)
 -&gt; (Package -&gt; Package -&gt; Bool) -&gt; Eq Package
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -30,20 +30,20 @@ $c/= :: Package -&gt; Package -&gt; Bool
 $c== :: Package -&gt; Package -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-9"></span><span>
-</span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680298913"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Internal.Meta.Package.Types.html#Package"><span class="hs-identifier hs-type">Package</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-11"></span><span>  </span><span id="local-6989586621680298911"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Package
+</span><span id="line-10"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680299358"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Internal.Meta.Package.Types.html#Package"><span class="hs-identifier hs-type">Package</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span>  </span><span id="local-6989586621680299356"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Package
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser Package) -&gt; Value -&gt; Parser Package
 forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Package&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680298908"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680298908"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-12"></span><span>    </span><span id="local-6989586621680298907"><span class="annot"><span class="annottext">Maybe Text
-</span><a href="#local-6989586621680298907"><span class="hs-identifier hs-var">name</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680298908"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Text)
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Package&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680299353"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680299353"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-12"></span><span>    </span><span id="local-6989586621680299352"><span class="annot"><span class="annottext">Maybe Text
+</span><a href="#local-6989586621680299352"><span class="hs-identifier hs-var">name</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680299353"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Text)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;name&quot;</span></span><span>
-</span><span id="line-13"></span><span>    </span><span id="local-6989586621680298905"><span class="annot"><span class="annottext">Maybe Text
-</span><a href="#local-6989586621680298905"><span class="hs-identifier hs-var">version</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680298908"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Text)
+</span><span id="line-13"></span><span>    </span><span id="local-6989586621680299350"><span class="annot"><span class="annottext">Maybe Text
+</span><a href="#local-6989586621680299350"><span class="hs-identifier hs-var">version</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680299353"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Text)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;version&quot;</span></span><span>
 </span><span id="line-14"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">$WPackage :: Maybe Text -&gt; Maybe Text -&gt; Package

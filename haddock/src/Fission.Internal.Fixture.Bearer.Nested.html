@@ -22,10 +22,10 @@
 </span><span id="line-22"></span><span>
 </span><span id="line-23"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.html"><span class="hs-identifier">Fission.Web.Auth.Token.JWT.Resolver</span></a></span><span>   </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Proof</span></span><span>
 </span><span id="line-24"></span><span>
-</span><span id="line-25"></span><span class="hs-keyword">newtype</span><span> </span><span id="InTimeBounds"><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-var">InTimeBounds</span></a></span></span><span> </span><span id="local-6989586621680305891"><span class="annot"><a href="#local-6989586621680305891"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="InTimeBounds"><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-var">InTimeBounds</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Aunwrap%3AInTimeBounds"><span class="annot"><span class="annottext">InTimeBounds a -&gt; Identity a
-</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#%24sel%3Aunwrap%3AInTimeBounds"><span class="hs-identifier hs-var hs-var">unwrap</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Identity</span></span><span> </span><span class="annot"><a href="#local-6989586621680305891"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-25"></span><span class="hs-keyword">newtype</span><span> </span><span id="InTimeBounds"><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-var">InTimeBounds</span></a></span></span><span> </span><span id="local-6989586621680306336"><span class="annot"><a href="#local-6989586621680306336"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="InTimeBounds"><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-var">InTimeBounds</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3Aunwrap%3AInTimeBounds"><span class="annot"><span class="annottext">InTimeBounds a -&gt; Identity a
+</span><a href="Fission.Internal.Fixture.Bearer.Nested.html#%24sel%3Aunwrap%3AInTimeBounds"><span class="hs-identifier hs-var hs-var">unwrap</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Identity</span></span><span> </span><span class="annot"><a href="#local-6989586621680306336"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">}</span><span>
 </span><span id="line-26"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="annot"><span class="hs-keyword">newtype</span></span><span>
-</span><span id="line-27"></span><span>    </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680305885"><span id="local-6989586621680305887"><span class="annot"><span class="annottext">a -&gt; InTimeBounds b -&gt; InTimeBounds a
+</span><span id="line-27"></span><span>    </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680306330"><span id="local-6989586621680306332"><span class="annot"><span class="annottext">a -&gt; InTimeBounds b -&gt; InTimeBounds a
 (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
 (forall a b. (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b)
 -&gt; (forall a b. a -&gt; InTimeBounds b -&gt; InTimeBounds a)
@@ -40,7 +40,7 @@ $c&lt;$ :: forall a b. a -&gt; InTimeBounds b -&gt; InTimeBounds a
 fmap :: (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
 $cfmap :: forall a b. (a -&gt; b) -&gt; InTimeBounds a -&gt; InTimeBounds b
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Functor</span></span></span></span><span>
-</span><span id="line-28"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680305873"><span id="local-6989586621680305875"><span id="local-6989586621680305877"><span id="local-6989586621680305879"><span id="local-6989586621680305881"><span class="annot"><span class="annottext">Functor InTimeBounds
+</span><span id="line-28"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680306318"><span id="local-6989586621680306320"><span id="local-6989586621680306322"><span id="local-6989586621680306324"><span id="local-6989586621680306326"><span class="annot"><span class="annottext">Functor InTimeBounds
 a -&gt; InTimeBounds a
 Functor InTimeBounds =&gt;
 (forall a. a -&gt; InTimeBounds a)
@@ -85,7 +85,7 @@ pure :: a -&gt; InTimeBounds a
 $cpure :: forall a. a -&gt; InTimeBounds a
 $cp1Applicative :: Functor InTimeBounds
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Applicative</span></span></span></span></span></span></span><span>
-</span><span id="line-29"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680305865"><span id="local-6989586621680305867"><span id="local-6989586621680305869"><span class="annot"><span class="annottext">Applicative InTimeBounds
+</span><span id="line-29"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680306310"><span id="local-6989586621680306312"><span id="local-6989586621680306314"><span class="annot"><span class="annottext">Applicative InTimeBounds
 a -&gt; InTimeBounds a
 Applicative InTimeBounds =&gt;
 (forall a b.
@@ -114,7 +114,7 @@ $c&gt;&gt;= :: forall a b.
 InTimeBounds a -&gt; (a -&gt; InTimeBounds b) -&gt; InTimeBounds b
 $cp1Monad :: Applicative InTimeBounds
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Monad</span></span></span></span></span><span>
-</span><span id="line-30"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680305860"><span id="local-6989586621680305862"><span class="annot"><span class="annottext">InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
+</span><span id="line-30"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680306305"><span id="local-6989586621680306307"><span class="annot"><span class="annottext">InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
 (InTimeBounds a -&gt; InTimeBounds a -&gt; Bool)
 -&gt; (InTimeBounds a -&gt; InTimeBounds a -&gt; Bool)
 -&gt; Eq (InTimeBounds a)
@@ -125,7 +125,7 @@ $c/= :: forall a. Eq a =&gt; InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
 == :: InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
 $c== :: forall a. Eq a =&gt; InTimeBounds a -&gt; InTimeBounds a -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
-</span><span id="line-31"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680305853"><span id="local-6989586621680305855"><span id="local-6989586621680305857"><span class="annot"><span class="annottext">Int -&gt; InTimeBounds a -&gt; ShowS
+</span><span id="line-31"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680306298"><span id="local-6989586621680306300"><span id="local-6989586621680306302"><span class="annot"><span class="annottext">Int -&gt; InTimeBounds a -&gt; ShowS
 [InTimeBounds a] -&gt; ShowS
 InTimeBounds a -&gt; String
 (Int -&gt; InTimeBounds a -&gt; ShowS)
@@ -147,26 +147,26 @@ $cshowsPrec :: forall a. Show a =&gt; Int -&gt; InTimeBounds a -&gt; ShowS
 </span><span id="line-32"></span><span>    </span><span class="hs-special">)</span><span>
 </span><span id="line-33"></span><span>
 </span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#Resolver"><span class="hs-identifier hs-type">Proof.Resolver</span></a></span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-type">InTimeBounds</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-35"></span><span>  </span><span id="local-6989586621680305848"><span class="annot"><span class="annottext">resolve :: CID -&gt; InTimeBounds (Either Error (RawContent, JWT))
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680306293"><span class="annot"><span class="annottext">resolve :: CID -&gt; InTimeBounds (Either Error (RawContent, JWT))
 </span><a href="Fission.Web.Auth.Token.JWT.Resolver.Class.html#resolve"><span class="hs-identifier hs-var hs-var hs-var hs-var">resolve</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; CID -&gt; InTimeBounds (Either Error (RawContent, JWT))
 forall a. HasCallStack =&gt; String -&gt; a
 </span><span class="hs-identifier hs-var">error</span></span><span> </span><span class="annot"><span class="hs-string">&quot;shouldn't hit this in our specific case&quot;</span></span><span>
 </span><span id="line-36"></span><span>
 </span><span id="line-37"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="Fission.Authorization.ServerDID.Class.html#ServerDID"><span class="hs-identifier hs-type">ServerDID</span></a></span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-type">InTimeBounds</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-38"></span><span>  </span><span id="local-6989586621680305842"><span class="annot"><span class="annottext">getServerDID :: InTimeBounds DID
+</span><span id="line-38"></span><span>  </span><span id="local-6989586621680306287"><span class="annot"><span class="annottext">getServerDID :: InTimeBounds DID
 </span><a href="Fission.Authorization.ServerDID.Class.html#getServerDID"><span class="hs-identifier hs-var hs-var hs-var hs-var">getServerDID</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">DID -&gt; InTimeBounds DID
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">DID
 forall b. FromJSON b =&gt; b
-</span><a href="#local-6989586621680305840"><span class="hs-identifier hs-var">did</span></a></span><span>
+</span><a href="#local-6989586621680306285"><span class="hs-identifier hs-var">did</span></a></span><span>
 </span><span id="line-39"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-40"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680305840"><span class="annot"><span class="annottext">did :: b
-</span><a href="#local-6989586621680305840"><span class="hs-identifier hs-var">did</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either String b
+</span><span id="line-40"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span id="local-6989586621680306285"><span class="annot"><span class="annottext">did :: b
+</span><a href="#local-6989586621680306285"><span class="hs-identifier hs-var">did</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either String b
 forall a. FromJSON a =&gt; ByteString -&gt; Either String a
 </span><span class="hs-identifier hs-var">eitherDecode</span></span><span> </span><span class="annot"><span class="hs-string">&quot;\&quot;did:key:zStEZpzSMtTt9k2vszgvCwF4fLQQSyA15W5AQ4z3AR6Bx4eFJ5crJFbuGxKmbma4\&quot;&quot;</span></span><span>
 </span><span id="line-41"></span><span>
 </span><span id="line-42"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadTime</span></span><span> </span><span class="annot"><a href="Fission.Internal.Fixture.Bearer.Nested.html#InTimeBounds"><span class="hs-identifier hs-type">InTimeBounds</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-43"></span><span>  </span><span id="local-6989586621680305835"><span class="annot"><span class="annottext">currentTime :: InTimeBounds UTCTime
+</span><span id="line-43"></span><span>  </span><span id="local-6989586621680306280"><span class="annot"><span class="annottext">currentTime :: InTimeBounds UTCTime
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">currentTime</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; InTimeBounds UTCTime
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">(UTCTime -&gt; InTimeBounds UTCTime)

@@ -8,43 +8,43 @@
 </span><span id="line-8"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Fission.Internal.Orphanage.ByteString.Lazy.html"><span class="hs-identifier">Fission.Internal.Orphanage.ByteString.Lazy</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-10"></span><span>
-</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680298700"><span id="local-6989586621680298702"><span id="local-6989586621680298704"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-12"></span><span>  </span><span id="local-6989586621680298698"><span class="annot"><span class="annottext">toJSON :: BasicAuthData -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span> </span><span id="local-6989586621680298695"><span class="annot"><span class="annottext">username :: ByteString
-</span><a href="#local-6989586621680298695"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680298694"><span class="annot"><span class="annottext">password :: ByteString
-</span><a href="#local-6989586621680298694"><span class="hs-identifier hs-var">password</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-11"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680299145"><span id="local-6989586621680299147"><span id="local-6989586621680299149"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>  </span><span id="local-6989586621680299143"><span class="annot"><span class="annottext">toJSON :: BasicAuthData -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span> </span><span id="local-6989586621680299140"><span class="annot"><span class="annottext">username :: ByteString
+</span><a href="#local-6989586621680299140"><span class="hs-identifier hs-var">username</span></a></span></span><span> </span><span id="local-6989586621680299139"><span class="annot"><span class="annottext">password :: ByteString
+</span><a href="#local-6989586621680299139"><span class="hs-identifier hs-var">password</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-13"></span><span>    </span><span class="annot"><span class="annottext">Object -&gt; Value
 </span><span class="hs-identifier hs-var">Object</span></span><span> </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; Text -&gt; Value
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
 </span><span class="hs-identifier hs-var">decodeUtf8Lenient</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680298695"><span class="hs-identifier hs-var">username</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680299140"><span class="hs-identifier hs-var">username</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-14"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;password&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; Text -&gt; Value
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
 </span><span class="hs-identifier hs-var">decodeUtf8Lenient</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680298694"><span class="hs-identifier hs-var">password</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680299139"><span class="hs-identifier hs-var">password</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-15"></span><span>           </span><span class="hs-special">]</span><span>
 </span><span id="line-16"></span><span>
-</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680298687"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-18"></span><span>  </span><span id="local-6989586621680298685"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser BasicAuthData
+</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680299132"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-18"></span><span>  </span><span id="local-6989586621680299130"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser BasicAuthData
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
 -&gt; (Object -&gt; Parser BasicAuthData)
 -&gt; Value
 -&gt; Parser BasicAuthData
 forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;BasicAuthData&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680298682"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680298682"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-19"></span><span>    </span><span id="local-6989586621680298681"><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680298681"><span class="hs-identifier hs-var">basicAuthUsername</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680298682"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser ByteString
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;BasicAuthData&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680299127"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680299127"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-19"></span><span>    </span><span id="local-6989586621680299126"><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680299126"><span class="hs-identifier hs-var">basicAuthUsername</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680299127"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser ByteString
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span>
-</span><span id="line-20"></span><span>    </span><span id="local-6989586621680298679"><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680298679"><span class="hs-identifier hs-var">basicAuthPassword</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680298682"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser ByteString
+</span><span id="line-20"></span><span>    </span><span id="local-6989586621680299124"><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621680299124"><span class="hs-identifier hs-var">basicAuthPassword</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680299127"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser ByteString
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span> </span><span class="annot"><span class="hs-string">&quot;password&quot;</span></span><span>
 </span><span id="line-21"></span><span>
@@ -57,10 +57,10 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-identifier hs-type hs-type">BasicAuthData</span></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
 </span><span id="line-23"></span><span>
 </span><span id="line-24"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">BasicAuthData</span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-25"></span><span>  </span><span id="local-6989586621680298673"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy BasicAuthData -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-25"></span><span>  </span><span id="local-6989586621680299118"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy BasicAuthData -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-26"></span><span>    </span><span id="local-6989586621680298671"><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680298671"><span class="hs-identifier hs-var">username'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
+</span><span id="line-26"></span><span>    </span><span id="local-6989586621680299116"><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680299116"><span class="hs-identifier hs-var">username'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
 forall a.
 ToSchema a =&gt;
 Proxy a -&gt; Declare (Definitions Schema) (Referenced Schema)
@@ -70,8 +70,8 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">&lt;|</span></span><span> </span><span class="annot"><span class="annottext">Proxy Text
 forall k (t :: k). Proxy t
 </span><span class="hs-identifier hs-var">Proxy</span></span><span> </span><span class="hs-glyph">@</span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
-</span><span id="line-27"></span><span>    </span><span id="local-6989586621680298668"><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680298668"><span class="hs-identifier hs-var">password'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
+</span><span id="line-27"></span><span>    </span><span id="local-6989586621680299113"><span class="annot"><span class="annottext">Referenced Schema
+</span><a href="#local-6989586621680299113"><span class="hs-identifier hs-var">password'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Proxy Text -&gt; Declare (Definitions Schema) (Referenced Schema)
 forall a.
 ToSchema a =&gt;
 Proxy a -&gt; Declare (Definitions Schema) (Referenced Schema)
@@ -111,9 +111,9 @@ forall s a. HasProperties s a =&gt; Lens' s a
 forall s t a b. ASetter s t a b -&gt; b -&gt; s -&gt; t
 </span><span class="hs-operator hs-var">.~</span></span><span>
 </span><span id="line-32"></span><span>           </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680298671"><span class="hs-identifier hs-var">username'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680299116"><span class="hs-identifier hs-var">username'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-33"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;password&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Referenced Schema
-</span><a href="#local-6989586621680298668"><span class="hs-identifier hs-var">password'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680299113"><span class="hs-identifier hs-var">password'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-34"></span><span>           </span><span class="hs-special">]</span><span>
 </span><span id="line-35"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; Schema) -&gt; Schema
 forall a b. a -&gt; (a -&gt; b) -&gt; b
@@ -150,9 +150,9 @@ forall a. ToJSON a =&gt; a -&gt; Value
 </span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">$WBasicAuthData :: ByteString -&gt; ByteString -&gt; BasicAuthData
 </span><span class="hs-identifier hs-type hs-type">BasicAuthData</span></span><span>
 </span><span id="line-42"></span><span>           </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">basicAuthUsername :: ByteString
-</span><a href="#local-6989586621680298677"><span class="hs-identifier hs-var">basicAuthUsername</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span>
+</span><a href="#local-6989586621680299122"><span class="hs-identifier hs-var">basicAuthUsername</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;username&quot;</span></span><span>
 </span><span id="line-43"></span><span>           </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">basicAuthPassword :: ByteString
-</span><a href="#local-6989586621680298678"><span class="hs-identifier hs-var">basicAuthPassword</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;password123!&quot;</span></span><span>
+</span><a href="#local-6989586621680299123"><span class="hs-identifier hs-var">basicAuthPassword</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;password123!&quot;</span></span><span>
 </span><span id="line-44"></span><span>           </span><span class="hs-special">}</span><span>
 </span><span id="line-45"></span><span>      </span><span class="annot"><span class="annottext">Schema -&gt; (Schema -&gt; NamedSchema) -&gt; NamedSchema
 forall a b. a -&gt; (a -&gt; b) -&gt; b

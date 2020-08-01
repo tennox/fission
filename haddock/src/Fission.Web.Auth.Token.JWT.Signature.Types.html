@@ -12,7 +12,7 @@
 </span><span id="line-12"></span><span class="hs-keyword">data</span><span> </span><span id="Signature"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Signature"><span class="hs-identifier hs-var">Signature</span></a></span></span><span>
 </span><span id="line-13"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="Ed25519"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-var">Ed25519</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Ed25519.Signature</span></span><span>
 </span><span id="line-14"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="RS256"><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-var">RS256</span></a></span></span><span>   </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.RS256.Types.html#Signature"><span class="hs-identifier hs-type">RS256.Signature</span></a></span><span>
-</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680303919"><span id="local-6989586621680303921"><span class="annot"><span class="annottext">Signature -&gt; Signature -&gt; Bool
+</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680304364"><span id="local-6989586621680304366"><span class="annot"><span class="annottext">Signature -&gt; Signature -&gt; Bool
 (Signature -&gt; Signature -&gt; Bool)
 -&gt; (Signature -&gt; Signature -&gt; Bool) -&gt; Eq Signature
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -20,7 +20,7 @@ forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c/= :: Signature -&gt; Signature -&gt; Bool
 == :: Signature -&gt; Signature -&gt; Bool
 $c== :: Signature -&gt; Signature -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680303912"><span id="local-6989586621680303914"><span id="local-6989586621680303916"><span class="annot"><span class="annottext">Int -&gt; Signature -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680304357"><span id="local-6989586621680304359"><span id="local-6989586621680304361"><span class="annot"><span class="annottext">Int -&gt; Signature -&gt; ShowS
 [Signature] -&gt; ShowS
 Signature -&gt; String
 (Int -&gt; Signature -&gt; ShowS)
@@ -37,57 +37,57 @@ showsPrec :: Int -&gt; Signature -&gt; ShowS
 $cshowsPrec :: Int -&gt; Signature -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-16"></span><span>
-</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303909"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-18"></span><span>  </span><span id="local-6989586621680303906"><span class="annot"><span class="annottext">textDisplay :: Signature -&gt; Text
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680303904"><span class="annot"><span class="annottext">sig :: Signature
-</span><a href="#local-6989586621680303904"><span class="hs-identifier hs-var">sig</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Text
+</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680304354"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-18"></span><span>  </span><span id="local-6989586621680304351"><span class="annot"><span class="annottext">textDisplay :: Signature -&gt; Text
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680304349"><span class="annot"><span class="annottext">sig :: Signature
+</span><a href="#local-6989586621680304349"><span class="hs-identifier hs-var">sig</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303904"><span class="hs-identifier hs-var">sig</span></a></span><span>
-</span><span id="line-19"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680303903"><span class="annot"><span class="annottext">sig :: Signature
-</span><a href="#local-6989586621680303903"><span class="hs-identifier hs-var">sig</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Text
+</span><a href="#local-6989586621680304349"><span class="hs-identifier hs-var">sig</span></a></span><span>
+</span><span id="line-19"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680304348"><span class="annot"><span class="annottext">sig :: Signature
+</span><a href="#local-6989586621680304348"><span class="hs-identifier hs-var">sig</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303903"><span class="hs-identifier hs-var">sig</span></a></span><span>
+</span><a href="#local-6989586621680304348"><span class="hs-identifier hs-var">sig</span></a></span><span>
 </span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303896"><span id="local-6989586621680303898"><span id="local-6989586621680303900"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-22"></span><span>  </span><span id="local-6989586621680303894"><span class="annot"><span class="annottext">toJSON :: Signature -&gt; Value
+</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680304341"><span id="local-6989586621680304343"><span id="local-6989586621680304345"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-22"></span><span>  </span><span id="local-6989586621680304339"><span class="annot"><span class="annottext">toJSON :: Signature -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-23"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680303892"><span class="annot"><span class="annottext">sig :: Signature
-</span><a href="#local-6989586621680303892"><span class="hs-identifier hs-var">sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Value
+</span><span id="line-23"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680304337"><span class="annot"><span class="annottext">sig :: Signature
+</span><a href="#local-6989586621680304337"><span class="hs-identifier hs-var">sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Value
 forall a. ToJSON a =&gt; a -&gt; Value
 </span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303892"><span class="hs-identifier hs-var">sig</span></a></span><span>
-</span><span id="line-24"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680303891"><span class="annot"><span class="annottext">sig :: Signature
-</span><a href="#local-6989586621680303891"><span class="hs-identifier hs-var">sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Value
+</span><a href="#local-6989586621680304337"><span class="hs-identifier hs-var">sig</span></a></span><span>
+</span><span id="line-24"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680304336"><span class="annot"><span class="annottext">sig :: Signature
+</span><a href="#local-6989586621680304336"><span class="hs-identifier hs-var">sig</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Value
 forall a. ToJSON a =&gt; a -&gt; Value
 </span><span class="hs-identifier hs-var">toJSON</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303891"><span class="hs-identifier hs-var">sig</span></a></span><span>
+</span><a href="#local-6989586621680304336"><span class="hs-identifier hs-var">sig</span></a></span><span>
 </span><span id="line-25"></span><span>
-</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303887"><span class="annot"><span class="hs-identifier hs-type">ByteArrayAccess</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680303885"><span class="annot"><span class="annottext">length :: Signature -&gt; Int
+</span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680304332"><span class="annot"><span class="hs-identifier hs-type">ByteArrayAccess</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Signature"><span class="hs-identifier hs-type">Signature</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680304330"><span class="annot"><span class="annottext">length :: Signature -&gt; Int
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">length</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-28"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680303883"><span class="annot"><span class="annottext">ed :: Signature
-</span><a href="#local-6989586621680303883"><span class="hs-identifier hs-var">ed</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Int
+</span><span id="line-28"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680304328"><span class="annot"><span class="annottext">ed :: Signature
+</span><a href="#local-6989586621680304328"><span class="hs-identifier hs-var">ed</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Int
 forall ba. ByteArrayAccess ba =&gt; ba -&gt; Int
 </span><span class="hs-identifier hs-var">length</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303883"><span class="hs-identifier hs-var">ed</span></a></span><span>
-</span><span id="line-29"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680303882"><span class="annot"><span class="annottext">bs :: Signature
-</span><a href="#local-6989586621680303882"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Int
+</span><a href="#local-6989586621680304328"><span class="hs-identifier hs-var">ed</span></a></span><span>
+</span><span id="line-29"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680304327"><span class="annot"><span class="annottext">bs :: Signature
+</span><a href="#local-6989586621680304327"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; Int
 forall ba. ByteArrayAccess ba =&gt; ba -&gt; Int
 </span><span class="hs-identifier hs-var">length</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303882"><span class="hs-identifier hs-var">bs</span></a></span><span>
+</span><a href="#local-6989586621680304327"><span class="hs-identifier hs-var">bs</span></a></span><span>
 </span><span id="line-30"></span><span>
-</span><span id="line-31"></span><span>  </span><span id="local-6989586621680303881"><span class="annot"><span class="annottext">withByteArray :: Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
+</span><span id="line-31"></span><span>  </span><span id="local-6989586621680304326"><span class="annot"><span class="annottext">withByteArray :: Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">withByteArray</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-32"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680303879"><span class="annot"><span class="annottext">ed :: Signature
-</span><a href="#local-6989586621680303879"><span class="hs-identifier hs-var">ed</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
+</span><span id="line-32"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#Ed25519"><span class="hs-identifier hs-type">Ed25519</span></a></span><span> </span><span id="local-6989586621680304324"><span class="annot"><span class="annottext">ed :: Signature
+</span><a href="#local-6989586621680304324"><span class="hs-identifier hs-var">ed</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 forall ba p a. ByteArrayAccess ba =&gt; ba -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 </span><span class="hs-identifier hs-var">withByteArray</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303879"><span class="hs-identifier hs-var">ed</span></a></span><span>
-</span><span id="line-33"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680303878"><span class="annot"><span class="annottext">bs :: Signature
-</span><a href="#local-6989586621680303878"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
+</span><a href="#local-6989586621680304324"><span class="hs-identifier hs-var">ed</span></a></span><span>
+</span><span id="line-33"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.JWT.Signature.Types.html#RS256"><span class="hs-identifier hs-type">RS256</span></a></span><span>   </span><span id="local-6989586621680304323"><span class="annot"><span class="annottext">bs :: Signature
+</span><a href="#local-6989586621680304323"><span class="hs-identifier hs-var">bs</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Signature -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 forall ba p a. ByteArrayAccess ba =&gt; ba -&gt; (Ptr p -&gt; IO a) -&gt; IO a
 </span><span class="hs-identifier hs-var">withByteArray</span></span><span> </span><span class="annot"><span class="annottext">Signature
-</span><a href="#local-6989586621680303878"><span class="hs-identifier hs-var">bs</span></a></span><span>
+</span><a href="#local-6989586621680304323"><span class="hs-identifier hs-var">bs</span></a></span><span>
 </span><span id="line-34"></span></pre></body></html>

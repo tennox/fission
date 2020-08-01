@@ -12,15 +12,15 @@
 </span><span id="line-12"></span><span>
 </span><span id="line-13"></span><span class="annot"><a href="Fission.User.Validation.html#check"><span class="hs-identifier hs-type">check</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Username.Error.html#Invalid"><span class="hs-identifier hs-type">Username.Invalid</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
 </span><span id="line-14"></span><span id="check"><span class="annot"><span class="annottext">check :: User -&gt; Either Invalid User
-</span><a href="Fission.User.Validation.html#check"><span class="hs-identifier hs-var hs-var">check</span></a></span></span><span> </span><span id="local-6989586621680308292"><span class="annot"><span class="annottext">user :: User
-</span><a href="#local-6989586621680308292"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.User.Validation.html#check"><span class="hs-identifier hs-var hs-var">check</span></a></span></span><span> </span><span id="local-6989586621680308737"><span class="annot"><span class="annottext">user :: User
+</span><a href="#local-6989586621680308737"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-15"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">User -&gt; Bool
 </span><a href="Fission.User.Validation.html#isValid"><span class="hs-identifier hs-var">isValid</span></a></span><span> </span><span class="annot"><span class="annottext">User
-</span><a href="#local-6989586621680308292"><span class="hs-identifier hs-var">user</span></a></span><span>
+</span><a href="#local-6989586621680308737"><span class="hs-identifier hs-var">user</span></a></span><span>
 </span><span id="line-16"></span><span>    </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">User -&gt; Either Invalid User
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">User
-</span><a href="#local-6989586621680308292"><span class="hs-identifier hs-var">user</span></a></span><span>
+</span><a href="#local-6989586621680308737"><span class="hs-identifier hs-var">user</span></a></span><span>
 </span><span id="line-17"></span><span>    </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">Invalid -&gt; Either Invalid User
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">Invalid
@@ -28,10 +28,10 @@ forall a b. a -&gt; Either a b
 </span><span id="line-18"></span><span>
 </span><span id="line-19"></span><span class="annot"><a href="Fission.User.Validation.html#isValid"><span class="hs-identifier hs-type">isValid</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
 </span><span id="line-20"></span><span id="isValid"><span class="annot"><span class="annottext">isValid :: User -&gt; Bool
-</span><a href="Fission.User.Validation.html#isValid"><span class="hs-identifier hs-var hs-var">isValid</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680308289"><span class="annot"><span class="annottext">Username
+</span><a href="Fission.User.Validation.html#isValid"><span class="hs-identifier hs-var hs-var">isValid</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-special">{</span><span id="local-6989586621680308734"><span class="annot"><span class="annottext">Username
 $sel:userUsername:User :: User -&gt; Username
 userUsername :: Username
 </span><a href="Fission.Models.html#%24sel%3AuserUsername%3AUser"><span class="hs-identifier hs-var hs-var">userUsername</span></a></span></span><span class="hs-special">}</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Username -&gt; Bool
 </span><a href="Fission.User.Username.Validation.html#isValid"><span class="hs-identifier hs-var">Username.isValid</span></a></span><span> </span><span class="annot"><span class="annottext">Username
-</span><a href="#local-6989586621680308289"><span class="hs-identifier hs-var">userUsername</span></a></span><span>
+</span><a href="#local-6989586621680308734"><span class="hs-identifier hs-var">userUsername</span></a></span><span>
 </span><span id="line-21"></span></pre></body></html>

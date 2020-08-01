@@ -11,19 +11,19 @@
 </span><span id="line-11"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Network.HTTP.Types.Status</span></span><span>
 </span><span id="line-12"></span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span id="local-6989586621680310773"><span id="local-6989586621680310774"><span class="annot"><a href="Fission.Web.Client.Error.html#retryOnStatus"><span class="hs-identifier hs-type">retryOnStatus</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-15"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680310774"><span class="hs-identifier hs-type">m</span></a></span><span>
-</span><span id="line-16"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680310774"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-14"></span><span id="local-6989586621680311218"><span id="local-6989586621680311219"><span class="annot"><a href="Fission.Web.Client.Error.html#retryOnStatus"><span class="hs-identifier hs-type">retryOnStatus</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-15"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Fission.Web.Client.Class.html#MonadWebClient"><span class="hs-identifier hs-type">MonadWebClient</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311219"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-16"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680311219"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-17"></span><span>  </span><span class="hs-special">)</span><span>
 </span><span id="line-18"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Status</span></span><span class="hs-special">]</span><span>
 </span><span id="line-19"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Natural</span></span><span>
-</span><span id="line-20"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientM</span></span><span> </span><span class="annot"><a href="#local-6989586621680310773"><span class="hs-identifier hs-type">a</span></a></span><span>
-</span><span id="line-21"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680310774"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span> </span><span class="annot"><a href="#local-6989586621680310773"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span></span></span><span>
+</span><span id="line-20"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientM</span></span><span> </span><span class="annot"><a href="#local-6989586621680311218"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-21"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680311219"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span> </span><span class="annot"><a href="#local-6989586621680311218"><span class="hs-identifier hs-type">a</span></a></span><span class="hs-special">)</span></span></span><span>
 </span><span id="line-22"></span><span id="retryOnStatus"><span class="annot"><span class="annottext">retryOnStatus :: [Status] -&gt; Natural -&gt; ClientM a -&gt; m (Either ClientError a)
-</span><a href="Fission.Web.Client.Error.html#retryOnStatus"><span class="hs-identifier hs-var hs-var">retryOnStatus</span></a></span></span><span> </span><span id="local-6989586621680310772"><span class="annot"><span class="annottext">retryOn :: [Status]
-</span><a href="#local-6989586621680310772"><span class="hs-identifier hs-var">retryOn</span></a></span></span><span> </span><span id="local-6989586621680310771"><span class="annot"><span class="annottext">times :: Natural
-</span><a href="#local-6989586621680310771"><span class="hs-identifier hs-var">times</span></a></span></span><span> </span><span id="local-6989586621680310770"><span class="annot"><span class="annottext">req :: ClientM a
-</span><a href="#local-6989586621680310770"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.Web.Client.Error.html#retryOnStatus"><span class="hs-identifier hs-var hs-var">retryOnStatus</span></a></span></span><span> </span><span id="local-6989586621680311217"><span class="annot"><span class="annottext">retryOn :: [Status]
+</span><a href="#local-6989586621680311217"><span class="hs-identifier hs-var">retryOn</span></a></span></span><span> </span><span id="local-6989586621680311216"><span class="annot"><span class="annottext">times :: Natural
+</span><a href="#local-6989586621680311216"><span class="hs-identifier hs-var">times</span></a></span></span><span> </span><span id="local-6989586621680311215"><span class="annot"><span class="annottext">req :: ClientM a
+</span><a href="#local-6989586621680311215"><span class="hs-identifier hs-var">req</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-23"></span><span>  </span><span class="annot"><span class="annottext">(Either ClientError a -&gt; m Bool)
 -&gt; Natural -&gt; m (Either ClientError a) -&gt; m (Either ClientError a)
 forall (m :: * -&gt; *) a.
@@ -34,42 +34,42 @@ forall (m :: * -&gt; *) a.
 MonadLogger m =&gt;
 [Status] -&gt; Either ClientError a -&gt; m Bool
 </span><a href="Fission.Web.Client.Error.html#checkStatus"><span class="hs-identifier hs-var">checkStatus</span></a></span><span> </span><span class="annot"><span class="annottext">[Status]
-</span><a href="#local-6989586621680310772"><span class="hs-identifier hs-var">retryOn</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Natural
-</span><a href="#local-6989586621680310771"><span class="hs-identifier hs-var">times</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ClientM a -&gt; m (Either ClientError a)
+</span><a href="#local-6989586621680311217"><span class="hs-identifier hs-var">retryOn</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Natural
+</span><a href="#local-6989586621680311216"><span class="hs-identifier hs-var">times</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ClientM a -&gt; m (Either ClientError a)
 forall (m :: * -&gt; *) a.
 MonadWebClient m =&gt;
 ClientM a -&gt; m (Either ClientError a)
 </span><a href="Fission.Web.Client.Class.html#sendRequest"><span class="hs-identifier hs-var">sendRequest</span></a></span><span> </span><span class="annot"><span class="annottext">ClientM a
-</span><a href="#local-6989586621680310770"><span class="hs-identifier hs-var">req</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680311215"><span class="hs-identifier hs-var">req</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-24"></span><span>
-</span><span id="line-25"></span><span id="local-6989586621680310802"><span id="local-6989586621680310804"><span class="annot"><a href="Fission.Web.Client.Error.html#checkStatus"><span class="hs-identifier hs-type">checkStatus</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span>
-</span><span id="line-26"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680310804"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-25"></span><span id="local-6989586621680311247"><span id="local-6989586621680311249"><span class="annot"><a href="Fission.Web.Client.Error.html#checkStatus"><span class="hs-identifier hs-type">checkStatus</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span>
+</span><span id="line-26"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">MonadLogger</span></span><span> </span><span class="annot"><a href="#local-6989586621680311249"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-27"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Status</span></span><span class="hs-special">]</span><span> </span><span>
-</span><span id="line-28"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span> </span><span class="annot"><a href="#local-6989586621680310802"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span>
-</span><span id="line-29"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680310804"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span></span></span><span>
+</span><span id="line-28"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ClientError</span></span><span> </span><span class="annot"><a href="#local-6989586621680311247"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span>
+</span><span id="line-29"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680311249"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span></span></span><span>
 </span><span id="line-30"></span><span id="checkStatus"><span class="annot"><span class="annottext">checkStatus :: [Status] -&gt; Either ClientError a -&gt; m Bool
-</span><a href="Fission.Web.Client.Error.html#checkStatus"><span class="hs-identifier hs-var hs-var">checkStatus</span></a></span></span><span> </span><span id="local-6989586621680310767"><span class="annot"><span class="annottext">retryOn :: [Status]
-</span><a href="#local-6989586621680310767"><span class="hs-identifier hs-var">retryOn</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
+</span><a href="Fission.Web.Client.Error.html#checkStatus"><span class="hs-identifier hs-var hs-var">checkStatus</span></a></span></span><span> </span><span id="local-6989586621680311212"><span class="annot"><span class="annottext">retryOn :: [Status]
+</span><a href="#local-6989586621680311212"><span class="hs-identifier hs-var">retryOn</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
 </span><span id="line-31"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Right</span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-32"></span><span>    </span><span class="annot"><span class="annottext">Bool -&gt; m Bool
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
 </span><span id="line-33"></span><span>
-</span><span id="line-34"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FailureResponse</span></span><span> </span><span id="local-6989586621680310765"><span class="annot"><span class="annottext">_req :: RequestF () (BaseUrl, ByteString)
-</span><a href="#local-6989586621680310765"><span class="hs-identifier hs-var">_req</span></a></span></span><span> </span><span id="local-6989586621680310764"><span class="annot"><span class="annottext">res :: Response
-</span><a href="#local-6989586621680310764"><span class="hs-identifier hs-var">res</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-35"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680310763"><span class="annot"><span class="annottext">code :: Status
-</span><a href="#local-6989586621680310763"><span class="hs-identifier hs-var hs-var">code</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Response -&gt; Status
+</span><span id="line-34"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">Left</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">FailureResponse</span></span><span> </span><span id="local-6989586621680311210"><span class="annot"><span class="annottext">_req :: RequestF () (BaseUrl, ByteString)
+</span><a href="#local-6989586621680311210"><span class="hs-identifier hs-var">_req</span></a></span></span><span> </span><span id="local-6989586621680311209"><span class="annot"><span class="annottext">res :: Response
+</span><a href="#local-6989586621680311209"><span class="hs-identifier hs-var">res</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-35"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680311208"><span class="annot"><span class="annottext">code :: Status
+</span><a href="#local-6989586621680311208"><span class="hs-identifier hs-var hs-var">code</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Response -&gt; Status
 forall a. ResponseF a -&gt; Status
 </span><span class="hs-identifier hs-var hs-var">responseStatusCode</span></span><span> </span><span class="annot"><span class="annottext">Response
-</span><a href="#local-6989586621680310764"><span class="hs-identifier hs-var">res</span></a></span><span>
+</span><a href="#local-6989586621680311209"><span class="hs-identifier hs-var">res</span></a></span><span>
 </span><span id="line-36"></span><span>
 </span><span id="line-37"></span><span>    </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Status -&gt; [Status] -&gt; Bool
 forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
 </span><span class="hs-identifier hs-var">elem</span></span><span> </span><span class="annot"><span class="annottext">Status
-</span><a href="#local-6989586621680310763"><span class="hs-identifier hs-var">code</span></a></span><span> </span><span class="annot"><span class="annottext">[Status]
-</span><a href="#local-6989586621680310767"><span class="hs-identifier hs-var">retryOn</span></a></span><span> </span><span>
+</span><a href="#local-6989586621680311208"><span class="hs-identifier hs-var">code</span></a></span><span> </span><span class="annot"><span class="annottext">[Status]
+</span><a href="#local-6989586621680311212"><span class="hs-identifier hs-var">retryOn</span></a></span><span> </span><span>
 </span><span id="line-38"></span><span>      </span><span class="hs-keyword">then</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-39"></span><span>        </span><span class="annot"><span class="annottext">Text -&gt; m ()
 forall msg (m :: * -&gt; *).
@@ -82,7 +82,7 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Status -&gt; Text
 forall a. Show a =&gt; a -&gt; Text
 </span><a href="Fission.Internal.UTF8.html#textShow"><span class="hs-identifier hs-var">textShow</span></a></span><span> </span><span class="annot"><span class="annottext">Status
-</span><a href="#local-6989586621680310763"><span class="hs-identifier hs-var">code</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680311208"><span class="hs-identifier hs-var">code</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;; retrying...&quot;</span></span><span>
 </span><span id="line-40"></span><span>        </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Bool

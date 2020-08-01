@@ -12,7 +12,7 @@
 </span><span id="line-12"></span><span>  </span><span class="hs-comment">-- ^ Primary URL for an App</span><span>
 </span><span id="line-13"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="RegisteredDomain"><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#RegisteredDomain"><span class="hs-identifier hs-var">RegisteredDomain</span></a></span></span><span>  </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Scope.Types.html#Scope"><span class="hs-identifier hs-type">Scope</span></a></span><span> </span><span class="annot"><a href="Fission.URL.DomainName.Types.html#DomainName"><span class="hs-identifier hs-type">DomainName</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-14"></span><span>  </span><span class="hs-comment">-- ^ Any domain name to which we have DNS access</span><span>
-</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680304891"><span id="local-6989586621680304893"><span class="annot"><span class="annottext">Resource -&gt; Resource -&gt; Bool
+</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680305336"><span id="local-6989586621680305338"><span class="annot"><span class="annottext">Resource -&gt; Resource -&gt; Bool
 (Resource -&gt; Resource -&gt; Bool)
 -&gt; (Resource -&gt; Resource -&gt; Bool) -&gt; Eq Resource
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -20,7 +20,7 @@ forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c/= :: Resource -&gt; Resource -&gt; Bool
 == :: Resource -&gt; Resource -&gt; Bool
 $c== :: Resource -&gt; Resource -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680304884"><span id="local-6989586621680304886"><span id="local-6989586621680304888"><span class="annot"><span class="annottext">Int -&gt; Resource -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680305329"><span id="local-6989586621680305331"><span id="local-6989586621680305333"><span class="annot"><span class="annottext">Int -&gt; Resource -&gt; ShowS
 [Resource] -&gt; ShowS
 Resource -&gt; String
 (Int -&gt; Resource -&gt; ShowS)
@@ -35,8 +35,8 @@ showsPrec :: Int -&gt; Resource -&gt; ShowS
 $cshowsPrec :: Int -&gt; Resource -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-16"></span><span>
-</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680304880"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#Resource"><span class="hs-identifier hs-type">Resource</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-18"></span><span>  </span><span id="local-6989586621680304878"><span class="annot"><span class="annottext">arbitrary :: Gen Resource
+</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680305325"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#Resource"><span class="hs-identifier hs-type">Resource</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-18"></span><span>  </span><span id="local-6989586621680305323"><span class="annot"><span class="annottext">arbitrary :: Gen Resource
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-19"></span><span>    </span><span class="annot"><span class="annottext">[Gen Resource] -&gt; Gen Resource
 forall a. [Gen a] -&gt; Gen a
@@ -62,36 +62,36 @@ forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-23"></span><span>      </span><span class="hs-special">]</span><span>
 </span><span id="line-24"></span><span>
-</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680304872"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#Resource"><span class="hs-identifier hs-type">Resource</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-26"></span><span>  </span><span id="local-6989586621680304870"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Resource
+</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680305317"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#Resource"><span class="hs-identifier hs-type">Resource</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-26"></span><span>  </span><span id="local-6989586621680305315"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Resource
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Object -&gt; Parser Resource) -&gt; Value -&gt; Parser Resource
 forall a. String -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Resource&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680304867"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680304867"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-27"></span><span>    </span><span id="local-6989586621680304866"><span class="annot"><span class="annottext">Maybe Resource
-</span><a href="#local-6989586621680304866"><span class="hs-identifier hs-var">fs</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(String -&gt; Resource) -&gt; Maybe String -&gt; Maybe Resource
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Resource&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680305312"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680305312"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-27"></span><span>    </span><span id="local-6989586621680305311"><span class="annot"><span class="annottext">Maybe Resource
+</span><a href="#local-6989586621680305311"><span class="hs-identifier hs-var">fs</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(String -&gt; Resource) -&gt; Maybe String -&gt; Maybe Resource
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Resource
 </span><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#FissionFileSystem"><span class="hs-identifier hs-var">FissionFileSystem</span></a></span><span> </span><span class="annot"><span class="annottext">(Maybe String -&gt; Maybe Resource)
 -&gt; Parser (Maybe String) -&gt; Parser (Maybe Resource)
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680304867"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe String)
+</span><a href="#local-6989586621680305312"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe String)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;floofs&quot;</span></span><span>
-</span><span id="line-28"></span><span>    </span><span id="local-6989586621680304864"><span class="annot"><span class="annottext">Maybe Resource
-</span><a href="#local-6989586621680304864"><span class="hs-identifier hs-var">app</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Scope URL -&gt; Resource) -&gt; Maybe (Scope URL) -&gt; Maybe Resource
+</span><span id="line-28"></span><span>    </span><span id="local-6989586621680305309"><span class="annot"><span class="annottext">Maybe Resource
+</span><a href="#local-6989586621680305309"><span class="hs-identifier hs-var">app</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Scope URL -&gt; Resource) -&gt; Maybe (Scope URL) -&gt; Maybe Resource
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="annot"><span class="annottext">Scope URL -&gt; Resource
 </span><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#FissionApp"><span class="hs-identifier hs-var">FissionApp</span></a></span><span>        </span><span class="annot"><span class="annottext">(Maybe (Scope URL) -&gt; Maybe Resource)
 -&gt; Parser (Maybe (Scope URL)) -&gt; Parser (Maybe Resource)
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680304867"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (Scope URL))
+</span><a href="#local-6989586621680305312"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (Scope URL))
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;app&quot;</span></span><span>
-</span><span id="line-29"></span><span>    </span><span id="local-6989586621680304863"><span class="annot"><span class="annottext">Maybe Resource
-</span><a href="#local-6989586621680304863"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Scope DomainName -&gt; Resource)
+</span><span id="line-29"></span><span>    </span><span id="local-6989586621680305308"><span class="annot"><span class="annottext">Maybe Resource
+</span><a href="#local-6989586621680305308"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Scope DomainName -&gt; Resource)
 -&gt; Maybe (Scope DomainName) -&gt; Maybe Resource
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="annot"><span class="annottext">Scope DomainName -&gt; Resource
@@ -99,46 +99,46 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 -&gt; Parser (Maybe (Scope DomainName)) -&gt; Parser (Maybe Resource)
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680304867"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (Scope DomainName))
+</span><a href="#local-6989586621680305312"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe (Scope DomainName))
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;domain&quot;</span></span><span>
 </span><span id="line-30"></span><span>
 </span><span id="line-31"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe Resource
-</span><a href="#local-6989586621680304866"><span class="hs-identifier hs-var">fs</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Resource -&gt; Maybe Resource -&gt; Maybe Resource
+</span><a href="#local-6989586621680305311"><span class="hs-identifier hs-var">fs</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Resource -&gt; Maybe Resource -&gt; Maybe Resource
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Resource
-</span><a href="#local-6989586621680304864"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Resource -&gt; Maybe Resource -&gt; Maybe Resource
+</span><a href="#local-6989586621680305309"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Resource -&gt; Maybe Resource -&gt; Maybe Resource
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Resource
-</span><a href="#local-6989586621680304863"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-32"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680304861"><span class="annot"><span class="annottext">parsed :: Resource
-</span><a href="#local-6989586621680304861"><span class="hs-identifier hs-var">parsed</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Resource -&gt; Parser Resource
+</span><a href="#local-6989586621680305308"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-32"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680305306"><span class="annot"><span class="annottext">parsed :: Resource
+</span><a href="#local-6989586621680305306"><span class="hs-identifier hs-var">parsed</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Resource -&gt; Parser Resource
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Resource
-</span><a href="#local-6989586621680304861"><span class="hs-identifier hs-var">parsed</span></a></span><span>
+</span><a href="#local-6989586621680305306"><span class="hs-identifier hs-var">parsed</span></a></span><span>
 </span><span id="line-33"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Resource
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Does not match any known Fission resource&quot;</span></span><span>
 </span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680304854"><span id="local-6989586621680304856"><span id="local-6989586621680304858"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#Resource"><span class="hs-identifier hs-type">Resource</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-36"></span><span>  </span><span id="local-6989586621680304852"><span class="annot"><span class="annottext">toJSON :: Resource -&gt; Value
+</span><span id="line-35"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680305299"><span id="local-6989586621680305301"><span id="local-6989586621680305303"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#Resource"><span class="hs-identifier hs-type">Resource</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-36"></span><span>  </span><span id="local-6989586621680305297"><span class="annot"><span class="annottext">toJSON :: Resource -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
-</span><span id="line-37"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#FissionFileSystem"><span class="hs-identifier hs-type">FissionFileSystem</span></a></span><span> </span><span id="local-6989586621680304850"><span class="annot"><span class="annottext">path :: String
-</span><a href="#local-6989586621680304850"><span class="hs-identifier hs-var">path</span></a></span></span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><span id="line-37"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#FissionFileSystem"><span class="hs-identifier hs-type">FissionFileSystem</span></a></span><span> </span><span id="local-6989586621680305295"><span class="annot"><span class="annottext">path :: String
+</span><a href="#local-6989586621680305295"><span class="hs-identifier hs-var">path</span></a></span></span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span> </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;floofs&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; String -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680304850"><span class="hs-identifier hs-var">path</span></a></span><span>   </span><span class="hs-special">]</span><span>
-</span><span id="line-38"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#FissionApp"><span class="hs-identifier hs-type">FissionApp</span></a></span><span>        </span><span id="local-6989586621680304847"><span class="annot"><span class="annottext">url :: Scope URL
-</span><a href="#local-6989586621680304847"><span class="hs-identifier hs-var">url</span></a></span></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><a href="#local-6989586621680305295"><span class="hs-identifier hs-var">path</span></a></span><span>   </span><span class="hs-special">]</span><span>
+</span><span id="line-38"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#FissionApp"><span class="hs-identifier hs-type">FissionApp</span></a></span><span>        </span><span id="local-6989586621680305292"><span class="annot"><span class="annottext">url :: Scope URL
+</span><a href="#local-6989586621680305292"><span class="hs-identifier hs-var">url</span></a></span></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span> </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;app&quot;</span></span><span>    </span><span class="annot"><span class="annottext">Text -&gt; Scope URL -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Scope URL
-</span><a href="#local-6989586621680304847"><span class="hs-identifier hs-var">url</span></a></span><span>    </span><span class="hs-special">]</span><span>
-</span><span id="line-39"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#RegisteredDomain"><span class="hs-identifier hs-type">RegisteredDomain</span></a></span><span>  </span><span id="local-6989586621680304846"><span class="annot"><span class="annottext">domain :: Scope DomainName
-</span><a href="#local-6989586621680304846"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><a href="#local-6989586621680305292"><span class="hs-identifier hs-var">url</span></a></span><span>    </span><span class="hs-special">]</span><span>
+</span><span id="line-39"></span><span>    </span><span class="annot"><a href="Fission.Web.Auth.Token.UCAN.Resource.Types.html#RegisteredDomain"><span class="hs-identifier hs-type">RegisteredDomain</span></a></span><span>  </span><span id="local-6989586621680305291"><span class="annot"><span class="annottext">domain :: Scope DomainName
+</span><a href="#local-6989586621680305291"><span class="hs-identifier hs-var">domain</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span> </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;domain&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Scope DomainName -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Scope DomainName
-</span><a href="#local-6989586621680304846"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="hs-special">]</span><span>
+</span><a href="#local-6989586621680305291"><span class="hs-identifier hs-var">domain</span></a></span><span> </span><span class="hs-special">]</span><span>
 </span><span id="line-40"></span></pre></body></html>
