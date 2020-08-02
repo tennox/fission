@@ -8,7 +8,7 @@
 </span><span id="line-8"></span><span>
 </span><span id="line-9"></span><span class="hs-keyword">newtype</span><span> </span><span id="Token"><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-var">Token</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Token"><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-var">Token</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="%24sel%3AunToken%3AToken"><span class="annot"><span class="annottext">Token -&gt; ByteString
 </span><a href="Fission.Web.Auth.Token.Basic.Types.html#%24sel%3AunToken%3AToken"><span class="hs-identifier hs-var hs-var">unToken</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span> </span><span class="hs-special">}</span><span>
-</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680303870"><span id="local-6989586621680303872"><span id="local-6989586621680303874"><span class="annot"><span class="annottext">Int -&gt; Token -&gt; ShowS
+</span><span id="line-10"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680303425"><span id="local-6989586621680303427"><span id="local-6989586621680303429"><span class="annot"><span class="annottext">Int -&gt; Token -&gt; ShowS
 [Token] -&gt; ShowS
 Token -&gt; String
 (Int -&gt; Token -&gt; ShowS)
@@ -21,7 +21,7 @@ show :: Token -&gt; String
 $cshow :: Token -&gt; String
 showsPrec :: Int -&gt; Token -&gt; ShowS
 $cshowsPrec :: Int -&gt; Token -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680303865"><span id="local-6989586621680303867"><span class="annot"><span class="annottext">Token -&gt; Token -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680303420"><span id="local-6989586621680303422"><span class="annot"><span class="annottext">Token -&gt; Token -&gt; Bool
 (Token -&gt; Token -&gt; Bool) -&gt; (Token -&gt; Token -&gt; Bool) -&gt; Eq Token
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 /= :: Token -&gt; Token -&gt; Bool
@@ -30,8 +30,8 @@ $c/= :: Token -&gt; Token -&gt; Bool
 $c== :: Token -&gt; Token -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-11"></span><span>
-</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303861"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-13"></span><span>  </span><span id="local-6989586621680303859"><span class="annot"><span class="annottext">arbitrary :: Gen Token
+</span><span id="line-12"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303416"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>  </span><span id="local-6989586621680303414"><span class="annot"><span class="annottext">arbitrary :: Gen Token
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Token
 </span><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-var">Token</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Token) -&gt; (Text -&gt; ByteString) -&gt; Text -&gt; Token
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -42,17 +42,17 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-14"></span><span>
-</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303853"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-16"></span><span>  </span><span id="local-6989586621680303850"><span class="annot"><span class="annottext">textDisplay :: Token -&gt; Text
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span> </span><span id="local-6989586621680303848"><span class="annot"><span class="annottext">raw :: ByteString
-</span><a href="#local-6989586621680303848"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Basic &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303408"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-16"></span><span>  </span><span id="local-6989586621680303405"><span class="annot"><span class="annottext">textDisplay :: Token -&gt; Text
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">textDisplay</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span><span> </span><span id="local-6989586621680303403"><span class="annot"><span class="annottext">raw :: ByteString
+</span><a href="#local-6989586621680303403"><span class="hs-identifier hs-var">raw</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-string">&quot;Basic &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Text
 </span><span class="hs-identifier hs-var">decodeUtf8Lenient</span></span><span> </span><span class="annot"><span class="annottext">ByteString
-</span><a href="#local-6989586621680303848"><span class="hs-identifier hs-var">raw</span></a></span><span>
+</span><a href="#local-6989586621680303403"><span class="hs-identifier hs-var">raw</span></a></span><span>
 </span><span id="line-17"></span><span>
-</span><span id="line-18"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303840"><span id="local-6989586621680303842"><span id="local-6989586621680303844"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-19"></span><span>  </span><span id="local-6989586621680303838"><span class="annot"><span class="annottext">toJSON :: Token -&gt; Value
+</span><span id="line-18"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303395"><span id="local-6989586621680303397"><span id="local-6989586621680303399"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-19"></span><span>  </span><span id="local-6989586621680303393"><span class="annot"><span class="annottext">toJSON :: Token -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; (Token -&gt; Text) -&gt; Token -&gt; Value
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -60,12 +60,12 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span>
 </span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303833"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-22"></span><span>  </span><span id="local-6989586621680303831"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Token
+</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303388"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-22"></span><span>  </span><span id="local-6989586621680303386"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Token
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Token) -&gt; Value -&gt; Parser Token
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Basic Token&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680303828"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680303828"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Basic Token&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680303383"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680303383"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-23"></span><span>    </span><span class="annot"><span class="annottext">(Text -&gt; Parser Token)
 -&gt; (Token -&gt; Parser Token) -&gt; Either Text Token -&gt; Parser Token
 forall a c b. (a -&gt; c) -&gt; (b -&gt; c) -&gt; Either a b -&gt; c
@@ -83,27 +83,27 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text Token
 forall a. FromHttpApiData a =&gt; Text -&gt; Either Text a
 </span><span class="hs-identifier hs-var">parseUrlPiece</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680303828"><span class="hs-identifier hs-var">txt</span></a></span><span>
+</span><a href="#local-6989586621680303383"><span class="hs-identifier hs-var">txt</span></a></span><span>
 </span><span id="line-24"></span><span>
-</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303818"><span id="local-6989586621680303820"><span id="local-6989586621680303822"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-26"></span><span>  </span><span id="local-6989586621680303816"><span class="annot"><span class="annottext">toUrlPiece :: Token -&gt; Text
+</span><span id="line-25"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303373"><span id="local-6989586621680303375"><span id="local-6989586621680303377"><span class="annot"><span class="hs-identifier hs-type">ToHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-26"></span><span>  </span><span id="local-6989586621680303371"><span class="annot"><span class="annottext">toUrlPiece :: Token -&gt; Text
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toUrlPiece</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Token -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span>
 </span><span id="line-27"></span><span>
-</span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303810"><span id="local-6989586621680303812"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-29"></span><span>  </span><span id="local-6989586621680303808"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text Token
-</span><a href="#local-6989586621680303808"><span class="hs-identifier hs-var hs-var hs-var hs-var">parseUrlPiece</span></a></span></span><span> </span><span id="local-6989586621680303807"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680303807"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-28"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680303365"><span id="local-6989586621680303367"><span class="annot"><span class="hs-identifier hs-type">FromHttpApiData</span></span><span> </span><span class="annot"><a href="Fission.Web.Auth.Token.Basic.Types.html#Token"><span class="hs-identifier hs-type">Token</span></a></span></span></span><span>  </span><span class="hs-keyword">where</span><span>
+</span><span id="line-29"></span><span>  </span><span id="local-6989586621680303363"><span class="annot"><span class="annottext">parseUrlPiece :: Text -&gt; Either Text Token
+</span><a href="#local-6989586621680303363"><span class="hs-identifier hs-var hs-var hs-var hs-var">parseUrlPiece</span></a></span></span><span> </span><span id="local-6989586621680303362"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680303362"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-30"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Maybe Text
 </span><span class="hs-identifier hs-var">Text.stripPrefix</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Basic &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680303807"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Maybe Text -&gt; Maybe Text
+</span><a href="#local-6989586621680303362"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Text -&gt; Maybe Text -&gt; Maybe Text
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Maybe Text
 </span><span class="hs-identifier hs-var">Text.stripPrefix</span></span><span> </span><span class="annot"><span class="hs-string">&quot;basic &quot;</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680303807"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-31"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680303804"><span class="annot"><span class="annottext">basic :: Text
-</span><a href="#local-6989586621680303804"><span class="hs-identifier hs-var">basic</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; Either Text Token
+</span><a href="#local-6989586621680303362"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-31"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680303359"><span class="annot"><span class="annottext">basic :: Text
+</span><a href="#local-6989586621680303359"><span class="hs-identifier hs-var">basic</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Token -&gt; Either Text Token
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">(Token -&gt; Either Text Token)
 -&gt; (ByteString -&gt; Token) -&gt; ByteString -&gt; Either Text Token
@@ -114,13 +114,13 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; ByteString
 </span><span class="hs-identifier hs-var">encodeUtf8</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680303804"><span class="hs-identifier hs-var">basic</span></a></span><span>
+</span><a href="#local-6989586621680303359"><span class="hs-identifier hs-var">basic</span></a></span><span>
 </span><span id="line-32"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Nothing</span></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Either Text Token
 forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Either Text Token) -&gt; Text -&gt; Either Text Token
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680303807"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
+</span><a href="#local-6989586621680303362"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Text -&gt; Text
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; is missing the 'Basic' prefix&quot;</span></span><span>
 </span><span id="line-33"></span></pre></body></html>

@@ -25,24 +25,24 @@
 </span><span id="line-25"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">RIO.List</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">List</span></span><span>
 </span><span id="line-26"></span><span>
 </span><span id="line-27"></span><span>
-</span><span id="line-28"></span><span id="local-6989586621680311330"><span class="annot"><a href="Fission.User.Modifier.html#updatePasswordDB"><span class="hs-identifier hs-type">updatePasswordDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-29"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311330"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-28"></span><span id="local-6989586621680310885"><span class="annot"><a href="Fission.User.Modifier.html#updatePasswordDB"><span class="hs-identifier hs-type">updatePasswordDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-29"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680310885"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-30"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
 </span><span id="line-31"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Security.Types.html#SecretDigest"><span class="hs-identifier hs-type">SecretDigest</span></a></span><span>
 </span><span id="line-32"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-33"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311330"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-33"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680310885"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-34"></span><span id="updatePasswordDB"><span class="annot"><span class="annottext">updatePasswordDB :: UserId -&gt; SecretDigest -&gt; UTCTime -&gt; Transaction m ()
-</span><a href="Fission.User.Modifier.html#updatePasswordDB"><span class="hs-identifier hs-var hs-var">updatePasswordDB</span></a></span></span><span> </span><span id="local-6989586621680311329"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680311329"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680311328"><span class="annot"><span class="annottext">secretDigest :: SecretDigest
-</span><a href="#local-6989586621680311328"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span id="local-6989586621680311327"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680311327"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.User.Modifier.html#updatePasswordDB"><span class="hs-identifier hs-var hs-var">updatePasswordDB</span></a></span></span><span> </span><span id="local-6989586621680310884"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680310884"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680310883"><span class="annot"><span class="annottext">secretDigest :: SecretDigest
+</span><a href="#local-6989586621680310883"><span class="hs-identifier hs-var">secretDigest</span></a></span></span><span> </span><span id="local-6989586621680310882"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680310882"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-35"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; Transaction m ()
 forall backend (m :: * -&gt; *) record.
 (PersistStoreWrite backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
 Key record -&gt; [Update record] -&gt; ReaderT backend m ()
 </span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311329"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><a href="#local-6989586621680310884"><span class="hs-identifier hs-var">userId</span></a></span><span>
 </span><span id="line-36"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe SecretDigest)
 forall typ. (typ ~ Maybe SecretDigest) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserSecretDigest"><span class="hs-identifier hs-var">UserSecretDigest</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe SecretDigest)
@@ -53,7 +53,7 @@ EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">SecretDigest -&gt; Maybe SecretDigest
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">SecretDigest
-</span><a href="#local-6989586621680311328"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
+</span><a href="#local-6989586621680310883"><span class="hs-identifier hs-var">secretDigest</span></a></span><span>
 </span><span id="line-37"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
 forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
@@ -61,27 +61,27 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680311327"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680310882"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-38"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-39"></span><span>
-</span><span id="line-40"></span><span id="local-6989586621680311322"><span class="annot"><a href="Fission.User.Modifier.html#updatePublicKeyDB"><span class="hs-identifier hs-type">updatePublicKeyDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-41"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311322"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-40"></span><span id="local-6989586621680310877"><span class="annot"><a href="Fission.User.Modifier.html#updatePublicKeyDB"><span class="hs-identifier hs-type">updatePublicKeyDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-41"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680310877"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-42"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
 </span><span id="line-43"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span>
 </span><span id="line-44"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-45"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311322"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span class="hs-special">)</span></span><span>
+</span><span id="line-45"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680310877"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="annot"><a href="Fission.Key.Asymmetric.Public.Types.html#Public"><span class="hs-identifier hs-type">Key.Public</span></a></span><span class="hs-special">)</span></span><span>
 </span><span id="line-46"></span><span id="updatePublicKeyDB"><span class="annot"><span class="annottext">updatePublicKeyDB :: UserId -&gt; Public -&gt; UTCTime -&gt; Transaction m (Either Errors Public)
-</span><a href="Fission.User.Modifier.html#updatePublicKeyDB"><span class="hs-identifier hs-var hs-var">updatePublicKeyDB</span></a></span></span><span> </span><span id="local-6989586621680311321"><span class="annot"><span class="annottext">userID :: UserId
-</span><a href="#local-6989586621680311321"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680311320"><span class="annot"><span class="annottext">pk :: Public
-</span><a href="#local-6989586621680311320"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span id="local-6989586621680311319"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680311319"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="Fission.User.Modifier.html#updatePublicKeyDB"><span class="hs-identifier hs-var hs-var">updatePublicKeyDB</span></a></span></span><span> </span><span id="local-6989586621680310876"><span class="annot"><span class="annottext">userID :: UserId
+</span><a href="#local-6989586621680310876"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680310875"><span class="annot"><span class="annottext">pk :: Public
+</span><a href="#local-6989586621680310875"><span class="hs-identifier hs-var">pk</span></a></span></span><span> </span><span id="local-6989586621680310874"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680310874"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-47"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; ReaderT SqlBackend m ()
 forall backend (m :: * -&gt; *) record.
 (PersistStoreWrite backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
 Key record -&gt; [Update record] -&gt; ReaderT backend m ()
 </span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311321"><span class="hs-identifier hs-var">userID</span></a></span><span>
+</span><a href="#local-6989586621680310876"><span class="hs-identifier hs-var">userID</span></a></span><span>
 </span><span id="line-48"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User (Maybe Public)
 forall typ. (typ ~ Maybe Public) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserPublicKey"><span class="hs-identifier hs-var">UserPublicKey</span></a></span><span>  </span><span class="annot"><span class="annottext">EntityField User (Maybe Public) -&gt; Maybe Public -&gt; Update User
@@ -91,7 +91,7 @@ EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">Public -&gt; Maybe Public
 forall a. a -&gt; Maybe a
 </span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680311320"><span class="hs-identifier hs-var">pk</span></a></span><span>
+</span><a href="#local-6989586621680310875"><span class="hs-identifier hs-var">pk</span></a></span><span>
 </span><span id="line-49"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
 forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
@@ -99,35 +99,35 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680311319"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680310874"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-50"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-51"></span><span>
 </span><span id="line-52"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">Public -&gt; Either Errors Public
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">Public
-</span><a href="#local-6989586621680311320"><span class="hs-identifier hs-var">pk</span></a></span><span>
+</span><a href="#local-6989586621680310875"><span class="hs-identifier hs-var">pk</span></a></span><span>
 </span><span id="line-53"></span><span>
-</span><span id="line-54"></span><span id="local-6989586621680311317"><span class="annot"><a href="Fission.User.Modifier.html#addExchangeKeyDB"><span class="hs-identifier hs-type">addExchangeKeyDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-55"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311317"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-54"></span><span id="local-6989586621680310872"><span class="annot"><a href="Fission.User.Modifier.html#addExchangeKeyDB"><span class="hs-identifier hs-type">addExchangeKeyDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-55"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680310872"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-56"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
 </span><span id="line-57"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">RSA.PublicKey</span></span><span>
 </span><span id="line-58"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311317"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">RSA.PublicKey</span></span><span class="hs-special">]</span><span class="hs-special">)</span></span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680310872"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">RSA.PublicKey</span></span><span class="hs-special">]</span><span class="hs-special">)</span></span><span>
 </span><span id="line-60"></span><span id="addExchangeKeyDB"><span class="annot"><span class="annottext">addExchangeKeyDB :: UserId
 -&gt; PublicKey
 -&gt; UTCTime
 -&gt; Transaction m (Either Errors [PublicKey])
-</span><a href="Fission.User.Modifier.html#addExchangeKeyDB"><span class="hs-identifier hs-var hs-var">addExchangeKeyDB</span></a></span></span><span> </span><span id="local-6989586621680311316"><span class="annot"><span class="annottext">userID :: UserId
-</span><a href="#local-6989586621680311316"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680311315"><span class="annot"><span class="annottext">key :: PublicKey
-</span><a href="#local-6989586621680311315"><span class="hs-identifier hs-var">key</span></a></span></span><span> </span><span id="local-6989586621680311314"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680311314"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.User.Modifier.html#addExchangeKeyDB"><span class="hs-identifier hs-var hs-var">addExchangeKeyDB</span></a></span></span><span> </span><span id="local-6989586621680310871"><span class="annot"><span class="annottext">userID :: UserId
+</span><a href="#local-6989586621680310871"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680310870"><span class="annot"><span class="annottext">key :: PublicKey
+</span><a href="#local-6989586621680310870"><span class="hs-identifier hs-var">key</span></a></span></span><span> </span><span id="local-6989586621680310869"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680310869"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-61"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; ReaderT SqlBackend m (Maybe User)
 forall backend (m :: * -&gt; *) record.
 (PersistStoreRead backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
 Key record -&gt; ReaderT backend m (Maybe record)
 </span><span class="hs-identifier hs-var">Persist.get</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311316"><span class="hs-identifier hs-var">userID</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe User)
+</span><a href="#local-6989586621680310871"><span class="hs-identifier hs-var">userID</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe User)
 -&gt; (Maybe User -&gt; Transaction m (Either Errors [PublicKey]))
 -&gt; Transaction m (Either Errors [PublicKey])
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
@@ -153,24 +153,24 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall entity. NotFound entity
 </span><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-var">NotFound</span></a></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
 </span><span id="line-64"></span><span>
-</span><span id="line-65"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680311309"><span class="annot"><span class="annottext">user :: User
-</span><a href="#local-6989586621680311309"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-65"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680310864"><span class="annot"><span class="annottext">user :: User
+</span><a href="#local-6989586621680310864"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-66"></span><span>      </span><span class="hs-keyword">let</span><span> </span><span>
-</span><span id="line-67"></span><span>        </span><span id="local-6989586621680311308"><span class="annot"><span class="annottext">keys :: [PublicKey]
-</span><a href="#local-6989586621680311308"><span class="hs-identifier hs-var hs-var">keys</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">User -&gt; [PublicKey]
+</span><span id="line-67"></span><span>        </span><span id="local-6989586621680310863"><span class="annot"><span class="annottext">keys :: [PublicKey]
+</span><a href="#local-6989586621680310863"><span class="hs-identifier hs-var hs-var">keys</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">User -&gt; [PublicKey]
 </span><a href="Fission.Models.html#%24sel%3AuserExchangeKeys%3AUser"><span class="hs-identifier hs-var hs-var">userExchangeKeys</span></a></span><span> </span><span class="annot"><span class="annottext">User
-</span><a href="#local-6989586621680311309"><span class="hs-identifier hs-var">user</span></a></span><span>
-</span><span id="line-68"></span><span>        </span><span id="local-6989586621680311306"><span class="annot"><span class="annottext">updated :: [PublicKey]
-</span><a href="#local-6989586621680311306"><span class="hs-identifier hs-var hs-var">updated</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">PublicKey
-</span><a href="#local-6989586621680311315"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; [PublicKey] -&gt; [PublicKey]
+</span><a href="#local-6989586621680310864"><span class="hs-identifier hs-var">user</span></a></span><span>
+</span><span id="line-68"></span><span>        </span><span id="local-6989586621680310861"><span class="annot"><span class="annottext">updated :: [PublicKey]
+</span><a href="#local-6989586621680310861"><span class="hs-identifier hs-var hs-var">updated</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">PublicKey
+</span><a href="#local-6989586621680310870"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; [PublicKey] -&gt; [PublicKey]
 forall a. a -&gt; [a] -&gt; [a]
 </span><span class="hs-glyph hs-var">:</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311308"><span class="hs-identifier hs-var">keys</span></a></span><span>
+</span><a href="#local-6989586621680310863"><span class="hs-identifier hs-var">keys</span></a></span><span>
 </span><span id="line-69"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; [PublicKey] -&gt; Bool
 forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
 </span><span class="hs-identifier hs-var">List.elem</span></span><span> </span><span class="annot"><span class="annottext">PublicKey
-</span><a href="#local-6989586621680311315"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311308"><span class="hs-identifier hs-var">keys</span></a></span><span>
+</span><a href="#local-6989586621680310870"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
+</span><a href="#local-6989586621680310863"><span class="hs-identifier hs-var">keys</span></a></span><span>
 </span><span id="line-70"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span>
 </span><span id="line-71"></span><span>          </span><span class="annot"><span class="annottext">Either Errors [PublicKey]
 -&gt; Transaction m (Either Errors [PublicKey])
@@ -183,7 +183,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey] -&gt; Either Errors [PublicKey]
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311308"><span class="hs-identifier hs-var">keys</span></a></span><span>
+</span><a href="#local-6989586621680310863"><span class="hs-identifier hs-var">keys</span></a></span><span>
 </span><span id="line-72"></span><span>
 </span><span id="line-73"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-74"></span><span>          </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; ReaderT SqlBackend m ()
@@ -192,7 +192,7 @@ forall backend (m :: * -&gt; *) record.
  PersistRecordBackend record backend) =&gt;
 Key record -&gt; [Update record] -&gt; ReaderT backend m ()
 </span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311316"><span class="hs-identifier hs-var">userID</span></a></span><span>
+</span><a href="#local-6989586621680310871"><span class="hs-identifier hs-var">userID</span></a></span><span>
 </span><span id="line-75"></span><span>            </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User [PublicKey]
 forall typ. (typ ~ [PublicKey]) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserExchangeKeys"><span class="hs-identifier hs-var">UserExchangeKeys</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User [PublicKey] -&gt; [PublicKey] -&gt; Update User
@@ -200,7 +200,7 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311306"><span class="hs-identifier hs-var">updated</span></a></span><span>
+</span><a href="#local-6989586621680310861"><span class="hs-identifier hs-var">updated</span></a></span><span>
 </span><span id="line-76"></span><span>            </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
 forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
@@ -208,34 +208,34 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680311314"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680310869"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-77"></span><span>            </span><span class="hs-special">]</span><span>
 </span><span id="line-78"></span><span>          </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">[PublicKey] -&gt; Either Errors [PublicKey]
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311306"><span class="hs-identifier hs-var">updated</span></a></span><span>
+</span><a href="#local-6989586621680310861"><span class="hs-identifier hs-var">updated</span></a></span><span>
 </span><span id="line-79"></span><span>
-</span><span id="line-80"></span><span id="local-6989586621680311303"><span class="annot"><a href="Fission.User.Modifier.html#removeExchangeKeyDB"><span class="hs-identifier hs-type">removeExchangeKeyDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-81"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311303"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-80"></span><span id="local-6989586621680310858"><span class="annot"><a href="Fission.User.Modifier.html#removeExchangeKeyDB"><span class="hs-identifier hs-type">removeExchangeKeyDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-81"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680310858"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-82"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
 </span><span id="line-83"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">RSA.PublicKey</span></span><span>
 </span><span id="line-84"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-85"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311303"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">RSA.PublicKey</span></span><span class="hs-special">]</span><span class="hs-special">)</span></span><span>
+</span><span id="line-85"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680310858"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><a href="Fission.User.Modifier.Class.html#Errors"><span class="hs-identifier hs-type">Errors</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">RSA.PublicKey</span></span><span class="hs-special">]</span><span class="hs-special">)</span></span><span>
 </span><span id="line-86"></span><span id="removeExchangeKeyDB"><span class="annot"><span class="annottext">removeExchangeKeyDB :: UserId
 -&gt; PublicKey
 -&gt; UTCTime
 -&gt; Transaction m (Either Errors [PublicKey])
-</span><a href="Fission.User.Modifier.html#removeExchangeKeyDB"><span class="hs-identifier hs-var hs-var">removeExchangeKeyDB</span></a></span></span><span> </span><span id="local-6989586621680311302"><span class="annot"><span class="annottext">userID :: UserId
-</span><a href="#local-6989586621680311302"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680311301"><span class="annot"><span class="annottext">key :: PublicKey
-</span><a href="#local-6989586621680311301"><span class="hs-identifier hs-var">key</span></a></span></span><span> </span><span id="local-6989586621680311300"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680311300"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="Fission.User.Modifier.html#removeExchangeKeyDB"><span class="hs-identifier hs-var hs-var">removeExchangeKeyDB</span></a></span></span><span> </span><span id="local-6989586621680310857"><span class="annot"><span class="annottext">userID :: UserId
+</span><a href="#local-6989586621680310857"><span class="hs-identifier hs-var">userID</span></a></span></span><span> </span><span id="local-6989586621680310856"><span class="annot"><span class="annottext">key :: PublicKey
+</span><a href="#local-6989586621680310856"><span class="hs-identifier hs-var">key</span></a></span></span><span> </span><span id="local-6989586621680310855"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680310855"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-87"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; ReaderT SqlBackend m (Maybe User)
 forall backend (m :: * -&gt; *) record.
 (PersistStoreRead backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
 Key record -&gt; ReaderT backend m (Maybe record)
 </span><span class="hs-identifier hs-var">Persist.get</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311302"><span class="hs-identifier hs-var">userID</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe User)
+</span><a href="#local-6989586621680310857"><span class="hs-identifier hs-var">userID</span></a></span><span> </span><span class="annot"><span class="annottext">ReaderT SqlBackend m (Maybe User)
 -&gt; (Maybe User -&gt; Transaction m (Either Errors [PublicKey]))
 -&gt; Transaction m (Either Errors [PublicKey])
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
@@ -261,24 +261,24 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall entity. NotFound entity
 </span><a href="Fission.Error.NotFound.Types.html#NotFound"><span class="hs-identifier hs-var">NotFound</span></a></span><span> </span><span class="hs-glyph">@</span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
 </span><span id="line-90"></span><span>
-</span><span id="line-91"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680311299"><span class="annot"><span class="annottext">user :: User
-</span><a href="#local-6989586621680311299"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-91"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680310854"><span class="annot"><span class="annottext">user :: User
+</span><a href="#local-6989586621680310854"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-92"></span><span>      </span><span class="hs-keyword">let</span><span> </span><span>
-</span><span id="line-93"></span><span>        </span><span id="local-6989586621680311298"><span class="annot"><span class="annottext">keys :: [PublicKey]
-</span><a href="#local-6989586621680311298"><span class="hs-identifier hs-var hs-var">keys</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">User -&gt; [PublicKey]
+</span><span id="line-93"></span><span>        </span><span id="local-6989586621680310853"><span class="annot"><span class="annottext">keys :: [PublicKey]
+</span><a href="#local-6989586621680310853"><span class="hs-identifier hs-var hs-var">keys</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">User -&gt; [PublicKey]
 </span><a href="Fission.Models.html#%24sel%3AuserExchangeKeys%3AUser"><span class="hs-identifier hs-var hs-var">userExchangeKeys</span></a></span><span> </span><span class="annot"><span class="annottext">User
-</span><a href="#local-6989586621680311299"><span class="hs-identifier hs-var">user</span></a></span><span>
-</span><span id="line-94"></span><span>        </span><span id="local-6989586621680311297"><span class="annot"><span class="annottext">updated :: [PublicKey]
-</span><a href="#local-6989586621680311297"><span class="hs-identifier hs-var hs-var">updated</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; [PublicKey] -&gt; [PublicKey]
+</span><a href="#local-6989586621680310854"><span class="hs-identifier hs-var">user</span></a></span><span>
+</span><span id="line-94"></span><span>        </span><span id="local-6989586621680310852"><span class="annot"><span class="annottext">updated :: [PublicKey]
+</span><a href="#local-6989586621680310852"><span class="hs-identifier hs-var hs-var">updated</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; [PublicKey] -&gt; [PublicKey]
 forall a. Eq a =&gt; a -&gt; [a] -&gt; [a]
 </span><span class="hs-identifier hs-var">List.delete</span></span><span> </span><span class="annot"><span class="annottext">PublicKey
-</span><a href="#local-6989586621680311301"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311298"><span class="hs-identifier hs-var">keys</span></a></span><span>
+</span><a href="#local-6989586621680310856"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
+</span><a href="#local-6989586621680310853"><span class="hs-identifier hs-var">keys</span></a></span><span>
 </span><span id="line-95"></span><span>      </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">PublicKey -&gt; [PublicKey] -&gt; Bool
 forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
 </span><span class="hs-identifier hs-var">List.elem</span></span><span> </span><span class="annot"><span class="annottext">PublicKey
-</span><a href="#local-6989586621680311301"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311298"><span class="hs-identifier hs-var">keys</span></a></span><span>
+</span><a href="#local-6989586621680310856"><span class="hs-identifier hs-var">key</span></a></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
+</span><a href="#local-6989586621680310853"><span class="hs-identifier hs-var">keys</span></a></span><span>
 </span><span id="line-96"></span><span>        </span><span class="hs-keyword">then</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-97"></span><span>          </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; ReaderT SqlBackend m ()
 forall backend (m :: * -&gt; *) record.
@@ -286,7 +286,7 @@ forall backend (m :: * -&gt; *) record.
  PersistRecordBackend record backend) =&gt;
 Key record -&gt; [Update record] -&gt; ReaderT backend m ()
 </span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311302"><span class="hs-identifier hs-var">userID</span></a></span><span>
+</span><a href="#local-6989586621680310857"><span class="hs-identifier hs-var">userID</span></a></span><span>
 </span><span id="line-98"></span><span>            </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User [PublicKey]
 forall typ. (typ ~ [PublicKey]) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserExchangeKeys"><span class="hs-identifier hs-var">UserExchangeKeys</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User [PublicKey] -&gt; [PublicKey] -&gt; Update User
@@ -294,7 +294,7 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311297"><span class="hs-identifier hs-var">updated</span></a></span><span>
+</span><a href="#local-6989586621680310852"><span class="hs-identifier hs-var">updated</span></a></span><span>
 </span><span id="line-99"></span><span>            </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
 forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
@@ -302,12 +302,12 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680311300"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680310855"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-100"></span><span>            </span><span class="hs-special">]</span><span>
 </span><span id="line-101"></span><span>          </span><span class="hs-identifier">return</span><span> </span><span class="hs-operator">$</span><span> </span><span class="annot"><span class="annottext">[PublicKey] -&gt; Either Errors [PublicKey]
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311297"><span class="hs-identifier hs-var">updated</span></a></span><span>
+</span><a href="#local-6989586621680310852"><span class="hs-identifier hs-var">updated</span></a></span><span>
 </span><span id="line-102"></span><span>
 </span><span id="line-103"></span><span>        </span><span class="hs-keyword">else</span><span> </span><span>
 </span><span id="line-104"></span><span>          </span><span class="annot"><span class="annottext">Either Errors [PublicKey]
@@ -321,28 +321,28 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey] -&gt; Either Errors [PublicKey]
 forall a b. b -&gt; Either a b
 </span><span class="hs-identifier hs-var">Right</span></span><span> </span><span class="annot"><span class="annottext">[PublicKey]
-</span><a href="#local-6989586621680311298"><span class="hs-identifier hs-var">keys</span></a></span><span>
+</span><a href="#local-6989586621680310853"><span class="hs-identifier hs-var">keys</span></a></span><span>
 </span><span id="line-105"></span><span>
-</span><span id="line-106"></span><span id="local-6989586621680311295"><span class="annot"><a href="Fission.User.Modifier.html#setDataDB"><span class="hs-identifier hs-type">setDataDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
-</span><span id="line-107"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311295"><span class="hs-identifier hs-type">m</span></a></span><span>
+</span><span id="line-106"></span><span id="local-6989586621680310850"><span class="annot"><a href="Fission.User.Modifier.html#setDataDB"><span class="hs-identifier hs-type">setDataDB</span></a></span><span> </span><span class="hs-glyph">::</span><span>
+</span><span id="line-107"></span><span>     </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680310850"><span class="hs-identifier hs-type">m</span></a></span><span>
 </span><span id="line-108"></span><span>  </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span>
 </span><span id="line-109"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">CID</span></span><span>
 </span><span id="line-110"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bytes</span></span><span>
 </span><span id="line-111"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
-</span><span id="line-112"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311295"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
+</span><span id="line-112"></span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680310850"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span></span><span>
 </span><span id="line-113"></span><span id="setDataDB"><span class="annot"><span class="annottext">setDataDB :: UserId -&gt; CID -&gt; Bytes -&gt; UTCTime -&gt; Transaction m ()
-</span><a href="Fission.User.Modifier.html#setDataDB"><span class="hs-identifier hs-var hs-var">setDataDB</span></a></span></span><span> </span><span id="local-6989586621680311294"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680311294"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680311293"><span class="annot"><span class="annottext">newCID :: CID
-</span><a href="#local-6989586621680311293"><span class="hs-identifier hs-var">newCID</span></a></span></span><span> </span><span id="local-6989586621680311292"><span class="annot"><span class="annottext">size :: Bytes
-</span><a href="#local-6989586621680311292"><span class="hs-identifier hs-var">size</span></a></span></span><span> </span><span id="local-6989586621680311291"><span class="annot"><span class="annottext">now :: UTCTime
-</span><a href="#local-6989586621680311291"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="Fission.User.Modifier.html#setDataDB"><span class="hs-identifier hs-var hs-var">setDataDB</span></a></span></span><span> </span><span id="local-6989586621680310849"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680310849"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span id="local-6989586621680310848"><span class="annot"><span class="annottext">newCID :: CID
+</span><a href="#local-6989586621680310848"><span class="hs-identifier hs-var">newCID</span></a></span></span><span> </span><span id="local-6989586621680310847"><span class="annot"><span class="annottext">size :: Bytes
+</span><a href="#local-6989586621680310847"><span class="hs-identifier hs-var">size</span></a></span></span><span> </span><span id="local-6989586621680310846"><span class="annot"><span class="annottext">now :: UTCTime
+</span><a href="#local-6989586621680310846"><span class="hs-identifier hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-114"></span><span>  </span><span class="annot"><span class="annottext">UserId -&gt; [Update User] -&gt; Transaction m ()
 forall backend (m :: * -&gt; *) record.
 (PersistStoreWrite backend, MonadIO m,
  PersistRecordBackend record backend) =&gt;
 Key record -&gt; [Update record] -&gt; ReaderT backend m ()
 </span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311294"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><a href="#local-6989586621680310849"><span class="hs-identifier hs-var">userId</span></a></span><span>
 </span><span id="line-115"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="annottext">EntityField User CID
 forall typ. (typ ~ CID) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserDataRoot"><span class="hs-identifier hs-var">UserDataRoot</span></a></span><span>     </span><span class="annot"><span class="annottext">EntityField User CID -&gt; CID -&gt; Update User
@@ -350,7 +350,7 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680311293"><span class="hs-identifier hs-var">newCID</span></a></span><span>
+</span><a href="#local-6989586621680310848"><span class="hs-identifier hs-var">newCID</span></a></span><span>
 </span><span id="line-116"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User Bytes
 forall typ. (typ ~ Bytes) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserDataRootSize"><span class="hs-identifier hs-var">UserDataRootSize</span></a></span><span> </span><span class="annot"><span class="annottext">EntityField User Bytes -&gt; Bytes -&gt; Update User
@@ -358,7 +358,7 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">Bytes
-</span><a href="#local-6989586621680311292"><span class="hs-identifier hs-var">size</span></a></span><span>
+</span><a href="#local-6989586621680310847"><span class="hs-identifier hs-var">size</span></a></span><span>
 </span><span id="line-117"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">EntityField User UTCTime
 forall typ. (typ ~ UTCTime) =&gt; EntityField User typ
 </span><a href="Fission.Models.html#UserModifiedAt"><span class="hs-identifier hs-var">UserModifiedAt</span></a></span><span>   </span><span class="annot"><span class="annottext">EntityField User UTCTime -&gt; UTCTime -&gt; Update User
@@ -366,7 +366,7 @@ forall v typ.
 PersistField typ =&gt;
 EntityField v typ -&gt; typ -&gt; Update v
 </span><span class="hs-operator hs-var">=.</span></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680311291"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680310846"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-118"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-119"></span><span>
 </span><span id="line-120"></span><span>  </span><span class="annot"><span class="annottext">UpdateUserDataRootEvent -&gt; Transaction m ()
@@ -379,8 +379,8 @@ record -&gt; ReaderT backend m ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; CID -&gt; Bytes -&gt; UTCTime -&gt; UpdateUserDataRootEvent
 </span><a href="Fission.Models.html#UpdateUserDataRootEvent"><span class="hs-identifier hs-var">UpdateUserDataRootEvent</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311294"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
-</span><a href="#local-6989586621680311293"><span class="hs-identifier hs-var">newCID</span></a></span><span> </span><span class="annot"><span class="annottext">Bytes
-</span><a href="#local-6989586621680311292"><span class="hs-identifier hs-var">size</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
-</span><a href="#local-6989586621680311291"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><a href="#local-6989586621680310849"><span class="hs-identifier hs-var">userId</span></a></span><span> </span><span class="annot"><span class="annottext">CID
+</span><a href="#local-6989586621680310848"><span class="hs-identifier hs-var">newCID</span></a></span><span> </span><span class="annot"><span class="annottext">Bytes
+</span><a href="#local-6989586621680310847"><span class="hs-identifier hs-var">size</span></a></span><span> </span><span class="annot"><span class="annottext">UTCTime
+</span><a href="#local-6989586621680310846"><span class="hs-identifier hs-var">now</span></a></span><span>
 </span><span id="line-121"></span></pre></body></html>

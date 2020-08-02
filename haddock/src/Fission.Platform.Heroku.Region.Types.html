@@ -8,7 +8,7 @@
 </span><span id="line-8"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Prelude.html"><span class="hs-identifier">Fission.Prelude</span></a></span><span>
 </span><span id="line-9"></span><span>
 </span><span id="line-10"></span><span class="hs-comment">-- | Location of Heroku server requesting keys</span><span>
-</span><span id="line-11"></span><span id="local-6989586621680297833"><span id="local-6989586621680297834"></span></span><span class="hs-keyword">data</span><span> </span><span id="Region"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-var">Region</span></a></span></span><span>
+</span><span id="line-11"></span><span id="local-6989586621680297388"><span id="local-6989586621680297389"></span></span><span class="hs-keyword">data</span><span> </span><span id="Region"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-var">Region</span></a></span></span><span>
 </span><span id="line-12"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="California"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#California"><span class="hs-identifier hs-var">California</span></a></span></span><span>
 </span><span id="line-13"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Dublin"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Dublin"><span class="hs-identifier hs-var">Dublin</span></a></span></span><span>
 </span><span id="line-14"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Frankfurt"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Frankfurt"><span class="hs-identifier hs-var">Frankfurt</span></a></span></span><span>
@@ -17,7 +17,7 @@
 </span><span id="line-17"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Sydney"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Sydney"><span class="hs-identifier hs-var">Sydney</span></a></span></span><span>
 </span><span id="line-18"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Tokyo"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Tokyo"><span class="hs-identifier hs-var">Tokyo</span></a></span></span><span>
 </span><span id="line-19"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Virginia"><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Virginia"><span class="hs-identifier hs-var">Virginia</span></a></span></span><span>
-</span><span id="line-20"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680297819"><span id="local-6989586621680297821"><span id="local-6989586621680297823"><span class="annot"><span class="annottext">Int -&gt; Region -&gt; ShowS
+</span><span id="line-20"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span> </span><span id="local-6989586621680297374"><span id="local-6989586621680297376"><span id="local-6989586621680297378"><span class="annot"><span class="annottext">Int -&gt; Region -&gt; ShowS
 [Region] -&gt; ShowS
 Region -&gt; String
 (Int -&gt; Region -&gt; ShowS)
@@ -31,7 +31,7 @@ $cshow :: Region -&gt; String
 showsPrec :: Int -&gt; Region -&gt; ShowS
 $cshowsPrec :: Int -&gt; Region -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span>
-</span><span id="line-21"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680297810"><span id="local-6989586621680297812"><span id="local-6989586621680297814"><span id="local-6989586621680297816"><span class="annot"><span class="annottext">ReadPrec [Region]
+</span><span id="line-21"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680297365"><span id="local-6989586621680297367"><span id="local-6989586621680297369"><span id="local-6989586621680297371"><span class="annot"><span class="annottext">ReadPrec [Region]
 ReadPrec Region
 Int -&gt; ReadS Region
 ReadS [Region]
@@ -52,7 +52,7 @@ $creadList :: ReadS [Region]
 readsPrec :: Int -&gt; ReadS Region
 $creadsPrec :: Int -&gt; ReadS Region
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Read</span></span></span></span></span></span><span>
-</span><span id="line-22"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680297805"><span id="local-6989586621680297807"><span class="annot"><span class="annottext">Region -&gt; Region -&gt; Bool
+</span><span id="line-22"></span><span>           </span><span class="hs-special">,</span><span> </span><span id="local-6989586621680297360"><span id="local-6989586621680297362"><span class="annot"><span class="annottext">Region -&gt; Region -&gt; Bool
 (Region -&gt; Region -&gt; Bool)
 -&gt; (Region -&gt; Region -&gt; Bool) -&gt; Eq Region
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -73,7 +73,7 @@ $cfrom :: forall x. Region -&gt; Rep Region x
 </span><span id="line-24"></span><span>           </span><span class="hs-special">)</span><span>
 </span><span id="line-25"></span><span>
 </span><span id="line-26"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistField</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-27"></span><span>  </span><span id="local-6989586621680297797"><span class="annot"><span class="annottext">toPersistValue :: Region -&gt; PersistValue
+</span><span id="line-27"></span><span>  </span><span id="local-6989586621680297352"><span class="annot"><span class="annottext">toPersistValue :: Region -&gt; PersistValue
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toPersistValue</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; PersistValue
 </span><span class="hs-identifier hs-var">PersistText</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; PersistValue)
 -&gt; (Region -&gt; Text) -&gt; Region -&gt; PersistValue
@@ -85,11 +85,11 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span>
 </span><span id="line-28"></span><span>
-</span><span id="line-29"></span><span>  </span><span id="local-6989586621680297791"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text Region
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680297789"><span class="annot"><span class="annottext">str :: Text
-</span><a href="#local-6989586621680297789"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-29"></span><span>  </span><span id="local-6989586621680297346"><span class="annot"><span class="annottext">fromPersistValue :: PersistValue -&gt; Either Text Region
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromPersistValue</span></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">PersistText</span></span><span> </span><span id="local-6989586621680297344"><span class="annot"><span class="annottext">str :: Text
+</span><a href="#local-6989586621680297344"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-30"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680297789"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680297344"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-31"></span><span>      </span><span class="hs-string">&quot;California&quot;</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Region -&gt; Either Text Region
 forall (f :: * -&gt; *) a. Applicative f =&gt; a -&gt; f a
 </span><span class="hs-identifier hs-var">pure</span></span><span> </span><span class="annot"><span class="annottext">Region
@@ -132,12 +132,12 @@ forall a b. a -&gt; Either a b
 </span><span class="hs-identifier hs-var">Left</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Not valid Heroku Region type&quot;</span></span><span>
 </span><span id="line-43"></span><span>
 </span><span id="line-44"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">PersistFieldSql</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-45"></span><span>  </span><span id="local-6989586621680297785"><span class="annot"><span class="annottext">sqlType :: Proxy Region -&gt; SqlType
+</span><span id="line-45"></span><span>  </span><span id="local-6989586621680297340"><span class="annot"><span class="annottext">sqlType :: Proxy Region -&gt; SqlType
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">sqlType</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlType
 </span><span class="hs-identifier hs-var">SqlString</span></span><span>
 </span><span id="line-46"></span><span>
-</span><span id="line-47"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680297780"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-48"></span><span>  </span><span id="local-6989586621680297778"><span class="annot"><span class="annottext">arbitrary :: Gen Region
+</span><span id="line-47"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680297335"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-48"></span><span>  </span><span id="local-6989586621680297333"><span class="annot"><span class="annottext">arbitrary :: Gen Region
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Region] -&gt; Gen Region
 forall a. [a] -&gt; Gen a
 </span><span class="hs-identifier hs-var">elements</span></span><span>
@@ -167,8 +167,8 @@ Region
 </span><a href="Fission.Platform.Heroku.Region.Types.html#Virginia"><span class="hs-identifier hs-var">Virginia</span></a></span><span>
 </span><span id="line-57"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-58"></span><span>
-</span><span id="line-59"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680297769"><span id="local-6989586621680297771"><span id="local-6989586621680297773"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-60"></span><span>  </span><span id="local-6989586621680297767"><span class="annot"><span class="annottext">toJSON :: Region -&gt; Value
+</span><span id="line-59"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680297324"><span id="local-6989586621680297326"><span id="local-6989586621680297328"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-60"></span><span>  </span><span id="local-6989586621680297322"><span class="annot"><span class="annottext">toJSON :: Region -&gt; Value
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; (Region -&gt; Text) -&gt; Region -&gt; Value
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
@@ -182,8 +182,8 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span id="line-67"></span><span>    </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Tokyo"><span class="hs-identifier hs-type">Tokyo</span></a></span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;amazon-web-services::ap-northeast-1&quot;</span></span><span>
 </span><span id="line-68"></span><span>    </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Virginia"><span class="hs-identifier hs-type">Virginia</span></a></span><span>   </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-string">&quot;amazon-web-services::us-east-1&quot;</span></span><span>
 </span><span id="line-69"></span><span>
-</span><span id="line-70"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680297762"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-71"></span><span>  </span><span id="local-6989586621680297760"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Region
+</span><span id="line-70"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680297317"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-71"></span><span>  </span><span id="local-6989586621680297315"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Region
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser Region) -&gt; Value -&gt; Parser Region
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
 </span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Region&quot;</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-glyph">case</span><span>
@@ -219,8 +219,8 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">Region
 </span><a href="Fission.Platform.Heroku.Region.Types.html#Virginia"><span class="hs-identifier hs-var">Virginia</span></a></span><span>
-</span><span id="line-80"></span><span>    </span><span id="local-6989586621680297757"><span class="annot"><span class="annottext">bad :: Text
-</span><a href="#local-6989586621680297757"><span class="hs-identifier hs-var">bad</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Region
+</span><span id="line-80"></span><span>    </span><span id="local-6989586621680297312"><span class="annot"><span class="annottext">bad :: Text
+</span><a href="#local-6989586621680297312"><span class="hs-identifier hs-var">bad</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Parser Region
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Parser Region) -&gt; String -&gt; Parser Region
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -229,10 +229,10 @@ forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680297757"><span class="hs-identifier hs-var">bad</span></a></span><span>
+</span><a href="#local-6989586621680297312"><span class="hs-identifier hs-var">bad</span></a></span><span>
 </span><span id="line-81"></span><span>
 </span><span id="line-82"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ToSchema</span></span><span> </span><span class="annot"><a href="Fission.Platform.Heroku.Region.Types.html#Region"><span class="hs-identifier hs-type">Region</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-83"></span><span>    </span><span id="local-6989586621680297754"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Region -&gt; Declare (Definitions Schema) NamedSchema
+</span><span id="line-83"></span><span>    </span><span id="local-6989586621680297309"><span class="annot"><span class="annottext">declareNamedSchema :: Proxy Region -&gt; Declare (Definitions Schema) NamedSchema
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">declareNamedSchema</span></span></span><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-84"></span><span>      </span><span class="annot"><span class="annottext">Schema
 forall a. Monoid a =&gt; a

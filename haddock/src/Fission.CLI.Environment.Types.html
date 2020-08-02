@@ -23,63 +23,63 @@
 </span><a href="Fission.CLI.Environment.Types.html#%24sel%3AserverDID%3AEnvironment"><span class="hs-identifier hs-var hs-var">serverDID</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-19"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302754"><span id="local-6989586621680302756"><span id="local-6989586621680302758"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-22"></span><span>  </span><span id="local-6989586621680302752"><span class="annot"><span class="annottext">toJSON :: Environment -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680302746"><span id="local-6989586621680302747"><span id="local-6989586621680302748"><span id="local-6989586621680302749"><span id="local-6989586621680302750"><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><span id="line-21"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302309"><span id="local-6989586621680302311"><span id="local-6989586621680302313"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-22"></span><span>  </span><span id="local-6989586621680302307"><span class="annot"><span class="annottext">toJSON :: Environment -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680302301"><span id="local-6989586621680302302"><span id="local-6989586621680302303"><span id="local-6989586621680302304"><span id="local-6989586621680302305"><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span>
 </span><span id="line-23"></span><span>    </span><span class="hs-special">[</span><span> </span><span class="annot"><span class="hs-string">&quot;peers&quot;</span></span><span>      </span><span class="annot"><span class="annottext">Text -&gt; [Peer] -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680302750"><span class="hs-identifier hs-var">peers</span></a></span><span>
+</span><a href="#local-6989586621680302305"><span class="hs-identifier hs-var">peers</span></a></span><span>
 </span><span id="line-24"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;app_url&quot;</span></span><span>    </span><span class="annot"><span class="annottext">Text -&gt; Maybe URL -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Maybe URL
-</span><a href="#local-6989586621680302748"><span class="hs-identifier hs-var">appURL</span></a></span><span>
+</span><a href="#local-6989586621680302303"><span class="hs-identifier hs-var">appURL</span></a></span><span>
 </span><span id="line-25"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;ignore&quot;</span></span><span>     </span><span class="annot"><span class="annottext">Text -&gt; Ignored -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Ignored
-</span><a href="#local-6989586621680302749"><span class="hs-identifier hs-var">ignored</span></a></span><span>
+</span><a href="#local-6989586621680302304"><span class="hs-identifier hs-var">ignored</span></a></span><span>
 </span><span id="line-26"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; Maybe FilePath -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680302747"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
+</span><a href="#local-6989586621680302302"><span class="hs-identifier hs-var">buildDir</span></a></span><span>
 </span><span id="line-27"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-string">&quot;server_did&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; Maybe DID -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span> </span><span class="annot"><span class="annottext">Maybe DID
-</span><a href="#local-6989586621680302746"><span class="hs-identifier hs-var">serverDID</span></a></span><span>
+</span><a href="#local-6989586621680302301"><span class="hs-identifier hs-var">serverDID</span></a></span><span>
 </span><span id="line-28"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-29"></span><span>
-</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302741"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-31"></span><span>  </span><span id="local-6989586621680302739"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Environment
+</span><span id="line-30"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680302296"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Types.html#Environment"><span class="hs-identifier hs-type">Environment</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-31"></span><span>  </span><span id="local-6989586621680302294"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Environment
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath
 -&gt; (Object -&gt; Parser Environment) -&gt; Value -&gt; Parser Environment
 forall a. FilePath -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Environment&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680302736"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680302736"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-32"></span><span>    </span><span id="local-6989586621680302735"><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680302735"><span class="hs-identifier hs-var">peers</span></a></span></span><span>     </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680302736"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser [Peer]
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Environment&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680302291"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680302291"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-32"></span><span>    </span><span id="local-6989586621680302290"><span class="annot"><span class="annottext">[Peer]
+</span><a href="#local-6989586621680302290"><span class="hs-identifier hs-var">peers</span></a></span></span><span>     </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680302291"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser [Peer]
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;peers&quot;</span></span><span>
-</span><span id="line-33"></span><span>    </span><span id="local-6989586621680302733"><span class="annot"><span class="annottext">Ignored
-</span><a href="#local-6989586621680302733"><span class="hs-identifier hs-var">ignored</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680302736"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Ignored
+</span><span id="line-33"></span><span>    </span><span id="local-6989586621680302288"><span class="annot"><span class="annottext">Ignored
+</span><a href="#local-6989586621680302288"><span class="hs-identifier hs-var">ignored</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680302291"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser Ignored
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser a
 </span><span class="hs-operator hs-var">.:</span></span><span>  </span><span class="annot"><span class="hs-string">&quot;ignored&quot;</span></span><span>
 </span><span id="line-34"></span><span>
-</span><span id="line-35"></span><span>    </span><span id="local-6989586621680302732"><span class="annot"><span class="annottext">Maybe DID
-</span><a href="#local-6989586621680302732"><span class="hs-identifier hs-var">serverDID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680302736"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe DID)
+</span><span id="line-35"></span><span>    </span><span id="local-6989586621680302287"><span class="annot"><span class="annottext">Maybe DID
+</span><a href="#local-6989586621680302287"><span class="hs-identifier hs-var">serverDID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680302291"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe DID)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;server_did&quot;</span></span><span>
-</span><span id="line-36"></span><span>    </span><span id="local-6989586621680302730"><span class="annot"><span class="annottext">Maybe URL
-</span><a href="#local-6989586621680302730"><span class="hs-identifier hs-var">appURL</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680302736"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe URL)
+</span><span id="line-36"></span><span>    </span><span id="local-6989586621680302285"><span class="annot"><span class="annottext">Maybe URL
+</span><a href="#local-6989586621680302285"><span class="hs-identifier hs-var">appURL</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680302291"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe URL)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;app_url&quot;</span></span><span>
-</span><span id="line-37"></span><span>    </span><span id="local-6989586621680302729"><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680302729"><span class="hs-identifier hs-var">buildDir</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680302736"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
+</span><span id="line-37"></span><span>    </span><span id="local-6989586621680302284"><span class="annot"><span class="annottext">Maybe FilePath
+</span><a href="#local-6989586621680302284"><span class="hs-identifier hs-var">buildDir</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680302291"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span>
 </span><span id="line-38"></span><span>

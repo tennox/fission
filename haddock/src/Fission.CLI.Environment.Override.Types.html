@@ -32,11 +32,11 @@
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeServerDID%3AOverride"><span class="hs-identifier hs-var hs-var">maybeServerDID</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Fission.User.DID.Types.html#DID"><span class="hs-identifier hs-type">DID</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-27"></span><span>  </span><span class="hs-special">}</span><span>
 </span><span id="line-28"></span><span>
-</span><span id="line-29"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680310131"><span id="local-6989586621680310133"><span class="annot"><span class="hs-identifier hs-type">Semigroup</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-30"></span><span>  </span><span id="local-6989586621680310129"><span class="annot"><span class="annottext">a :: Override
-</span><a href="#local-6989586621680310129"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680310128"><span class="annot"><span class="annottext">&lt;&gt; :: Override -&gt; Override -&gt; Override
-</span><span class="hs-operator hs-var hs-var hs-var hs-var">&lt;&gt;</span></span></span><span> </span><span id="local-6989586621680310127"><span class="annot"><span class="annottext">b :: Override
-</span><a href="#local-6989586621680310127"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WOverride :: [Peer]
+</span><span id="line-29"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680309686"><span id="local-6989586621680309688"><span class="annot"><span class="hs-identifier hs-type">Semigroup</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-30"></span><span>  </span><span id="local-6989586621680309684"><span class="annot"><span class="annottext">a :: Override
+</span><a href="#local-6989586621680309684"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span id="local-6989586621680309683"><span class="annot"><span class="annottext">&lt;&gt; :: Override -&gt; Override -&gt; Override
+</span><span class="hs-operator hs-var hs-var hs-var hs-var">&lt;&gt;</span></span></span><span> </span><span id="local-6989586621680309682"><span class="annot"><span class="annottext">b :: Override
+</span><a href="#local-6989586621680309682"><span class="hs-identifier hs-var">b</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WOverride :: [Peer]
 -&gt; Maybe URL
 -&gt; Maybe BasicAuthData
 -&gt; Maybe Ignored
@@ -47,55 +47,55 @@
 </span><span id="line-31"></span><span>    </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">$sel:peers:Override :: [Peer]
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3Apeers%3AOverride"><span class="hs-identifier hs-var">peers</span></a></span><span>          </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override -&gt; [Peer]
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3Apeers%3AOverride"><span class="hs-identifier hs-var hs-var">peers</span></a></span><span>          </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310129"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">[Peer] -&gt; [Peer] -&gt; [Peer]
+</span><a href="#local-6989586621680309684"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">[Peer] -&gt; [Peer] -&gt; [Peer]
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span>  </span><span class="annot"><span class="annottext">Override -&gt; [Peer]
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3Apeers%3AOverride"><span class="hs-identifier hs-var hs-var">peers</span></a></span><span>          </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310127"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680309682"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-32"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeAppURL:Override :: Maybe URL
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeAppURL%3AOverride"><span class="hs-identifier hs-var">maybeAppURL</span></a></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe URL
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeAppURL%3AOverride"><span class="hs-identifier hs-var hs-var">maybeAppURL</span></a></span><span>    </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310129"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe URL -&gt; Maybe URL -&gt; Maybe URL
+</span><a href="#local-6989586621680309684"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe URL -&gt; Maybe URL -&gt; Maybe URL
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe URL
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeAppURL%3AOverride"><span class="hs-identifier hs-var hs-var">maybeAppURL</span></a></span><span>    </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310127"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680309682"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-33"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeUserAuth:Override :: Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeUserAuth%3AOverride"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeUserAuth%3AOverride"><span class="hs-identifier hs-var hs-var">maybeUserAuth</span></a></span><span>  </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310129"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData -&gt; Maybe BasicAuthData -&gt; Maybe BasicAuthData
+</span><a href="#local-6989586621680309684"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData -&gt; Maybe BasicAuthData -&gt; Maybe BasicAuthData
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe BasicAuthData
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeUserAuth%3AOverride"><span class="hs-identifier hs-var hs-var">maybeUserAuth</span></a></span><span>  </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310127"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680309682"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-34"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeIgnored:Override :: Maybe Ignored
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeIgnored%3AOverride"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>   </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe Ignored
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeIgnored%3AOverride"><span class="hs-identifier hs-var hs-var">maybeIgnored</span></a></span><span>   </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310129"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Ignored -&gt; Maybe Ignored -&gt; Maybe Ignored
+</span><a href="#local-6989586621680309684"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Ignored -&gt; Maybe Ignored -&gt; Maybe Ignored
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe Ignored
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeIgnored%3AOverride"><span class="hs-identifier hs-var hs-var">maybeIgnored</span></a></span><span>   </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310127"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680309682"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-35"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeBuildDir:Override :: Maybe FilePath
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeBuildDir%3AOverride"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>  </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe FilePath
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeBuildDir%3AOverride"><span class="hs-identifier hs-var hs-var">maybeBuildDir</span></a></span><span>  </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310129"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe FilePath -&gt; Maybe FilePath -&gt; Maybe FilePath
+</span><a href="#local-6989586621680309684"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe FilePath -&gt; Maybe FilePath -&gt; Maybe FilePath
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe FilePath
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeBuildDir%3AOverride"><span class="hs-identifier hs-var hs-var">maybeBuildDir</span></a></span><span>  </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310127"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680309682"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-36"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">$sel:maybeServerDID:Override :: Maybe DID
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeServerDID%3AOverride"><span class="hs-identifier hs-var">maybeServerDID</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe DID
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeServerDID%3AOverride"><span class="hs-identifier hs-var hs-var">maybeServerDID</span></a></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310129"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe DID -&gt; Maybe DID -&gt; Maybe DID
+</span><a href="#local-6989586621680309684"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe DID -&gt; Maybe DID -&gt; Maybe DID
 forall (f :: * -&gt; *) a. Alternative f =&gt; f a -&gt; f a -&gt; f a
 </span><span class="hs-operator hs-var">&lt;|&gt;</span></span><span> </span><span class="annot"><span class="annottext">Override -&gt; Maybe DID
 </span><a href="Fission.CLI.Environment.Override.Types.html#%24sel%3AmaybeServerDID%3AOverride"><span class="hs-identifier hs-var hs-var">maybeServerDID</span></a></span><span> </span><span class="annot"><span class="annottext">Override
-</span><a href="#local-6989586621680310127"><span class="hs-identifier hs-var">b</span></a></span><span>
+</span><a href="#local-6989586621680309682"><span class="hs-identifier hs-var">b</span></a></span><span>
 </span><span id="line-37"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-38"></span><span>
-</span><span id="line-39"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680310119"><span id="local-6989586621680310121"><span class="annot"><span class="hs-identifier hs-type">Monoid</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-40"></span><span>  </span><span id="local-6989586621680310117"><span class="annot"><span class="annottext">mempty :: Override
+</span><span id="line-39"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680309674"><span id="local-6989586621680309676"><span class="annot"><span class="hs-identifier hs-type">Monoid</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-40"></span><span>  </span><span id="local-6989586621680309672"><span class="annot"><span class="annottext">mempty :: Override
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">mempty</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">$WOverride :: [Peer]
 -&gt; Maybe URL
 -&gt; Maybe BasicAuthData
@@ -128,9 +128,9 @@ forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-47"></span><span>    </span><span class="hs-special">}</span><span>
 </span><span id="line-48"></span><span>
-</span><span id="line-49"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680310110"><span id="local-6989586621680310112"><span id="local-6989586621680310114"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-50"></span><span>  </span><span id="local-6989586621680310108"><span class="annot"><span class="annottext">toJSON :: Override -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680310101"><span id="local-6989586621680310102"><span id="local-6989586621680310103"><span id="local-6989586621680310104"><span id="local-6989586621680310105"><span id="local-6989586621680310106"><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
+</span><span id="line-49"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680309665"><span id="local-6989586621680309667"><span id="local-6989586621680309669"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-50"></span><span>  </span><span id="local-6989586621680309663"><span class="annot"><span class="annottext">toJSON :: Override -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680309656"><span id="local-6989586621680309657"><span id="local-6989586621680309658"><span id="local-6989586621680309659"><span id="local-6989586621680309660"><span id="local-6989586621680309661"><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Pair] -&gt; Value
 </span><span class="hs-identifier hs-var">object</span></span><span> </span><span class="annot"><span class="annottext">([Pair] -&gt; Value) -&gt; [Pair] -&gt; Value
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[Maybe Pair] -&gt; [Pair]
@@ -143,75 +143,75 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">[Peer] -&gt; Maybe [Peer]
 forall a. [a] -&gt; Maybe [a]
 </span><span class="hs-identifier hs-var">tailMaybe</span></span><span> </span><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680310106"><span class="hs-identifier hs-var">peers</span></a></span><span>
+</span><a href="#local-6989586621680309661"><span class="hs-identifier hs-var">peers</span></a></span><span>
 </span><span id="line-52"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;app_url&quot;</span></span><span>    </span><span class="annot"><span class="annottext">Text -&gt; URL -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(URL -&gt; Pair) -&gt; Maybe URL -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe URL
-</span><a href="#local-6989586621680310105"><span class="hs-identifier hs-var">maybeAppURL</span></a></span><span>
+</span><a href="#local-6989586621680309660"><span class="hs-identifier hs-var">maybeAppURL</span></a></span><span>
 </span><span id="line-53"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;user_auth&quot;</span></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; BasicAuthData -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(BasicAuthData -&gt; Pair) -&gt; Maybe BasicAuthData -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe BasicAuthData
-</span><a href="#local-6989586621680310104"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span><span>
+</span><a href="#local-6989586621680309659"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span><span>
 </span><span id="line-54"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;ignore&quot;</span></span><span>     </span><span class="annot"><span class="annottext">Text -&gt; Ignored -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(Ignored -&gt; Pair) -&gt; Maybe Ignored -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe Ignored
-</span><a href="#local-6989586621680310103"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>
+</span><a href="#local-6989586621680309658"><span class="hs-identifier hs-var">maybeIgnored</span></a></span><span>
 </span><span id="line-55"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span>  </span><span class="annot"><span class="annottext">Text -&gt; FilePath -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(FilePath -&gt; Pair) -&gt; Maybe FilePath -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680310102"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>
+</span><a href="#local-6989586621680309657"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span><span>
 </span><span id="line-56"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;server_did&quot;</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; DID -&gt; Pair
 forall kv v. (KeyValue kv, ToJSON v) =&gt; Text -&gt; v -&gt; kv
 </span><span class="hs-operator hs-var">.=</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(DID -&gt; Pair) -&gt; Maybe DID -&gt; Maybe Pair
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Maybe DID
-</span><a href="#local-6989586621680310101"><span class="hs-identifier hs-var">maybeServerDID</span></a></span><span>
+</span><a href="#local-6989586621680309656"><span class="hs-identifier hs-var">maybeServerDID</span></a></span><span>
 </span><span id="line-57"></span><span>    </span><span class="hs-special">]</span><span>
 </span><span id="line-58"></span><span>   </span><span>
-</span><span id="line-59"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680310093"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-60"></span><span>  </span><span id="local-6989586621680310091"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Override
+</span><span id="line-59"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680309648"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.CLI.Environment.Override.Types.html#Override"><span class="hs-identifier hs-type">Override</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-60"></span><span>  </span><span id="local-6989586621680309646"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Override
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; (Object -&gt; Parser Override) -&gt; Value -&gt; Parser Override
 forall a. FilePath -&gt; (Object -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Override&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680310088"><span class="annot"><span class="annottext">obj :: Object
-</span><a href="#local-6989586621680310088"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-61"></span><span>    </span><span id="local-6989586621680310087"><span class="annot"><span class="annottext">[Peer]
-</span><a href="#local-6989586621680310087"><span class="hs-identifier hs-var">peers</span></a></span></span><span>          </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680310088"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe [Peer])
+</span><span class="hs-identifier hs-var">withObject</span></span><span> </span><span class="annot"><span class="hs-string">&quot;Override&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680309643"><span class="annot"><span class="annottext">obj :: Object
+</span><a href="#local-6989586621680309643"><span class="hs-identifier hs-var">obj</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-61"></span><span>    </span><span id="local-6989586621680309642"><span class="annot"><span class="annottext">[Peer]
+</span><a href="#local-6989586621680309642"><span class="hs-identifier hs-var">peers</span></a></span></span><span>          </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680309643"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe [Peer])
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;peers&quot;</span></span><span> </span><span class="annot"><span class="annottext">Parser (Maybe [Peer]) -&gt; [Peer] -&gt; Parser [Peer]
 forall a. Parser (Maybe a) -&gt; a -&gt; Parser a
 </span><span class="hs-operator hs-var">.!=</span></span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
-</span><span id="line-62"></span><span>    </span><span id="local-6989586621680310084"><span class="annot"><span class="annottext">Maybe URL
-</span><a href="#local-6989586621680310084"><span class="hs-identifier hs-var">maybeAppURL</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680310088"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe URL)
+</span><span id="line-62"></span><span>    </span><span id="local-6989586621680309639"><span class="annot"><span class="annottext">Maybe URL
+</span><a href="#local-6989586621680309639"><span class="hs-identifier hs-var">maybeAppURL</span></a></span></span><span>    </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680309643"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe URL)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;app_url&quot;</span></span><span>
-</span><span id="line-63"></span><span>    </span><span id="local-6989586621680310083"><span class="annot"><span class="annottext">Maybe BasicAuthData
-</span><a href="#local-6989586621680310083"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680310088"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe BasicAuthData)
+</span><span id="line-63"></span><span>    </span><span id="local-6989586621680309638"><span class="annot"><span class="annottext">Maybe BasicAuthData
+</span><a href="#local-6989586621680309638"><span class="hs-identifier hs-var">maybeUserAuth</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680309643"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe BasicAuthData)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;user_auth&quot;</span></span><span>
-</span><span id="line-64"></span><span>    </span><span id="local-6989586621680310082"><span class="annot"><span class="annottext">Maybe Ignored
-</span><a href="#local-6989586621680310082"><span class="hs-identifier hs-var">maybeIgnored</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680310088"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Ignored)
+</span><span id="line-64"></span><span>    </span><span id="local-6989586621680309637"><span class="annot"><span class="annottext">Maybe Ignored
+</span><a href="#local-6989586621680309637"><span class="hs-identifier hs-var">maybeIgnored</span></a></span></span><span>   </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680309643"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe Ignored)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;ignore&quot;</span></span><span>
-</span><span id="line-65"></span><span>    </span><span id="local-6989586621680310081"><span class="annot"><span class="annottext">Maybe FilePath
-</span><a href="#local-6989586621680310081"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680310088"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
+</span><span id="line-65"></span><span>    </span><span id="local-6989586621680309636"><span class="annot"><span class="annottext">Maybe FilePath
+</span><a href="#local-6989586621680309636"><span class="hs-identifier hs-var">maybeBuildDir</span></a></span></span><span>  </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680309643"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe FilePath)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;build_dir&quot;</span></span><span>
-</span><span id="line-66"></span><span>    </span><span id="local-6989586621680310080"><span class="annot"><span class="annottext">Maybe DID
-</span><a href="#local-6989586621680310080"><span class="hs-identifier hs-var">maybeServerDID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
-</span><a href="#local-6989586621680310088"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe DID)
+</span><span id="line-66"></span><span>    </span><span id="local-6989586621680309635"><span class="annot"><span class="annottext">Maybe DID
+</span><a href="#local-6989586621680309635"><span class="hs-identifier hs-var">maybeServerDID</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Object
+</span><a href="#local-6989586621680309643"><span class="hs-identifier hs-var">obj</span></a></span><span> </span><span class="annot"><span class="annottext">Object -&gt; Text -&gt; Parser (Maybe DID)
 forall a. FromJSON a =&gt; Object -&gt; Text -&gt; Parser (Maybe a)
 </span><span class="hs-operator hs-var">.:?</span></span><span> </span><span class="annot"><span class="hs-string">&quot;server_did&quot;</span></span><span>
 </span><span id="line-67"></span><span> </span><span>

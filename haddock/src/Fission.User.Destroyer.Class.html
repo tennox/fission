@@ -7,17 +7,17 @@
 </span><span id="line-7"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><a href="Fission.Error.html"><span class="hs-identifier">Fission.Error</span></a></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">Error</span></span><span>
 </span><span id="line-8"></span><span>
 </span><span id="line-9"></span><span class="hs-comment">-- | Destroy @User@s</span><span>
-</span><span id="line-10"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680311546"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Destroyer"><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-var">Destroyer</span></a></span></span><span> </span><span id="local-6989586621680311546"><span class="annot"><a href="#local-6989586621680311546"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-11"></span><span>  </span><span id="deactivate"><span class="annot"><a href="Fission.User.Destroyer.Class.html#deactivate"><span class="hs-identifier hs-type">deactivate</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680311546"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-10"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621680311101"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="Destroyer"><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-var">Destroyer</span></a></span></span><span> </span><span id="local-6989586621680311101"><span class="annot"><a href="#local-6989586621680311101"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-11"></span><span>  </span><span id="deactivate"><span class="annot"><a href="Fission.User.Destroyer.Class.html#deactivate"><span class="hs-identifier hs-type">deactivate</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Fission.Models.html#UserId"><span class="hs-identifier hs-type">UserId</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680311101"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-type">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><a href="Fission.Models.html#User"><span class="hs-identifier hs-type">User</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-12"></span><span>
-</span><span id="line-13"></span><span id="local-6989586621680311488"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311488"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">Destroyer</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311488"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-14"></span><span>  </span><span id="local-6989586621680311484"><span class="annot"><span class="annottext">deactivate :: UserId
+</span><span id="line-13"></span><span id="local-6989586621680311043"><span class="hs-keyword">instance</span><span> </span><span class="annot"><span class="hs-identifier hs-type">MonadIO</span></span><span> </span><span class="annot"><a href="#local-6989586621680311043"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="Fission.User.Destroyer.Class.html#Destroyer"><span class="hs-identifier hs-type">Destroyer</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Fission.Internal.MonadDB.Types.html#Transaction"><span class="hs-identifier hs-type">Transaction</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680311043"><span class="hs-identifier hs-type">m</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>  </span><span id="local-6989586621680311039"><span class="annot"><span class="annottext">deactivate :: UserId
 -&gt; UserId -&gt; Transaction m (Either (ActionNotAuthorized User) ())
-</span><a href="#local-6989586621680311484"><span class="hs-identifier hs-var hs-var hs-var hs-var">deactivate</span></a></span></span><span> </span><span id="local-6989586621680311483"><span class="annot"><span class="annottext">requestorId :: UserId
-</span><a href="#local-6989586621680311483"><span class="hs-identifier hs-var">requestorId</span></a></span></span><span> </span><span id="local-6989586621680311482"><span class="annot"><span class="annottext">userId :: UserId
-</span><a href="#local-6989586621680311482"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-15"></span><span>    </span><span id="local-6989586621680311481"><span class="annot"><span class="annottext">[Value Int]
-</span><a href="#local-6989586621680311481"><span class="hs-identifier hs-var">appCount</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Value</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">SqlQuery (SqlExpr (Value Int)) -&gt; ReaderT SqlBackend m [Value Int]
+</span><a href="#local-6989586621680311039"><span class="hs-identifier hs-var hs-var hs-var hs-var">deactivate</span></a></span></span><span> </span><span id="local-6989586621680311038"><span class="annot"><span class="annottext">requestorId :: UserId
+</span><a href="#local-6989586621680311038"><span class="hs-identifier hs-var">requestorId</span></a></span></span><span> </span><span id="local-6989586621680311037"><span class="annot"><span class="annottext">userId :: UserId
+</span><a href="#local-6989586621680311037"><span class="hs-identifier hs-var">userId</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-15"></span><span>    </span><span id="local-6989586621680311036"><span class="annot"><span class="annottext">[Value Int]
+</span><a href="#local-6989586621680311036"><span class="hs-identifier hs-var">appCount</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Value</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">SqlQuery (SqlExpr (Value Int)) -&gt; ReaderT SqlBackend m [Value Int]
 forall a r (m :: * -&gt; *).
 (SqlSelect a r, MonadIO m) =&gt;
 SqlQuery a -&gt; SqlReadT m [r]
@@ -29,11 +29,11 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">(SqlExpr (Entity App) -&gt; SqlQuery (SqlExpr (Value Int)))
 -&gt; SqlQuery (SqlExpr (Value Int))
 forall a b. From a =&gt; (a -&gt; SqlQuery b) -&gt; SqlQuery b
-</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680311478"><span class="annot"><span class="annottext">app :: SqlExpr (Entity App)
-</span><a href="#local-6989586621680311478"><span class="hs-identifier hs-var">app</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span class="hs-identifier hs-var">from</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680311033"><span class="annot"><span class="annottext">app :: SqlExpr (Entity App)
+</span><a href="#local-6989586621680311033"><span class="hs-identifier hs-var">app</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-16"></span><span>      </span><span class="annot"><span class="annottext">SqlExpr (Value Bool) -&gt; SqlQuery ()
 </span><span class="hs-identifier hs-var">where_</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SqlExpr (Entity App)
-</span><a href="#local-6989586621680311478"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
+</span><a href="#local-6989586621680311033"><span class="hs-identifier hs-var">app</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity App)
 -&gt; EntityField App UserId -&gt; SqlExpr (Value UserId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -48,51 +48,51 @@ SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; SqlExpr (Value UserId)
 forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
 </span><span class="hs-identifier hs-var">val</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311482"><span class="hs-identifier hs-var">userId</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-17"></span><span>      </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680311472"><span class="annot"><span class="annottext">n :: SqlExpr (Value Int)
-</span><a href="#local-6989586621680311472"><span class="hs-identifier hs-var hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlExpr (Value Int)
+</span><a href="#local-6989586621680311037"><span class="hs-identifier hs-var">userId</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-17"></span><span>      </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680311027"><span class="annot"><span class="annottext">n :: SqlExpr (Value Int)
+</span><a href="#local-6989586621680311027"><span class="hs-identifier hs-var hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">SqlExpr (Value Int)
 forall a. Num a =&gt; SqlExpr (Value a)
 </span><span class="hs-identifier hs-var">countRows</span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">SqlExpr</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Value</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">)</span><span>
 </span><span id="line-18"></span><span>      </span><span class="annot"><span class="annottext">SqlExpr (Value Int) -&gt; SqlQuery (SqlExpr (Value Int))
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Value Int)
-</span><a href="#local-6989586621680311472"><span class="hs-identifier hs-var">n</span></a></span><span>
+</span><a href="#local-6989586621680311027"><span class="hs-identifier hs-var">n</span></a></span><span>
 </span><span id="line-19"></span><span>
 </span><span id="line-20"></span><span>    </span><span class="hs-keyword">let</span><span>
-</span><span id="line-21"></span><span>      </span><span class="annot"><a href="#local-6989586621680311470"><span class="hs-identifier hs-type">cnt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
-</span><span id="line-22"></span><span>      </span><span id="local-6989586621680311470"><span class="annot"><span class="annottext">cnt :: Int
-</span><a href="#local-6989586621680311470"><span class="hs-identifier hs-var hs-var">cnt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Value Int -&gt; Int -&gt; Int) -&gt; Int -&gt; [Value Int] -&gt; Int
+</span><span id="line-21"></span><span>      </span><span class="annot"><a href="#local-6989586621680311025"><span class="hs-identifier hs-type">cnt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
+</span><span id="line-22"></span><span>      </span><span id="local-6989586621680311025"><span class="annot"><span class="annottext">cnt :: Int
+</span><a href="#local-6989586621680311025"><span class="hs-identifier hs-var hs-var">cnt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Value Int -&gt; Int -&gt; Int) -&gt; Int -&gt; [Value Int] -&gt; Int
 forall (t :: * -&gt; *) a b.
 Foldable t =&gt;
 (a -&gt; b -&gt; b) -&gt; b -&gt; t a -&gt; b
-</span><span class="hs-identifier hs-var">foldr</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Value</span></span><span> </span><span id="local-6989586621680311467"><span class="annot"><span class="annottext">i :: Int
-</span><a href="#local-6989586621680311467"><span class="hs-identifier hs-var">i</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680311466"><span class="annot"><span class="annottext">acc :: Int
-</span><a href="#local-6989586621680311466"><span class="hs-identifier hs-var">acc</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680311466"><span class="hs-identifier hs-var">acc</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
+</span><span class="hs-identifier hs-var">foldr</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Value</span></span><span> </span><span id="local-6989586621680311022"><span class="annot"><span class="annottext">i :: Int
+</span><a href="#local-6989586621680311022"><span class="hs-identifier hs-var">i</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680311021"><span class="annot"><span class="annottext">acc :: Int
+</span><a href="#local-6989586621680311021"><span class="hs-identifier hs-var">acc</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680311021"><span class="hs-identifier hs-var">acc</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
 forall a. Num a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680311467"><span class="hs-identifier hs-var">i</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-number">0</span></span><span> </span><span class="annot"><span class="annottext">[Value Int]
-</span><a href="#local-6989586621680311481"><span class="hs-identifier hs-var">appCount</span></a></span><span>
+</span><a href="#local-6989586621680311022"><span class="hs-identifier hs-var">i</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-number">0</span></span><span> </span><span class="annot"><span class="annottext">[Value Int]
+</span><a href="#local-6989586621680311036"><span class="hs-identifier hs-var">appCount</span></a></span><span>
 </span><span id="line-23"></span><span>
 </span><span id="line-24"></span><span>    </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680311470"><span class="hs-identifier hs-var">cnt</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680311025"><span class="hs-identifier hs-var">cnt</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;=</span></span><span> </span><span class="annot"><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">&amp;&amp;</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311483"><span class="hs-identifier hs-var">requestorId</span></a></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; UserId -&gt; Bool
+</span><a href="#local-6989586621680311038"><span class="hs-identifier hs-var">requestorId</span></a></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; UserId -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311482"><span class="hs-identifier hs-var">userId</span></a></span><span>
+</span><a href="#local-6989586621680311037"><span class="hs-identifier hs-var">userId</span></a></span><span>
 </span><span id="line-25"></span><span>      </span><span class="hs-keyword">then</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-26"></span><span>        </span><span class="annot"><span class="annottext">(SqlExpr (Entity User) -&gt; SqlQuery ()) -&gt; SqlWriteT m ()
 forall (m :: * -&gt; *) val.
 (MonadIO m, PersistEntity val,
  BackendCompatible SqlBackend (PersistEntityBackend val)) =&gt;
 (SqlExpr (Entity val) -&gt; SqlQuery ()) -&gt; SqlWriteT m ()
-</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680311461"><span class="annot"><span class="annottext">user :: SqlExpr (Entity User)
-</span><a href="#local-6989586621680311461"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span class="hs-identifier hs-var">update</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680311016"><span class="annot"><span class="annottext">user :: SqlExpr (Entity User)
+</span><a href="#local-6989586621680311016"><span class="hs-identifier hs-var">user</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-27"></span><span>          </span><span class="annot"><span class="annottext">SqlExpr (Entity User)
-</span><a href="#local-6989586621680311461"><span class="hs-identifier hs-var">user</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity User) -&gt; [SqlExpr (Update User)] -&gt; SqlQuery ()
+</span><a href="#local-6989586621680311016"><span class="hs-identifier hs-var">user</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity User) -&gt; [SqlExpr (Update User)] -&gt; SqlQuery ()
 forall val.
 PersistEntity val =&gt;
 SqlExpr (Entity val) -&gt; [SqlExpr (Update val)] -&gt; SqlQuery ()
@@ -109,7 +109,7 @@ forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
 </span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="hs-special">]</span><span>
 </span><span id="line-28"></span><span>          </span><span class="annot"><span class="annottext">SqlExpr (Value Bool) -&gt; SqlQuery ()
 </span><span class="hs-identifier hs-var">where_</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SqlExpr (Entity User)
-</span><a href="#local-6989586621680311461"><span class="hs-identifier hs-var">user</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity User)
+</span><a href="#local-6989586621680311016"><span class="hs-identifier hs-var">user</span></a></span><span> </span><span class="annot"><span class="annottext">SqlExpr (Entity User)
 -&gt; EntityField User UserId -&gt; SqlExpr (Value UserId)
 forall typ val.
 (PersistEntity val, PersistField typ) =&gt;
@@ -124,7 +124,7 @@ SqlExpr (Value typ) -&gt; SqlExpr (Value typ) -&gt; SqlExpr (Value Bool)
 </span><span class="hs-operator hs-var">==.</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; SqlExpr (Value UserId)
 forall typ. PersistField typ =&gt; typ -&gt; SqlExpr (Value typ)
 </span><span class="hs-identifier hs-var">val</span></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311482"><span class="hs-identifier hs-var">userId</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680311037"><span class="hs-identifier hs-var">userId</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-29"></span><span>
 </span><span id="line-30"></span><span>        </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">Either (ActionNotAuthorized User) ()
 forall err. Either err ()
@@ -151,5 +151,5 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">UserId -&gt; ActionNotAuthorized User
 forall entity. UserId -&gt; ActionNotAuthorized entity
 </span><a href="Fission.Error.ActionNotAuthorized.Types.html#ActionNotAuthorized"><span class="hs-identifier hs-var">ActionNotAuthorized</span></a></span><span> </span><span class="annot"><span class="annottext">UserId
-</span><a href="#local-6989586621680311483"><span class="hs-identifier hs-var">requestorId</span></a></span></span><span>
+</span><a href="#local-6989586621680311038"><span class="hs-identifier hs-var">requestorId</span></a></span></span><span>
 </span><span id="line-34"></span></pre></body></html>

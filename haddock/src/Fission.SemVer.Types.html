@@ -12,7 +12,7 @@
 </span><a href="Fission.SemVer.Types.html#%24sel%3Aminor%3ASemVer"><span class="hs-identifier hs-var hs-var">minor</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span>
 </span><span id="line-11"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="%24sel%3Apatch%3ASemVer"><span class="annot"><span class="annottext">SemVer -&gt; Word8
 </span><a href="Fission.SemVer.Types.html#%24sel%3Apatch%3ASemVer"><span class="hs-identifier hs-var hs-var">patch</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Word8</span></span><span>
-</span><span id="line-12"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span id="local-6989586621680301664"><span id="local-6989586621680301666"><span class="annot"><span class="annottext">SemVer -&gt; SemVer -&gt; Bool
+</span><span id="line-12"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span id="local-6989586621680301219"><span id="local-6989586621680301221"><span class="annot"><span class="annottext">SemVer -&gt; SemVer -&gt; Bool
 (SemVer -&gt; SemVer -&gt; Bool)
 -&gt; (SemVer -&gt; SemVer -&gt; Bool) -&gt; Eq SemVer
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -22,115 +22,115 @@ $c/= :: SemVer -&gt; SemVer -&gt; Bool
 $c== :: SemVer -&gt; SemVer -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301658"><span id="local-6989586621680301661"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-15"></span><span>  </span><span id="local-6989586621680301656"><span class="annot"><span class="annottext">show :: SemVer -&gt; String
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">show</span></span></span><span> </span><span id="local-6989586621680301652"><span id="local-6989586621680301653"><span id="local-6989586621680301654"><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; String
+</span><span id="line-14"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301213"><span id="local-6989586621680301216"><span class="annot"><span class="hs-identifier hs-type">Show</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-15"></span><span>  </span><span id="local-6989586621680301211"><span class="annot"><span class="annottext">show :: SemVer -&gt; String
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">show</span></span></span><span> </span><span id="local-6989586621680301207"><span id="local-6989586621680301208"><span id="local-6989586621680301209"><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301654"><span class="hs-identifier hs-var">major</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680301209"><span class="hs-identifier hs-var">major</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301653"><span class="hs-identifier hs-var">minor</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680301208"><span class="hs-identifier hs-var">minor</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301652"><span class="hs-identifier hs-var">patch</span></a></span><span>
+</span><a href="#local-6989586621680301207"><span class="hs-identifier hs-var">patch</span></a></span><span>
 </span><span id="line-16"></span><span>
-</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301649"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-18"></span><span>  </span><span id="local-6989586621680301647"><span class="annot"><span class="annottext">display :: SemVer -&gt; Utf8Builder
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span id="local-6989586621680301643"><span id="local-6989586621680301644"><span id="local-6989586621680301645"><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Utf8Builder
+</span><span id="line-17"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301204"><span class="annot"><span class="hs-identifier hs-type">Display</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-18"></span><span>  </span><span id="local-6989586621680301202"><span class="annot"><span class="annottext">display :: SemVer -&gt; Utf8Builder
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">display</span></span></span><span> </span><span id="local-6989586621680301198"><span id="local-6989586621680301199"><span id="local-6989586621680301200"><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span></span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301645"><span class="hs-identifier hs-var">major</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+</span><a href="#local-6989586621680301200"><span class="hs-identifier hs-var">major</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301644"><span class="hs-identifier hs-var">minor</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
+</span><a href="#local-6989586621680301199"><span class="hs-identifier hs-var">minor</span></a></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot;.&quot;</span></span><span> </span><span class="annot"><span class="annottext">Utf8Builder -&gt; Utf8Builder -&gt; Utf8Builder
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Utf8Builder
 forall a. Display a =&gt; a -&gt; Utf8Builder
 </span><span class="hs-identifier hs-var">display</span></span><span> </span><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301643"><span class="hs-identifier hs-var">patch</span></a></span><span>
+</span><a href="#local-6989586621680301198"><span class="hs-identifier hs-var">patch</span></a></span><span>
 </span><span id="line-19"></span><span>
-</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301629"><span id="local-6989586621680301631"><span id="local-6989586621680301633"><span id="local-6989586621680301635"><span id="local-6989586621680301637"><span id="local-6989586621680301639"><span class="annot"><span class="hs-identifier hs-type">Ord</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span></span></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-21"></span><span>  </span><span id="local-6989586621680301627"><span class="annot"><span class="annottext">compare :: SemVer -&gt; SemVer -&gt; Ordering
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">compare</span></span></span><span> </span><span id="local-6989586621680301625"><span class="annot"><span class="annottext">vA :: SemVer
-</span><a href="#local-6989586621680301625"><span class="hs-identifier hs-var">vA</span></a></span></span><span> </span><span id="local-6989586621680301624"><span class="annot"><span class="annottext">vB :: SemVer
-</span><a href="#local-6989586621680301624"><span class="hs-identifier hs-var">vB</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-20"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301184"><span id="local-6989586621680301186"><span id="local-6989586621680301188"><span id="local-6989586621680301190"><span id="local-6989586621680301192"><span id="local-6989586621680301194"><span class="annot"><span class="hs-identifier hs-type">Ord</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span></span></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-21"></span><span>  </span><span id="local-6989586621680301182"><span class="annot"><span class="annottext">compare :: SemVer -&gt; SemVer -&gt; Ordering
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">compare</span></span></span><span> </span><span id="local-6989586621680301180"><span class="annot"><span class="annottext">vA :: SemVer
+</span><a href="#local-6989586621680301180"><span class="hs-identifier hs-var">vA</span></a></span></span><span> </span><span id="local-6989586621680301179"><span class="annot"><span class="annottext">vB :: SemVer
+</span><a href="#local-6989586621680301179"><span class="hs-identifier hs-var">vB</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-22"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Ordering
 forall a. Ord a =&gt; a -&gt; a -&gt; Ordering
 </span><span class="hs-identifier hs-var">compare</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
 </span><a href="Fission.SemVer.Types.html#%24sel%3Amajor%3ASemVer"><span class="hs-identifier hs-var hs-var">major</span></a></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680301625"><span class="hs-identifier hs-var">vA</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
+</span><a href="#local-6989586621680301180"><span class="hs-identifier hs-var">vA</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
 </span><a href="Fission.SemVer.Types.html#%24sel%3Amajor%3ASemVer"><span class="hs-identifier hs-var hs-var">major</span></a></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680301624"><span class="hs-identifier hs-var">vB</span></a></span><span class="hs-special">)</span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Ordering
+</span><a href="#local-6989586621680301179"><span class="hs-identifier hs-var">vB</span></a></span><span class="hs-special">)</span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Ordering
 forall a. Ord a =&gt; a -&gt; a -&gt; Ordering
 </span><span class="hs-identifier hs-var">compare</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
 </span><a href="Fission.SemVer.Types.html#%24sel%3Aminor%3ASemVer"><span class="hs-identifier hs-var hs-var">minor</span></a></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680301625"><span class="hs-identifier hs-var">vA</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
+</span><a href="#local-6989586621680301180"><span class="hs-identifier hs-var">vA</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
 </span><a href="Fission.SemVer.Types.html#%24sel%3Aminor%3ASemVer"><span class="hs-identifier hs-var hs-var">minor</span></a></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680301624"><span class="hs-identifier hs-var">vB</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680301179"><span class="hs-identifier hs-var">vB</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-23"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">EQ</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">EQ</span></span><span class="hs-special">)</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Word8 -&gt; Word8 -&gt; Ordering
 forall a. Ord a =&gt; a -&gt; a -&gt; Ordering
 </span><span class="hs-identifier hs-var">compare</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
 </span><a href="Fission.SemVer.Types.html#%24sel%3Apatch%3ASemVer"><span class="hs-identifier hs-var hs-var">patch</span></a></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680301625"><span class="hs-identifier hs-var">vA</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
+</span><a href="#local-6989586621680301180"><span class="hs-identifier hs-var">vA</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">SemVer -&gt; Word8
 </span><a href="Fission.SemVer.Types.html#%24sel%3Apatch%3ASemVer"><span class="hs-identifier hs-var hs-var">patch</span></a></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680301624"><span class="hs-identifier hs-var">vB</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-24"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">EQ</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680301623"><span class="annot"><span class="annottext">mnr :: Ordering
-</span><a href="#local-6989586621680301623"><span class="hs-identifier hs-var">mnr</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Ordering
-</span><a href="#local-6989586621680301623"><span class="hs-identifier hs-var">mnr</span></a></span><span>
-</span><span id="line-25"></span><span>      </span><span class="hs-special">(</span><span id="local-6989586621680301622"><span class="annot"><span class="annottext">mjr :: Ordering
-</span><a href="#local-6989586621680301622"><span class="hs-identifier hs-var">mjr</span></a></span></span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Ordering
-</span><a href="#local-6989586621680301622"><span class="hs-identifier hs-var">mjr</span></a></span><span>
+</span><a href="#local-6989586621680301179"><span class="hs-identifier hs-var">vB</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-24"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">EQ</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680301178"><span class="annot"><span class="annottext">mnr :: Ordering
+</span><a href="#local-6989586621680301178"><span class="hs-identifier hs-var">mnr</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Ordering
+</span><a href="#local-6989586621680301178"><span class="hs-identifier hs-var">mnr</span></a></span><span>
+</span><span id="line-25"></span><span>      </span><span class="hs-special">(</span><span id="local-6989586621680301177"><span class="annot"><span class="annottext">mjr :: Ordering
+</span><a href="#local-6989586621680301177"><span class="hs-identifier hs-var">mjr</span></a></span></span><span class="hs-special">,</span><span> </span><span class="hs-identifier">_</span><span class="hs-special">)</span><span>  </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Ordering
+</span><a href="#local-6989586621680301177"><span class="hs-identifier hs-var">mjr</span></a></span><span>
 </span><span id="line-26"></span><span>
-</span><span id="line-27"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301619"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-28"></span><span>  </span><span id="local-6989586621680301617"><span class="annot"><span class="annottext">arbitrary :: Gen SemVer
+</span><span id="line-27"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301174"><span class="annot"><span class="hs-identifier hs-type">Arbitrary</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-28"></span><span>  </span><span id="local-6989586621680301172"><span class="annot"><span class="annottext">arbitrary :: Gen SemVer
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">arbitrary</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-29"></span><span>    </span><span id="local-6989586621680301615"><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301615"><span class="hs-identifier hs-var">major</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Word8
+</span><span id="line-29"></span><span>    </span><span id="local-6989586621680301170"><span class="annot"><span class="annottext">Word8
+</span><a href="#local-6989586621680301170"><span class="hs-identifier hs-var">major</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Word8
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-30"></span><span>    </span><span id="local-6989586621680301614"><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301614"><span class="hs-identifier hs-var">minor</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Word8
+</span><span id="line-30"></span><span>    </span><span id="local-6989586621680301169"><span class="annot"><span class="annottext">Word8
+</span><a href="#local-6989586621680301169"><span class="hs-identifier hs-var">minor</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Word8
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
-</span><span id="line-31"></span><span>    </span><span id="local-6989586621680301613"><span class="annot"><span class="annottext">Word8
-</span><a href="#local-6989586621680301613"><span class="hs-identifier hs-var">patch</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Word8
+</span><span id="line-31"></span><span>    </span><span id="local-6989586621680301168"><span class="annot"><span class="annottext">Word8
+</span><a href="#local-6989586621680301168"><span class="hs-identifier hs-var">patch</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Gen Word8
 forall a. Arbitrary a =&gt; Gen a
 </span><span class="hs-identifier hs-var">arbitrary</span></span><span>
 </span><span id="line-32"></span><span>    </span><span class="hs-identifier">return</span><span> </span><span class="annot"><span class="annottext">$WSemVer :: Word8 -&gt; Word8 -&gt; Word8 -&gt; SemVer
 </span><a href="Fission.SemVer.Types.html#%24WSemVer"><span class="hs-identifier hs-type hs-type">SemVer</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
 </span><span id="line-33"></span><span>
-</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301605"><span id="local-6989586621680301607"><span id="local-6989586621680301609"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-35"></span><span>  </span><span id="local-6989586621680301603"><span class="annot"><span class="annottext">toJSON :: SemVer -&gt; Value
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680301601"><span class="annot"><span class="annottext">version :: SemVer
-</span><a href="#local-6989586621680301601"><span class="hs-identifier hs-var">version</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
+</span><span id="line-34"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301160"><span id="local-6989586621680301162"><span id="local-6989586621680301164"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621680301158"><span class="annot"><span class="annottext">toJSON :: SemVer -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span id="local-6989586621680301156"><span class="annot"><span class="annottext">version :: SemVer
+</span><a href="#local-6989586621680301156"><span class="hs-identifier hs-var">version</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; Value
 </span><span class="hs-identifier hs-var">String</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; Value) -&gt; Text -&gt; Value
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">SemVer -&gt; Text
 forall a. Display a =&gt; a -&gt; Text
 </span><span class="hs-identifier hs-var">textDisplay</span></span><span> </span><span class="annot"><span class="annottext">SemVer
-</span><a href="#local-6989586621680301601"><span class="hs-identifier hs-var">version</span></a></span><span>
+</span><a href="#local-6989586621680301156"><span class="hs-identifier hs-var">version</span></a></span><span>
 </span><span id="line-36"></span><span>
-</span><span id="line-37"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301596"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-38"></span><span>  </span><span id="local-6989586621680301594"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser SemVer
+</span><span id="line-37"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680301151"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Fission.SemVer.Types.html#SemVer"><span class="hs-identifier hs-type">SemVer</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-38"></span><span>  </span><span id="local-6989586621680301149"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser SemVer
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; (Text -&gt; Parser SemVer) -&gt; Value -&gt; Parser SemVer
 forall a. String -&gt; (Text -&gt; Parser a) -&gt; Value -&gt; Parser a
-</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;SemVer&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680301591"><span class="annot"><span class="annottext">txt :: Text
-</span><a href="#local-6989586621680301591"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-identifier hs-var">withText</span></span><span> </span><span class="annot"><span class="hs-string">&quot;SemVer&quot;</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680301146"><span class="annot"><span class="annottext">txt :: Text
+</span><a href="#local-6989586621680301146"><span class="hs-identifier hs-var">txt</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-39"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">String -&gt; Maybe Word8
 forall a. Read a =&gt; String -&gt; Maybe a
 </span><span class="hs-identifier hs-var">readMaybe</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Maybe Word8) -&gt; (Text -&gt; String) -&gt; Text -&gt; Maybe Word8
@@ -142,8 +142,8 @@ forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-identifier hs-var">Text.split</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Char -&gt; Char -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="hs-char">'.'</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680301591"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-40"></span><span>      </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680301585"><span class="annot"><a href="#local-6989586621680301585"><span class="hs-identifier hs-var">major</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680301584"><span class="annot"><a href="#local-6989586621680301584"><span class="hs-identifier hs-var">minor</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680301583"><span class="annot"><a href="#local-6989586621680301583"><span class="hs-identifier hs-var">patch</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">SemVer -&gt; Parser SemVer
+</span><a href="#local-6989586621680301146"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-40"></span><span>      </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680301140"><span class="annot"><a href="#local-6989586621680301140"><span class="hs-identifier hs-var">major</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680301139"><span class="annot"><a href="#local-6989586621680301139"><span class="hs-identifier hs-var">minor</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680301138"><span class="annot"><a href="#local-6989586621680301138"><span class="hs-identifier hs-var">patch</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">SemVer -&gt; Parser SemVer
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">$WSemVer :: Word8 -&gt; Word8 -&gt; Word8 -&gt; SemVer
 </span><a href="Fission.SemVer.Types.html#%24WSemVer"><span class="hs-identifier hs-type hs-type">SemVer</span></a></span><span> </span><span class="hs-special">{</span><span class="hs-glyph">..</span><span class="hs-special">}</span><span>
@@ -154,7 +154,7 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Text
-</span><a href="#local-6989586621680301591"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
+</span><a href="#local-6989586621680301146"><span class="hs-identifier hs-var">txt</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; ShowS
 forall a. Semigroup a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="hs-string">&quot; is not a properly formatted semver&quot;</span></span><span>
 </span><span id="line-42"></span></pre></body></html>
