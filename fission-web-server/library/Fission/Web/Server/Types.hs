@@ -26,6 +26,8 @@ import qualified Network.IPFS.Process.Error                as IPFS.Process
 import qualified Network.IPFS.Stat                         as IPFS.Stat
 import qualified Network.IPFS.Types                        as IPFS
 
+import qualified  Fission.Web.Server.IPFS.Cluster.Client   as Cluster
+
 import           Fission.Prelude
 
 import qualified Fission.Internal.UTF8                     as UTF8
@@ -295,8 +297,19 @@ instance MonadDNSLink Server where
       dnsLinkURL = URL.prefix' (URL.Subdomain "_dnslink") url
       dnsLink    = "dnslink=/ipns/" <> textDisplay followeeURL
 
+
+
+
 instance MonadLinkedIPFS Server where
-  getLinkedPeers = pure <$> asks ipfsRemotePeer
+  getLinkedPeers = do
+    let url = BaseUrl Http "localhost" 9094 ""
+    manager <- asks httpManager
+
+    logDebug $ "checking api at: " <> displayShow url
+
+    testing <- liftIO . runClientM Cluster.peers $ mkClientEnv manager url
+    logDebug $ "Got cluster peers: " <> displayShow testing
+    pure <$> asks ipfsRemotePeer
 
 instance IPFS.MonadLocalIPFS Server where
   runLocal opts arg = do
