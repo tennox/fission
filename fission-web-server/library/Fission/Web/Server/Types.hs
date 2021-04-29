@@ -362,26 +362,30 @@ instance (Eq a, Display a) => MonadIPFSCluster Server a where
     clusterURLs     <- asks ipfsURLs
     ipfsHttpManager <- asks ipfsHttpManager
 
-    logDebug @Text "🐙🚰 Running IPFS request across cluster (streaming)"
-    forM clusterURLs \(IPFS.URL url) -> do
-      resultChan <- liftIO newTChanIO
-      latestVar  <- atomically $ newTVar Nothing
+    reqID :: Text <- Text.take 8 <$> generate arbitrary
 
-      logDebug $ "🐙🎬 Starting request to cluster node: " <> display url
+    logDebug "🐙🚰 ID " <> reqID <> " Running IPFS request across cluster (streaming)"
+    forM clusterURLs \(IPFS.URL url) -> do
+      (resultChan, latestVar) <- atomically do
+        resultChan <- newTChan
+        latestVar  <- newTVar Nothing
+        return (resultChan, latestVar)
+
+      logDebug $ "🐙🎬 ID " <> reqID <> " Starting request to cluster node: " <> display url
 
       asyncRef <- liftIO $ async do
         Stream.withClientM streamQuery (mkClientEnv ipfsHttpManager url) \event ->
           case event of
             Left clientErr ->
               runServer cfg do
-                logError $ "🐙😭 Cluster node " <> display url <> " reported streaming client error: " <> display clientErr
+                logError $ "🐙😭 ID " <> reqID <> " Cluster node " <> display url <> " reported streaming client error: " <> display clientErr
                 return $ Left clientErr
 
             Right ioSource -> do
               let
                 withErr errMsg =
                   runServer cfg do
-                    logError $ "🐙😭 Cluster node " <> display url <> " reported generic streaming error: " <> displayShow errMsg
+                    logError $ "🐙😭 ID " <> reqID <>" Cluster node " <> display url <> " reported generic streaming error: " <> displayShow errMsg
                     let err = ConnectionError . toException $ GenericError errMsg
                     atomically do
                       latestVar  `writeTVar`  Just (Left err)
@@ -389,7 +393,7 @@ instance (Eq a, Display a) => MonadIPFSCluster Server a where
 
                 withVal x =
                   runServer cfg do
-                    logDebug $ "🐙📥 Cluster node " <> display url <> " streamed value: " <> display x
+                    logDebug $ "🐙📥 ID " <> reqID <> " Cluster node " <> display url <> " streamed value: " <> display x
                     atomically do
                       latestVar  `writeTVar`  Just (Right x)
                       resultChan `writeTChan` Right x
@@ -398,18 +402,18 @@ instance (Eq a, Display a) => MonadIPFSCluster Server a where
               readTVarIO latestVar >>= \case
                 Nothing ->
                   runServer cfg do
-                    logError $ "🐙🙉 Cluster node " <> display url <> " did not report any streaming updates."
+                    logError $ "🐙🙉 ID " <> reqID <> " Cluster node " <> display url <> " did not report any streaming updates."
                     return . Left . ConnectionError . toException $ NotFound @PinStatus
 
                 Just finalResult ->
                   runServer cfg do
                     case finalResult of
                       Left err -> do
-                        logDebug $ "🐙🚨 Cluster node " <> display url <> " ended stream with an error: " <> display err
+                        logDebug $ "🐙🚨 ID " <> reqID <> " Cluster node " <> display url <> " ended stream with an error: " <> display err
                         return $ Left err
 
                       Right final -> do
-                        logDebug $ "🐙👍 Cluster node " <> display url <> " streamed successfully; ended with: " <> display final
+                        logDebug $ "🐙👍 ID " <> reqID <> " Cluster node " <> display url <> " streamed successfully; ended with: " <> display final
                         return $ Right final
 
       asyncIdleTimeout (Seconds (Unity (120 :: Natural))) asyncRef latestVar
